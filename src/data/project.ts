@@ -33,7 +33,7 @@ export const projects: ProjectData[] = [
         name: "Reception & Lounge",
         description: "A welcoming double-height reception with modern lounge seating.",
         images: ["/projects/theon/RECEPTION-REVISED/hero.jpeg", "/projects/theon/RECEPTION-REVISED/lounge.jpeg", "/projects/theon/RECEPTION-REVISED/ground.jpeg"],
-        video: "/projects/theon/WALKTHROUGH.mp4"
+        video: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4"
       },
       {
         name: "Boardroom",
