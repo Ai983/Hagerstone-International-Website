@@ -18,7 +18,7 @@ export default function ProjectsListHero() {
       {/* Background Video */}
       <video
         ref={videoRef}
-        src="/projects/vecteezy_the-interior-of-a-large-office_2016989.mov"
+        src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/ourportfolio.mp4"
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
