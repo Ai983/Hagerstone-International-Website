@@ -18,7 +18,6 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import FindYourStyle from "./pages/FindYourStyle";
 import NotFound from "./pages/NotFound";
-import IndependenceSplash from "./components/IndependenceSplash";
 import DynamicLoader from "./components/DynamicLoader";
 
  
@@ -32,7 +31,6 @@ const App = () => (
       <BrowserRouter>
         <AnalyticsTracker/>
         <DynamicLoader />
-        <IndependenceSplash />
         <CustomCursor />
         <HoveringNavbar />
         <Routes>
