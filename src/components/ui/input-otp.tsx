@@ -1,61 +1,40 @@
-import * as React from "react";
-import { OTPInput, OTPInputContext } from "input-otp";
-import { Dot } from "lucide-react";
+import * as React$1 from 'react';
 
-import { cn } from "@/lib/utils";
-
-const InputOTP = React.forwardRef<React.ElementRef<typeof OTPInput>, React.ComponentPropsWithoutRef<typeof OTPInput>>(
-  ({ className, containerClassName, ...props }, ref) => (
-    <OTPInput
-      ref={ref}
-      containerClassName={cn("flex items-center gap-2 has-[:disabled]:opacity-50", containerClassName)}
-      className={cn("disabled:cursor-not-allowed", className)}
-      {...props}
-    />
-  ),
-);
-InputOTP.displayName = "InputOTP";
-
-const InputOTPGroup = React.forwardRef<React.ElementRef<"div">, React.ComponentPropsWithoutRef<"div">>(
-  ({ className, ...props }, ref) => <div ref={ref} className={cn("flex items-center", className)} {...props} />,
-);
-InputOTPGroup.displayName = "InputOTPGroup";
-
-const InputOTPSlot = React.forwardRef<
-  React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<"div"> & { index: number }
->(({ index, className, ...props }, ref) => {
-  const inputOTPContext = React.useContext(OTPInputContext);
-  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
-        isActive && "z-10 ring-2 ring-ring ring-offset-background",
-        className,
-      )}
-      {...props}
-    >
-      {char}
-      {hasFakeCaret && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink h-4 w-px bg-foreground duration-1000" />
-        </div>
-      )}
-    </div>
-  );
+interface SlotProps {
+    isActive: boolean;
+    char: string | null;
+    hasFakeCaret: boolean;
+}
+interface RenderProps {
+    slots: SlotProps[];
+    isFocused: boolean;
+    isHovering: boolean;
+}
+type OverrideProps<T, R> = Omit<T, keyof R> & R;
+type OTPInputBaseProps = OverrideProps<React.InputHTMLAttributes<HTMLInputElement>, {
+    value?: string;
+    onChange?: (newValue: string) => unknown;
+    maxLength: number;
+    textAlign?: 'left' | 'center' | 'right';
+    onComplete?: (...args: any[]) => unknown;
+    pushPasswordManagerStrategy?: 'increase-width' | 'none';
+    containerClassName?: string;
+    noScriptCSSFallback?: string | null;
+}>;
+type InputOTPRenderFn = (props: RenderProps) => React.ReactNode;
+type OTPInputProps = OTPInputBaseProps & ({
+    render: InputOTPRenderFn;
+    children?: never;
+} | {
+    render?: never;
+    children: React.ReactNode;
 });
-InputOTPSlot.displayName = "InputOTPSlot";
 
-const InputOTPSeparator = React.forwardRef<React.ElementRef<"div">, React.ComponentPropsWithoutRef<"div">>(
-  ({ ...props }, ref) => (
-    <div ref={ref} role="separator" {...props}>
-      <Dot />
-    </div>
-  ),
-);
-InputOTPSeparator.displayName = "InputOTPSeparator";
+declare const OTPInputContext: React$1.Context<RenderProps>;
+declare const OTPInput: React$1.ForwardRefExoticComponent<OTPInputProps & React$1.RefAttributes<HTMLInputElement>>;
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };
+declare const REGEXP_ONLY_DIGITS = "^\\d+$";
+declare const REGEXP_ONLY_CHARS = "^[a-zA-Z]+$";
+declare const REGEXP_ONLY_DIGITS_AND_CHARS = "^[a-zA-Z0-9]+$";
+
+export { OTPInput, OTPInputContext, type OTPInputProps, REGEXP_ONLY_CHARS, REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS, type RenderProps, type SlotProps };
