@@ -51,6 +51,39 @@ export const projects: ProjectData[] = [
         images: ["/projects/theon/WORKSTATION/W2.jpeg", "/projects/theon/WORKSTATION/W3.jpeg"]
       }
     ]
+  },
+  {
+    id: "bansaltower",
+    title: "Bansal Tower",
+    client: "Hagerstone International Pvt. Ltd.",
+    year: "2025",
+    location: "Gurgaon, Haryana",
+    sector: "Co-Working Space",
+    hero: "/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-16-17-01-29.png",
+    heroVideo: "/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-16-17-01-29.png", // NEW
+    sections: [
+      {
+        name: "Director's Room",
+        description: "A welcoming double-height reception with modern lounge seating.",
+        images: ["/projects/Bansal-Tower/director room/r1.png", "/projects/Bansal-Tower/director room/r2.png"],
+        video: ""
+      },
+      {
+        name: "MD Room",
+        description: "Premium boardroom with AV integration.",
+        images: ["/projects/Bansal-Tower/md room/r1.png", "/projects/Bansal-Tower/md room/r2.png", "/projects/Bansal-Tower/md room/r3.png"]
+      },
+      {
+        name: "Conference Room",
+        description: "An easy and focusing area.",
+        images: ["/projects/Bansal-Tower/conference room/1.jpg", "/projects/Bansal-Tower/conference room/VIEW1.jpeg", "/projects/Bansal-Tower/conference room/VIEW2.jpeg"]
+      },
+      {
+        name: "Reception & Waiting Area",
+        description: "An easy and focusing area.",
+        images: ["/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-19-12-19-22.png", "public/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-19-12-08-22.png"]
+      }
+    ]
   }
 ];
 
