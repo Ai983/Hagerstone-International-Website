@@ -71,7 +71,7 @@ export const projects: ProjectData[] = [
       {
         name: "MD Room",
         description: "Premium boardroom with AV integration.",
-        images: ["/projects/Bansal-Tower/md room/r1.png", "/projects/Bansal-Tower/mdroom/r2.png", "/projects/Bansal-Tower/mdroom/r3.png"]
+        images: ["/projects/Bansal-Tower/mdroom/r1.png", "/projects/Bansal-Tower/mdroom/r2.png", "/projects/Bansal-Tower/mdroom/r3.png"]
       },
       {
         name: "Conference Room",
@@ -81,7 +81,7 @@ export const projects: ProjectData[] = [
       {
         name: "Reception & Waiting Area",
         description: "An easy and focusing area.",
-        images: ["/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-19-12-19-22.png", "public/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-19-12-08-22.png"]
+        images: ["/projects/Bansal-Tower/RECEPTION/R1.png", "/projects/Bansal-Tower/RECEPTION/R2.png"]
       }
     ]
   }
