@@ -59,8 +59,7 @@ export const projects: ProjectData[] = [
     year: "2025",
     location: "Gurgaon, Haryana",
     sector: "Co-Working Space",
-    hero: "/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-16-17-01-29.png",
-    heroVideo: "/projects/Bansal-Tower/RECEPTION/Enscape_2025-09-16-17-01-29.png", // NEW
+    hero: "/projects/Bansal-Tower/RECEPTION/R1.png",
     sections: [
       {
         name: "Director's Room",
@@ -82,6 +81,80 @@ export const projects: ProjectData[] = [
         name: "Reception & Waiting Area",
         description: "An easy and focusing area.",
         images: ["/projects/Bansal-Tower/RECEPTION/R1.png", "/projects/Bansal-Tower/RECEPTION/R2.png"]
+      }
+    ]
+  },
+  {
+    id: "inshorts",
+    title: "InShorts",
+    client: "Hagerstone International Pvt. Ltd.",
+    year: "2025",
+    location: "Gurgaon, Haryana",
+    sector: "Software Company",
+    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/reception.jpg",
+    sections: [
+      {
+        name: "Reception Area",
+        description: "A welcoming double-height reception with modern lounge seating.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/reception.jpg"],
+        video: ""
+      },
+      {
+        name: "Rest&Fun",
+        description: "Premium boardroom with AV integration.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun1.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun3.jpg"]
+      },
+      {
+        name: "Workstation",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/workstation1.jpg"]
+      },
+      {
+        name: "Wellness Area",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/wellnessarea.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/wellnessarea2.jpg"]
+      },
+      {
+        name: "Cafeteria",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/cafeteria1.jpg"]
+      }
+    ]
+  },
+  {
+    id: "revolve",
+    title: "Revolve",
+    client: "Hagerstone International Pvt. Ltd.",
+    year: "2025",
+    location: "Gurgaon, Haryana",
+    sector: "Software Company",
+    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg",
+    sections: [
+      {
+        name: "Reception Area",
+        description: "A welcoming double-height reception with modern lounge seating.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/reception2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/waitingarea.jpg"],
+        video: ""
+      },
+      {
+        name: "MD Cabin",
+        description: "Premium boardroom with AV integration.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin3.jpg"]
+      },
+      {
+        name: "Workstation",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/worstationarea.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/workstationarea2.jpg"]
+      },
+      {
+        name: "Conference Area",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom2.jpg"]
+      },
+      {
+        name: "Cafeteria",
+        description: "An easy and focusing area.",
+        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria2.jpg"]
       }
     ]
   }

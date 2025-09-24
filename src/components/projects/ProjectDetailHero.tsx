@@ -1,4 +1,6 @@
 // Trigger rebuild: 2025-09-17
+
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ProjectDetailHero({
@@ -12,9 +14,11 @@ export default function ProjectDetailHero({
   hero: string;
   heroVideo?: string;
 }) {
+  const [videoError, setVideoError] = useState(false);
+
   return (
     <section className="relative h-[70vh] w-full overflow-hidden">
-      {heroVideo ? (
+      {heroVideo && !videoError ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src={heroVideo}
@@ -22,6 +26,8 @@ export default function ProjectDetailHero({
           loop
           muted
           playsInline
+          poster={hero}
+          onError={() => setVideoError(true)}
         />
       ) : (
         <img src={hero} alt={title} className="absolute inset-0 h-full w-full object-cover" />
