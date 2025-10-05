@@ -6,9 +6,10 @@ const Footer = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
-    { name: "Services", href: "/services" },
+    { name: "Our Services", href: "/services" },
     { name: "Ideas", href: "/ideas" },
     { name: "Blog", href: "/blog" },
+    {name: "Find Your Style", href: "/find your style"},
     { name: "Contact", href: "/contact" },
   ];
 
@@ -66,9 +67,9 @@ const Footer = () => {
                 <div>
                   <p className="font-medium text-white">Visit Our Studio</p>
                   <p className="text-sm text-white/80 leading-relaxed">
-                    7th Floor, Max Hospital Building,<br />
-                    H.B Twin Tower, New Delhi,<br />
-                    Delhi 110034, India
+                    91springboard, D-107,<br />
+                    D Block, Sector 2, Noida,<br />
+                    Uttar Pradesh 201301, India
                   </p>
                 </div>
               </a>
