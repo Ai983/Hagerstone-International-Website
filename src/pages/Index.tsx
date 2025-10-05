@@ -140,8 +140,6 @@ const Index = () => {
             <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
               {[
                 { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                { name: "APL Logistics", logo: "/clients-logo/Apl.jpeg" },
-                { name: "Singapore Airlines", logo: "/clients-logo/SingaporeAirlines.jpeg" },
                 { name: "AECOM", logo: "/clients-logo/AECOM.png" },
                 { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
                 { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
@@ -149,8 +147,6 @@ const Index = () => {
                 { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
                 // Duplicate for continuous scroll
                 { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                { name: "APL Logistics", logo: "/clients-logo/Apl.jpeg" },
-                { name: "Singapore Airlines", logo: "/clients-logo/SingaporeAirlines.jpeg" },
                 { name: "AECOM", logo: "/clients-logo/AECOM.png" },
                 { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
                 { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
