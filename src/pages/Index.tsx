@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroSlider from "@/components/HeroSlider";
+import { projects } from "@/data/project";
+import { Badge } from "@/components/ui/badge";
 
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
@@ -225,41 +227,26 @@ const Index = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Modern Corporate Office",
-                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-                category: "Office"
-              },
-              {
-                title: "Luxury Residential Villa",
-                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
-                category: "Residential"
-              },
-              {
-                title: "Boutique Hotel Design",
-                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
-                category: "Hospitality"
-              }
-            ].map((project, index) => (
-              <Card 
-                key={project.title}
-                className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-sm bg-accent px-2 py-1 rounded">{project.category}</span>
-                    <h3 className="text-lg font-bold mt-2">{project.title}</h3>
+            {projects.slice(0, 3).map((project, index) => (
+              <Link key={project.id} to={`/projects/${project.id}`}>
+                <Card 
+                  className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.hero}
+                      alt={project.title}
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Badge className="text-sm bg-accent px-2 py-1 rounded mb-2">{project.sector}</Badge>
+                      <h3 className="text-lg font-bold">{project.title}</h3>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">
