@@ -101,12 +101,12 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {[ 
-              { icon: Briefcase, value: 11, suffix: "+ YEARS", label: "Experience of In Industry" },
+              { icon: Briefcase, value: 11, suffix: "+ YEARS", label: "Of Experience In Industry" },
               { icon: Ruler, value: 7, suffix: " MILLION+ SQFT", label: "Designed & Delivered" },
               { icon: Projector, value: 250, suffix: "+ PROJECTS", label: "Combined Projects Delivery By Our Leadership Team" },
               { icon: Users, value: 350, suffix: "+ MANPOWER", label: "Expert & general workforce across India" },
               { icon: Building2, value: 15, suffix: "+ CITIES", label: "Across the India" },
-              { icon: Globe, value: 7, suffix: "+ COUNTRIES", label: "For Global Clients" },
+              { icon: Globe, value: 7, suffix: "+ COUNTRIES", label: "Around the Globe" },
             ].map(({ icon: Icon, value, suffix, label }, index) => {
               const { ref, inView } = useInView({ triggerOnce: true });
               return (
@@ -192,7 +192,7 @@ const Index = () => {
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Link key={index} to="src/pages/Services.tsx">
+            <Link key={index} to="/services">
             <motion.div
               key={index}
               className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300"
