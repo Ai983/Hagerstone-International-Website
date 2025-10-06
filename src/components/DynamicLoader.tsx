@@ -4,14 +4,14 @@ import { useLocation } from "react-router-dom";
 import { DIWALI_MODE } from "@/config/diwaliConfig";
 
 const DynamicLoader = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const location = useLocation();
-
-  // Skip loader when Diwali mode is active
+  // Skip loader when Diwali mode is active - must be before hooks
   if (DIWALI_MODE) {
     return null;
   }
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Reset loader on route change
