@@ -1,14 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { DIWALI_MODE } from "@/config/diwaliConfig";
 
 const DynamicLoader = () => {
-  // Skip loader when Diwali mode is active - must be before hooks
-  if (DIWALI_MODE) {
-    return null;
-  }
-
   const [isLoading, setIsLoading] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(false);
   const location = useLocation();

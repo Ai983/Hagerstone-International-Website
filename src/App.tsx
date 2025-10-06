@@ -9,7 +9,6 @@ import HoveringNavbar from "./components/HoveringNavbar";
 import Footer from "./components/Footer";
 import AIAssistant from "./components/AIAssistant";
 import CustomCursor from "./components/CustomCursor";
-import DiwaliSplash from "./components/diwali/DiwaliSplash";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -32,7 +31,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AnalyticsTracker/>
-        <DiwaliSplash />
         <DynamicLoader />
         <CustomCursor />
         <HoveringNavbar />
