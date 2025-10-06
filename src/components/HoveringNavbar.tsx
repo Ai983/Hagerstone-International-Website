@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { launchFireworks } from "@/components/diwali/fireworks";
 import { Menu, X, Instagram, Linkedin, Twitter, FacebookIcon, Facebook } from "lucide-react";
 
 const HoveringNavbar = () => {
@@ -114,13 +113,7 @@ const HoveringNavbar = () => {
             </div>
             <button
               type="button"
-              onClick={() => {
-                setMenuOpen(v => {
-                  const newState = !v;
-                  if (!v) launchFireworks(2000); // 🎆 Fireworks when menu opens
-                  return newState;
-                });
-              }}
+              onClick={() => setMenuOpen(v => !v)}
               className={`inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none focus:ring-2 transition-colors ${
                 menuOpen 
                   ? "hover:bg-white/10 focus:ring-white/50 text-white" 
