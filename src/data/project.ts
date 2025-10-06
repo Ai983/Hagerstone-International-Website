@@ -85,43 +85,6 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: "inshorts",
-    title: "InShorts",
-    client: "Hagerstone International Pvt. Ltd.",
-    year: "2025",
-    location: "Gurgaon, Haryana",
-    sector: "Software Company",
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/reception.jpg",
-    sections: [
-      {
-        name: "Reception Area",
-        description: "A welcoming double-height reception with modern lounge seating.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/reception.jpg"],
-        video: ""
-      },
-      {
-        name: "Rest&Fun",
-        description: "Premium boardroom with AV integration.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun1.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/rest&fun3.jpg"]
-      },
-      {
-        name: "Workstation",
-        description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/workstation1.jpg"]
-      },
-      {
-        name: "Wellness Area",
-        description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/wellnessarea.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/wellnessarea2.jpg"]
-      },
-      {
-        name: "Cafeteria",
-        description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/cafeteria1.jpg"]
-      }
-    ]
-  },
-  {
     id: "revolve",
     title: "Revolve",
     client: "Hagerstone International Pvt. Ltd.",
