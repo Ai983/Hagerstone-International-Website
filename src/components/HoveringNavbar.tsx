@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { Menu, X, Instagram, Linkedin, Twitter, FacebookIcon, Facebook } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Twitter, FacebookIcon, Facebook, MapPin, ChevronDown } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 
 const HoveringNavbar = () => {
   const location = useLocation();
@@ -11,6 +12,7 @@ const HoveringNavbar = () => {
   const controls = useAnimation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
 
   // lock/unlock scroll when menu toggles
   useEffect(() => {
@@ -197,46 +199,158 @@ const HoveringNavbar = () => {
                         <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4">
                           FIND US HERE
                         </h2>
-                        <div className="w-32 sm:w-40 md:w-48 h-0.5 bg-white"></div>
+                        <div className="w-32 sm:w-40 md:w-48 h-0.5 bg-[#d4af37]"></div>
                       </div>
-                      <div className="space-y-4 sm:space-y-5 md:space-y-6 text-white">
-                        <div className="text-base sm:text-lg font-semibold">Hagerstone International Pvt. Ltd.</div>
-                        <div className="text-xs sm:text-sm leading-relaxed text-white/80">
-                          91Springboard,Plot No.D-107,<br />
-                          Vyapar Marg,D-Block,Sector-2,<br />
-                          Noida,Uttar Pradesh,201301
+                      
+                      <div className="space-y-6 sm:space-y-7 md:space-y-8 text-white">
+                        {/* HQ - Noida Office */}
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-[#d4af37]" />
+                            <h3 className="text-sm sm:text-base font-semibold text-[#d4af37]">HQ – Noida Office</h3>
+                          </div>
+                          <div className="text-xs sm:text-sm leading-relaxed text-white/90 pl-6">
+                            91Springboard, Plot No.D-107,<br />
+                            Vyapar Marg, D-Block, Sector-2,<br />
+                            Noida, Uttar Pradesh, 201301
+                          </div>
+                          <div className="space-y-1.5 text-white/80 pl-6 text-xs sm:text-sm">
+                            <div>📧 Email: ea@hagerstone.com</div>
+                            <div>📞 Phone: +91 88829 79328</div>
+                          </div>
                         </div>
-                        <div className="space-y-1.5 sm:space-y-2 text-white/90">
-                          <div className="text-xs sm:text-sm">Email: ea@hagerstone.com</div>
-                          <div className="text-xs sm:text-sm">Phone: +91 88829 79328</div>
+
+                        {/* Divider */}
+                        <div className="w-full h-px bg-white/20"></div>
+
+                        {/* Presence Across Major Cities */}
+                        <div className="space-y-3">
+                          <h3 className="text-xs sm:text-sm font-semibold text-[#d4af37] tracking-wide">
+                            🌍 PRESENCE ACROSS OTHER MAJOR CITIES IN INDIA
+                          </h3>
+                          <div className="grid grid-cols-2 gap-2 pl-4 text-xs sm:text-sm text-white/80">
+                            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
+                              <MapPin className="w-3 h-3 text-[#d4af37]" />
+                              <span>Delhi</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
+                              <MapPin className="w-3 h-3 text-[#d4af37]" />
+                              <span>Gurgaon</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
+                              <MapPin className="w-3 h-3 text-[#d4af37]" />
+                              <span>Bengaluru</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
+                              <MapPin className="w-3 h-3 text-[#d4af37]" />
+                              <span>Mumbai</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex gap-4 sm:gap-5 md:gap-6 mt-4 sm:mt-5 md:mt-6">
+
+                        {/* Divider */}
+                        <div className="w-full h-px bg-white/20"></div>
+
+                        {/* Collapsible Project Locations */}
+                        <Collapsible open={projectsOpen} onOpenChange={setProjectsOpen}>
+                          <CollapsibleTrigger className="flex items-center justify-between w-full group">
+                            <h3 className="text-xs sm:text-sm font-semibold text-[#d4af37] tracking-wide">
+                              🏗️ ONGOING / COMPLETED PROJECT LOCATIONS
+                            </h3>
+                            <motion.div
+                              animate={{ rotate: projectsOpen ? 180 : 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                            >
+                              <ChevronDown className="w-4 h-4 text-[#d4af37] group-hover:text-white transition-colors" />
+                            </motion.div>
+                          </CollapsibleTrigger>
+                          
+                          <CollapsibleContent className="overflow-hidden">
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ 
+                                height: projectsOpen ? "auto" : 0,
+                                opacity: projectsOpen ? 1 : 0
+                              }}
+                              transition={{ duration: 0.3, ease: "easeOut" }}
+                              className="mt-3"
+                            >
+                              <div 
+                                className="max-h-[200px] sm:max-h-[250px] overflow-y-auto pl-4 pr-2 custom-scrollbar"
+                                style={{
+                                  scrollbarWidth: 'thin',
+                                  scrollbarColor: '#d4af37 #2a2a2a'
+                                }}
+                              >
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-white/80">
+                                  {[
+                                    "Ahmedabad",
+                                    "Bhadra (Rajasthan)",
+                                    "Bhuj (Gujarat)",
+                                    "Chandigarh",
+                                    "Chennai",
+                                    "Chattargarh (Rajasthan)",
+                                    "Dera Bassi (Punjab)",
+                                    "Ferozepur (Punjab)",
+                                    "Jasrasar (Rajasthan)",
+                                    "Hyderabad",
+                                    "Jaipur",
+                                    "Kotputli (Rajasthan)",
+                                    "Lucknow",
+                                    "Ludhiana",
+                                    "Manesar (Haryana)",
+                                    "Mumbai",
+                                    "Ponneri (Tamil Nadu)",
+                                    "Raipur",
+                                    "Rajpura (Punjab)",
+                                    "Shimla",
+                                    "Sricity (Andhra Pradesh)",
+                                    "Varanasi"
+                                  ].map((city) => (
+                                    <div 
+                                      key={city}
+                                      className="flex items-center gap-1.5 py-1 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-default"
+                                    >
+                                      <MapPin className="w-3 h-3 text-[#d4af37] flex-shrink-0" />
+                                      <span>{city}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </motion.div>
+                          </CollapsibleContent>
+                        </Collapsible>
+
+                        {/* Social Links */}
+                        <div className="flex gap-4 sm:gap-5 md:gap-6 pt-2">
                           <a 
                             href="https://www.linkedin.com/company/hagerstone/posts/?feedView=all" 
-                            className="text-white/70 hover:text-white transition-colors duration-300"
+                            className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
                             aria-label="LinkedIn"
                           >
                             <Linkedin size={18} className="sm:w-5 sm:h-5" />
                           </a>
                           <a 
                             href="http://instagram.com/hagerstone_international/" 
-                            className="text-white/70 hover:text-white transition-colors duration-300"
+                            className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
                             aria-label="Instagram"
                           >
                             <Instagram size={18} className="sm:w-5 sm:h-5" />
                           </a>
                           <a 
                             href="https://www.facebook.com/HagerstoneInternational" 
-                            className="text-white/70 hover:text-white transition-colors duration-300"
+                            className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
                             aria-label="Facebook"
                           >
                             <Facebook size={18} className="sm:w-5 sm:h-5" />
                           </a>
                         </div>
+
+                        {/* CTA Button */}
                         <Link 
                           to="/contact" 
                           onClick={() => setMenuOpen(false)}
-                          className="inline-block mt-4 sm:mt-5 md:mt-6 px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 border border-white text-white uppercase tracking-[0.1em] sm:tracking-[0.15em] text-xs font-medium hover:bg-white hover:text-black transition-all duration-300"
+                          className="inline-block px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 border border-[#d4af37] text-white uppercase tracking-[0.1em] sm:tracking-[0.15em] text-xs font-medium hover:bg-[#d4af37] hover:text-black transition-all duration-300"
                         >
                           GET IN TOUCH →
                         </Link>

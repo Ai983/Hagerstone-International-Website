@@ -179,6 +179,26 @@ All colors MUST be HSL.
   button, a, [role="button"], input, textarea, select {
     cursor: pointer;
   }
+
+  /* Custom scrollbar for project locations dropdown */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #e5c158;
+  }
 }
 
 @layer utilities {
