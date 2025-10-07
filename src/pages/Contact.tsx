@@ -44,18 +44,26 @@ const Contact = () => {
       description: "Send us your queries anytime"
     },
     {
-      icon: MapPin,
-      title: "Office Address",
-      value: "7th Floor, Max Hospital Building, H.B Twin Tower, New Delhi, Delhi 110034, India",
-      href: "https://www.google.com/maps/place/Hagerstone+International+-+Best+Interior+Design+%26+Build+Company/@28.6931743,77.1518589,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce36350678413:0xe0a4252396dc1099!8m2!3d28.6931743!4d77.1518589!16s%2Fg%2F11j595gxhr!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D",
-      description: "Visit our design studio"
-    },
-    {
       icon: Clock,
       title: "Business Hours",
       value: "Mon - Sat: 9AM - 6PM",
       href: "#",
       description: "We're here to help"
+    }
+  ];
+
+  const officeLocations = [
+    {
+      name: "Noida Office (Head Office)",
+      address: "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2, Noida, Uttar Pradesh 201301",
+      mapUrl: "https://www.google.com/maps/place/91Springboard,+Plot+No.+D-107,+Vyapar+Marg,+D+Block,+Sector+2,+Noida,+Uttar+Pradesh+201301",
+      embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.0868762896475!2d77.31301907550174!3d28.632985575692677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456a36e9f7%3A0x19ee75fadafc9d9!2s91Springboard%2C%20Plot%20No.%20D-107%2C%20Vyapar%20Marg%2C%20D%20Block%2C%20Sector%202%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+    },
+    {
+      name: "Bangalore Office",
+      address: "Coming Soon",
+      mapUrl: null,
+      embedUrl: null
     }
   ];
 
@@ -126,7 +134,7 @@ const Contact = () => {
       {/* Contact Information */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
@@ -151,6 +159,80 @@ const Contact = () => {
                 </Card>
               );
             })}
+          </div>
+
+          {/* Office Locations Section */}
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-primary mb-4 flex items-center justify-center gap-3">
+                <MapPin className="h-8 w-8 text-gold" />
+                Visit Our Studios
+              </h2>
+              <p className="text-lg text-muted-foreground">Experience our design excellence at our office locations</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {officeLocations.map((office, index) => (
+                <Card 
+                  key={office.name}
+                  className="bg-gradient-card border-0 shadow-luxury hover:shadow-xl transition-all duration-500 animate-scale-in"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-primary flex items-center gap-2">
+                      <MapPin className="h-6 w-6 text-gold" />
+                      {office.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {office.address}
+                    </p>
+                    
+                    {office.embedUrl && (
+                      <>
+                        <div className="rounded-lg overflow-hidden h-64 border-2 border-gold/20">
+                          <iframe
+                            src={office.embedUrl}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title={`${office.name} Location`}
+                          />
+                        </div>
+                        
+                        <Button
+                          asChild
+                          className="w-full bg-gold hover:bg-gold/90 text-gold-foreground shadow-luxury hover:scale-105 transition-all duration-300"
+                        >
+                          <a 
+                            href={office.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <MapPin className="h-4 w-4 mr-2" />
+                            Get Directions
+                          </a>
+                        </Button>
+                      </>
+                    )}
+                    
+                    {!office.embedUrl && (
+                      <div className="h-64 bg-muted/50 rounded-lg flex items-center justify-center border-2 border-gold/20">
+                        <div className="text-center px-4">
+                          <MapPin className="h-12 w-12 text-gold mx-auto mb-3 opacity-50" />
+                          <p className="text-muted-foreground font-medium">Coming Soon</p>
+                          <p className="text-sm text-muted-foreground/70 mt-2">We'll be opening our Bangalore studio soon</p>
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -249,27 +331,8 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Map and Social */}
+            {/* Social and CTA */}
             <div className="space-y-8 animate-slide-up">
-              {/* Map Placeholder */}
-              <Card className="bg-gradient-card border-0 shadow-luxury">
-                <CardContent className="p-0">
-                   <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-                     <div className="text-center">
-                       <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                       <p className="text-muted-foreground">Interactive map coming soon</p>
-                       <a 
-                         href="https://www.google.com/maps/place/Hagerstone+International+-+Best+Interior+Design+%26+Build+Company/@28.6931743,77.1518589,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce36350678413:0xe0a4252396dc1099!8m2!3d28.6931743!4d77.1518589!16s%2Fg%2F11j595gxhr!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         className="text-sm text-primary hover:text-accent transition-colors duration-300 mt-1 block"
-                       >
-                         7th Floor, Max Hospital Building, H.B Twin Tower, New Delhi, Delhi 110034, India
-                       </a>
-                     </div>
-                   </div>
-                </CardContent>
-              </Card>
 
               {/* Social Media */}
               <Card className="bg-gradient-card border-0 shadow-luxury">

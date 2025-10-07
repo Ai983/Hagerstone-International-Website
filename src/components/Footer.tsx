@@ -55,24 +55,47 @@ const Footer = () => {
               Your vision, our expertise.
             </p>
             
-            {/* Contact Info */}
-            <div className="space-y-4">
+            {/* Office Locations */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-bold text-gold flex items-center gap-2">
+                <MapPin className="h-5 w-5" />
+                Visit Our Studios
+              </h3>
+              
+              {/* Noida Office */}
               <a 
-                href="https://www.google.com/maps/place/Hagerstone+International+-+Best+Interior+Design+%26+Build+Company/@28.6931743,77.1518589,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce36350678413:0xe0a4252396dc1099!8m2!3d28.6931743!4d77.1518589!16s%2Fg%2F11j595gxhr!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+                href="https://www.google.com/maps/place/91Springboard,+Plot+No.+D-107,+Vyapar+Marg,+D+Block,+Sector+2,+Noida,+Uttar+Pradesh+201301"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start space-x-3 hover:text-gold transition-colors duration-300 group"
+                className="block hover:text-gold transition-colors duration-300 group"
               >
-                <MapPin className="h-5 w-5 text-gold mt-0.5 group-hover:scale-110 transition-transform duration-300" />
-                <div>
-                  <p className="font-medium text-white">Visit Our Studio</p>
-                  <p className="text-sm text-white/80 leading-relaxed">
-                    91springboard, D-107,<br />
-                    D Block, Sector 2, Noida,<br />
-                    Uttar Pradesh 201301, India
-                  </p>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="h-5 w-5 text-gold mt-0.5 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-white">Noida Office (Head Office)</p>
+                    <p className="text-sm text-white/80 leading-relaxed">
+                      91Springboard, Plot No. D-107,<br />
+                      Vyapar Marg, D Block, Sector 2,<br />
+                      Noida, Uttar Pradesh 201301
+                    </p>
+                  </div>
                 </div>
               </a>
+
+              {/* Bangalore Office */}
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-gold mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-white">Bangalore Office</p>
+                  <p className="text-sm text-white/80 leading-relaxed">
+                    Coming Soon
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-4 mt-8">
               
               <a 
                 href="tel:+918882979328"
