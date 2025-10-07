@@ -105,7 +105,7 @@ const Index = () => {
               { icon: Ruler, value: 7, suffix: " MILLION+ SQFT", label: "Designed & Delivered" },
               { icon: Projector, value: 250, suffix: "+ PROJECTS", label: "Combined Projects Delivery By Our Leadership Team" },
               { icon: Users, value: 350, suffix: "+ MANPOWER", label: "Expert & general workforce across India" },
-              { icon: Building2, value: 15, suffix: "+ CITIES", label: "Across the India" },
+              { icon: Building2, value: 25, suffix: "+ CITIES", label: "Across the India" },
               { icon: Globe, value: 7, suffix: "+ COUNTRIES", label: "Around the Globe" },
             ].map(({ icon: Icon, value, suffix, label }, index) => {
               const { ref, inView } = useInView({ triggerOnce: true });
