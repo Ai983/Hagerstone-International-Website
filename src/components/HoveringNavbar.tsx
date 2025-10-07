@@ -202,9 +202,9 @@ const HoveringNavbar = () => {
                       <div className="space-y-4 sm:space-y-5 md:space-y-6 text-white">
                         <div className="text-base sm:text-lg font-semibold">Hagerstone International Pvt. Ltd.</div>
                         <div className="text-xs sm:text-sm leading-relaxed text-white/80">
-                          7th Floor, Max Hospital Building,<br />
-                          H.B Twin Tower, New Delhi,<br />
-                          Delhi 110034, India
+                          91Springboard,Plot No.D-107,<br />
+                          Vyapar Marg,D-Block,Sector-2,<br />
+                          Noida,Uttar Pradesh,201301
                         </div>
                         <div className="space-y-1.5 sm:space-y-2 text-white/90">
                           <div className="text-xs sm:text-sm">Email: ea@hagerstone.com</div>
