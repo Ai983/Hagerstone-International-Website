@@ -61,9 +61,9 @@ const Contact = () => {
     },
     {
       name: "Bangalore Office",
-      address: "Coming Soon",
-      mapUrl: null,
-      embedUrl: null
+      address: "Jbr Tech Park, Plot No. 77, 6th Rd, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066",
+      mapUrl: "https://maps.app.goo.gl/86yrSMoboUMkiaLY7",
+      embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.899342056459!2d77.72503477513443!3d12.97828948733766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11fbbbc36817%3A0x1441e10c2bb64441!2sBHIVE%20Premium%20Whitefield%20Campus!5e0!3m2!1sen!2sin!4v1760077408091!5m2!1sen!2sin"
     }
   ];
 
