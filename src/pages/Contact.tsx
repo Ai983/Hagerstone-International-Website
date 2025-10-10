@@ -57,7 +57,7 @@ const Contact = () => {
       name: "Noida Office (Head Office)",
       address: "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2, Noida, Uttar Pradesh 201301",
       mapUrl: "https://maps.google.com/?q=91Springboard,+Plot+No.+D-107,+Vyapar+Marg,+D+Block,+Sector+2,+Noida,+Uttar+Pradesh+201301",
-      embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.0868762896475!2d77.31301907550174!3d28.632985575692677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456a36e9f7%3A0x19ee75fadafc9d9!2s91Springboard%2C%20Plot%20No.%20D-107%2C%20Vyapar%20Marg%2C%20D%20Block%2C%20Sector%202%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+      embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.5371117487475!2d77.31403467549903!3d28.58365947569144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce58e07e58aa1%3A0x32d5740a24aaf4b1!2s91Springboard%20Sector-2%2C%20Noida!5e0!3m2!1sen!2sin!4v1760077784822!5m2!1sen!2sin"
     },
     {
       name: "Bangalore Office",
