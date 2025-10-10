@@ -88,7 +88,9 @@ const Footer = () => {
                 <div>
                   <p className="font-medium text-white">Bangalore Office</p>
                   <p className="text-sm text-white/80 leading-relaxed">
-                    Coming Soon
+                    Jbr Tech Park, Plot No. 77, 6th Rd, <br />
+                    EPIP Zone, Whitefield, Bengaluru, <br />
+                    Karnataka 560066
                   </p>
                 </div>
               </div>
