@@ -20,9 +20,40 @@ import Contact from "./pages/Contact";
 import FindYourStyle from "./pages/FindYourStyle";
 import NotFound from "./pages/NotFound";
 import DynamicLoader from "./components/DynamicLoader";
-
+import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
+import { useLocation } from "react-router-dom";
  
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
+  return (
+    <>
+      {IS_DIWALI_MODE && isHomePage && <DiwaliSplash />}
+      <AnalyticsTracker/>
+      <DynamicLoader />
+      <CustomCursor />
+      <HoveringNavbar />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail/>} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/ideas" element={<Ideas />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/find-your-style" element={<FindYourStyle />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+      <AIAssistant />
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -30,25 +61,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AnalyticsTracker/>
-        <DynamicLoader />
-        <CustomCursor />
-        <HoveringNavbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<ProjectDetail/>} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/ideas" element={<Ideas />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/find-your-style" element={<FindYourStyle />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-        <AIAssistant />
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
