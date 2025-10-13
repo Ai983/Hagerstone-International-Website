@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 
-// Toggle this to enable/disable Diwali mode
-export const IS_DIWALI_MODE = true;
+// Automatically checks if current date is before October 24, 2025
+const checkDiwaliMode = () => {
+  const today = new Date();
+  const endDate = new Date('2025-10-24');
+  return today < endDate;
+};
+
+export const IS_DIWALI_MODE = checkDiwaliMode();
 
 const DiwaliSplash = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
+  const [shouldExit, setShouldExit] = useState(false);
 
   useEffect(() => {
     // Check if splash has already been shown this session
@@ -14,44 +21,216 @@ const DiwaliSplash = () => {
     
     if (!hasPlayed && IS_DIWALI_MODE) {
       setIsVisible(true);
+      
+      // Auto-hide after 6 seconds
+      const timer = setTimeout(() => {
+        setShouldExit(true);
+        sessionStorage.setItem('diwaliPlayed', 'true');
+        
+        // Remove from DOM after fade out
+        setTimeout(() => {
+          setIsVisible(false);
+        }, 1000);
+      }, 6000);
+
+      return () => clearTimeout(timer);
     }
   }, []);
-
-  const handleVideoEnd = () => {
-    setVideoEnded(true);
-    sessionStorage.setItem('diwaliPlayed', 'true');
-    
-    // Fade out after a brief moment
-    setTimeout(() => {
-      setIsVisible(false);
-    }, 300);
-  };
 
   if (!isVisible) return null;
 
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: videoEnded ? 0 : 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: shouldExit ? 0 : 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="fixed inset-0 z-[9999] bg-[#0B132B] flex items-center justify-center"
-        style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+        className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
+        style={{ 
+          background: 'linear-gradient(135deg, #0b0b0b 0%, #1a1410 50%, #2d2416 100%)',
+          willChange: 'opacity'
+        }}
       >
-        <video
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onEnded={handleVideoEnd}
-          className="w-full h-full object-cover"
-          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-        >
-          <source src="/Diwalifinal.webm" type="video/webm" />
-          <source src="/Diwalifinal.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {/* Fireworks Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`firework-${i}`}
+              className="absolute w-2 h-2 rounded-full"
+              style={{
+                background: `radial-gradient(circle, ${i % 2 === 0 ? '#d4af37' : '#ffd700'} 0%, transparent 70%)`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 60}%`,
+              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: [0, 20, 25],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.7,
+                ease: 'easeOut'
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Gold Confetti/Sparkles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={`sparkle-${i}`}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `-5%`,
+              }}
+              initial={{ y: 0, opacity: 1, rotate: 0 }}
+              animate={{
+                y: window.innerHeight + 50,
+                opacity: [1, 0.8, 0],
+                rotate: 360,
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: i * 0.15,
+                ease: 'linear'
+              }}
+            >
+              <Sparkles className="w-3 h-3 text-[#d4af37]" fill="#d4af37" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Main Content Container */}
+        <div className="relative z-10 flex flex-col items-center justify-center px-4">
+          {/* Hagerstone Logo */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="mb-8"
+          >
+            <motion.img
+              src="/logo.png"
+              alt="Hagerstone"
+              className="h-16 md:h-20 object-contain"
+              animate={{
+                filter: [
+                  'drop-shadow(0 0 8px rgba(212, 175, 55, 0.3))',
+                  'drop-shadow(0 0 20px rgba(212, 175, 55, 0.6))',
+                  'drop-shadow(0 0 8px rgba(212, 175, 55, 0.3))',
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            />
+          </motion.div>
+
+          {/* Happy Diwali Text */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center mb-6"
+          >
+            <motion.h1
+              className="text-5xl md:text-7xl font-serif text-white mb-2"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)',
+                  '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5)',
+                  '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)',
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              ✨ Happy Diwali ✨
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl text-[#d4af37] font-medium"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              From the Hagerstone Family
+            </motion.p>
+          </motion.div>
+
+          {/* Animated Diyas at Bottom */}
+          <motion.div
+            className="absolute bottom-8 md:bottom-12 flex gap-8 md:gap-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+          >
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={`diya-${i}`}
+                className="relative"
+                animate={{
+                  y: [0, -5, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: 'easeInOut'
+                }}
+              >
+                {/* Diya Base */}
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
+                  {/* Flame */}
+                  <motion.div
+                    className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-3 h-6 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
+                    animate={{
+                      scaleY: [1, 1.2, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      repeat: Infinity,
+                      ease: 'easeInOut'
+                    }}
+                    style={{
+                      filter: 'blur(1px)',
+                      boxShadow: '0 0 10px rgba(255, 165, 0, 0.8), 0 0 20px rgba(255, 107, 0, 0.4)',
+                    }}
+                  />
+                  {/* Glow */}
+                  <motion.div
+                    className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full"
+                    style={{
+                      background: 'radial-gradient(circle, rgba(255, 165, 0, 0.4) 0%, transparent 70%)',
+                    }}
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [0.6, 0.9, 0.6],
+                    }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: 'easeInOut'
+                    }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
