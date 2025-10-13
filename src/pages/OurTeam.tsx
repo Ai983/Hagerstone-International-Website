@@ -50,20 +50,7 @@ const OurTeam = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Our Team
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            Meet the minds behind Hagerstone — designers, architects, innovators.
-          </p>
-        </motion.div>
-      </section>
+      
 
       {/* Detail Section */}
       <section className="max-w-7xl mx-auto px-6 py-12">
