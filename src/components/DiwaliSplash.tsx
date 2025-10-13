@@ -166,65 +166,133 @@ const DiwaliSplash = () => {
             </motion.p>
           </motion.div>
 
-          {/* Animated Diyas at Bottom */}
+          {/* Diyas at Four Corners */}
+          {/* Bottom Left Diya */}
           <motion.div
-            className="absolute bottom-8 md:bottom-12 flex gap-8 md:gap-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
+            className="absolute bottom-8 left-8 md:bottom-12 md:left-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={`diya-${i}`}
-                className="relative"
-                animate={{
-                  y: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                  ease: 'easeInOut'
-                }}
-              >
-                {/* Diya Base */}
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
-                  {/* Flame */}
-                  <motion.div
-                    className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-3 h-6 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
-                    animate={{
-                      scaleY: [1, 1.2, 1],
-                      opacity: [0.8, 1, 0.8],
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}
-                    style={{
-                      filter: 'blur(1px)',
-                      boxShadow: '0 0 10px rgba(255, 165, 0, 0.8), 0 0 20px rgba(255, 107, 0, 0.4)',
-                    }}
-                  />
-                  {/* Glow */}
-                  <motion.div
-                    className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full"
-                    style={{
-                      background: 'radial-gradient(circle, rgba(255, 165, 0, 0.4) 0%, transparent 70%)',
-                    }}
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [0.6, 0.9, 0.6],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}
-                  />
-                </div>
-              </motion.div>
-            ))}
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
+                <motion.div
+                  className="absolute -top-4 md:-top-5 left-1/2 transform -translate-x-1/2 w-3 h-6 md:w-4 md:h-7 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
+                  animate={{ scaleY: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    filter: 'blur(1px)',
+                    boxShadow: '0 0 10px rgba(255, 165, 0, 0.8), 0 0 20px rgba(255, 107, 0, 0.4)',
+                  }}
+                />
+                <motion.div
+                  className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 165, 0, 0.4) 0%, transparent 70%)' }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Right Diya */}
+          <motion.div
+            className="absolute bottom-8 right-8 md:bottom-12 md:right-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.3, ease: 'easeInOut' }}
+            >
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
+                <motion.div
+                  className="absolute -top-4 md:-top-5 left-1/2 transform -translate-x-1/2 w-3 h-6 md:w-4 md:h-7 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
+                  animate={{ scaleY: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    filter: 'blur(1px)',
+                    boxShadow: '0 0 10px rgba(255, 165, 0, 0.8), 0 0 20px rgba(255, 107, 0, 0.4)',
+                  }}
+                />
+                <motion.div
+                  className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 165, 0, 0.4) 0%, transparent 70%)' }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Top Left Diya (Smaller) */}
+          <motion.div
+            className="absolute top-8 left-8 md:top-12 md:left-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+          >
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.6, ease: 'easeInOut' }}
+            >
+              <div className="w-7 h-7 md:w-9 md:h-9 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
+                <motion.div
+                  className="absolute -top-3 md:-top-4 left-1/2 transform -translate-x-1/2 w-2.5 h-5 md:w-3 md:h-6 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
+                  animate={{ scaleY: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    filter: 'blur(1px)',
+                    boxShadow: '0 0 8px rgba(255, 165, 0, 0.8), 0 0 16px rgba(255, 107, 0, 0.4)',
+                  }}
+                />
+                <motion.div
+                  className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 165, 0, 0.3) 0%, transparent 70%)' }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Top Right Diya (Smaller) */}
+          <motion.div
+            className="absolute top-8 right-8 md:top-12 md:right-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+          >
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.9, ease: 'easeInOut' }}
+            >
+              <div className="w-7 h-7 md:w-9 md:h-9 bg-gradient-to-b from-[#d4af37] to-[#b8941f] rounded-full relative">
+                <motion.div
+                  className="absolute -top-3 md:-top-4 left-1/2 transform -translate-x-1/2 w-2.5 h-5 md:w-3 md:h-6 bg-gradient-to-t from-[#ff6b00] via-[#ffa500] to-[#ffd700] rounded-full"
+                  animate={{ scaleY: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    filter: 'blur(1px)',
+                    boxShadow: '0 0 8px rgba(255, 165, 0, 0.8), 0 0 16px rgba(255, 107, 0, 0.4)',
+                  }}
+                />
+                <motion.div
+                  className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 165, 0, 0.3) 0%, transparent 70%)' }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
