@@ -164,14 +164,14 @@ const HoveringNavbar = () => {
                         <ul className="space-y-2 sm:space-y-3 md:space-y-4 pl-0 sm:pl-2 md:pl-4">
                           {[
                             { to: "/", label: "HOME", number: "01" },
-                            { to: "/about", label: "ABOUT", number: "02" },
+                            { to: "/about", label: "ABOUT", number: "02", submenu: [{ to: "/our-team", label: "OUR TEAM" }] },
                             { to: "/projects", label: "PROJECTS", number: "03" },
                             { to: "/services", label: "OUR SERVICES", number: "04" },
                             { to: "/ideas", label: "IDEAS", number: "05" },
                             { to: "/blog", label: "BLOG", number: "06" },
                             { to: "/find-your-style", label: "FIND YOUR STYLE", number: "07" },
                             { to: "/contact", label: "CONTACT", number: "08" },
-                          ].map(({ to, label, number }) => (
+                          ].map(({ to, label, number, submenu }) => (
                             <li key={to} className="relative group">
                               <Link
                                 to={to}
@@ -187,6 +187,26 @@ const HoveringNavbar = () => {
                                    <div className="absolute bottom-[-4px] sm:bottom-[-5px] md:bottom-[-6px] left-[-2px] sm:left-[-3px] md:left-[-4px] w-32 sm:w-36 md:w-44 h-px bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>
                                  </span>
                               </Link>
+                              {/* Submenu */}
+                              {submenu && (
+                                <ul className="mt-2 ml-8 sm:ml-10 md:ml-12 space-y-2">
+                                  {submenu.map((subitem) => (
+                                    <li key={subitem.to} className="relative group/sub">
+                                      <Link
+                                        to={subitem.to}
+                                        onClick={() => setMenuOpen(false)}
+                                        className="flex items-center py-1 text-xs sm:text-sm md:text-base font-normal tracking-wide text-white/80 hover:text-white transition-colors duration-300"
+                                      >
+                                        <span className="relative">
+                                          {subitem.label}
+                                          <div className="absolute bottom-[-2px] left-[-2px] w-24 sm:w-28 h-px bg-white/10"></div>
+                                          <div className="absolute bottom-[-2px] left-[-2px] w-24 sm:w-28 h-px bg-white origin-left scale-x-0 group-hover/sub:scale-x-100 transition-transform duration-500 ease-out"></div>
+                                        </span>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </li>
                           ))}
                         </ul>

@@ -11,6 +11,7 @@ import AIAssistant from "./components/AIAssistant";
 import CustomCursor from "./components/CustomCursor";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import OurTeam from "./pages/OurTeam";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Services from "./pages/Services";
@@ -40,6 +41,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
+        <Route path="/our-team" element={<OurTeam />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail/>} />
         <Route path="/services" element={<Services />} />
