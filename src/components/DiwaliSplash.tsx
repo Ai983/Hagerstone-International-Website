@@ -16,16 +16,12 @@ const DiwaliSplash = () => {
   const [shouldExit, setShouldExit] = useState(false);
 
   useEffect(() => {
-    // Check if splash has already been shown this session
-    const hasPlayed = sessionStorage.getItem('diwaliPlayed');
-    
-    if (!hasPlayed && IS_DIWALI_MODE) {
+    if (IS_DIWALI_MODE) {
       setIsVisible(true);
       
       // Auto-hide after 6 seconds
       const timer = setTimeout(() => {
         setShouldExit(true);
-        sessionStorage.setItem('diwaliPlayed', 'true');
         
         // Remove from DOM after fade out
         setTimeout(() => {
