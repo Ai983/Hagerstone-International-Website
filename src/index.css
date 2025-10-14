@@ -201,6 +201,16 @@ All colors MUST be HSL.
   }
 }
 
+  /* Hide horizontal scrollbar but keep scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+
 @layer utilities {
   .flag-wave {
     position: absolute;

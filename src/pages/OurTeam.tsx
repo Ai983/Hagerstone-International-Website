@@ -1,59 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { teamMembers } from "../data/teamMembers";
 
-// Team member data - can be moved to separate file if needed
-const teamMembers = [
-  {
-    id: 1,
-    name: "Dr. Sujit Kumar",
-    role: "Managing Director & Principal Architect",
-    image: "/founders/d12ff5f7-e2cf-4b86-b53a-586309fdc5eb.png",
-    bio: "Dr. Kumar is a distinguished architect, renowned for his contributions to sustainable design and climate-responsive architecture over the span of his two-decade long career. With a Ph.D. in Solar Passive Architecture and Earth Coupling for Space Conditioning from IIT Delhi, he is one of India's top experts in energy-efficient buildings. He is also a core member of the National Advisory Committee for Sustainable Cities under the Ministry of Urban Housing & Design. In 2001, he founded Hagerstone Pvt. Ltd., setting the foundation for a studio that's been at the forefront of climate-responsive and energy-efficient design.",
-    category: "Leadership",
-  },
-  {
-    id: 2,
-    name: "Architect Name 2",
-    role: "Senior Architect",
-    image: "/founders/0542f440-1bd7-4f5d-9709-33c7b4735b5c.png",
-    bio: "An accomplished architect with expertise in commercial and corporate design. Passionate about creating spaces that blend functionality with aesthetic excellence.",
-    category: "Architect",
-  },
-  {
-    id: 3,
-    name: "Designer Name 3",
-    role: "Creative Director",
-    image: "/founders/caef2106-d964-405b-b54a-aaea2bb48c18.png",
-    bio: "Leading our creative team with innovative design solutions. Specializes in interior design and spatial planning for luxury projects.",
-    category: "Creative team",
-  },
-  {
-    id: 4,
-    name: "Team Member 4",
-    role: "Project Manager",
-    image: "/founders/edd078f8-1df5-4f8f-95b3-ba955860347b.png",
-    bio: "Ensuring seamless project execution with over 15 years of experience in construction management and client relations.",
-    category: "Leadership",
-  },
-];
-
-const categories = ["All", "Architect", "Leadership", "Creative team"];
 
 const OurTeam = () => {
-  const [selectedMember, setSelectedMember] = useState(teamMembers[0]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const categories = [
+    "All",
+    ...Array.from(new Set(teamMembers.map((m) => m.category)))
+  ];
+  const filteredMembers = selectedCategory === "All"
+    ? teamMembers
+    : teamMembers.filter((member) => member.category === selectedCategory);
+  // Always keep grid alignment by filling empty slots with invisible placeholders
+  const columns = 4; // match lg:grid-cols-4
+  const rows = Math.ceil(filteredMembers.length / columns);
+  const gridCount = rows * columns;
+  const placeholders = Array(gridCount - filteredMembers.length).fill(null);
+  const [selectedMember, setSelectedMember] = useState(filteredMembers[0] || teamMembers[0]);
 
-  const filteredMembers = selectedCategory === "All" 
-    ? teamMembers 
-    : teamMembers.filter(member => member.category === selectedCategory);
+  // Update selectedMember when filteredMembers changes
+  useEffect(() => {
+    if (!filteredMembers.includes(selectedMember)) {
+      setSelectedMember(filteredMembers[0] || teamMembers[0]);
+    }
+  }, [selectedCategory, filteredMembers]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       
 
       {/* Detail Section */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-5xl mx-auto px-15 pt-20 py-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedMember.id}
@@ -61,19 +40,19 @@ const OurTeam = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid lg:grid-cols-2 gap-12 items-start mb-20"
+            className="grid lg:grid-cols-2 gap-6 items-start mb-10"
           >
             {/* Left: Text Content */}
-            <div className="space-y-6">
+            <div className="space-y-4 mt-12">
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">
                   {selectedMember.name}
                 </h2>
-                <p className="text-xl text-gray-600 mb-6">
+                <p className="text-base text-gray-600 mb-3">
                   {selectedMember.role}
                 </p>
               </div>
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed text-sm">
                 {selectedMember.bio}
               </p>
             </div>
@@ -84,7 +63,7 @@ const OurTeam = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative w-full max-w-md aspect-[3/4] overflow-hidden border border-gray-200"
+                className="relative w-80 max-w-xs aspect-[3/4] overflow-hidden border border-gray-200"
               >
                 <img
                   src={selectedMember.image}
@@ -98,7 +77,7 @@ const OurTeam = () => {
       </section>
 
       {/* Filter Categories */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
+      <section className="max-w-6xl mx-auto px-6 py-8">
         <div className="flex gap-6 items-center mb-8">
           {categories.map((category) => (
             <button
@@ -125,50 +104,41 @@ const OurTeam = () => {
         </div>
 
         {/* Team Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        <motion.div
+         layout
+         className="flex gap-6 overflow-x-auto no-scrollbar px-2 py-4"
         >
-          <AnimatePresence>
-            {filteredMembers.map((member) => (
-              <motion.div
-                key={member.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => setSelectedMember(member)}
-                className={`cursor-pointer group ${
-                  selectedMember.id === member.id ? "ring-2 ring-gray-900" : ""
-                }`}
-              >
-                {/* Portrait */}
-                <div className="relative aspect-[3/4] overflow-hidden mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                {/* Name & Role */}
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {member.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+         <AnimatePresence>
+          {filteredMembers.map((member) => (
+           <motion.div
+            key={member.id}
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setSelectedMember(member)}
+            className="cursor-pointer flex-shrink-0 group"
+           >
+            {/* Portrait */}
+            <div
+             className={`relative w-36 h-48 overflow-hidden rounded-sm ${
+              selectedMember?.id === member.id
+               ? "ring-2 ring-gray-900"
+               : "ring-1 ring-transparent"
+             }`}
+           >
+             <img
+              src={member.image}
+              alt={member.name}
+              className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-500"
+             />
+           </div>
+          </motion.div>
+         ))}
+        </AnimatePresence>
         </motion.div>
       </section>
-
-      {/* Spacer */}
-      <div className="h-20"></div>
     </div>
   );
 };
