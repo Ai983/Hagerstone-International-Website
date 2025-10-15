@@ -16,8 +16,14 @@ const DiwaliSplash = () => {
   const [shouldExit, setShouldExit] = useState(false);
 
   useEffect(() => {
-    if (IS_DIWALI_MODE) {
+    // Check if splash has already been shown in this session
+    const hasShownSplash = sessionStorage.getItem('diwaliSplashShown');
+    
+    if (IS_DIWALI_MODE && !hasShownSplash) {
       setIsVisible(true);
+      
+      // Mark splash as shown for this session
+      sessionStorage.setItem('diwaliSplashShown', 'true');
       
       // Auto-hide after 8 seconds (video duration)
       const timer = setTimeout(() => {
