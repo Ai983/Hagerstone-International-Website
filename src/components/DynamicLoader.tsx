@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { IS_DIWALI_MODE } from "./DiwaliSplash";
 
 const DynamicLoader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,8 +9,8 @@ const DynamicLoader = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Skip loader on home page
-    if (location.pathname === '/') {
+    // Skip loader on home page only during Diwali mode
+    if (location.pathname === '/' && IS_DIWALI_MODE) {
       setIsLoading(false);
       return;
     }

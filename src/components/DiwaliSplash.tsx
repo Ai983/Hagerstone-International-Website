@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 
-// Automatically checks if current date is before October 24, 2025
+// Automatically checks if current date is before October 25, 2025 midnight
 const checkDiwaliMode = () => {
   const today = new Date();
-  const endDate = new Date('2025-10-24');
+  const endDate = new Date('2025-10-25T00:00:00');
   return today < endDate;
 };
 
