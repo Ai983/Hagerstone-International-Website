@@ -8,6 +8,12 @@ const DynamicLoader = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Skip loader on home page
+    if (location.pathname === '/') {
+      setIsLoading(false);
+      return;
+    }
+
     // Reset loader on route change
     setIsLoading(true);
     setAnimationComplete(false);
