@@ -1,47 +1,73 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from "react";
 
-const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+/**
+ * Circular custom cursor with:
+ * - inner dot + outer ring
+ * - enlarges on hover of interactive elements
+ * - click feedback
+ * - disabled on touch devices
+ */
+export default function CustomCursor() {
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const dotRef = useRef<HTMLDivElement | null>(null);
+  const ringRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    // bail out on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let tx = x;
+    let ty = y;
+
+    const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
+    const move = () => {
+      tx = lerp(tx, x, 0.2);
+      ty = lerp(ty, y, 0.2);
+      if (dotRef.current && ringRef.current) {
+        dotRef.current.style.transform = `translate(${x - 0.5}px, ${y - 0.5}px) translate(-50%, -50%)`;
+        ringRef.current.style.transform = `translate(${tx - 0.5}px, ${ty - 0.5}px) translate(-50%, -50%)`;
+      }
+      raf = requestAnimationFrame(move);
     };
 
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
+    const onMouseMove = (e: MouseEvent) => { x = e.clientX; y = e.clientY; };
+    const onMouseDown = () => wrapRef.current?.classList.add("cursor-down");
+    const onMouseUp = () => wrapRef.current?.classList.remove("cursor-down");
 
-    // Track mouse position
-    document.addEventListener('mousemove', updateMousePosition);
+    let raf = requestAnimationFrame(move);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mousedown", onMouseDown, { passive: true });
+    window.addEventListener("mouseup", onMouseUp, { passive: true });
 
-    // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll(
-      'button, a, [role="button"], input, textarea, select, .cursor-hover'
-    );
-
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
+    // hover handling for interactive targets
+    const hoverSelector = "a, button, [role='button'], input, select, textarea, .cursor-hover";
+    const onOver = (e: Event) => {
+      const t = e.target as HTMLElement;
+      if (t.closest(hoverSelector)) wrapRef.current?.classList.add("cursor-hover");
+    };
+    const onOut = (e: Event) => {
+      const t = e.target as HTMLElement;
+      if (t.closest(hoverSelector)) wrapRef.current?.classList.remove("cursor-hover");
+    };
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
 
     return () => {
-      document.removeEventListener('mousemove', updateMousePosition);
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
     };
   }, []);
 
   return (
-    <div
-      className={`custom-cursor ${isHovering ? 'hover' : ''}`}
-      style={{
-        transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)`,
-      }}
-    />
+    <div ref={wrapRef} className="cursor-wrap">
+      <div ref={ringRef} className="cursor-ring" />
+      <div ref={dotRef} className="cursor-dot" />
+    </div>
   );
-};
-
-export default CustomCursor;
+}

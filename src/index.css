@@ -134,71 +134,64 @@ All colors MUST be HSL.
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
+@media (pointer: fine) {
   body {
-    @apply bg-background text-foreground;
-    cursor: none; /* Hide default cursor for custom cursor */
+    cursor: none; /* hide system cursor on mouse devices only */
   }
-
-  /* Custom cursor styles */
-  .custom-cursor {
+  .cursor-wrap {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
+    inset: 0;
     pointer-events: none;
     z-index: 9999;
-    mix-blend-mode: difference;
-    transition: all 0.15s ease-out;
   }
-
-  .custom-cursor::before {
-    content: '🏢';
-    font-size: 16px;
+  .cursor-dot,
+  .cursor-ring {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0; left: 0;
     transform: translate(-50%, -50%);
-    transition: all 0.15s ease-out;
+    transition: transform 120ms ease, opacity 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    will-change: transform;
+  }
+  /* inner dot */
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: hsl(var(--foreground));
+    opacity: 0.9;
+    mix-blend-mode: difference; /* pops on light & dark */
+  }
+  /* outer ring */
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    border: 1.5px solid hsl(var(--foreground) / 0.6);
+    opacity: 0.75;
   }
 
-  .custom-cursor.hover {
-    transform: scale(1.5);
+  /* hover state (links, buttons, etc.) */
+  .cursor-hover .cursor-ring {
+    transform: translate(-50%, -50%) scale(1.35);
+    border-color: hsl(var(--gold));
+    opacity: 0.9;
+  }
+  .cursor-hover .cursor-dot {
+    transform: translate(-50%, -50%) scale(0.85);
+    background: hsl(var(--gold));
   }
 
-  .custom-cursor.hover::before {
-    filter: hue-rotate(45deg);
+  /* mouse down click feedback */
+  .cursor-down .cursor-ring {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
   }
+}
 
-  /* Interactive elements should show pointer cursor for accessibility */
-  button, a, [role="button"], input, textarea, select {
-    cursor: pointer;
-  }
-
-  /* Custom scrollbar for project locations dropdown */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #2a2a2a;
-    border-radius: 3px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #d4af37;
-    border-radius: 3px;
-    transition: background 0.2s ease;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #e5c158;
-  }
+/* Show normal cursor & hide custom on touch devices */
+@media (pointer: coarse) {
+  .cursor-wrap { display: none; }
+  body { cursor: auto; }
 }
 
   /* Hide horizontal scrollbar but keep scrolling */
