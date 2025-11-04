@@ -53,7 +53,7 @@ export default function AchievementSection() {
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
               >
                 <source src="/testimonials/CR_63.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
