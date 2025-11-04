@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroSlider from "@/components/HeroSlider";
 import VideoTestimonials from "@/components/VideoTestimonials";
+import AchievementSection from "@/components/AchievementSection";
 import { projects } from "@/data/project";
 import { Badge } from "@/components/ui/badge";
 
@@ -262,53 +263,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4 animate-fade-in">Client Testimonials</h2>
-            <p className="text-xl text-muted-foreground animate-slide-up">
-              What our clients say about working with us
-            </p>
-          </div>
-
-          <div className="relative w-full overflow-hidden">
-            <motion.div
-            className="flex gap-8 w-max"
-            initial={{ x: 0 }}
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear"
-            }}
-            >
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <Card
-                key={`${testimonial.name}-${index}`}
-                className="min-w-[300px] max-w-[350px] bg-gradient-card border-0 shadow-luxury"
-                >
-                  <CardContent className="p-6">
-                    <div className="flex mb-2">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-gold text-gold" />
-                        ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4 italic text-base">
-                      "{testimonial.content}"
-                    </p>
-                    <div>
-                      <h4 className="font-bold text-primary">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-       </section>
+      {/* Achievement Section - Replaces Client Testimonials */}
+      <AchievementSection />
 
       {/* Video Testimonials */}
       <VideoTestimonials />

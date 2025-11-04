@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface VideoTestimonial {
@@ -26,12 +25,22 @@ const videoTestimonials: VideoTestimonial[] = [
 
 export default function VideoTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState<VideoTestimonial | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handlePlayVideo = (video: VideoTestimonial) => {
-    setSelectedVideo(video);
-    setIsPlaying(true);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
   };
 
   const handleNext = () => {
@@ -88,38 +97,44 @@ export default function VideoTestimonials() {
 
             {/* Main Video Card */}
             <motion.div
-              className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-luxury group cursor-pointer"
+              className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-luxury group"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              onClick={() => handlePlayVideo(currentVideo)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              {/* Video Preview/Thumbnail */}
+              {/* Video Player */}
               <video
-                className="w-full h-full object-cover"
+                ref={videoRef}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 src={currentVideo.videoUrl}
                 poster={currentVideo.thumbnail}
                 muted
                 playsInline
+                preload="metadata"
               />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 transition-opacity duration-300" 
+                style={{ opacity: isHovering ? 0.7 : 1 }} 
+              />
 
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Play className="w-8 h-8 text-primary ml-1" fill="currentColor" />
-                </motion.div>
-              </div>
+              {/* Play Button - Fades out on hover */}
+              <motion.div 
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isHovering ? 0 : 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl">
+                  <Play className="w-8 h-8 text-accent ml-1" fill="currentColor" />
+                </div>
+              </motion.div>
 
               {/* Client Info */}
-              <div className="absolute bottom-6 left-6 right-6 text-white">
+              <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                 <h3 className="text-2xl font-bold mb-1">{currentVideo.client}</h3>
                 <p className="text-sm text-white/80 uppercase tracking-wider">{currentVideo.role}</p>
               </div>
@@ -196,30 +211,6 @@ export default function VideoTestimonials() {
         </motion.div>
       </div>
 
-      {/* Video Modal */}
-      <Dialog open={isPlaying} onOpenChange={setIsPlaying}>
-        <DialogContent className="max-w-5xl w-full p-0 bg-black border-0">
-          <div className="relative aspect-video w-full">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-4 right-4 z-50 bg-black/50 hover:bg-black/70 text-white rounded-full"
-              onClick={() => setIsPlaying(false)}
-            >
-              <X className="w-6 h-6" />
-            </Button>
-            {selectedVideo && (
-              <video
-                className="w-full h-full"
-                src={selectedVideo.videoUrl}
-                controls
-                autoPlay
-                playsInline
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
