@@ -18,7 +18,7 @@ const videoTestimonials: VideoTestimonial[] = [
     title: "VST United Group",
     client: "VST United Group",
     role: "Corporate Client",
-    videoUrl: "/testimonials/vst-united-group.mp4",
+    videoUrl: "/testimonials/VSTUnitedGroupVideo.webm",
   },
   // Add more testimonials here in the future
 ];
