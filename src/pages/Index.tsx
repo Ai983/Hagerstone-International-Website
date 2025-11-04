@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroSlider from "@/components/HeroSlider";
+import VideoTestimonials from "@/components/VideoTestimonials";
 import { projects } from "@/data/project";
 import { Badge } from "@/components/ui/badge";
 
@@ -309,6 +310,8 @@ const Index = () => {
         </div>
        </section>
 
+      {/* Video Testimonials */}
+      <VideoTestimonials />
 
       {/* Why Choose Us */}
       <section className="py-20 bg-[#1a1a1a] text-white">
