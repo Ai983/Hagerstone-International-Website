@@ -23,7 +23,7 @@ export default function AchievementSection() {
               Delivering Excellence in Every Space We Build
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Hagerstone recently completed one of its landmark projects — a modern workspace designed for CR 63. 
+              Hagerstone recently completed one of its landmark projects — a modern workspace designed for VST United Group. 
               This achievement represents our commitment to quality, innovation, and precision in every project we undertake.
             </p>
             <Button
@@ -46,9 +46,9 @@ export default function AchievementSection() {
             transition={{ duration: 0.6 }}
             className="relative group"
           >
-            <div className="relative w-full md:w-[85%] lg:w-[80%] xl:w-[70%] aspect-video rounded-2xl overflow-hidden shadow-luxury mx-auto">
+            <div className="relative w-auto md:w-[95%] lg:w-[90%] xl:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-luxury">
               <video
-                className="w-full h-full rounded-2xl transition-transform duration-500 group-hover:scale-105 object-contain"
+                className="w-full h-full rounded-3xl transition-transform duration-500 group-hover:scale-105 object-cover"
                 autoPlay
                 loop
                 muted
@@ -60,8 +60,8 @@ export default function AchievementSection() {
                 Your browser does not support the video tag.
               </video>
               
-              {/* Decorative Border */}
-              <div className="absolute inset-0 border-2 border-white/10 rounded-2xl pointer-events-none" />
+              {/* Decorative Border - only top and bottom (no left/right borders) */}
+              <div className="absolute inset-0 border-t-2 border-b-2 border-white/10 rounded-2xl pointer-events-none" />
               
               {/* Gradient Overlay on Hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
