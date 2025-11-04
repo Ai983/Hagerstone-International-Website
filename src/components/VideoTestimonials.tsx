@@ -45,6 +45,20 @@ export default function VideoTestimonials() {
     }
   };
 
+  const handleVideoClick = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.muted = false;
+        videoRef.current.play();
+        setIsHovering(true);
+      } else {
+        videoRef.current.pause();
+        videoRef.current.muted = true;
+        setIsHovering(false);
+      }
+    }
+  };
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % videoTestimonials.length);
   };
@@ -99,13 +113,14 @@ export default function VideoTestimonials() {
 
             {/* Main Video Card */}
             <motion.div
-              className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-luxury group"
+              className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-luxury group cursor-pointer"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onClick={handleVideoClick}
             >
               {/* Video Player */}
               <video
