@@ -49,13 +49,14 @@ export default function AchievementSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-luxury">
               <video
                 className="w-full h-auto rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                style={{ objectFit: "cover", aspectRatio: "16/9" }}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
               >
-                <source src="/testimonials/CR_63.mp4" type="video/mp4" />
+                <source src={`${process.env.PUBLIC_URL || ""}/testimonials/CR_63.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
