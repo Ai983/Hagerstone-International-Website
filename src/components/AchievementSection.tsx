@@ -46,14 +46,14 @@ export default function AchievementSection() {
             transition={{ duration: 0.6 }}
             className="relative group"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-luxury aspect-video">
+            <div className="relative rounded-2xl overflow-hidden shadow-luxury">
               <video
-                className="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-auto rounded-2xl transition-transform duration-500 group-hover:scale-105"
                 autoPlay
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
               >
                 <source src="/testimonials/CR_63.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
