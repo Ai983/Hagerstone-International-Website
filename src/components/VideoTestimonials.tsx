@@ -31,6 +31,7 @@ export default function VideoTestimonials() {
   const handleMouseEnter = () => {
     setIsHovering(true);
     if (videoRef.current) {
+      videoRef.current.muted = false;
       videoRef.current.play();
     }
   };
@@ -39,6 +40,7 @@ export default function VideoTestimonials() {
     setIsHovering(false);
     if (videoRef.current) {
       videoRef.current.pause();
+      videoRef.current.muted = true;
       videoRef.current.currentTime = 0;
     }
   };
