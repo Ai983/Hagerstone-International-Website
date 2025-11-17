@@ -13,7 +13,7 @@ export type ProjectData = {
   location?: string;
   sector?: string;
   hero: string;           
-  heroVideo?: string;      // NEW: optional hero video
+  heroVideo?: string; // optional hero video
   floors?: { name: string; layout: string }[];
   sections: ProjectSection[];
 };
@@ -27,7 +27,7 @@ export const projects: ProjectData[] = [
     location: "DeraBassi, Chandigarh", 
     sector: "Pharmaceutical Office",
     hero: "/projects/theon/RECEPTION-REVISED/hero.jpeg",
-    heroVideo: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4", // NEW
+    heroVideo: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4",
     sections: [
       {
         name: "Reception & Lounge",
@@ -96,83 +96,100 @@ export const projects: ProjectData[] = [
       {
         name: "Reception Area",
         description: "A welcoming double-height reception with modern lounge seating.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/reception2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/waitingarea.jpg"],
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/reception2.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/waitingarea.jpg"
+        ],
         video: ""
       },
       {
         name: "MD Cabin",
         description: "Premium boardroom with AV integration.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin2.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin3.jpg"]
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin2.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin3.jpg"
+        ]
       },
       {
         name: "Workstation",
         description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/worstationarea.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/workstationarea2.jpg"]
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/worstationarea.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/workstationarea2.jpg"
+        ]
       },
       {
         name: "Conference Area",
         description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom2.jpg"]
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom2.jpg"
+        ]
       },
       {
         name: "Cafeteria",
         description: "An easy and focusing area.",
-        images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria2.jpg"]
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria2.jpg"
+        ]
       }
     ]
   },
   {
-  id: "microsave",
-  title: "MicroSave Consulting (MSC)",
-  client: "Hagerstone International Pvt. Ltd.",
-  year: "2025",
-  location: "Delhi",
-  sector: "Consulting",
-  hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg",
-  sections: [
-    {
-      name: "Reception Area",
-      description: "Professional and modern welcome zone with warm lighting and inviting finishes.",
-      images: [
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg"
-      ],
-      video: ""
-    },
-    {
-      name: "Cabin Rooms",
-      description: "Executive and senior management cabins offering a quiet, focused environment.",
-      images: [
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room.jpg",
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room%202.jpg"
-      ],
-      video: ""
-    },
-    {
-      name: "Lounge Area",
-      description: "Relaxed collaboration and waiting space designed with soft seating and modern textures.",
-      images: [
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Lounge%20Area.jpg"
-      ],
-      video: ""
-    },
-    {
-      name: "Meeting Room",
-      description: "Formal meeting setup with sleek furnishing and display integration.",
-      images: [
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Meeting%20Room.jpg"
-      ],
-      video: ""
-    },
-    {
-      name: "Workstation Area",
-      description: "Open workspace with ergonomic seating and functional design.",
-      images: [
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Workstation.jpg"
-      ],
-    }
-  ]
-}
-
+    id: "microsave",
+    title: "MicroSave Consulting (MSC)",
+    client: "Hagerstone International Pvt. Ltd.",
+    year: "2025",
+    location: "Delhi",
+    sector: "Consulting",
+    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg",
+    sections: [
+      {
+        name: "Reception Area",
+        description: "Professional and modern welcome zone with warm lighting and inviting finishes.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg"
+        ],
+        video: ""
+      },
+      {
+        name: "Cabin Rooms",
+        description: "Executive and senior management cabins offering a quiet, focused environment.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room.jpg",
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room%202.jpg"
+        ],
+        video: ""
+      },
+      {
+        name: "Lounge Area",
+        description: "Relaxed collaboration and waiting space designed with soft seating and modern textures.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Lounge%20Area.jpg"
+        ],
+        video: ""
+      },
+      {
+        name: "Meeting Room",
+        description: "Formal meeting setup with sleek furnishing and display integration.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Meeting%20Room.jpg"
+        ],
+        video: ""
+      },
+      {
+        name: "Workstation Area",
+        description: "Open workspace with ergonomic seating and functional design.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Workstation.jpg"
+        ],
+        video: ""
+      }
+    ]
+  }
 ];
 
 // Helper
