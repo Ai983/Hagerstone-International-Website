@@ -24,7 +24,7 @@ export const projects: ProjectData[] = [
     title: "Theon Life Sciences",
     client: "Hagerstone International Pvt. Ltd.",
     year: "2025",
-    location: "Baddi, Himachal Pradesh",
+    location: "DeraBassi, Chandigarh", 
     sector: "Pharmaceutical Office",
     hero: "/projects/theon/RECEPTION-REVISED/hero.jpeg",
     heroVideo: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4", // NEW
@@ -120,7 +120,59 @@ export const projects: ProjectData[] = [
         images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria.jpg", "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria2.jpg"]
       }
     ]
-  }
+  },
+  {
+  id: "microsave",
+  title: "MicroSave Consulting (MSC)",
+  client: "Hagerstone International Pvt. Ltd.",
+  year: "2025",
+  location: "Delhi",
+  sector: "Consulting",
+  hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg",
+  sections: [
+    {
+      name: "Reception Area",
+      description: "Professional and modern welcome zone with warm lighting and inviting finishes.",
+      images: [
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg"
+      ],
+      video: ""
+    },
+    {
+      name: "Cabin Rooms",
+      description: "Executive and senior management cabins offering a quiet, focused environment.",
+      images: [
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room.jpg",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room%202.jpg"
+      ],
+      video: ""
+    },
+    {
+      name: "Lounge Area",
+      description: "Relaxed collaboration and waiting space designed with soft seating and modern textures.",
+      images: [
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Lounge%20Area.jpg"
+      ],
+      video: ""
+    },
+    {
+      name: "Meeting Room",
+      description: "Formal meeting setup with sleek furnishing and display integration.",
+      images: [
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Meeting%20Room.jpg"
+      ],
+      video: ""
+    },
+    {
+      name: "Workstation Area",
+      description: "Open workspace with ergonomic seating and functional design.",
+      images: [
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Workstation.jpg"
+      ],
+    }
+  ]
+}
+
 ];
 
 // Helper
