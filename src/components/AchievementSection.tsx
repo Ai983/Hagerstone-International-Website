@@ -53,7 +53,7 @@ export default function AchievementSection() {
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="none"
                 style={{ backgroundColor: "#f8f8f8" }}
               >
                 <source src="/testimonials/CR63.webm" type="video/webm" />
