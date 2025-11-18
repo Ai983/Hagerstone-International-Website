@@ -189,6 +189,57 @@ export const projects: ProjectData[] = [
         video: ""
       }
     ]
+  },
+  {
+    id: "himalaya",
+    title: "Himalaya",
+    client: "Hagerstone International Pvt. Ltd.",
+    sector: "Construction",
+    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg",
+    sections: [
+      {
+        name: "Reception Area",
+        description: "Welcoming reception designed with a clean, modern aesthetic and comfortable waiting space.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg"
+        ],
+        video: ""
+      },
+      {
+        name: "Cabin Rooms",
+        description: "Private cabins designed for focused individual work and quick discussions.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room.jpg",      // url1
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room%202.jpg" // url2
+        ],
+        video: ""
+      },
+      {
+        name: "MD Cabin",
+        description: "Dedicated MD cabin offering a premium and functional workspace.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room%202.jpg" // url3
+        ],
+        video: ""
+      },
+      {
+        name: "Meeting Rooms",
+        description: "Formal meeting rooms suitable for client discussions and internal reviews.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Meeting%20Room%202.jpg", // url4
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Meeting%20Room.jpg"      // url5
+        ],
+        video: ""
+      },
+      {
+        name: "Workstation Area",
+        description: "Open workstation layout supporting collaboration and day-to-day operations.",
+        images: [
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg" // url7 (as provided)
+        ],
+        video: ""
+      }
+    ]
   }
 ];
 
