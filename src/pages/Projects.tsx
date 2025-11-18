@@ -21,6 +21,9 @@ function Projects() {
                 src={project.hero}
                 alt={project.title}
                 className="w-full h-56 object-cover"
+                loading="lazy"
+                width="384"
+                height="256"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
