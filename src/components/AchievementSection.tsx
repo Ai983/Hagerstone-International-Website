@@ -32,7 +32,7 @@ export default function AchievementSection() {
               className="group hover:bg-accent hover:text-accent-foreground transition-all duration-300"
             >
               <Link to="/projects">
-                Learn More
+                View Our Projects
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
