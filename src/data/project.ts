@@ -235,7 +235,7 @@ export const projects: ProjectData[] = [
         name: "Workstation Area",
         description: "Open workstation layout supporting collaboration and day-to-day operations.",
         images: [
-          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg" // url7 (as provided)
+          "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Workstation.jpg" // url7 (as provided)
         ],
         video: ""
       }
