@@ -234,11 +234,11 @@ const FindYourStyle = () => {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `
-                            <div class="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
-                              <span class="text-sm font-medium">${style.name}</span>
-                            </div>
-                          `;
+                          parent.className = 'w-full h-full flex items-center justify-center bg-muted text-muted-foreground';
+                          const span = document.createElement('span');
+                          span.className = 'text-sm font-medium';
+                          span.textContent = style.name;
+                          parent.appendChild(span);
                         }
                       }}
                     />
