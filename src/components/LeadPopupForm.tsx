@@ -26,7 +26,7 @@ type FormData = z.infer<typeof formSchema>;
 const INITIAL_DELAY = 5000; // 5 seconds
 const REOPEN_DELAY = 7000; // 7 seconds (between 5-10)
 const SESSION_KEY = "leadFormSubmitted";
-const N8N_WEBHOOK_URL = "https://dshubh12345.app.n8n.cloud/webhook-test/lead-capture"; // Replace with actual URL
+const N8N_WEBHOOK_URL = "https://dshubh12345.app.n8n.cloud/webhook/lead-capture";
 
 const LeadPopupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
