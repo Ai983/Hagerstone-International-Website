@@ -157,7 +157,7 @@ const LeadPopupForm = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[425px] fixed bottom-4 right-4 top-auto left-auto translate-x-0 translate-y-0 data-[state=open]:slide-in-from-bottom-4 data-[state=open]:slide-in-from-right-4 sm:bottom-4 sm:right-4">
+      <DialogContent className="sm:max-w-[425px] fixed bottom-4 right-4 top-auto left-auto translate-x-0 translate-y-0 data-[state=open]:slide-in-from-bottom-4 data-[state=open]:slide-in-from-right-4 sm:bottom-4 sm:right-4 bg-card border-2 border-accent">
         <button
           onClick={handleClose}
           className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
@@ -167,20 +167,20 @@ const LeadPopupForm = () => {
         </button>
         
         <DialogHeader>
-          <DialogTitle>Get in Touch</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-foreground">Get in Touch</DialogTitle>
+          <DialogDescription className="text-muted-foreground">
             Fill out the form below and we'll reach out to you soon.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name" className="text-foreground">Name</Label>
             <Input
               id="name"
               placeholder="Your name"
               {...register("name")}
-              className={errors.name ? "border-destructive" : ""}
+              className={`bg-background text-foreground border-input focus:border-accent ${errors.name ? "border-destructive" : ""}`}
             />
             {errors.name && (
               <p className="text-sm text-destructive">{errors.name.message}</p>
@@ -188,13 +188,13 @@ const LeadPopupForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-foreground">Email</Label>
             <Input
               id="email"
               type="email"
               placeholder="your@email.com"
               {...register("email")}
-              className={errors.email ? "border-destructive" : ""}
+              className={`bg-background text-foreground border-input focus:border-accent ${errors.email ? "border-destructive" : ""}`}
             />
             {errors.email && (
               <p className="text-sm text-destructive">{errors.email.message}</p>
@@ -202,20 +202,20 @@ const LeadPopupForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="number">WhatsApp Number</Label>
+            <Label htmlFor="number" className="text-foreground">WhatsApp Number</Label>
             <Input
               id="number"
               type="tel"
               placeholder="+1234567890"
               {...register("number")}
-              className={errors.number ? "border-destructive" : ""}
+              className={`bg-background text-foreground border-input focus:border-accent ${errors.number ? "border-destructive" : ""}`}
             />
             {errors.number && (
               <p className="text-sm text-destructive">{errors.number.message}</p>
             )}
           </div>
 
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </form>
