@@ -16,7 +16,10 @@ serve(async (req) => {
   try {
     const { to_number, message } = await req.json();
 
-    console.log("Sending WhatsApp message to:", to_number);
+    // Clean the phone number: remove spaces, hyphens, parentheses, and plus signs
+    const cleanedNumber = to_number.replace(/[\s\-\(\)\+]/g, '');
+
+    console.log("Sending WhatsApp message to:", cleanedNumber);
 
     const maytapiApiKey = Deno.env.get('MAYTAPI_API_KEY');
     
@@ -32,7 +35,7 @@ serve(async (req) => {
     }
 
     const maytapiPayload = {
-      to_number: to_number,
+      to_number: cleanedNumber,
       type: "text",
       message: message
     };
