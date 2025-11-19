@@ -22,7 +22,7 @@ import FindYourStyle from "./pages/FindYourStyle";
 import NotFound from "./pages/NotFound";
 import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
-import { LeadPopupForm } from "./components/LeadPopupForm";
+import LeadPopupForm from "./components/LeadPopupForm";
 import { useLocation } from "react-router-dom";
  
 const queryClient = new QueryClient();
