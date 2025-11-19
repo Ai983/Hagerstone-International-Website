@@ -28,7 +28,7 @@ const REOPEN_DELAY = 7000; // 7 seconds (between 5-10)
 const SESSION_KEY = "leadFormSubmitted";
 const N8N_WEBHOOK_URL = "https://YOUR_N8N_WEBHOOK_URL"; // Replace with actual URL
 
-export const LeadPopupForm = () => {
+const LeadPopupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -175,3 +175,5 @@ export const LeadPopupForm = () => {
     </Dialog>
   );
 };
+
+export default LeadPopupForm;
