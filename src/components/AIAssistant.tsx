@@ -118,13 +118,13 @@ const AIAssistant = () => {
 
   if (!isOpen) {
     return (
-      <Button
+      <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-gradient-hero shadow-luxury hover:shadow-hover hover:scale-110 transition-all duration-300 animate-float z-40"
-        size="lg"
+        className="cursor-hover fixed bottom-6 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full shadow-lg hover:scale-110 transition-transform duration-200 flex items-center justify-center z-50 border-2 border-accent"
+        aria-label="Open AI Assistant"
       >
-        <MessageCircle className="h-6 w-6 text-primary-foreground" />
-      </Button>
+        <MessageCircle className="w-6 h-6" />
+      </button>
     );
   }
 
@@ -135,14 +135,14 @@ const AIAssistant = () => {
       } transition-all duration-300`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-hero rounded-t-lg">
+      <div className="flex items-center justify-between p-4 border-b border-border bg-accent rounded-t-lg">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary-foreground rounded-full flex items-center justify-center">
-            <span className="text-primary font-bold text-sm">S</span>
+          <div className="w-8 h-8 bg-accent-foreground rounded-full flex items-center justify-center">
+            <span className="text-accent font-bold text-sm">S</span>
           </div>
           <div>
-            <h3 className="font-semibold text-primary-foreground">SmartDesign AI</h3>
-            <p className="text-xs text-primary-foreground/80">Design Assistant by Hagerstone</p>
+            <h3 className="font-semibold text-accent-foreground">SmartDesign AI</h3>
+            <p className="text-xs text-accent-foreground/80">Design Assistant by Hagerstone</p>
           </div>
         </div>
         <div className="flex space-x-1">
@@ -150,7 +150,7 @@ const AIAssistant = () => {
             variant="ghost"
             size="sm"
             onClick={() => setIsMinimized(!isMinimized)}
-            className="h-8 w-8 p-0 text-primary-foreground hover:bg-primary-foreground/20"
+            className="h-8 w-8 p-0 text-accent-foreground hover:bg-accent-foreground/20"
           >
             <Minimize2 className="h-4 w-4" />
           </Button>
@@ -158,7 +158,7 @@ const AIAssistant = () => {
             variant="ghost"
             size="sm"
             onClick={() => setIsOpen(false)}
-            className="h-8 w-8 p-0 text-primary-foreground hover:bg-primary-foreground/20"
+            className="h-8 w-8 p-0 text-accent-foreground hover:bg-accent-foreground/20"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -214,7 +214,7 @@ const AIAssistant = () => {
                 onClick={sendMessage}
                 disabled={!inputValue.trim() || isLoading}
                 size="sm"
-                className="bg-primary hover:bg-primary/90"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 <Send className="h-4 w-4" />
               </Button>
