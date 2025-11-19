@@ -26,7 +26,10 @@ type FormData = z.infer<typeof formSchema>;
 const INITIAL_DELAY = 5000; // 5 seconds
 const REOPEN_DELAY = 7000; // 7 seconds (between 5-10)
 const SESSION_KEY = "leadFormSubmitted";
-const N8N_WEBHOOK_URL = "https://dshubh12345.app.n8n.cloud/webhook/lead-capture";
+const SUPABASE_URL = "https://cuycosjchirgjmfczcle.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eWNvc2pjaGlyZ2ptZmN6Y2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzgzNjUsImV4cCI6MjA3Mzc1NDM2NX0.vlyJbCEQEqgG-dAVjWhgUAVCgqK_WdfiU6NwqvunNk0";
+const MAYTAPI_URL = "https://api.maytapi.com/api/b8cce1b9-0f9f-4aef-994c-d232716471f0/46821/sendMessage";
+const MAYTAPI_KEY = "ebfd5e67-6403-4921-b300-a54364f2c470";
 
 const LeadPopupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,24 +75,64 @@ const LeadPopupForm = () => {
     setIsSubmitting(true);
 
     try {
-      console.log("Submitting to:", N8N_WEBHOOK_URL);
-      console.log("Form data:", data);
-      
-      const response = await fetch(N8N_WEBHOOK_URL, {
+      // Step 1: Save to Supabase leads table
+      const supabasePayload = {
+        name: data.name,
+        email: data.email,
+        number: data.number,
+        created_at: new Date().toISOString(),
+      };
+
+      const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+          "Prefer": "return=minimal"
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(supabasePayload),
       });
 
-      console.log("Response status:", response.status);
+      if (!supabaseResponse.ok) {
+        throw new Error(`Failed to save lead: ${supabaseResponse.status}`);
+      }
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Server error:", errorText);
-        throw new Error(`Server returned ${response.status}`);
+      // Step 2: Send WhatsApp message via Maytapi
+      try {
+        const maytapiPayload = {
+          to_number: data.number,
+          type: "text",
+          message: "Thank you for reaching out to Hagerstone. Our team will get in touch with you shortly!"
+        };
+
+        const maytapiResponse = await fetch(MAYTAPI_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-maytapi-key": MAYTAPI_KEY
+          },
+          body: JSON.stringify(maytapiPayload),
+        });
+
+        if (!maytapiResponse.ok) {
+          console.error("WhatsApp API error:", maytapiResponse.status);
+          toast({
+            title: "Saved!",
+            description: "Error sending WhatsApp message, but we have saved your details.",
+          });
+        } else {
+          toast({
+            title: "Thank you!",
+            description: "We've received your request.",
+          });
+        }
+      } catch (whatsappError) {
+        console.error("WhatsApp error:", whatsappError);
+        toast({
+          title: "Saved!",
+          description: "Error sending WhatsApp message, but we have saved your details.",
+        });
       }
 
       // Mark as submitted in session
@@ -98,30 +141,14 @@ const LeadPopupForm = () => {
       // Close popup
       setIsOpen(false);
 
-      // Show success message
-      toast({
-        title: "Thank you!",
-        description: "We'll get in touch with you soon.",
-      });
-
       reset();
     } catch (error) {
       console.error("Error submitting form:", error);
-      
-      // Check if it's a CORS error
-      if (error instanceof TypeError && error.message === "Failed to fetch") {
-        toast({
-          title: "Connection Error",
-          description: "Unable to connect to server. Please check n8n webhook CORS settings.",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Failed to submit form. Please try again.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Error",
+        description: "Failed to submit form. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
