@@ -72,15 +72,25 @@ const LeadPopupForm = () => {
     setIsSubmitting(true);
 
     try {
+      console.log("Submitting to:", N8N_WEBHOOK_URL);
+      console.log("Form data:", data);
+      
       const response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Failed to submit");
+      console.log("Response status:", response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Server error:", errorText);
+        throw new Error(`Server returned ${response.status}`);
+      }
 
       // Mark as submitted in session
       sessionStorage.setItem(SESSION_KEY, "true");
@@ -97,11 +107,21 @@ const LeadPopupForm = () => {
       reset();
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast({
-        title: "Error",
-        description: "Failed to submit form. Please try again.",
-        variant: "destructive",
-      });
+      
+      // Check if it's a CORS error
+      if (error instanceof TypeError && error.message === "Failed to fetch") {
+        toast({
+          title: "Connection Error",
+          description: "Unable to connect to server. Please check n8n webhook CORS settings.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to submit form. Please try again.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
