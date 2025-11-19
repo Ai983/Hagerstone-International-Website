@@ -31,10 +31,7 @@ const AIAssistant = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Use NEXT_PUBLIC_ so it’s configurable without code changes
-  const API_URL =
-    import.meta.env.VITE_CHAT_API_URL ||
-    "https://chat-bot-api-pi.vercel.app/api/chat"; // your working API
+  const API_URL = "https://cuycosjchirgjmfczcle.supabase.co/functions/v1/chat-assistant";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -64,13 +61,9 @@ const AIAssistant = () => {
 
       const payload = {
         messages: [
-          // We keep the system prompt on the server for safety,
-          // so here we only send conversation history + the latest user input.
           ...history,
           { role: "user", content: userMessage.content },
         ],
-        // Optional lead capture you can extend later:
-        // lead: { name, email, phone }
       };
 
       const res = await fetch(API_URL, {
@@ -99,7 +92,7 @@ const AIAssistant = () => {
       const errorMessage: Message = {
         id: (Date.now() + 2).toString(),
         content:
-          "I’m having trouble reaching the assistant right now. Please try again in a moment.",
+          "I'm having trouble reaching the assistant right now. Please try again in a moment.",
         isUser: false,
         timestamp: new Date(),
       };
@@ -227,11 +220,3 @@ const AIAssistant = () => {
 };
 
 export default AIAssistant;
-
-
-
-
-
-
-
-
