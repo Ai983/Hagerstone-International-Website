@@ -28,8 +28,6 @@ const REOPEN_DELAY = 7000; // 7 seconds (between 5-10)
 const SESSION_KEY = "leadFormSubmitted";
 const SUPABASE_URL = "https://cuycosjchirgjmfczcle.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eWNvc2pjaGlyZ2ptZmN6Y2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzgzNjUsImV4cCI6MjA3Mzc1NDM2NX0.vlyJbCEQEqgG-dAVjWhgUAVCgqK_WdfiU6NwqvunNk0";
-const MAYTAPI_URL = "https://api.maytapi.com/api/b8cce1b9-0f9f-4aef-994c-d232716471f0/46821/sendMessage";
-const MAYTAPI_KEY = "ebfd5e67-6403-4921-b300-a54364f2c470";
 
 const LeadPopupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,30 +96,33 @@ const LeadPopupForm = () => {
         throw new Error(`Failed to save lead: ${supabaseResponse.status}`);
       }
 
-      // Step 2: Send WhatsApp message via Maytapi
+      // Step 2: Send WhatsApp message via edge function
       try {
-        const maytapiPayload = {
+        const whatsappPayload = {
           to_number: data.number,
-          type: "text",
           message: "Thank you for reaching out to Hagerstone. Our team will get in touch with you shortly!"
         };
 
-        const maytapiResponse = await fetch(MAYTAPI_URL, {
+        const whatsappResponse = await fetch(`${SUPABASE_URL}/functions/v1/send-whatsapp`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-maytapi-key": MAYTAPI_KEY
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
           },
-          body: JSON.stringify(maytapiPayload),
+          body: JSON.stringify(whatsappPayload),
         });
 
-        if (!maytapiResponse.ok) {
-          console.error("WhatsApp API error:", maytapiResponse.status);
+        if (!whatsappResponse.ok) {
+          const errorData = await whatsappResponse.json();
+          console.error("WhatsApp API error:", whatsappResponse.status, errorData);
           toast({
             title: "Saved!",
             description: "Error sending WhatsApp message, but we have saved your details.",
           });
         } else {
+          const responseData = await whatsappResponse.json();
+          console.log("WhatsApp sent successfully:", responseData);
           toast({
             title: "Thank you!",
             description: "We've received your request.",
