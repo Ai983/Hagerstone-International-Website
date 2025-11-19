@@ -16,10 +16,18 @@ serve(async (req) => {
   try {
     const { to_number, message } = await req.json();
 
-    // Clean the phone number: remove spaces, hyphens, parentheses, and plus signs
-    const cleanedNumber = to_number.replace(/[\s\-\(\)\+]/g, '');
+    // Normalise the phone number
+    const rawNumber = String(to_number ?? '');
 
-    console.log("Sending WhatsApp message to:", cleanedNumber);
+    // Clean the phone number: remove spaces, hyphens, parentheses, and plus signs
+    const cleanedNumber = rawNumber.replace(/[\s\-\(\)\+]/g, '');
+
+    // If the user entered a 10-digit Indian number, prefix with country code 91
+    const finalNumber = /^\d{10}$/.test(cleanedNumber)
+      ? `91${cleanedNumber}`
+      : cleanedNumber;
+
+    console.log("Sending WhatsApp message to:", finalNumber);
 
     const maytapiApiKey = Deno.env.get('MAYTAPI_API_KEY');
     
@@ -35,7 +43,7 @@ serve(async (req) => {
     }
 
     const maytapiPayload = {
-      to_number: cleanedNumber,
+      to_number: finalNumber,
       type: "text",
       message: message
     };
