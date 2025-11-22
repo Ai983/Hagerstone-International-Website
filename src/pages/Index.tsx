@@ -32,18 +32,21 @@ const Index = () => {
   const services = [
     {
       icon: Palette,
-      title: "Interior Designing",
-      description: "Transform spaces with innovative design solutions"
+      title: "Interior Design & Fit-Outs",
+      description: "Modern interior design for corporate offices and commercial spaces in Delhi, Noida, Gurugram",
+      link: "/services"
     },
     {
       icon: Building,
-      title: "Construction",
-      description: "Complete construction with premium quality"
+      title: "EPC & PEB Construction",
+      description: "Engineered Procurement Construction and Pre-Engineered Buildings for industrial projects",
+      link: "/services"
     },
     {
       icon: Zap,
-      title: "MEP Services",
-      description: "Mechanical, Electrical & Plumbing expertise"
+      title: "MEP & HVAC Services",
+      description: "Complete Mechanical, Electrical, Plumbing, HVAC, and firefighting solutions",
+      link: "/services"
     }
   ];
 
@@ -92,13 +95,41 @@ const Index = () => {
       {/* Hero Slider */}
       <HeroSlider />
 
+      {/* SEO-Optimized Introduction Section */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-6">
+            Hagerstone International: Leading Interior Design and Build Company in Delhi
+          </h1>
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6">
+              As one of the <strong>top interior fit-out companies in Delhi</strong>, Hagerstone International Pvt. Ltd. delivers world-class <Link to="/services" className="text-accent hover:underline">interior design and build solutions</Link> for corporate offices, hospitality venues, retail spaces, and industrial facilities across India and internationally.
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              Our expertise as <strong>international interior designers</strong> combines innovative design execution with comprehensive MEP, EPC, and PEB construction capabilities. We are the <strong>best interior company in Delhi</strong> for turnkey project delivery, serving Fortune 500 clients and transforming commercial spaces throughout Delhi, Noida, and Gurugram.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link to="/projects">View Our Portfolio</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/contact">Start Your Project</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-white dark:bg-muted/20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">
-              <span className="text-blue-600 dark:text-yellow-400">Making an Impact:</span> The Numbers
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Best Construction Company: Making an Impact
             </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              As a leading <strong>build and construction firm</strong>, our numbers reflect our commitment to excellence in every project
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -135,8 +166,10 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl mb-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Our Valued Clients</h2>
-            <p className="text-lg text-foreground/80">Trusted by industry leaders worldwide</p>
+            <h2 className="text-4xl font-bold text-primary mb-4">Trusted by Leading Organizations</h2>
+            <p className="text-lg text-foreground/80">
+              As <strong>international interior design companies in India</strong>, we partner with Fortune 500 firms and industry leaders worldwide
+            </p>
           </div>
           <div className="relative overflow-hidden">
             <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
@@ -173,7 +206,7 @@ const Index = () => {
 
       
       {/* Services Preview */}
-         <section className="py-20 px-6 md:px-16 text-center bg-background">
+      <section className="py-20 px-6 md:px-16 text-center bg-background">
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-primary mb-6"
           initial={{ opacity: 0, y: 40 }}
@@ -181,34 +214,45 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Our Expertise
+          Comprehensive Interior Design and Build Services
         </motion.h2>
         <motion.p
-          className="text-lg md:text-xl text-primary max-w-3xl mx-auto mb-12"
+          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Comprehensive solutions for all your interior design needs
+          From <strong>office interiors</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design</strong>, we deliver end-to-end solutions
+        </motion.p>
+        <motion.p
+          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <Link to="/services" className="text-accent hover:underline">Explore our complete range of services</Link> including MEP, EPC, PEB construction, HVAC, firefighting, and modern lighting solutions
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Link key={index} to="/services">
-            <motion.div
-              key={index}
-              className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <service.icon className="w-12 h-12 text-yellow-400 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold text-primary mb-2">
-                {service.title}
-              </h3>
-              <p className="text-primary mb-4">{service.description}</p>
-            </motion.div>
+            <Link key={index} to={service.link}>
+              <motion.div
+                className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 h-full"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <service.icon className="w-12 h-12 text-accent mb-4 mx-auto" />
+                <h3 className="text-xl font-semibold text-primary mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">{service.description}</p>
+                <span className="text-accent hover:underline text-sm font-medium">
+                  Learn More →
+                </span>
+              </motion.div>
             </Link>
           ))}
         </div>
@@ -219,9 +263,14 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4 animate-fade-in">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground animate-slide-up">
-              Showcase of our exceptional design work
+            <h2 className="text-4xl font-bold text-primary mb-4 animate-fade-in">
+              Featured Interior Design Projects
+            </h2>
+            <p className="text-xl text-muted-foreground animate-slide-up mb-4">
+              Showcasing our expertise as the <strong>top interior design firm</strong> in commercial and hospitality spaces
+            </p>
+            <p className="text-base text-muted-foreground">
+              <Link to="/projects" className="text-accent hover:underline">Explore our complete portfolio</Link> of corporate office styling and design fit-outs
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -273,9 +322,14 @@ const Index = () => {
       <section className="py-20 bg-[#1a1a1a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 animate-fade-in">Why Choose Hagerstone?</h2>
-            <p className="text-xl text-white/90 animate-slide-up">
-            Excellence in every project, innovation in every design
+            <h2 className="text-4xl font-bold mb-4 animate-fade-in">
+              Why Choose Hagerstone as Your Interior Design Partner?
+            </h2>
+            <p className="text-xl text-white/90 animate-slide-up mb-2">
+              Excellence in every project, innovation in every design
+            </p>
+            <p className="text-base text-white/80 animate-slide-up">
+              From <Link to="/about" className="text-accent hover:underline">our experienced team</Link> to Fortune 500 clients, discover what makes us the <strong>best interior designer</strong> choice
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -302,19 +356,32 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-gold mb-6 animate-fade-in">
-            Ready to Transform Your Space?
+          <h2 className="text-4xl font-bold text-primary mb-6 animate-fade-in">
+            Ready to Transform Your Commercial Space?
           </h2>
-          <p className="text-xl text-primary mb-8 animate-slide-up">
-            Let's create something extraordinary together
+          <p className="text-xl text-muted-foreground mb-4 animate-slide-up">
+            Partner with India's leading <strong>interior design and build companies</strong> for your next project
           </p>
-          <Button 
-            asChild
-            size="lg"
-            className="bg-gradient-accent text-gold-foreground hover:scale-105 transition-all duration-300 shadow-luxury animate-scale-in"
-          >
-            <Link to="/contact">Start Your Project Today</Link>
-          </Button>
+          <p className="text-base text-muted-foreground mb-8">
+            Whether you need <Link to="/services" className="text-accent hover:underline">corporate office interiors</Link>, hospitality design, or complete construction services, we deliver excellence
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 transition-all duration-300 shadow-lg animate-scale-in"
+            >
+              <Link to="/contact">Start Your Project Today</Link>
+            </Button>
+            <Button 
+              asChild
+              size="lg"
+              variant="outline"
+              className="hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/about">Learn About Our Team</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
