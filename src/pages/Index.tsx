@@ -96,26 +96,26 @@ const Index = () => {
       <HeroSlider />
 
       {/* SEO-Optimized Introduction Section */}
-      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
+      <section className="py-20 bg-gradient-to-b from-background via-muted/10 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-6">
-            Hagerstone International: Premier Interior Design and Build Company | Top Interior Fit Out Companies in Delhi
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-8 animate-fade-in">
+            Transform Spaces. Inspire Excellence.
           </h1>
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg md:text-xl text-muted-foreground mb-6">
-              Hagerstone International is a leading <strong>company profile interior design firm</strong> specializing in <Link to="/services" className="text-accent hover:underline">interior design and build</Link> services for corporate offices, <strong>hospitality interior design</strong>, retail spaces, and industrial facilities. As one of the <strong>best interior company in Delhi</strong>, we deliver turnkey solutions across Delhi, Noida, Gurugram, and 25+ cities worldwide.
+            <p className="text-xl md:text-2xl text-foreground/90 mb-8 leading-relaxed animate-slide-up">
+              Hagerstone International is a premier <strong>interior design and build company</strong> serving corporate, commercial, hospitality, and industrial sectors. As one of the <strong>top interior fit out companies in Delhi</strong>, we deliver turnkey solutions across Delhi, Noida, Gurugram, and 25+ cities globally.
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6">
-              Our team of <strong>international interior designers in India</strong> combines award-winning design excellence with comprehensive construction capabilities including <strong>MEP</strong> (Mechanical, Electrical, Plumbing), <strong>EPC</strong> (Engineered Procurement Construction), <strong>PEB</strong> (Pre-Engineered Buildings), <strong>HVAC</strong>, and <strong>firefighting</strong> systems. We are recognized among the <strong>top interior design firm</strong> and <strong>best construction company</strong> for Fortune 500 clients.
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+              Our team of <strong>international interior designers</strong> excels in comprehensive services—from <Link to="/services" className="text-accent hover:text-accent/80 underline">office interiors design</Link> and <strong>commercial space design</strong> to MEP, HVAC, PEB, and EPC solutions. We're recognized among <strong>international interior design companies in India</strong> for our work with Fortune 500 clients.
             </p>
-            <p className="text-base md:text-lg text-muted-foreground mb-8">
-              From <strong>home design companies</strong> to <strong>hospital interior designers</strong>, our expertise spans all sectors with <Link to="/about" className="text-accent hover:underline">11+ years of excellence</Link> and 7M+ sq. ft. delivered. Discover why leading organizations choose us as their trusted <strong>build & construction firm</strong>.
+            <p className="text-base md:text-lg text-muted-foreground mb-10">
+              With <Link to="/about" className="text-accent hover:text-accent/80 underline">11+ years of excellence</Link> and 7M+ sq. ft. delivered, discover why leading organizations trust us as their <strong>build & construction firm</strong>.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:scale-105 transition-all">
                 <Link to="/projects">View Our Portfolio</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all">
                 <Link to="/contact">Get Free Consultation</Link>
               </Button>
             </div>
@@ -217,34 +217,25 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Complete Interior Design and Build Services by International Interior Designers
+          Comprehensive Design & Build Services
         </motion.h2>
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4"
+          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          From <strong>office interiors design</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design company</strong> services, we deliver comprehensive <strong>design fit-outs</strong> with <strong>modern interior design</strong> excellence
+          From <strong>office interiors design</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design</strong>, we deliver premium <strong>design fit-outs</strong> and <strong>modern interior design</strong> solutions across all sectors.
         </motion.p>
         <motion.p
-          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-4"
+          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          As a <strong>good design office</strong>, we integrate <strong>mechanical engineered procurement</strong>, <strong>lighting solutions</strong>, and <strong>commercial office styling</strong> in every project. <Link to="/services" className="text-accent hover:underline">Explore our complete services</Link> including MEP, EPC, PEB, HVAC, and firefighting systems for <strong>interior design in Delhi/Noida/Gurugram</strong>.
-        </motion.p>
-        <motion.p
-          className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Looking for an <strong>interior design staffing agency</strong> or <Link to="/contact" className="text-accent hover:underline">construction partnerships</Link>? Contact us today.
+          As a <strong>good design office</strong>, we integrate <strong>MEP</strong>, <strong>EPC</strong>, <strong>PEB</strong>, <strong>HVAC</strong>, <strong>lighting solutions</strong>, and <strong>commercial office styling</strong> to deliver complete <Link to="/services" className="text-accent hover:underline">turnkey solutions</Link> for <strong>interior design in Delhi/Noida/Gurugram</strong> and beyond.
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (

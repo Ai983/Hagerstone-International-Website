@@ -123,10 +123,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-gold">
-            Contact Us
+            Get in Touch
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
-            Let's discuss your next interior design project
+            Connect with one of the <span className="font-semibold">top interior fit out companies in Delhi</span> for your next project. We serve Delhi, Noida, Gurugram, and beyond.
           </p>
         </div>
       </section>

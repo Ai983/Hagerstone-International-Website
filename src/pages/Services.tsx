@@ -33,29 +33,29 @@ const Services = () => {
   const services = [
     {
       icon: Palette,
-      title: "Interior Designing",
+      title: "Interior Design & Architect Services",
       description:
-        "Transform your space with innovative design solutions that blend aesthetics with functionality.",
+        "As leading interior architects, we create modern interior design solutions that blend aesthetics with functionality for corporate and commercial spaces.",
       features: [
         "3D Visualization & Rendering",
-        "Space Planning & Layout",
-        "Color Consultation",
-        "Material Selection",
-        "Lighting Design",
+        "Space Planning & Layout Design",
+        "Material & Color Consultation",
+        "Lighting Solutions Integration",
+        "Design Fit-outs & Styling",
       ],
       image:
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
     },
     {
       icon: Building,
-      title: "Construction",
+      title: "Construction & EPC",
       description:
-        "Complete construction services with premium quality materials and expert craftsmanship.",
+        "As a best construction company, we deliver turnkey construction, Engineered Procurement Construction (EPC), and Pre-Engineered Buildings (PEB) with exceptional quality.",
       features: [
-        "Turnkey Construction",
-        "Project Management",
-        "Quality Assurance",
-        "Timeline Adherence",
+        "Turnkey Construction Projects",
+        "EPC Services & Project Management",
+        "PEB for Warehouses & Factories",
+        "Quality Assurance & Timeline Adherence",
         "Budget Optimization",
       ],
       image:
@@ -63,45 +63,45 @@ const Services = () => {
     },
     {
       icon: Zap,
-      title: "MEP Services",
+      title: "MEP Services (HVAC, Firefighting & Electrical)",
       description:
-        "Mechanical, Electrical, and Plumbing solutions designed for efficiency and sustainability.",
+        "Complete Mechanical Engineered Procurement solutions including HVAC systems, firefighting, electrical installations, and plumbing for modern commercial spaces.",
       features: [
-        "HVAC Systems",
-        "Electrical Installation",
-        "Plumbing Systems",
-        "Fire Safety Systems",
-        "Smart Home Integration",
+        "HVAC Design & Installation",
+        "Firefighting Systems Integration",
+        "Electrical & Networking Solutions",
+        "Plumbing & Sanitation Systems",
+        "Smart Building Automation",
       ],
       image:
         "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
     },
     {
       icon: Sofa,
-      title: "Furniture",
+      title: "Office Interiors Design & Furniture",
       description:
-        "Custom and curated furniture solutions that perfectly complement your interior design.",
+        "Custom office interiors design with premium furniture solutions for corporate spaces. We deliver commercial office styling that enhances productivity and brand identity.",
       features: [
-        "Custom Furniture Design",
+        "Custom Office Furniture Design",
+        "Ergonomic Workstation Solutions",
         "Premium Material Selection",
-        "Ergonomic Solutions",
-        "Space-Optimized Designs",
-        "Installation & Setup",
+        "Space-Optimized Layouts",
+        "Installation & Project Delivery",
       ],
       image:
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
     },
     {
       icon: Home,
-      title: "All Interiors Work",
+      title: "Complete Design Fit-outs",
       description:
-        "Comprehensive interior solutions covering every aspect of your space transformation.",
+        "Comprehensive design fit-outs for commercial space design, hospitality, and retail. As a top interior design firm, we handle all interior work from concept to completion.",
       features: [
         "False Ceiling & Partitions",
-        "Flooring Solutions",
-        "Wall Treatments",
-        "Window Treatments",
-        "Complete Fit-outs",
+        "Premium Flooring Solutions",
+        "Wall Treatments & Finishes",
+        "Complete Interior Executions",
+        "Turnkey Fit-out Delivery",
       ],
       image:
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
@@ -138,10 +138,10 @@ const Services = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-gold">
-            Our Services
+            Comprehensive Design & Build Services
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
-            Comprehensive interior design and construction solutions for all your needs
+            From <span className="font-semibold">office interiors design</span> and <span className="font-semibold">commercial space design</span> to <span className="font-semibold">PEB</span>, <span className="font-semibold">MEP</span>, and <span className="font-semibold">EPC</span> solutions—delivered by one of the <span className="font-semibold">best interior companies in Delhi</span>.
           </p>
         </div>
       </section>
