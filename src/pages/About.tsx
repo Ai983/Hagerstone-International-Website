@@ -8,7 +8,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl font-bold text-primary mb-6 animate-fade-in">About Hagerstone International</h1>
           <p className="text-xl text-foreground/80 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Leading design and build firm specializing in architecture, interiors, construction and factories
+            <span className="font-semibold">International interior designers</span> and a leading <span className="font-semibold">company profile interior design firm</span> specializing in architecture, interiors, construction, MEP, and Pre-Engineered Buildings across 25+ cities
           </p>
         </div>
       </section>
@@ -39,14 +39,10 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <p className="text-lg text-foreground mb-6 leading-relaxed">
-                Hagerstone International is a leading design and build firm specializing in architecture, interiors,
-                construction and factories. With 11+ years of experience, 7M+ sq. ft. completed, and 250+ projects across
-                15+ cities, we craft world-class commercial, corporate, and luxury spaces.
+                Hagerstone International is a premier <span className="font-semibold">interior design and build company</span> recognized among <span className="font-semibold">international interior design companies in India</span>. With 11+ years of experience, over 7 million sq. ft. completed, and 250+ projects delivered across 25+ cities in 7+ countries, we are one of the <span className="font-semibold">best interior designer</span> teams serving corporate, commercial, hospitality, and industrial sectors.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
-                Our 350+ professionals ensure seamless execution, integrating cutting-edge design, sustainability, and
-                innovation. From offices to retail and hospitality, we create functional, inspiring, and future-ready
-                environments.
+                As a <span className="font-semibold">good design office</span> and a <span className="font-semibold">top interior firm</span>, our 350+ professionals deliver comprehensive services including office interiors, commercial space design, MEP services, HVAC, PEB structures, and complete design executions. We are proud to be among the <span className="font-semibold">home design companies</span> and <span className="font-semibold">hospital interior designers</span> creating functional, inspiring, and future-ready environments.
               </p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
