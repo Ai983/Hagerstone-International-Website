@@ -24,8 +24,9 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const INITIAL_DELAY = 5000; // 5 seconds
-const REOPEN_DELAY = 7000; // 7 seconds (between 5-10)
-const SESSION_KEY = "leadFormSubmitted";
+const REOPEN_DELAY = 7000; // 7 seconds
+const STORAGE_KEY = "leadFormSubmitted";
+const EXPIRY_HOURS = 24; // Show popup again after 24 hours
 const SUPABASE_URL = "https://cuycosjchirgjmfczcle.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eWNvc2pjaGlyZ2ptZmN6Y2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzgzNjUsImV4cCI6MjA3Mzc1NDM2NX0.vlyJbCEQEqgG-dAVjWhgUAVCgqK_WdfiU6NwqvunNk0";
 
@@ -44,9 +45,16 @@ const LeadPopupForm = () => {
   });
 
   useEffect(() => {
-    // Check if form was already submitted in this session
-    const hasSubmitted = sessionStorage.getItem(SESSION_KEY);
-    if (hasSubmitted) return;
+    // Check if form was submitted recently (within EXPIRY_HOURS)
+    const storedData = localStorage.getItem(STORAGE_KEY);
+    if (storedData) {
+      const { timestamp } = JSON.parse(storedData);
+      const hoursPassed = (Date.now() - timestamp) / (1000 * 60 * 60);
+      
+      if (hoursPassed < EXPIRY_HOURS) {
+        return; // Don't show popup if submitted within last 24 hours
+      }
+    }
 
     // Initial popup after 5 seconds
     const initialTimer = setTimeout(() => {
@@ -60,10 +68,17 @@ const LeadPopupForm = () => {
     setIsOpen(false);
 
     // Check if already submitted
-    const hasSubmitted = sessionStorage.getItem(SESSION_KEY);
-    if (hasSubmitted) return;
+    const storedData = localStorage.getItem(STORAGE_KEY);
+    if (storedData) {
+      const { timestamp } = JSON.parse(storedData);
+      const hoursPassed = (Date.now() - timestamp) / (1000 * 60 * 60);
+      
+      if (hoursPassed < EXPIRY_HOURS) {
+        return; // Don't reopen if submitted recently
+      }
+    }
 
-    // Reopen after 5-10 seconds if not submitted
+    // Reopen after 7 seconds if not submitted
     setTimeout(() => {
       setIsOpen(true);
     }, REOPEN_DELAY);
@@ -136,8 +151,11 @@ const LeadPopupForm = () => {
         });
       }
 
-      // Mark as submitted in session
-      sessionStorage.setItem(SESSION_KEY, "true");
+      // Mark as submitted with timestamp
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ 
+        submitted: true, 
+        timestamp: Date.now() 
+      }));
 
       // Close popup
       setIsOpen(false);
