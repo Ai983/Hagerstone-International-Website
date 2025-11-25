@@ -99,21 +99,24 @@ const Index = () => {
       <section className="py-16 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-6">
-            Hagerstone International: Leading Interior Design and Build Company in Delhi
+            Hagerstone International: Premier Interior Design and Build Company | Top Interior Fit Out Companies in Delhi
           </h1>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg md:text-xl text-muted-foreground mb-6">
-              As one of the <strong>top interior fit-out companies in Delhi</strong>, Hagerstone International Pvt. Ltd. delivers world-class <Link to="/services" className="text-accent hover:underline">interior design and build solutions</Link> for corporate offices, hospitality venues, retail spaces, and industrial facilities across India and internationally.
+              Hagerstone International is a leading <strong>company profile interior design firm</strong> specializing in <Link to="/services" className="text-accent hover:underline">interior design and build</Link> services for corporate offices, <strong>hospitality interior design</strong>, retail spaces, and industrial facilities. As one of the <strong>best interior company in Delhi</strong>, we deliver turnkey solutions across Delhi, Noida, Gurugram, and 25+ cities worldwide.
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              Our expertise as <strong>international interior designers</strong> combines innovative design execution with comprehensive MEP, EPC, and PEB construction capabilities. We are the <strong>best interior company in Delhi</strong> for turnkey project delivery, serving Fortune 500 clients and transforming commercial spaces throughout Delhi, Noida, and Gurugram.
+            <p className="text-lg md:text-xl text-muted-foreground mb-6">
+              Our team of <strong>international interior designers in India</strong> combines award-winning design excellence with comprehensive construction capabilities including <strong>MEP</strong> (Mechanical, Electrical, Plumbing), <strong>EPC</strong> (Engineered Procurement Construction), <strong>PEB</strong> (Pre-Engineered Buildings), <strong>HVAC</strong>, and <strong>firefighting</strong> systems. We are recognized among the <strong>top interior design firm</strong> and <strong>best construction company</strong> for Fortune 500 clients.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground mb-8">
+              From <strong>home design companies</strong> to <strong>hospital interior designers</strong>, our expertise spans all sectors with <Link to="/about" className="text-accent hover:underline">11+ years of excellence</Link> and 7M+ sq. ft. delivered. Discover why leading organizations choose us as their trusted <strong>build & construction firm</strong>.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link to="/projects">View Our Portfolio</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/contact">Start Your Project</Link>
+                <Link to="/contact">Get Free Consultation</Link>
               </Button>
             </div>
           </div>
@@ -214,7 +217,7 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Comprehensive Interior Design and Build Services
+          Complete Interior Design and Build Services by International Interior Designers
         </motion.h2>
         <motion.p
           className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4"
@@ -223,16 +226,25 @@ const Index = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          From <strong>office interiors</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design</strong>, we deliver end-to-end solutions
+          From <strong>office interiors design</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design company</strong> services, we deliver comprehensive <strong>design fit-outs</strong> with <strong>modern interior design</strong> excellence
         </motion.p>
         <motion.p
-          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-12"
+          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-4"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Link to="/services" className="text-accent hover:underline">Explore our complete range of services</Link> including MEP, EPC, PEB construction, HVAC, firefighting, and modern lighting solutions
+          As a <strong>good design office</strong>, we integrate <strong>mechanical engineered procurement</strong>, <strong>lighting solutions</strong>, and <strong>commercial office styling</strong> in every project. <Link to="/services" className="text-accent hover:underline">Explore our complete services</Link> including MEP, EPC, PEB, HVAC, and firefighting systems for <strong>interior design in Delhi/Noida/Gurugram</strong>.
+        </motion.p>
+        <motion.p
+          className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          Looking for an <strong>interior design staffing agency</strong> or <Link to="/contact" className="text-accent hover:underline">construction partnerships</Link>? Contact us today.
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
