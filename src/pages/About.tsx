@@ -140,7 +140,7 @@ const About = () => {
               <CardContent className="text-center">
                 <div className="relative mb-6 inline-block">
                   <img 
-                    src="/founders/d12ff5f7-e2cf-4b86-b53a-586309fdc5eb.png" 
+                    src="/founders/dhruvsir.png" 
                     alt="Dhruv Agarwal - Founder & Managing Director"
                     className="w-48 h-48 object-cover rounded-full mx-auto shadow-luxury group-hover:scale-105 transition-transform duration-300"
                   />
@@ -158,7 +158,7 @@ const About = () => {
               <CardContent className="text-center">
                 <div className="relative mb-6 inline-block">
                   <img 
-                    src="/founders/0542f440-1bd7-4f5d-9709-33c7b4735b5c.png" 
+                    src="/founders/bhaskarsir.png" 
                     alt="Bhaskar Tyagi - Director"
                     className="w-48 h-48 object-cover rounded-full mx-auto shadow-luxury group-hover:scale-105 transition-transform duration-300"
                   />
