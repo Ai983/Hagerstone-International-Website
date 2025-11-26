@@ -6,7 +6,15 @@ import { IS_DIWALI_MODE } from "./DiwaliSplash";
 const DynamicLoader = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 800, height: 600 });
   const location = useLocation();
+
+  // Set actual window dimensions on client side only
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    }
+  }, []);
 
   useEffect(() => {
     // Skip loader on home page only during Diwali mode
@@ -57,13 +65,13 @@ const DynamicLoader = () => {
               key={i}
               className="absolute w-2 h-2 bg-primary/20 rounded-full"
               initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * windowSize.width,
+                y: Math.random() * windowSize.height,
                 opacity: 0 
               }}
               animate={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * windowSize.width,
+                y: Math.random() * windowSize.height,
                 opacity: [0, 0.6, 0] 
               }}
               transition={{ 
