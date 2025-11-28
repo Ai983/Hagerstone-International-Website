@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import HeroSlider from "@/components/HeroSlider";
 import VideoTestimonials from "@/components/VideoTestimonials";
 import AchievementSection from "@/components/AchievementSection";
+import FAQSection from "@/components/FAQSection";
 import { projects } from "@/data/project";
 import { Badge } from "@/components/ui/badge";
 
@@ -320,6 +321,9 @@ const Index = () => {
 
       {/* Video Testimonials */}
       <VideoTestimonials />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Why Choose Us */}
       <section className="py-20 bg-[#1a1a1a] text-white">
