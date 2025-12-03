@@ -1,0 +1,11 @@
+# Hagerstone International - robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hagerstone-website.lovable.app/sitemap.xml
+
+# Disallow internal paths
+Disallow: /api/
+Disallow: /_internal/
