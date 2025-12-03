@@ -280,12 +280,12 @@ export const projects: ProjectData[] = [
         ],
       },
       {
-        name: "Parking & Ramp Area",
+        name: "Office / Cabin Rooms",
         description: "Basement/ground level car-parking and ramp design for easy vehicle access.",
         images: ["https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-4.jpeg"],
       },
       {
-        name: "Office / Cabin Rooms",
+        name: "Parking & Ramp Area",
         description: "Administrative cabins and staff rooms inside showroom complex.",
         images: [
           "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-5.jpeg",
