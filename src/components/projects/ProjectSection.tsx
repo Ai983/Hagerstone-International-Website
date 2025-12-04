@@ -1,6 +1,7 @@
-// Trigger rebuild: 2025-09-17
 import { motion } from "framer-motion";
 import ImageCarousel from "./ImageCarousel";
+
+type ImageItem = string | { src: string; alt: string };
 
 export default function ProjectSection({
   name,
@@ -10,7 +11,7 @@ export default function ProjectSection({
 }: {
   name: string;
   description?: string;
-  images?: string[];
+  images?: ImageItem[];
   video?: string;
 }) {
   return (

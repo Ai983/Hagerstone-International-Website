@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 import HeroSlider from "@/components/HeroSlider";
 import VideoTestimonials from "@/components/VideoTestimonials";
 import AchievementSection from "@/components/AchievementSection";
@@ -86,13 +87,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Unified Navbar */}
+      <SEOHead
+        title="Top Interior Design & Build Company Delhi | Hagerstone International"
+        description="Best interior company in Delhi for turnkey projects. International interior designers specializing in office interiors, hospitality design, MEP, EPC, PEB construction. 11+ years, 7M+ sqft delivered."
+        canonical="https://hagerstone.com/"
+        keywords="interior design and build, hospitality interior design company, international interior designers, best interior company in delhi, top interior fit out companies in delhi, office interiors design"
+      />
       
-        
-
-
-
-
       {/* Hero Slider */}
       <HeroSlider />
 
@@ -180,17 +181,17 @@ const Index = () => {
               {[
                 { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
                 { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
+                { name: "TAJ Hotels", logo: "/clients-logo/Taj.jpeg" },
                 { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
                 { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
+                { name: "Lufthansa Airlines", logo: "/clients-logo/lufthansa.jpeg" },
                 // Duplicate for continuous scroll
                 { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
                 { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
+                { name: "TAJ Hotels", logo: "/clients-logo/Taj.jpeg" },
                 { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
                 { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" }
+                { name: "Lufthansa Airlines", logo: "/clients-logo/lufthansa.jpeg" }
               ].map((client, index) => (
                 <div 
                   key={index} 
@@ -198,8 +199,9 @@ const Index = () => {
                 >
                   <img 
                     src={client.logo}
-                    alt={`${client.name} logo`}
+                    alt={`${client.name} - Hagerstone client logo`}
                     className="max-w-full max-h-full object-contain"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -240,7 +242,7 @@ const Index = () => {
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Link key={index} to={service.link}>
+            <Link key={index} to={service.link} aria-label={`Learn more about ${service.title}`}>
               <motion.div
                 className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 h-full"
                 initial={{ opacity: 0, y: 50 }}
@@ -248,7 +250,7 @@ const Index = () => {
                 transition={{ delay: index * 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <service.icon className="w-12 h-12 text-accent mb-4 mx-auto" />
+                <service.icon className="w-12 h-12 text-accent mb-4 mx-auto" aria-hidden="true" />
                 <h3 className="text-xl font-semibold text-primary mb-3">
                   {service.title}
                 </h3>
@@ -279,7 +281,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project, index) => (
-              <Link key={project.id} to={`/projects/${project.id}`}>
+              <Link key={project.id} to={`/projects/${project.id}`} aria-label={`View ${project.title} project details`}>
                 <Card 
                   className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -287,8 +289,9 @@ const Index = () => {
                   <div className="relative overflow-hidden">
                     <img
                       src={project.hero}
-                      alt={project.title}
+                      alt={project.heroAlt || `${project.title} - ${project.sector} interior design by Hagerstone`}
                       className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -309,7 +312,7 @@ const Index = () => {
             >
               <Link to="/projects">
                 View All Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -351,7 +354,7 @@ const Index = () => {
             className="text-center animate-scale-in"
             style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CheckCircle className="h-12 w-12 text-gold mx-auto mb-4" />
+              <CheckCircle className="h-12 w-12 text-gold mx-auto mb-4" aria-hidden="true" />
               <h3 className="text-lg font-semibold">{benefit}</h3>
             </div>
           ))}
@@ -384,9 +387,10 @@ const Index = () => {
               asChild
               size="lg"
               variant="outline"
-              className="hover:scale-105 transition-all duration-300"
+              className="hover:bg-muted hover:scale-105 transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: '0.1s' }}
             >
-              <Link to="/about">Learn About Our Team</Link>
+              <Link to="/projects">View Our Portfolio</Link>
             </Button>
           </div>
         </div>
@@ -396,4 +400,3 @@ const Index = () => {
 };
 
 export default Index;
-

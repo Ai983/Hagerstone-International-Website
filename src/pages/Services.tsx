@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ServiceModal from "@/components/ServiceModal";
+import SEOHead from "@/components/SEOHead";
 
 import {
   Palette,
@@ -133,6 +134,12 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Interior Design & Build Services Delhi | MEP, EPC, PEB Solutions"
+        description="Comprehensive design-build services: interior design, office fit-outs, MEP, HVAC, EPC, PEB construction. Best interior company in Delhi NCR for turnkey projects."
+        canonical="https://hagerstone.com/services"
+        keywords="interior design services, office fit-out Delhi, MEP services, EPC construction, PEB buildings"
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground py-20">
         <div className="absolute inset-0 bg-black/20"></div>
