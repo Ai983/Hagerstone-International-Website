@@ -109,7 +109,7 @@ export const projects: ProjectData[] = [
     sector: "Co-Working Space",
     area: "12,000 sq. ft.",
     duration: "10 weeks",
-    status: "Completed",
+    status: ,
     hero: "/projects/Bansal-Tower/RECEPTION/R1.png",
     heroAlt: "Bansal Tower co-working space reception with modern design elements in Gurgaon",
     summary: "A premium co-working space designed for flexibility, collaboration, and professional excellence. The Bansal Tower project transforms a commercial floor into a vibrant workspace featuring executive cabins, an impressive MD room, state-of-the-art conference facilities, and a welcoming reception—all designed to serve diverse business needs in Gurgaon's thriving corporate district.",
