@@ -5,17 +5,22 @@ import App from './App.tsx'
 import './index.css'
 
 const root = document.getElementById("root")!;
-const app = (
-  <HelmetProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </HelmetProvider>
-);
 
 // Use hydration for SSR in production
 if (import.meta.env.PROD) {
-  hydrateRoot(root, app);
+  hydrateRoot(root, 
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  );
 } else {
-  createRoot(root).render(app);
+  createRoot(root).render(
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  );
 }
