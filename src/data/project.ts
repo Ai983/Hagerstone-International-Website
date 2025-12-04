@@ -34,9 +34,8 @@ export const projects: ProjectData[] = [
     year: "2025",
     location: "DeraBassi, Chandigarh",
     sector: "Pharmaceutical Office",
-    area: "15,000 sq. ft.",
-    duration: "12 weeks",
-    status: "Completed",
+  
+    
     hero: "/projects/theon/RECEPTION-REVISED/hero.jpeg",
     heroAlt: "Theon Life Sciences modern pharmaceutical office reception with double-height ceiling and contemporary lounge seating in DeraBassi, Chandigarh",
     heroVideo: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4",
