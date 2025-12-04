@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import SEOHead from "@/components/SEOHead";
 
 import { 
   Phone, 
@@ -118,6 +119,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Contact Hagerstone | Get Free Interior Design Consultation"
+        description="Contact Hagerstone International for interior design consultations in Delhi, Noida, Gurgaon. Call +91 88829 79328 or visit our offices. Free project estimates."
+        canonical="https://hagerstone.com/contact"
+        keywords="contact interior designer Delhi, office design consultation, fit-out quote"
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground py-20">
         <div className="absolute inset-0 bg-black/20"></div>

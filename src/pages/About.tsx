@@ -1,7 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
+import SEOHead from "@/components/SEOHead";
 
 const About = () => {
   return (
+    <>
+      <SEOHead
+        title="About Hagerstone International | Interior Design & Build Company"
+        description="Learn about Hagerstone International - 11+ years of interior design excellence, 7M+ sq ft delivered, 250+ projects across 25+ cities. Meet our leadership team."
+        canonical="https://hagerstone.com/about"
+        keywords="about hagerstone, interior design company India, design build firm Delhi"
+      />
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/5 to-secondary/5 py-20 px-6">
