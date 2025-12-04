@@ -105,7 +105,7 @@ const HeroSlider = () => {
             >
               Design & <span className="font-black">Build.</span>
               <br />
-              Tommorow's <span className="font-black">Workspace</span><span className="text-red-500">.</span>
+              Tomorrow's <span className="font-black">Workspace</span><span className="text-red-500">.</span>
             </h1>
           </motion.div>
         </div>
