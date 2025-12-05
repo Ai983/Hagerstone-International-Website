@@ -177,7 +177,7 @@ const Index = () => {
             </p>
           </div>
           <div className="relative overflow-hidden">
-            <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
+            <div className="flex animate-[slide_40s_linear_infinite] space-x-8 items-center">
               {[
                 { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
                 { name: "AECOM", logo: "/clients-logo/AECOM.png" },
