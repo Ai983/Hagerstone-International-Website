@@ -241,4 +241,9 @@ All colors MUST be HSL.
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+  
+  /* Pause carousel on hover for better UX */
+  .animate-\[slide_60s_linear_infinite\]:hover {
+    animation-play-state: paused;
+  }
 }
