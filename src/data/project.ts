@@ -543,33 +543,36 @@ export const projects: ProjectData[] = [
     hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-1.jpeg",
     heroAlt: "VinFast electric vehicle showroom interior with modern display area and premium lighting in Jaipur",
     summary:
-      "A premium automotive showroom designed for VinFast's electric vehicle lineup. The project showcases modern showroom design principles with an impressive vehicle display floor, strategic lighting, customer consultation areas, administrative offices, and multi-level parking facilities—all designed to deliver an exceptional EV buying experience.",
+      "A premium automotive showroom designed for VinFast's electric vehicle lineup. The project showcases modern showroom design principles with an impressive vehicle display floor, strategic lighting, customer consultation areas, administrative offices, lounge & cafeteria, workstation areas and multi-level parking facilities — all designed to deliver a superior EV buying experience.",
     scope: [
       "Showroom interior design",
       "Vehicle display floor layout",
       "Lighting design for vehicle presentation",
-      "Customer lounge and consultation areas",
+      "Customer lounge and cafeteria areas",
       "Office and admin spaces",
+      "Workstations and meeting rooms",
       "Multi-level parking design",
       "MEP and HVAC systems",
     ],
     specialFeatures: [
       "EV-focused showroom design",
       "Premium vehicle display lighting",
-      "Customer experience zones",
+      "Customer experience zones (lounge, cafeteria)",
       "Integrated parking solutions",
+      "Workstation & meeting areas for staff/admin",
     ],
     materials: [
       "Premium showroom flooring",
       "LED track lighting systems",
       "Glass and aluminum facades",
       "Branded design elements",
+      "Commercial-grade furnishings for lounge / cafeteria",
     ],
     sections: [
       {
         name: "Showroom & Display Area",
         description:
-          "VinFast showroom interior including display floor with strategic lighting and reception area designed to showcase electric vehicles.",
+          "Showroom interior including display floor with strategic lighting and reception area designed to showcase electric vehicles.",
         images: [
           {
             src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-1.jpeg",
@@ -586,33 +589,57 @@ export const projects: ProjectData[] = [
         ],
       },
       {
-        name: "Office / Cabin Rooms",
-        description: "Administrative cabins and staff rooms inside showroom complex for sales team and management.",
+        name: "Cafeteria & Lounge Area",
+        description:
+          "Customer lounge and cafeteria inside showroom complex — comfortable waiting & refreshment area for visitors and clients.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-4.jpeg",
-            alt: "Office cabin at VinFast showroom for sales team",
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST10.jpeg",
+            alt: "VinFast showroom cafeteria and lounge seating area",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST9.jpeg",
+            alt: "Customer lounge area inside VinFast showroom",
+          },
+        ],
+      },
+      {
+        name: "Meeting & Consultation Area",
+        description: "Private meeting rooms and consultation area for client discussions and vehicle purchase process.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST9.jpg",
+            alt: "Meeting room inside VinFast showroom",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST8.jpeg",
+            alt: "Consultation / meeting area for clients at VinFast showroom",
+          },
+        ],
+      },
+      {
+        name: "Workstation & Admin Office Area",
+        description: "Workstations and administrative office area for staff, sales team and showroom management.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST7.jpg",
+            alt: "Workstation area inside VinFast showroom office",
           },
         ],
       },
       {
         name: "Parking & Ramp Area",
         description:
-          "Basement/ground level car-parking and ramp design for easy vehicle access and customer convenience.",
+          "Basement/ground level car-parking and ramp design for easy vehicle access and visitor convenience.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-5.jpeg",
-            alt: "Parking area at VinFast showroom with vehicle ramp",
-          },
-          {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-6.jpeg",
-            alt: "Multi-level parking design at VinFast Jaipur showroom",
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST13.jpeg",
+            alt: "Parking area at VinFast showroom with vehicle ramp and parking bays",
           },
         ],
       },
     ],
   },
 ];
-
 // Helper
 export const getProjectById = (id: string) => projects.find((p) => p.id === id);
