@@ -625,6 +625,14 @@ export const projects: ProjectData[] = [
             src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST7.jpg",
             alt: "Workstation area inside VinFast showroom office",
           },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST11.jpeg",
+            alt: "A well desgined waiting area with beautiful furniture",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST12.jpeg",
+            alt: "Aesthetic and next level designing",
+          },
         ],
       },
       {
