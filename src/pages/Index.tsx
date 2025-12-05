@@ -192,7 +192,7 @@ const Index = () => {
                 { name: "Himalaya Construction", logo: "/clients-logo/Himalaya Construction.png" },
                 { name: "Microsave(MSC)", logo: "/clients-logo/Microsave(MSC).png" },
                 { name: "Samsung", logo: "/clients-logo/Samsung.png" },
-                { name: "Singapore Airlines", logo: "/clients-logo/Singapore Airlines.png" },
+                { name: "Singapore Airlines", logo: "/clients-logo/SingaporeAirlines.png" },
                 { name: "Theon Lifesciences", logo: "/clients-logo/Theon Lifesciences.png" },
                 { name: "Vinfast", logo: "/clients-logo/Vinfast.png" },
                 
@@ -210,7 +210,7 @@ const Index = () => {
                 { name: "Himalaya Construction", logo: "/clients-logo/Himalaya Construction.png" },
                 { name: "Microsave(MSC)", logo: "/clients-logo/Microsave(MSC).png" },
                 { name: "Samsung", logo: "/clients-logo/Samsung.png" },
-                { name: "Singapore Airlines", logo: "/clients-logo/Singapore Airlines.png" },
+                { name: "Singapore Airlines", logo: "/clients-logo/SingaporeAirlines.png" },
                 { name: "Theon Lifesciences", logo: "/clients-logo/Theon Lifesciences.png" },
                 { name: "Vinfast", logo: "/clients-logo/Vinfast.png" }
 
