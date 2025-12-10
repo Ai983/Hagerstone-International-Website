@@ -92,7 +92,7 @@ const Index = () => {
         title="Top Interior Design & Build Company Delhi | Hagerstone International"
         description="Best interior company in Delhi for turnkey projects. International interior designers specializing in office interiors, hospitality design, MEP, EPC, PEB construction. 11+ years, 7M+ sqft delivered."
         canonical="https://hagerstone.com/"
-        keywords="interior design and build, hospitality interior design company, international interior designers, best interior company in delhi, top interior fit out companies in delhi, office interiors design"
+        keywords="home design companies, hospital interior designers, interior design and build, hospitality interior design company, hagerstone interior design, international interior designers, best interior company in delhi, top interior fit out companies in delhi, interior design and build companies, international interior design companies in india, interior designers international, company profile interior design firm, best interior designer, EPC, PEB, HVAC, firefighting, MEP services, Build & Construction Firm, good design office, office interiors design, commercial space design, interior design in delhi noida gurugram, modern interior design, lighting solutions, commercial office styling"
       />
       
       {/* Hero Slider */}

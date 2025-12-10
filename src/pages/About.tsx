@@ -8,7 +8,7 @@ const About = () => {
         title="About Hagerstone International | Interior Design & Build Company"
         description="Learn about Hagerstone International - 11+ years of interior design excellence, 7M+ sq ft delivered, 250+ projects across 25+ cities. Meet our leadership team."
         canonical="https://hagerstone.com/about"
-        keywords="about hagerstone, interior design company India, design build firm Delhi"
+        keywords="company profile interior design firm, international interior designers, interior design and build, best interior designer, top interior firm, EPC & PEB construction, MEP & HVAC services, office interiors design, hospitality interior design company, international interior design companies in India, best interior company in Delhi"
       />
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}

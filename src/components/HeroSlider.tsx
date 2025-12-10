@@ -6,9 +6,9 @@ const HeroSlider = () => {
   const [progress, setProgress] = useState(0);
 
   const slides = [
-    "/hero-images/office.avif",
-    "/hero-images/PEBbackground.jpg", 
-    "/hero-images/interior.avif"
+    { src: "/hero-images/office.avif", alt: "Corporate office interior design by Hagerstone – modern workspace styling" },
+    { src: "/hero-images/PEBbackground.jpg", alt: "PEB & EPC construction – pre-engineered building solutions for industrial projects" },
+    { src: "/hero-images/interior.avif", alt: "Hospitality interior design – premium reception lounge by Hagerstone" }
   ];
 
   const slideInterval = 3000; // 2 seconds per slide
@@ -46,8 +46,8 @@ const HeroSlider = () => {
         > 
           {/* Background Image */}
           <img 
-            src={slides[currentSlide]} 
-            alt="Hero slide" 
+            src={slides[currentSlide].src} 
+            alt={slides[currentSlide].alt} 
             className="w-full h-full object-cover"  // cover prevents distortion
           />
 
@@ -59,10 +59,10 @@ const HeroSlider = () => {
             <div className="flex gap-4">
               {slides.map((_, index) => (
                 <button   
-                 key={index}
-                 onClick={() => goToSlide(index)}
-                 className="relative group cursor-pointer"
-                 aria-label={`Go to slide ${index + 1}`}
+                key={index}
+                onClick={() => goToSlide(index)}
+                className="relative group cursor-pointer"
+                aria-label={`Go to slide ${index + 1}`}
                 >
                   {/* Background bar */}
                   <div className="w-16 md:w-20 lg:w-24 h-1 bg-white/30 rounded-full overflow-hidden">

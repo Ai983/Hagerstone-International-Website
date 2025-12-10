@@ -579,6 +579,84 @@ Hagerstone International provides complete MEP services including:
     tags: ["MEP services", "HVAC", "electrical", "commercial interior"],
     featured: false,
   },
+  {
+    id: "6",
+    slug: "hospital-interior-designers-patient-centered-guide",
+    title: "Hospital Interior Designers: Patient-Centered Design Guide",
+    metaTitle: "Hospital Interior Designers | Patient-Centered Healthcare Interior Guide",
+    metaDescription: "Comprehensive guide to hospital interior design in India. Learn patient-centered planning, MEP/HVAC & fire safety, lighting solutions, and turnkey fit-outs by a hospitality interior design company.",
+    excerpt: "Designing hospitals requires a human-centered approach. Explore layout planning, material selection, MEP/HVAC and fire safety, wayfinding, and infection control strategies for modern healthcare interiors.",
+    content: `
+## Patient-Centered Hospital Interior Design
+
+Healthcare environments influence recovery, staff efficiency, and visitor experience. As hospital interior designers, we focus on patient safety, comfort, and clinical workflows.
+
+### Planning & Zoning
+- Clear segregation of clinical, diagnostic, administrative and public areas
+- Infection control through material specification and airflow design
+- Universal design for accessibility
+
+### MEP, HVAC & Fire Safety
+- Air changes per hour (ACH) standards for OT/ICU
+- Pressure differentials for isolation rooms
+- Fire detection, sprinklers and compartmentalization per NBC
+
+### Lighting & Acoustics
+- Circadian lighting for patient rooms
+- Glare-free task lighting in diagnostics
+- Acoustic panels to reduce stress and improve privacy
+
+### Wayfinding & Brand Experience
+- Color-coded zones and intelligible signage
+- Calming palettes and biophilic elements for wellbeing
+
+### Turnkey Delivery
+Design-build ensures single-point accountability from planning to execution, integrating MEP, EPC and interior fit-outs.
+
+**Looking to upgrade a hospital or clinic?** [Contact Hagerstone](/contact) for a turnkey proposal.
+`,
+    image: "https://images.unsplash.com/photo-1581092339034-5f9ff3d4a149?w=1200&h=600&fit=crop",
+    imageAlt: "Modern hospital interior with patient-friendly lighting and wayfinding",
+    author: "Hagerstone Team",
+    date: "December 5, 2025",
+    readTime: "9 min read",
+    category: "Hospitality",
+    tags: ["hospital interior designers", "healthcare design", "HVAC", "fire safety"],
+    featured: false,
+  },
+  {
+    id: "7",
+    slug: "international-interior-designers-in-india-choose-right-firm",
+    title: "International Interior Designers in India: How to Choose the Right Design & Build Company",
+    metaTitle: "International Interior Designers in India | Choose the Best Design & Build Company",
+    metaDescription: "A practical checklist for selecting international interior designers in India. Evaluate portfolios, EPC/MEP capability, hospitality experience, and delivery across Delhi/Noida/Gurugram.",
+    excerpt: "Selecting the right partner is critical. Learn how to evaluate international interior design companies in India for corporate offices, hospitality, and industrial spaces.",
+    content: `
+## Choosing the Right International Interior Partner
+
+Top interior fit out companies in Delhi offer integrated design-build with EPC, PEB and MEP capability. Use this checklist:
+
+1. **Portfolio Depth** – Corporate offices, hospitality, industrial projects
+2. **Engineering Capability** – HVAC, fire safety, electrical and plumbing integration
+3. **Turnkey Delivery** – Single-point accountability from design to execution
+4. **Procurement Strength** – Engineered procurement for quality and timelines
+5. **Global Experience** – Teams that have delivered across India and overseas
+
+### Why Design-Build
+End-to-end delivery reduces risk, improves speed, and ensures budget control. Firms like Hagerstone handle architecture, interiors, MEP and construction under one roof.
+
+**Need guidance?** [Talk to us](/contact) about international interior designers in India and how we deliver for Fortune 500 clients.
+`,
+    image: "https://images.unsplash.com/photo-1600508774634-4e11d34730e2?w=1200&h=600&fit=crop",
+    imageAlt: "International interior design team collaborating on commercial office plans in India",
+    author: "Dhruv Agarwal",
+    authorRole: "Founder & Managing Director",
+    date: "December 2, 2025",
+    readTime: "8 min read",
+    category: "Design Guide",
+    tags: ["international interior designers in india", "top interior firm", "EPC", "MEP"],
+    featured: false,
+  },
 ];
 
 export const getBlogPostBySlug = (slug: string) => blogPosts.find((p) => p.slug === slug);

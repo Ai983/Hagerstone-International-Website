@@ -1,81 +1,31 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
+import { blogPosts as postsData, getFeaturedPost, getRecentPosts } from "@/data/blogPosts";
 
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 
 const Blog = () => {
-  const featuredPost = {
-    id: 1,
-    title: "The Future of Workplace Design: Trends Shaping 2024",
-    excerpt: "Explore the latest trends in office design that are revolutionizing the modern workplace. From biophilic elements to flexible spaces, discover what's driving change in interior design.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
-    author: "Hagerstone Team",
-    date: "December 15, 2024",
-    readTime: "8 min read",
-    category: "Trends"
-  };
+  const featuredPost = getFeaturedPost() ?? postsData[0];
+  const recentPosts = getRecentPosts(9);
 
-  const blogPosts = [
-    {
-      id: 2,
-      title: "Sustainable Interior Design: Creating Eco-Friendly Workspaces",
-      excerpt: "Learn how to incorporate sustainable practices and materials into your interior design projects while maintaining style and functionality.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
-      author: "Dhruv Agarwal",
-      date: "December 10, 2024",
-      readTime: "6 min read",
-      category: "Sustainability"
-    },
-    {
-      id: 3,
-      title: "Maximizing Small Office Spaces: Smart Design Solutions",
-      excerpt: "Discover innovative ways to make the most of limited office space with clever design strategies and multi-functional furniture.",
-      image: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600&h=400&fit=crop",
-      author: "Bhaskar Tyagi",
-      date: "December 5, 2024",
-      readTime: "5 min read",
-      category: "Space Planning"
-    },
-    {
-      id: 4,
-      title: "Color Psychology in Interior Design: Impact on Productivity",
-      excerpt: "Understand how different colors affect mood, productivity, and well-being in workplace environments.",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
-      author: "Hagerstone Team",
-      date: "November 28, 2024",
-      readTime: "7 min read",
-      category: "Design Tips"
-    },
-    {
-      id: 5,
-      title: "Smart Home Integration: Technology Meets Interior Design",
-      excerpt: "Explore how to seamlessly integrate smart technology into your interior design without compromising aesthetics.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
-      author: "Hagerstone Team",
-      date: "November 20, 2024",
-      readTime: "6 min read",
-      category: "Technology"
-    },
-    {
-      id: 6,
-      title: "Hotel Interior Design: Creating Memorable Guest Experiences",
-      excerpt: "Discover the key elements that make hotel interiors both functional and unforgettable for guests.",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
-      author: "Dhruv Agarwal",
-      date: "November 15, 2024",
-      readTime: "8 min read",
-      category: "Hospitality"
-    }
-  ];
 
   const categories = [
-    "All", "Trends", "Sustainability", "Space Planning", 
-    "Design Tips", "Technology", "Hospitality", "Case Studies"
+    "All", "Cost & Planning", "Design Guide", "Case Study", "Trends", "Technical", "Sustainability", "Hospitality"
   ];
 
   return (
     <div className="min-h-screen bg-background">
+
+      <SEOHead
+        title="Interior Design Blog & Ideas | Hagerstone International"
+        description="Insights from an interior design and build firm: corporate office design, hospitality interiors, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs across Delhi, Noida, Gurugram."
+        canonical="https://hagerstone.com/blog"
+        keywords="interior design and build companies, hospitality interior design company, international interior designers in India, best interior company in Delhi, corporate office styling, top interior fit out companies in Delhi, interior designers international"
+      />
+
+
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground py-20">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -100,7 +50,7 @@ const Blog = () => {
               <div className="relative overflow-hidden">
                 <img
                   src={featuredPost.image}
-                  alt={featuredPost.title}
+                   alt={featuredPost.imageAlt || featuredPost.title}
                   className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
@@ -131,7 +81,7 @@ const Blog = () => {
                   </div>
                 </div>
                 <Button className="group self-start bg-primary hover:bg-primary/90">
-                  Read Full Article
+                  Read full design insight
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </CardContent>
@@ -165,7 +115,7 @@ const Blog = () => {
             <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">Latest Articles</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+             {recentPosts.map((post, index) => (
               <Card 
                 key={post.id}
                 className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden"
@@ -174,7 +124,7 @@ const Blog = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={post.imageAlt || post.title}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -206,7 +156,7 @@ const Blog = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">{post.date}</span>
                     <Button variant="ghost" size="sm" className="group/btn p-0 h-auto">
-                      Read More
+                      Read more interior design insights
                       <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </Button>
                   </div>

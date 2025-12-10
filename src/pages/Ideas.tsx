@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEOHead from "@/components/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -167,6 +168,12 @@ const Ideas = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Office Interior Design Ideas | Hagerstone International"
+        description="Curated corporate office interior ideas across meeting rooms, cabins, reception and workstations. Explore modern, luxury, industrial, Scandinavian and Japandi styles by Hagerstone interior design and build firm."
+        canonical="https://hagerstone.com/ideas"
+        keywords="interior design and build, office interiors design, commercial space design, hospitality interior design company, international interior designers, best interior designer, top interior design firm, interior design websites, lighting solutions, commercial office styling, interior design in Delhi Noida Gurugram, modern interior design"
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground py-20">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -176,6 +183,9 @@ const Ideas = () => {
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
             Discover inspiring interior design concepts for your next project
+          </p>
+          <p className="text-base md:text-lg text-white/90 max-w-4xl mx-auto mt-6">
+            Explore corporate office styling and turnkey fit-outs crafted by our international interior designers in India. As a hospitality interior design company and design & build firm in Delhi/Noida/Gurugram, we curate modern interior design ideas for meeting rooms, conference rooms, cabins, receptions and workstations—integrating MEP, EPC, HVAC and lighting solutions for high-performance commercial spaces.
           </p>
         </div>
       </section>
