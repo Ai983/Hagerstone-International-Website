@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { blogPosts as postsData, getFeaturedPost, getRecentPosts } from "@/data/blogPosts";
-
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 
 const Blog = () => {
@@ -45,48 +45,51 @@ const Blog = () => {
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">Featured Article</h2>
           </div>
-          <Card className="bg-gradient-card border-0 shadow-luxury hover:shadow-hover transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative overflow-hidden">
-                <img
-                  src={featuredPost.image}
-                   alt={featuredPost.imageAlt || featuredPost.title}
-                  className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-accent text-accent-foreground">
-                    {featuredPost.category}
-                  </Badge>
+          <Link to={`/blog/${featuredPost.slug}`}>
+            <Card className="bg-gradient-card border-0 shadow-luxury hover:shadow-hover transition-all duration-500 hover:scale-[1.02] animate-scale-in overflow-hidden cursor-pointer">
+              <div className="grid lg:grid-cols-2 gap-0">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.imageAlt || featuredPost.title}
+                    className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-110"
+                    loading="eager"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-accent text-accent-foreground">
+                      {featuredPost.category}
+                    </Badge>
+                  </div>
                 </div>
+                <CardContent className="p-8 lg:p-12 flex flex-col justify-center">
+                  <h3 className="text-3xl font-bold text-primary mb-4 line-clamp-2">
+                    {featuredPost.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 text-lg line-clamp-3">
+                    {featuredPost.excerpt}
+                  </p>
+                  <div className="flex items-center space-x-6 text-sm text-muted-foreground mb-6">
+                    <div className="flex items-center space-x-2">
+                      <User className="h-4 w-4" />
+                      <span>{featuredPost.author}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{featuredPost.date}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{featuredPost.readTime}</span>
+                    </div>
+                  </div>
+                  <Button className="group self-start bg-primary hover:bg-primary/90">
+                    Read full article
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                </CardContent>
               </div>
-              <CardContent className="p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold text-primary mb-4 line-clamp-2">
-                  {featuredPost.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 text-lg line-clamp-3">
-                  {featuredPost.excerpt}
-                </p>
-                <div className="flex items-center space-x-6 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center space-x-2">
-                    <User className="h-4 w-4" />
-                    <span>{featuredPost.author}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>{featuredPost.date}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{featuredPost.readTime}</span>
-                  </div>
-                </div>
-                <Button className="group self-start bg-primary hover:bg-primary/90">
-                  Read full design insight
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </CardContent>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         </div>
       </section>
 
@@ -115,53 +118,55 @@ const Blog = () => {
             <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">Latest Articles</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-             {recentPosts.map((post, index) => (
-              <Card 
-                key={post.id}
-                className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.imageAlt || post.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-accent text-accent-foreground">
-                      {post.category}
-                    </Badge>
-                  </div>
-                </div>
-                <CardHeader className="pb-4">
-                  <h3 className="text-xl font-bold text-primary line-clamp-2 group-hover:text-accent transition-colors duration-300">
-                    {post.title}
-                  </h3>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-muted-foreground mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center space-x-1">
-                      <User className="h-3 w-3" />
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{post.readTime}</span>
+            {recentPosts.map((post, index) => (
+              <Link key={post.id} to={`/blog/${post.slug}`}>
+                <Card 
+                  className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden cursor-pointer h-full"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.imageAlt || post.title}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-accent text-accent-foreground">
+                        {post.category}
+                      </Badge>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">{post.date}</span>
-                    <Button variant="ghost" size="sm" className="group/btn p-0 h-auto">
-                      Read more interior design insights
-                      <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-bold text-primary line-clamp-2 group-hover:text-accent transition-colors duration-300">
+                      {post.title}
+                    </h3>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-muted-foreground mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
+                      <div className="flex items-center space-x-1">
+                        <User className="h-3 w-3" />
+                        <span>{post.author}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="h-3 w-3" />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground">{post.date}</span>
+                      <span className="text-primary text-sm font-medium group-hover:underline flex items-center">
+                        Read more
+                        <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

@@ -17,6 +17,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Services from "./pages/Services";
 import Ideas from "./pages/Ideas";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import FindYourStyle from "./pages/FindYourStyle";
 import NotFound from "./pages/NotFound";
@@ -48,6 +49,7 @@ const AppContent = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/find-your-style" element={<FindYourStyle />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
