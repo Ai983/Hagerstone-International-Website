@@ -17,7 +17,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Managing Director',
     image: '/founders/dhruvsir.png',
     //category: 'Leadership',
-    bio: 'Civil Engineer from Delhi College of Engineering. With over 10 million sq ft of projects delivered across UAE, Myanmar, and India, Dhruv established Hagerstone to provide seamless, end-to-end design and build services blending creativity with functionality.'
+    bio: 'Civil Engineer from Delhi College of Engineering. With over 10 million sq ft of projects delivered across UAE, Myanmar, and India, Dhruv sir established Hagerstone to provide seamless, end-to-end design and build services blending creativity with functionality.'
   },
   {
     id: '2',
@@ -25,7 +25,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Director',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Bhaskersir.jpg',
     //category: 'Leadership',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar sir delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
   {
     id: '3',
@@ -33,14 +33,14 @@ export const teamMembers: TeamMember[] = [
     role: 'Office Manager',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Ritumaam.jpg',
     //category: 'Architect',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'With 8+ years managing operations, our Office Coordinator ensures smooth day-to-day functioning across departments. They handle communication, documentation, scheduling, and director-level reporting. Their organisational excellence ensures every team has the support and clarity needed to deliver high-performance results.'
   },
   {
     id: '4',
     name: 'Anju',
     role: 'Project Lead',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Anju.jpg',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'With over 6 years of experience in 3D design and project execution, our Design & Project Leads blend creativity with on-site practicality. They manage site visits, prepare BOQs, coordinate with vendors, and ensure every design is delivered exactly as envisioned. Their leadership ensures seamless project flow from concept to handover.'
   },
   {
     id: '5',
@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Design & Delivery Specialist',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Khushi.jpg',
     //category: 'Marketing',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Our Design & Project Leads bring a sharp creative vision and hands-on curiosity to every project. With up to 1 year of on-ground experience, they handle 3D design, site visits, BOQ preparation, and client coordination with exceptional attention to detail. Their energy, fresh perspective, and dedication ensure every project moves smoothly from concept to execution with style and precision.'
   },
   {
     id: '6',
@@ -64,7 +64,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Lead Designer',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Anshika.jpg',
     //category: 'Marketing',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Our Design & Project Leads bring a sharp creative vision and hands-on curiosity to every project. With up to 2 years of on-ground experience, they handle 3D design, site visits, BOQ preparation, and client coordination with exceptional attention to detail. Their energy, fresh perspective, and dedication ensure every project moves smoothly from concept to execution with style and precision.'
   },
   {
     id: '8',
@@ -72,7 +72,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Accounts Manager',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Ritu.jpg',
     //category: 'Marketing',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Starting their journey in financial operations, our Junior Accounts Executive assists with invoice processing, payment tracking, vendor coordination, and imprest management. They bring a fresh, organised approach to maintaining records and supporting the finance team. With strong learning intent, they are steadily developing expertise in corporate accounting practices.'
   },
   {
     id: '9',
@@ -137,7 +137,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Accounts Manager',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Bipin.jpg',
     //category: 'Marketing',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar  delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
   {
     id: '17',
@@ -145,7 +145,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Customer Relations',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Saksham.jpg',
     //category: 'CRM',
-    bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
+    bio: 'Energetic and people-driven, our Business Development team blends communication skills with a deep understanding of the design-build industry. With 1–2 years of experience, they engage clients, manage follow-ups, prepare proposals, and support the conversion of opportunities into long-term relationships. Their enthusiasm fuels Hagerstone’s growth every day.'
   },
   {
     id: '18',
