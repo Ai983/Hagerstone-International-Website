@@ -102,16 +102,16 @@ export const teamMembers: TeamMember[] = [
     id: '12',
     name: 'Sameer',
     role: 'Design & Delivery Specialist',
-    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/vikas.JPG',
+    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Sameer.jpg',
     //category: 'Architect',
     bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
   
   {
     id: '13',
-    name: 'Amit',
-    role: 'Accounts Manager',
-    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Amit.JPG',
+    name: 'Sahir',
+    role: 'Project Engineer',
+    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Sahir.jpg',
     //category: 'Accounts',
     bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
@@ -119,7 +119,7 @@ export const teamMembers: TeamMember[] = [
     id: '14',
     name: 'Divyansh',
     role: 'Project Engineer',
-    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/divyansh.JPG',
+    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Divyansh.jpg',
     //category: 'Architect',
     bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
@@ -127,7 +127,7 @@ export const teamMembers: TeamMember[] = [
     id: '15',
     name: 'Shubh Dwivedi',
     role: 'AI Engineer',
-    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/aniket.JPG',
+    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Shubh.jpg',
     //category: 'AI/Technology',
     bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
