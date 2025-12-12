@@ -151,7 +151,7 @@ export const teamMembers: TeamMember[] = [
     id: '18',
     name: 'Bittu',
     role: 'Supply Chain Specialist',
-    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Bipin.jpg',
+    image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Bittu.jpg',
     //category: 'Marketing',
     bio: 'Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.'
   },
