@@ -228,8 +228,11 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
         {otpSent && !verified && (
           <div className="space-y-4 pt-4 border-t">
             <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-3">
-                Enter the 6-digit OTP sent to your phone
+              <p className="text-sm text-muted-foreground mb-2">
+                Enter the 6-digit OTP
+              </p>
+              <p className="text-xs text-accent font-medium mb-3 bg-accent/10 rounded-md py-2 px-3 inline-block">
+                📱 Test OTP: <strong>123456</strong>
               </p>
               <div className="flex justify-center">
                 <InputOTP maxLength={6} value={otp} onChange={setOtp}>
@@ -271,10 +274,6 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
                 {resendTimer > 0 ? `Resend in ${resendTimer}s` : "Resend OTP"}
               </Button>
             </div>
-
-            <p className="text-xs text-center text-muted-foreground">
-              For testing: Use OTP <strong>123456</strong>
-            </p>
           </div>
         )}
       </CardContent>

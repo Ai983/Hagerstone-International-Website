@@ -6,8 +6,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -16,8 +14,10 @@ serve(async (req) => {
   try {
     const { prompt, style } = await req.json();
 
-    if (!openAIApiKey) {
-      return new Response(JSON.stringify({ error: 'OpenAI API key not configured' }), {
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    if (!LOVABLE_API_KEY) {
+      console.error('LOVABLE_API_KEY not configured');
+      return new Response(JSON.stringify({ error: 'AI service not configured' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
@@ -32,35 +32,54 @@ serve(async (req) => {
 
     console.log('Generating image with prompt:', prompt.substring(0, 100) + '...');
 
-    // Generate image using DALL-E 3
-    const imageResponse = await fetch('https://api.openai.com/v1/images/generations', {
+    // Generate image using Lovable AI Gateway with Gemini image model
+    const imageResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'dall-e-3',
-        prompt: prompt,
-        n: 1,
-        size: '1792x1024',
-        quality: 'hd',
-        style: 'natural',
+        model: 'google/gemini-2.5-flash-image-preview',
+        messages: [
+          {
+            role: 'user',
+            content: `Generate a photorealistic interior design image: ${prompt}`
+          }
+        ],
+        modalities: ['image', 'text']
       }),
     });
 
-    const imageData = await imageResponse.json();
-
     if (!imageResponse.ok) {
-      console.error('DALL-E error:', imageData);
-      throw new Error(imageData.error?.message || 'Image generation failed');
+      const errorText = await imageResponse.text();
+      console.error('Lovable AI image error:', imageResponse.status, errorText);
+      
+      if (imageResponse.status === 429) {
+        return new Response(JSON.stringify({ error: 'Image generation is busy. Please try again in a moment.' }), {
+          status: 429,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      if (imageResponse.status === 402) {
+        return new Response(JSON.stringify({ error: 'AI usage limit reached. Please try again later.' }), {
+          status: 402,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      throw new Error('Image generation failed');
     }
 
-    const imageUrl = imageData.data?.[0]?.url;
-    const revisedPrompt = imageData.data?.[0]?.revised_prompt;
+    const imageData = await imageResponse.json();
+    console.log('Image response received');
+
+    // Extract image from response
+    const imageUrl = imageData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+    const revisedPrompt = imageData.choices?.[0]?.message?.content || prompt;
 
     if (!imageUrl) {
-      throw new Error('No image URL returned');
+      console.error('No image URL in response:', JSON.stringify(imageData).substring(0, 500));
+      throw new Error('No image generated');
     }
 
     console.log('Image generated successfully');
