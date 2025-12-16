@@ -5,3 +5,15 @@ verify_jwt = false
 
 [functions.chat-assistant]
 verify_jwt = false
+
+[functions.send-otp]
+verify_jwt = false
+
+[functions.verify-otp]
+verify_jwt = false
+
+[functions.generate-ai-style]
+verify_jwt = false
+
+[functions.generate-ai-image]
+verify_jwt = false
