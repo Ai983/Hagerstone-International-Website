@@ -6,8 +6,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -16,8 +14,10 @@ serve(async (req) => {
   try {
     const { quizAnswers, styleName, areaSqft, pkg } = await req.json();
 
-    if (!openAIApiKey) {
-      return new Response(JSON.stringify({ error: 'OpenAI API key not configured' }), {
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    if (!LOVABLE_API_KEY) {
+      console.error('LOVABLE_API_KEY not configured');
+      return new Response(JSON.stringify({ error: 'AI service not configured' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
@@ -28,15 +28,17 @@ serve(async (req) => {
       ? Object.entries(quizAnswers).map(([key, value]) => `${key}: ${value}`).join(', ')
       : styleName || 'Modern Corporate';
 
-    // Generate style description using GPT
-    const textResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    console.log('Generating style with context:', answersContext);
+
+    // Generate style description using Lovable AI Gateway
+    const textResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'google/gemini-2.5-flash',
         messages: [
           {
             role: 'system',
@@ -63,7 +65,7 @@ Office size: ${areaSqft || '2000'} sq.ft
 Budget tier: ${pkg || 'mid-level'}
 
 Include:
-1. A creative style title
+1. A creative style title (on first line, starting with "# ")
 2. Key design elements and materials
 3. Color palette recommendations
 4. Lighting strategy
@@ -76,37 +78,50 @@ Include:
 Make it specific, actionable, and inspiring for business owners looking to transform their workspace.`
           }
         ],
-        max_tokens: 1500,
-        temperature: 0.8,
       }),
     });
 
-    const textData = await textResponse.json();
-    
     if (!textResponse.ok) {
-      console.error('OpenAI text error:', textData);
-      throw new Error(textData.error?.message || 'Failed to generate description');
+      const errorText = await textResponse.text();
+      console.error('Lovable AI text error:', textResponse.status, errorText);
+      
+      if (textResponse.status === 429) {
+        return new Response(JSON.stringify({ error: 'AI service is busy. Please try again in a moment.' }), {
+          status: 429,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      if (textResponse.status === 402) {
+        return new Response(JSON.stringify({ error: 'AI usage limit reached. Please try again later.' }), {
+          status: 402,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      throw new Error('Failed to generate description');
     }
 
-    const styleDescription = textData.choices[0]?.message?.content || '';
+    const textData = await textResponse.json();
+    const styleDescription = textData.choices?.[0]?.message?.content || '';
 
-    // Generate image prompt
-    const imagePromptResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    console.log('Style description generated, length:', styleDescription.length);
+
+    // Generate image prompt using Lovable AI Gateway
+    const imagePromptResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'google/gemini-2.5-flash-lite',
         messages: [
           {
             role: 'system',
-            content: 'You create detailed image generation prompts for DALL-E 3 to create photorealistic interior design renderings. Focus on specific materials, lighting, colors, furniture, and architectural details.'
+            content: 'You create detailed image generation prompts for AI to create photorealistic interior design renderings. Focus on specific materials, lighting, colors, furniture, and architectural details. Return ONLY the prompt text, nothing else.'
           },
           {
             role: 'user',
-            content: `Create a detailed DALL-E 3 prompt for a modern corporate interior rendering based on:
+            content: `Create a detailed image generation prompt for a modern corporate interior rendering based on:
             
 Style: ${answersContext}
 Budget: ${pkg || 'mid-level'}
@@ -119,20 +134,24 @@ The prompt should create a photorealistic interior visualization with:
 - Professional photography quality
 - Wide-angle perspective
 
-Return ONLY the prompt, nothing else.`
+Return ONLY the prompt text, no explanations.`
           }
         ],
-        max_tokens: 300,
       }),
     });
 
-    const imagePromptData = await imagePromptResponse.json();
-    const imagePrompt = imagePromptData.choices[0]?.message?.content || 
-      `Photorealistic modern corporate office interior, clean minimalist design, glass partitions, warm wood accents, ergonomic workstations, natural light streaming through floor-to-ceiling windows, collaborative workspace area, premium materials, Indian corporate style, architectural photography, 8k resolution`;
+    let imagePrompt = `Photorealistic modern corporate office interior, clean minimalist design, glass partitions, warm wood accents, ergonomic workstations, natural light streaming through floor-to-ceiling windows, collaborative workspace area, premium materials, Indian corporate style, architectural photography, 8k resolution`;
+    
+    if (imagePromptResponse.ok) {
+      const imagePromptData = await imagePromptResponse.json();
+      imagePrompt = imagePromptData.choices?.[0]?.message?.content || imagePrompt;
+    }
 
     // Extract title from description (first line or generate one)
     const titleMatch = styleDescription.match(/^#?\s*(.+?)(?:\n|$)/);
-    const styleTitle = titleMatch ? titleMatch[1].replace(/[#*]/g, '').trim() : 'Modern Corporate Excellence';
+    const styleTitle = titleMatch ? titleMatch[1].replace(/[#*]/g, '').trim() : styleName || 'Modern Corporate Excellence';
+
+    console.log('Returning style:', styleTitle);
 
     return new Response(JSON.stringify({
       success: true,
