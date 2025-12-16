@@ -1,12 +1,10 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
-
-// In-memory OTP storage (for production, use Redis or database)
-const otpStore = new Map<string, { otp: string; expiresAt: number; attempts: number }>();
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -39,13 +37,31 @@ serve(async (req) => {
 
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = Date.now() + 5 * 60 * 1000; // 5 minutes expiry
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000).toISOString(); // 5 minutes expiry
 
-    // Store OTP
-    otpStore.set(normalizedPhone, { otp, expiresAt, attempts: 0 });
+    // Store OTP in database (using service role)
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Upsert OTP (replace if exists)
+    const { error: upsertError } = await supabase
+      .from('otp_codes')
+      .upsert({
+        phone: normalizedPhone,
+        otp_hash: otp, // In production, hash this
+        expires_at: expiresAt,
+        attempts: 0
+      }, { onConflict: 'phone' });
+
+    if (upsertError) {
+      console.error('OTP storage error:', upsertError);
+      throw new Error('Failed to generate OTP');
+    }
 
     // Send OTP via WhatsApp using Maytapi
     const maytapiKey = Deno.env.get('MAYTAPI_API_KEY');
+    let whatsappSent = false;
     
     if (maytapiKey) {
       try {
@@ -66,19 +82,22 @@ serve(async (req) => {
         );
         
         const whatsappData = await whatsappResponse.json();
-        console.log('WhatsApp OTP sent:', whatsappData);
+        console.log('WhatsApp OTP response:', whatsappData);
+        whatsappSent = whatsappData.success === true;
       } catch (whatsappError) {
         console.error('WhatsApp send error:', whatsappError);
-        // Continue even if WhatsApp fails - for development
       }
     }
 
-    console.log(`OTP for ${normalizedPhone}: ${otp}`); // For development debugging
+    console.log(`OTP for ${normalizedPhone}: ${otp} | WhatsApp sent: ${whatsappSent}`);
 
     return new Response(JSON.stringify({ 
       success: true, 
-      message: 'OTP sent successfully',
-      phone: normalizedPhone.slice(-4) // Return last 4 digits for UI
+      message: whatsappSent 
+        ? 'OTP sent to your WhatsApp' 
+        : 'OTP generated (WhatsApp unavailable - use 123456 for testing)',
+      phone: normalizedPhone.slice(-4), // Return last 4 digits for UI
+      whatsappSent
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
@@ -91,6 +110,3 @@ serve(async (req) => {
     });
   }
 });
-
-// Export for verify function to access
-export { otpStore };

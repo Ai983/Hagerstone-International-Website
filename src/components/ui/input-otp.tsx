@@ -5,6 +5,7 @@ interface InputOTPContextValue {
   slots: SlotProps[]
   isFocused: boolean
   isHovering: boolean
+  focusInput: () => void
 }
 
 interface SlotProps {
@@ -32,52 +33,54 @@ interface InputOTPProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
 
 const InputOTP = React.forwardRef<HTMLInputElement, InputOTPProps>(
   ({ className, maxLength, value = "", onChange, onComplete, children, ...props }, ref) => {
-    const [internalValue, setInternalValue] = React.useState(value)
+    const inputRef = React.useRef<HTMLInputElement>(null)
     const [isFocused, setIsFocused] = React.useState(false)
     const [isHovering, setIsHovering] = React.useState(false)
 
+    // Sync internal value with controlled value
+    const currentValue = value
+
     const slots: SlotProps[] = Array.from({ length: maxLength }, (_, i) => ({
-      isActive: i === internalValue.length,
-      char: internalValue[i] || null,
-      hasFakeCaret: i === internalValue.length && isFocused,
+      isActive: i === currentValue.length && isFocused,
+      char: currentValue[i] || null,
+      hasFakeCaret: i === currentValue.length && isFocused,
     }))
 
-    const handleChange = (newValue: string) => {
-      if (newValue.length <= maxLength) {
-        setInternalValue(newValue)
-        onChange?.(newValue)
-        if (newValue.length === maxLength) {
-          onComplete?.(newValue)
-        }
+    const focusInput = () => {
+      inputRef.current?.focus()
+    }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value.replace(/\D/g, '').slice(0, maxLength)
+      onChange?.(newValue)
+      if (newValue.length === maxLength) {
+        onComplete?.(newValue)
       }
     }
 
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (e.key === "Backspace") {
-        handleChange(internalValue.slice(0, -1))
-      } else if (/^\d$/.test(e.key)) {
-        handleChange(internalValue + e.key)
-      }
-    }
+    // Combine refs
+    React.useImperativeHandle(ref, () => inputRef.current!)
 
     return (
-      <InputOTPContext.Provider value={{ slots, isFocused, isHovering }}>
+      <InputOTPContext.Provider value={{ slots, isFocused, isHovering, focusInput }}>
         <div
-          className={cn("flex items-center gap-2", className)}
+          className={cn("flex items-center gap-2 cursor-text", className)}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
+          onClick={focusInput}
         >
           <input
-            ref={ref}
+            ref={inputRef}
             type="text"
             inputMode="numeric"
             pattern="[0-9]*"
-            value={internalValue}
+            autoComplete="one-time-code"
+            value={currentValue}
+            onChange={handleInputChange}
             maxLength={maxLength}
-            className="sr-only"
+            className="absolute opacity-0 w-0 h-0 pointer-events-none"
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            onKeyDown={handleKeyDown}
             {...props}
           />
           {children}
@@ -100,14 +103,15 @@ const InputOTPSlot = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & { index: number }
 >(({ index, className, ...props }, ref) => {
-  const { slots } = useInputOTP()
+  const { slots, focusInput } = useInputOTP()
   const slot = slots[index]
 
   return (
     <div
       ref={ref}
+      onClick={focusInput}
       className={cn(
-        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
+        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md cursor-text select-none",
         slot?.isActive && "z-10 ring-2 ring-ring ring-offset-background",
         className
       )}

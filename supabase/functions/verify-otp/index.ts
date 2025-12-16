@@ -6,16 +6,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// In-memory OTP storage (should match send-otp)
-const otpStore = new Map<string, { otp: string; expiresAt: number; attempts: number }>();
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { phone, otp, name, email, company, quizAnswers, areaSqft, pkg, features } = await req.json();
+    const { phone, otp, name, email, company } = await req.json();
     
     if (!phone || !otp) {
       return new Response(JSON.stringify({ error: 'Phone and OTP are required' }), {
@@ -28,12 +25,26 @@ serve(async (req) => {
     const cleanPhone = phone.replace(/\D/g, '');
     const normalizedPhone = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
 
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
     // For development: accept "123456" as valid OTP
     const isDevOtp = otp === '123456';
     
-    const storedData = otpStore.get(normalizedPhone);
-    
     if (!isDevOtp) {
+      // Fetch stored OTP from database
+      const { data: storedData, error: fetchError } = await supabase
+        .from('otp_codes')
+        .select('*')
+        .eq('phone', normalizedPhone)
+        .maybeSingle();
+
+      if (fetchError) {
+        console.error('OTP fetch error:', fetchError);
+        throw new Error('Verification failed');
+      }
+
       if (!storedData) {
         return new Response(JSON.stringify({ error: 'OTP expired or not found. Please request a new OTP.' }), {
           status: 400,
@@ -41,8 +52,9 @@ serve(async (req) => {
         });
       }
 
-      if (Date.now() > storedData.expiresAt) {
-        otpStore.delete(normalizedPhone);
+      if (new Date() > new Date(storedData.expires_at)) {
+        // Clean up expired OTP
+        await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
         return new Response(JSON.stringify({ error: 'OTP has expired. Please request a new OTP.' }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -50,18 +62,23 @@ serve(async (req) => {
       }
 
       if (storedData.attempts >= 3) {
-        otpStore.delete(normalizedPhone);
+        await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
         return new Response(JSON.stringify({ error: 'Too many attempts. Please request a new OTP.' }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      if (storedData.otp !== otp) {
-        storedData.attempts++;
+      if (storedData.otp_hash !== otp) {
+        // Increment attempts
+        await supabase
+          .from('otp_codes')
+          .update({ attempts: storedData.attempts + 1 })
+          .eq('phone', normalizedPhone);
+        
         return new Response(JSON.stringify({ 
           error: 'Invalid OTP. Please try again.',
-          attemptsLeft: 3 - storedData.attempts
+          attemptsLeft: 3 - (storedData.attempts + 1)
         }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -70,13 +87,9 @@ serve(async (req) => {
     }
 
     // OTP verified - clean up
-    otpStore.delete(normalizedPhone);
+    await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
 
     // Store lead in Supabase
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     const { error: insertError } = await supabase.from('leads').insert({
       name: name || 'Anonymous',
       email: email || '',

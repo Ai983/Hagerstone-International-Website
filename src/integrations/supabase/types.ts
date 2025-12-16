@@ -38,6 +38,33 @@ export type Database = {
         }
         Relationships: []
       }
+      otp_codes: {
+        Row: {
+          attempts: number
+          created_at: string
+          expires_at: string
+          otp_hash: string
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          created_at?: string
+          expires_at: string
+          otp_hash: string
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          created_at?: string
+          expires_at?: string
+          otp_hash?: string
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
