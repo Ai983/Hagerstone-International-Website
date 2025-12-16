@@ -1,153 +1,83 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, RotateCcw } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw, Sparkles, Zap } from "lucide-react";
 import { EstimatorProvider } from "@/components/estimator/context";
 import EstimatorFlow from "@/components/estimator/EstimatorFlow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+import QuizQuestionCard from "@/components/style-quiz/QuizQuestionCard";
+import LiveProfileSummary from "@/components/style-quiz/LiveProfileSummary";
+import LeadCaptureOTP from "@/components/style-quiz/LeadCaptureOTP";
+import AIResultDisplay from "@/components/style-quiz/AIResultDisplay";
 
-type StyleId =
-  | 'modern_collab'
-  | 'minimal_industrial'
-  | 'luxury_corporate'
-  | 'biophilic_calm'
-  | 'creative_hybrid'
-  | 'traditional_private';
+type StyleId = 'modern_collab' | 'minimal_industrial' | 'luxury_corporate' | 'biophilic_calm' | 'creative_hybrid' | 'traditional_private';
 
-const STYLES: Record<StyleId, {
-  name: string; slug: string; desc: string; images: string[]; ctas: {label: string; href: string;}[];
-}> = {
-  modern_collab: {
-    name: 'Modern Collaborative',
-    slug: 'modern-collab',
-    desc: 'Open layouts, glass partitions, flexible hubs and clean lines that boost team energy and cross-functional work.',
-    images: ['/Styles/moduler-collab-1.png','/Styles/moduler-collab-2.jpeg','/Styles/moduler-collab-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=modern-collab'},{label:'Book a style consult', href:'/contact'}]
-  },
-  minimal_industrial: {
-    name: 'Minimalist Industrial',
-    slug: 'minimal-industrial',
-    desc: 'Exposed concrete/brick, steel details, monochrome palette and purposeful minimalism for focused, efficient teams.',
-    images: ['/Styles/minimal-Industrial-1.jpeg','/Styles/minimal-industrial-2.jpeg','/Styles/minimal-industrial-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=minimal-industrial'},{label:'Book a style consult', href:'/contact'}]
-  },
-  luxury_corporate: {
-    name: 'Luxury Corporate',
-    slug: 'luxury-corporate',
-    desc: 'Executive presence with rich woods, brass accents, plush textures, acoustic comfort and concierge-grade meeting suites.',
-    images: ['/Styles/luxury-coorporate-1.jpeg','/Styles/luxury-coorporate-2.jpeg','/Styles/luxury-coorporate-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=luxury-corporate'},{label:'Book a style consult', href:'/contact'}]
-  },
-  biophilic_calm: {
-    name: 'Biophilic Calm',
-    slug: 'biophilic-calm',
-    desc: 'Natural woods, plants, daylight strategy, soft acoustics and wellness nooks for calm, restorative workplaces.',
-    images: ['/Styles/biophilic-calm-1.jpeg','/Styles/biophilic-calm-2.jpeg','/Styles/biophilic-calm-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=biophilic-calm'},{label:'Book a style consult', href:'/contact'}]
-  },
-  creative_hybrid: {
-    name: 'Creative Hybrid',
-    slug: 'creative-hybrid',
-    desc: 'Playful color pops, modular zones, writeable walls and maker spaces to spark ideas and rapid prototyping.',
-    images: ['/Styles/creative-hybrid-1.jpeg','/Styles/creative-hybrid-2.jpeg','/Styles/creative-hybrid-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=creative-hybrid'},{label:'Book a style consult', href:'/contact'}]
-  },
-  traditional_private: {
-    name: 'Traditional Private Office',
-    slug: 'traditional-private',
-    desc: 'Quiet enclosed offices, refined finishes, formal meeting suites and high privacy for leadership-heavy orgs.',
-    images: ['/Styles/traditional-private-1.jpeg','/Styles/traditional-private-2.jpeg','/Styles/traditional-private-3.jpeg'],
-    ctas: [{label:'See projects in this style', href:'/projects?style=traditional-private'},{label:'Book a style consult', href:'/contact'}]
-  }
+const STYLES: Record<StyleId, { name: string; desc: string }> = {
+  modern_collab: { name: 'Modern Collaborative', desc: 'Open layouts, glass partitions, flexible hubs and clean lines.' },
+  minimal_industrial: { name: 'Minimalist Industrial', desc: 'Exposed concrete/brick, steel details, monochrome palette.' },
+  luxury_corporate: { name: 'Luxury Corporate', desc: 'Executive presence with rich woods, brass accents, plush textures.' },
+  biophilic_calm: { name: 'Biophilic Calm', desc: 'Natural woods, plants, daylight strategy, soft acoustics.' },
+  creative_hybrid: { name: 'Creative Hybrid', desc: 'Playful color pops, modular zones, writeable walls.' },
+  traditional_private: { name: 'Traditional Private Office', desc: 'Quiet enclosed offices, refined finishes, formal meeting suites.' }
 };
 
-const QUESTIONS: {
-  id: string; prompt: string;
-  options: { label: string; style: StyleId; img?: string; helper?: string }[];
-}[] = [
-  {
-    id:'layout', prompt:'Which workspace layout fits your team best?',
-    options:[
-      {label:'Open, buzzing collaboration zones', style:'modern_collab'},
-      {label:'Quiet, enclosed private offices', style:'traditional_private'},
-      {label:'Flexible mix of zones', style:'creative_hybrid'}
-    ]
-  },
-  {
-    id:'aesthetic', prompt:'Pick an aesthetic vibe:',
-    options:[
-      {label:'Sleek & modern', style:'modern_collab'},
-      {label:'Raw & industrial', style:'minimal_industrial'},
-      {label:'Premium & executive', style:'luxury_corporate'},
-      {label:'Natural & calming', style:'biophilic_calm'}
-    ]
-  },
-  {
-    id:'materials', prompt:'Favorite materials & textures?',
-    options:[
-      {label:'Glass, light woods, clean finishes', style:'modern_collab'},
-      {label:'Exposed brick, steel, concrete', style:'minimal_industrial'},
-      {label:'Rich wood, brass, plush textiles', style:'luxury_corporate'},
-      {label:'Plants, stone, rattan, daylight', style:'biophilic_calm'}
-    ]
-  },
-  {
-    id:'brand', prompt:'Your brand personality leans more…',
-    options:[
-      {label:'Innovative & energetic', style:'creative_hybrid'},
-      {label:'Classic & authoritative', style:'luxury_corporate'},
-      {label:'Grounded & wellness-oriented', style:'biophilic_calm'},
-      {label:'Efficient & minimal', style:'minimal_industrial'}
-    ]
-  },
-  {
-    id:'team', prompt:'How does your team mostly work?',
-    options:[
-      {label:'Cross-functional collab all day', style:'modern_collab'},
-      {label:'Heads-down focused most of the time', style:'traditional_private'},
-      {label:'It varies by project', style:'creative_hybrid'}
-    ]
-  },
-  {
-    id:'color', prompt:'Preferred palette for the office?',
-    options:[
-      {label:'Neutral base + bold accents', style:'creative_hybrid'},
-      {label:'Warm neutrals & wood tones', style:'luxury_corporate'},
-      {label:'Greens/earthy & lots of daylight', style:'biophilic_calm'},
-      {label:'Monochrome/industrial neutrals', style:'minimal_industrial'}
-    ]
-  },
-  {
-    id:'priority', prompt:'Top priority for your new space?',
-    options:[
-      {label:'Boost collaboration & energy', style:'modern_collab'},
-      {label:'Privacy, focus & acoustics', style:'traditional_private'},
-      {label:'Brand experience for clients', style:'luxury_corporate'}
-    ]
-  }
+const QUESTIONS: { id: string; prompt: string; options: { label: string; style: StyleId }[] }[] = [
+  { id: 'layout', prompt: 'Which workspace layout fits your team best?', options: [
+    { label: 'Open, buzzing collaboration zones', style: 'modern_collab' },
+    { label: 'Quiet, enclosed private offices', style: 'traditional_private' },
+    { label: 'Flexible mix of zones', style: 'creative_hybrid' }
+  ]},
+  { id: 'aesthetic', prompt: 'Pick an aesthetic vibe:', options: [
+    { label: 'Sleek & modern', style: 'modern_collab' },
+    { label: 'Raw & industrial', style: 'minimal_industrial' },
+    { label: 'Premium & executive', style: 'luxury_corporate' },
+    { label: 'Natural & calming', style: 'biophilic_calm' }
+  ]},
+  { id: 'materials', prompt: 'Favorite materials & textures?', options: [
+    { label: 'Glass, light woods, clean finishes', style: 'modern_collab' },
+    { label: 'Exposed brick, steel, concrete', style: 'minimal_industrial' },
+    { label: 'Rich wood, brass, plush textiles', style: 'luxury_corporate' },
+    { label: 'Plants, stone, rattan, daylight', style: 'biophilic_calm' }
+  ]},
+  { id: 'brand', prompt: 'Your brand personality leans more…', options: [
+    { label: 'Innovative & energetic', style: 'creative_hybrid' },
+    { label: 'Classic & authoritative', style: 'luxury_corporate' },
+    { label: 'Grounded & wellness-oriented', style: 'biophilic_calm' },
+    { label: 'Efficient & minimal', style: 'minimal_industrial' }
+  ]},
+  { id: 'priority', prompt: 'Top priority for your new space?', options: [
+    { label: 'Boost collaboration & energy', style: 'modern_collab' },
+    { label: 'Privacy, focus & acoustics', style: 'traditional_private' },
+    { label: 'Brand experience for clients', style: 'luxury_corporate' }
+  ]}
 ];
 
 const FindYourStyle = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<StyleId[]>([]);
+  const [answerLabels, setAnswerLabels] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
+  const [showLeadCapture, setShowLeadCapture] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<StyleId | null>(null);
+  const [verifiedUser, setVerifiedUser] = useState<{ name: string; email: string; phone: string; company: string } | null>(null);
 
-  const handleAnswer = (style: StyleId) => {
-    setSelectedAnswer(style);
-  };
+  const handleAnswer = (style: StyleId) => setSelectedAnswer(style);
 
   const handleNext = () => {
     if (!selectedAnswer) return;
-
-    const newAnswers = [...answers, selectedAnswer];
-    setAnswers(newAnswers);
+    const question = QUESTIONS[currentQuestion];
+    const selectedOption = question.options.find(o => o.style === selectedAnswer);
+    
+    setAnswers([...answers, selectedAnswer]);
+    setAnswerLabels({ ...answerLabels, [question.id]: selectedOption?.label || '' });
     setSelectedAnswer(null);
 
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setShowResults(true);
+      setShowLeadCapture(true);
     }
   };
 
@@ -160,213 +90,137 @@ const FindYourStyle = () => {
   };
 
   const calculateResult = (): StyleId => {
-    const styleCounts: Record<StyleId, number> = {
-      modern_collab: 0,
-      minimal_industrial: 0,
-      luxury_corporate: 0,
-      biophilic_calm: 0,
-      creative_hybrid: 0,
-      traditional_private: 0
-    };
-
-    answers.forEach(style => {
-      styleCounts[style]++;
-    });
-
-    // Find the style with the most votes (recency as tiebreaker)
-    let winner: StyleId = answers[0];
-    let maxCount = 0;
-
-    Object.entries(styleCounts).forEach(([style, count]) => {
-      if (count > maxCount || (count === maxCount && answers.lastIndexOf(style as StyleId) > answers.lastIndexOf(winner))) {
-        winner = style as StyleId;
-        maxCount = count;
-      }
-    });
-
-    return winner;
+    const counts: Record<StyleId, number> = { modern_collab: 0, minimal_industrial: 0, luxury_corporate: 0, biophilic_calm: 0, creative_hybrid: 0, traditional_private: 0 };
+    answers.forEach(s => counts[s]++);
+    return (Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0]) as StyleId;
   };
 
   const resetQuiz = () => {
     setCurrentQuestion(0);
     setAnswers([]);
+    setAnswerLabels({});
     setShowResults(false);
+    setShowLeadCapture(false);
     setSelectedAnswer(null);
+    setVerifiedUser(null);
   };
 
-  if (showResults) {
-    const result = calculateResult();
-    const style = STYLES[result];
+  const handleVerified = (data: { name: string; email: string; phone: string; company: string }) => {
+    setVerifiedUser(data);
+    setShowLeadCapture(false);
+    setShowResults(true);
+  };
 
-    return (
-      <main className="min-h-screen bg-background pt-28 md:pt-32 pb-8">
-        <div className="max-w-2xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Your Perfect Office Style
-            </h1>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
-
-          {/* Results */}
-          <Card className="mb-8">
-            <CardContent className="p-8">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-                  {style.name}
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  {style.desc}
-                </p>
-              </div>
-
-              {/* Image Gallery */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                {style.images.map((image, index) => (
-                  <div key={index} className="aspect-video rounded-lg overflow-hidden bg-muted">
-                    <img
-                      src={image}
-                      alt={`${style.name} example ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.className = 'w-full h-full flex items-center justify-center bg-muted text-muted-foreground';
-                          const span = document.createElement('span');
-                          span.className = 'text-sm font-medium';
-                          span.textContent = style.name;
-                          parent.appendChild(span);
-                        }
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {style.ctas.map((cta, index) => (
-                  <Button
-                    key={index}
-                    asChild
-                    variant={index === 0 ? "default" : "outline"}
-                    size="lg"
-                    className="min-w-[200px]"
-                  >
-                    <a href={cta.href}>
-                      {cta.label}
-                    </a>
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Retake Quiz */}
-          <div className="text-center">
-            <Button
-              onClick={resetQuiz}
-              variant="ghost"
-              className="gap-2"
-            >
-              <RotateCcw className="w-4 h-4" />
-              Retake Quiz
-            </Button>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  const question = QUESTIONS[currentQuestion];
+  const result = calculateResult();
+  const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
 
   return (
-    <main className="min-h-screen bg-background pt-28 md:pt-32 pb-8 px-4">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Find Your Office Style
-          </h1>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+    <>
+      <Helmet>
+        <title>Find Your Office Style | AI Interior Design & Cost Estimator – Hagerstone</title>
+        <meta name="description" content="Discover your ideal office style with India's first AI-driven interior design quiz. Get personalized workspace recommendations, cost estimates, and AI-generated visualizations for office fit-out in Delhi NCR." />
+      </Helmet>
 
-        {/* Tabs: Quiz | Estimator */}
-        <Tabs defaultValue="quiz">
-          <TabsList className="mb-6 grid grid-cols-2 w-full max-w-md mx-auto">
-            <TabsTrigger value="quiz">Style Quiz</TabsTrigger>
-            <TabsTrigger value="estimator">Cost Estimator</TabsTrigger>
-          </TabsList>
+      <main className="min-h-screen bg-background pt-24 md:pt-28 pb-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Hero Banner */}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Sparkles className="w-4 h-4" />
+              India's First AI-Driven Interior Design Company
+            </div>
+            <h1 className="font-playfair text-3xl md:text-5xl font-bold text-foreground mb-3">Find Your Office Style</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              AI-powered workspace design recommendations. Delivered with efficiency and record time.
+            </p>
+          </motion.div>
 
-          <TabsContent value="quiz">
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-muted-foreground">
-                  Question {currentQuestion + 1} of {QUESTIONS.length}
-                </span>
-                <span className="text-sm font-medium text-primary">
-                  Q{currentQuestion + 1}/7
-                </span>
-              </div>
-              <div className="w-full bg-muted rounded-full h-2">
-                <div
-                  className="bg-primary h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
-                />
+          {showResults && verifiedUser ? (
+            <div className="space-y-6">
+              <AIResultDisplay 
+                styleName={STYLES[result].name} 
+                quizAnswers={answerLabels} 
+                userName={verifiedUser.name}
+              />
+              <div className="text-center">
+                <Button onClick={resetQuiz} variant="ghost" className="gap-2">
+                  <RotateCcw className="w-4 h-4" /> Retake Quiz
+                </Button>
               </div>
             </div>
+          ) : showLeadCapture ? (
+            <div className="max-w-xl mx-auto">
+              <LeadCaptureOTP onVerified={handleVerified} />
+              <div className="text-center mt-4">
+                <Button variant="ghost" onClick={() => setShowLeadCapture(false)} className="gap-2">
+                  <ChevronLeft className="w-4 h-4" /> Back to Quiz
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <Tabs defaultValue="quiz" className="space-y-6">
+              <TabsList className="grid grid-cols-2 w-full max-w-md mx-auto">
+                <TabsTrigger value="quiz" className="gap-2"><Sparkles className="w-4 h-4" />Style Quiz</TabsTrigger>
+                <TabsTrigger value="estimator" className="gap-2"><Zap className="w-4 h-4" />Cost Estimator</TabsTrigger>
+              </TabsList>
 
-            <Card className="mb-8">
-              <CardContent className="p-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6 text-center">
-                  {question.prompt}
-                </h2>
-                <div className="space-y-3">
-                  {question.options.map((option, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswer(option.style)}
-                      className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
-                        selectedAnswer === option.style
-                          ? 'border-primary bg-primary/5 text-primary'
-                          : 'border-border bg-card hover:border-primary/50 hover:bg-accent'
-                      }`}
-                      aria-pressed={selectedAnswer === option.style}
-                    >
-                      <span className="font-medium">{option.label}</span>
-                      {option.helper && (
-                        <div className="text-sm text-muted-foreground mt-1">
-                          {option.helper}
-                        </div>
-                      )}
-                    </button>
-                  ))}
+              <TabsContent value="quiz">
+                <div className="grid lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2 space-y-6">
+                    {/* Progress */}
+                    <div className="flex items-center gap-4">
+                      <div className="flex-1 bg-muted rounded-full h-2">
+                        <motion.div className="bg-accent h-2 rounded-full" animate={{ width: `${progress}%` }} />
+                      </div>
+                      <span className="text-sm text-muted-foreground">{currentQuestion + 1}/{QUESTIONS.length}</span>
+                    </div>
+
+                    <AnimatePresence mode="wait">
+                      <motion.div key={currentQuestion} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                        <QuizQuestionCard
+                          prompt={QUESTIONS[currentQuestion].prompt}
+                          options={QUESTIONS[currentQuestion].options}
+                          selectedAnswer={selectedAnswer}
+                          onSelect={handleAnswer}
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+
+                    <div className="flex justify-between">
+                      <Button onClick={handleBack} variant="outline" disabled={currentQuestion === 0} className="gap-2">
+                        <ChevronLeft className="w-4 h-4" /> Back
+                      </Button>
+                      <Button onClick={handleNext} disabled={!selectedAnswer} className="gap-2">
+                        {currentQuestion === QUESTIONS.length - 1 ? 'Get Results' : 'Next'} <ChevronRight className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  <LiveProfileSummary answers={answerLabels} currentStep={currentQuestion} totalSteps={QUESTIONS.length} />
                 </div>
-              </CardContent>
-            </Card>
+              </TabsContent>
 
-            <div className="flex justify-between items-center">
-              <Button onClick={handleBack} variant="outline" disabled={currentQuestion === 0} className="gap-2">
-                <ChevronLeft className="w-4 h-4" />
-                Back
-              </Button>
-              <Button onClick={handleNext} disabled={!selectedAnswer} className="gap-2 min-w-[120px]">
-                {currentQuestion === QUESTIONS.length - 1 ? 'Get Results' : 'Next'}
-              </Button>
-            </div>
-          </TabsContent>
+              <TabsContent value="estimator">
+                <EstimatorProvider><EstimatorFlow /></EstimatorProvider>
+              </TabsContent>
+            </Tabs>
+          )}
 
-          <TabsContent value="estimator">
-            <EstimatorProvider>
-              <EstimatorFlow />
-            </EstimatorProvider>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </main>
+          {/* SEO Content */}
+          <Card className="mt-12 bg-muted/30 border-0">
+            <CardContent className="p-6">
+              <h2 className="font-playfair text-lg font-semibold mb-3">AI-Driven Office Interior Design</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Hagerstone's AI Office Style Quiz combines interior design expertise with cutting-edge artificial intelligence 
+                to help businesses discover their ideal workspace style, layout and cost estimate. Get personalized recommendations 
+                for office interior design, turnkey fit-out, and material selections in Delhi NCR. Our construction automation 
+                and BOQ automation ensures efficient project delivery with premium quality.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </main>
+    </>
   );
 };
 
