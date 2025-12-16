@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import HeroSlider from "@/components/HeroSlider";
+import AIStyleFeatureSection from "@/components/AIStyleFeatureSection";
 import VideoTestimonials from "@/components/VideoTestimonials";
 import AchievementSection from "@/components/AchievementSection";
 import FAQSection from "@/components/FAQSection";
@@ -97,6 +98,9 @@ const Index = () => {
       
       {/* Hero Slider */}
       <HeroSlider />
+
+      {/* AI Style Feature Section */}
+      <AIStyleFeatureSection />
 
       {/* SEO-Optimized Introduction Section */}
       <section className="py-20 bg-gradient-to-b from-background via-muted/10 to-background">
