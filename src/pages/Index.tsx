@@ -16,6 +16,14 @@ import { motion } from "framer-motion";
 
 import { useInView } from "react-intersection-observer";
 import {
+  AnimatedBackground,
+  TextReveal,
+  ScrollReveal,
+  StaggerContainer,
+  GlowingBorder,
+  MagneticButton,
+} from "@/components/animations";
+import {
   Building2,
   Users,
   Award,
@@ -103,32 +111,47 @@ const Index = () => {
       <AIStyleFeatureSection />
 
       {/* SEO-Optimized Introduction Section */}
-      <section className="py-20 bg-gradient-to-b from-background via-muted/10 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-8 animate-fade-in">
+      <AnimatedBackground variant="mesh" className="py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <TextReveal
+            variant="blur"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-primary mb-8"
+          >
             Transform Spaces. Inspire Excellence.
-          </h1>
+          </TextReveal>
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xl md:text-2xl text-foreground/90 mb-8 leading-relaxed animate-slide-up">
-              Hagerstone International is a premier <strong>interior design and build company</strong> serving corporate, commercial, hospitality, and industrial sectors. As one of the <strong>top interior fit out companies in Delhi</strong>, we deliver turnkey solutions across Delhi, Noida, Gurugram, and 25+ cities globally.
-            </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Our team of <strong>international interior designers</strong> excels in comprehensive services—from <Link to="/services" className="text-accent hover:text-accent/80 underline">office interiors design</Link> and <strong>commercial space design</strong> to MEP, HVAC, PEB, and EPC solutions. We're recognized among <strong>international interior design companies in India</strong> for our work with Fortune 500 clients.
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground mb-10">
-              With <Link to="/about" className="text-accent hover:text-accent/80 underline">11+ years of excellence</Link> and 7M+ sq. ft. delivered, discover why leading organizations trust us as their <strong>build & construction firm</strong>.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:scale-105 transition-all">
-                <Link to="/projects">View Our Portfolio</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all">
-                <Link to="/contact">Get Free Consultation</Link>
-              </Button>
-            </div>
+            <ScrollReveal variant="slide-up" delay={0.2}>
+              <p className="text-xl md:text-2xl text-foreground/90 mb-8 leading-relaxed">
+                Hagerstone International is a premier <strong>interior design and build company</strong> serving corporate, commercial, hospitality, and industrial sectors. As one of the <strong>top interior fit out companies in Delhi</strong>, we deliver turnkey solutions across Delhi, Noida, Gurugram, and 25+ cities globally.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="slide-up" delay={0.3}>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+                Our team of <strong>international interior designers</strong> excels in comprehensive services—from <Link to="/services" className="text-accent hover:text-accent/80 underline">office interiors design</Link> and <strong>commercial space design</strong> to MEP, HVAC, PEB, and EPC solutions. We're recognized among <strong>international interior design companies in India</strong> for our work with Fortune 500 clients.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="slide-up" delay={0.4}>
+              <p className="text-base md:text-lg text-muted-foreground mb-10">
+                With <Link to="/about" className="text-accent hover:text-accent/80 underline">11+ years of excellence</Link> and 7M+ sq. ft. delivered, discover why leading organizations trust us as their <strong>build & construction firm</strong>.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="scale" delay={0.5}>
+              <div className="flex flex-wrap justify-center gap-4">
+                <MagneticButton>
+                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:scale-105 transition-all">
+                    <Link to="/projects">View Our Portfolio</Link>
+                  </Button>
+                </MagneticButton>
+                <MagneticButton>
+                  <Button asChild size="lg" variant="outline" className="hover:bg-accent hover:text-accent-foreground hover:scale-105 transition-all">
+                    <Link to="/contact">Get Free Consultation</Link>
+                  </Button>
+                </MagneticButton>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
-      </section>
+      </AnimatedBackground>
 
       {/* Stats Section */}
       <section className="py-20 bg-white dark:bg-muted/20 transition-colors duration-300">
@@ -177,57 +200,48 @@ const Index = () => {
 
       
       {/* Services Preview */}
-      <section className="py-20 px-6 md:px-16 text-center bg-background">
-        <motion.h2
-          className="text-3xl md:text-5xl font-bold text-primary mb-6"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Comprehensive Design & Build Services
-        </motion.h2>
-        <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          From <strong>office interiors design</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design</strong>, we deliver premium <strong>design fit-outs</strong> and <strong>modern interior design</strong> solutions across all sectors.
-        </motion.p>
-        <motion.p
-          className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-10"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          As a <strong>good design office</strong>, we integrate <strong>MEP</strong>, <strong>EPC</strong>, <strong>PEB</strong>, <strong>HVAC</strong>, <strong>lighting solutions</strong>, and <strong>commercial office styling</strong> to deliver complete <Link to="/services" className="text-accent hover:underline">turnkey solutions</Link> for <strong>interior design in Delhi/Noida/Gurugram</strong> and beyond.
-        </motion.p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Link key={index} to={service.link} aria-label={`Learn more about ${service.title}`}>
-              <motion.div
-                className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 h-full"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <service.icon className="w-12 h-12 text-accent mb-4 mx-auto" aria-hidden="true" />
-                <h3 className="text-xl font-semibold text-primary mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                <span className="text-accent hover:underline text-sm font-medium">
-                  Learn More →
-                </span>
-              </motion.div>
-            </Link>
-          ))}
+      <AnimatedBackground variant="gradient" className="py-20 px-6 md:px-16 text-center">
+        <div className="relative">
+          <TextReveal
+            variant="words"
+            className="text-3xl md:text-5xl font-bold text-primary mb-6"
+          >
+            Comprehensive Design & Build Services
+          </TextReveal>
+          <ScrollReveal variant="slide-up" delay={0.2}>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
+              From <strong>office interiors design</strong> and <strong>commercial space design</strong> to <strong>hospitality interior design</strong>, we deliver premium <strong>design fit-outs</strong> and <strong>modern interior design</strong> solutions across all sectors.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal variant="slide-up" delay={0.3}>
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+              As a <strong>good design office</strong>, we integrate <strong>MEP</strong>, <strong>EPC</strong>, <strong>PEB</strong>, <strong>HVAC</strong>, <strong>lighting solutions</strong>, and <strong>commercial office styling</strong> to deliver complete <Link to="/services" className="text-accent hover:underline">turnkey solutions</Link> for <strong>interior design in Delhi/Noida/Gurugram</strong> and beyond.
+            </p>
+          </ScrollReveal>
+          <StaggerContainer 
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+            variant="slide-up"
+            staggerDelay={0.15}
+          >
+            {services.map((service, index) => (
+              <Link key={index} to={service.link} aria-label={`Learn more about ${service.title}`}>
+                <GlowingBorder>
+                  <div className="bg-muted rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 h-full">
+                    <service.icon className="w-12 h-12 text-accent mb-4 mx-auto" aria-hidden="true" />
+                    <h3 className="text-xl font-semibold text-primary mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <span className="text-accent hover:underline text-sm font-medium">
+                      Learn More →
+                    </span>
+                  </div>
+                </GlowingBorder>
+              </Link>
+            ))}
+          </StaggerContainer>
         </div>
-      </section>
+      </AnimatedBackground>
   
 
       {/* Featured Projects */}
@@ -294,38 +308,42 @@ const Index = () => {
       <FAQSection />
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-[#1a1a1a] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedBackground variant="aurora" className="py-20 bg-[#1a1a1a] text-white">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 animate-fade-in">
+            <TextReveal variant="blur" className="text-4xl font-bold mb-4 text-white">
               Why Choose Hagerstone as Your Interior Design Partner?
-            </h2>
-            <p className="text-xl text-white/90 animate-slide-up mb-2">
-              Excellence in every project, innovation in every design
-            </p>
-            <p className="text-base text-white/80 animate-slide-up">
-              From <Link to="/about" className="text-accent hover:underline">our experienced team</Link> to Fortune 500 clients, discover what makes us the <strong>best interior designer</strong> choice
-            </p>
+            </TextReveal>
+            <ScrollReveal variant="slide-up" delay={0.2}>
+              <p className="text-xl text-white/90 mb-2">
+                Excellence in every project, innovation in every design
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="slide-up" delay={0.3}>
+              <p className="text-base text-white/80">
+                From <Link to="/about" className="text-accent hover:underline">our experienced team</Link> to Fortune 500 clients, discover what makes us the <strong>best interior designer</strong> choice
+              </p>
+            </ScrollReveal>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer 
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variant="scale"
+            staggerDelay={0.1}
+          >
             {[
               "11+ Years of Excellence",
               "500+ Satisfied Clients",
               "Fortune 500 Experience",
               "Turnkey Solutions"
-            ].map((benefit, index) => (
-            <div
-            key={benefit}
-            className="text-center animate-scale-in"
-            style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CheckCircle className="h-12 w-12 text-gold mx-auto mb-4" aria-hidden="true" />
-              <h3 className="text-lg font-semibold">{benefit}</h3>
-            </div>
-          ))}
-          </div>
+            ].map((benefit) => (
+              <div key={benefit} className="text-center">
+                <CheckCircle className="h-12 w-12 text-gold mx-auto mb-4" aria-hidden="true" />
+                <h3 className="text-lg font-semibold">{benefit}</h3>
+              </div>
+            ))}
+          </StaggerContainer>
         </div>
-      </section>
+      </AnimatedBackground>
 
 
       {/* CTA Section */}

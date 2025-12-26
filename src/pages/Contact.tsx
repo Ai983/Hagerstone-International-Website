@@ -6,6 +6,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/SEOHead";
+import {
+  AnimatedBackground,
+  TextReveal,
+  ScrollReveal,
+  StaggerContainer,
+} from "@/components/animations";
 
 import { 
   Phone, 
@@ -126,17 +132,20 @@ const Contact = () => {
         keywords="contact interior designer Delhi, office design consultation, fit-out quote"
       />
       {/* Hero Section */}
-      <section className="relative bg-gradient-hero text-primary-foreground py-20">
+      <AnimatedBackground variant="mesh" className="relative text-primary-foreground py-20">
+        <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-gold">
+          <TextReveal variant="blur" className="text-5xl md:text-6xl font-bold mb-6 text-gold">
             Get in Touch
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
-            Connect with one of the <span className="font-semibold">top interior fit out companies in Delhi</span> for your next project. We serve Delhi, Noida, Gurugram, and beyond.
-          </p>
+          </TextReveal>
+          <ScrollReveal variant="slide-up" delay={0.3}>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              Connect with one of the <span className="font-semibold">top interior fit out companies in Delhi</span> for your next project. We serve Delhi, Noida, Gurugram, and beyond.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </AnimatedBackground>
 
       {/* Contact Information */}
       <section className="py-20">

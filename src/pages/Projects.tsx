@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { projects } from "../data/project";
 import ProjectsListHero from "../components/projects/ProjectsListHero";
+import { ScrollReveal, StaggerContainer } from "@/components/animations";
 
 function Projects() {
   return (
@@ -25,7 +26,11 @@ function Projects() {
           </p>
         </div>
         
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer 
+          className="grid gap-10 md:grid-cols-2 lg:grid-cols-3"
+          variant="slide-up"
+          staggerDelay={0.1}
+        >
           {projects.map((project) => (
             <Link
               key={project.id}
@@ -50,7 +55,7 @@ function Projects() {
               </div>
             </Link>
           ))}
-        </div>
+        </StaggerContainer>
         
         {/* Bottom CTA Section */}
         <div className="mt-16 text-center bg-muted/30 rounded-xl p-8">

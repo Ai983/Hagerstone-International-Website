@@ -10,6 +10,12 @@ import {
 import { Button } from "@/components/ui/button";
 import ServiceModal from "@/components/ServiceModal";
 import SEOHead from "@/components/SEOHead";
+import {
+  AnimatedBackground,
+  TextReveal,
+  ScrollReveal,
+  StaggerContainer,
+} from "@/components/animations";
 
 import {
   Palette,
@@ -141,17 +147,19 @@ const Services = () => {
         keywords="interior design services, office fit-out Delhi, MEP services, EPC construction, PEB buildings"
       />
       {/* Hero Section */}
-      <section className="relative bg-gradient-hero text-primary-foreground py-20">
+      <AnimatedBackground variant="aurora" className="relative text-primary-foreground py-20">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-gold">
+          <TextReveal variant="words" className="text-5xl md:text-6xl font-bold mb-6 text-gold">
             Comprehensive Design & Build Services
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
-            From <span className="font-semibold">office interiors design</span> and <span className="font-semibold">commercial space design</span> to <span className="font-semibold">PEB</span>, <span className="font-semibold">MEP</span>, and <span className="font-semibold">EPC</span> solutions—delivered by one of the <span className="font-semibold">best interior companies in Delhi</span>.
-          </p>
+          </TextReveal>
+          <ScrollReveal variant="slide-up" delay={0.3}>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              From <span className="font-semibold">office interiors design</span> and <span className="font-semibold">commercial space design</span> to <span className="font-semibold">PEB</span>, <span className="font-semibold">MEP</span>, and <span className="font-semibold">EPC</span> solutions—delivered by one of the <span className="font-semibold">best interior companies in Delhi</span>.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </AnimatedBackground>
 
       {/* Services Grid */}
       <section className="py-20">
