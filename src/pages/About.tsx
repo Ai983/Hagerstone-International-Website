@@ -1,5 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
+import {
+  AnimatedBackground,
+  TextReveal,
+  ScrollReveal,
+  StaggerContainer,
+  ParallaxSection,
+} from "@/components/animations";
 
 const About = () => {
   return (
@@ -12,29 +19,37 @@ const About = () => {
       />
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 to-secondary/5 py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-6xl font-bold text-primary mb-6 animate-fade-in">About Hagerstone International</h1>
-          <p className="text-xl text-foreground/80 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <span className="font-semibold">International interior designers</span> and a leading <span className="font-semibold">company profile interior design firm</span> specializing in architecture, interiors, construction, MEP, and Pre-Engineered Buildings across 25+ cities
-          </p>
+      <AnimatedBackground variant="aurora" className="relative py-20 px-6">
+        <div className="relative max-w-7xl mx-auto text-center">
+          <TextReveal variant="chars" className="text-6xl font-bold text-primary mb-6">
+            About Hagerstone International
+          </TextReveal>
+          <ScrollReveal variant="slide-up" delay={0.3}>
+            <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
+              <span className="font-semibold">International interior designers</span> and a leading <span className="font-semibold">company profile interior design firm</span> specializing in architecture, interiors, construction, MEP, and Pre-Engineered Buildings across 25+ cities
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </AnimatedBackground>
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* Our Story Section */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-primary mb-6 animate-fade-in">Our Story</h2>
+            <TextReveal variant="words" className="text-5xl font-bold text-primary mb-6">
+              Our Story
+            </TextReveal>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          <StaggerContainer 
+            className="grid lg:grid-cols-3 gap-8 mb-16"
+            variant="scale"
+            staggerDelay={0.1}
+          >
             {["11+", "7M+", "250+"].map((value, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="text-4xl font-bold text-primary mb-2">{value}</div>
                 <div className="text-lg text-foreground">
@@ -42,18 +57,18 @@ const About = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
+            <ScrollReveal variant="slide-right">
               <p className="text-lg text-foreground mb-6 leading-relaxed">
                 Hagerstone International is a premier <span className="font-semibold">interior design and build company</span> recognized among <span className="font-semibold">international interior design companies in India</span>. With 11+ years of experience, over 7 million sq. ft. completed, and 250+ projects delivered across 25+ cities in 7+ countries, we are one of the <span className="font-semibold">best interior designer</span> teams serving corporate, commercial, hospitality, and industrial sectors.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 As a <span className="font-semibold">good design office</span> and a <span className="font-semibold">top interior firm</span>, our 350+ professionals deliver comprehensive services including office interiors, commercial space design, MEP services, HVAC, PEB structures, and complete design executions. We are proud to be among the <span className="font-semibold">home design companies</span> and <span className="font-semibold">hospital interior designers</span> creating functional, inspiring, and future-ready environments.
               </p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            </ScrollReveal>
+            <ScrollReveal variant="slide-left" delay={0.2}>
               <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-8 rounded-2xl">
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Core Values</h3>
                 <ul className="space-y-3 text-foreground">
@@ -64,13 +79,17 @@ const About = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* Vision & Mission */}
         <section className="py-20">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <StaggerContainer 
+            className="grid lg:grid-cols-2 gap-12"
+            variant="slide-up"
+            staggerDelay={0.2}
+          >
             {[
               {
                 title: "Our Vision",
@@ -83,13 +102,13 @@ const About = () => {
                   "Our mission is to empower our team, our people, and the entire Hagerstone International family in such a manner that we create at least 30 millionaires inside the Hagerstone family over the next 10 years. We want Hagerstone International family teams and staff to be stakeholders in the company, to have ESOPs, so that they also grow with the entire company. Our mission is to bring happiness to each of our team members' lives and their families' lives, and this mission drives us to keep on growing and to keep on improving every day."
               }
             ].map((block, idx) => (
-              <div className="animate-fade-in" key={idx} style={{ animationDelay: `${idx * 0.2}s` }}>
+              <div key={idx}>
                 <h2 className="text-4xl font-bold text-primary mb-6">{block.title}</h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mb-6"></div>
                 <p className="text-lg text-foreground leading-relaxed">{block.content}</p>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </section>
       </div>
 
