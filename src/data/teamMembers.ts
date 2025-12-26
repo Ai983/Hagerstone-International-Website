@@ -33,8 +33,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Executive Assistant',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Ritumaam.jpg',
     //category: 'Architect',
-    bio: 'With 8+ years managing operations, our Office Coordinator ensures smooth day-to-day functioning across departments. 
-    They handle communication, documentation, scheduling, and director-level reporting. Their organisational excellence ensures every team has the support and clarity needed to deliver high-performance results.'
+    bio: 'With 8+ years managing operations, our Office Coordinator ensures smooth day-to-day functioning across departments. They handle communication, documentation, scheduling, and director-level reporting. Their organisational excellence ensures every team has the support and clarity needed to deliver high-performance results.'
   },
   {
     id: '4',
