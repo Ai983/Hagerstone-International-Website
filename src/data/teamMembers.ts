@@ -40,7 +40,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: '4',
     name: 'Anju Maurya',
-    role: 'Interior Designer'
+    role: 'Interior Designer',
     experience: 'Design & Space Planning',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Anju%20Maurya.jpg',
     bio: 'An experienced design professional specialising in space planning and user-centric layouts. She ensures every space is planned for functionality, flow, and future adaptability. Her collaborative approach strengthens coordination between design intent and project execution.'
