@@ -5,7 +5,6 @@ export type TeamMember = {
   id: string;
   name: string;
   role: string;
-  experience: string;
   image: string;
   bio?: string;
 };
@@ -16,7 +15,6 @@ export const teamMembers: TeamMember[] = [
     id: '1',
     name: 'Dhruv Agarwal',
     role: 'Founder & Managing Director',
-    experience: 'TEDx Speaker | BRICS Member',
     image: '/founders/dhruvsir.png',
     //category: 'Leadership',
     bio: 'Dhruv Agarwal is the Founder and Managing Director of Hagerstone International, bringing a strong engineering foundation and global execution exposure to the firm. A Civil Engineer from Delhi College of Engineering, his early career with Laing O’Rourke’s Interior Division in Dubai introduced him to large-scale interior fit-outs and complex project delivery. Over the years, Dhruv has led the execution of 10+ million sq. ft. of projects across India, the UAE, and Myanmar, spanning commercial offices, hospitality, and large-format developments. Driven by a vision to deliver seamless, end-to-end design-and-build solutions, he founded Hagerstone to bridge the gap between creative design and practical execution. His leadership focuses on innovation, execution excellence, and building scalable systems that deliver long-term value for clients.'
@@ -41,7 +39,6 @@ export const teamMembers: TeamMember[] = [
     id: '4',
     name: 'Anju Maurya',
     role: 'Interior Designer',
-    experience: 'Design & Space Planning',
     image: 'https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/teamphotos/Anju%20Maurya.jpg',
     bio: 'An experienced design professional specialising in space planning and user-centric layouts. She ensures every space is planned for functionality, flow, and future adaptability. Her collaborative approach strengthens coordination between design intent and project execution.'
   },
