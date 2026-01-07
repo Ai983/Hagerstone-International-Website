@@ -8,8 +8,8 @@ import {
 
 const faqs = [
   {
-    question: "What services does Hagerstone International offer for commercial interior projects in Delhi NCR?",
-    answer: "Hagerstone International provides comprehensive design-build solutions including interior design, space planning, turnkey fit-outs, MEP (Mechanical, Electrical, Plumbing) services, EPC (Engineering, Procurement, Construction), and PEB (Pre-Engineered Buildings). We specialize in corporate offices, commercial spaces, and institutional projects across Delhi, Gurgaon, Noida, and Greater Noida. Our end-to-end approach covers concept development, 3D visualization, execution, furniture procurement, and handover—eliminating the need for multiple vendors."
+    question: "What is office design & build and how does it work?",
+    answer: "Office design & build is a comprehensive approach where a single company handles both the design and construction phases of your office project. Hagerstone offers complete office design & build services including modern office interior design, office workspace design, MEP design, interior fit out, and turnkey project delivery. This integrated approach ensures seamless coordination, faster completion, cost efficiency, and single-point accountability from concept to handover."
   },
   {
     question: "How much does a commercial interior fit-out cost in Delhi NCR?",
