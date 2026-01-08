@@ -12,263 +12,214 @@ const About = () => {
   return (
     <>
       <SEOHead
-        title="About Hagerstone International | Interior Design & Build Company"
-        description="Learn about Hagerstone International - 11+ years of interior design excellence, 7M+ sq ft delivered, 250+ projects across 25+ cities. Meet our leadership team."
+        title="About Hagerstone International | Office Design & Build Company Delhi NCR"
+        description="Learn about Hagerstone International – leading office design & build company in Delhi NCR. 11+ years of modern office interior design, MEP design, and interior fit out projects across 25+ cities."
         canonical="https://hagerstone.com/about"
-        keywords="company profile interior design firm, international interior designers, interior design and build, best interior designer, top interior firm, EPC & PEB construction, MEP & HVAC services, office interiors design, hospitality interior design company, international interior design companies in India, best interior company in Delhi"
+        keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
       />
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <AnimatedBackground variant="aurora" className="relative py-20 px-6">
-        <div className="relative max-w-7xl mx-auto text-center">
-          <TextReveal variant="chars" className="text-6xl font-bold text-primary mb-6">
-            About Hagerstone International
-          </TextReveal>
-          <ScrollReveal variant="slide-up" delay={0.3}>
-            <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
-              <span className="font-semibold">International interior designers</span> and a leading <span className="font-semibold">company profile interior design firm</span> specializing in architecture, interiors, construction, MEP, and Pre-Engineered Buildings across 25+ cities
-            </p>
-          </ScrollReveal>
-        </div>
-      </AnimatedBackground>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <section className="py-20">
-          <div className="text-center mb-16">
-            <TextReveal variant="words" className="text-5xl font-bold text-primary mb-6">
-              Our Story
+      <div className="min-h-screen bg-background text-foreground">
+        {/* Hero Section */}
+        <AnimatedBackground variant="aurora" className="relative py-20 px-6">
+          <div className="relative max-w-7xl mx-auto text-center">
+            <TextReveal
+              variant="chars"
+              className="text-6xl font-bold text-primary mb-6"
+            >
+              About Hagerstone International
             </TextReveal>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
+            <ScrollReveal variant="slide-up" delay={0.3}>
+              <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
+                A leading{" "}
+                <span className="font-semibold">
+                  office design &amp; build company
+                </span>{" "}
+                and{" "}
+                <span className="font-semibold">
+                  commercial interior design firm
+                </span>{" "}
+                delivering modern office interior design, MEP design, and
+                interior fit out solutions across 25+ cities in India and
+                overseas.
+              </p>
+            </ScrollReveal>
           </div>
+        </AnimatedBackground>
 
-          <StaggerContainer 
-            className="grid lg:grid-cols-3 gap-8 mb-16"
-            variant="scale"
-            staggerDelay={0.1}
-          >
-            {["11+", "7M+", "250+"].map((value, idx) => (
-              <div
-                key={idx}
-                className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Our Story */}
+          <section className="py-20">
+            <div className="text-center mb-16">
+              <TextReveal
+                variant="words"
+                className="text-5xl font-bold text-primary mb-6"
               >
-                <div className="text-4xl font-bold text-primary mb-2">{value}</div>
-                <div className="text-lg text-foreground">
-                  {idx === 0 ? "Years of Excellence" : idx === 1 ? "Sq. Ft. Completed" : "Projects Delivered"}
-                </div>
-              </div>
-            ))}
-          </StaggerContainer>
+                Our Story
+              </TextReveal>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8" />
+            </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <ScrollReveal variant="slide-right">
-              <p className="text-lg text-foreground mb-6 leading-relaxed">
-                Hagerstone International is a premier <span className="font-semibold">interior design and build company</span> recognized among <span className="font-semibold">international interior design companies in India</span>. With 11+ years of experience, over 7 million sq. ft. completed, and 250+ projects delivered across 25+ cities in 7+ countries, we are one of the <span className="font-semibold">best interior designer</span> teams serving corporate, commercial, hospitality, and industrial sectors.
-              </p>
-              <p className="text-lg text-foreground leading-relaxed">
-                As a <span className="font-semibold">good design office</span> and a <span className="font-semibold">top interior firm</span>, our 350+ professionals deliver comprehensive services including office interiors, commercial space design, MEP services, HVAC, PEB structures, and complete design executions. We are proud to be among the <span className="font-semibold">home design companies</span> and <span className="font-semibold">hospital interior designers</span> creating functional, inspiring, and future-ready environments.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal variant="slide-left" delay={0.2}>
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-8 rounded-2xl">
-                <h3 className="text-2xl font-bold text-primary mb-4">Our Core Values</h3>
-                <ul className="space-y-3 text-foreground">
-                  {["Innovation & Creativity", "Quality Excellence", "Client Satisfaction", "Sustainable Practices"].map((val, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>{val}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Vision & Mission */}
-        <section className="py-20">
-          <StaggerContainer 
-            className="grid lg:grid-cols-2 gap-12"
-            variant="slide-up"
-            staggerDelay={0.2}
-          >
-            {[
-              {
-                title: "Our Vision",
-                content:
-                  "Our vision for the next 10 years is to become India's No. 1 technology-enabled design and build firm across all sectors. We aim to be the first preference for clients when it comes to technology-driven design and build projects."
-              },
-              {
-                title: "Our Mission",
-                content:
-                  "Our mission is to empower our team, our people, and the entire Hagerstone International family in such a manner that we create at least 30 millionaires inside the Hagerstone family over the next 10 years. We want Hagerstone International family teams and staff to be stakeholders in the company, to have ESOPs, so that they also grow with the entire company. Our mission is to bring happiness to each of our team members' lives and their families' lives, and this mission drives us to keep on growing and to keep on improving every day."
-              }
-            ].map((block, idx) => (
-              <div key={idx}>
-                <h2 className="text-4xl font-bold text-primary mb-6">{block.title}</h2>
-                <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mb-6"></div>
-                <p className="text-lg text-foreground leading-relaxed">{block.content}</p>
-              </div>
-            ))}
-          </StaggerContainer>
-        </section>
-      </div>
-
-        {/* Our Valued Clients */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl mb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Our Valued Clients</h2>
-            <p className="text-lg text-foreground/80">Trusted by industry leaders worldwide</p>
-          </div>
-          <div className="relative overflow-hidden">
-            <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
-              {[
-                { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
-                { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
-                { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
-                // Duplicate for continuous scroll
-                { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
-                { name: "UltraTech Cement", logo: "/clients-logo/Ultratech.jpeg" },
-                { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" }
-              ].map((client, index) => (
-                <div 
-                  key={index} 
-                  className="flex-shrink-0 w-48 h-24 bg-white/90 backdrop-blur-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-primary/20 flex items-center justify-center hover:scale-105 p-4"
+            <StaggerContainer
+              className="grid lg:grid-cols-3 gap-8 mb-16"
+              variant="scale"
+              staggerDelay={0.1}
+            >
+              {["11+", "7M+", "250+"].map((value, idx) => (
+                <div
+                  key={idx}
+                  className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                 >
-                  <img 
-                    src={client.logo}
-                    alt={`${client.name} logo`}
-                    className="max-w-full max-h-full object-contain"
-                  />
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    {value}
+                  </div>
+                  <div className="text-lg text-foreground">
+                    {idx === 0
+                      ? "Years of Office Design & Build Excellence"
+                      : idx === 1
+                      ? "Sq. Ft. of Modern Office Interiors Delivered"
+                      : "Office Design, MEP & Interior Fit Out Projects"}
+                  </div>
                 </div>
               ))}
+            </StaggerContainer>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <ScrollReveal variant="slide-right">
+                <p className="text-lg text-foreground mb-6 leading-relaxed">
+                  Hagerstone International is a premier{" "}
+                  <span className="font-semibold">
+                    office design &amp; build and commercial interior design
+                    company
+                  </span>{" "}
+                  recognized among the{" "}
+                  <span className="font-semibold">
+                    top interior design companies in India
+                  </span>
+                  . With 11+ years of experience, over 7 million sq. ft.
+                  completed, and 250+ projects delivered across 25+ cities in
+                  7+ countries, the team designs and executes high‑performance
+                  workspaces for corporate, commercial, hospitality, and
+                  industrial clients.
+                </p>
+                <p className="text-lg text-foreground leading-relaxed">
+                  As a{" "}
+                  <span className="font-semibold">
+                    specialist in modern office interior design
+                  </span>{" "}
+                  and{" "}
+                  <span className="font-semibold">
+                    turnkey interior fit out
+                  </span>
+                  , Hagerstone integrates architecture, MEP design, HVAC, PEB,
+                  and construction under one roof. This design‑build approach
+                  ensures seamless coordination, faster timelines, and
+                  consistent quality for every office workspace design project.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal variant="slide-left" delay={0.2}>
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-8 rounded-2xl">
+                  <h3 className="text-2xl font-bold text-primary mb-4">
+                    Our Core Values
+                  </h3>
+                  <ul className="space-y-3 text-foreground">
+                    {[
+                      "Innovation in office design & build",
+                      "Quality excellence in every fit out and MEP project",
+                      "Client‑first collaboration and transparency",
+                      "Sustainable, future‑ready workspace solutions",
+                    ].map((val, idx) => (
+                      <li key={idx} className="flex items-center">
+                        <span className="w-2 h-2 bg-primary rounded-full mr-3" />
+                        {val}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
             </div>
-          </div>
+          </section>
+
+          {/* Vision & Mission */}
+          <section className="py-20">
+            <StaggerContainer
+              className="grid lg:grid-cols-2 gap-12"
+              variant="slide-up"
+              staggerDelay={0.2}
+            >
+              {[
+                {
+                  title: "Our Vision",
+                  content:
+                    "To be India’s most trusted technology‑enabled office design & build partner, delivering modern office interior design, MEP design, and interior fit out solutions that transform workplaces across every sector.",
+                },
+                {
+                  title: "Our Mission",
+                  content:
+                    "To create long‑term value for clients and team members by combining design innovation, engineering excellence, and transparent project management. The mission is to grow the Hagerstone family, build shared ownership, and deliver office workspaces that improve everyday life for people using them.",
+                },
+              ].map((block, idx) => (
+                <div key={idx}>
+                  <h2 className="text-4xl font-bold text-primary mb-6">
+                    {block.title}
+                  </h2>
+                  <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mb-6" />
+                  <p className="text-lg text-foreground leading-relaxed">
+                    {block.content}
+                  </p>
+                </div>
+              ))}
+            </StaggerContainer>
+          </section>
         </div>
-      </section>
 
-        {/* Leadership */}
-        <section className="py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-primary mb-6">Our Leaders</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-16">
-            <Card className="group bg-gradient-card border-0 shadow-luxury p-8 rounded-2xl hover:shadow-xl transition-all duration-500 hover:-translate-y-3 animate-fade-in">
-              <CardContent className="text-center">
-                <div className="relative mb-6 inline-block">
-                  <img 
-                    src="/founders/dhruvsir.png" 
-                    alt="Dhruv Agarwal - Founder & Managing Director"
-                    className="w-48 h-48 object-cover rounded-full mx-auto shadow-luxury group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent group-hover:from-primary/30 transition-all duration-300"></div>
-                </div>
-                <h3 className="text-3xl font-bold text-primary mb-2">Dhruv Agarwal</h3>
-                <p className="text-lg text-secondary font-semibold mb-4">Founder & Managing Director</p>
-                <p className="text-foreground leading-relaxed">
-                  Civil Engineer from Delhi College of Engineering. With over 10 million sq ft of projects delivered across UAE, Myanmar, and India, Dhruv established Hagerstone to provide seamless, end-to-end design and build services blending creativity with functionality.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="group bg-gradient-card border-0 shadow-luxury p-8 rounded-2xl hover:shadow-xl transition-all duration-500 hover:-translate-y-3 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              <CardContent className="text-center">
-                <div className="relative mb-6 inline-block">
-                  <img 
-                    src="/founders/bhaskarsir.png" 
-                    alt="Bhaskar Tyagi - Director"
-                    className="w-48 h-48 object-cover rounded-full mx-auto shadow-luxury group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent group-hover:from-primary/30 transition-all duration-300"></div>
-                </div>
-                <h3 className="text-3xl font-bold text-primary mb-2">Bhaskar Tyagi</h3>
-                <p className="text-lg text-secondary font-semibold mb-4">Director</p>
-                <p className="text-foreground leading-relaxed">
-                  Director of Hagerstone International Pvt. Ltd., with over 16+ years of extensive experience in the hospitality industry, specializing in interior design. Bhaskar delivers luxurious, functional, and guest-centric spaces that enhance the hotel experience.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Safety First */}
-        <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-primary mb-6">Safety Always and Everywhere</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-            <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
-              Our comprehensive safety system ensures excellence with 79+ quality checkpoints, prioritizing the wellbeing of our team and clients on every project.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[
-              "Hard Hats",
-              "Safety Glasses or Goggles", 
-              "High-Visibility Clothing",
-              "Steel-Toed Safety Boots",
-              "Reflective Vests",
-              "Ear Protection",
-              "Protective Gloves",
-              "First Aid Kits",
-              "Safety Signs and Labels",
-              "Scaffolding and Ladders",
-              "Protective Clothing",
-              "79+ Quality Checkpoints"
-            ].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="flex items-center space-x-3 bg-white/50 backdrop-blur-sm p-4 rounded-lg hover:bg-white/70 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
-                style={{animationDelay: `${idx * 0.1}s`}}
-              >
-                <span className="text-2xl font-bold text-primary bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center text-sm">{idx + 1}</span>
-                <span className="text-foreground font-medium">{item}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Client Testimonials */}
-        <section className="py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-primary mb-6">What Our Clients Say</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-            <p className="text-lg text-foreground/80">Hear from our satisfied clients about their experience with us</p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8">
-            {[
-              "Throughout the project, Hagerstone International demonstrated remarkable project management skills. They kept us informed every step of the way, adhered to timelines, and stayed within budget. Their commitment to quality and client satisfaction is truly commendable.",
-              "Your team managed the project professionally, delivering exceptional quality. Completing the entire building construction within 60 days was impressive and satisfying. Your quick response time consistently enabled us to make informed decisions efficiently throughout the process.",
-              "We loved your team's positivity and professionalism. Before working with Hagerstone, we never imagined office interiors could be done so smoothly. The project was hassle-free, completed with top-notch quality, and delivered within our 45-day timeline. Truly impressive!",
-              "We are satisfied with the office delivered, meeting our requirements with satisfactory quality. The project was completed within the timeline, and we look forward to collaborating with Hagerstone International on future projects. Best wishes for their endeavors.",
-              "We faced a unique gym lounge design challenge, and this firm exceeded expectations. They understood our vision, incorporated ideas beautifully, and ensured flawless execution. The result is a stunning, functional space perfect for our needs. Highly recommended!",
-              "We hired Hagerstone International to design and build our new office space interiors. Their expertise and experience truly stand out. We are extremely satisfied with their work and look forward to working with them again in the future."
-            ].map((testimonial, idx) => (
-              <div 
-                key={idx} 
-                className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in border-l-4 border-primary"
-                style={{animationDelay: `${idx * 0.1}s`}}
-              >
-                <blockquote className="text-foreground leading-relaxed italic text-lg">
-                  "{testimonial}"
-                </blockquote>
-                <div className="flex items-center mt-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold">
-                    {idx + 1}
+        {/* Our Valued Clients */}
+        <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl mb-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-primary mb-4">
+                Our Valued Clients
+              </h2>
+              <p className="text-lg text-foreground/80">
+                Trusted by leading corporate, industrial, and hospitality brands
+                for office design &amp; build and commercial interior design
+                projects.
+              </p>
+            </div>
+            <div className="relative overflow-hidden">
+              <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
+                {[
+                  { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
+                  { name: "AECOM", logo: "/clients-logo/AECOM.png" },
+                  { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
+                  {
+                    name: "UltraTech Cement",
+                    logo: "/clients-logo/Ultratech.jpeg",
+                  },
+                  { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
+                  { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
+                  // duplicate for seamless scroll
+                  { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
+                  { name: "AECOM", logo: "/clients-logo/AECOM.png" },
+                  { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
+                  {
+                    name: "UltraTech Cement",
+                    logo: "/clients-logo/Ultratech.jpeg",
+                  },
+                  { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
+                  { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
+                ].map((client, index) => (
+                  <div key={index} className="flex-shrink-0">
+                    <img
+                      src={client.logo}
+                      alt={`${client.name} – Hagerstone office design & build client`}
+                      className="h-16 w-auto object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="ml-4">
-                    <div className="text-primary font-semibold">Satisfied Client</div>
-                    <div className="text-foreground/60 text-sm">Hagerstone International</div>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
       </div>
