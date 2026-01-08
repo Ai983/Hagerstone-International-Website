@@ -4,7 +4,23 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA Redirect - Handle all client-side routes
+# Serve static SEO files directly (before SPA redirect)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/llms.txt"
+  to = "/llms.txt"
+  status = 200
+
+# SPA Redirect - Handle all client-side routes (fallback)
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -82,13 +98,16 @@
   for = "/sitemap.xml"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml"
 
 [[headers]]
   for = "/robots.txt"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain"
 
 [[headers]]
   for = "/llms.txt"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain"
