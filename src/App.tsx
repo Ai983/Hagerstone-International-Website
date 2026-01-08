@@ -20,38 +20,10 @@ import { componentRegistry } from "./lib/routeRegistry";
 
 const queryClient = new QueryClient();
 
-const DynamicRoutes = () => {
-  const { data: routes, isLoading } = useRoutes();
-
-  if (isLoading) {
-    return null; // Routes will render after loading
-  }
-
-  return (
-    <>
-      {routes?.map((route) => {
-        const Component = componentRegistry[route.component_key];
-        if (!Component) return null;
-
-        return (
-          <Route
-            key={route.id}
-            path={route.path}
-            element={
-              <Suspense fallback={<DynamicLoader />}>
-                <Component routeMeta={route} />
-              </Suspense>
-            }
-          />
-        );
-      })}
-    </>
-  );
-};
-
 const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const { data: routes } = useRoutes();
 
   return (
     <>
@@ -66,7 +38,22 @@ const AppContent = () => {
         <Route path="/" element={<Index />} />
 
         {/* Dynamic routes from database */}
-        <DynamicRoutes />
+        {routes?.map((route) => {
+          const Component = componentRegistry[route.component_key];
+          if (!Component) return null;
+
+          return (
+            <Route
+              key={route.id}
+              path={route.path}
+              element={
+                <Suspense fallback={<DynamicLoader />}>
+                  <Component routeMeta={route} />
+                </Suspense>
+              }
+            />
+          );
+        })}
 
         {/* Fallback 404 */}
         <Route path="*" element={<NotFound />} />
