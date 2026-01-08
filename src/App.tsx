@@ -1,8 +1,9 @@
+import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import AnalyticsTracker from '@/components/AnalyticsTracker';
 import HoveringNavbar from "./components/HoveringNavbar";
@@ -10,48 +11,64 @@ import Footer from "./components/Footer";
 import AIAssistant from "./components/AIAssistant";
 import CustomCursor from "./components/CustomCursor";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import OurTeam from "./pages/OurTeam";
-import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
-import Services from "./pages/Services";
-import Ideas from "./pages/Ideas";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Contact from "./pages/Contact";
-import FindYourStyle from "./pages/FindYourStyle";
 import NotFound from "./pages/NotFound";
 import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import LeadPopupForm from "./components/LeadPopupForm";
-import { useLocation } from "react-router-dom";
- 
+import { useRoutes } from "./hooks/useRoutes";
+import { componentRegistry } from "./lib/routeRegistry";
+
 const queryClient = new QueryClient();
+
+const DynamicRoutes = () => {
+  const { data: routes, isLoading } = useRoutes();
+
+  if (isLoading) {
+    return null; // Routes will render after loading
+  }
+
+  return (
+    <>
+      {routes?.map((route) => {
+        const Component = componentRegistry[route.component_key];
+        if (!Component) return null;
+
+        return (
+          <Route
+            key={route.id}
+            path={route.path}
+            element={
+              <Suspense fallback={<DynamicLoader />}>
+                <Component routeMeta={route} />
+              </Suspense>
+            }
+          />
+        );
+      })}
+    </>
+  );
+};
 
 const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  
+
   return (
     <>
       {IS_DIWALI_MODE && isHomePage && <DiwaliSplash />}
-      <AnalyticsTracker/>
+      <AnalyticsTracker />
       <DynamicLoader />
       <CustomCursor />
       <HoveringNavbar />
       <ScrollToTop />
       <Routes>
+        {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/our-team" element={<OurTeam />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetail/>} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/ideas" element={<Ideas />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/find-your-style" element={<FindYourStyle />} />
-        <Route path="/contact" element={<Contact />} />
+
+        {/* Dynamic routes from database */}
+        <DynamicRoutes />
+
+        {/* Fallback 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
@@ -72,4 +89,3 @@ const App = () => (
 );
 
 export default App;
-

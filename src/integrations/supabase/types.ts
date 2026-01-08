@@ -65,6 +65,48 @@ export type Database = {
         }
         Relationships: []
       }
+      routes: {
+        Row: {
+          component_key: string
+          created_at: string
+          description: string | null
+          id: string
+          is_enabled: boolean
+          keywords: string | null
+          og_image: string | null
+          path: string
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          component_key: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_enabled?: boolean
+          keywords?: string | null
+          og_image?: string | null
+          path: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          component_key?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_enabled?: boolean
+          keywords?: string | null
+          og_image?: string | null
+          path?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
