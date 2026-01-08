@@ -1,4 +1,4 @@
-// src/pages/services.tsx
+// src/pages/Services.tsx
 
 import { useState } from "react";
 import {
@@ -22,7 +22,6 @@ import {
   Building,
   Zap,
   Sofa,
-  Droplets,
   Home,
   ArrowRight,
   CheckCircle,
@@ -40,75 +39,75 @@ const Services = () => {
   const services = [
     {
       icon: Palette,
-      title: "Interior Design & Architect Services",
+      title: "Office Interior Design & Architecture",
       description:
-        "As leading interior architects, we create modern interior design solutions that blend aesthetics with functionality for corporate and commercial spaces.",
+        "As office design & build specialists, we create modern office interior design concepts that blend aesthetics and functionality for corporate and commercial spaces.",
       features: [
-        "3D Visualization & Rendering",
-        "Space Planning & Layout Design",
-        "Material & Color Consultation",
-        "Lighting Solutions Integration",
-        "Design Fit-outs & Styling",
+        "Modern office interior design ideas",
+        "Space planning & office workspace design",
+        "3D visualization & rendering",
+        "Brand-aligned color, material & lighting",
+        "Interior fit out-ready design packages",
       ],
       image:
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
     },
     {
       icon: Building,
-      title: "Construction & EPC",
+      title: "Turnkey Construction, EPC & PEB",
       description:
-        "As a best construction company, we deliver turnkey construction, Engineered Procurement Construction (EPC), and Pre-Engineered Buildings (PEB) with exceptional quality.",
+        "End-to-end office design & build, construction, Engineered Procurement Construction (EPC), and Pre-Engineered Buildings (PEB) with strict quality and timeline control.",
       features: [
-        "Turnkey Construction Projects",
-        "EPC Services & Project Management",
-        "PEB for Warehouses & Factories",
-        "Quality Assurance & Timeline Adherence",
-        "Budget Optimization",
+        "Turnkey office design & build execution",
+        "EPC services & project management",
+        "PEB for warehouses & industrial projects",
+        "Quality assurance & safety compliance",
+        "Cost & timeline optimization",
       ],
       image:
         "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop",
     },
     {
       icon: Zap,
-      title: "MEP Services (HVAC, Firefighting & Electrical)",
+      title: "MEP Design, HVAC & Fire Safety",
       description:
-        "Complete Mechanical Engineered Procurement solutions including HVAC systems, firefighting, electrical installations, and plumbing for modern commercial spaces.",
+        "Complete MEP design services for modern offices and commercial spaces, covering HVAC, electrical, plumbing, and firefighting systems.",
       features: [
-        "HVAC Design & Installation",
-        "Firefighting Systems Integration",
-        "Electrical & Networking Solutions",
-        "Plumbing & Sanitation Systems",
-        "Smart Building Automation",
+        "MEP design for office buildings",
+        "HVAC design & installation",
+        "Firefighting & life safety systems",
+        "Electrical distribution & data cabling",
+        "Building automation & energy efficiency",
       ],
       image:
         "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
     },
     {
       icon: Sofa,
-      title: "Office Interiors Design & Furniture",
+      title: "Office Furniture & Workspace Design",
       description:
-        "Custom office interiors design with premium furniture solutions for corporate spaces. We deliver commercial office styling that enhances productivity and brand identity.",
+        "Custom office furniture and ergonomic workspace design that supports productivity, comfort, and brand identity.",
       features: [
-        "Custom Office Furniture Design",
-        "Ergonomic Workstation Solutions",
-        "Premium Material Selection",
-        "Space-Optimized Layouts",
-        "Installation & Project Delivery",
+        "Custom workstations & executive cabins",
+        "Ergonomic office furniture solutions",
+        "Collaboration & breakout zone design",
+        "Reception & visitor lounge styling",
+        "Installation & on-site coordination",
       ],
       image:
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
     },
     {
       icon: Home,
-      title: "Complete Design Fit-outs",
+      title: "Interior Fit-Out & Execution",
       description:
-        "Comprehensive design fit-outs for commercial space design, hospitality, and retail. As a top interior design firm, we handle all interior work from concept to completion.",
+        "Complete interior fit out for commercial and hospitality spaces. We manage every detail from shell to ready-to-move-in office.",
       features: [
-        "False Ceiling & Partitions",
-        "Premium Flooring Solutions",
-        "Wall Treatments & Finishes",
-        "Complete Interior Executions",
-        "Turnkey Fit-out Delivery",
+        "False ceilings, partitions & glazing",
+        "Flooring, wall finishes & joinery",
+        "Lighting, signage & branding elements",
+        "Coordination with MEP & civil teams",
+        "Turnkey interior fit out delivery",
       ],
       image:
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
@@ -119,43 +118,67 @@ const Services = () => {
     {
       step: "01",
       title: "Consultation",
-      description: "Understanding your vision, requirements, and budget",
+      description:
+        "Understanding your business, workspace needs, and budget for office design & build.",
     },
     {
       step: "02",
       title: "Design",
-      description: "Creating detailed plans and 3D visualizations",
+      description:
+        "Creating detailed modern office interior design and MEP design plans with 3D visuals.",
     },
     {
       step: "03",
       title: "Execution",
-      description: "Professional implementation with quality control",
+      description:
+        "Coordinated interior fit out, construction, and MEP implementation with quality control.",
     },
     {
       step: "04",
       title: "Delivery",
-      description: "Final handover with complete satisfaction",
+      description:
+        "Final handover of a ready-to-move, fully functional modern office workspace.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Interior Design & Build Services Delhi | MEP, EPC, PEB Solutions"
-        description="Comprehensive design-build services: interior design, office fit-outs, MEP, HVAC, EPC, PEB construction. Best interior company in Delhi NCR for turnkey projects."
+        title="Office Design & Build Services Delhi NCR | Interior, MEP, EPC & Fit-Out"
+        description="Comprehensive office design & build services in Delhi NCR: modern office interior design, MEP design, EPC & PEB construction, and turnkey interior fit outs for corporate and commercial spaces."
         canonical="https://hagerstone.com/services"
-        keywords="interior design services, office fit-out Delhi, MEP services, EPC construction, PEB buildings"
+        keywords="office design and build, modern office interior design, office workspace design, mep design services, interior fit out company, turnkey office design, EPC and PEB construction Delhi NCR"
       />
+
       {/* Hero Section */}
-      <AnimatedBackground variant="aurora" className="relative text-primary-foreground py-20">
+      <AnimatedBackground
+        variant="aurora"
+        className="relative text-primary-foreground py-20"
+      >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <TextReveal variant="words" className="text-5xl md:text-6xl font-bold mb-6 text-gold">
-            Comprehensive Design & Build Services
+          <TextReveal
+            variant="words"
+            className="text-5xl md:text-6xl font-bold mb-6 text-gold"
+          >
+            Office Design & Build Services
           </TextReveal>
           <ScrollReveal variant="slide-up" delay={0.3}>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              From <span className="font-semibold">office interiors design</span> and <span className="font-semibold">commercial space design</span> to <span className="font-semibold">PEB</span>, <span className="font-semibold">MEP</span>, and <span className="font-semibold">EPC</span> solutions—delivered by one of the <span className="font-semibold">best interior companies in Delhi</span>.
+              From{" "}
+              <span className="font-semibold">
+                modern office interior design
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold">office workspace design</span> to{" "}
+              <span className="font-semibold">MEP design</span>,{" "}
+              <span className="font-semibold">EPC &amp; PEB</span>, and{" "}
+              <span className="font-semibold">interior fit out</span> solutions—
+              delivered by one of the{" "}
+              <span className="font-semibold">
+                leading office design &amp; build companies in Delhi NCR
+              </span>
+              .
             </p>
           </ScrollReveal>
         </div>
@@ -188,19 +211,25 @@ const Services = () => {
                           <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <Icon className="h-6 w-6 text-gold-foreground" />
                           </div>
-                          <CardTitle className="text-2xl text-primary">{service.title}</CardTitle>
+                          <CardTitle className="text-2xl text-primary">
+                            {service.title}
+                          </CardTitle>
                         </div>
                         <p className="text-muted-foreground dark:text-white/80">
-                        {service.description}
+                          {service.description}
                         </p>
-
                       </CardHeader>
                       <CardContent className="p-0">
                         <ul className="space-y-2">
                           {service.features.map((feature) => (
-                            <li key={feature} className="flex items-center space-x-2">
+                            <li
+                              key={feature}
+                              className="flex items-start space-x-2"
+                            >
                               <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                              <span className="text-sm text-foreground">{feature}</span>
+                              <span className="text-sm text-foreground">
+                                {feature}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -222,13 +251,16 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Our Process Section (Updated for Visibility) */}
+      {/* Our Process Section */}
       <section className="py-20 bg-[#1b1b1f] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 animate-fade-in">Our Process</h2>
+            <h2 className="text-4xl font-bold mb-4 animate-fade-in">
+              Our Office Design & Build Process
+            </h2>
             <p className="text-xl text-white/80 animate-slide-up">
-              A streamlined approach to deliver exceptional results
+              A streamlined approach to deliver modern, high-performance
+              workspaces.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -255,10 +287,11 @@ const Services = () => {
       <section className="py-20 bg-gradient-hero text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6 animate-fade-in text-gold">
-            Ready to Transform Your Space?
+            Ready to Transform Your Workspace?
           </h2>
           <p className="text-xl mb-8 text-white/90 animate-slide-up">
-            Get in touch with our experts for a consultation
+            Get in touch with our office design &amp; build experts for a
+            consultation.
           </p>
           <Button
             size="lg"
