@@ -4,6 +4,11 @@ import { HelmetProvider } from 'react-helmet-async'
 import App from './App.tsx'
 import './index.css'
 
+// Initialize prerenderReady signal for Netlify Prerender extension
+if (typeof window !== 'undefined') {
+  window.prerenderReady = false;
+}
+
 const root = document.getElementById("root")!;
 
 // Use hydration for SSR in production
@@ -15,6 +20,10 @@ if (import.meta.env.PROD) {
       </BrowserRouter>
     </HelmetProvider>
   );
+  // Signal prerender ready after hydration
+  setTimeout(() => {
+    window.prerenderReady = true;
+  }, 100);
 } else {
   createRoot(root).render(
     <HelmetProvider>
@@ -23,4 +32,8 @@ if (import.meta.env.PROD) {
       </BrowserRouter>
     </HelmetProvider>
   );
+  // Signal prerender ready after render
+  setTimeout(() => {
+    window.prerenderReady = true;
+  }, 100);
 }

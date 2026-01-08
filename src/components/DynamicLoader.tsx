@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { IS_DIWALI_MODE } from "./DiwaliSplash";
+import { isPrerender } from "@/lib/prerender";
 
 const DynamicLoader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,12 @@ const DynamicLoader = () => {
   }, []);
 
   useEffect(() => {
+    // Skip loader for prerender bots to speed up content indexing
+    if (isPrerender()) {
+      setIsLoading(false);
+      return;
+    }
+
     // Skip loader on home page only during Diwali mode
     if (location.pathname === '/' && IS_DIWALI_MODE) {
       setIsLoading(false);
