@@ -250,7 +250,7 @@ const About = () => {
               <div 
                 key={idx} 
                 className="flex items-center space-x-3 bg-white/50 backdrop-blur-sm p-4 rounded-lg hover:bg-white/70 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
-                style={{animationDelay: ⁠ ${idx * 0.1}s ⁠}}
+                style={{animationDelay: ⁠ `${idx * 0.1}s ⁠}}
               >
                 <span className="text-2xl font-bold text-primary bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center text-sm">{idx + 1}</span>
                 <span className="text-foreground font-medium">{item}</span>
@@ -279,7 +279,7 @@ const About = () => {
               <div 
                 key={idx} 
                 className="bg-gradient-card p-8 rounded-2xl shadow-luxury hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in border-l-4 border-primary"
-                style={{animationDelay: ⁠ ${idx * 0.1}s ⁠}}
+                style={{animationDelay: ⁠ `${idx * 0.1}s ⁠}}
               >
                 <blockquote className="text-foreground leading-relaxed italic text-lg">
                   "{testimonial}"
