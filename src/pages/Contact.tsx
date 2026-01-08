@@ -55,7 +55,7 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Business Hours",
-      value: "Mon - Sat: 9AM - 6PM",
+      value: "Mon - Sat: 9:30AM - 6:30PM",
       href: "#",
       description: "Available for consultations"
     }
