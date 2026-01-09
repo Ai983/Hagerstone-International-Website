@@ -33,7 +33,7 @@ export default function AchievementSection() {
             >
               <Link to="/projects">
                 View Our Projects
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform aria-hidden="true" " />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
             </Button>
           </motion.div>
