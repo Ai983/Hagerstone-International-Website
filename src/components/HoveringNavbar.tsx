@@ -69,11 +69,17 @@ const HoveringNavbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative z-10">
           {/* Logo & Branding */}
-          <Link to="/" className="flex items-center gap-4 z-[120] hover:opacity-90 transition-opacity">
+          <Link 
+            to="/" 
+            className="flex items-center gap-4 z-[120] hover:opacity-90 transition-opacity"
+            aria-label="Hagerstone International - Office Design Build Company - Return to Homepage"
+          >
             <motion.img
               src="/logo.png"
-              alt="Logo"
+              alt="Hagerstone International - Office Design and Build Company Logo"
               className="w-10 h-10 transition-all duration-300 drop-shadow-lg"
+              width={40}
+              height={40}
               initial={{ rotate: -180, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
