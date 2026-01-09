@@ -1,9 +1,8 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
-import { AnimatePresence, motion as m } from "framer-motion";
-import { Menu, X, Instagram, Linkedin, Twitter, FacebookIcon, Facebook, MapPin, ChevronDown } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Facebook, MapPin, ChevronDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 
 const HoveringNavbar = () => {
@@ -136,7 +135,7 @@ const HoveringNavbar = () => {
       {/* Fullscreen Overlay - Outside nav container */}
       <AnimatePresence>
         {menuOpen && (
-          <m.div
+          <motion.div
             key="fs-menu"
             id="fullscreen-menu"
             className="fixed inset-0 z-[40] bg-black/75 backdrop-blur-md"
@@ -391,7 +390,7 @@ const HoveringNavbar = () => {
                 </div>
               </div>
             </div>
-          </m.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
