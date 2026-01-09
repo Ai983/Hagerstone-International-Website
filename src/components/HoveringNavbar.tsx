@@ -342,29 +342,40 @@ const HoveringNavbar = () => {
                         </Collapsible>
 
                         {/* Social Links */}
+                        {/* Social Links */}
                         <div className="flex gap-4 sm:gap-5 md:gap-6 pt-2">
-                          <a 
-                            href="https://www.linkedin.com/company/hagerstone/posts/?feedView=all" 
+                          <a
+                            href="https://www.linkedin.com/company/hagerstone/posts/?feedView=all"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
-                            aria-label="LinkedIn"
+                            aria-label="Hagerstone International LinkedIn"
                           >
-                            <Linkedin size={18} className="sm:w-5 sm:h-5" />
+                            <Linkedin size={18} className="sm:w-5 sm:h-5" aria-hidden="true" />
+                            <span className="sr-only">Visit Hagerstone International on LinkedIn</span>
                           </a>
-                          <a 
-                            href="http://instagram.com/hagerstone_international/" 
+                          <a
+                            href="http://instagram.com/hagerstone_international/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
-                            aria-label="Instagram"
+                            aria-label="Hagerstone International Instagram"
                           >
-                            <Instagram size={18} className="sm:w-5 sm:h-5" />
+                            <Instagram size={18} className="sm:w-5 sm:h-5" aria-hidden="true" />
+                            <span className="sr-only">Follow Hagerstone International on Instagram</span>
                           </a>
-                          <a 
-                            href="https://www.facebook.com/HagerstoneInternational" 
+                          <a
+                            href="https://www.facebook.com/HagerstoneInternational"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
-                            aria-label="Facebook"
+                            aria-label="Hagerstone International Facebook"
                           >
-                            <Facebook size={18} className="sm:w-5 sm:h-5" />
+                            <Facebook size={18} className="sm:w-5 sm:h-5" aria-hidden="true" />
+                            <span className="sr-only">Like Hagerstone International on Facebook</span>
                           </a>
                         </div>
+
 
                         {/* CTA Button */}
                         <Link 

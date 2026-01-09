@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import { isPrerender } from '@/lib/prerender';
 
 // Automatically checks if current date is before October 25, 2025 midnight
 const checkDiwaliMode = () => {
@@ -16,6 +17,12 @@ const DiwaliSplash = () => {
   const [shouldExit, setShouldExit] = useState(false);
 
   useEffect(() => {
+    // Skip splash for prerender bots to speed up content indexing
+    if (isPrerender()) {
+      setIsVisible(false);
+      return;
+    }
+
     // Check if splash has already been shown in this session
     const hasShownSplash = sessionStorage.getItem('diwaliSplashShown');
     
