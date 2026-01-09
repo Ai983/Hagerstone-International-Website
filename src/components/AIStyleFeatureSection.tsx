@@ -21,7 +21,7 @@ const AIStyleFeatureSection = () => {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPageElement",
-          "name": "AI Office Style Designer Tool",
+          "name": "India's First AI Modern Office Style Designer Tool",
           "description": "AI-powered office interior design tool providing personalized workspace recommendations, layout ideas, and cost estimates.",
           "url": "https://hagerstone.com/find-your-style"
         })
