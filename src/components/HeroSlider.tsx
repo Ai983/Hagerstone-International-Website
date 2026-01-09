@@ -58,6 +58,8 @@ const HeroSlider = () => {
             src={slides[currentSlide].src}
             alt={slides[currentSlide].alt}
             className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
           />
 
           {/* Dark overlay */}
