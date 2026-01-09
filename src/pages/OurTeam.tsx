@@ -47,7 +47,7 @@ const OurTeam = () => {
               >
                 <img
                   src={selectedMember.image}
-                  alt={selectedMember.name}
+                  alt={selectedMember.imageAlt}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </motion.div>
@@ -84,7 +84,7 @@ const OurTeam = () => {
            >
              <img
               src={member.image}
-              alt={member.name}
+              alt={member.imageAlt}
               className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-500"
              />
            </div>
