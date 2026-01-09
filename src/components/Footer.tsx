@@ -147,20 +147,22 @@ const Footer = () => {
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-gold hover:text-gold-foreground transition-all duration-300 hover:scale-110"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                  );
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Hagerstone International ${social.name}`}
+                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-gold hover:text-gold-foreground transition-all duration-300 hover:scale-110"
+                >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                  <span className="sr-only">Follow Hagerstone International on {social.name}</span>
+                </a>
+                );
               })}
             </div>
           </div>
-        </div>
+
 
         {/* Copyright */}
         <div className="border-t border-white/20 mt-12 pt-8 text-center">
