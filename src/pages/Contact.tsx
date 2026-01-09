@@ -270,37 +270,6 @@ const Contact = () => {
                 <p className="text-muted-foreground">Premium office interior design firm serving major hubs across India.</p>
               </div>
 
-<<<<<<< HEAD
-              {/* Social Media */}
-              <Card className="bg-gradient-card border-0 shadow-luxury">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary">Follow Us</CardTitle>
-                  <p className="text-muted-foreground">
-                    Stay connected for the latest updates and inspiration
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex space-x-4">
-                    {socialLinks.map((social) => {
-                      const Icon = social.icon;
-                      return (
-                        <a
-                          key={social.name}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Hagerstone International ${social.name}`}
-                          className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary transition-all duration-300 hover:scale-110 ${social.color}`}
-                        >
-                          <Icon className="h-6 w-6" aria-hidden="true" />
-                          <span className="sr-only">Follow Hagerstone International on {social.name}</span>
-                        </a>
-                      );
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
-=======
               {officeLocations.map((office) => (
                 <Card 
                   key={office.name}
@@ -337,7 +306,36 @@ const Contact = () => {
                   </CardContent>
                 </Card>
               ))}
->>>>>>> a3dba5a0b8c2cfe1cf4be8f2643df7ad72ecbe6c
+
+              {/* Social Media */}
+              <Card className="bg-gradient-card border-0 shadow-luxury">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-primary">Follow Us</CardTitle>
+                  <p className="text-muted-foreground">
+                    Stay connected for the latest updates and inspiration
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex space-x-4">
+                    {socialLinks.map((social) => {
+                      const Icon = social.icon;
+                      return (
+                        <a
+                          key={social.name}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Hagerstone International ${social.name}`}
+                          className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary transition-all duration-300 hover:scale-110 ${social.color}`}
+                        >
+                          <Icon className="h-6 w-6" aria-hidden="true" />
+                          <span className="sr-only">Follow Hagerstone International on {social.name}</span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
 
               {/* Social Media & CTA */}
               <Card className="bg-gradient-hero text-primary-foreground border-0 shadow-luxury">
