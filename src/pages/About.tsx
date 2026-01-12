@@ -12,11 +12,65 @@ const About = () => {
   return (
     <>
       <SEOHead
-        title="About Hagerstone International | Office Design & Build Company Delhi NCR"
-        description="Learn about Hagerstone International – leading office design & build company in Delhi NCR. 11+ years of modern office interior design, MEP design, and interior fit out projects across 25+ cities."
-        canonical="https://hagerstone.com/about"
-        keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
-      />
+      title="About Hagerstone International | Office Design & Build Company Delhi NCR"
+      description="Learn about Hagerstone International -- leading office design & build company in Delhi NCR. 11+ years of modern office interior design, MEP design, and interior fit out projects across 25+ cities."
+      canonical="https://hagerstone.com/about"
+      keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
+      structuredData={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Hagerstone International",
+        "url": "https://hagerstone.com",
+        "logo": "https://hagerstone.com/logo.png",
+        "description": "Leading office design & build company in Delhi NCR specializing in modern office interior design, MEP design, and interior fit out projects.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2",
+          "addressLocality": "Noida",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "201301",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-88829-79328",
+        "contactType": "Sales",
+        "email": "ea@hagerstone.com",
+        "areaServed": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/hagerstone",
+        "https://www.instagram.com/hagerstone_international",
+        "https://www.facebook.com/HagerstoneInternational"
+      ],
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Dhruv Agarwal",
+          "jobTitle": "Founder & Managing Director",
+          "image": "https://hagerstone.com/founders/dhruvsir.png",
+          "description": "Civil Engineer from Delhi College of Engineering with over 10 million sq ft of projects delivered across UAE, Myanmar, and India."
+        },
+        {
+          "@type": "Person",
+          "name": "Bhaskar Tyagi",
+          "jobTitle": "Director - Operations",
+          "image": "https://hagerstone.com/founders/bhaskarsir.png",
+          "description": "Director with 16+ years of experience in hospitality industry specializing in interior design."
+        }
+      ],
+      "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": 350
+    },
+    "foundingDate": "2014",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "250"
+    }
+  }}
+/>
 
       <div className="min-h-screen bg-background text-foreground">
         {/* Hero Section */}
@@ -209,12 +263,14 @@ const About = () => {
                   { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
                   { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
                 ].map((client, index) => (
-                  <div key={index} className="flex-shrink-0">
+                  <div key={`${client.name}-${index}`} className="flex-shrink-0">
                     <img
                       src={client.logo}
-                      alt={`${client.name} – Hagerstone office design & build client`}
+                      alt={`${client.name} - Hagerstone client logo`}
+                      width={120}
+                      height={64}
                       className="h-16 w-auto object-contain"
-                      loading="lazy"
+                      loading={index < 6 ? "eager" : "lazy"}
                     />
                   </div>
                 ))}

@@ -101,6 +101,7 @@ export default function VideoTestimonials() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05 }}
+                    aria-hidden="true"
                   >
                     <span className="text-primary/40 text-xs font-bold transform -rotate-90 tracking-widest">
                       PREVIOUS
@@ -128,25 +129,27 @@ export default function VideoTestimonials() {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 src={currentVideo.videoUrl}
                 poster={currentVideo.thumbnail}
+                title={`${currentVideo.client} testimonial - Office design and build project by Hagerstone International`}
                 muted
                 playsInline
                 preload="metadata"
               />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 transition-opacity duration-300" 
-                style={{ opacity: isHovering ? 0.7 : 1 }} 
+              <div 
+                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 transition-opacity duration-300"
+                style={{ opacity: isHovering ? 0.7 : 1 }}
               />
 
               {/* Play Button - Fades out on hover */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 initial={{ opacity: 1 }}
                 animate={{ opacity: isHovering ? 0 : 1 }}
                 transition={{ duration: 0.3 }}
               >
                 <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl">
-                  <Play className="w-8 h-8 text-accent ml-1" fill="currentColor" />
+                  <Play className="w-8 h-8 text-accent ml-1" fill="currentColor" aria-hidden="true" />
                 </div>
               </motion.div>
 
@@ -170,6 +173,7 @@ export default function VideoTestimonials() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05 }}
+                    aria-hidden="true"
                   >
                     <span className="text-primary/40 text-xs font-bold transform -rotate-90 tracking-widest">
                       NEXT
@@ -189,16 +193,18 @@ export default function VideoTestimonials() {
                 size="icon"
                 className="absolute left-4 top-1/2 -translate-y-1/2 lg:left-0 lg:-translate-x-16 w-12 h-12 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-primary/20 hover:bg-white hover:scale-110 transition-all shadow-lg"
                 onClick={handlePrev}
+                aria-label="Previous client testimonial"
               >
-                <ChevronLeft className="w-6 h-6 text-primary" />
+                <ChevronLeft className="w-6 h-6 text-primary" aria-hidden="true" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 className="absolute right-4 top-1/2 -translate-y-1/2 lg:right-0 lg:translate-x-16 w-12 h-12 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-primary/20 hover:bg-white hover:scale-110 transition-all shadow-lg"
                 onClick={handleNext}
+                aria-label="Next client testimonial"
               >
-                <ChevronRight className="w-6 h-6 text-primary" />
+                <ChevronRight className="w-6 h-6 text-primary" aria-hidden="true" />
               </Button>
             </>
           )}
@@ -221,13 +227,13 @@ export default function VideoTestimonials() {
               className="ml-2 inline-block"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
+              aria-hidden="true"
             >
               →
             </motion.span>
           </Button>
         </motion.div>
       </div>
-
     </section>
   );
 }

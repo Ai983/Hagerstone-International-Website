@@ -34,12 +34,18 @@ const SEOHead = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={ogImage} />
       {canonical && <meta property="og:url" content={canonical} />}
+      <meta property="og:site_name" content="Hagerstone International" />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+
+
+      {/* Additional SEO meta tags */}
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow" />
       
       {/* Structured Data */}
       {structuredData && (

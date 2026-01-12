@@ -33,7 +33,7 @@ export default function AchievementSection() {
             >
               <Link to="/projects">
                 View Our Projects
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
             </Button>
           </motion.div>
@@ -54,6 +54,7 @@ export default function AchievementSection() {
                 muted
                 playsInline
                 preload="none"
+                title="VST United Group office design and build project walkthrough by Hagerstone International"
                 style={{ backgroundColor: "#f8f8f8" }}
               >
                 <source src="/testimonials/CR63.webm" type="video/webm" />
