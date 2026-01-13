@@ -21,13 +21,13 @@ const videoTestimonials: VideoTestimonial[] = [
     role: "Corporate Client",
     videoUrl: "/testimonials/VSTUnitedGroupVideo.webm",
   },
-  {
-    id: "cr63",
-    title: "CR63 Project",
-    client: "CR63 - Premium Office Space",
-    role: "Commercial Project",
-    videoUrl: "/testimonials/CR63.webm",
-  },
+  // {
+  //   id: "cr63",
+  //   title: "CR63 Project",
+  //   client: "CR63 - Premium Office Space",
+  //   role: "Commercial Project",
+  //   videoUrl: "/testimonials/CR63.webm",
+  // },
 ];
 
 export default function VideoTestimonials() {
