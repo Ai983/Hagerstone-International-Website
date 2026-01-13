@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { generateVideoObjectSchema } from "@/data/videos";
+import { generateVideoObjectSchema, videos as allVideos } from "@/data/videos";
 
 interface VideoTestimonial {
   id: string;
@@ -13,22 +13,17 @@ interface VideoTestimonial {
   videoUrl: string;
 }
 
-const videoTestimonials: VideoTestimonial[] = [
-  {
-    id: "vst-united",
-    title: "VST United Group",
-    client: "VST United Group",
-    role: "Corporate Client",
-    videoUrl: "/testimonials/VSTUnitedGroupVideo.webm",
-  },
-  // {
-  //   id: "cr63",
-  //   title: "CR63 Project",
-  //   client: "CR63 - Premium Office Space",
-  //   role: "Commercial Project",
-  //   videoUrl: "/testimonials/CR63.webm",
-  // },
-];
+// Use centralized video data but exclude the CR63 video (showcased elsewhere)
+const videoTestimonials: VideoTestimonial[] = allVideos
+  .filter((v) => v.id !== "cr63")
+  .map((v) => ({
+    id: v.id,
+    title: v.title,
+    client: v.client,
+    role: v.role,
+    thumbnail: v.thumbnailUrl,
+    videoUrl: v.videoUrl,
+  }));
 
 export default function VideoTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
