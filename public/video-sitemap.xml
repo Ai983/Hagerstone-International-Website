@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://hagerstone.com/</loc>
+    <video:video>
+      <video:content_loc>https://hagerstone.com/testimonials/VSTUnitedGroupVideo.webm</video:content_loc>
+      <video:player_loc allow_embed="yes">https://hagerstone.com/</video:player_loc>
+      <video:thumbnail_loc>https://hagerstone.com/public/default-video-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>VST United Group - Office Interior Design Testimonial</video:title>
+      <video:description>Professional office interior design and fit-out project by Hagerstone International for VST United Group. Corporate client testimonial showcasing our expertise in modern workspace design and execution.</video:description>
+      <video:duration>120</video:duration>
+      <video:publication_date>2026-01-13</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:tag>office design</video:tag>
+      <video:tag>interior design</video:tag>
+      <video:tag>corporate office</video:tag>
+      <video:tag>testimonial</video:tag>
+      <video:tag>fit-out</video:tag>
+      <video:category>Business</video:category>
+    </video:video>
+    <video:video>
+      <video:content_loc>https://hagerstone.com/testimonials/CR63.webm</video:content_loc>
+      <video:player_loc allow_embed="yes">https://hagerstone.com/</video:player_loc>
+      <video:thumbnail_loc>https://hagerstone.com/public/default-video-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>CR63 Premium Office Space - Interior Design Showcase</video:title>
+      <video:description>CR63 premium office space project showcase by Hagerstone International. This project demonstrates our expertise in designing and constructing high-end commercial office spaces with modern architecture and premium finishes.</video:description>
+      <video:duration>120</video:duration>
+      <video:publication_date>2026-01-13</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:tag>office design</video:tag>
+      <video:tag>interior design</video:tag>
+      <video:tag>commercial space</video:tag>
+      <video:tag>premium office</video:tag>
+      <video:tag>construction</video:tag>
+      <video:category>Business</video:category>
+    </video:video>
+  </url>
+</urlset>

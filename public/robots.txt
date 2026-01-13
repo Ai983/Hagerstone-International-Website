@@ -3,9 +3,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://hagerstone.com/sitemap.xml
-
-# Disallow internal paths
-Disallow: /api/
-Disallow: /_internal/
+Sitemap: https://hagerstone.com/video-sitemap.xml

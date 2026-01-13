@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { generateVideoObjectSchema } from "@/data/videos";
 
 interface VideoTestimonial {
   id: string;
@@ -20,7 +21,13 @@ const videoTestimonials: VideoTestimonial[] = [
     role: "Corporate Client",
     videoUrl: "/testimonials/VSTUnitedGroupVideo.webm",
   },
-  // Add more testimonials here in the future
+  {
+    id: "cr63",
+    title: "CR63 Project",
+    client: "CR63 - Premium Office Space",
+    role: "Commercial Project",
+    videoUrl: "/testimonials/CR63.webm",
+  },
 ];
 
 export default function VideoTestimonials() {
@@ -71,6 +78,20 @@ export default function VideoTestimonials() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden">
+      {/* Schema Markup for Video SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          "name": `${currentVideo.client} - Office Design Testimonial`,
+          "description": `Client testimonial from ${currentVideo.client} showcasing Hagerstone International's office interior design and fit-out expertise`,
+          "thumbnailUrl": "https://hagerstone.com/public/default-video-thumbnail.jpg",
+          "uploadDate": new Date().toISOString().split('T')[0],
+          "duration": "PT2M",
+          "contentUrl": `https://hagerstone.com${currentVideo.videoUrl}`,
+          "embedUrl": `https://hagerstone.com${currentVideo.videoUrl}`,
+        })}
+      </script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -133,6 +154,9 @@ export default function VideoTestimonials() {
                 muted
                 playsInline
                 preload="metadata"
+                itemScope
+                itemType="https://schema.org/VideoObject"
+                aria-label={`${currentVideo.client} video testimonial`}
               />
 
               {/* Gradient Overlay */}

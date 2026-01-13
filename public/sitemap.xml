@@ -1,56 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://hagerstone.com/</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2025-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <video:video>
+      <video:content_loc>https://hagerstone.com/testimonials/VSTUnitedGroupVideo.webm</video:content_loc>
+      <video:thumbnail_loc>https://hagerstone.com/public/default-video-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>VST United Group - Office Design Testimonial</video:title>
+      <video:description>Client testimonial from VST United Group showcasing Hagerstone International's office interior design and fit-out expertise</video:description>
+      <video:duration>120</video:duration>
+    </video:video>
+    <video:video>
+      <video:content_loc>https://hagerstone.com/testimonials/CR63.webm</video:content_loc>
+      <video:thumbnail_loc>https://hagerstone.com/public/default-video-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>CR63 Project - Office Design Showcase</video:title>
+      <video:description>Project showcase from CR63 demonstrating Hagerstone International's office interior design and construction expertise</video:description>
+      <video:duration>120</video:duration>
+    </video:video>
   </url>
   <url>
     <loc>https://hagerstone.com/about</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/services</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/projects</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/our-team</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/contact</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/blog</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/ideas</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hagerstone.com/find-your-style</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

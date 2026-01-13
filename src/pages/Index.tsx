@@ -9,6 +9,7 @@ import AchievementSection from "@/components/AchievementSection";
 import FAQSection from "@/components/FAQSection";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import { projects } from "@/data/project";
+import { videos } from "@/data/videos";
 import { Badge } from "@/components/ui/badge";
 
 import CountUp from "react-countup";
@@ -106,6 +107,24 @@ const Index = () => {
         description="Leading office design & build company in Delhi NCR. Modern office interior design ideas, MEP design, interior fit out services. 11+ years, 7M+ sqft delivered."
         canonical="https://hagerstone.com/"
         keywords="office design and build, modern office interior design ideas, best interior design for office, office interior design, mep design, mep consultants, interior fit out company, commercial interior design company, office workspace design, turnkey office design, top interior design companies in india"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Hagerstone International",
+          url: "https://hagerstone.com",
+          logo: "https://hagerstone.com/logo.png",
+          description: "Leading office design & build company offering interior design, EPC construction, and MEP services for commercial and industrial projects",
+          video: videos.map(video => ({
+            "@type": "VideoObject",
+            name: video.title,
+            description: video.description,
+            thumbnailUrl: video.thumbnailUrl,
+            uploadDate: video.uploadDate,
+            duration: video.duration,
+            contentUrl: video.contentUrl,
+            embedUrl: video.contentUrl,
+          })),
+        }}
       />
 
       {/* Hero Slider */}
