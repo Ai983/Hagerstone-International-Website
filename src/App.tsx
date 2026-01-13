@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +18,9 @@ import LeadPopupForm from "./components/LeadPopupForm";
 import { useRoutes } from "./hooks/useRoutes";
 import { componentRegistry } from "./lib/routeRegistry";
 
+// Lazy load blog post pages
+const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
+
 const queryClient = new QueryClient();
 
 const AppContent = () => {
@@ -36,6 +39,16 @@ const AppContent = () => {
       <Routes>
         {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
+
+        {/* Blog post routes */}
+        <Route 
+          path="/blog/office-workspace-design" 
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeWorkspaceDesignBlog />
+            </Suspense>
+          } 
+        />
 
         {/* Dynamic routes from database */}
         {routes?.map((route) => {

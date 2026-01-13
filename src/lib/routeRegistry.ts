@@ -13,6 +13,7 @@ export const componentRegistry: Record<string, React.LazyExoticComponent<React.C
   'ideas': lazy(() => import('@/pages/Ideas')),
   'blog': lazy(() => import('@/pages/Blog')),
   'blog-post': lazy(() => import('@/pages/BlogPost')),
+  'office-workspace-design': lazy(() => import('@/pages/blog/office-workspace-design')),
   'find-your-style': lazy(() => import('@/pages/FindYourStyle')),
   'contact': lazy(() => import('@/pages/Contact')),
 };
