@@ -5,4 +5,3 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://hagerstone.com/sitemap.xml
-Sitemap: https://hagerstone.com/video-sitemap.xml

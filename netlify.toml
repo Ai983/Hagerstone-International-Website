@@ -6,6 +6,24 @@
 
 # Serve static SEO files directly (before SPA redirect)
 [[redirects]]
+  from = "http://hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap.xml"
   status = 200

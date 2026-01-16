@@ -9,8 +9,9 @@ interface VideoTestimonial {
   title: string;
   client: string;
   role: string;
-  thumbnail?: string;
+  thumbnail: string;
   videoUrl: string;
+  uploadDate: string;
 }
 
 // Use centralized video data but exclude the CR63 video (showcased elsewhere)
@@ -23,6 +24,7 @@ const videoTestimonials: VideoTestimonial[] = allVideos
     role: v.role,
     thumbnail: v.thumbnailUrl,
     videoUrl: v.videoUrl,
+    uploadDate: v.uploadDate,
   }));
 
 export default function VideoTestimonials() {
@@ -78,13 +80,21 @@ export default function VideoTestimonials() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "VideoObject",
-          "name": `${currentVideo.client} - Office Design Testimonial`,
-          "description": `Client testimonial from ${currentVideo.client} showcasing Hagerstone International's office interior design and fit-out expertise`,
-          "thumbnailUrl": "https://hagerstone.com/public/default-video-thumbnail.jpg",
-          "uploadDate": new Date().toISOString().split('T')[0],
-          "duration": "PT2M",
-          "contentUrl": `https://hagerstone.com${currentVideo.videoUrl}`,
-          "embedUrl": `https://hagerstone.com${currentVideo.videoUrl}`,
+          name: `${currentVideo.client} - Office Design Testimonial`,
+          description: `Client testimonial from ${currentVideo.client} showcasing Hagerstone International's office interior design and fit-out expertise.`,
+          thumbnailUrl: currentVideo.thumbnail,
+          uploadDate: currentVideo.uploadDate,
+          duration: "PT2M",
+          contentUrl: `https://hagerstone.com${currentVideo.videoUrl}`,
+          embedUrl: `https://hagerstone.com${currentVideo.videoUrl}`,
+          publisher: {
+            "@type": "Organization",
+            name: "Hagerstone International Pvt. Ltd.",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://hagerstone.com/logo.png",
+            },
+          },
         })}
       </script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
