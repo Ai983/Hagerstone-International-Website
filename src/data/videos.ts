@@ -25,9 +25,9 @@ export const videos: VideoMetadata[] = [
     role: "Corporate Client",
     videoUrl: "/testimonials/VSTUnitedGroupVideo.webm",
     contentUrl: "https://hagerstone.com/testimonials/VSTUnitedGroupVideo.webm",
-    thumbnailUrl: "https://hagerstone.com/public/default-video-thumbnail.jpg",
+    thumbnailUrl: "https://hagerstone.com/hero-images/officeinterior.webp",
     duration: "PT2M",
-    uploadDate: "2026-01-13",
+    uploadDate: "2026-01-13T09:00:00+05:30",
     keywords: [
       "office design",
       "interior design",
@@ -47,9 +47,9 @@ export const videos: VideoMetadata[] = [
     role: "Commercial Project",
     videoUrl: "/testimonials/CR63.webm",
     contentUrl: "https://hagerstone.com/testimonials/CR63.webm",
-    thumbnailUrl: "https://hagerstone.com/public/default-video-thumbnail.jpg",
+    thumbnailUrl: "https://hagerstone.com/hero-images/officeinterior.webp",
     duration: "PT2M",
-    uploadDate: "2026-01-13",
+    uploadDate: "2026-01-13T09:00:00+05:30",
     keywords: [
       "office design",
       "interior design",

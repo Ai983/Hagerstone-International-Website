@@ -103,8 +103,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Office Design & Build Company Delhi NCR | Hagerstone"
-        description="Leading office design & build company in Delhi NCR. Modern office interior design ideas, MEP design, interior fit out services. 11+ years, 7M+ sqft delivered."
+        title="Office Design & Build Company in Delhi NCR"
+        description="Office design & build company in Delhi NCR delivering modern office interiors, MEP design, and interior fit outs. 11+ years and 7M+ sq. ft. delivered."
         canonical="https://hagerstone.com/"
         keywords="office design and build, modern office interior design ideas, best interior design for office, office interior design, mep design, mep consultants, interior fit out company, commercial interior design company, office workspace design, turnkey office design, top interior design companies in india"
         structuredData={{
@@ -123,6 +123,14 @@ const Index = () => {
             duration: video.duration,
             contentUrl: video.contentUrl,
             embedUrl: video.contentUrl,
+            publisher: {
+              "@type": "Organization",
+              name: "Hagerstone International Pvt. Ltd.",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://hagerstone.com/logo.png",
+              },
+            },
           })),
         }}
       />

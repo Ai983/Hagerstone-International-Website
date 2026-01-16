@@ -6,6 +6,7 @@ interface SEOHeadProps {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
+  ogImageAlt?: string;
   keywords?: string;
   structuredData?: object;
 }
@@ -14,12 +15,14 @@ const SEOHead = ({
   title,
   description,
   canonical,
-  ogImage = "https://hagerstone.com/og-image.png",
+  ogImage = "https://hagerstone.com/hero-images/officeinterior.webp",
   ogType = "website",
+  ogImageAlt,
   keywords,
   structuredData,
 }: SEOHeadProps) => {
   const fullTitle = title.includes('Hagerstone') ? title : `${title} | Hagerstone International`;
+  const imageAlt = ogImageAlt ?? fullTitle;
   
   return (
     <Helmet>
@@ -33,6 +36,7 @@ const SEOHead = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:alt" content={imageAlt} />
       {canonical && <meta property="og:url" content={canonical} />}
       <meta property="og:site_name" content="Hagerstone International" />
       
@@ -41,6 +45,7 @@ const SEOHead = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={imageAlt} />
 
 
       {/* Additional SEO meta tags */}

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { teamMembers } from "../data/teamMembers";
+import SEOHead from "@/components/SEOHead";
 
 
 const OurTeam = () => {
@@ -8,7 +10,24 @@ const OurTeam = () => {
 
   return (
     <div className="min-h-screen bg-white pt-20">
+      <SEOHead
+        title="Our Team | Hagerstone International"
+        description="Meet the leadership and project team behind Hagerstone International's office design, build, and interior fit out work across India."
+        canonical="https://hagerstone.com/our-team"
+      />
+
       {/* Hero Section */}
+      <section className="max-w-5xl mx-auto px-6 md:px-12 pt-8">
+        <header>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Meet the Hagerstone Team
+          </h1>
+          <p className="mt-4 text-gray-600 max-w-3xl">
+            Our architects, project managers, and delivery specialists bring
+            office interiors to life with precision and care.
+          </p>
+        </header>
+      </section>
       
 
       {/* Detail Section */}
@@ -92,6 +111,32 @@ const OurTeam = () => {
          ))}
         </AnimatePresence>
         </motion.div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 pb-16">
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Explore related pages
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Learn more about our services, portfolio, and how to connect with
+            our team.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium text-gray-700">
+            <Link className="underline hover:text-gray-900" to="/about">
+              About Hagerstone
+            </Link>
+            <Link className="underline hover:text-gray-900" to="/services">
+              Office Design & Build Services
+            </Link>
+            <Link className="underline hover:text-gray-900" to="/projects">
+              Project Portfolio
+            </Link>
+            <Link className="underline hover:text-gray-900" to="/contact">
+              Contact Our Team
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );
