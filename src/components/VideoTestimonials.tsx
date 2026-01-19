@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { generateVideoObjectSchema, videos as allVideos } from "@/data/videos";
+import { videos as allVideos } from "@/data/videos";
 
 interface VideoTestimonial {
   id: string;
@@ -159,8 +159,6 @@ export default function VideoTestimonials() {
                 muted
                 playsInline
                 preload="metadata"
-                itemScope
-                itemType="https://schema.org/VideoObject"
                 aria-label={`${currentVideo.client} video testimonial`}
               />
 

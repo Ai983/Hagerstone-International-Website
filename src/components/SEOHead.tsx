@@ -8,7 +8,7 @@ interface SEOHeadProps {
   ogType?: string;
   ogImageAlt?: string;
   keywords?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
 }
 
 const SEOHead = ({

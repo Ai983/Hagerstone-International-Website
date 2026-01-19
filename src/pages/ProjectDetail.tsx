@@ -4,6 +4,13 @@ import { getProjectById, projects } from "../data/project";
 import ProjectDetailHero from "../components/projects/ProjectDetailHero";
 import FloorLayout from "../components/projects/FloorLayout";
 import ProjectSection from "../components/projects/ProjectSection";
+import {
+  buildSchemaGraph,
+  createImageObject,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -17,27 +24,43 @@ export default function ProjectDetail() {
   const next = idx < projects.length - 1 ? projects[idx + 1] : undefined;
 
   // Structured data for the project
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": project.title,
-    "description": project.summary,
-    "image": project.hero,
-    "creator": {
-      "@type": "Organization",
-      "name": "Hagerstone International"
+  const projectImage = project.hero.startsWith("http")
+    ? project.hero
+    : `${SITE_URL}${project.hero}`;
+  const structuredData = buildSchemaGraph([
+    organizationSchema,
+    websiteSchema,
+    {
+      "@type": "WebPage",
+      name: project.title,
+      url: `${SITE_URL}/projects/${project.id}`,
+      description: project.summary,
     },
-    "locationCreated": project.location,
-    "dateCreated": project.year
-  };
+    {
+      "@type": "CreativeWork",
+      name: project.title,
+      description: project.summary,
+      image: projectImage,
+      creator: {
+        "@type": "Organization",
+        name: "Hagerstone International",
+      },
+      locationCreated: project.location,
+      dateCreated: project.year,
+    },
+    createImageObject(projectImage, `${project.title} project hero image`),
+  ]);
 
   return (
     <div>
       <SEOHead
         title={`${project.title} | ${project.sector} Interior Design Project`}
-        description={project.summary?.slice(0, 155) || `Explore the ${project.title} project by Hagerstone International - ${project.sector} interior design in ${project.location}.`}
+        description={
+          project.summary?.slice(0, 155) ||
+          `Explore the ${project.title} project by Hagerstone International, a ${project.sector} interior design delivery in ${project.location}.`
+        }
         canonical={`https://hagerstone.com/projects/${project.id}`}
-        ogImage={project.hero}
+        ogImage={projectImage}
         keywords={`${project.sector}, interior design, ${project.location}, commercial fit-out, Hagerstone project`}
         structuredData={structuredData}
       />

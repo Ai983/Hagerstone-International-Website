@@ -8,6 +8,7 @@ interface TextRevealProps {
   delay?: number;
   staggerDelay?: number;
   once?: boolean;
+  as?: keyof JSX.IntrinsicElements;
 }
 
 export function TextReveal({
@@ -17,9 +18,11 @@ export function TextReveal({
   delay = 0,
   staggerDelay = 0.03,
   once = true,
+  as = "div",
 }: TextRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once, margin: "-100px" });
+  const MotionTag = (motion as Record<string, typeof motion.div>)[as] ?? motion.div;
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -134,7 +137,7 @@ export function TextReveal({
   };
 
   return (
-    <motion.div
+    <MotionTag
       ref={ref}
       className={`${className} motion-reduce:!opacity-100`}
       variants={containerVariants}
@@ -142,7 +145,7 @@ export function TextReveal({
       animate={isInView ? "visible" : "hidden"}
     >
       {getContent()}
-    </motion.div>
+    </MotionTag>
   );
 }
 

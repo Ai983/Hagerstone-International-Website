@@ -6,7 +6,14 @@ import { EstimatorProvider } from "@/components/estimator/context";
 import EstimatorFlow from "@/components/estimator/EstimatorFlow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 import QuizQuestionCard from "@/components/style-quiz/QuizQuestionCard";
 import LiveProfileSummary from "@/components/style-quiz/LiveProfileSummary";
 import LeadCaptureOTP from "@/components/style-quiz/LeadCaptureOTP";
@@ -116,10 +123,23 @@ const FindYourStyle = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Find Your Office Style | AI Interior Design & Cost Estimator – Hagerstone</title>
-        <meta name="description" content="Discover your ideal office style with India's first AI-driven interior design quiz. Get personalized workspace recommendations, cost estimates, and AI-generated visualizations for office fit-out in Delhi NCR." />
-      </Helmet>
+      <SEOHead
+        title="Find Your Office Style | AI Interior Design & Cost Estimator"
+        description="Discover your ideal office style with our AI-driven interior design quiz and cost estimator for office fit-outs in Delhi NCR."
+        canonical={`${SITE_URL}/find-your-style`}
+        keywords="office interior design quiz, AI office style, workspace cost estimator, office fit-out planning"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Find Your Office Style",
+            url: `${SITE_URL}/find-your-style`,
+            description:
+              "AI-driven office style quiz and cost estimator for workspace planning.",
+          },
+        ])}
+      />
 
       <main className="min-h-screen bg-background pt-24 md:pt-28 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
@@ -218,6 +238,26 @@ const FindYourStyle = () => {
               </p>
             </CardContent>
           </Card>
+          <div className="mt-10 text-center">
+            <p className="text-muted-foreground mb-4">
+              Want a tailored design roadmap? Explore our service lines or speak
+              with our team.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/services"
+                className="inline-flex items-center px-5 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors"
+              >
+                View Services
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center px-5 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Talk to Us
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
     </>

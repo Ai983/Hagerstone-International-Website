@@ -10,7 +10,16 @@ import FAQSection from "@/components/FAQSection";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import { projects } from "@/data/project";
 import { videos } from "@/data/videos";
+import { clientLogos } from "@/data/clientLogos";
 import { Badge } from "@/components/ui/badge";
+import {
+  BRAND_NAME,
+  SITE_URL,
+  buildSchemaGraph,
+  createImageObject,
+  organizationSchema,
+  websiteSchema,
+} from "@/lib/seo";
 
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
@@ -34,6 +43,7 @@ import {
   CheckCircle,
   Briefcase,
   Ruler,
+  FileText,
   Projector,
   Globe,
 } from "lucide-react";
@@ -45,21 +55,21 @@ const Index = () => {
       title: "Interior Design & Fit-Outs",
       description:
         "Modern office interior design and interior fit out for corporate and commercial spaces in Delhi, Noida, Gurugram.",
-      link: "/services",
+      link: "/services/interior-fit-out",
     },
     {
       icon: Building,
       title: "EPC & PEB Construction",
       description:
         "Engineered Procurement Construction and Pre-Engineered Buildings for industrial and commercial projects.",
-      link: "/services",
+      link: "/services/construction",
     },
     {
       icon: Zap,
       title: "MEP & HVAC Services",
       description:
         "Complete MEP design including Mechanical, Electrical, Plumbing, HVAC, and firefighting solutions.",
-      link: "/services",
+      link: "/services/mep",
     },
   ];
 
@@ -99,40 +109,82 @@ const Index = () => {
       rating: 5,
     },
   ];
+  const processSteps = [
+    {
+      title: "Fast 2D Layout Design",
+      description:
+        "Quick space planning with accurate layouts to validate flow, seating, and adjacencies early.",
+      icon: Ruler,
+    },
+    {
+      title: "Fast BOQ Documentation Process",
+      description:
+        "Clear bills of quantities and scope documents for faster approvals and cost control.",
+      icon: FileText,
+    },
+    {
+      title: "3D Design",
+      description:
+        "Photorealistic visuals and material boards to align stakeholders before execution.",
+      icon: Projector,
+    },
+    {
+      title: "Site Execution",
+      description:
+        "Coordinated fit-out delivery with MEP integration, quality checks, and on-time handover.",
+      icon: Building2,
+    },
+  ];
+  const homepageVideo = videos.find((video) => video.id === "vst-united") ?? videos[0];
+  const homepageImages = [
+    { url: `${SITE_URL}/hero-images/office.avif`, name: "Office design & build hero image" },
+    { url: `${SITE_URL}/hero-images/PEBbackground.jpg`, name: "PEB construction hero image" },
+    { url: `${SITE_URL}/hero-images/interior.avif`, name: "Hospitality interior design hero image" },
+    ...clientLogos.map((logo) => ({
+      url: `${SITE_URL}${logo.logo}`,
+      name: `${logo.name} logo`,
+    })),
+  ].map((image) => createImageObject(image.url, image.name));
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Office Design & Build Company in Delhi NCR"
-        description="Office design & build company in Delhi NCR delivering modern office interiors, MEP design, and interior fit outs. 11+ years and 7M+ sq. ft. delivered."
+        description="Office design & build company in Delhi NCR delivering modern interiors, MEP, and fit-outs with 11+ years of experience and 7M+ sq. ft. delivered."
         canonical="https://hagerstone.com/"
         keywords="office design and build, modern office interior design ideas, best interior design for office, office interior design, mep design, mep consultants, interior fit out company, commercial interior design company, office workspace design, turnkey office design, top interior design companies in india"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Hagerstone International",
-          url: "https://hagerstone.com",
-          logo: "https://hagerstone.com/logo.png",
-          description: "Leading office design & build company offering interior design, EPC construction, and MEP services for commercial and industrial projects",
-          video: videos.map(video => ({
-            "@type": "VideoObject",
-            name: video.title,
-            description: video.description,
-            thumbnailUrl: video.thumbnailUrl,
-            uploadDate: video.uploadDate,
-            duration: video.duration,
-            contentUrl: video.contentUrl,
-            embedUrl: video.contentUrl,
-            publisher: {
-              "@type": "Organization",
-              name: "Hagerstone International Pvt. Ltd.",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://hagerstone.com/logo.png",
-              },
-            },
-          })),
-        }}
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Office Design & Build Company in Delhi NCR",
+            url: `${SITE_URL}/`,
+            description:
+              "Office design & build company delivering modern office interiors, MEP design, and turnkey fit-outs.",
+          },
+          homepageVideo
+            ? {
+                "@type": "VideoObject",
+                name: homepageVideo.title,
+                description: homepageVideo.description,
+                thumbnailUrl: homepageVideo.thumbnailUrl,
+                uploadDate: homepageVideo.uploadDate,
+                duration: homepageVideo.duration,
+                contentUrl: homepageVideo.contentUrl,
+                embedUrl: homepageVideo.contentUrl,
+                publisher: {
+                  "@type": "Organization",
+                  name: BRAND_NAME,
+                  logo: {
+                    "@type": "ImageObject",
+                    url: `${SITE_URL}/logo.png`,
+                  },
+                },
+              }
+            : null,
+          ...homepageImages,
+        ].filter(Boolean) as Record<string, unknown>[])}
       />
 
       {/* Hero Slider */}
@@ -378,6 +430,45 @@ const Index = () => {
           </StaggerContainer>
         </div>
       </AnimatedBackground>
+
+      {/* Our Process */}
+      <section className="py-20 bg-white dark:bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Our Process
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              A streamlined delivery path built for speed, clarity, and quality
+              across every office design &amp; build project.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map(({ title, description, icon: Icon }) => (
+              <div
+                key={title}
+                className="bg-muted/40 rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10">
+                  <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  {title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" variant="outline">
+              <Link to="/services">View Services</Link>
+            </Button>
+            <Button asChild size="lg" className="bg-primary text-primary-foreground">
+              <Link to="/contact">Talk to Us</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Projects */}
       <section className="py-20 bg-muted/30">

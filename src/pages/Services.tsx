@@ -1,6 +1,7 @@
 // src/pages/Services.tsx
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -10,6 +11,13 @@ import {
 import { Button } from "@/components/ui/button";
 import ServiceModal from "@/components/ServiceModal";
 import SEOHead from "@/components/SEOHead";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
+import { servicePages } from "@/data/servicePages";
 import {
   AnimatedBackground,
   TextReveal,
@@ -42,6 +50,7 @@ const Services = () => {
       title: "Office Interior Design & Architecture",
       description:
         "As office design & build specialists, we create modern office interior design concepts that blend aesthetics and functionality for corporate and commercial spaces.",
+      link: "/services/office-design-build",
       features: [
         "Modern office interior design ideas",
         "Space planning & office workspace design",
@@ -57,6 +66,7 @@ const Services = () => {
       title: "Turnkey Construction, EPC & PEB",
       description:
         "End-to-end office design & build, construction, Engineered Procurement Construction (EPC), and Pre-Engineered Buildings (PEB) with strict quality and timeline control.",
+      link: "/services/construction",
       features: [
         "Turnkey office design & build execution",
         "EPC services & project management",
@@ -72,6 +82,7 @@ const Services = () => {
       title: "MEP Design, HVAC & Fire Safety",
       description:
         "Complete MEP design services for modern offices and commercial spaces, covering HVAC, electrical, plumbing, and firefighting systems.",
+      link: "/services/mep",
       features: [
         "MEP design for office buildings",
         "HVAC design & installation",
@@ -87,6 +98,7 @@ const Services = () => {
       title: "Office Furniture & Workspace Design",
       description:
         "Custom office furniture and ergonomic workspace design that supports productivity, comfort, and brand identity.",
+      link: "/services/interior-fit-out",
       features: [
         "Custom workstations & executive cabins",
         "Ergonomic office furniture solutions",
@@ -102,6 +114,7 @@ const Services = () => {
       title: "Interior Fit-Out & Execution",
       description:
         "Complete interior fit out for commercial and hospitality spaces. We manage every detail from shell to ready-to-move-in office.",
+      link: "/services/interior-fit-out",
       features: [
         "False ceilings, partitions & glazing",
         "Flooring, wall finishes & joinery",
@@ -144,10 +157,31 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Office Design & Build Services Delhi NCR | Interior, MEP, EPC & Fit-Out"
-        description="Comprehensive office design & build services in Delhi NCR: modern office interior design, MEP design, EPC & PEB construction, and turnkey interior fit outs for corporate and commercial spaces."
+        title="Office Design & Build Services | Interior, MEP, EPC & Fit-Out"
+        description="Office design & build services in Delhi NCR for modern interiors, MEP design, EPC & PEB construction, and turnkey office fit-outs."
         canonical="https://hagerstone.com/services"
         keywords="office design and build, modern office interior design, office workspace design, mep design services, interior fit out company, turnkey office design, EPC and PEB construction Delhi NCR"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Office Design & Build Services",
+            url: `${SITE_URL}/services`,
+            description:
+              "Office design & build services covering interiors, MEP, construction, and fit-out delivery.",
+          },
+          {
+            "@type": "ItemList",
+            name: "Hagerstone Service Lines",
+            itemListElement: servicePages.map((service, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: service.title,
+              url: `${SITE_URL}/services/${service.slug}`,
+            })),
+          },
+        ])}
       />
 
       {/* Hero Section */}
@@ -158,6 +192,7 @@ const Services = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <TextReveal
+            as="h1"
             variant="words"
             className="text-5xl md:text-6xl font-bold mb-6 text-gold"
           >
@@ -241,6 +276,12 @@ const Services = () => {
                           Learn More
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </Button>
+                        <Link
+                          to={service.link}
+                          className="mt-3 inline-flex text-sm font-medium text-accent hover:underline"
+                        >
+                          Explore {service.title}
+                        </Link>
                       </CardContent>
                     </div>
                   </div>
@@ -283,6 +324,46 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Service Links */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-semibold text-primary mb-2">
+                Explore Detailed Service Pages
+              </h2>
+              <p className="text-muted-foreground max-w-2xl">
+                Review scope, deliverables, and related projects for each of our
+                core service lines.
+              </p>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Book a Consultation
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servicePages.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="block border border-border rounded-xl p-6 hover:border-primary hover:shadow-sm transition"
+              >
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {service.summary}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-hero text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -294,11 +375,12 @@ const Services = () => {
             consultation.
           </p>
           <Button
+            asChild
             size="lg"
             variant="secondary"
             className="bg-gold text-gold-foreground hover:bg-gold/90 shadow-luxury hover:scale-105 transition-all duration-300 animate-scale-in"
           >
-            Contact Us Today
+            <Link to="/contact">Contact Us Today</Link>
           </Button>
         </div>
       </section>

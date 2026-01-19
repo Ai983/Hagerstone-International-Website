@@ -7,76 +7,88 @@ import {
   StaggerContainer,
   ParallaxSection,
 } from "@/components/animations";
+import {
+  buildSchemaGraph,
+  createImageObject,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <>
       <SEOHead
-      title="About Hagerstone International | Office Design & Build Company Delhi NCR"
-      description="Learn about Hagerstone International -- leading office design & build company in Delhi NCR. 11+ years of modern office interior design, MEP design, and interior fit out projects across 25+ cities."
-      canonical="https://hagerstone.com/about"
-      keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
-      structuredData={{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Hagerstone International",
-        "url": "https://hagerstone.com",
-        "logo": "https://hagerstone.com/logo.png",
-        "description": "Leading office design & build company in Delhi NCR specializing in modern office interior design, MEP design, and interior fit out projects.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2",
-          "addressLocality": "Noida",
-          "addressRegion": "Uttar Pradesh",
-          "postalCode": "201301",
-          "addressCountry": "IN"
-        },
-        "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-88829-79328",
-        "contactType": "Sales",
-        "email": "ea@hagerstone.com",
-        "areaServed": "IN"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/hagerstone",
-        "https://www.instagram.com/hagerstone_international",
-        "https://www.facebook.com/HagerstoneInternational"
-      ],
-      "founder": [
-        {
-          "@type": "Person",
-          "name": "Dhruv Agarwal",
-          "jobTitle": "Founder & Managing Director",
-          "image": "https://hagerstone.com/founders/dhruvsir.png",
-          "description": "Civil Engineer from Delhi College of Engineering with over 10 million sq ft of projects delivered across UAE, Myanmar, and India."
-        },
-        {
-          "@type": "Person",
-          "name": "Bhaskar Tyagi",
-          "jobTitle": "Director - Operations",
-          "image": "https://hagerstone.com/founders/bhaskarsir.png",
-          "description": "Director with 16+ years of experience in hospitality industry specializing in interior design."
-        }
-      ],
-      "numberOfEmployees": {
-      "@type": "QuantitativeValue",
-      "value": 350
-    },
-    "foundingDate": "2014",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "250"
-    }
-  }}
-/>
+        title="About Hagerstone International | Office Design & Build Company"
+        description="Learn about Hagerstone International, an office design & build company delivering modern interiors, MEP design, and fit-outs across India."
+        canonical="https://hagerstone.com/about"
+        keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "AboutPage",
+            name: "About Hagerstone International",
+            url: `${SITE_URL}/about`,
+            description:
+              "Company profile for Hagerstone International, an office design & build firm serving Delhi NCR and India.",
+          },
+          {
+            "@type": "Organization",
+            name: "Hagerstone International",
+            url: SITE_URL,
+            logo: `${SITE_URL}/logo.png`,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress:
+                "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2",
+              addressLocality: "Noida",
+              addressRegion: "Uttar Pradesh",
+              postalCode: "201301",
+              addressCountry: "IN",
+            },
+            founder: [
+              {
+                "@type": "Person",
+                name: "Dhruv Agarwal",
+                jobTitle: "Founder & Managing Director",
+                image: `${SITE_URL}/founders/dhruvsir.png`,
+                description:
+                  "Civil Engineer from Delhi College of Engineering with over 10 million sq ft of projects delivered across UAE, Myanmar, and India.",
+              },
+              {
+                "@type": "Person",
+                name: "Bhaskar Tyagi",
+                jobTitle: "Director - Operations",
+                image: `${SITE_URL}/founders/bhaskarsir.png`,
+                description:
+                  "Director with 16+ years of experience in hospitality industry specializing in interior design.",
+              },
+            ],
+            numberOfEmployees: {
+              "@type": "QuantitativeValue",
+              value: 350,
+            },
+            foundingDate: "2014",
+          },
+          createImageObject(
+            `${SITE_URL}/founders/dhruvsir.png`,
+            "Dhruv Agarwal portrait"
+          ),
+          createImageObject(
+            `${SITE_URL}/founders/bhaskarsir.png`,
+            "Bhaskar Tyagi portrait"
+          ),
+        ])}
+      />
 
       <div className="min-h-screen bg-background text-foreground">
         {/* Hero Section */}
         <AnimatedBackground variant="aurora" className="relative py-20 px-6">
           <div className="relative max-w-7xl mx-auto text-center">
             <TextReveal
+              as="h1"
               variant="chars"
               className="text-6xl font-bold text-primary mb-6"
             >
@@ -165,9 +177,15 @@ const About = () => {
                     turnkey interior fit out
                   </span>
                   , Hagerstone integrates architecture, MEP design, HVAC, PEB,
-                  and construction under one roof. This design-build approach
-                  ensures seamless coordination, faster timelines, and
-                  consistent quality for every office workspace design project.
+                  and construction under one roof. Learn more about our{" "}
+                  <Link to="/services" className="text-accent hover:underline">
+                    office design &amp; build services
+                  </Link>{" "}
+                  and explore the{" "}
+                  <Link to="/projects" className="text-accent hover:underline">
+                    project portfolio
+                  </Link>{" "}
+                  to see completed workspace transformations.
                 </p>
               </ScrollReveal>
 

@@ -1,7 +1,13 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Calendar, Clock, User } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from '@/lib/seo';
 
 export default function OfficeWorkspaceDesignBlog() {
   const breadcrumbs = [
@@ -12,8 +18,8 @@ export default function OfficeWorkspaceDesignBlog() {
 
   const relatedServices = [
     { title: 'Office Design & Build Services', href: '/services/office-design-build' },
-    { title: 'MEP Design & Consultancy', href: '/services' },
-    { title: 'Our Office Design Portfolio', href: '/projects' },
+    { title: 'MEP Design & Consultancy', href: '/services/mep' },
+    { title: 'Interior Fit-Out Delivery', href: '/services/interior-fit-out' },
     { title: 'Free Office Design Consultation', href: '/contact' }
   ];
 
@@ -25,96 +31,85 @@ export default function OfficeWorkspaceDesignBlog() {
 
   return (
     <>
-      <Helmet>
-        <title>Office Workspace Design: Essential Elements for Productive Environments | Hagerstone</title>
-        <meta name="description" content="Discover proven office workspace design strategies that boost productivity by 30%. Learn about space planning, ergonomic furniture, color psychology, and collaborative zones from expert interior designers." />
-        <meta name="keywords" content="office workspace design, office space planning, productive office design, ergonomic office furniture, collaborative office spaces, workplace design ideas, office interior design, modern office layout" />
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://hagerstone.com/blog/office-workspace-design" />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Office Workspace Design: Essential Elements for Productive Environments" />
-        <meta property="og:description" content="Transform your workplace with proven design strategies. Expert guide to office space planning, ergonomics, and collaborative spaces." />
-        <meta property="og:url" content="https://hagerstone.com/blog/office-workspace-design" />
-        <meta property="og:image" content="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="article:published_time" content="2026-01-13T00:00:00Z" />
-        <meta property="article:author" content="Hagerstone International" />
-        <meta property="article:section" content="Office Design" />
-        <meta property="article:tag" content="Office Design" />
-        <meta property="article:tag" content="Workspace Planning" />
-        <meta property="article:tag" content="Interior Design" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Office Workspace Design: Essential Elements for Productive Environments" />
-        <meta name="twitter:description" content="Transform your workplace with proven design strategies from office design experts." />
-        <meta name="twitter:image" content="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png" />
-      </Helmet>
-
-      {/* Structured Data - Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "Office Workspace Design: Essential Elements for Productive Environments",
-          "description": "Comprehensive guide to modern office workspace design including space planning, ergonomics, color psychology, and collaborative zones.",
-          "image": "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png",
-          "author": {
-            "@type": "Organization",
-            "name": "Hagerstone International Pvt. Ltd.",
-            "url": "https://hagerstone.com"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Hagerstone International",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://hagerstone.com/logo.png"
-            }
-          },
-          "datePublished": "2026-01-13T00:00:00Z",
-          "dateModified": "2026-01-13T00:00:00Z",
-          "mainEntityOfPage": {
+      <SEOHead
+        title="Office Workspace Design: Essential Elements for Productive Environments"
+        description="Discover office workspace design strategies for productivity, including space planning, ergonomics, and collaborative zones."
+        canonical={`${SITE_URL}/blog/office-workspace-design`}
+        ogImage="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png"
+        ogType="article"
+        keywords="office workspace design, office space planning, productive office design, ergonomic office furniture, collaborative office spaces, workplace design ideas, office interior design, modern office layout"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
             "@type": "WebPage",
-            "@id": "https://hagerstone.com/blog/office-workspace-design"
+            name: "Office Workspace Design: Essential Elements for Productive Environments",
+            url: `${SITE_URL}/blog/office-workspace-design`,
+            description:
+              "Guide to modern office workspace design including space planning, ergonomics, and collaboration.",
           },
-          "articleSection": "Office Design & Build",
-          "keywords": ["office workspace design", "space planning", "ergonomic furniture", "office interior design", "collaborative spaces"],
-          "wordCount": 3500
-        })}
-      </script>
-
-      {/* Breadcrumb Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://hagerstone.com"
+          {
+            "@type": "BlogPosting",
+            headline:
+              "Office Workspace Design: Essential Elements for Productive Environments",
+            description:
+              "Comprehensive guide to modern office workspace design including space planning, ergonomics, color psychology, and collaborative zones.",
+            image:
+              "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png",
+            author: {
+              "@type": "Organization",
+              name: "Hagerstone International Pvt. Ltd.",
+              url: SITE_URL,
             },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Blog",
-              "item": "https://hagerstone.com/blog"
+            publisher: {
+              "@type": "Organization",
+              name: "Hagerstone International",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/logo.png`,
+              },
             },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Office Workspace Design",
-              "item": "https://hagerstone.com/blog/office-workspace-design"
-            }
-          ]
-        })}
-      </script>
+            datePublished: "2026-01-13T00:00:00Z",
+            dateModified: "2026-01-13T00:00:00Z",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/blog/office-workspace-design`,
+            },
+            articleSection: "Office Design & Build",
+            keywords: [
+              "office workspace design",
+              "space planning",
+              "ergonomic furniture",
+              "office interior design",
+              "collaborative spaces",
+            ],
+            wordCount: 3500,
+          },
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: SITE_URL,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: `${SITE_URL}/blog`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Office Workspace Design",
+                item: `${SITE_URL}/blog/office-workspace-design`,
+              },
+            ],
+          },
+        ])}
+      />
 
       {/* Blog Post Content */}
       <article className="min-h-screen bg-background">
