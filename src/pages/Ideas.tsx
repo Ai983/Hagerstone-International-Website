@@ -1,5 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -170,9 +177,20 @@ const Ideas = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Office Interior Design Ideas | Hagerstone International"
-        description="Curated corporate office interior ideas across meeting rooms, cabins, reception and workstations. Explore modern, luxury, industrial, Scandinavian and Japandi styles by Hagerstone interior design and build firm."
+        description="Curated office interior design ideas for meeting rooms, cabins, reception areas, and workstations in modern and luxury styles."
         canonical="https://hagerstone.com/ideas"
         keywords="interior design and build, office interiors design, commercial space design, hospitality interior design company, international interior designers, best interior designer, top interior design firm, interior design websites, lighting solutions, commercial office styling, interior design in Delhi Noida Gurugram, modern interior design"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Office Interior Design Ideas",
+            url: `${SITE_URL}/ideas`,
+            description:
+              "Office interior design ideas showcasing modern, luxury, and functional workspace concepts.",
+          },
+        ])}
       />
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground py-20">
@@ -451,12 +469,14 @@ const Ideas = () => {
                 <h3 className="text-xl font-bold text-primary mb-4">Love This Design?</h3>
                 <p className="text-muted-foreground mb-6">Our designers can create a similar space tailored to your needs</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Schedule Consultation
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                    <Link to="/contact">
+                      Schedule Consultation
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </Button>
-                  <Button size="lg" variant="outline">
-                    Request Quote
+                  <Button asChild size="lg" variant="outline">
+                    <Link to="/services">Request Quote</Link>
                   </Button>
                 </div>
               </div>
@@ -464,6 +484,31 @@ const Ideas = () => {
           </DialogContent>
         </Dialog>
       )}
+      <section className="py-16 bg-muted/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-semibold text-primary mb-4">
+            Looking for tailored interior solutions?
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            Explore our service lines or connect with our team to plan a
+            workspace that matches your brand and budget.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/services"
+              className="inline-flex items-center px-5 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors"
+            >
+              View Services
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-5 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Talk to Us
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

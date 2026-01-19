@@ -5,6 +5,7 @@ const Footer = () => {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Our Team", href: "/our-team" },
     { name: "Projects", href: "/projects" },
     { name: "Our Services", href: "/services" },
     { name: "Ideas", href: "/ideas" },

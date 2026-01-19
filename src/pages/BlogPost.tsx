@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getBlogPostBySlug, getRecentPosts, BlogPost as BlogPostType } from "@/data/blogPosts";
 import { Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, Linkedin, Twitter, Facebook } from "lucide-react";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -24,32 +30,33 @@ const BlogPost = () => {
   }
 
   const articleSchema = {
-    "@context": "https://schema.org",
     "@type": "Article",
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://hagerstone.com/blog/${post.slug}`
+      "@id": `https://hagerstone.com/blog/${post.slug}`,
     },
-    "headline": post.title,
-    "description": post.metaDescription,
-    "image": post.image.startsWith("http") ? post.image : `https://hagerstone.com${post.image}`,
-    "author": {
+    headline: post.title,
+    description: post.metaDescription,
+    image: post.image.startsWith("http")
+      ? post.image
+      : `https://hagerstone.com${post.image}`,
+    author: {
       "@type": "Person",
-      "name": post.author,
-      "jobTitle": post.authorRole || "Interior Design Expert"
+      name: post.author,
+      jobTitle: post.authorRole || "Interior Design Expert",
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Hagerstone International",
-      "logo": {
+      name: "Hagerstone International",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://hagerstone.com/logo.png"
-      }
+        url: "https://hagerstone.com/logo.png",
+      },
     },
-    "datePublished": post.date,
-    "dateModified": post.date,
-    "articleSection": post.category,
-    "keywords": post.tags.join(", ")
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    keywords: post.tags.join(", "),
   };
 
   const breadcrumbSchema = {
@@ -98,7 +105,17 @@ const BlogPost = () => {
         ogImage={post.image.startsWith("http") ? post.image : `https://hagerstone.com${post.image}`}
         ogType="article"
         keywords={post.tags.join(", ")}
-        structuredData={articleSchema}
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: post.title,
+            url: `${SITE_URL}/blog/${post.slug}`,
+            description: post.metaDescription,
+          },
+          articleSchema,
+        ])}
       />
 
       {/* Breadcrumb Schema */}

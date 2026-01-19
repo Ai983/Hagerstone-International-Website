@@ -12,6 +12,7 @@ import AIAssistant from "./components/AIAssistant";
 import CustomCursor from "./components/CustomCursor";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import ServiceDetail from "./pages/ServiceDetail";
 import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import LeadPopupForm from "./components/LeadPopupForm";
@@ -39,6 +40,7 @@ const AppContent = () => {
       <Routes>
         {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
 
         {/* Blog post routes */}
         <Route 

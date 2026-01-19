@@ -6,6 +6,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/SEOHead";
+import { Link } from "react-router-dom";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 import {
   AnimatedBackground,
   TextReveal,
@@ -135,17 +142,32 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Contact Hagerstone | Office Design & Build Company Delhi NCR"
-        description="Contact Hagerstone International for office design & build, modern office interior design, MEP design, and interior fit out projects in Delhi, Noida, Gurugram and across India."
+        title="Contact Hagerstone | Office Design & Build Company"
+        description="Contact Hagerstone International for office design & build, MEP design, and interior fit-out projects in Delhi NCR and across India."
         canonical="https://hagerstone.com/contact"
         keywords="contact office design and build company, office interior design enquiry, mep design consultants delhi, interior fit out company contact, commercial interior design firm delhi ncr, office workspace design"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "ContactPage",
+            name: "Contact Hagerstone International",
+            url: `${SITE_URL}/contact`,
+            description:
+              "Contact Hagerstone for office design & build, MEP, HVAC, and fit-out services.",
+          },
+        ])}
       />
 
       {/* Hero Section */}
       <AnimatedBackground variant="aurora" className="relative text-primary-foreground py-24">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <TextReveal variant="words" className="text-5xl md:text-6xl font-bold mb-6 text-gold">
+          <TextReveal
+            as="h1"
+            variant="words"
+            className="text-5xl md:text-6xl font-bold mb-6 text-gold"
+          >
             Contact Our Office Design & Build Team
           </TextReveal>
           <ScrollReveal variant="slide-up" delay={0.3}>
@@ -358,6 +380,33 @@ const Contact = () => {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Helpful Links */}
+      <section className="py-16 bg-muted/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-semibold text-primary mb-4">
+            Explore More Before You Reach Out
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            Review our services and portfolio to share the right project
+            context when you contact us.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/services"
+              className="inline-flex items-center px-5 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors"
+            >
+              View Services
+            </Link>
+            <Link
+              to="/projects"
+              className="inline-flex items-center px-5 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors"
+            >
+              Project Portfolio
+            </Link>
           </div>
         </div>
       </section>

@@ -3,15 +3,32 @@ import SEOHead from "@/components/SEOHead";
 import { projects } from "@/data/project";
 import ProjectsListHero from "@/components/projects/ProjectsListHero";
 import { ScrollReveal, StaggerContainer } from "@/components/animations";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 
 function Projects() {
   return (
     <div>
       <SEOHead
-        title="Office Design & Build Projects Portfolio | Modern Office Interiors & Fit-Outs"
-        description="Explore Hagerstone’s portfolio of office design & build projects. Modern office interior design, MEP projects, and interior fit out work for corporate and commercial clients across Delhi NCR and India."
+        title="Office Design & Build Projects Portfolio | Modern Office Interiors"
+        description="Explore Hagerstone’s office design & build portfolio, including modern interiors, MEP projects, and commercial fit-outs across India."
         canonical="https://hagerstone.com/projects"
         keywords="office design and build projects, modern office interior design portfolio, commercial interior design projects, office fit out case studies, mep design projects, office workspace design india"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Office Design & Build Projects Portfolio",
+            url: `${SITE_URL}/projects`,
+            description:
+              "Portfolio of office design & build projects delivered by Hagerstone International.",
+          },
+        ])}
       />
 
       <ProjectsListHero />

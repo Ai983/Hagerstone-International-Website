@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { teamMembers } from "../data/teamMembers";
 import SEOHead from "@/components/SEOHead";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 
 
 const OurTeam = () => {
@@ -14,6 +20,17 @@ const OurTeam = () => {
         title="Our Team | Hagerstone International"
         description="Meet the leadership and project team behind Hagerstone International's office design, build, and interior fit out work across India."
         canonical="https://hagerstone.com/our-team"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Our Team",
+            url: `${SITE_URL}/our-team`,
+            description:
+              "Meet the leadership and project delivery team at Hagerstone International.",
+          },
+        ])}
       />
 
       {/* Hero Section */}

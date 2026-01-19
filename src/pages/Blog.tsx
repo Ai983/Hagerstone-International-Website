@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { blogPosts as postsData, getFeaturedPost, getRecentPosts } from "@/data/blogPosts";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
+import {
+  buildSchemaGraph,
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/seo";
 
 const Blog = () => {
   const featuredPost = getFeaturedPost() ?? postsData[0];
@@ -20,9 +26,20 @@ const Blog = () => {
 
       <SEOHead
         title="Interior Design Blog & Ideas | Hagerstone International"
-        description="Insights from an interior design and build firm: corporate office design, hospitality interiors, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs across Delhi, Noida, Gurugram."
+        description="Insights from an interior design and build firm covering office design, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs."
         canonical="https://hagerstone.com/blog"
         keywords="interior design and build companies, hospitality interior design company, international interior designers in India, best interior company in Delhi, corporate office styling, top interior fit out companies in Delhi, interior designers international"
+        structuredData={buildSchemaGraph([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@type": "WebPage",
+            name: "Interior Design Blog & Ideas",
+            url: `${SITE_URL}/blog`,
+            description:
+              "Blog featuring office design, interior fit-out, MEP, and construction insights from Hagerstone.",
+          },
+        ])}
       />
 
 
