@@ -91,9 +91,9 @@ const Footer = () => {
                 <div>
                   <p className="font-medium text-white">Bangalore Office</p>
                   <p className="text-sm text-white/80 leading-relaxed">
-                    Jbr Tech Park, Plot No. 77, 6th Rd, <br />
-                    EPIP Zone, Whitefield, Bengaluru, <br />
-                    Karnataka 560066
+                    Second floor, No. 17, <br />
+                    7th Main Indiranagar 2nd Stage, Bengaluru, <br />
+                    Karnataka 560038
                   </p>
                 </div>
               </div>
