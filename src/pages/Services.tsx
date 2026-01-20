@@ -59,7 +59,7 @@ const Services = () => {
         "Interior fit out-ready design packages",
       ],
       image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Office%20Interior.jpg",
     },
     {
       icon: Building,
@@ -75,7 +75,7 @@ const Services = () => {
         "Cost & timeline optimization",
       ],
       image:
-        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
     },
     {
       icon: Zap,
@@ -91,7 +91,7 @@ const Services = () => {
         "Building automation & energy efficiency",
       ],
       image:
-        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
     },
     {
       icon: Sofa,
@@ -107,7 +107,7 @@ const Services = () => {
         "Installation & on-site coordination",
       ],
       image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/workstation1.jpg",
     },
     {
       icon: Home,
@@ -123,7 +123,7 @@ const Services = () => {
         "Turnkey interior fit out delivery",
       ],
       image:
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Interior%20FitOut%20&%20Execution.png",
     },
   ];
 
@@ -160,7 +160,7 @@ const Services = () => {
         title="Office Design & Build Services | Interior, MEP, EPC & Fit-Out"
         description="Office design & build services in Delhi NCR for modern interiors, MEP design, EPC & PEB construction, and turnkey office fit-outs."
         canonical="https://hagerstone.com/services"
-        keywords="office design and build, modern office interior design, office workspace design, mep design services, interior fit out company, turnkey office design, EPC and PEB construction Delhi NCR"
+        keywords="Office design and build, modern office interior design, office workspace design, mep design services, interior fit out company, turnkey office design, EPC and PEB construction Delhi NCR"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
