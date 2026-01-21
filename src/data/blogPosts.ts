@@ -19,6 +19,23 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "11",
+    slug: "commercial-interior-designers",
+    title: "Commercial Interior Designers: Transforming Business Spaces for Productivity, Brand & Growth",
+    metaTitle: "Commercial Interior Designers for Productivity, Brand & Growth | Hagerstone International Pvt. Ltd.",
+    metaDescription: "Commercial interior designers create functional, branded, and productive business spaces that enhance employee wellbeing and customer experience.",
+    excerpt: "Explore how commercial interior designers improve productivity, branding, space planning, and customer experience across modern business environments.",
+    content: "Full content available at /blog/commercial-interior-designers",
+    image: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg",
+    imageAlt: "Modern office lounge showcasing commercial interior design for collaborative teams",
+    author: "Hagerstone International",
+    date: "January 21, 2026",
+    readTime: "9 min read",
+    category: "Design Guide",
+    tags: ["commercial interiors", "office design", "space planning", "brand experience", "workplace productivity"],
+    featured: false,
+  },
+  {
     id: "1",
     slug: "office-fit-out-cost-guide-india-2025",
     title: "How Much Does Office Fit-Out Cost in India? 2025 Pricing Guide",
