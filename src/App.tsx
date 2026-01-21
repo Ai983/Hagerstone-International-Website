@@ -21,6 +21,7 @@ import { componentRegistry } from "./lib/routeRegistry";
 
 // Lazy load blog post pages
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
+const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commercial-interior-designers"));
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,14 @@ const AppContent = () => {
               <OfficeWorkspaceDesignBlog />
             </Suspense>
           } 
+        />
+        <Route
+          path="/blog/commercial-interior-designers"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <CommercialInteriorDesignersBlog />
+            </Suspense>
+          }
         />
 
         {/* Dynamic routes from database */}
