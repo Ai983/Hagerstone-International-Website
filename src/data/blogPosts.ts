@@ -26,7 +26,9 @@ export const blogPosts: BlogPost[] = [
     metaDescription: "Commercial interior designers create functional, branded, and productive business spaces that enhance employee wellbeing and customer experience.",
     excerpt: "Explore how commercial interior designers improve productivity, branding, space planning, and customer experience across modern business environments.",
     content: "Full content available at /blog/commercial-interior-designers",
+
     image: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg",
+
     imageAlt: "Modern office lounge showcasing commercial interior design for collaborative teams",
     author: "Hagerstone International",
     date: "January 21, 2026",
