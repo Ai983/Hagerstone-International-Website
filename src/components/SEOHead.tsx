@@ -9,6 +9,7 @@ interface SEOHeadProps {
   ogImageAlt?: string;
   keywords?: string;
   structuredData?: object | object[];
+  appendSiteName?: boolean;
 }
 
 const SEOHead = ({
@@ -20,8 +21,13 @@ const SEOHead = ({
   ogImageAlt,
   keywords,
   structuredData,
+  appendSiteName = true,
 }: SEOHeadProps) => {
-  const fullTitle = title.includes('Hagerstone') ? title : `${title} | Hagerstone International`;
+  const fullTitle = appendSiteName
+    ? title.includes('Hagerstone')
+      ? title
+      : `${title} | Hagerstone International`
+    : title;
   const imageAlt = ogImageAlt ?? fullTitle;
   
   return (

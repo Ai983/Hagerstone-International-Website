@@ -7,31 +7,44 @@ export default function ProjectDetailHero({
   title,
   client,
   hero,
-  heroVideo
+  heroAlt,
+  heroVideo,
 }: {
   title: string;
   client: string;
   hero: string;
+  heroAlt: string;
   heroVideo?: string;
 }) {
   const [videoError, setVideoError] = useState(false);
 
   return (
     <section className="relative h-[70vh] w-full overflow-hidden">
-      {heroVideo && !videoError ? (
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src={heroVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={hero}
-          onError={() => setVideoError(true)}
-        />
-      ) : (
-        <img src={hero} alt={title} className="absolute inset-0 h-full w-full object-cover" />
-      )}
+      <figure className="absolute inset-0 h-full w-full">
+        {heroVideo && !videoError ? (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={hero}
+            onError={() => setVideoError(true)}
+          />
+        ) : (
+          <img
+            src={hero}
+            alt={heroAlt}
+            className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            width={1920}
+            height={1080}
+          />
+        )}
+        <figcaption className="sr-only">{heroAlt}</figcaption>
+      </figure>
       <div className="absolute inset-0 bg-black/40" />
       <div className="relative z-10 flex h-full flex-col justify-end p-8 md:p-16">
         <motion.h1
