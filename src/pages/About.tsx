@@ -88,7 +88,6 @@ const About = () => {
         <AnimatedBackground variant="aurora" className="relative py-20 px-6">
           <div className="relative max-w-7xl mx-auto text-center">
             <TextReveal
-              as="h1"
               variant="chars"
               className="text-6xl font-bold text-primary mb-6"
             >

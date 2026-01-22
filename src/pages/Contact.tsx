@@ -164,7 +164,6 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <TextReveal
-            as="h1"
             variant="words"
             className="text-5xl md:text-6xl font-bold mb-6 text-gold"
           >
