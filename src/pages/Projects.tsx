@@ -69,6 +69,7 @@ function Projects() {
                 }
                 className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
+                decoding="async"
                 width="384"
                 height="256"
               />
@@ -76,6 +77,9 @@ function Projects() {
                 <h2 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h2>
+                {project.excerpt && (
+                  <p className="text-sm text-muted-foreground mb-2">{project.excerpt}</p>
+                )}
                 <div className="text-muted-foreground mb-1">
                   {project.client}
                 </div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import ImageCarousel from "./ImageCarousel";
 
-type ImageItem = string | { src: string; alt: string };
+type ImageItem = string | { src: string; alt: string; caption?: string; width?: number; height?: number };
 
 export default function ProjectSection({
   name,

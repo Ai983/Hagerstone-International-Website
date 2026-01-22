@@ -1,7 +1,7 @@
 export type ProjectSection = {
   name: string;
   description?: string;
-  images?: { src: string; alt: string }[];
+  images?: { src: string; alt: string; caption?: string; width?: number; height?: number }[];
   video?: string;
 };
 
@@ -19,7 +19,20 @@ export type ProjectData = {
   heroAlt: string;
   heroVideo?: string;
   summary: string;
+  excerpt?: string;
   scope?: string[];
+  overview?: string;
+  layout?: string[];
+  designHighlights?: string[];
+  designEssence?: string;
+  colorTheme?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  canonical?: string;
+  seoKeywords?: string;
+  schemaKeywords?: string[];
+  about?: string;
+  size?: string;
   specialFeatures?: string[];
   materials?: string[];
   floors?: { name: string; layout: string }[];
@@ -643,6 +656,154 @@ export const projects: ProjectData[] = [
           {
             src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST13.jpeg",
             alt: "Parking area at VinFast showroom with vehicle ramp and parking bays",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "valorium-ventures-office-interior",
+    title: "Valorium Ventures – Office Interior Project",
+    client: "Valorium Ventures",
+    sector: "Commercial Office Interior",
+    area: "700 sq. ft.",
+    colorTheme: "Neutral Palette",
+    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%201.jpeg",
+    heroAlt:
+      "Meeting room with neutral wall panelling, acoustic panels, and a six-seat conference table at Valorium Ventures office interior",
+    summary:
+      "A compact 700 sq. ft. office interior designed for Valorium Ventures, blending functionality, elegance, and comfort with a calming neutral palette.",
+    excerpt:
+      "Compact 700 sq. ft. commercial office with a neutral palette, conference room for six, director cabin, and efficient workstations.",
+    overview:
+      "This office interior for Valorium Ventures is thoughtfully designed to balance functionality, elegance, and comfort within a compact 700 sq. ft. layout. The neutral colour scheme enhances openness while creating a professional and calm working environment.",
+    layout: [
+      "Conference room designed to comfortably accommodate 6 people",
+      "One Director’s cabin ensuring privacy and authority",
+      "Supervisor table for efficient team coordination",
+      "4 workstations optimized for productivity and space utilization",
+    ],
+    designHighlights: [
+      "Laminate wall panelling used to add warmth and durability",
+      "Acoustic wall panelling in the conference room for enhanced sound control",
+      "Decorative wall moldings incorporated to introduce a subtle classical touch",
+      "Lacquered glass panels used as wall-mounted writing boards",
+      "Lacquered glass logo installation to maintain design consistency and reinforce brand identity",
+    ],
+    designEssence:
+      "The project blends modern office requirements with refined detailing, resulting in a workspace that is both visually appealing and highly functional.",
+    metaTitle: "Valorium Ventures Office Interior (700 sq ft) | Projects",
+    metaDescription:
+      "Explore Valorium Ventures’ 700 sq ft office interior in a neutral palette—conference room for 6, director cabin, 4 workstations, acoustic panels.",
+    canonical: "https://hagerstone.com/projects/valorium-ventures-office-interior",
+    seoKeywords:
+      "commercial office interior, office interior project, neutral palette office, conference room design, workspace planning",
+    schemaKeywords: [
+      "neutral palette office interior",
+      "conference room acoustic panels",
+      "laminate wall panelling",
+      "lacquered glass writing board",
+    ],
+    about: "Commercial Office Interior",
+    size: "700 sq ft",
+    sections: [
+      {
+        name: "Meeting Room",
+        description:
+          "A calm, professional conference room with acoustic wall treatments and seating for six to support focused discussions.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%201.jpeg",
+            alt: "Meeting room with neutral wall panelling, acoustic panels, and a six-seat conference table at Valorium Ventures office interior",
+            caption: "Meeting room with acoustic wall panels and six-seat conference seating.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%202.jpeg",
+            alt: "Meeting room with lacquered glass writing board and soft neutral finishes at Valorium Ventures office interior",
+            caption: "Conference room wall with lacquered glass writing board.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Meeting%20Room2%20.jpeg",
+            alt: "Conference room angle showing acoustic wall panelling and pendant lighting in Valorium Ventures office interior",
+            caption: "Acoustic panel feature wall in the meeting room.",
+          },
+        ],
+      },
+      {
+        name: "Director Cabin",
+        description:
+          "A private cabin that pairs authority with warmth, featuring executive furniture and laminate wall panelling.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Directors%20Cabin.jpeg",
+            alt: "Director cabin with executive desk, storage wall, and neutral palette finishes at Valorium Ventures office interior",
+            caption: "Director cabin with executive desk and built-in storage.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Director%20Cabin%202.jpeg",
+            alt: "Director cabin seating area with wood laminate wall panelling in Valorium Ventures office interior",
+            caption: "Director cabin seating corner with warm laminate panelling.",
+          },
+        ],
+      },
+      {
+        name: "Discussion Desk",
+        description:
+          "A compact discussion desk backed by branded lacquered glass, keeping collaboration spaces aligned with the identity system.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Discussion%20Desk%20.jpeg",
+            alt: "Discussion desk with lacquered glass logo panel backdrop in Valorium Ventures office interior",
+            caption: "Discussion desk with lacquered glass logo installation.",
+          },
+        ],
+      },
+      {
+        name: "Supervisor Desk + Workstation",
+        description:
+          "Supervisor seating and adjacent workstations planned for efficient oversight, circulation, and team coordination.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Manager%20Desk%202.jpeg",
+            alt: "Supervisor desk with storage and neutral finishes in Valorium Ventures office interior",
+            caption: "Supervisor desk setup with storage wall.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%20.jpeg",
+            alt: "Workstation row with ergonomic chairs and neutral tone partitions at Valorium Ventures office interior",
+            caption: "Workstation row optimized for team productivity.",
+          },
+        ],
+      },
+      {
+        name: "Workstation Area",
+        description:
+          "Open workstations arranged for productivity, with neutral finishes and clear circulation through the compact footprint.",
+        images: [
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%201.jpeg",
+            alt: "Open workstation area with linear desks and overhead lighting at Valorium Ventures office interior",
+            caption: "Open workstation area with linear desks.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%202.jpeg",
+            alt: "Workstations with divider panels and neutral cabinetry in Valorium Ventures office interior",
+            caption: "Workstations with divider panels and cabinetry.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%203.jpeg",
+            alt: "Collaborative workstation bay with shared desk and muted finishes at Valorium Ventures office interior",
+            caption: "Collaborative workstation bay with shared desk.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%205.jpeg",
+            alt: "Compact workstation cluster with storage and neutral palette finishes at Valorium Ventures office interior",
+            caption: "Compact workstation cluster with integrated storage.",
+          },
+          {
+            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%206.jpeg",
+            alt: "Workstation area showing circulation space and neutral palette interior at Valorium Ventures office interior",
+            caption: "Workstation area with clear circulation paths.",
           },
         ],
       },
