@@ -22,6 +22,9 @@ import { componentRegistry } from "./lib/routeRegistry";
 // Lazy load blog post pages
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
 const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commercial-interior-designers"));
+const OfficeSpacePlanningTrends2026Blog = lazy(
+  () => import("./pages/blog/office-space-planning-trends-2026")
+);
 
 const queryClient = new QueryClient();
 
@@ -57,6 +60,14 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <CommercialInteriorDesignersBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-space-planning-trends-2026"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeSpacePlanningTrends2026Blog />
             </Suspense>
           }
         />
