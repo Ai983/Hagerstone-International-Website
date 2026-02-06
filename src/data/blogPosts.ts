@@ -19,6 +19,31 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "12",
+    slug: "office-space-planning-trends-2026",
+    title: "Trends in Office Space Planning: What to Expect in 2026 and Beyond",
+    metaTitle: "Office Space Planning Trends 2026 | Future-Ready Workspaces",
+    metaDescription: "Explore office space planning trends for 2026 and beyond, from flexible layouts and wellbeing-driven design to smart, cost-efficient workplaces.",
+    excerpt: "Discover the office space planning trends 2026 shaping flexible, wellbeing-driven, and cost-efficient workplaces built for hybrid teams.",
+    content: "Full content available at /blog/office-space-planning-trends-2026",
+    image: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/_%20(2).jpeg",
+    imageAlt: "Future-ready office space planning overview with flexible work zones and collaborative hubs",
+    author: "Hagerstone International",
+    date: "January 2026",
+    readTime: "9 min read",
+    category: "Trends",
+    tags: [
+      "office space planning trends 2026",
+      "office space planning in 2026",
+      "modern workplace planning",
+      "hybrid workplace strategy",
+      "office layout planning",
+      "office cubicle space planning",
+      "workplace design trends 2026",
+    ],
+    featured: false,
+  },
+  {
     id: "11",
     slug: "commercial-interior-designers",
     title: "Commercial Interior Designers: Transforming Business Spaces for Productivity, Brand & Growth",
