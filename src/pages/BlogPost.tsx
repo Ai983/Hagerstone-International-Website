@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import DOMPurify from "dompurify";
 import SEOHead from "@/components/SEOHead";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -356,9 +357,9 @@ const BlogPost = () => {
   );
 };
 
-// Helper function to convert markdown-style content to HTML
+// Helper function to convert markdown-style content to sanitized HTML
 function formatContent(content: string): string {
-  return content
+  const rawHtml = content
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^\*\*(.+?)\*\*$/gm, '<p><strong>$1</strong></p>')
@@ -377,6 +378,13 @@ function formatContent(content: string): string {
     })
     .replace(/\n\n/g, '\n')
     .trim();
+
+  // Sanitize to prevent XSS if content sources ever change
+  return DOMPurify.sanitize(rawHtml, {
+    ALLOWED_TAGS: ['h2', 'h3', 'p', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'hr', 'br', 'span'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+    ALLOW_DATA_ATTR: false,
+  });
 }
 
 export default BlogPost;
