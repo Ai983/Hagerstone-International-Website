@@ -6,6 +6,14 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const hashOTP = async (otp: string): Promise<string> => {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(otp);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -37,9 +45,10 @@ serve(async (req) => {
 
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otpHash = await hashOTP(otp);
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000).toISOString(); // 5 minutes expiry
 
-    // Store OTP in database (using service role)
+    // Store OTP hash in database (using service role)
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
@@ -49,7 +58,7 @@ serve(async (req) => {
       .from('otp_codes')
       .upsert({
         phone: normalizedPhone,
-        otp_hash: otp, // In production, hash this
+        otp_hash: otpHash,
         expires_at: expiresAt,
         attempts: 0
       }, { onConflict: 'phone' });
@@ -82,21 +91,18 @@ serve(async (req) => {
         );
         
         const whatsappData = await whatsappResponse.json();
-        console.log('WhatsApp OTP response:', whatsappData);
         whatsappSent = whatsappData.success === true;
       } catch (whatsappError) {
         console.error('WhatsApp send error:', whatsappError);
       }
     }
 
-    console.log(`OTP for ${normalizedPhone}: ${otp} | WhatsApp sent: ${whatsappSent}`);
-
     return new Response(JSON.stringify({ 
       success: true, 
       message: whatsappSent 
         ? 'OTP sent to your WhatsApp' 
-        : 'OTP generated (WhatsApp unavailable - use 123456 for testing)',
-      phone: normalizedPhone.slice(-4), // Return last 4 digits for UI
+        : 'OTP generated (WhatsApp unavailable - please contact support)',
+      phone: normalizedPhone.slice(-4),
       whatsappSent
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

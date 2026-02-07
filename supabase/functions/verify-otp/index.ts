@@ -6,6 +6,14 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const hashOTP = async (otp: string): Promise<string> => {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(otp);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -21,6 +29,14 @@ serve(async (req) => {
       });
     }
 
+    // Validate OTP format (must be 6 digits)
+    if (!/^\d{6}$/.test(otp)) {
+      return new Response(JSON.stringify({ error: 'Invalid OTP format' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     // Normalize phone number
     const cleanPhone = phone.replace(/\D/g, '');
     const normalizedPhone = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
@@ -29,61 +45,58 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // For development: accept "123456" as valid OTP
-    const isDevOtp = otp === '123456';
-    
-    if (!isDevOtp) {
-      // Fetch stored OTP from database
-      const { data: storedData, error: fetchError } = await supabase
+    // Fetch stored OTP from database
+    const { data: storedData, error: fetchError } = await supabase
+      .from('otp_codes')
+      .select('*')
+      .eq('phone', normalizedPhone)
+      .maybeSingle();
+
+    if (fetchError) {
+      console.error('OTP fetch error:', fetchError);
+      throw new Error('Verification failed');
+    }
+
+    if (!storedData) {
+      return new Response(JSON.stringify({ error: 'OTP expired or not found. Please request a new OTP.' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (new Date() > new Date(storedData.expires_at)) {
+      // Clean up expired OTP
+      await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
+      return new Response(JSON.stringify({ error: 'OTP has expired. Please request a new OTP.' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (storedData.attempts >= 3) {
+      await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
+      return new Response(JSON.stringify({ error: 'Too many attempts. Please request a new OTP.' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Hash the input OTP and compare with stored hash
+    const inputHash = await hashOTP(otp);
+    if (storedData.otp_hash !== inputHash) {
+      // Increment attempts
+      await supabase
         .from('otp_codes')
-        .select('*')
-        .eq('phone', normalizedPhone)
-        .maybeSingle();
-
-      if (fetchError) {
-        console.error('OTP fetch error:', fetchError);
-        throw new Error('Verification failed');
-      }
-
-      if (!storedData) {
-        return new Response(JSON.stringify({ error: 'OTP expired or not found. Please request a new OTP.' }), {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-
-      if (new Date() > new Date(storedData.expires_at)) {
-        // Clean up expired OTP
-        await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
-        return new Response(JSON.stringify({ error: 'OTP has expired. Please request a new OTP.' }), {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-
-      if (storedData.attempts >= 3) {
-        await supabase.from('otp_codes').delete().eq('phone', normalizedPhone);
-        return new Response(JSON.stringify({ error: 'Too many attempts. Please request a new OTP.' }), {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-
-      if (storedData.otp_hash !== otp) {
-        // Increment attempts
-        await supabase
-          .from('otp_codes')
-          .update({ attempts: storedData.attempts + 1 })
-          .eq('phone', normalizedPhone);
-        
-        return new Response(JSON.stringify({ 
-          error: 'Invalid OTP. Please try again.',
-          attemptsLeft: 3 - (storedData.attempts + 1)
-        }), {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
+        .update({ attempts: storedData.attempts + 1 })
+        .eq('phone', normalizedPhone);
+      
+      return new Response(JSON.stringify({ 
+        error: 'Invalid OTP. Please try again.',
+        attemptsLeft: 3 - (storedData.attempts + 1)
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     // OTP verified - clean up
@@ -98,8 +111,6 @@ serve(async (req) => {
 
     if (insertError) {
       console.error('Lead insert error:', insertError);
-    } else {
-      console.log('Lead stored successfully:', { name, email, phone: normalizedPhone });
     }
 
     // Send confirmation WhatsApp
