@@ -8,14 +8,115 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Simple in-memory rate limiter (per edge function instance)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 15; // max requests per window
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  
+  entry.count++;
+  if (entry.count > RATE_LIMIT_MAX) {
+    return true;
+  }
+  return false;
+}
+
+// Clean up old entries periodically
+function cleanupRateLimits() {
+  const now = Date.now();
+  for (const [key, value] of rateLimitMap.entries()) {
+    if (now > value.resetAt) {
+      rateLimitMap.delete(key);
+    }
+  }
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { messages } = await req.json();
-    console.log('Received chat request with messages:', messages);
+    // Rate limiting based on client IP
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     req.headers.get('cf-connecting-ip') || 
+                     'unknown';
+    
+    if (isRateLimited(clientIP)) {
+      // Clean up old entries
+      cleanupRateLimits();
+      return new Response(JSON.stringify({ 
+        error: 'Rate limit exceeded. Please try again later.',
+        reply: 'You have sent too many messages. Please wait a while before trying again.' 
+      }), {
+        status: 429,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const body = await req.json();
+    const { messages } = body;
+
+    // Input validation
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return new Response(JSON.stringify({ 
+        error: 'Invalid request format',
+        reply: 'Sorry, something went wrong. Please try again.' 
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Limit message history to prevent excessive token usage
+    if (messages.length > 20) {
+      return new Response(JSON.stringify({ 
+        error: 'Too many messages in history',
+        reply: 'Please start a new conversation. Message history is too long.' 
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Validate each message has required fields and reasonable content length
+    for (const msg of messages) {
+      if (!msg.role || !msg.content || typeof msg.content !== 'string') {
+        return new Response(JSON.stringify({ 
+          error: 'Invalid message format',
+          reply: 'Sorry, something went wrong. Please try again.' 
+        }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      if (msg.content.length > 2000) {
+        return new Response(JSON.stringify({ 
+          error: 'Message too long',
+          reply: 'Your message is too long. Please keep messages under 2000 characters.' 
+        }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      if (!['user', 'assistant'].includes(msg.role)) {
+        return new Response(JSON.stringify({ 
+          error: 'Invalid message role',
+          reply: 'Sorry, something went wrong. Please try again.' 
+        }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+    }
 
     if (!openAIApiKey) {
       throw new Error('OPENAI_API_KEY not configured');
@@ -43,12 +144,11 @@ serve(async (req) => {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI API error:', response.status, errorText);
+      console.error('OpenAI API error:', response.status);
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('OpenAI response received');
     const reply = data.choices[0].message.content;
 
     return new Response(JSON.stringify({ reply }), {
@@ -58,7 +158,7 @@ serve(async (req) => {
     console.error('Error in chat-assistant function:', error);
     return new Response(
       JSON.stringify({ 
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: 'Service temporarily unavailable',
         reply: 'I apologize, but I encountered an error. Please try again.'
       }), 
       {
