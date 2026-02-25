@@ -25,6 +25,9 @@ const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commerci
 const OfficeSpacePlanningTrends2026Blog = lazy(
   () => import("./pages/blog/office-space-planning-trends-2026")
 );
+const SustainableGreenOfficeBlog = lazy(
+  () => import("./pages/blog/sustainable-green-office-interiors")
+);
 
 const queryClient = new QueryClient();
 
@@ -68,6 +71,14 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <OfficeSpacePlanningTrends2026Blog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/sustainable-green-office-interiors"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <SustainableGreenOfficeBlog />
             </Suspense>
           }
         />

@@ -19,6 +19,24 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "13",
+    slug: "sustainable-green-office-interiors",
+    title: "Sustainable Green Office Interiors: Designing Workspaces That Heal the Planet and People",
+    metaTitle: "Sustainable Green Office Interiors: ESG, Productivity & Energy Efficiency",
+    metaDescription: "Sustainable green office interiors cut energy use, boost productivity, and align with ESG goals. Discover how to build smarter—learn more today.",
+    excerpt: "Step into a truly sustainable workspace—where eco-conscious materials, energy-efficient systems, and biophilic design converge to reduce environmental impact while elevating human well-being and productivity.",
+    content: "Full content available at /blog/sustainable-green-office-interiors",
+    image: "/blog/sustainable-green-office-interiors/hero-green-office.jpg",
+    imageAlt: "Sustainable green office interior with biophilic design elements and natural lighting",
+    author: "Hagerstone Editorial",
+    authorRole: "Sustainability & Workplace Design",
+    date: "February 25, 2026",
+    readTime: "18 min read",
+    category: "Sustainability",
+    tags: ["sustainable office design", "LEED certification", "WELL building standard", "biophilic design", "energy efficiency", "ESG workplace", "green interiors"],
+    featured: true,
+  },
+  {
     id: "12",
     slug: "office-space-planning-trends-2026",
     title: "Trends in Office Space Planning: What to Expect in 2026 and Beyond",
