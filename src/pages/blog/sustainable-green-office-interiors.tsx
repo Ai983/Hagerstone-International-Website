@@ -165,7 +165,7 @@ const SustainableGreenOfficeBlog = () => {
           <section id="opening" className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">1. The Office That Breathes</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Step into most modern offices and you'll see glass walls, minimalist desks, a statement light fixture dangling like art. Beautiful? Often. Responsible? Not always.
+              <a href="https://tecoarch.com/green-office/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Designing Workspaces That Heal the Planet — and the People Inside Them</a> — step into most modern offices and you'll see glass walls, minimalist desks, a statement light fixture dangling like art. Beautiful? Often. Responsible? Not always.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               For decades, the workplace has been designed to impress clients and signal status. Now, it faces a sharper question: <strong className="text-foreground">What does a truly sustainable green office interior look like — and why does it matter right now?</strong>
@@ -190,7 +190,7 @@ const SustainableGreenOfficeBlog = () => {
           <section id="defining" className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">2. Defining Sustainable Green Office Interiors</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Before we romanticize the idea, we need clarity. In interior design, "sustainable" does not mean placing a few plants in the corner or choosing a recycled desk and calling it a day. <strong className="text-foreground">Sustainability is not décor — it is strategy.</strong>
+              Before we romanticize the idea, we need clarity. <a href="https://biofilico.com/news/2024/7/1/best-practices-for-a-green-office-design-that-boosts-productivity" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">If sustainable design is the philosophy</a>, then implementation is where it proves itself. In interior design, "sustainable" does not mean placing a few plants in the corner or choosing a recycled desk and calling it a day. <strong className="text-foreground">Sustainability is not décor — it is strategy.</strong>
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">At its core, sustainable green office design operates on a dual focus:</p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
@@ -242,7 +242,7 @@ const SustainableGreenOfficeBlog = () => {
               Materials are the silent storytellers of any interior. They reveal where resources were extracted, how much energy was consumed, and what impact was left behind. <strong className="text-foreground">Every surface carries consequence.</strong>
             </p>
 
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">4.1 Renewable & Responsible Materials</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">4.1 <a href="https://www.ierek.com/news/case-studies-of-iconic-sustainable-buildings/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Renewable & Responsible Materials</a></h3>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
               <li><strong className="text-foreground">Bamboo</strong> — grows rapidly, regenerates without replanting, durability comparable to hardwood.</li>
               <li><strong className="text-foreground">Cork</strong> — harvested without damaging the tree, one of the most renewable flooring options.</li>
@@ -269,7 +269,7 @@ const SustainableGreenOfficeBlog = () => {
 
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">5.1 Lighting Innovation</h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              LED systems dramatically outperform traditional lighting. Occupancy sensors ensure lights operate only when spaces are in use. Daylight harvesting systems adjust artificial lighting based on natural light availability. Combined, these systems can <strong className="text-foreground">reduce lighting energy consumption by up to 70%</strong>.
+              <a href="https://www.dbb.com/sustainable-office-interior-design/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lighting is one of the largest energy consumers in office environments</a>. LED systems dramatically outperform traditional lighting. Occupancy sensors ensure lights operate only when spaces are in use. Daylight harvesting systems adjust artificial lighting based on natural light availability. Combined, these systems can <strong className="text-foreground">reduce lighting energy consumption by up to 70%</strong>.
             </p>
 
             <figure className="my-8">
