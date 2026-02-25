@@ -12,6 +12,7 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 
+// Blog listing page
 const Blog = () => {
   const featuredPost = getFeaturedPost() ?? postsData[0];
   const recentPosts = getRecentPosts(9);
