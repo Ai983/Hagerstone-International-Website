@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-hero text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -137,6 +137,28 @@ const Footer = () => {
                     className="text-white/90 hover:text-gold transition-colors duration-300"
                   >
                     {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Locations we serve */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 text-gold">Locations We Serve</h3>
+            <ul className="space-y-3">
+              {[
+                { name: "Office Design in Gurgaon", href: "/office-design-gurgaon" },
+                { name: "Office Design in Noida", href: "/office-design-noida" },
+                { name: "Office Design in Delhi", href: "/office-design-delhi" },
+                { name: "Office Design in Faridabad", href: "/office-design-faridabad" },
+              ].map((loc) => (
+                <li key={loc.name}>
+                  <Link
+                    to={loc.href}
+                    className="text-white/90 hover:text-gold transition-colors duration-300 text-sm"
+                  >
+                    {loc.name}
                   </Link>
                 </li>
               ))}

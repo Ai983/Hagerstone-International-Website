@@ -9,6 +9,7 @@ import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import {
   buildSchemaGraph,
+  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -149,6 +150,10 @@ const Contact = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "Contact", url: `${SITE_URL}/contact` },
+          ]),
           {
             "@type": "ContactPage",
             name: "Contact Hagerstone International",
@@ -163,6 +168,7 @@ const Contact = () => {
       <AnimatedBackground variant="aurora" className="relative text-primary-foreground py-24">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="sr-only">Contact Hagerstone International — Office Design &amp; Build Company in Delhi NCR</h1>
           <TextReveal
             variant="words"
             className="text-5xl md:text-6xl font-bold mb-6 text-gold"

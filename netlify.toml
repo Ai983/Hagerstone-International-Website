@@ -1,6 +1,12 @@
 # Netlify Configuration for Hagerstone Website
 
 [build]
+  # SPA build. To serve per-page SEO meta to crawlers that don't execute JS,
+  # Netlify's Prerender extension or a third-party prerender service should be enabled
+  # in the Netlify dashboard — it reads `window.prerenderReady` from src/main.tsx
+  # after client hydration and snapshots the fully-rendered HTML with Helmet meta applied.
+  # For full local static-site generation (all routes prerendered to HTML at build time)
+  # run `npm run build:ssg` instead — requires every imported module to be SSR-safe.
   command = "npm run build"
   publish = "dist"
 

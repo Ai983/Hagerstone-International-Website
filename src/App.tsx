@@ -28,6 +28,28 @@ const OfficeSpacePlanningTrends2026Blog = lazy(
 const SustainableGreenOfficeBlog = lazy(
   () => import("./pages/blog/sustainable-green-office-interiors")
 );
+const OfficeInteriorsNoidaBlog = lazy(() => import("./pages/blog/office-interiors-noida"));
+const OfficeInteriorsDelhiBlog = lazy(() => import("./pages/blog/office-interiors-delhi"));
+
+// Lazy load location pages (SEO local landing pages)
+const OfficeDesignGurgaon = lazy(() => import("./pages/locations/OfficeDesignGurgaon"));
+const OfficeDesignNoida = lazy(() => import("./pages/locations/OfficeDesignNoida"));
+const OfficeDesignDelhi = lazy(() => import("./pages/locations/OfficeDesignDelhi"));
+const OfficeDesignFaridabad = lazy(() => import("./pages/locations/OfficeDesignFaridabad"));
+
+// Static route fallbacks for SSR/prerender — DB-backed routes from useRoutes() are
+// not resolved during SSR (React Query hasn't fetched yet), so crawlers would see
+// a 404 body for every non-home URL. These static routes guarantee prerendered HTML
+// per-page with the correct SEOHead meta. At runtime, DB routes may replace/augment these.
+const About = lazy(() => import("./pages/About"));
+const OurTeam = lazy(() => import("./pages/OurTeam"));
+const Projects = lazy(() => import("./pages/Projects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Services = lazy(() => import("./pages/Services"));
+const Ideas = lazy(() => import("./pages/Ideas"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Contact = lazy(() => import("./pages/Contact"));
+const FindYourStyle = lazy(() => import("./pages/FindYourStyle"));
 
 const queryClient = new QueryClient();
 
@@ -48,6 +70,17 @@ const AppContent = () => {
         {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+
+        {/* Core static routes (prerender-safe; also overridden at runtime if DB defines them) */}
+        <Route path="/about" element={<Suspense fallback={<DynamicLoader />}><About /></Suspense>} />
+        <Route path="/our-team" element={<Suspense fallback={<DynamicLoader />}><OurTeam /></Suspense>} />
+        <Route path="/projects" element={<Suspense fallback={<DynamicLoader />}><Projects /></Suspense>} />
+        <Route path="/projects/:id" element={<Suspense fallback={<DynamicLoader />}><ProjectDetail /></Suspense>} />
+        <Route path="/services" element={<Suspense fallback={<DynamicLoader />}><Services /></Suspense>} />
+        <Route path="/ideas" element={<Suspense fallback={<DynamicLoader />}><Ideas /></Suspense>} />
+        <Route path="/blog" element={<Suspense fallback={<DynamicLoader />}><Blog /></Suspense>} />
+        <Route path="/contact" element={<Suspense fallback={<DynamicLoader />}><Contact /></Suspense>} />
+        <Route path="/find-your-style" element={<Suspense fallback={<DynamicLoader />}><FindYourStyle /></Suspense>} />
 
         {/* Blog post routes */}
         <Route 
@@ -79,6 +112,56 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <SustainableGreenOfficeBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-interiors-noida"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeInteriorsNoidaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-interiors-delhi"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeInteriorsDelhiBlog />
+            </Suspense>
+          }
+        />
+
+        {/* Location pages (SEO) */}
+        <Route
+          path="/office-design-gurgaon"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeDesignGurgaon />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/office-design-noida"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeDesignNoida />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/office-design-delhi"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeDesignDelhi />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/office-design-faridabad"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeDesignFaridabad />
             </Suspense>
           }
         />

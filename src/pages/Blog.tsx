@@ -7,6 +7,7 @@ import { blogPosts as postsData, getFeaturedPost, getRecentPosts } from "@/data/
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import {
   buildSchemaGraph,
+  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -33,6 +34,10 @@ const Blog = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "Blog", url: `${SITE_URL}/blog` },
+          ]),
           {
             "@type": "WebPage",
             name: "Interior Design Blog & Ideas",

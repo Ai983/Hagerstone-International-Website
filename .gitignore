@@ -12,6 +12,21 @@ dist
 dist-ssr
 *.local
 
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Build output extras
+dist/server
+
+# OS cruft
+.DS_Store
+
+# Claude / local tooling
+claude-seo/
+memory/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

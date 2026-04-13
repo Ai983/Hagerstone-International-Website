@@ -5,6 +5,7 @@ import ProjectsListHero from "@/components/projects/ProjectsListHero";
 import { ScrollReveal, StaggerContainer } from "@/components/animations";
 import {
   buildSchemaGraph,
+  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -21,6 +22,10 @@ function Projects() {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "Projects", url: `${SITE_URL}/projects` },
+          ]),
           {
             "@type": "WebPage",
             name: "Office Design & Build Projects Portfolio",

@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import {
   buildSchemaGraph,
+  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -131,6 +132,10 @@ const FindYourStyle = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "Find Your Style", url: `${SITE_URL}/find-your-style` },
+          ]),
           {
             "@type": "WebPage",
             name: "Find Your Office Style",

@@ -16,6 +16,7 @@ import {
   BRAND_NAME,
   SITE_URL,
   buildSchemaGraph,
+  createBreadcrumbSchema,
   createImageObject,
   organizationSchema,
   websiteSchema,
@@ -156,6 +157,9 @@ const Index = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+          ]),
           {
             "@type": "WebPage",
             name: "Office Design & Build Company in Delhi NCR",
@@ -186,6 +190,9 @@ const Index = () => {
           ...homepageImages,
         ].filter(Boolean) as Record<string, unknown>[])}
       />
+
+      {/* SEO H1 (visually hidden, visual heading appears via HeroSlider + TextReveal below) */}
+      <h1 className="sr-only">Office Design &amp; Build Company in Delhi NCR | Hagerstone International</h1>
 
       {/* Hero Slider */}
       <HeroSlider />

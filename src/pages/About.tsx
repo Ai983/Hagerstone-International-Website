@@ -9,6 +9,7 @@ import {
 } from "@/components/animations";
 import {
   buildSchemaGraph,
+  createBreadcrumbSchema,
   createImageObject,
   organizationSchema,
   SITE_URL,
@@ -27,6 +28,10 @@ const About = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          createBreadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "About", url: `${SITE_URL}/about` },
+          ]),
           {
             "@type": "AboutPage",
             name: "About Hagerstone International",
@@ -87,6 +92,7 @@ const About = () => {
         {/* Hero Section */}
         <AnimatedBackground variant="aurora" className="relative py-20 px-6">
           <div className="relative max-w-7xl mx-auto text-center">
+            <h1 className="sr-only">About Hagerstone International — Office Design &amp; Build Company</h1>
             <TextReveal
               variant="chars"
               className="text-6xl font-bold text-primary mb-6"

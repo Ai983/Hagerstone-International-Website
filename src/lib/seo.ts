@@ -33,6 +33,21 @@ export const buildSchemaGraph = (items: Array<Record<string, unknown>>) => ({
   "@graph": items,
 });
 
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export const createBreadcrumbSchema = (items: BreadcrumbItem[]) => ({
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});
+
 export const createImageObject = (url: string, name: string) => ({
   "@type": "ImageObject",
   contentUrl: url,
