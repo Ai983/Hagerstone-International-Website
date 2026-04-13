@@ -53,13 +53,16 @@ const HeroSlider = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          {/* Background Image */}
+          {/* Background Image — first slide loads eagerly (LCP), rest are lazy */}
           <img
             src={slides[currentSlide].src}
             alt={slides[currentSlide].alt}
             className="w-full h-full object-cover"
             width={1920}
             height={1080}
+            loading={currentSlide === 0 ? "eager" : "lazy"}
+            fetchPriority={currentSlide === 0 ? "high" : "auto"}
+            decoding="async"
           />
 
           {/* Dark overlay */}

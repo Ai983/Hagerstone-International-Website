@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMHY0ZN0XR"></script>
+  <!-- Google tag (gtag.js) — deferred to idle so it doesn't block LCP. Analytics still fires after the page is interactive. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-SMHY0ZN0XR');
+    gtag('config', 'G-SMHY0ZN0XR', { send_page_view: true });
+    (function loadGtagWhenIdle() {
+      var load = function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SMHY0ZN0XR';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else {
+        window.addEventListener('load', function () { setTimeout(load, 1500); });
+      }
+    })();
   </script>
 
   <!-- Default SEO Meta Tags (overridden per-page by react-helmet-async on client; replaced at build time by prerender for crawlers) -->
@@ -26,9 +38,8 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#0c3f2f" />
 
-  <!-- Preload critical assets -->
-  <link rel="preload" as="video" href="/Diwalifinal.webm" type="video/webm" />
-  <link rel="preload" as="video" href="/Diwalifinal.mp4" type="video/mp4" />
+  <!-- Preload critical LCP image (homepage hero) -->
+  <link rel="preload" as="image" href="/hero-images/office.avif" type="image/avif" fetchpriority="high" />
 
   <!-- Open Graph defaults (overridden per-page) -->
   <meta property="og:site_name" content="Hagerstone International" />
@@ -259,10 +270,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://analytics.ahrefs.com/analytics.js" data-key="/EfVSrcCn+L5UpokI+TBMA" async></script>
 
-  <!-- OTTO SEO Dynamic Optimization - SearchAtlas -->
-  <script nowprocket nitro-exclude type="text/javascript" id="sa-dynamic-optimization" data-uuid="b0c11077-8a1e-4607-a3ad-d0f92b7065c5" src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gImIwYzExMDc3LThhMWUtNDYwNy1hM2FkLWQwZjkyYjcwNjVjNSI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="></script>
+  <!-- Third-party analytics & SEO tools — all deferred to idle so they don't block LCP/FID.
+       Each still runs before the user leaves the page. -->
+  <script>
+    (function deferThirdParty() {
+      var loaders = [
+        function () {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://analytics.ahrefs.com/analytics.js';
+          s.setAttribute('data-key', '/EfVSrcCn+L5UpokI+TBMA');
+          document.head.appendChild(s);
+        },
+        function () {
+          var s = document.createElement('script');
+          s.id = 'sa-dynamic-optimization-loader';
+          s.src = 'https://dashboard.searchatlas.com/scripts/dynamic_optimization.js';
+          s.dataset.uuid = 'b0c11077-8a1e-4607-a3ad-d0f92b7065c5';
+          s.setAttribute('nowprocket', '');
+          s.setAttribute('nitro-exclude', '');
+          document.head.appendChild(s);
+        }
+      ];
+      var run = function () { loaders.forEach(function (fn) { try { fn(); } catch (e) {} }); };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(run, { timeout: 4000 });
+      } else {
+        window.addEventListener('load', function () { setTimeout(run, 2000); });
+      }
+    })();
+  </script>
 </head>
 
 <body>
