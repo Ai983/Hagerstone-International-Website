@@ -1,0 +1,142 @@
+# Netlify Configuration for Hagerstone Website
+
+[build]
+  # SPA build. To serve per-page SEO meta to crawlers that don't execute JS,
+  # Netlify's Prerender extension or a third-party prerender service should be enabled
+  # in the Netlify dashboard — it reads `window.prerenderReady` from src/main.tsx
+  # after client hydration and snapshots the fully-rendered HTML with Helmet meta applied.
+  # For full local static-site generation (all routes prerendered to HTML at build time)
+  # run `npm run build:ssg` instead — requires every imported module to be SSR-safe.
+  command = "npm run build"
+  publish = "dist"
+
+# Serve static SEO files directly (before SPA redirect)
+[[redirects]]
+  from = "http://hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.hagerstone.com/*"
+  to = "https://hagerstone.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/llms.txt"
+  to = "/llms.txt"
+  status = 200
+
+# SPA Redirect - Handle all client-side routes (fallback)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache images
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.avif"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Cache videos
+[[headers]]
+  for = "*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.webm"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# SEO files - shorter cache for updates
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain"
