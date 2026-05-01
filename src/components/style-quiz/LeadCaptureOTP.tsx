@@ -231,9 +231,6 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
               <p className="text-sm text-muted-foreground mb-2">
                 Enter the 6-digit OTP
               </p>
-              <p className="text-xs text-accent font-medium mb-3 bg-accent/10 rounded-md py-2 px-3 inline-block">
-                📱 Test OTP: <strong>123456</strong>
-              </p>
               <div className="flex justify-center">
                 <InputOTP maxLength={6} value={otp} onChange={setOtp}>
                   <InputOTPGroup>

@@ -16,6 +16,28 @@ export interface VideoMetadata {
   keywords: string[];
 }
 
+export const homepageWalkthroughVideo = {
+  id: "homepage-walkthrough",
+  title: "Hagerstone Office Design & Build Walkthrough",
+  description:
+    "Walkthrough video showcasing Hagerstone International's office design and build expertise, modern workspace interiors, turnkey fit-out delivery, MEP coordination, and commercial interior solutions.",
+  videoUrl:
+    "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/media/Walkthrough%20-%201.webm",
+  contentUrl:
+    "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/media/Walkthrough%20-%201.webm",
+  thumbnailUrl: "https://hagerstone.com/hero-images/office.avif",
+  uploadDate: "2026-05-01T09:00:00+05:30",
+  keywords: [
+    "office design and build walkthrough",
+    "office interior design",
+    "workspace design",
+    "turnkey fit-out",
+    "commercial interior design",
+    "MEP coordination",
+    "Delhi NCR office design",
+  ],
+};
+
 export const videos: VideoMetadata[] = [
   {
     id: "vst-united",

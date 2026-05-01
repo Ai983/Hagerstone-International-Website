@@ -9,14 +9,13 @@ import AchievementSection from "@/components/AchievementSection";
 import FAQSection from "@/components/FAQSection";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import { projects } from "@/data/project";
-import { videos } from "@/data/videos";
+import { homepageWalkthroughVideo } from "@/data/videos";
 import { clientLogos } from "@/data/clientLogos";
 import { Badge } from "@/components/ui/badge";
 import {
   BRAND_NAME,
   SITE_URL,
   buildSchemaGraph,
-  createBreadcrumbSchema,
   createImageObject,
   organizationSchema,
   websiteSchema,
@@ -136,7 +135,7 @@ const Index = () => {
       icon: Building2,
     },
   ];
-  const homepageVideo = videos.find((video) => video.id === "vst-united") ?? videos[0];
+  const homepageVideo = homepageWalkthroughVideo;
   const homepageImages = [
     { url: `${SITE_URL}/hero-images/office.avif`, name: "Office design & build hero image" },
     { url: `${SITE_URL}/hero-images/PEBbackground.jpg`, name: "PEB construction hero image" },
@@ -157,9 +156,6 @@ const Index = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
-          createBreadcrumbSchema([
-            { name: "Home", url: `${SITE_URL}/` },
-          ]),
           {
             "@type": "WebPage",
             name: "Office Design & Build Company in Delhi NCR",
@@ -172,11 +168,12 @@ const Index = () => {
                 "@type": "VideoObject",
                 name: homepageVideo.title,
                 description: homepageVideo.description,
-                thumbnailUrl: homepageVideo.thumbnailUrl,
+                thumbnailUrl: [homepageVideo.thumbnailUrl],
                 uploadDate: homepageVideo.uploadDate,
-                duration: homepageVideo.duration,
                 contentUrl: homepageVideo.contentUrl,
-                embedUrl: homepageVideo.contentUrl,
+                embedUrl: `${SITE_URL}/`,
+                inLanguage: "en-IN",
+                keywords: homepageVideo.keywords.join(", "),
                 publisher: {
                   "@type": "Organization",
                   name: BRAND_NAME,
@@ -190,9 +187,6 @@ const Index = () => {
           ...homepageImages,
         ].filter(Boolean) as Record<string, unknown>[])}
       />
-
-      {/* SEO H1 (visually hidden, visual heading appears via HeroSlider + TextReveal below) */}
-      <h1 className="sr-only">Office Design &amp; Build Company in Delhi NCR | Hagerstone International</h1>
 
       {/* Hero Slider */}
       <HeroSlider />

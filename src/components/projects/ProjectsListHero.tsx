@@ -13,10 +13,7 @@ export default function ProjectsListHero() {
     <div className="relative w-full h-[500px] mb-8 overflow-hidden rounded-xl">
       {/* Centered Title, pushed down */}
       <div className="absolute inset-0 z-10 flex flex-col justify-end items-center pb-20 pointer-events-none">
-        <h1 className="text-6xl font-bold text-black">
-          <span className="sr-only">Office Design &amp; Build Projects Portfolio — </span>
-          Our Portfolio
-        </h1>
+        <h1 className="text-6xl font-bold text-black">Our Portfolio</h1>
       </div>
       {/* Background Video */}
       <video

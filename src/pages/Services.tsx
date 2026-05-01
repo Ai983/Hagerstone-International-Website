@@ -13,7 +13,6 @@ import ServiceModal from "@/components/ServiceModal";
 import SEOHead from "@/components/SEOHead";
 import {
   buildSchemaGraph,
-  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -165,10 +164,6 @@ const Services = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
-          createBreadcrumbSchema([
-            { name: "Home", url: `${SITE_URL}/` },
-            { name: "Services", url: `${SITE_URL}/services` },
-          ]),
           {
             "@type": "WebPage",
             name: "Office Design & Build Services",
@@ -196,7 +191,6 @@ const Services = () => {
       >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="sr-only">Office Design &amp; Build Services — Interior, MEP, HVAC, EPC &amp; Fit-Out</h1>
           <TextReveal
             variant="words"
             className="text-5xl md:text-6xl font-bold mb-6 text-gold"

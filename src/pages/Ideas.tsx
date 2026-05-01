@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import {
   buildSchemaGraph,
-  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -184,10 +183,6 @@ const Ideas = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
-          createBreadcrumbSchema([
-            { name: "Home", url: `${SITE_URL}/` },
-            { name: "Ideas", url: `${SITE_URL}/ideas` },
-          ]),
           {
             "@type": "WebPage",
             name: "Office Interior Design Ideas",
