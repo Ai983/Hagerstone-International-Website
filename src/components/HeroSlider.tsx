@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { homepageWalkthroughVideo } from "@/data/videos";
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -7,20 +8,30 @@ const HeroSlider = () => {
 
   const slides = [
     {
+      type: "video" as const,
+      src: homepageWalkthroughVideo.videoUrl,
+      poster: "/hero-images/office.avif",
+      title: homepageWalkthroughVideo.title,
+      alt: "Office design and build walkthrough video by Hagerstone International",
+    },
+    {
+      type: "image" as const,
       src: "/hero-images/office.avif",
       alt: "Office design & build project by Hagerstone – modern office interior design and workspace styling",
     },
     {
+      type: "image" as const,
       src: "/hero-images/PEBbackground.jpg",
       alt: "PEB & EPC construction – pre-engineered building solutions for industrial and commercial projects",
     },
     {
+      type: "image" as const,
       src: "/hero-images/interior.avif",
       alt: "Hospitality interior design – premium reception lounge by Hagerstone",
     },
   ];
 
-  const slideInterval = 3000; // 3 seconds per slide
+  const currentSlideDuration = slides[currentSlide].type === "video" ? 9000 : 3500;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,17 +40,19 @@ const HeroSlider = () => {
           setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
           return 0;
         }
-        return prevProgress + 100 / (slideInterval / 100);
+        return prevProgress + 100 / (currentSlideDuration / 100);
       });
     }, 100);
 
     return () => clearInterval(timer);
-  }, [currentSlide, slides.length]);
+  }, [currentSlideDuration, slides.length]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setProgress(0);
   };
+
+  const currentSlideItem = slides[currentSlide];
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -53,47 +66,33 @@ const HeroSlider = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          {/* Background Image */}
-          <img
-            src={slides[currentSlide].src}
-            alt={slides[currentSlide].alt}
-            className="w-full h-full object-cover"
-            width={1920}
-            height={1080}
-          />
+          {currentSlideItem.type === "video" ? (
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={currentSlideItem.poster}
+              title={currentSlideItem.title}
+              aria-label={currentSlideItem.alt}
+            >
+              <source src={currentSlideItem.src} type="video/webm" />
+            </video>
+          ) : (
+            <img
+              src={currentSlideItem.src}
+              alt={currentSlideItem.alt}
+              className="w-full h-full object-cover"
+              width={1920}
+              height={1080}
+            />
+          )}
 
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/40" />
 
-          {/* Progress Bars (overlay on image) */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
-            <div className="flex gap-4">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className="relative group cursor-pointer"
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  <div className="w-16 md:w-20 lg:w-24 h-1 bg-white/30 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-white rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{
-                        width:
-                          index === currentSlide
-                            ? `${progress}%`
-                            : index < currentSlide
-                            ? "100%"
-                            : "0%",
-                      }}
-                      transition={{ duration: 0.1, ease: "linear" }}
-                    />
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </AnimatePresence>
 

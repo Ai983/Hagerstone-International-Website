@@ -5,7 +5,6 @@ import {
   BRAND_NAME,
   SITE_URL,
   buildSchemaGraph,
-  createBreadcrumbSchema,
   organizationSchema,
   websiteSchema,
 } from "@/lib/seo";
@@ -56,11 +55,6 @@ const ServiceDetail = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
-          createBreadcrumbSchema([
-            { name: "Home", url: `${SITE_URL}/` },
-            { name: "Services", url: `${SITE_URL}/services` },
-            { name: service.title, url: `${SITE_URL}/services/${service.slug}` },
-          ]),
           {
             "@type": "WebPage",
             name: service.title,

@@ -5,7 +5,6 @@ import { teamMembers } from "../data/teamMembers";
 import SEOHead from "@/components/SEOHead";
 import {
   buildSchemaGraph,
-  createBreadcrumbSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -24,10 +23,6 @@ const OurTeam = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
-          createBreadcrumbSchema([
-            { name: "Home", url: `${SITE_URL}/` },
-            { name: "Our Team", url: `${SITE_URL}/our-team` },
-          ]),
           {
             "@type": "WebPage",
             name: "Our Team",

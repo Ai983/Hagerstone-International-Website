@@ -8,14 +8,10 @@ const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiO
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-// SSR-safe: `localStorage` is undefined in Node. During prerender we don't persist
-// auth sessions; the client still works for anonymous reads of `routes`, etc.
-const isBrowser = typeof window !== 'undefined';
-
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
-    storage: isBrowser ? window.localStorage : undefined,
-    persistSession: isBrowser,
-    autoRefreshToken: isBrowser,
+    storage: localStorage,
+    persistSession: true,
+    autoRefreshToken: true,
   }
 });
