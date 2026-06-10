@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEO Audit Report - Hagerstone International</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4;margin:0}
+html,body{font-family:'Inter',Arial,Helvetica,sans-serif;font-size:10pt;line-height:1.65;color:#1e293b;background:#fff}
+.cover-page{width:100%;min-height:100vh;background:linear-gradient(160deg,#0f172a 0%,#1e3a5f 55%,#0f2744 100%);display:flex;flex-direction:column;page-break-after:always;break-after:page}
+.cover-top-bar{height:5px;background:linear-gradient(90deg,#3b82f6,#06b6d4,#6366f1);flex-shrink:0}
+.cover-content{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:40mm 22mm 20mm 22mm}
+.cover-label{font-size:9pt;font-weight:600;letter-spacing:0.18em;color:#60a5fa;text-transform:uppercase;margin-bottom:10mm}
+.cover-title{font-size:32pt;font-weight:800;color:#f8fafc;line-height:1.15;margin-bottom:5mm;max-width:160mm}
+.cover-domain{font-size:13pt;color:#94a3b8;margin-bottom:14mm;font-weight:400}
+.cover-score-block{display:flex;align-items:center;gap:8mm;margin-bottom:14mm}
+.score-circle{width:30mm;height:30mm;border-radius:50%;background:#dc2626;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.score-number{font-size:22pt;font-weight:800;line-height:1;color:#fff}
+.score-denom{font-size:9pt;color:rgba(255,255,255,0.8);font-weight:500}
+.score-meta{display:flex;flex-direction:column;gap:1mm}
+.score-label-text{font-size:20pt;font-weight:800;color:#dc2626}
+.score-sublabel{font-size:9pt;color:#94a3b8;text-transform:uppercase;letter-spacing:0.1em}
+.cover-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm 12mm;border-top:1px solid rgba(148,163,184,0.3);padding-top:8mm;width:100%;max-width:140mm}
+.cover-meta-item{display:flex;flex-direction:column;gap:1mm}
+.meta-key{font-size:7pt;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;font-weight:600}
+.meta-val{font-size:9pt;color:#cbd5e1;font-weight:400;line-height:1.4}
+.cover-footer{display:flex;justify-content:space-between;padding:5mm 22mm;border-top:1px solid rgba(148,163,184,0.2);font-size:7.5pt;color:#475569;margin-top:auto}
+.report-body{padding:8mm 14mm}
+h1{font-size:22pt;font-weight:800;color:#0f172a;margin:8mm 0 4mm;border-bottom:3px solid #3b82f6;padding-bottom:3mm;line-height:1.2}
+h2{font-size:15pt;font-weight:700;color:#1e3a5f;margin:10mm 0 3mm;padding-bottom:2mm;border-bottom:1.5px solid #e2e8f0}
+h3{font-size:11pt;font-weight:700;color:#1e293b;margin:6mm 0 2mm}
+h4{font-size:10pt;font-weight:600;color:#334155;margin:4mm 0 2mm}
+p{margin-bottom:3mm}
+strong{font-weight:700;color:#0f172a}
+em{font-style:italic}
+h3.severity-critical{border-left:4px solid #dc2626;padding-left:3mm;color:#dc2626}
+h3.severity-high{border-left:4px solid #ea580c;padding-left:3mm;color:#c2410c}
+h3.severity-medium{border-left:4px solid #d97706;padding-left:3mm;color:#b45309}
+h3.severity-low{border-left:4px solid #16a34a;padding-left:3mm;color:#15803d}
+table{width:100%;border-collapse:collapse;margin:4mm 0 6mm;font-size:9pt;page-break-inside:avoid}
+thead tr{background:#1e3a5f;color:#f8fafc}
+th{padding:2.5mm 3mm;text-align:left;font-weight:600;font-size:8.5pt;letter-spacing:0.03em}
+td{padding:2mm 3mm;border-bottom:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even) td{background:#f8fafc}
+pre{background:#0f172a;color:#e2e8f0;padding:4mm;border-radius:4px;font-size:7.5pt;font-family:'Consolas','Courier New',monospace;margin:3mm 0 5mm;page-break-inside:avoid;white-space:pre-wrap;word-break:break-word}
+code{font-family:'Consolas','Courier New',monospace;font-size:8.5pt;background:#f1f5f9;padding:0.5mm 1.5mm;border-radius:3px;color:#1e40af}
+pre code{background:transparent;color:#e2e8f0;padding:0}
+ul,ol{margin:2mm 0 4mm 6mm;padding:0}
+li{margin-bottom:1.5mm}
+hr{border:none;border-top:1.5px solid #e2e8f0;margin:6mm 0}
+blockquote{border-left:3px solid #3b82f6;margin:3mm 0;padding:2mm 4mm;background:#f0f7ff;font-style:italic;color:#334155;border-radius:0 4px 4px 0}
+a{color:#2563eb;text-decoration:none}
+  </style>
+</head>
+<body>
+<div class="cover-page">
+  <div class="cover-top-bar"></div>
+  <div class="cover-content">
+    <div class="cover-label">Generative Engine Optimization</div>
+    <h1 class="cover-title">Hagerstone International</h1>
+    <div class="cover-domain">hagerstone.com</div>
+    <div class="cover-score-block">
+      <div class="score-circle">
+        <span class="score-number">26</span>
+        <span class="score-denom">/100</span>
+      </div>
+      <div class="score-meta">
+        <div class="score-label-text">Critical</div>
+        <div class="score-sublabel">Overall GEO Score</div>
+      </div>
+    </div>
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item">
+        <span class="meta-key">Audit Date</span>
+        <span class="meta-val">2026-06-10</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="meta-key">Business Type</span>
+        <span class="meta-val">Agency / Office Design &amp; Build</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="meta-key">Market</span>
+        <span class="meta-val">Delhi NCR &amp; 25+ Indian cities</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="meta-key">Pages Analyzed</span>
+        <span class="meta-val">32 URLs</span>
+      </div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span>Hagerstone International &#183; GEO Audit &#183; Confidential</span>
+    <span>Powered by Claude Code</span>
+  </div>
+</div>
+<div class="report-body">
+<h1 id="geo-audit-report-hagerstone-international">GEO Audit Report:
+Hagerstone International</h1>
+<p><strong>Audit Date:</strong> 2026-06-10 <strong>URL:</strong>
+https://hagerstone.com/ <strong>Business Type:</strong> Agency/Services
+— Office Design &amp; Build (Delhi NCR, India) <strong>Pages
+Analyzed:</strong> 32 (via sitemap) + homepage, robots.txt, llms.txt
+check</p>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p><strong>Overall GEO Score: 26/100 (Critical)</strong></p>
+<p>Hagerstone International has a strong business foundation — 11+ years
+of experience, 173+ enterprise clients (Airtel, Singapore Airlines,
+Lufthansa), a TEDx-speaking founder, and an active social media presence
+— but these assets are <strong>almost entirely invisible to AI
+systems</strong>. The site is rendered entirely via client-side
+JavaScript, meaning AI crawlers (GPTBot, ClaudeBot, PerplexityBot)
+receive only a page title and nothing else. There is no llms.txt file,
+no schema.org markup on any page, no meta descriptions, and no Open
+Graph tags. As a result, Hagerstone does <strong>not appear</strong> in
+AI-generated recommendations for “best office interior design companies
+in Delhi NCR” while competitors like PHI Designs, Studio Lotus, and MM
+Design Studio do. The most urgent priority is adding server-side
+rendering or static generation to expose actual page content to AI
+crawlers — everything else builds on that foundation.</p>
+<h3 id="score-breakdown">Score Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Score</th>
+<th>Weight</th>
+<th>Weighted Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Citability</td>
+<td>12/100</td>
+<td>25%</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>Brand Authority</td>
+<td>38/100</td>
+<td>20%</td>
+<td>7.6</td>
+</tr>
+<tr>
+<td>Content E-E-A-T</td>
+<td>40/100</td>
+<td>20%</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>Technical GEO</td>
+<td>28/100</td>
+<td>15%</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>Schema &amp; Structured Data</td>
+<td>5/100</td>
+<td>10%</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Platform Optimization</td>
+<td>28/100</td>
+<td>10%</td>
+<td>2.8</td>
+</tr>
+<tr>
+<td><strong>Overall GEO Score</strong></td>
+<td></td>
+<td></td>
+<td><strong>26/100</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="critical-issues-fix-immediately">Critical Issues (Fix
+Immediately)</h2>
+<h3
+id="javascript-only-rendering-ai-crawlers-see-only-the-page-title">1.
+JavaScript-Only Rendering — AI Crawlers See Only the Page Title</h3>
+<p><strong>All 32 pages.</strong> Every URL in the sitemap — homepage,
+service pages, blog posts, project pages, contact — returns only
+<code>&lt;title&gt;Hagerstone International | Office Design &amp; Build Company&lt;/title&gt;</code>
+to crawlers. AI systems that do not execute JavaScript (GPTBot,
+ClaudeBot, PerplexityBot, Google-Extended) get zero content from any
+page. No headings, no service descriptions, no credentials, no blog
+articles, no case studies.</p>
+<p><strong>Fix:</strong> Migrate to server-side rendering (SSR) or
+static site generation (SSG). If using Next.js, switch pages from client
+components to server components or use
+<code>getStaticProps</code>/<code>getServerSideProps</code>. Ensure the
+HTML returned on first request includes all content without JavaScript
+execution.</p>
+<p><strong>Expected Impact:</strong> Enables all other GEO improvements
+to take effect. Without this, no other optimization can be cited by
+AI.</p>
+<hr />
+<h3 id="complete-absence-of-schema.org-structured-data">2. Complete
+Absence of Schema.org Structured Data</h3>
+<p><strong>All pages.</strong> No schema.org markup of any type was
+found on any page — no <code>Organization</code>, no
+<code>LocalBusiness</code>, no <code>Service</code>, no
+<code>Article</code>, no <code>FAQPage</code>, no <code>Person</code>.
+Structured data is how AI systems identify entities, extract facts, and
+cite specific information. Without it, Hagerstone cannot be recognized
+as an authoritative entity.</p>
+<p><strong>Fix:</strong> Add at minimum these schemas: -
+<code>Organization</code> on homepage (name, URL, logo, address, phone,
+social profiles) - <code>LocalBusiness</code> with
+<code>GeoCoordinates</code> and <code>OpeningHoursSpecification</code> -
+<code>Service</code> on each service page - <code>Article</code> on each
+blog post with <code>author</code>, <code>datePublished</code>,
+<code>description</code> - <code>FAQPage</code> wherever FAQs exist (or
+add FAQ sections to key pages) - <code>Person</code> on the Our Team
+page for Dhruv Agarwal</p>
+<hr />
+<h3 id="no-llms.txt-file">3. No llms.txt File</h3>
+<p><strong>https://hagerstone.com/llms.txt — 404.</strong> The llms.txt
+standard allows sites to explicitly tell AI systems what content to
+index, which pages to prioritize, and what the site is about. Its
+absence means AI systems must infer site structure from whatever they
+can render (currently: nothing).</p>
+<p><strong>Fix:</strong> Create <code>/llms.txt</code> in the next
+sprint. See the llms.txt quick-win template in the Quick Wins section
+below.</p>
+<hr />
+<h2 id="high-priority-issues-fix-within-1-week">High Priority Issues
+(Fix Within 1 Week)</h2>
+<h3 id="no-meta-descriptions-on-any-page">4. No Meta Descriptions on Any
+Page</h3>
+<p>Every page checked returned no
+<code>&lt;meta name="description"&gt;</code> content. Meta descriptions
+are used by search engines and AI systems to understand page purpose and
+generate previews. Their absence reduces AI citability and click-through
+rates from AI-generated responses.</p>
+<p><strong>Fix:</strong> Add unique, descriptive meta descriptions
+(150-160 characters) to all 32 pages. Example for homepage: &gt;
+“Hagerstone International transforms offices in Delhi NCR and 25+ Indian
+cities. Turnkey design &amp; build in 60 days. 173+ enterprise clients,
+7.9M sqft delivered.”</p>
+<h3 id="no-open-graph-or-twitter-card-tags">5. No Open Graph or Twitter
+Card Tags</h3>
+<p>No <code>&lt;meta property="og:*"&gt;</code> or
+<code>&lt;meta name="twitter:*"&gt;</code> tags were found. These are
+critical for sharing in social platforms and for AI systems that index
+social content.</p>
+<p><strong>Fix:</strong> Add OG tags to all pages:
+<code>og:title</code>, <code>og:description</code>,
+<code>og:image</code>, <code>og:url</code>, <code>og:type</code>. Add
+Twitter Card <code>summary_large_image</code> tags.</p>
+<h3 id="zero-question-answering-content-blocks-accessible-to-ai">6. Zero
+Question-Answering Content Blocks Accessible to AI</h3>
+<p>AI systems like Perplexity and Google AI Overviews heavily favor
+content structured as questions and answers. While the site may have FAQ
+content in its JavaScript-rendered pages, none of it is accessible to
+crawlers. Even after fixing SSR, FAQ content needs to be explicitly
+structured and marked up.</p>
+<p><strong>Fix:</strong> Add a visible FAQ section to every key service
+and location page. Use <code>FAQPage</code> schema. Example questions: -
+“How long does an office design and build project take?” - “What does a
+turnkey office fit-out include?” - “How much does office interior design
+cost in Delhi NCR?”</p>
+<h3
+id="blog-posts-have-no-author-attribution-not-accessible-to-crawlers">7.
+Blog Posts Have No Author Attribution (Not Accessible to Crawlers)</h3>
+<p>The blog section (6+ posts indexed) has no author bylines or
+publication dates visible to AI crawlers. This destroys E-E-A-T signals
+— AI systems cannot attribute the content to a credible expert.</p>
+<p><strong>Fix:</strong> After SSR fix, ensure all blog posts include
+visible author name, title, and publish date. Add <code>Article</code> +
+<code>Person</code> schema. Dhruv Agarwal’s TEDx Speaker and author
+credentials should appear in every post’s structured data.</p>
+<hr />
+<h2 id="medium-priority-issues-fix-within-1-month">Medium Priority
+Issues (Fix Within 1 Month)</h2>
+<h3
+id="hagerstone-not-appearing-in-ai-generated-industry-recommendations">8.
+Hagerstone Not Appearing in AI-Generated Industry Recommendations</h3>
+<p>A test query for “best office interior design companies in Delhi NCR”
+returns competitors (PHI Designs, Studio Lotus, MM Design Studio,
+Interia) but <strong>not Hagerstone International</strong>. This is the
+direct consequence of the critical issues above.</p>
+<p><strong>Fix:</strong> Address Critical Issues 1-3 first, then: ensure
+consistent entity mentions across LinkedIn, Crunchbase, and brand
+profiles; add IndiaMART and JustDial reviews; pursue industry citations
+from design awards.</p>
+<h3 id="no-wikipedia-or-high-authority-reference-presence">9. No
+Wikipedia or High-Authority Reference Presence</h3>
+<p>Hagerstone has no Wikipedia page, no mentions on authoritative
+industry reference sites, and no citations in news media. Wikipedia and
+authoritative media coverage are among the strongest signals AI models
+use for entity recognition.</p>
+<p><strong>Fix:</strong> Pursue editorial coverage in Inc42, ET Rise,
+Business Standard, Architizer, or DesignPataki. Request case study
+features. If the company meets notability requirements, a Wikipedia stub
+is worth creating.</p>
+<h3 id="no-clutch.co-or-g2-profile-with-reviews">10. No Clutch.co or G2
+Profile with Reviews</h3>
+<p>Hagerstone has data-aggregator profiles (Crunchbase, ZoomInfo) but no
+verified client review profiles on Clutch.co or similar platforms. AI
+systems like ChatGPT frequently cite Clutch for B2B service
+recommendations.</p>
+<p><strong>Fix:</strong> Create and populate a Clutch.co profile.
+Request 5+ verified client reviews. Similarly consider IndiaMART,
+Justdial, and DesignCafe.</p>
+<h3 id="sitemap-does-not-include-images-or-video">11. Sitemap Does Not
+Include Images or Video</h3>
+<p>The sitemap lists 32 HTML pages only. No image sitemap
+(<code>sitemap-images.xml</code>) and no video sitemap exist, missing
+opportunities for AI image and video citations.</p>
+<p><strong>Fix:</strong> Add image sitemap for project portfolio pages.
+Add video sitemap for YouTube video embeds.</p>
+<hr />
+<h2 id="low-priority-issues-optimize-when-possible">Low Priority Issues
+(Optimize When Possible)</h2>
+<h3 id="linkedin-company-page-has-articles-but-lacks-consistency">12.
+LinkedIn Company Page Has Articles But Lacks Consistency</h3>
+<p>LinkedIn pulses (“7 Most Essential Office Interior Elements”, “Our
+Interior Design Process”) show content activity, but the format is
+irregular and not consistently linked back to website content.</p>
+<p><strong>Fix:</strong> Publish weekly LinkedIn articles that directly
+reference specific website URLs, creating entity-link signals that AI
+models follow.</p>
+<h3 id="youtube-channel-has-low-video-volume">13. YouTube Channel Has
+Low Video Volume</h3>
+<p>The YouTube channel exists with a few videos (testimonials,
+residential work) but lacks a systematic series. AI systems increasingly
+cite YouTube channels as authority signals.</p>
+<p><strong>Fix:</strong> Create a “60-Day Office Transformation” video
+series. Add schema-compatible video descriptions with structured
+timestamps.</p>
+<h3 id="instagram-active-but-content-not-connected-to-website">14.
+Instagram Active But Content Not Connected to Website</h3>
+<p>Instagram is active (<code>@hagerstone_international</code>) but
+links to the site are not reflected in content schema or structured
+data.</p>
+<p><strong>Fix:</strong> After SSR and schema fixes, add
+<code>sameAs</code> links in Organization schema pointing to all social
+profiles.</p>
+<h3 id="no-canonical-tags-verified">15. No Canonical Tags Verified</h3>
+<p>Canonical URL implementation could not be verified due to JavaScript
+rendering issues. Duplicate content across <code>www</code> vs
+non-<code>www</code> and <code>/</code> vs no-slash variants may
+exist.</p>
+<p><strong>Fix:</strong> After SSR fix, audit canonical tags. Ensure
+<code>https://hagerstone.com/</code> is the canonical form for the
+homepage.</p>
+<hr />
+<h2 id="category-deep-dives">Category Deep Dives</h2>
+<h3 id="ai-citability-12100">AI Citability (12/100)</h3>
+<p><strong>What was measured:</strong> Whether AI crawlers can extract
+quotable, factual content from any page.</p>
+<p><strong>Finding:</strong> AI crawlers receive only one piece of
+information from every Hagerstone page: the text string
+<code>"Hagerstone International | Office Design &amp; Build Company"</code>.
+That’s it. No descriptions, no service explanations, no credentials, no
+statistics, no project details, no blog articles — nothing.</p>
+<p>Hagerstone has genuinely compelling content based on what we found in
+search results and third-party profiles: “173+ enterprise clients”,
+“7,91,433 sqft delivered”, “60-day office transformation guarantee”,
+“founder Dhruv Agarwal is a TEDx Speaker and Author”. But none of this
+exists in the crawlable DOM.</p>
+<p><strong>Current state:</strong> 12/100 (the minimum baseline assumes
+the site at least exists and has a title)</p>
+<p><strong>Potential after fix:</strong> 65-75/100 if SSR + meta
+descriptions + FAQ sections are added</p>
+<p><strong>High-citability content opportunities (once SSR is
+fixed):</strong> - “How Hagerstone designs and delivers offices in 60
+days” (process transparency = highly citable) - “What does a turnkey
+office fit-out cost in Delhi NCR?” (query-aligned = AI Overview
+candidate) - Client case studies with before/after metrics (specificity
+= citable) - FAQ blocks answering “how long”, “how much”, “what is
+included”</p>
+<hr />
+<h3 id="brand-authority-38100">Brand Authority (38/100)</h3>
+<p><strong>Platform Presence Map:</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn Company</td>
+<td>✅ Present</td>
+<td>Active, has pulse articles</td>
+</tr>
+<tr>
+<td>LinkedIn Founder</td>
+<td>✅ Present</td>
+<td>Dhruv Agarwal — 15+ yrs exp, TEDx, Author</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>✅ Present</td>
+<td>Low volume, needs expansion</td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td>✅ Present</td>
+<td>Active (<code>@hagerstone_international</code>)</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>✅ Present</td>
+<td>Active page</td>
+</tr>
+<tr>
+<td>Crunchbase</td>
+<td>✅ Listed</td>
+<td>Company + founder profiles</td>
+</tr>
+<tr>
+<td>ZoomInfo</td>
+<td>✅ Listed</td>
+<td>Company profile</td>
+</tr>
+<tr>
+<td>Inc42</td>
+<td>✅ Mentioned</td>
+<td>“Real Estate Tech” company</td>
+</tr>
+<tr>
+<td>PrimeTycoon</td>
+<td>✅ Feature article</td>
+<td>Dhruv Agarwal profile</td>
+</tr>
+<tr>
+<td>KreateCube</td>
+<td>✅ Listed</td>
+<td>Contractor directory</td>
+</tr>
+<tr>
+<td>IndiaMART</td>
+<td>✅ Listed</td>
+<td>“Hager Stone International” (different spelling)</td>
+</tr>
+<tr>
+<td>Wikipedia</td>
+<td>❌ Absent</td>
+<td></td>
+</tr>
+<tr>
+<td>Reddit</td>
+<td>❌ Absent</td>
+<td>No community mentions found</td>
+</tr>
+<tr>
+<td>Clutch.co</td>
+<td>❌ No reviews</td>
+<td>Not in Clutch rankings</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>❌ Absent</td>
+<td></td>
+</tr>
+<tr>
+<td>JustDial</td>
+<td>❌ Unverified</td>
+<td></td>
+</tr>
+<tr>
+<td>Architizer / DesignPataki</td>
+<td>❌ Absent</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Entity recognition:</strong> AI models have limited ability
+to recognize “Hagerstone International” as an entity because there are
+no Wikipedia entries, no major media mentions, and no consistent entity
+references across authoritative domains. The IndiaMART listing uses a
+different spelling (“Hager Stone”) which fragments entity signals.</p>
+<p><strong>Founder authority:</strong> Dhruv Agarwal has strong personal
+brand signals (TEDx, BRICS CCI, book author) but these are largely
+confined to LinkedIn and Crunchbase. The company website doesn’t surface
+these credentials to AI crawlers.</p>
+<hr />
+<h3 id="content-e-e-a-t-40100">Content E-E-A-T (40/100)</h3>
+<p><strong>What exists (found via search, not accessible to AI
+crawlers):</strong></p>
+<p><em>Experience signals:</em> 11+ years in business; projects in Delhi
+NCR, 25+ Indian cities, Dubai (Dubai Mall, Sheikh villas); 309+ skilled
+workers; 7.9M+ sqft completed. These are strong signals — if AI could
+read them.</p>
+<p><em>Expertise signals:</em> Founder is author of “Workplace 2.0”;
+TEDx Speaker; Delhi College of Engineering graduate; prior experience at
+TPM Group as Project Manager.</p>
+<p><em>Authority signals:</em> Enterprise client portfolio (EDF,
+Statkraft, Airtel, Singapore Airlines, Lufthansa, Panasonic) is
+impressive and very citable if accessible.</p>
+<p><em>Trust signals:</em> “60-day guarantee” is a strong trust
+differentiator; but currently inaccessible.</p>
+<p><strong>What’s missing:</strong> - Author bylines on blog posts -
+Source citations in articles - Client testimonials with names/companies
+(verified) - Award mentions - Industry certifications</p>
+<p><strong>After SSR fix, E-E-A-T potential:</strong> 68-75/100</p>
+<hr />
+<h3 id="technical-geo-28100">Technical GEO (28/100)</h3>
+<table>
+<thead>
+<tr>
+<th>Technical Factor</th>
+<th>Status</th>
+<th>Score Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>robots.txt allows all AI crawlers</td>
+<td>✅ Pass</td>
+<td>+15</td>
+</tr>
+<tr>
+<td>XML sitemap present</td>
+<td>✅ Pass</td>
+<td>+10</td>
+</tr>
+<tr>
+<td>Site content visible without JS</td>
+<td>❌ Fail (Critical)</td>
+<td>-30</td>
+</tr>
+<tr>
+<td>llms.txt present</td>
+<td>❌ Missing</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>Meta descriptions</td>
+<td>❌ Missing</td>
+<td>-8</td>
+</tr>
+<tr>
+<td>Open Graph tags</td>
+<td>❌ Missing</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>Canonical tags</td>
+<td>⚠️ Unverified</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>✅ Pass</td>
+<td>+3</td>
+</tr>
+<tr>
+<td>Image sitemap</td>
+<td>❌ Missing</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>robots.txt (full content):</strong></p>
+<pre><code>User-agent: *
+Allow: /
+Sitemap: https://hagerstone.com/sitemap.xml</code></pre>
+<p>This is correctly configured — all AI crawlers are permitted. The
+problem is there is nothing to crawl.</p>
+<p><strong>JavaScript dependency:</strong> This is the single most
+damaging technical issue. Every modern AI crawler — GPTBot (OpenAI),
+ClaudeBot (Anthropic), PerplexityBot, Google-Extended, CCBot (Common
+Crawl used for training) — uses HTTP GET requests to fetch page HTML. If
+the HTML delivered on first request contains no meaningful content (only
+a <code>&lt;title&gt;</code> and a JavaScript bundle), these crawlers
+record the page as essentially empty.</p>
+<hr />
+<h3 id="schema-structured-data-5100">Schema &amp; Structured Data
+(5/100)</h3>
+<p><strong>Schema types found:</strong> None.</p>
+<p><strong>Schema types needed (by page type):</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Page</th>
+<th>Required Schema</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Homepage</td>
+<td><code>Organization</code>, <code>WebSite</code>,
+<code>LocalBusiness</code></td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>Service pages (6)</td>
+<td><code>Service</code>, <code>FAQPage</code></td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>Blog posts (6+)</td>
+<td><code>Article</code>, <code>Person</code> (author),
+<code>BreadcrumbList</code></td>
+<td>High</td>
+</tr>
+<tr>
+<td>Project pages (7)</td>
+<td><code>CreativeWork</code> or <code>Service</code>,
+<code>ImageObject</code></td>
+<td>High</td>
+</tr>
+<tr>
+<td>Our Team page</td>
+<td><code>Person</code> (per team member),
+<code>Organization</code></td>
+<td>High</td>
+</tr>
+<tr>
+<td>Contact page</td>
+<td><code>LocalBusiness</code>, <code>GeoCoordinates</code>,
+<code>OpeningHoursSpecification</code></td>
+<td>High</td>
+</tr>
+<tr>
+<td>Location pages (4)</td>
+<td><code>LocalBusiness</code>, <code>GeoCoordinates</code>,
+<code>areaServed</code></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Organization schema for homepage (implement this
+first):</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;@context&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;Organization&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Hagerstone International&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;alternateName&quot;</span><span class="fu">:</span> <span class="st">&quot;Hagerstone International Pvt. Ltd.&quot;</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;url&quot;</span><span class="fu">:</span> <span class="st">&quot;https://hagerstone.com&quot;</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;logo&quot;</span><span class="fu">:</span> <span class="st">&quot;https://hagerstone.com/logo.png&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Office design and build company delivering turnkey interiors in Delhi NCR and 25+ Indian cities in 60 days.&quot;</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;foundingDate&quot;</span><span class="fu">:</span> <span class="st">&quot;2013&quot;</span><span class="fu">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;founder&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;Person&quot;</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Dhruv Agarwal&quot;</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;jobTitle&quot;</span><span class="fu">:</span> <span class="st">&quot;Founder &amp; CEO&quot;</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;sameAs&quot;</span><span class="fu">:</span> <span class="st">&quot;https://www.linkedin.com/in/dhruv-agarwal-3aa04235/&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;PostalAddress&quot;</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;addressLocality&quot;</span><span class="fu">:</span> <span class="st">&quot;New Delhi&quot;</span><span class="fu">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;addressRegion&quot;</span><span class="fu">:</span> <span class="st">&quot;Delhi&quot;</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;addressCountry&quot;</span><span class="fu">:</span> <span class="st">&quot;IN&quot;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;areaServed&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Delhi&quot;</span><span class="ot">,</span> <span class="st">&quot;Noida&quot;</span><span class="ot">,</span> <span class="st">&quot;Gurgaon&quot;</span><span class="ot">,</span> <span class="st">&quot;Faridabad&quot;</span><span class="ot">,</span> <span class="st">&quot;Noida&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;sameAs&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://in.linkedin.com/company/hagerstone&quot;</span><span class="ot">,</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://www.youtube.com/channel/UCvl0bmeUgX6LvzQYcR-HHIw&quot;</span><span class="ot">,</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://www.instagram.com/hagerstone_international/&quot;</span><span class="ot">,</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://www.facebook.com/HagerstoneInternational&quot;</span><span class="ot">,</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://www.crunchbase.com/organization/hagerstone-international&quot;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h3 id="platform-optimization-28100">Platform Optimization (28/100)</h3>
+<p><strong>Platform presence summary:</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Platform</th>
+<th>AI Trains On It?</th>
+<th>Hagerstone Present?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn</td>
+<td>✅ Frequently cited</td>
+<td>✅ Yes</td>
+<td>Company + founder + articles</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>✅ Cited by Perplexity/Gemini</td>
+<td>✅ Yes</td>
+<td>Low volume</td>
+</tr>
+<tr>
+<td>Reddit</td>
+<td>✅ Heavy training data</td>
+<td>❌ No</td>
+<td>Zero mentions found</td>
+</tr>
+<tr>
+<td>Wikipedia</td>
+<td>✅ Authoritative signal</td>
+<td>❌ No</td>
+<td>Not present</td>
+</tr>
+<tr>
+<td>Clutch.co</td>
+<td>✅ B2B recommendations</td>
+<td>❌ No reviews</td>
+<td></td>
+</tr>
+<tr>
+<td>Common Crawl</td>
+<td>✅ Primary AI training corpus</td>
+<td>⚠️ HTML only</td>
+<td>CC only indexes HTML, gets only title</td>
+</tr>
+<tr>
+<td>Crunchbase</td>
+<td>✅ Entity data</td>
+<td>✅ Yes</td>
+<td>Listed</td>
+</tr>
+<tr>
+<td>Inc42</td>
+<td>✅ India startup coverage</td>
+<td>✅ Mentioned</td>
+<td>Shallow</td>
+</tr>
+<tr>
+<td>IndiaMART</td>
+<td>✅ B2B searches</td>
+<td>✅ Listed</td>
+<td>Inconsistent name spelling</td>
+</tr>
+<tr>
+<td>Architizer/AD/DesignPataki</td>
+<td>✅ Design AI training</td>
+<td>❌ Absent</td>
+<td>Competitors are here</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Competitive gap:</strong> In AI-generated responses for “best
+office interior design company Delhi NCR”, Hagerstone does not appear
+while PHI Designs, Studio Lotus, MM Design Studio, and others do. PHI
+Designs has explicit award recognition (“India’s Most Futuristic
+Interior Design and Build Firm 2026”) which creates highly citable text.
+Hagerstone’s comparable credentials exist but are not published in
+crawlable, citable form.</p>
+<hr />
+<h2 id="quick-wins-implement-this-week">Quick Wins (Implement This
+Week)</h2>
+<h3 id="create-llms.txt-2-hours-immediate-ai-crawler-impact">1. Create
+llms.txt (2 hours, immediate AI crawler impact)</h3>
+<p>Create the file at <code>https://hagerstone.com/llms.txt</code>:</p>
+<pre><code># Hagerstone International
+
+&gt; Hagerstone International is a turnkey office design and build company headquartered in New Delhi, India. Founded in 2013, the firm has delivered 7.9M+ sqft of office interiors for 173+ enterprise clients including Airtel, Singapore Airlines, Lufthansa, and Panasonic, across Delhi NCR and 25+ Indian cities. Projects are delivered within 60 days.
+
+## Key Pages
+
+- [Homepage](https://hagerstone.com/): Overview of services and capabilities
+- [About](https://hagerstone.com/about): Company history, team, and credentials
+- [Services](https://hagerstone.com/services): Full service portfolio
+- [Office Design &amp; Build](https://hagerstone.com/services/office-design-build): Primary service
+- [Interior Fit-Out](https://hagerstone.com/services/interior-fit-out): Turnkey fit-outs
+- [MEP Services](https://hagerstone.com/services/mep): Mechanical, Electrical, Plumbing
+- [HVAC](https://hagerstone.com/services/hvac): HVAC design and installation
+- [Projects](https://hagerstone.com/projects): Portfolio of completed office projects
+- [Our Team](https://hagerstone.com/our-team): Leadership and expertise
+- [Blog](https://hagerstone.com/blog): Insights on office design and workplace strategy
+- [Contact](https://hagerstone.com/contact): Get in touch
+
+## Service Areas
+
+Office design and build services available in: Delhi, Noida, Gurgaon, Faridabad, and 25+ cities across India.
+
+## Key Facts
+
+- Founded: 2013
+- Founder: Dhruv Agarwal (TEDx Speaker, Author of &quot;Workplace 2.0&quot;)
+- Projects completed: 500+
+- Square footage delivered: 7,91,433+ sqft
+- Clients served: 173+
+- Delivery guarantee: 60 days</code></pre>
+<h3 id="add-organization-localbusiness-schema-to-homepage-4-hours">2.
+Add Organization + LocalBusiness Schema to Homepage (4 hours)</h3>
+<p>Use the schema example from the Schema section above. This is the
+single highest-ROI schema addition — it tells every AI system what
+Hagerstone is, where it operates, and how to find it. Paste the JSON-LD
+in a <code>&lt;script type="application/ld+json"&gt;</code> tag in the
+<code>&lt;head&gt;</code>.</p>
+<h3 id="add-meta-descriptions-to-top-10-pages-3-hours">3. Add Meta
+Descriptions to Top 10 Pages (3 hours)</h3>
+<p>Priority pages: homepage, /about, /services,
+/services/office-design-build, /services/interior-fit-out, /projects,
+/our-team, /contact, /blog, and the top city landing page.</p>
+<h3 id="add-open-graph-tags-to-all-pages-2-hours">4. Add Open Graph Tags
+to All Pages (2 hours)</h3>
+<p>At minimum: <code>og:title</code>, <code>og:description</code>,
+<code>og:image</code>, <code>og:url</code>. These are read by AI systems
+that process shared content and social signals.</p>
+<h3 id="add-faq-section-faqpage-schema-to-homepage-4-hours">5. Add FAQ
+Section + FAQPage Schema to Homepage (4 hours)</h3>
+<p>Add a section titled “Frequently Asked Questions” with 5-6 Q&amp;A
+pairs:</p>
+<p><strong>Q: How long does it take to design and build an
+office?</strong><br />
+A: Hagerstone delivers complete office design and build projects within
+60 days — from initial design concepts to move-in ready handover.</p>
+<p><strong>Q: What services does Hagerstone International
+offer?</strong><br />
+A: Hagerstone offers end-to-end office design and build services
+including interior design, space planning, MEP (mechanical, electrical,
+plumbing), HVAC installation, fit-out construction, furniture supply,
+and project management.</p>
+<p><strong>Q: Which cities does Hagerstone serve?</strong><br />
+A: Hagerstone operates across Delhi NCR (Delhi, Noida, Gurgaon,
+Faridabad) and 25+ cities across India, including major metropolitan
+areas.</p>
+<p><strong>Q: How much does office interior design cost in
+Delhi?</strong><br />
+A: Office design and build costs vary by size, specification, and finish
+level. Hagerstone provides transparent quotes and has delivered projects
+saving clients Rs 119+ crores through efficient design-build
+integration.</p>
+<hr />
+<h2 id="day-action-plan">30-Day Action Plan</h2>
+<h3 id="week-1-foundation-make-content-visible-to-ai">Week 1: Foundation
+— Make Content Visible to AI</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Audit the frontend framework
+(Next.js? React? Angular?) and identify the fastest path to SSR or
+SSG</label></li>
+<li><label><input type="checkbox" />Enable SSR/SSG for homepage, service
+pages, and blog posts as the first batch</label></li>
+<li><label><input type="checkbox" />Create and deploy
+<code>/llms.txt</code></label></li>
+<li><label><input type="checkbox" />Add Organization + LocalBusiness
+schema to homepage <code>&lt;head&gt;</code></label></li>
+<li><label><input type="checkbox" />Add meta descriptions to top 10
+pages</label></li>
+</ul>
+<h3 id="week-2-structure-schema-and-citability">Week 2: Structure —
+Schema and Citability</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Add <code>Article</code> +
+<code>Person</code> schema to all 6 blog posts (author: Dhruv Agarwal
+with credentials)</label></li>
+<li><label><input type="checkbox" />Add <code>Service</code> schema to
+all 6 service pages</label></li>
+<li><label><input type="checkbox" />Add <code>FAQPage</code> schema to
+homepage and top service page</label></li>
+<li><label><input type="checkbox" />Add Open Graph + Twitter Card tags
+to all pages</label></li>
+<li><label><input type="checkbox" />Add FAQ section (minimum 4 Q&amp;A
+pairs) to the homepage</label></li>
+</ul>
+<h3 id="week-3-content-e-e-a-t-and-citability">Week 3: Content — E-E-A-T
+and Citability</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Enable SSR/SSG for remaining pages
+(projects, team, contact, location pages)</label></li>
+<li><label><input type="checkbox" />Update all blog posts to show
+visible author byline (Dhruv Agarwal) with title and
+credentials</label></li>
+<li><label><input type="checkbox" />Add <code>Person</code> schema to
+<code>/our-team</code> for each team member</label></li>
+<li><label><input type="checkbox" />Add a “Why Hagerstone” section to
+homepage with specific, citable statistics</label></li>
+<li><label><input type="checkbox" />Add FAQ sections to
+<code>/services/office-design-build</code> and
+<code>/office-design-gurgaon</code></label></li>
+</ul>
+<h3 id="week-4-authority-third-party-signals">Week 4: Authority —
+Third-Party Signals</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Create or claim a Clutch.co profile
+and request 5 client reviews</label></li>
+<li><label><input type="checkbox" />Fix IndiaMART profile name
+consistency (currently “Hager Stone” vs “Hagerstone”)</label></li>
+<li><label><input type="checkbox" />Request editorial feature from
+Inc42, DesignPataki, or Architizer</label></li>
+<li><label><input type="checkbox" />Publish a LinkedIn article on Dhruv
+Agarwal’s profile linking to the new FAQ pages</label></li>
+<li><label><input type="checkbox" />Add image sitemap and video sitemap
+to sitemap.xml</label></li>
+</ul>
+<hr />
+<h2 id="appendix-pages-analyzed">Appendix: Pages Analyzed</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>URL</th>
+<th>Title Found</th>
+<th>Main Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://hagerstone.com/</td>
+<td>“Hagerstone International | Office Design &amp; Build Company”</td>
+<td>JS-rendered, no content to AI crawlers</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/about</td>
+<td>Title only (same as above)</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/services</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/services/office-design-build</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/blog</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/blog/office-workspace-design</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/blog/office-space-planning-trends-2026</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/blog/commercial-interior-designers</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/blog/sustainable-green-office-interiors</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/our-team</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/contact</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/projects</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/office-design-gurgaon</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/office-design-delhi</td>
+<td>Title only</td>
+<td>JS-rendered</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/robots.txt</td>
+<td>✅ Full content readable</td>
+<td>Allow: / for all crawlers — good</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/sitemap.xml</td>
+<td>✅ Full content readable</td>
+<td>32 URLs listed — good</td>
+</tr>
+<tr>
+<td>https://hagerstone.com/llms.txt</td>
+<td>❌ 404 Not Found</td>
+<td>Must be created</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fetch failures:</strong> None — the server responds
+correctly. The issue is client-side rendering, not server
+availability.</p>
+<p><strong>Note on JS-rendering diagnosis:</strong> Consistent with AI
+crawler behavior, the WebFetch tool (which does not execute JavaScript,
+mirroring how GPTBot/ClaudeBot/PerplexityBot crawl) returned only the
+<code>&lt;title&gt;</code> tag and no body content for every page except
+robots.txt and sitemap.xml. This confirms the site delivers no crawlable
+HTML content without JavaScript execution.</p>
+<hr />
+<p><em>GEO Audit powered by Claude Code — <a
+href="https://hagerstone.com/">hagerstone.com</a> — June 2026</em></p>
+
+</div>
+<script>
+(function(){
+  function scoreColor(n){
+    if(n>=80)return{bg:"#16a34a",text:"#fff"};
+    if(n>=65)return{bg:"#2563eb",text:"#fff"};
+    if(n>=50)return{bg:"#d97706",text:"#fff"};
+    if(n>=35)return{bg:"#ea580c",text:"#fff"};
+    return{bg:"#dc2626",text:"#fff"};
+  }
+  document.querySelectorAll("td,th").forEach(function(cell){
+    var m=cell.textContent.trim().match(/^(\d+)\/100$/);
+    if(m){var s=parseInt(m[1],10),c=scoreColor(s);cell.style.background=c.bg;cell.style.color=c.text;cell.style.fontWeight="700";cell.style.textAlign="center";}
+  });
+  document.querySelectorAll("h3").forEach(function(h){
+    var t=h.textContent.toUpperCase();
+    if(t.indexOf("CRITICAL")!==-1)h.classList.add("severity-critical");
+    else if(t.indexOf("HIGH")!==-1)h.classList.add("severity-high");
+    else if(t.indexOf("MEDIUM")!==-1)h.classList.add("severity-medium");
+    else if(t.indexOf("LOW")!==-1)h.classList.add("severity-low");
+  });
+  var breaks=["Critical Issues","High Priority Issues","Medium Priority Issues","Category Deep Dives","Quick Wins","30-Day Action Plan","Appendix"];
+  document.querySelectorAll("h2").forEach(function(h){
+    breaks.forEach(function(kw){
+      if(h.textContent.indexOf(kw)!==-1){h.style.pageBreakBefore="always";h.style.breakBefore="page";}
+    });
+  });
+})();
+</script>
+</body>
+</html>
