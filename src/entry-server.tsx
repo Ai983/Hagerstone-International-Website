@@ -1,13 +1,26 @@
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
-import App from './App';
+import ServerApp from './ServerApp';
 
 export function render(url: string) {
+  const helmetContext: Record<string, unknown> = {};
+
   const html = ReactDOMServer.renderToString(
     <StaticRouter location={url}>
-      <App />
+      <ServerApp helmetContext={helmetContext} />
     </StaticRouter>
   );
-  
-  return html;
+
+  const { helmet } = helmetContext as { helmet: Record<string, { toString(): string }> };
+
+  const headTags = helmet
+    ? [
+        helmet.title?.toString() ?? '',
+        helmet.meta?.toString() ?? '',
+        helmet.link?.toString() ?? '',
+        helmet.script?.toString() ?? '',
+      ].join('\n')
+    : '';
+
+  return { html, headTags };
 }

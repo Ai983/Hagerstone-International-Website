@@ -1,46 +1,51 @@
 # Hagerstone International
 
-> India's premier interior design & build company with 11+ years of experience, 7M+ sqft delivered across 25+ cities in 7 countries. We specialize in turnkey corporate interiors, MEP, EPC, and PEB solutions.
-
-## About Us
-Hagerstone International Pvt. Ltd. is a design-build firm headquartered in Delhi NCR, India. We provide end-to-end interior design, construction, and engineering services for corporate offices, commercial spaces, hospitality, retail, and industrial projects.
+> Hagerstone International is a turnkey office design and build company headquartered in Noida, India (serving Delhi NCR and 25+ Indian cities). Founded in 2013 by Dhruv Agarwal (TEDx Speaker, Author of "Workplace 2.0"), the firm has delivered 7.9M+ sqft of office interiors for 173+ enterprise clients including Airtel, Singapore Airlines, Lufthansa, and Panasonic. Projects are delivered within 60 days.
 
 ## Key Pages
-- [Home](https://hagerstone-website.lovable.app/): Overview of our design & build services, client testimonials, and FAQs
-- [About](https://hagerstone-website.lovable.app/about): Company history, vision, mission, and core values
-- [Services](https://hagerstone-website.lovable.app/services): Interior design, MEP, EPC, PEB, HVAC, fit-out services
-- [Projects](https://hagerstone-website.lovable.app/projects): Portfolio of completed corporate and commercial interiors
-- [Our Team](https://hagerstone-website.lovable.app/our-team): Leadership and founding team profiles
-- [Contact](https://hagerstone-website.lovable.app/contact): Get a free consultation or project estimate
-- [Blog](https://hagerstone-website.lovable.app/blog): Industry insights and interior design trends
-- [Ideas](https://hagerstone-website.lovable.app/ideas): Design inspiration gallery
-- [Find Your Style](https://hagerstone-website.lovable.app/find-your-style): Interactive style finder tool
 
-## Services Offered
-- Interior Design & Space Planning
-- Turnkey Fit-Out Solutions
-- Corporate Office Interiors
-- Hospitality & Retail Design
-- MEP (Mechanical, Electrical, Plumbing)
-- HVAC & Fire Safety Systems
-- EPC (Engineering, Procurement, Construction)
-- PEB (Pre-Engineered Buildings)
+- [Homepage](https://hagerstone.com/): Overview of services, client portfolio, and capabilities
+- [About](https://hagerstone.com/about): Company history, team, credentials, and vision
+- [Services](https://hagerstone.com/services): Full service portfolio overview
+- [Office Design & Build](https://hagerstone.com/services/office-design-build): Primary turnkey service
+- [Interior Fit-Out](https://hagerstone.com/services/interior-fit-out): Commercial fit-out services
+- [MEP Services](https://hagerstone.com/services/mep): Mechanical, Electrical, Plumbing design
+- [HVAC](https://hagerstone.com/services/hvac): HVAC design and installation
+- [Construction](https://hagerstone.com/services/construction): Commercial construction and EPC
+- [PEB](https://hagerstone.com/services/peb): Pre-Engineered Building solutions
+- [Projects](https://hagerstone.com/projects): Portfolio of completed office projects
+- [Our Team](https://hagerstone.com/our-team): Leadership and team profiles
+- [Blog](https://hagerstone.com/blog): Insights on office design and workplace strategy
+- [Contact](https://hagerstone.com/contact): Enquiries and consultation requests
 
-## Key Statistics
-- 11+ Years in Industry
-- 7 Million+ Sqft Delivered
-- 250+ Projects Completed
-- 350+ Team Members
-- 25+ Cities in India
-- 7+ Countries Globally
+## Featured Blog Posts
 
-## Clients
-Fortune 500 companies including Air India, Lufthansa, Singapore Airlines, Taj Hotels, AECOM, UltraTech Cement, APL, and Monin.
+- [Office Workspace Design](https://hagerstone.com/blog/office-workspace-design): Essential elements for productive environments
+- [Commercial Interior Designers](https://hagerstone.com/blog/commercial-interior-designers): Transforming business spaces for productivity and brand
+- [Office Space Planning Trends 2026](https://hagerstone.com/blog/office-space-planning-trends-2026): Future-ready workspace strategies
+- [Sustainable Green Office Interiors](https://hagerstone.com/blog/sustainable-green-office-interiors): ESG-aligned, biophilic office design
 
-## Location
-Delhi NCR, India (serving Pan-India and International projects)
+## Service Areas
 
-## Contact
-- Website: https://hagerstone-website.lovable.app
-- Phone: Available on contact page
-- Email: Available on contact page
+Office design and build services available in: Delhi, Noida, Gurugram, Faridabad, Greater Noida, and 25+ cities across India.
+
+## Key Facts
+
+- Founded: 2013
+- Founder: Dhruv Agarwal (TEDx Speaker, Author of "Workplace 2.0", Co-Regional Director BRICS CCI – UP Chapter)
+- Phone: +91 88829 79328
+- Address: 91springboard, D-107, D Block, Sector 2, Noida, Uttar Pradesh 201301, India
+- Square footage delivered: 7,91,433+ sqft
+- Clients served: 173+
+- Projects completed: 500+
+- Delivery guarantee: 60 days
+- Team size: 309+ skilled professionals
+- Cities served: 25+ across India
+
+## Social Profiles
+
+- LinkedIn: https://www.linkedin.com/company/hagerstone
+- Instagram: https://www.instagram.com/hagerstone_international/
+- Facebook: https://www.facebook.com/HagerstoneInternational
+- YouTube: https://www.youtube.com/channel/UCvl0bmeUgX6LvzQYcR-HHIw
+- Crunchbase: https://www.crunchbase.com/organization/hagerstone-international

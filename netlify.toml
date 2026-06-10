@@ -1,7 +1,7 @@
 # Netlify Configuration for Hagerstone Website
 
 [build]
-  command = "npm run build"
+  command = "npm run build && npm run build:server && npm run build:prerender"
   publish = "dist"
 
 # Serve static SEO files directly (before SPA redirect)
