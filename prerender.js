@@ -35,7 +35,6 @@ const routesToPrerender = [
   '/blog/commercial-interior-designers',
   '/blog/office-space-planning-trends-2026',
   '/blog/sustainable-green-office-interiors',
-  '/blog/office-fit-out-cost-guide-india-2026',
   '/ideas',
   '/find-your-style',
 ]

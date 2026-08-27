@@ -29,7 +29,6 @@ import OfficeWorkspaceDesign from "@/pages/blog/office-workspace-design";
 import CommercialInteriorDesigners from "@/pages/blog/commercial-interior-designers";
 import OfficeSpacePlanningTrends2026 from "@/pages/blog/office-space-planning-trends-2026";
 import SustainableGreenOffice from "@/pages/blog/sustainable-green-office-interiors";
-import OfficeFitOutCostGuide from "@/pages/blog/office-fit-out-cost-guide-india-2026";
 
 const ssrQueryClient = new QueryClient({
   defaultOptions: {
@@ -55,7 +54,6 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/blog/commercial-interior-designers" element={<CommercialInteriorDesigners />} />
         <Route path="/blog/office-space-planning-trends-2026" element={<OfficeSpacePlanningTrends2026 />} />
         <Route path="/blog/sustainable-green-office-interiors" element={<SustainableGreenOffice />} />
-        <Route path="/blog/office-fit-out-cost-guide-india-2026" element={<OfficeFitOutCostGuide />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/find-your-style" element={<FindYourStyle />} />
         <Route path="*" element={<NotFound />} />

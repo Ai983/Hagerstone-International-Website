@@ -28,9 +28,6 @@ const OfficeSpacePlanningTrends2026Blog = lazy(
 const SustainableGreenOfficeBlog = lazy(
   () => import("./pages/blog/sustainable-green-office-interiors")
 );
-const OfficeFitOutCostGuideBlog = lazy(
-  () => import("./pages/blog/office-fit-out-cost-guide-india-2026")
-);
 
 const queryClient = new QueryClient();
 
@@ -82,14 +79,6 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <SustainableGreenOfficeBlog />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/blog/office-fit-out-cost-guide-india-2026"
-          element={
-            <Suspense fallback={<DynamicLoader />}>
-              <OfficeFitOutCostGuideBlog />
             </Suspense>
           }
         />

@@ -19,24 +19,6 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "14",
-    slug: "office-fit-out-cost-guide-india-2026",
-    title: "Office Fit-Out Cost Guide: How Much Does It Cost to Fit Out an Office in India?",
-    metaTitle: "Office Fit-Out Cost in India: Per Sq Ft Pricing Guide | Hagerstone International Pvt. Ltd.",
-    metaDescription: "How much does office fit-out cost in India? See per sq ft price ranges, what drives costs up or down, and how to budget a fit-out without cutting corners.",
-    excerpt: "See real per-sq-ft office fit-out cost ranges in India, the factors that drive them up or down, and how to budget accurately before you sign off on a design.",
-    content: "Full content available at /blog/office-fit-out-cost-guide-india-2026",
-    image: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/s-o-c-i-a-l-c-u-t-1RT4txDDAbM-unsplash.jpg",
-    imageAlt: "Modern corporate office interior representing a completed office fit-out project",
-    author: "Dhruv Agarwal",
-    authorRole: "Founder & CEO, TEDx Speaker, Author of Workplace 2.0",
-    date: "August 27, 2026",
-    readTime: "10 min read",
-    category: "Cost & Planning",
-    tags: ["office fit-out cost india", "office interior cost per sq ft", "commercial fit-out budget", "office renovation cost india", "turnkey office fit-out pricing"],
-    featured: true,
-  },
-  {
     id: "13",
     slug: "sustainable-green-office-interiors",
     title: "Sustainable Green Office Interiors: Designing Workspaces That Heal the Planet and People",
@@ -52,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "18 min read",
     category: "Sustainability",
     tags: ["sustainable office design", "LEED certification", "WELL building standard", "biophilic design", "energy efficiency", "ESG workplace", "green interiors"],
-    featured: false,
+    featured: true,
   },
   {
     id: "12",
