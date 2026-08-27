@@ -1,0 +1,7 @@
+# Hagerstone International - robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hagerstone.com/sitemap.xml

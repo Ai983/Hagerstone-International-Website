@@ -1,0 +1,222 @@
+// components/AIAssistant.tsx
+import { useState, useRef, useEffect } from "react";
+import { MessageCircle, Send, X, Minimize2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+type ChatMessage = { role: "user" | "assistant"; content: string };
+
+interface Message {
+  id: string;
+  content: string;
+  isUser: boolean;
+  timestamp: Date;
+}
+
+const AIAssistant = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "1",
+      content:
+        "Hello! I'm SmartDesign AI, Design Assistant by Hagerstone. Tell me your space, dimensions, style, budget, and timeline—I'll suggest a plan and next steps.",
+      isUser: false,
+      timestamp: new Date(),
+    },
+  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const API_URL = "https://cuycosjchirgjmfczcle.supabase.co/functions/v1/chat-assistant";
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => { scrollToBottom(); }, [messages]);
+
+  const sendMessage = async () => {
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: inputValue,
+      isUser: true,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue("");
+    setIsLoading(true);
+
+    try {
+      // Convert last turns into OpenAI-style messages
+      const history: ChatMessage[] = messages.slice(-5).map((m) => ({
+        role: m.isUser ? "user" : "assistant",
+        content: m.content,
+      }));
+
+      const payload = {
+        messages: [
+          ...history,
+          { role: "user", content: userMessage.content },
+        ],
+      };
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error(`API error: ${res.status}`);
+      }
+
+      const data = await res.json();
+      const text =
+        (data && (data.reply as string)) ||
+        "Sorry, I couldn't generate a response.";
+
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: text,
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+    } catch (err) {
+      const errorMessage: Message = {
+        id: (Date.now() + 2).toString(),
+        content:
+          "I'm having trouble reaching the assistant right now. Please try again in a moment.",
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="cursor-hover fixed bottom-6 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full shadow-lg hover:scale-110 transition-transform duration-200 flex items-center justify-center z-50 border-2 border-accent"
+        aria-label="Open AI Assistant"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </button>
+    );
+  }
+
+  return (
+    <Card
+      className={`fixed bottom-8 right-8 w-96 bg-background shadow-luxury border-2 border-primary/20 z-40 animate-scale-in ${
+        isMinimized ? "h-16" : "h-[500px]"
+      } transition-all duration-300`}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-border bg-accent rounded-t-lg">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-accent-foreground rounded-full flex items-center justify-center">
+            <span className="text-accent font-bold text-sm">S</span>
+          </div>
+          <div>
+            <h3 className="font-semibold text-accent-foreground">SmartDesign AI</h3>
+            <p className="text-xs text-accent-foreground/80">Design Assistant by Hagerstone</p>
+          </div>
+        </div>
+        <div className="flex space-x-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsMinimized(!isMinimized)}
+            className="h-8 w-8 p-0 text-accent-foreground hover:bg-accent-foreground/20"
+          >
+            <Minimize2 className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsOpen(false)}
+            className="h-8 w-8 p-0 text-accent-foreground hover:bg-accent-foreground/20"
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+
+      {!isMinimized && (
+        <>
+          {/* Messages */}
+          <ScrollArea className="flex-1 p-4 h-[380px]">
+            <div className="space-y-4">
+              {messages.map((m) => (
+                <div key={m.id} className={`flex ${m.isUser ? "justify-end" : "justify-start"}`}>
+                  <div
+                    className={`max-w-[80%] p-3 rounded-lg ${
+                      m.isUser ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{m.content}</p>
+                    <span className="text-xs opacity-70 mt-1 block">
+                      {m.timestamp.toLocaleTimeString()}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-muted p-3 rounded-lg">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-100"></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-200"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
+
+          {/* Input */}
+          <div className="p-4 border-t border-border">
+            <div className="flex space-x-2">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyPress}
+                placeholder="Ask about interior design, space planning..."
+                className="flex-1"
+                disabled={isLoading}
+              />
+              <Button
+                onClick={sendMessage}
+                disabled={!inputValue.trim() || isLoading}
+                size="sm"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
+    </Card>
+  );
+};
+
+export default AIAssistant;

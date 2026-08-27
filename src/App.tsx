@@ -1,0 +1,135 @@
+import { Suspense, lazy } from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Routes, Route, useLocation } from "react-router-dom";
+import ScrollToTop from "@/components/ScrollToTop";
+import AnalyticsTracker from '@/components/AnalyticsTracker';
+import HoveringNavbar from "./components/HoveringNavbar";
+import Footer from "./components/Footer";
+import AIAssistant from "./components/AIAssistant";
+import CustomCursor from "./components/CustomCursor";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import ServiceDetail from "./pages/ServiceDetail";
+import DynamicLoader from "./components/DynamicLoader";
+import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
+import LeadPopupForm from "./components/LeadPopupForm";
+import { useRoutes } from "./hooks/useRoutes";
+import { componentRegistry } from "./lib/routeRegistry";
+
+// Lazy load blog post pages
+const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
+const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commercial-interior-designers"));
+const OfficeSpacePlanningTrends2026Blog = lazy(
+  () => import("./pages/blog/office-space-planning-trends-2026")
+);
+const SustainableGreenOfficeBlog = lazy(
+  () => import("./pages/blog/sustainable-green-office-interiors")
+);
+const OfficeFitOutCostGuideBlog = lazy(
+  () => import("./pages/blog/office-fit-out-cost-guide-india-2026")
+);
+
+const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const { data: routes } = useRoutes();
+
+  return (
+    <>
+      {IS_DIWALI_MODE && isHomePage && <DiwaliSplash />}
+      <AnalyticsTracker />
+      <DynamicLoader />
+      <CustomCursor />
+      <HoveringNavbar />
+      <ScrollToTop />
+      <Routes>
+        {/* Hardcoded home route */}
+        <Route path="/" element={<Index />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+
+        {/* Blog post routes */}
+        <Route 
+          path="/blog/office-workspace-design" 
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeWorkspaceDesignBlog />
+            </Suspense>
+          } 
+        />
+        <Route
+          path="/blog/commercial-interior-designers"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <CommercialInteriorDesignersBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-space-planning-trends-2026"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeSpacePlanningTrends2026Blog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/sustainable-green-office-interiors"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <SustainableGreenOfficeBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-fit-out-cost-guide-india-2026"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeFitOutCostGuideBlog />
+            </Suspense>
+          }
+        />
+
+        {/* Dynamic routes from database */}
+        {routes?.map((route) => {
+          const Component = componentRegistry[route.component_key];
+          if (!Component) return null;
+
+          return (
+            <Route
+              key={route.id}
+              path={route.path}
+              element={
+                <Suspense fallback={<DynamicLoader />}>
+                  <Component routeMeta={route} />
+                </Suspense>
+              }
+            />
+          );
+        })}
+
+        {/* Fallback 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+      <AIAssistant />
+      <LeadPopupForm />
+    </>
+  );
+};
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <AppContent />
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;
