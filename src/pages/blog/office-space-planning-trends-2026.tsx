@@ -1,28 +1,67 @@
 import { Link } from "react-router-dom";
 import { Calendar, ChevronRight, Clock, User } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import FaqSection from "@/components/blog/FaqSection";
+import RelatedTopics from "@/components/blog/RelatedTopics";
+import RelatedArticles from "@/components/blog/RelatedArticles";
 import { Badge } from "@/components/ui/badge";
+import { getRelatedPosts } from "@/data/blogPosts";
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
   BRAND_NAME,
   SITE_URL,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   websiteSchema,
 } from "@/lib/seo";
+import type { FaqItem } from "@/lib/seo";
 
 const slug = "office-space-planning-trends-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const ogImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/_%20(2).jpeg";
 
+const relatedTopics = [
+  "Office Space Planning Trends 2026",
+  "Modern Workplace Planning",
+  "Hybrid Workplace Strategy",
+  "Office Layout Planning",
+  "Office Cubicle Space Planning",
+  "Workplace Design Trends 2026",
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "What is the biggest office space planning trend for 2026?",
+    answer:
+      "Flexibility built around hybrid work is the dominant trend — multi-functional zones that serve more than one purpose (breakout areas that double as meeting rooms, work cafés used for collaboration), rather than fixed, single-purpose layouts.",
+  },
+  {
+    question: "How much office space should be collaborative vs private?",
+    answer:
+      "A common starting benchmark is roughly 70% open, collaborative space, 20% semi-private zones like phone booths or small meeting rooms, and 10% fully private offices — adjusted based on how your specific teams actually work.",
+  },
+  {
+    question: "What does \"hybrid workplace strategy\" mean in space planning terms?",
+    answer:
+      "It means designing the office around variable, not fixed, attendance — flexible seating models, shared resources, and modular systems that don't require frequent renovation as headcount and in-office patterns shift week to week.",
+  },
+];
+
 export default function OfficeSpacePlanningTrends2026Blog() {
   const lastUpdatedLabel = "January 2026";
   const lastUpdatedIso = "2026-01-01T00:00:00Z";
 
+  const relatedPosts = getRelatedPosts(slug, 3);
+
   return (
     <>
       <SEOHead
-        title="Office Space Planning Trends 2026 | Future-Ready Workspaces"
+        title="Office Space Planning Trends 2026 | Hagerstone"
         description="Explore office space planning trends for 2026 and beyond, from flexible layouts and wellbeing-driven design to smart, cost-efficient workplaces."
         canonical={canonicalUrl}
         ogImage={ogImage}
@@ -39,11 +78,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
             description:
               "Explore office space planning trends for 2026 and beyond, from flexible layouts and wellbeing-driven design to smart, cost-efficient workplaces.",
             image: [ogImage],
-            author: {
-              "@type": "Organization",
-              name: BRAND_NAME,
-              url: SITE_URL,
-            },
+            author: authorSchema,
             publisher: {
               "@type": "Organization",
               name: BRAND_NAME,
@@ -82,6 +117,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
               },
             ],
           },
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -106,7 +142,13 @@ export default function OfficeSpacePlanningTrends2026Blog() {
                 <div className="flex flex-wrap items-center gap-4 md:gap-6 text-white/80 text-sm md:text-base">
                   <div className="flex items-center gap-2">
                     <User className="h-4 w-4" />
-                    <span>{BRAND_NAME}</span>
+                    <span>
+                      By{" "}
+                      <Link to={AUTHOR_PROFILE_PATH} className="text-white hover:underline underline-offset-2">
+                        {AUTHOR_NAME}
+                      </Link>
+                      , {AUTHOR_ROLE}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
@@ -339,9 +381,25 @@ export default function OfficeSpacePlanningTrends2026Blog() {
                 5. Compliance and Safety Standards
               </h3>
               <p>
-                Office planning must comply with building codes, fire safety regulations,
-                accessibility guidelines, and ventilation standards. These requirements
-                ensure safe and inclusive environments for all employees.
+                Office planning must comply with{" "}
+                <a
+                  href="https://www.bis.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  building codes
+                </a>
+                , fire safety regulations, accessibility guidelines, and{" "}
+                <a
+                  href="https://www.ashrae.org/technical-resources/bookstore/standards-62-1-62-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  ventilation standards
+                </a>
+                . These requirements ensure safe and inclusive environments for all employees.
               </p>
             </div>
           </section>
@@ -464,12 +522,25 @@ export default function OfficeSpacePlanningTrends2026Blog() {
                 productivity, and fostering innovation in an ever-changing world.
               </p>
               <p>
-                Explore related services: [Internal Link: Office Interior Design Services]
-                · [Internal Link: Commercial Interior Design] · [Internal Link: Workplace
-                Strategy / Space Planning]
+                Explore related reading:{" "}
+                <Link to="/blog/office-workspace-design" className="text-primary hover:underline">
+                  Office Workspace Design
+                </Link>{" "}
+                ·{" "}
+                <Link to="/blog/commercial-interior-designers" className="text-primary hover:underline">
+                  Commercial Interior Designers
+                </Link>{" "}
+                ·{" "}
+                <Link to="/services/office-design-build" className="text-primary hover:underline">
+                  Office Design &amp; Build Services
+                </Link>
               </p>
             </div>
           </section>
+
+          <FaqSection items={faqItems} />
+
+          <RelatedTopics topics={relatedTopics} className="mb-6" />
 
           <section className="max-w-4xl mx-auto px-4 py-10 md:py-12">
             <figure className="space-y-3">
@@ -488,6 +559,8 @@ export default function OfficeSpacePlanningTrends2026Blog() {
             </figure>
           </section>
         </article>
+
+        <RelatedArticles posts={relatedPosts} />
       </main>
     </>
   );

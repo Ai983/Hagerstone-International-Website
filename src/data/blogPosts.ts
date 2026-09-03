@@ -14,10 +14,32 @@ export type BlogPost = {
   readTime: string;
   category: string;
   tags: string[];
+  // Editorially curated slugs of genuinely related posts, shown first by
+  // getRelatedPosts() before it backfills with category/tag/recency matches.
+  relatedSlugs?: string[];
   featured?: boolean;
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: "16",
+    slug: "mep-design-consultancy-india",
+    title: "MEP Design & Consultancy for Commercial Fit-Outs: A Technical Guide",
+    metaTitle: "MEP Design & Consultancy for Commercial Fit-Outs | Hagerstone",
+    metaDescription: "A technical guide to MEP design for commercial buildings in India: electrical, plumbing, fire safety, and where MEP costs actually go.",
+    excerpt: "A technical, non-marketing guide to MEP in commercial fit-outs—electrical load planning, plumbing, fire & life safety, coordination, and where MEP budget actually goes.",
+    content: "Full content available at /blog/mep-design-consultancy-india",
+    image: "https://hagerstone.com/hero-images/officeinterior.webp",
+    imageAlt: "Commercial building electrical panel and cable containment as part of MEP design",
+    author: "Dhruv Agarwal",
+    authorRole: "Founder & CEO, TEDx Speaker, Author of Workplace 2.0",
+    date: "September 3, 2026",
+    readTime: "10 min read",
+    category: "Technical",
+    tags: ["mep design india", "mep consultancy", "electrical design commercial building", "fire fighting systems", "plumbing design commercial office", "mep coordination"],
+    relatedSlugs: ["commercial-hvac-systems", "office-fit-out-cost-guide-india-2026", "commercial-interior-designers"],
+    featured: false,
+  },
   {
     id: "14",
     slug: "commercial-hvac-systems",
@@ -34,6 +56,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "11 min read",
     category: "Technical",
     tags: ["commercial hvac india", "office hvac design", "VRF vs VRV", "hvac load calculation", "hvac commissioning", "indoor air quality"],
+    relatedSlugs: ["mep-design-consultancy-india", "office-fit-out-cost-guide-india-2026", "sustainable-green-office-interiors"],
     featured: false,
   },
   {
@@ -52,6 +75,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     category: "Cost & Planning",
     tags: ["office fit-out cost india", "office interior cost per sq ft", "commercial fit-out budget", "office renovation cost india", "turnkey office fit-out pricing"],
+    relatedSlugs: ["commercial-hvac-systems", "mep-design-consultancy-india", "commercial-interior-designers"],
     featured: false,
   },
   {
@@ -70,6 +94,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "18 min read",
     category: "Sustainability",
     tags: ["sustainable office design", "LEED certification", "WELL building standard", "biophilic design", "energy efficiency", "ESG workplace", "green interiors"],
+    relatedSlugs: ["commercial-hvac-systems", "office-space-planning-trends-2026", "office-fit-out-cost-guide-india-2026"],
     featured: true,
   },
   {
@@ -96,6 +121,7 @@ export const blogPosts: BlogPost[] = [
       "office cubicle space planning",
       "workplace design trends 2026",
     ],
+    relatedSlugs: ["office-workspace-design", "commercial-interior-designers", "sustainable-green-office-interiors"],
     featured: false,
   },
   {
@@ -116,6 +142,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "9 min read",
     category: "Design Guide",
     tags: ["commercial interiors", "office design", "space planning", "brand experience", "workplace productivity"],
+    relatedSlugs: ["office-workspace-design", "office-space-planning-trends-2026", "office-fit-out-cost-guide-india-2026"],
     featured: false,
   },
   {
@@ -134,6 +161,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "12 min read",
     category: "Design Guide",
     tags: ["office workspace design", "space planning", "ergonomic furniture", "office interior design", "collaborative spaces", "productivity", "office layout", "workplace design"],
+    relatedSlugs: ["commercial-interior-designers", "office-space-planning-trends-2026", "sustainable-green-office-interiors"],
     featured: true,
   }
 ];
@@ -142,6 +170,44 @@ export const getBlogPostBySlug = (slug: string) => blogPosts.find((p) => p.slug 
 export const getFeaturedPost = () => blogPosts.find((p) => p.featured);
 export const getRecentPosts = (count: number = 5) => blogPosts.slice(0, count);
 export const getPostsByCategory = (category: string) => blogPosts.filter((p) => p.category === category);
+
+// Returns up to `count` posts genuinely related to `slug`: the post's curated
+// relatedSlugs first, then a same-category/shared-tag match, then recency —
+// so the "Related Articles" lineup differs per post instead of every post
+// showing the same top-N recent posts.
+export const getRelatedPosts = (slug: string, count: number = 3): BlogPost[] => {
+  const current = getBlogPostBySlug(slug);
+  const others = blogPosts.filter((p) => p.slug !== slug);
+  if (!current) return others.slice(0, count);
+
+  const result: BlogPost[] = [];
+  const seen = new Set<string>();
+
+  const add = (post: BlogPost | undefined) => {
+    if (post && post.slug !== slug && !seen.has(post.slug) && result.length < count) {
+      result.push(post);
+      seen.add(post.slug);
+    }
+  };
+
+  (current.relatedSlugs ?? []).forEach((relatedSlug) => add(getBlogPostBySlug(relatedSlug)));
+
+  if (result.length < count) {
+    others
+      .filter((post) => !seen.has(post.slug))
+      .map((post, index) => ({
+        post,
+        index,
+        score:
+          (post.category === current.category ? 2 : 0) +
+          post.tags.filter((tag) => current.tags.includes(tag)).length,
+      }))
+      .sort((a, b) => b.score - a.score || a.index - b.index)
+      .forEach(({ post }) => add(post));
+  }
+
+  return result;
+};
 
 export const blogCategories = [
   "All",

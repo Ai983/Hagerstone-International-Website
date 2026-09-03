@@ -1,27 +1,66 @@
 import { Link } from "react-router-dom";
-import { Calendar, ChevronRight } from "lucide-react";
+import { Calendar, ChevronRight, User } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
-import { getRecentPosts } from "@/data/blogPosts";
+import FaqSection from "@/components/blog/FaqSection";
+import RelatedTopics from "@/components/blog/RelatedTopics";
+import RelatedArticles from "@/components/blog/RelatedArticles";
+import { getRelatedPosts } from "@/data/blogPosts";
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
   BRAND_NAME,
+  SHORT_BRAND_NAME,
   SITE_URL,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   websiteSchema,
 } from "@/lib/seo";
+import type { FaqItem } from "@/lib/seo";
 
 const slug = "office-fit-out-cost-guide-india-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage = "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/s-o-c-i-a-l-c-u-t-1RT4txDDAbM-unsplash.jpg";
 
+const relatedTopics = [
+  "Office Fit-Out Cost India",
+  "Office Interior Cost per Sq Ft",
+  "Commercial Fit-Out Budget",
+  "Office Renovation Cost India",
+  "Turnkey Office Fit-Out Pricing",
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "What is the average cost per sq ft for office fit-out in India?",
+    answer:
+      "As a planning benchmark, office fit-out costs in India generally fall into three tiers: ₹1,200-₹1,800 per sq ft for basic/functional fit-outs, ₹1,800-₹2,800 for mid-range corporate fit-outs, and ₹2,800-₹4,500+ for premium/turnkey fit-outs. Delhi NCR, Mumbai, and Bengaluru typically sit at the higher end; Tier-2 cities can run lower.",
+  },
+  {
+    question: "What's the difference between Cat A and Cat B fit-out?",
+    answer:
+      "Cat A is the landlord-delivered base: raised flooring, ceiling grid, basic lighting, and finished common areas. Cat B is the tenant's move-in-ready layer built on top of that — partitions, workstations, meeting rooms, pantry, branding, and AV. Most Indian leases hand over somewhere between bare shell and warm shell, so tenants often budget for both layers.",
+  },
+  {
+    question: "What's the biggest cause of office fit-out cost overruns?",
+    answer:
+      "Mid-project design changes after construction has started are the single biggest cause of cost overruns, closely followed by MEP and interior teams not being coordinated early — which forces rework when ducting, ceiling, and lighting layouts clash.",
+  },
+  {
+    question: "How do I get an accurate office fit-out quote instead of a rough estimate?",
+    answer:
+      "Have your current shell condition, headcount and growth projections, desired workstation-to-meeting-room ratio, brand guidelines, and target move-in date ready before requesting a quote. A design-and-build partner can then walk the site and return a scoped estimate rather than a generic per-sq-ft guess.",
+  },
+];
+
 export default function OfficeFitOutCostGuideBlog() {
   const lastUpdatedLabel = "August 27, 2026";
   const lastUpdatedIso = "2026-08-27T00:00:00Z";
 
-  const relatedBlogPosts = getRecentPosts(5)
-    .filter((post) => post.slug !== slug)
-    .slice(0, 3);
+  const relatedBlogPosts = getRelatedPosts(slug, 3);
 
   const tocItems = [
     { id: "introduction", label: "Introduction: Why Fit-Out Costs Vary So Widely" },
@@ -32,6 +71,7 @@ export default function OfficeFitOutCostGuideBlog() {
     { id: "how-to-control-costs", label: "How to Control Fit-Out Costs Without Cutting Corners" },
     { id: "getting-an-accurate-quote", label: "How to Get an Accurate Fit-Out Quote" },
     { id: "conclusion", label: "Conclusion: Budget With Clarity, Not Guesswork" },
+    { id: "faq", label: "Frequently Asked Questions" },
     { id: "call-to-action", label: "Call to Action" },
   ];
 
@@ -45,7 +85,7 @@ export default function OfficeFitOutCostGuideBlog() {
   return (
     <>
       <SEOHead
-        title={`Office Fit-Out Cost in India: Per Sq Ft Pricing Guide | ${BRAND_NAME}`}
+        title={`Office Fit-Out Cost in India: Per Sq Ft Pricing Guide | ${SHORT_BRAND_NAME}`}
         description="How much does office fit-out cost in India? See per sq ft price ranges, what drives costs up or down, and how to budget a fit-out without cutting corners."
         canonical={canonicalUrl}
         ogImage={ogImage}
@@ -61,11 +101,7 @@ export default function OfficeFitOutCostGuideBlog() {
             description:
               "How much does office fit-out cost in India? See per sq ft price ranges, what drives costs up or down, and how to budget a fit-out without cutting corners.",
             image: [ogImage],
-            author: {
-              "@type": "Organization",
-              name: BRAND_NAME,
-              url: SITE_URL,
-            },
+            author: authorSchema,
             publisher: {
               "@type": "Organization",
               name: BRAND_NAME,
@@ -94,6 +130,7 @@ export default function OfficeFitOutCostGuideBlog() {
               },
             ],
           },
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -123,11 +160,26 @@ export default function OfficeFitOutCostGuideBlog() {
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
               Office Fit-Out Cost Guide: How Much Does It Cost to Fit Out an Office in India?
             </h1>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-              <Calendar className="h-4 w-4" />
-              <span>
-                Last updated <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
-              </span>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>
+                  By{" "}
+                  <Link
+                    to={AUTHOR_PROFILE_PATH}
+                    className="text-foreground font-medium hover:text-primary transition-colors"
+                  >
+                    {AUTHOR_NAME}
+                  </Link>
+                  , {AUTHOR_ROLE}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>
+                  Last updated <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
+                </span>
+              </div>
             </div>
             <img
               src={ogImage}
@@ -284,7 +336,15 @@ export default function OfficeFitOutCostGuideBlog() {
               <Link to="/services/mep" className="text-primary hover:underline">
                 MEP design &amp; consultancy
               </Link>{" "}
-              team prevents costly rework once civil work has started.
+              team prevents costly rework once civil work has started — see our{" "}
+              <Link to="/blog/commercial-hvac-systems" className="text-primary hover:underline">
+                commercial HVAC systems guide
+              </Link>{" "}
+              for how sizing and system choice specifically affect this line item, or our{" "}
+              <Link to="/blog/mep-design-consultancy-india" className="text-primary hover:underline">
+                MEP design &amp; consultancy guide
+              </Link>{" "}
+              for what's actually included in electrical, plumbing, and fire safety scope.
             </p>
 
             <h3 className="text-2xl font-semibold text-foreground">3. Finish and Material Specifications</h3>
@@ -310,8 +370,18 @@ export default function OfficeFitOutCostGuideBlog() {
 
             <h3 className="text-2xl font-semibold text-foreground">6. Compliance and Approvals</h3>
             <p className="text-base text-foreground/80 leading-relaxed">
-              Fire NOC, structural approvals, and building-management sign-offs add both cost and
-              lead time — factor these in early rather than treating them as an afterthought.
+              Fire NOC, structural approvals, and building-management sign-offs — most of which
+              trace back to requirements set out in the{" "}
+              <a
+                href="https://www.bis.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                National Building Code of India
+              </a>{" "}
+              — add both cost and lead time; factor these in early rather than treating them as an
+              afterthought.
             </p>
           </section>
 
@@ -424,6 +494,10 @@ export default function OfficeFitOutCostGuideBlog() {
             </p>
           </section>
 
+          <FaqSection items={faqItems} />
+
+          <RelatedTopics topics={relatedTopics} />
+
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
             <h2 id="call-to-action" className="text-3xl font-bold text-primary">
               Call to Action
@@ -453,28 +527,9 @@ export default function OfficeFitOutCostGuideBlog() {
             </aside>
           </section>
 
-          <section className="max-w-4xl mx-auto px-4 py-10">
-            <h3 className="text-2xl font-bold text-primary mb-8">Related Blogs</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {relatedBlogPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  to={`/blog/${post.slug}`}
-                  className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-border"
-                >
-                  <div className="p-6">
-                    <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 hover:text-primary transition-colors">
-                      {post.title}
-                    </h4>
-                    <p className="text-primary font-medium inline-flex items-center gap-1">
-                      Read More <ChevronRight className="h-4 w-4" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
         </article>
+
+        <RelatedArticles posts={relatedBlogPosts} />
       </main>
     </>
   );

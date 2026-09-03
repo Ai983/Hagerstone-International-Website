@@ -37,6 +37,7 @@ const routesToPrerender = [
   '/blog/sustainable-green-office-interiors',
   '/blog/commercial-hvac-systems',
   '/blog/office-fit-out-cost-guide-india-2026',
+  '/blog/mep-design-consultancy-india',
   '/ideas',
   '/find-your-style',
 ]

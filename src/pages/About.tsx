@@ -303,11 +303,11 @@ const About = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
           </div>
           <div className="grid lg:grid-cols-2 gap-16">
-            <Card className="group bg-gradient-card border-0 shadow-luxury p-8 rounded-2xl hover:shadow-xl transition-all duration-500 hover:-translate-y-3 animate-fade-in">
+            <Card id="dhruv-agarwal" className="group bg-gradient-card border-0 shadow-luxury p-8 rounded-2xl hover:shadow-xl transition-all duration-500 hover:-translate-y-3 animate-fade-in scroll-mt-24">
               <CardContent className="text-center">
                 <div className="relative mb-6 inline-block">
-                  <img 
-                    src="/founders/dhruvsir.png" 
+                  <img
+                    src="/founders/dhruvsir.png"
                     alt="Dhruv Agarwal - Founder & Managing Director"
                     className="w-48 h-48 object-cover rounded-full mx-auto shadow-luxury group-hover:scale-105 transition-transform duration-300"
                   />
