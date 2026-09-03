@@ -1,20 +1,61 @@
 import { Link } from "react-router-dom";
-import { Calendar, ChevronRight } from "lucide-react";
+import { Calendar, ChevronRight, User } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
-import { getRecentPosts } from "@/data/blogPosts";
+import FaqSection from "@/components/blog/FaqSection";
+import RelatedTopics from "@/components/blog/RelatedTopics";
+import RelatedArticles from "@/components/blog/RelatedArticles";
+import { getRelatedPosts } from "@/data/blogPosts";
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
   BRAND_NAME,
+  SHORT_BRAND_NAME,
   SITE_URL,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   websiteSchema,
 } from "@/lib/seo";
+import type { FaqItem } from "@/lib/seo";
 
 const slug = "commercial-interior-designers";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg";
+
+const relatedTopics = [
+  "Commercial Interiors",
+  "Office Design",
+  "Space Planning",
+  "Brand Experience",
+  "Workplace Productivity",
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "What does a commercial interior designer actually do?",
+    answer:
+      "A commercial interior designer plans and designs interiors for business environments — offices, retail, hospitality, healthcare, and co-working spaces — balancing functionality, aesthetics, brand identity, safety, and regulatory compliance. Their scope includes space planning, concept development, material and furniture selection, and coordination with architects, contractors, and MEP teams.",
+  },
+  {
+    question: "What's the difference between commercial and residential interior design?",
+    answer:
+      "Commercial projects demand durability, scalability, and strict adherence to building codes in ways residential interiors don't. Designers focus on how many people move through, work in, and experience a space daily, along with compliance requirements like fire safety and accessibility that residential design rarely has to account for.",
+  },
+  {
+    question: "How do I choose the right commercial interior designer?",
+    answer:
+      "Evaluate relevant industry experience, portfolio quality with real-world case studies, understanding of your specific business objectives, clear project timelines, and end-to-end design-and-execution capability — not just visual portfolio appeal. A single design-and-build partner reduces the coordination gaps that show up as change orders later.",
+  },
+  {
+    question: "Do commercial interior designers handle MEP and HVAC coordination?",
+    answer:
+      "Not directly — that's a specialized MEP design and consultancy scope — but experienced commercial interior designers coordinate closely with MEP teams from the earliest layout stage so ceiling, ducting, and electrical plans don't clash with the design concept later.",
+  },
+];
 
 
 
@@ -28,9 +69,7 @@ export default function CommercialInteriorDesignersBlog() {
   }).format(lastUpdated);
   const lastUpdatedIso = lastUpdated.toISOString();
 
-  const relatedBlogPosts = getRecentPosts(4)
-    .filter((post) => post.slug !== slug)
-    .slice(0, 3);
+  const relatedBlogPosts = getRelatedPosts(slug, 3);
 
   const tocItems = [
     {
@@ -66,6 +105,10 @@ export default function CommercialInteriorDesignersBlog() {
       label: "Conclusion: Invest in Commercial Interiors That Work for You",
     },
     {
+      id: "faq",
+      label: "Frequently Asked Questions",
+    },
+    {
       id: "call-to-action",
       label: "Call to Action",
     },
@@ -81,7 +124,7 @@ export default function CommercialInteriorDesignersBlog() {
   return (
     <>
       <SEOHead
-        title={`Commercial Interior Designers for Productivity, Brand & Growth | ${BRAND_NAME}`}
+        title={`Commercial Interior Designers for Productivity, Brand & Growth | ${SHORT_BRAND_NAME}`}
         description="Commercial interior designers create functional, branded, and productive business spaces that enhance employee wellbeing and customer experience."
         canonical={canonicalUrl}
         ogImage={ogImage}
@@ -97,11 +140,7 @@ export default function CommercialInteriorDesignersBlog() {
             description:
               "Commercial interior designers create functional, branded, and productive business spaces that enhance employee wellbeing and customer experience.",
             image: [ogImage],
-            author: {
-              "@type": "Organization",
-              name: BRAND_NAME,
-              url: SITE_URL,
-            },
+            author: authorSchema,
             publisher: {
               "@type": "Organization",
               name: BRAND_NAME,
@@ -140,6 +179,7 @@ export default function CommercialInteriorDesignersBlog() {
               },
             ],
           },
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -173,12 +213,27 @@ export default function CommercialInteriorDesignersBlog() {
               Commercial Interior Designers: Transforming Business Spaces for Productivity,
               Brand &amp; Growth
             </h1>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-              <Calendar className="h-4 w-4" />
-              <span>
-                Last updated{" "}
-                <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
-              </span>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>
+                  By{" "}
+                  <Link
+                    to={AUTHOR_PROFILE_PATH}
+                    className="text-foreground font-medium hover:text-primary transition-colors"
+                  >
+                    {AUTHOR_NAME}
+                  </Link>
+                  , {AUTHOR_ROLE}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>
+                  Last updated{" "}
+                  <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
+                </span>
+              </div>
             </div>
             <img
 
@@ -259,7 +314,16 @@ export default function CommercialInteriorDesignersBlog() {
             </p>
             <p className="text-base text-foreground/80 leading-relaxed">
               Unlike residential interiors, commercial projects demand durability, scalability,
-              and strict adherence to building codes. Designers focus on how people move, interact,
+              and strict adherence to{" "}
+              <a
+                href="https://www.bis.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                building codes
+              </a>
+              . Designers focus on how people move, interact,
               work, and experience the space daily. For turnkey delivery, many teams align early
               with <Link to="/services/office-design-build" className="text-primary hover:underline">office design &amp; build services</Link>,
               and coordinate detailing with <Link to="/services/interior-fit-out" className="text-primary hover:underline">interior fit-out delivery</Link>
@@ -309,7 +373,12 @@ export default function CommercialInteriorDesignersBlog() {
               By designing activity-based work zones, commercial interior designers ensure
               employees can move between focused work, collaboration, and relaxation without
               disruption. These design strategies improve efficiency while reducing fatigue and
-              burnout.
+              burnout — for a deeper look at the specific elements that drive this, see our guide
+              to{" "}
+              <Link to="/blog/office-workspace-design" className="text-primary hover:underline">
+                office workspace design
+              </Link>
+              .
             </p>
 
             <img
@@ -571,7 +640,7 @@ export default function CommercialInteriorDesignersBlog() {
             </ul>
             <p className="text-base text-foreground/80 leading-relaxed">
               The right designer prioritizes problem-solving, efficiency, and measurable outcomes—not
-              just visual appeal. For complex builds, early input from <Link to="/services/mep" className="text-primary hover:underline">MEP design &amp; consultancy</Link> teams can also ensure the interior concept integrates with core building systems.
+              just visual appeal. For complex builds, early input from <Link to="/services/mep" className="text-primary hover:underline">MEP design &amp; consultancy</Link> teams can also ensure the interior concept integrates with core building systems — see our <Link to="/blog/mep-design-consultancy-india" className="text-primary hover:underline">MEP design &amp; consultancy guide</Link> for what that coordination actually involves.
             </p>
           </section>
 
@@ -594,6 +663,10 @@ export default function CommercialInteriorDesignersBlog() {
               creates long-term value, stronger brand perception, and more engaged teams.
             </p>
           </section>
+
+          <FaqSection items={faqItems} />
+
+          <RelatedTopics topics={relatedTopics} />
 
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
             <h2 id="call-to-action" className="text-3xl font-bold text-primary">
@@ -625,28 +698,9 @@ export default function CommercialInteriorDesignersBlog() {
             </aside>
           </section>
 
-          <section className="max-w-4xl mx-auto px-4 py-10">
-            <h3 className="text-2xl font-bold text-primary mb-8">Related Blogs</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {relatedBlogPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  to={`/blog/${post.slug}`}
-                  className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-border"
-                >
-                  <div className="p-6">
-                    <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 hover:text-primary transition-colors">
-                      {post.title}
-                    </h4>
-                    <p className="text-primary font-medium inline-flex items-center gap-1">
-                      Read More <ChevronRight className="h-4 w-4" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
         </article>
+
+        <RelatedArticles posts={relatedBlogPosts} />
       </main>
     </>
   );

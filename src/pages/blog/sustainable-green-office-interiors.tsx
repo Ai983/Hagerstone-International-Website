@@ -2,23 +2,30 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, Linkedin, Twitter, Facebook } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
-import { getRecentPosts } from "@/data/blogPosts";
+import FaqSection from "@/components/blog/FaqSection";
+import RelatedArticles from "@/components/blog/RelatedArticles";
+import { getRelatedPosts } from "@/data/blogPosts";
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   SITE_URL,
   websiteSchema,
 } from "@/lib/seo";
+import type { FaqItem } from "@/lib/seo";
 
 const SLUG = "sustainable-green-office-interiors";
 const CANONICAL = `${SITE_URL}/blog/${SLUG}`;
 const OG_IMAGE = `${SITE_URL}/blog/sustainable-green-office-interiors/hero-green-office.jpg`;
 const TITLE = "Sustainable Green Office Interiors: Designing Workspaces That Heal the Planet and People";
-const SEO_TITLE = "Sustainable Green Office Interiors: ESG, Productivity & Energy Efficiency";
+const SEO_TITLE = "Sustainable Green Office Interiors | Hagerstone";
 const META_DESC = "Sustainable green office interiors cut energy use, boost productivity, and align with ESG goals. Discover how to build smarter—learn more today.";
-const AUTHOR = "Hagerstone International";
+const AUTHOR = AUTHOR_NAME;
 const DATE = "February 25, 2026";
 const READ_TIME = "18 min read";
 const CATEGORY = "Sustainability";
@@ -27,7 +34,7 @@ const HERO_IMG = "/blog/sustainable-green-office-interiors/hero-green-office.jpg
 const ENERGY_IMG = "/blog/sustainable-green-office-interiors/energy-efficiency-metrics.jpg";
 const CERT_IMG = "/blog/sustainable-green-office-interiors/leed-well-certification.jpg";
 
-const relatedPosts = getRecentPosts(4).filter(p => p.slug !== SLUG).slice(0, 3);
+const relatedPosts = getRelatedPosts(SLUG, 3);
 
 const shareUrl = CANONICAL;
 const shareText = encodeURIComponent(TITLE);
@@ -53,6 +60,25 @@ const tocItems = [
   { id: "implementation", label: "9. How to Implement" },
   { id: "future", label: "10. The Future of Green Offices" },
   { id: "conclusion", label: "11. Conclusion" },
+  { id: "faq", label: "12. Frequently Asked Questions" },
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "What actually makes an office interior \"sustainable\"?",
+    answer:
+      "Sustainability rests on three pillars working together: eco-friendly materials (renewable, recycled, responsibly sourced), energy-efficient systems (LED lighting, smart sensors, efficient HVAC), and biophilic design (natural light, greenery, organic textures). A few plants in the corner isn't sustainable design — it's a systems-level approach across all three.",
+  },
+  {
+    question: "What's the difference between LEED and WELL certification?",
+    answer:
+      "LEED evaluates a building's environmental performance — energy, water efficiency, materials, and indoor environmental quality — across Certified, Silver, Gold, and Platinum tiers. WELL instead evaluates human health outcomes: air quality, lighting, thermal comfort, acoustics, and mental well-being. Many organizations pursue both, combining environmental sustainability with human-centered wellness.",
+  },
+  {
+    question: "Does sustainable office design cost more than conventional design?",
+    answer:
+      "Certain choices (certified materials, high-efficiency systems) can carry a higher upfront cost, but the operational savings from reduced energy and maintenance, plus measurable gains in retention and reduced absenteeism, typically offset that over a multi-year lease — sustainability functions as leverage, not just an added expense.",
+  },
 ];
 
 const SustainableGreenOfficeBlog = () => {
@@ -62,7 +88,7 @@ const SustainableGreenOfficeBlog = () => {
     headline: TITLE,
     description: META_DESC,
     image: OG_IMAGE,
-    author: { "@type": "Organization", name: AUTHOR },
+    author: authorSchema,
     publisher: {
       "@type": "Organization",
       name: "Hagerstone International",
@@ -97,6 +123,7 @@ const SustainableGreenOfficeBlog = () => {
           websiteSchema,
           blogPostingSchema,
           breadcrumbSchema,
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -109,7 +136,12 @@ const SustainableGreenOfficeBlog = () => {
             <Badge className="bg-accent text-accent-foreground mb-4">{CATEGORY}</Badge>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">{TITLE}</h1>
             <div className="flex flex-wrap items-center gap-4 md:gap-6 text-white/80 text-sm md:text-base">
-              <div className="flex items-center gap-2"><User className="h-4 w-4" /><span>{AUTHOR}</span></div>
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <Link to={AUTHOR_PROFILE_PATH} className="text-white hover:underline underline-offset-2">
+                  {AUTHOR}
+                </Link>
+              </div>
               <div className="flex items-center gap-2"><Calendar className="h-4 w-4" /><span>{DATE}</span></div>
               <div className="flex items-center gap-2"><Clock className="h-4 w-4" /><span>{READ_TIME}</span></div>
             </div>
@@ -279,7 +311,12 @@ const SustainableGreenOfficeBlog = () => {
 
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">5.2 Climate & Appliance Efficiency</h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              High-performance HVAC systems maintain comfort while consuming significantly less energy. Smart thermal zoning divides spaces into zones based on usage and occupancy — a crowded conference room doesn't share the same climate load as a storage area. <strong className="text-foreground">Efficiency is not about compromise. It is about precision.</strong>
+              High-performance HVAC systems maintain comfort while consuming significantly less energy. Smart thermal zoning divides spaces into zones based on usage and occupancy — a crowded conference room doesn't share the same climate load as a storage area. <strong className="text-foreground">Efficiency is not about compromise. It is about precision.</strong>{" "}
+              For how HVAC system choice and sizing affects this, see our{" "}
+              <Link to="/blog/commercial-hvac-systems" className="text-primary hover:underline">
+                commercial HVAC systems guide
+              </Link>
+              .
             </p>
 
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">5.3 Renewable Integration & Automation</h3>
@@ -294,14 +331,14 @@ const SustainableGreenOfficeBlog = () => {
               Design intentions are powerful. But without verification, they remain claims. <strong className="text-foreground">Standards turn intention into accountability.</strong>
             </p>
 
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">6.1 LEED (Leadership in Energy and Environmental Design)</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">6.1 <a href="https://www.usgbc.org/leed" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LEED (Leadership in Energy and Environmental Design)</a></h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              LEED evaluates sustainability across energy performance, water efficiency, materials selection, and indoor environmental quality. Certification tiers: Certified, Silver, Gold, Platinum. Beyond environmental impact, LEED enhances property value, strengthens investor confidence, and improves marketability.
+              LEED, administered by the U.S. Green Building Council, evaluates sustainability across energy performance, water efficiency, materials selection, and indoor environmental quality. Certification tiers: Certified, Silver, Gold, Platinum. Beyond environmental impact, LEED enhances property value, strengthens investor confidence, and improves marketability.
             </p>
 
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">6.2 WELL Building Standard</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">6.2 <a href="https://www.wellcertified.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">WELL Building Standard</a></h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              WELL evaluates air quality, lighting conditions, thermal comfort, acoustic performance, nourishment, and mental well-being. Many organizations pursue both LEED and WELL certification — combining environmental sustainability with human-centered wellness.
+              WELL, administered by the International WELL Building Institute, evaluates air quality, lighting conditions, thermal comfort, acoustic performance, nourishment, and mental well-being. Many organizations pursue both LEED and WELL certification — combining environmental sustainability with human-centered wellness.
             </p>
 
             <figure className="my-8">
@@ -447,6 +484,8 @@ const SustainableGreenOfficeBlog = () => {
             </p>
           </section>
 
+          <FaqSection items={faqItems} />
+
           {/* Tags */}
           <div className="mt-12 pt-8 border-t border-border">
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Related Topics</h3>
@@ -476,10 +515,14 @@ const SustainableGreenOfficeBlog = () => {
                 <User className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold text-lg">{AUTHOR}</h3>
-                <p className="text-muted-foreground text-sm mb-2">Sustainability & Workplace Design</p>
+                <h3 className="font-bold text-lg">
+                  <Link to={AUTHOR_PROFILE_PATH} className="hover:text-primary transition-colors">
+                    {AUTHOR}
+                  </Link>
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">{AUTHOR_ROLE}</p>
                 <p className="text-muted-foreground text-sm">
-                  Expert editorial team at Hagerstone International covering sustainable office design, corporate interiors, ESG workplace strategy, and green building certifications across India.
+                  Writes on sustainable office design, corporate interiors, ESG workplace strategy, and green building certifications across India for Hagerstone International.
                 </p>
               </div>
             </div>
@@ -497,35 +540,7 @@ const SustainableGreenOfficeBlog = () => {
         </div>
       </article>
 
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="py-16 bg-muted/30 border-t border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-primary mb-10">Related Articles</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {relatedPosts.map(rp => (
-                <Link key={rp.id} to={`/blog/${rp.slug}`}>
-                  <Card className="group bg-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 overflow-hidden h-full">
-                    <div className="relative overflow-hidden">
-                      <img src={rp.image} alt={rp.imageAlt} className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-accent text-accent-foreground">{rp.category}</Badge>
-                      </div>
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold text-foreground line-clamp-2 group-hover:text-primary transition-colors mb-3">{rp.title}</h3>
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                        <span>{rp.date}</span>
-                        <span>{rp.readTime}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <RelatedArticles posts={relatedPosts} />
 
       {/* CTA */}
       <section className="py-16 bg-gradient-hero text-primary-foreground">

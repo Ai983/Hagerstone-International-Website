@@ -2,12 +2,51 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Calendar, Clock, User } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
+import FaqSection from '@/components/blog/FaqSection';
+import RelatedTopics from '@/components/blog/RelatedTopics';
+import RelatedArticles from '@/components/blog/RelatedArticles';
+import { getRelatedPosts } from '@/data/blogPosts';
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   SITE_URL,
   websiteSchema,
 } from '@/lib/seo';
+import type { FaqItem } from '@/lib/seo';
+
+const slug = 'office-workspace-design';
+
+const relatedTopics = [
+  'Office Workspace Design',
+  'Space Planning',
+  'Ergonomic Furniture',
+  'Office Interior Design',
+  'Collaborative Spaces',
+  'Workplace Design',
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: 'What are the essential elements of good office workspace design?',
+    answer:
+      'Natural lighting, flexible seating that supports different work styles, seamless technology integration, and deliberate noise/acoustic management are the four foundational elements — each affects employee focus and energy independent of how the space looks.',
+  },
+  {
+    question: 'How does office design impact productivity?',
+    answer:
+      'Design affects productivity through measurable channels: natural light regulates circadian rhythm and energy levels, ergonomic furniture reduces physical strain and sick days, and well-planned acoustics prevent the constant interruptions that break concentration in open-plan layouts.',
+  },
+  {
+    question: "What's the ideal ratio of open collaborative space to private space?",
+    answer:
+      'A widely used starting benchmark is the 70-20-10 rule: roughly 70% open collaborative areas, 20% semi-private zones like phone booths or small meeting rooms, and 10% fully private offices — adjusted to how your specific teams actually work.',
+  },
+];
 
 export default function OfficeWorkspaceDesignBlog() {
   const breadcrumbs = [
@@ -23,16 +62,12 @@ export default function OfficeWorkspaceDesignBlog() {
     { title: 'Free Office Design Consultation', href: '/contact' }
   ];
 
-  const relatedBlogPosts = [
-    { title: 'How Much Does Office Fit-Out Cost in India?', slug: 'office-fit-out-cost-guide-india-2025' },
-    { title: 'Modern Office Design Trends for 2025', slug: 'office-fit-out-cost-guide-india-2025' },
-    { title: 'Creating Productive Work Environments', slug: 'office-fit-out-cost-guide-india-2025' }
-  ];
+  const relatedBlogPosts = getRelatedPosts(slug, 3);
 
   return (
     <>
       <SEOHead
-        title="Office Workspace Design: Essential Elements for Productive Environments"
+        title="Office Workspace Design: Essential Elements | Hagerstone"
         description="Discover office workspace design strategies for productivity, including space planning, ergonomics, and collaborative zones."
         canonical={`${SITE_URL}/blog/office-workspace-design`}
         ogImage="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png"
@@ -56,11 +91,7 @@ export default function OfficeWorkspaceDesignBlog() {
               "Comprehensive guide to modern office workspace design including space planning, ergonomics, color psychology, and collaborative zones.",
             image:
               "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png",
-            author: {
-              "@type": "Organization",
-              name: "Hagerstone International Pvt. Ltd.",
-              url: SITE_URL,
-            },
+            author: authorSchema,
             publisher: {
               "@type": "Organization",
               name: "Hagerstone International",
@@ -108,6 +139,7 @@ export default function OfficeWorkspaceDesignBlog() {
               },
             ],
           },
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -151,7 +183,16 @@ export default function OfficeWorkspaceDesignBlog() {
               <span>•</span>
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                <span>By Hagerstone International</span>
+                <span>
+                  By{" "}
+                  <Link
+                    to={AUTHOR_PROFILE_PATH}
+                    className="text-foreground font-medium hover:text-primary transition-colors"
+                  >
+                    {AUTHOR_NAME}
+                  </Link>
+                  , {AUTHOR_ROLE}
+                </span>
               </div>
             </div>
 
@@ -213,6 +254,11 @@ export default function OfficeWorkspaceDesignBlog() {
                   5. Creating Collaborative Zones That Encourage Innovation
                 </a>
               </li>
+              <li className="text-base">
+                <a href="#faq" className="text-primary hover:underline transition-colors">
+                  6. Frequently Asked Questions
+                </a>
+              </li>
             </ol>
           </nav>
         </section>
@@ -267,7 +313,11 @@ export default function OfficeWorkspaceDesignBlog() {
               </p>
 
               <p className="text-base text-foreground/80 leading-relaxed mb-6">
-                Smart office systems connect lighting, temperature, and security controls through intuitive interfaces that employees can adjust from their phones or tablets. Video conferencing equipment becomes part of the room's design rather than an awkward add-on, with cameras and microphones positioned for optimal audio and visual quality. The goal is creating spaces where technology enhances human interaction rather than complicating it, supporting both in-person and remote collaboration without technical barriers getting in the way.
+                Smart office systems connect lighting, temperature, and security controls through intuitive interfaces that employees can adjust from their phones or tablets. Video conferencing equipment becomes part of the room's design rather than an awkward add-on, with cameras and microphones positioned for optimal audio and visual quality. The goal is creating spaces where technology enhances human interaction rather than complicating it, supporting both in-person and remote collaboration without technical barriers getting in the way. For how these choices fit into a broader design brief, see our guide to{" "}
+                <Link to="/blog/commercial-interior-designers" className="text-primary hover:underline">
+                  commercial interior designers
+                </Link>
+                .
               </p>
             </div>
 
@@ -573,7 +623,16 @@ export default function OfficeWorkspaceDesignBlog() {
               </p>
 
               <p className="text-base text-foreground/80 leading-relaxed mb-6">
-                Consider the 20-20-20 rule integration into your office design trends: every 20 minutes, encourage employees to look at something 20 feet away for 20 seconds. This simple practice, supported by thoughtful office space planning that includes distant focal points, helps maintain healthy vision and reduces digital eye strain.
+                Consider the 20-20-20 rule integration into your office design trends: every 20 minutes, encourage employees to look at something 20 feet away for 20 seconds. This simple practice, supported by thoughtful office space planning that includes distant focal points, helps maintain healthy vision and reduces{" "}
+                <a
+                  href="https://www.aao.org/eye-health/tips-prevention/computer-usage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  digital eye strain
+                </a>
+                .
               </p>
             </div>
           </section>
@@ -685,6 +744,10 @@ export default function OfficeWorkspaceDesignBlog() {
           </section>
         </section>
 
+        <FaqSection items={faqItems} />
+
+        <RelatedTopics topics={relatedTopics} className="mb-6" />
+
         {/* Internal Links Section */}
         <section className="max-w-4xl mx-auto px-4 py-12">
           <aside className="bg-primary/5 p-8 rounded-lg border border-primary/20">
@@ -723,27 +786,7 @@ export default function OfficeWorkspaceDesignBlog() {
         </section>
 
         {/* Related Blog Posts */}
-        <section className="max-w-4xl mx-auto px-4 py-12">
-          <h3 className="text-2xl font-bold text-primary mb-8">More From Our Blog</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {relatedBlogPosts.map((post, index) => (
-              <Link 
-                key={index}
-                to={`/blog/${post.slug}`}
-                className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-border"
-              >
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 hover:text-primary transition-colors">
-                    {post.title}
-                  </h4>
-                  <p className="text-primary font-medium inline-flex items-center gap-1">
-                    Read More <ChevronRight className="h-4 w-4" />
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <RelatedArticles posts={relatedBlogPosts} heading="More From Our Blog" />
 
         {/* Author Bio */}
         <section className="max-w-4xl mx-auto px-4 py-12 border-t border-border">

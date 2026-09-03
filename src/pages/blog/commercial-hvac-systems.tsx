@@ -1,14 +1,33 @@
 import { Link } from "react-router-dom";
-import { Calendar, ChevronRight } from "lucide-react";
+import { Calendar, ChevronRight, User } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
-import { getRecentPosts } from "@/data/blogPosts";
+import FaqSection from "@/components/blog/FaqSection";
+import RelatedTopics from "@/components/blog/RelatedTopics";
+import RelatedArticles from "@/components/blog/RelatedArticles";
+import { getRelatedPosts } from "@/data/blogPosts";
 import {
+  AUTHOR_NAME,
+  AUTHOR_PROFILE_PATH,
+  AUTHOR_ROLE,
   BRAND_NAME,
+  SHORT_BRAND_NAME,
   SITE_URL,
+  authorSchema,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   websiteSchema,
 } from "@/lib/seo";
+import type { FaqItem } from "@/lib/seo";
+
+const relatedTopics = [
+  "Commercial HVAC India",
+  "Office HVAC Design",
+  "VRF vs VRV",
+  "HVAC Load Calculation",
+  "HVAC Commissioning",
+  "Indoor Air Quality",
+];
 
 const slug = "commercial-hvac-systems";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
@@ -16,13 +35,34 @@ const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const ogImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/konstantin-kitsenuik-4ce3DZPWdic-unsplash.jpg";
 
+const faqItems: FaqItem[] = [
+  {
+    question: "What's the difference between VRF and VRV HVAC systems?",
+    answer:
+      "VRF (Variable Refrigerant Flow) and VRV (Variable Refrigerant Volume) are largely brand-specific names for the same underlying technology. Both allow multiple indoor units to run off shared outdoor condensing units with independent zone-level control, and both are suited to mid-to-large offices that need flexible, efficient zoning.",
+  },
+  {
+    question: "How much does commercial HVAC cost per sq ft in India?",
+    answer:
+      "HVAC typically makes up roughly 25-30% of a mid-range corporate fit-out budget, and cost varies significantly by system type, building shell condition, and city. For overall fit-out budgeting context, see our office fit-out cost guide for India.",
+  },
+  {
+    question: "How is HVAC load calculated for an office?",
+    answer:
+      "A load calculation estimates how much heat a space gains from occupancy density, equipment (especially IT/server rooms), solar heat gain through glazing, and the building envelope, so equipment can be sized to remove exactly that much heat. Sizing off generic per-sq-ft assumptions instead of an actual load calculation is the most common cause of an undersized system.",
+  },
+  {
+    question: "How often should commercial HVAC systems be commissioned or serviced?",
+    answer:
+      "A new system should go through Testing, Adjusting, and Balancing (TAB) and full commissioning before handover to confirm airflow and controls match the design. After that, most commercial systems need scheduled preventive maintenance and periodic rebalancing, especially after any changes to seating density or zone layout.",
+  },
+];
+
 export default function CommercialHvacSystemsGuideBlog() {
   const lastUpdatedLabel = "September 1, 2026";
   const lastUpdatedIso = "2026-09-01T00:00:00Z";
 
-  const relatedBlogPosts = getRecentPosts(5)
-    .filter((post) => post.slug !== slug)
-    .slice(0, 3);
+  const relatedBlogPosts = getRelatedPosts(slug, 3);
 
   const tocItems = [
     { id: "introduction", label: "Introduction: Why HVAC Is the Hardest Decision to Reverse" },
@@ -37,6 +77,7 @@ export default function CommercialHvacSystemsGuideBlog() {
     { id: "common-mistakes", label: "Common HVAC Mistakes in Office Fit-Outs" },
     { id: "commissioning", label: "Testing, Balancing & Commissioning" },
     { id: "conclusion", label: "Conclusion: Plan HVAC Before You Plan the Ceiling" },
+    { id: "faq", label: "Frequently Asked Questions" },
     { id: "call-to-action", label: "Call to Action" },
   ];
 
@@ -50,7 +91,7 @@ export default function CommercialHvacSystemsGuideBlog() {
   return (
     <>
       <SEOHead
-        title={`Commercial HVAC Systems in India: A Technical Buyer's Guide | ${BRAND_NAME}`}
+        title={`Commercial HVAC Systems in India: A Technical Buyer's Guide | ${SHORT_BRAND_NAME}`}
         description="VRF vs ducted split vs chilled water: a technical guide to choosing, sizing, and commissioning commercial HVAC systems for offices in India."
         canonical={canonicalUrl}
         ogImage={ogImage}
@@ -66,11 +107,7 @@ export default function CommercialHvacSystemsGuideBlog() {
             description:
               "VRF vs ducted split vs chilled water: a technical guide to choosing, sizing, and commissioning commercial HVAC systems for offices in India.",
             image: [ogImage],
-            author: {
-              "@type": "Organization",
-              name: BRAND_NAME,
-              url: SITE_URL,
-            },
+            author: authorSchema,
             publisher: {
               "@type": "Organization",
               name: BRAND_NAME,
@@ -99,6 +136,7 @@ export default function CommercialHvacSystemsGuideBlog() {
               },
             ],
           },
+          buildFaqSchema(faqItems),
         ])}
       />
 
@@ -128,11 +166,26 @@ export default function CommercialHvacSystemsGuideBlog() {
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
               Commercial HVAC Systems in India: A Technical Buyer's Guide
             </h1>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-              <Calendar className="h-4 w-4" />
-              <span>
-                Last updated <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
-              </span>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>
+                  By{" "}
+                  <Link
+                    to={AUTHOR_PROFILE_PATH}
+                    className="text-foreground font-medium hover:text-primary transition-colors"
+                  >
+                    {AUTHOR_NAME}
+                  </Link>
+                  , {AUTHOR_ROLE}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>
+                  Last updated <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>
+                </span>
+              </div>
             </div>
             <img
               src={ogImage}
@@ -371,8 +424,16 @@ export default function CommercialHvacSystemsGuideBlog() {
             <ul className="list-disc pl-6 space-y-2 text-base text-foreground/80">
               <li>
                 <strong className="text-foreground">Fresh air rates</strong> should be sized to
-                occupancy per recognized ventilation standards (such as ASHRAE 62.1), not left to
-                whatever the base building happens to provide.
+                occupancy per recognized ventilation standards (such as{" "}
+                <a
+                  href="https://www.ashrae.org/technical-resources/bookstore/standards-62-1-62-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  ASHRAE 62.1
+                </a>
+                ), not left to whatever the base building happens to provide.
               </li>
               <li>
                 <strong className="text-foreground">Filtration grade</strong> (MERV rating)
@@ -402,7 +463,12 @@ export default function CommercialHvacSystemsGuideBlog() {
               locked — is what avoids the clashes that force late-stage rework. A BMS-integrated
               system also enables scheduling (conditioning only occupied zones/hours) and
               occupancy-based control, both of which materially cut operating cost over the
-              lease term.
+              lease term. For how HVAC coordinates with electrical, plumbing, and fire systems in
+              practice, see our{" "}
+              <Link to="/blog/mep-design-consultancy-india" className="text-primary hover:underline">
+                MEP design &amp; consultancy guide
+              </Link>
+              .
             </p>
           </section>
 
@@ -418,8 +484,16 @@ export default function CommercialHvacSystemsGuideBlog() {
             <ul className="list-disc pl-6 space-y-2 text-base text-foreground/80">
               <li>
                 <strong className="text-foreground">ISEER ratings</strong> (India Seasonal Energy
-                Efficiency Ratio) and BEE star labels indicate real-world efficiency across a
-                cooling season, not just peak performance.
+                Efficiency Ratio) and{" "}
+                <a
+                  href="https://beeindia.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  BEE star labels
+                </a>{" "}
+                indicate real-world efficiency across a cooling season, not just peak performance.
               </li>
               <li>
                 <strong className="text-foreground">Variable-speed (inverter) compressors</strong>{" "}
@@ -434,7 +508,16 @@ export default function CommercialHvacSystemsGuideBlog() {
             <p className="text-base text-foreground/80 leading-relaxed">
               A higher-efficiency system usually costs more upfront but pays that difference back
               through lower running costs over a multi-year lease — worth modeling against your
-              expected occupancy term rather than optimizing purely for capex.
+              expected occupancy term rather than optimizing purely for capex. HVAC typically
+              accounts for a quarter or more of a fit-out's total MEP spend, so it's worth
+              budgeting against realistic numbers early — see our{" "}
+              <Link
+                to="/blog/office-fit-out-cost-guide-india-2026"
+                className="text-primary hover:underline"
+              >
+                office fit-out cost guide for India
+              </Link>{" "}
+              for how HVAC fits into the overall project budget.
             </p>
           </section>
 
@@ -506,6 +589,10 @@ export default function CommercialHvacSystemsGuideBlog() {
             </p>
           </section>
 
+          <FaqSection items={faqItems} />
+
+          <RelatedTopics topics={relatedTopics} />
+
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
             <h2 id="call-to-action" className="text-3xl font-bold text-primary">
               Call to Action
@@ -536,28 +623,9 @@ export default function CommercialHvacSystemsGuideBlog() {
             </aside>
           </section>
 
-          <section className="max-w-4xl mx-auto px-4 py-10">
-            <h3 className="text-2xl font-bold text-primary mb-8">Related Blogs</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {relatedBlogPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  to={`/blog/${post.slug}`}
-                  className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-border"
-                >
-                  <div className="p-6">
-                    <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 hover:text-primary transition-colors">
-                      {post.title}
-                    </h4>
-                    <p className="text-primary font-medium inline-flex items-center gap-1">
-                      Read More <ChevronRight className="h-4 w-4" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
         </article>
+
+        <RelatedArticles posts={relatedBlogPosts} />
       </main>
     </>
   );

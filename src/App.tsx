@@ -34,6 +34,9 @@ const CommercialHvacSystemsBlog = lazy(
 const OfficeFitOutCostGuideBlog = lazy(
   () => import("./pages/blog/office-fit-out-cost-guide-india-2026")
 );
+const MepDesignConsultancyIndiaBlog = lazy(
+  () => import("./pages/blog/mep-design-consultancy-india")
+);
 
 const queryClient = new QueryClient();
 
@@ -101,6 +104,14 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <OfficeFitOutCostGuideBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/mep-design-consultancy-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <MepDesignConsultancyIndiaBlog />
             </Suspense>
           }
         />
