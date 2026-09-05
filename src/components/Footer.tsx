@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
+import { buildLocationMatrix } from "@/lib/locationPages";
 
 const Footer = () => {
   const navigation = [
@@ -13,6 +14,11 @@ const Footer = () => {
     {name: "Find Your Style", href: "/find-your-style"},
     { name: "Contact", href: "/contact" },
   ];
+
+  const locations = buildLocationMatrix().hubs.map((city) => ({
+    name: city.name,
+    href: `/locations/${city.slug}`,
+  }));
 
   const socialLinks = [
     {
@@ -35,7 +41,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-hero text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -142,6 +148,25 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
+          {/* Locations */}
+          {locations.length > 0 && (
+            <div>
+              <h3 className="text-lg font-bold mb-6 text-gold">Locations</h3>
+              <ul className="space-y-3">
+                {locations.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      to={item.href}
+                      className="text-white/90 hover:text-gold transition-colors duration-300"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Social Media */}
           <div>
