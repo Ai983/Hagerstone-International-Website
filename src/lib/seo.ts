@@ -82,3 +82,62 @@ export const createImageObject = (url: string, name: string) => ({
   acquireLicensePage: `${SITE_URL}/contact`,
   license: `${SITE_URL}/contact`,
 });
+
+// Reusable postal address (HQ) used by LocalBusiness schema across pages.
+export const HAGERSTONE_ADDRESS = {
+  "@type": "PostalAddress",
+  streetAddress: "91springboard, D-107, D Block, Sector 2",
+  addressLocality: "Noida",
+  addressRegion: "Uttar Pradesh",
+  postalCode: "201301",
+  addressCountry: "IN",
+};
+
+// LocalBusiness schema — the single most important structured-data block for
+// local SEO. Previously hardcoded in index.html but stripped by the Vite build;
+// emitted here via Helmet so it prerenders on the homepage (and seeds the
+// per-city LocalBusiness graphs added for location pages).
+export const localBusinessSchema = {
+  "@type": "LocalBusiness",
+  name: BRAND_NAME,
+  image: `${SITE_URL}/logo.png`,
+  url: `${SITE_URL}/`,
+  telephone: "+91-88829-79328",
+  email: "ea@hagerstone.com",
+  address: HAGERSTONE_ADDRESS,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "28.583621",
+    longitude: "77.316563",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:30",
+      closes: "18:30",
+    },
+  ],
+  areaServed: ["Delhi", "Noida", "Gurugram", "Greater Noida", "Faridabad"].map((name) => ({
+    "@type": "City",
+    name,
+  })),
+  sameAs: organizationSchema.sameAs,
+  description:
+    "Leading office design & build company in Delhi NCR specializing in modern office interior design, MEP design, interior fit out services, and commercial interior design projects. 11+ years experience, 7M+ sqft delivered.",
+};
+
+// Primary service schema for the homepage.
+export const officeDesignBuildServiceSchema = {
+  "@type": "Service",
+  serviceType: "Office Design & Build",
+  provider: {
+    "@type": "LocalBusiness",
+    name: BRAND_NAME,
+    telephone: "+91-88829-79328",
+    address: HAGERSTONE_ADDRESS,
+  },
+  areaServed: { "@type": "Country", name: "India" },
+  description:
+    "Complete office design & build services including modern office interior design, MEP design, interior fit out, and office workspace design for corporate and commercial spaces.",
+};

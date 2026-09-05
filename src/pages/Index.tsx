@@ -19,6 +19,8 @@ import {
   createImageObject,
   organizationSchema,
   websiteSchema,
+  localBusinessSchema,
+  officeDesignBuildServiceSchema,
 } from "@/lib/seo";
 
 import CountUp from "react-countup";
@@ -156,6 +158,8 @@ const Index = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          localBusinessSchema,
+          officeDesignBuildServiceSchema,
           {
             "@type": "WebPage",
             name: "Office Design & Build Company in Delhi NCR",

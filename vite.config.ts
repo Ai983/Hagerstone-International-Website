@@ -26,4 +26,10 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  ssr: {
+    // react-helmet-async is CommonJS; bundle it into the SSR output so the
+    // prerender step (node prerender.js) can import it without ESM/CJS
+    // named-export interop errors.
+    noExternal: ["react-helmet-async"],
+  },
 }));
