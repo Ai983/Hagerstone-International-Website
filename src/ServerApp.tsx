@@ -23,6 +23,9 @@ import Blog from "@/pages/Blog";
 import Ideas from "@/pages/Ideas";
 import FindYourStyle from "@/pages/FindYourStyle";
 import NotFound from "@/pages/NotFound";
+import CityHub from "@/pages/CityHub";
+import ServiceCity from "@/pages/ServiceCity";
+import { buildLocationMatrix } from "@/lib/locationPages";
 
 // Blog posts — eager for SSR
 import OfficeWorkspaceDesign from "@/pages/blog/office-workspace-design";
@@ -48,6 +51,10 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/locations/:city" element={<CityHub />} />
+        {buildLocationMatrix().serviceCities.map((page) => (
+          <Route key={page.path} path={page.path} element={<ServiceCity />} />
+        ))}
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/our-team" element={<OurTeam />} />

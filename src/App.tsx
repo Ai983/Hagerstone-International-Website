@@ -18,6 +18,9 @@ import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import LeadPopupForm from "./components/LeadPopupForm";
 import { useRoutes } from "./hooks/useRoutes";
 import { componentRegistry } from "./lib/routeRegistry";
+import CityHub from "./pages/CityHub";
+import ServiceCity from "./pages/ServiceCity";
+import { buildLocationMatrix } from "./lib/locationPages";
 
 // Lazy load blog post pages
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
@@ -57,6 +60,12 @@ const AppContent = () => {
         {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+
+        {/* Programmatic local-SEO pages (city hubs + service×city) */}
+        <Route path="/locations/:city" element={<CityHub />} />
+        {buildLocationMatrix().serviceCities.map((page) => (
+          <Route key={page.path} path={page.path} element={<ServiceCity />} />
+        ))}
 
         {/* Blog post routes */}
         <Route 

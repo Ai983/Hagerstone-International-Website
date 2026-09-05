@@ -31,6 +31,8 @@ import {
   Zap,
   Sofa,
   Home,
+  Building2,
+  AppWindow,
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
@@ -121,6 +123,38 @@ const Services = () => {
         "Lighting, signage & branding elements",
         "Coordination with MEP & civil teams",
         "Turnkey interior fit out delivery",
+      ],
+      image:
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Interior%20FitOut%20&%20Execution.png",
+    },
+    {
+      icon: Building2,
+      title: "Facade & Glazing",
+      description:
+        "Structural glazing, curtain walls, ACP cladding, and unitized facade systems engineered for weather performance, safety, and a premium building envelope.",
+      link: "/services/facade-glazing",
+      features: [
+        "Structural glazing & curtain wall systems",
+        "ACP cladding & unitized facades",
+        "Wind-load & thermal performance engineering",
+        "Facade shop drawings & fabrication",
+        "Installation, testing & handover",
+      ],
+      image:
+        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
+    },
+    {
+      icon: AppWindow,
+      title: "Aluminium Doors & Windows",
+      description:
+        "Commercial-grade aluminium doors and windows—sliding, casement, and openable systems with acoustic and thermal glazing, quality hardware, and precise installation.",
+      link: "/services/aluminium-doors-windows",
+      features: [
+        "Sliding, casement & openable systems",
+        "Acoustic & thermal-rated glazing",
+        "Quality hardware & sealing",
+        "Precision aluminium fabrication",
+        "On-site fitting & quality checks",
       ],
       image:
         "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Interior%20FitOut%20&%20Execution.png",

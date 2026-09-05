@@ -144,6 +144,50 @@ export const servicePages: ServicePage[] = [
     ],
     relatedSlugs: ["construction", "office-design-build", "mep"],
   },
+  {
+    slug: "facade-glazing",
+    title: "Facade & Glazing",
+    h1: "Facade & Glazing Contractors",
+    metaTitle: "Facade & Glazing Contractors – Structural Glazing | Hagerstone",
+    metaDescription:
+      "Facade and glazing contractors for commercial buildings—structural glazing, curtain walls, ACP cladding, and unitized facade systems with engineered installation.",
+    summary:
+      "We design, engineer, and install commercial facades—structural glazing, curtain walls, ACP cladding, and unitized systems—balancing aesthetics, weather performance, and safety.",
+    keywords: ["facade contractors", "structural glazing", "curtain wall systems", "acp cladding"],
+    highlights: [
+      "Structural glazing and unitized curtain wall systems",
+      "Weather, wind-load, and thermal performance engineering",
+      "Coordinated facade delivery with civil and MEP teams",
+    ],
+    deliverables: [
+      "Facade design, engineering, and shop drawings",
+      "Material specification and fabrication management",
+      "On-site installation, testing, and handover",
+    ],
+    relatedSlugs: ["aluminium-doors-windows", "construction", "office-design-build"],
+  },
+  {
+    slug: "aluminium-doors-windows",
+    title: "Aluminium Doors & Windows",
+    h1: "Aluminium Doors & Windows",
+    metaTitle: "Aluminium Doors & Windows – Commercial Fenestration | Hagerstone",
+    metaDescription:
+      "Aluminium doors and windows for commercial and office spaces—openable, sliding, and casement systems with quality hardware, glazing, and precise installation.",
+    summary:
+      "We supply and install commercial-grade aluminium doors and windows—sliding, casement, and openable systems—engineered for durability, acoustics, and clean finishes.",
+    keywords: ["aluminium doors and windows", "aluminium windows", "commercial fenestration", "aluminium partition"],
+    highlights: [
+      "Sliding, casement, and openable aluminium systems",
+      "Acoustic and thermal-rated glazing options",
+      "Precision fabrication and on-site fitting",
+    ],
+    deliverables: [
+      "Fenestration design and system selection",
+      "Fabrication, glazing, and hardware supply",
+      "Installation, sealing, and quality checks",
+    ],
+    relatedSlugs: ["facade-glazing", "interior-fit-out", "office-design-build"],
+  },
 ];
 
 export const getServicePageBySlug = (slug: string) =>

@@ -2,6 +2,8 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import ServerApp from './ServerApp';
 
+export { getLocationPrerenderPaths } from './lib/locationPages';
+
 export function render(url: string) {
   const helmetContext: Record<string, unknown> = {};
 

@@ -6,10 +6,10 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 const toAbsolute = (p) => path.resolve(__dirname, p)
 
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
-const { render } = await import('./dist/server/entry-server.js')
+const { render, getLocationPrerenderPaths } = await import('./dist/server/entry-server.js')
 
-// All crawlable routes — must match sitemap.xml exactly.
-// Excludes: city landing pages and office-interiors-noida/delhi (no components).
+// Static crawlable routes. Programmatic location pages are appended from the
+// location matrix (getLocationPrerenderPaths) so this stays a single source.
 const routesToPrerender = [
   '/',
   '/about',
@@ -20,6 +20,8 @@ const routesToPrerender = [
   '/services/hvac',
   '/services/construction',
   '/services/peb',
+  '/services/facade-glazing',
+  '/services/aluminium-doors-windows',
   '/projects',
   '/projects/theon',
   '/projects/bansaltower',
@@ -46,7 +48,7 @@ let ok = 0
 let failed = 0
 
 ;(async () => {
-  for (const route of routesToPrerender) {
+  for (const route of [...routesToPrerender, ...getLocationPrerenderPaths()]) {
     try {
       const { html: appHtml, headTags } = render(route)
 
