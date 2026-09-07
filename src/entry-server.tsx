@@ -3,6 +3,11 @@ import { StaticRouter } from 'react-router-dom/server';
 import ServerApp from './ServerApp';
 
 export { getLocationPrerenderPaths } from './lib/locationPages';
+export {
+  buildImageSitemapXml,
+  buildVideoSitemapXml,
+  buildSitemapIndexXml,
+} from './lib/sitemap';
 
 export function render(url: string) {
   const helmetContext: Record<string, unknown> = {};

@@ -4,4 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
+Sitemap: https://hagerstone.com/sitemap-index.xml
 Sitemap: https://hagerstone.com/sitemap.xml
+Sitemap: https://hagerstone.com/sitemap-images.xml
+Sitemap: https://hagerstone.com/sitemap-videos.xml

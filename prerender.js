@@ -6,7 +6,13 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 const toAbsolute = (p) => path.resolve(__dirname, p)
 
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
-const { render, getLocationPrerenderPaths } = await import('./dist/server/entry-server.js')
+const {
+  render,
+  getLocationPrerenderPaths,
+  buildImageSitemapXml,
+  buildVideoSitemapXml,
+  buildSitemapIndexXml,
+} = await import('./dist/server/entry-server.js')
 
 // Static crawlable routes. Programmatic location pages are appended from the
 // location matrix (getLocationPrerenderPaths) so this stays a single source.
@@ -73,6 +79,19 @@ let failed = 0
       console.error('✗ failed:', route, err.message)
       failed++
     }
+  }
+
+  // Generated sitemaps (image + video portfolio) and the sitemap index. These
+  // derive from the same data the app renders, so they never drift.
+  const today = new Date().toISOString().slice(0, 10)
+  const sitemaps = {
+    'sitemap-images.xml': buildImageSitemapXml(),
+    'sitemap-videos.xml': buildVideoSitemapXml(),
+    'sitemap-index.xml': buildSitemapIndexXml(today),
+  }
+  for (const [file, xml] of Object.entries(sitemaps)) {
+    fs.writeFileSync(toAbsolute(`dist/${file}`), xml)
+    console.log('✓ generated:', file)
   }
 
   console.log(`\nPrerender complete: ${ok} succeeded, ${failed} failed`)
