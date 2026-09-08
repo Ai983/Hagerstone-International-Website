@@ -189,7 +189,7 @@ export default function CommercialHvacSystemsGuideBlog() {
             </div>
             <img
               src={ogImage}
-              alt="Commercial office ceiling showing HVAC ducting and diffuser installation"
+              alt="Building facade lined with multiple wall-mounted split AC condenser units for commercial HVAC"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
               width="800"
               height="533"
@@ -567,7 +567,7 @@ export default function CommercialHvacSystemsGuideBlog() {
               src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/mario-verduzco-BrezDFrGvfU-unsplash.jpg"
               srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/mario-verduzco-BrezDFrGvfU-unsplash.jpg 800w"
               sizes="(max-width: 768px) 100vw, 800px"
-              alt="Commercial office interior with ceiling-integrated HVAC diffusers and lighting"
+              alt="Close-up of copper refrigerant piping and coils inside a commercial HVAC unit"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
               width="800"
               height="533"

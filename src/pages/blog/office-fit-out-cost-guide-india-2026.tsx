@@ -469,7 +469,7 @@ export default function OfficeFitOutCostGuideBlog() {
               srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/jason-w-bYoRZI30nEI-unsplash.jpg 800w"
 
               sizes="(max-width: 768px) 100vw, 800px"
-              alt="Modern office lounge showcasing commercial interior design for collaborative teams"
+              alt="Glass-walled office corridor leading to a meeting space, reflecting modern commercial interior design"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
               width="800"
               height="533"

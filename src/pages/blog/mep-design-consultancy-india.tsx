@@ -23,10 +23,7 @@ import type { FaqItem } from "@/lib/seo";
 const slug = "mep-design-consultancy-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
-// TODO: replace with a real MEP-specific image (electrical panel, cable
-// containment, or fire-fighting riser) uploaded under a descriptive filename,
-// e.g. mep-design-electrical-panel-cable-tray.jpg — placeholder for now.
-const ogImage = "https://hagerstone.com/hero-images/officeinterior.webp";
+const ogImage = "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Electricity%20MEP.jpg";
 
 const relatedTopics = [
   "MEP Design India",
@@ -190,7 +187,7 @@ export default function MepDesignConsultancyIndiaBlog() {
             </div>
             <img
               src={ogImage}
-              alt="Commercial building electrical panel and cable containment as part of MEP design"
+              alt="Structured network cabling and cable containment in a commercial building's electrical infrastructure"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
               width="800"
               height="533"
@@ -563,6 +560,17 @@ export default function MepDesignConsultancyIndiaBlog() {
               installation starts are what separate a fit-out that passes inspection and performs
               quietly for years from one that generates change orders and delayed occupancy.
             </p>
+            <img
+              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Plumbing%20MEP.jpg"
+              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Plumbing%20MEP.jpg 800w"
+              sizes="(max-width: 768px) 100vw, 800px"
+              alt="Coiled fire hose and fittings as part of a commercial fire suppression and life-safety system"
+              className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
+              width="800"
+              height="533"
+              loading="eager"
+              decoding="async"
+            />
           </section>
 
           <FaqSection items={faqItems} />
