@@ -3,6 +3,13 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/blog/office-interiors-noida", "destination": "/locations/noida", "permanent": true },
+    { "source": "/blog/international-interior-designers-in-india-choose-right-firm", "destination": "/blog/commercial-interior-designers", "permanent": true },
+    { "source": "/blog/corporate-office-design-guide-delhi-ncr", "destination": "/blog/office-workspace-design", "permanent": true },
+    { "source": "/21-problems-faced-by-most-interior-designers-firms", "destination": "/blog/commercial-interior-designers", "permanent": true },
+    { "source": "/blog/hospital-interior-designers-patient-centered-guide", "destination": "/services/interior-fit-out", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

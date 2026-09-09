@@ -4,6 +4,45 @@
   command = "npm run build && npm run build:server && npm run build:prerender"
   publish = "dist"
 
+# Legacy URLs from the previous website. Google still crawls these years on
+# (they surfaced in Search Console as "crawled - currently not indexed" and one
+# soft 404), and each currently returns a hard 404 — so any link equity those
+# pages earned is being thrown away. Each points at the closest genuinely
+# related page; an irrelevant redirect is treated as a soft 404 and recovers
+# nothing. Kept in sync with the same list in vercel.json.
+#
+# TODO: repoint the hospital one at a healthcare-interiors page when one exists
+# (Max Hospital Saket is real delivered proof).
+[[redirects]]
+  from = "/blog/office-interiors-noida"
+  to = "/locations/noida"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/international-interior-designers-in-india-choose-right-firm"
+  to = "/blog/commercial-interior-designers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/corporate-office-design-guide-delhi-ncr"
+  to = "/blog/office-workspace-design"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/21-problems-faced-by-most-interior-designers-firms"
+  to = "/blog/commercial-interior-designers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/hospital-interior-designers-patient-centered-guide"
+  to = "/services/interior-fit-out"
+  status = 301
+  force = true
+
 # Serve static SEO files directly (before SPA redirect)
 [[redirects]]
   from = "http://hagerstone.com/*"
