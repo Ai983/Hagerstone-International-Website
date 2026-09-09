@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/leads";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import {
@@ -115,28 +116,38 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // Simulate form submission API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+    const result = await submitLead({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      projectType: formData.projectType,
+      city: formData.location,
+      subject: formData.subject,
+      message: formData.message,
+      sourceType: "contact",
+    });
+
+    if (result.ok) {
       toast({
         title: "Enquiry Sent Successfully!",
         description: "Our design & build team will connect with you within one business day.",
       });
-      
+
       setFormData({
         name: "", email: "", phone: "", subject: "", message: "",
         company: "", projectType: "", location: ""
       });
-    } catch (error) {
+    } else {
+      // Never clear the form on failure — the visitor would lose what they typed.
       toast({
         variant: "destructive",
-        title: "Error",
-        description: "Something went wrong. Please try calling us directly.",
+        title: "Couldn't send your enquiry",
+        description: "Please try again, or call us directly on +91 88829 79328.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
+
+    setIsSubmitting(false);
   };
 
   return (
