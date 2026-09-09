@@ -20,6 +20,7 @@ export const COLLECTIONS = [
   "guides",
   "architects",
   "calculators",
+  "facade",
 ] as const;
 
 export type Collection = (typeof COLLECTIONS)[number];
@@ -35,7 +36,20 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   guides: "/guides",
   architects: "/architects",
   calculators: "/calculators",
+  // Nested under the existing service page so the URL carries the topical
+  // hierarchy: /services/facade-glazing/unitized-curtain-wall.
+  facade: "/services/facade-glazing",
 };
+
+/**
+ * Collections whose base path is already a real page, so the generic listing
+ * template must not claim that route.
+ *
+ * `facade` sits under /services/facade-glazing, which ServiceDetail already
+ * renders from servicePages.ts. That page acts as the hub and links down to the
+ * sub-services, rather than being replaced by an auto-generated index.
+ */
+export const COLLECTIONS_WITHOUT_INDEX: Collection[] = ["facade"];
 
 /** Collections where being wrong carries real professional risk. */
 export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost", "calculators"];

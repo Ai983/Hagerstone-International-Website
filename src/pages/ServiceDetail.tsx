@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { getServicePageBySlug, servicePages } from "@/data/servicePages";
+import { contentIndex } from "@/lib/contentModules";
 import {
   BRAND_NAME,
   SITE_URL,
@@ -44,6 +45,12 @@ const ServiceDetail = () => {
   const relatedServices = service.relatedSlugs
     .map((relatedSlug) => servicePages.find((page) => page.slug === relatedSlug))
     .filter(Boolean);
+
+  // Content-backed sub-services live under this service's path, e.g.
+  // /services/facade-glazing/curtain-wall-systems.
+  const subServices = contentIndex.filter(
+    (entry) => entry.path.startsWith(`/services/${service.slug}/`),
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -139,6 +146,35 @@ const ServiceDetail = () => {
             </div>
           </article>
         </section>
+
+        {/*
+          Sub-service pages for this service, if any exist. Without this link
+          block they would be orphaned — reachable only by typing the URL, which
+          is the pattern Google is already declining elsewhere on this site.
+        */}
+        {subServices.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-primary mb-6">
+              Explore our {service.title} capability
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {subServices.map((sub) => (
+                <Link
+                  key={sub.path}
+                  to={sub.path}
+                  className="block border border-border rounded-xl p-6 hover:border-primary hover:shadow-sm transition"
+                >
+                  <h3 className="text-lg font-semibold text-primary mb-2">
+                    {sub.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {sub.metaDescription}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {relatedServices.length > 0 && (
           <section className="mb-16">

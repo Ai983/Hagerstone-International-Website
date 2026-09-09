@@ -1,4 +1,8 @@
-import { COLLECTIONS, COLLECTION_BASE_PATH } from "@/content/schema";
+import {
+  COLLECTIONS,
+  COLLECTION_BASE_PATH,
+  COLLECTIONS_WITHOUT_INDEX,
+} from "@/content/schema";
 import { contentIndex } from "@/content/.generated";
 
 // Bridges the content index to the router, the prerenderer and the sitemap.
@@ -25,7 +29,9 @@ export const getActiveCollections = () =>
  * page is a thin page, and Google is already declining those on this site.
  */
 export const getCollectionIndexPatterns = (): string[] =>
-  getActiveCollections().map((collection) => COLLECTION_BASE_PATH[collection]);
+  getActiveCollections()
+    .filter((collection) => !COLLECTIONS_WITHOUT_INDEX.includes(collection))
+    .map((collection) => COLLECTION_BASE_PATH[collection]);
 
 /**
  * Every published content URL, articles and listing pages — consumed by
