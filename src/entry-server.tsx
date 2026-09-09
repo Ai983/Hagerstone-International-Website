@@ -3,7 +3,9 @@ import { StaticRouter } from 'react-router-dom/server';
 import ServerApp from './ServerApp';
 
 export { getLocationPrerenderPaths } from './lib/locationPages';
+export { getContentPrerenderPaths } from './lib/contentRoutes';
 export {
+  buildUrlSitemapXml,
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,

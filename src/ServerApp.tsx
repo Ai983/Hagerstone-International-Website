@@ -28,6 +28,8 @@ import NotFound from "@/pages/NotFound";
 import CityHub from "@/pages/CityHub";
 import ServiceCity from "@/pages/ServiceCity";
 import { buildLocationMatrix } from "@/lib/locationPages";
+import { getContentRoutePatterns } from "@/lib/contentRoutes";
+import ContentPageServer from "@/pages/ContentPage.server";
 
 // Blog posts — eager for SSR
 import OfficeWorkspaceDesign from "@/pages/blog/office-workspace-design";
@@ -71,6 +73,15 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/blog/mep-design-consultancy-india" element={<MepDesignConsultancyIndia />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/find-your-style" element={<FindYourStyle />} />
+        {/*
+          Must mirror App.tsx exactly. prerender.js renders this file, so a
+          collection registered only in App.tsx would work in the browser but
+          ship an empty shell to crawlers.
+        */}
+        {getContentRoutePatterns().map((pattern) => (
+          <Route key={pattern} path={pattern} element={<ContentPageServer />} />
+        ))}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

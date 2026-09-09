@@ -39,3 +39,6 @@ memory/
 *.sw?
 .vercel
 .env*
+
+# Generated content index (rebuilt on every build)
+src/content/.generated/

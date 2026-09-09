@@ -9,6 +9,8 @@ const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
 const {
   render,
   getLocationPrerenderPaths,
+  getContentPrerenderPaths,
+  buildUrlSitemapXml,
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
@@ -54,7 +56,15 @@ let ok = 0
 let failed = 0
 
 ;(async () => {
-  for (const route of [...routesToPrerender, ...getLocationPrerenderPaths()]) {
+  // Static routes, plus every programmatic path. Location and content pages
+  // self-register from their data, so neither needs an entry in the array above.
+  const allRoutes = [
+    ...routesToPrerender,
+    ...getLocationPrerenderPaths(),
+    ...getContentPrerenderPaths(),
+  ]
+
+  for (const route of allRoutes) {
     try {
       const { html: appHtml, headTags } = render(route)
 
@@ -85,6 +95,9 @@ let failed = 0
   // derive from the same data the app renders, so they never drift.
   const today = new Date().toISOString().slice(0, 10)
   const sitemaps = {
+    // Built from the same route list rendered above, so the sitemap cannot list
+    // a page that was never generated, or omit one that was.
+    'sitemap.xml': buildUrlSitemapXml(allRoutes, today),
     'sitemap-images.xml': buildImageSitemapXml(),
     'sitemap-videos.xml': buildVideoSitemapXml(),
     'sitemap-index.xml': buildSitemapIndexXml(today),
@@ -94,6 +107,18 @@ let failed = 0
     console.log('✓ generated:', file)
   }
 
+  // Drift guard: every prerendered route must appear in the sitemap and vice
+  // versa. Cheap to check, and it catches the class of bug where a page ships
+  // but is never submitted to Google.
+  const sitemapUrlCount = (sitemaps['sitemap.xml'].match(/<loc>/g) || []).length
+  if (sitemapUrlCount !== ok) {
+    console.error(
+      `\n✗ Sitemap drift: ${sitemapUrlCount} sitemap URLs vs ${ok} prerendered pages`,
+    )
+    process.exit(1)
+  }
+
   console.log(`\nPrerender complete: ${ok} succeeded, ${failed} failed`)
+  console.log(`Sitemap: ${sitemapUrlCount} URLs (matches prerendered pages)`)
   if (failed > 0) process.exit(1)
 })()
