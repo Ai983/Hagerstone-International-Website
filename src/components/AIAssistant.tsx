@@ -110,10 +110,11 @@ const AIAssistant = () => {
   };
 
   if (!isOpen) {
+    // bottom-20 on mobile keeps the launcher clear of the StickyMobileCTA bar.
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="cursor-hover fixed bottom-6 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full shadow-lg hover:scale-110 transition-transform duration-200 flex items-center justify-center z-50 border-2 border-accent"
+        className="cursor-hover fixed bottom-20 md:bottom-6 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full shadow-lg hover:scale-110 transition-transform duration-200 flex items-center justify-center z-50 border-2 border-accent"
         aria-label="Open AI Assistant"
       >
         <MessageCircle className="w-6 h-6" />

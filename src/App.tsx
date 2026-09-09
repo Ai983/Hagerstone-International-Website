@@ -16,6 +16,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import LeadPopupForm from "./components/LeadPopupForm";
+import WhatsAppBubble from "./components/WhatsAppBubble";
+import StickyMobileCTA from "./components/StickyMobileCTA";
 import { useRoutes } from "./hooks/useRoutes";
 import { componentRegistry } from "./lib/routeRegistry";
 import CityHub from "./pages/CityHub";
@@ -148,6 +150,8 @@ const AppContent = () => {
       </Routes>
       <Footer />
       <AIAssistant />
+      <WhatsAppBubble />
+      <StickyMobileCTA />
       <LeadPopupForm />
     </>
   );

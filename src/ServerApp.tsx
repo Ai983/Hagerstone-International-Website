@@ -9,6 +9,8 @@ import { HelmetProvider } from "react-helmet-async";
 
 import HoveringNavbar from "@/components/HoveringNavbar";
 import Footer from "@/components/Footer";
+import WhatsAppBubble from "@/components/WhatsAppBubble";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 // Pages — all eager
 import Index from "@/pages/Index";
@@ -72,6 +74,13 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      {/*
+        Contact CTAs must render here as well as in App.tsx — prerender.js
+        renders ServerApp, so anything omitted is missing from the static HTML
+        that crawlers and non-JS visitors see.
+      */}
+      <WhatsAppBubble />
+      <StickyMobileCTA />
     </QueryClientProvider>
   </HelmetProvider>
 );
