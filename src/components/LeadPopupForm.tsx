@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/leads";
 import { X } from "lucide-react";
 
 const formSchema = z.object({
@@ -23,12 +24,38 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const INITIAL_DELAY = 5000; // 5 seconds
-const REOPEN_DELAY = 7000; // 7 seconds
-const STORAGE_KEY = "leadFormSubmitted";
-const EXPIRY_HOURS = 24; // Show popup again after 24 hours
-const SUPABASE_URL = "https://cuycosjchirgjmfczcle.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eWNvc2pjaGlyZ2ptZmN6Y2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzgzNjUsImV4cCI6MjA3Mzc1NDM2NX0.vlyJbCEQEqgG-dAVjWhgUAVCgqK_WdfiU6NwqvunNk0";
+// Popup timing.
+//
+// This used to reopen every 7 seconds, forever, until the visitor either
+// submitted or left — which is what most of them did. It now appears once per
+// session on an intent signal, and a dismissal is respected for two weeks.
+const FALLBACK_DELAY = 20000; // shown after 20s if no intent signal fires first
+const SCROLL_TRIGGER_RATIO = 0.5; // half the page read
+const SUBMITTED_KEY = "leadFormSubmitted";
+const DISMISSED_KEY = "leadFormDismissed";
+const SESSION_SHOWN_KEY = "leadFormShownThisSession";
+const SUBMITTED_EXPIRY_HOURS = 24 * 30; // don't re-ask someone who converted
+const DISMISSED_EXPIRY_HOURS = 24 * 14; // respect a "no" for two weeks
+
+/** True when a timestamped localStorage flag is still within its window. */
+const isSuppressed = (key: string, expiryHours: number): boolean => {
+  try {
+    const stored = localStorage.getItem(key);
+    if (!stored) return false;
+    const { timestamp } = JSON.parse(stored) as { timestamp: number };
+    return (Date.now() - timestamp) / (1000 * 60 * 60) < expiryHours;
+  } catch {
+    return false; // corrupt or unavailable storage shouldn't block the popup
+  }
+};
+
+const stamp = (key: string) => {
+  try {
+    localStorage.setItem(key, JSON.stringify({ timestamp: Date.now() }));
+  } catch {
+    /* private mode — nothing to persist, popup simply reappears next session */
+  }
+};
 
 const LeadPopupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,132 +72,89 @@ const LeadPopupForm = () => {
   });
 
   useEffect(() => {
-    // Check if form was submitted recently (within EXPIRY_HOURS)
-    const storedData = localStorage.getItem(STORAGE_KEY);
-    if (storedData) {
-      const { timestamp } = JSON.parse(storedData);
-      const hoursPassed = (Date.now() - timestamp) / (1000 * 60 * 60);
-      
-      if (hoursPassed < EXPIRY_HOURS) {
-        return; // Don't show popup if submitted within last 24 hours
+    // Never interrupt someone who already converted or already said no.
+    if (isSuppressed(SUBMITTED_KEY, SUBMITTED_EXPIRY_HOURS)) return;
+    if (isSuppressed(DISMISSED_KEY, DISMISSED_EXPIRY_HOURS)) return;
+    if (sessionStorage.getItem(SESSION_SHOWN_KEY)) return;
+
+    let done = false;
+
+    const show = () => {
+      if (done) return;
+      done = true;
+      try {
+        sessionStorage.setItem(SESSION_SHOWN_KEY, "1");
+      } catch {
+        /* ignore */
       }
+      setIsOpen(true);
+      cleanup();
+    };
+
+    // Desktop: the cursor leaving through the top of the viewport is the
+    // classic "about to close the tab" signal.
+    const onMouseOut = (event: MouseEvent) => {
+      if (event.clientY <= 0 && !event.relatedTarget) show();
+    };
+
+    // Mobile has no exit intent, so use engagement instead — half the page read
+    // means they are interested enough to be worth asking.
+    const onScroll = () => {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable >= SCROLL_TRIGGER_RATIO) show();
+    };
+
+    const timer = setTimeout(show, FALLBACK_DELAY);
+
+    function cleanup() {
+      clearTimeout(timer);
+      document.removeEventListener("mouseout", onMouseOut);
+      window.removeEventListener("scroll", onScroll);
     }
 
-    // Initial popup after 5 seconds
-    const initialTimer = setTimeout(() => {
-      setIsOpen(true);
-    }, INITIAL_DELAY);
+    document.addEventListener("mouseout", onMouseOut);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-    return () => clearTimeout(initialTimer);
+    return cleanup;
   }, []);
 
+  /** Dismissal is a real answer — record it and stop asking for two weeks. */
   const handleClose = () => {
     setIsOpen(false);
-
-    // Check if already submitted
-    const storedData = localStorage.getItem(STORAGE_KEY);
-    if (storedData) {
-      const { timestamp } = JSON.parse(storedData);
-      const hoursPassed = (Date.now() - timestamp) / (1000 * 60 * 60);
-      
-      if (hoursPassed < EXPIRY_HOURS) {
-        return; // Don't reopen if submitted recently
-      }
-    }
-
-    // Reopen after 7 seconds if not submitted
-    setTimeout(() => {
-      setIsOpen(true);
-    }, REOPEN_DELAY);
+    stamp(DISMISSED_KEY);
   };
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
 
-    try {
-      // Step 1: Save to Supabase leads table
-      const supabasePayload = {
-        name: data.name,
-        email: data.email,
-        number: data.number,
-        created_at: new Date().toISOString(),
-      };
+    // Shared with the contact form and every future calculator, so the
+    // Supabase credentials, attribution and WhatsApp acknowledgement all live
+    // in one place instead of being duplicated here.
+    const result = await submitLead({
+      name: data.name,
+      email: data.email,
+      phone: data.number,
+      sourceType: "popup",
+    });
 
-      const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-          "Prefer": "return=minimal"
-        },
-        body: JSON.stringify(supabasePayload),
-      });
-
-      if (!supabaseResponse.ok) {
-        throw new Error(`Failed to save lead: ${supabaseResponse.status}`);
-      }
-
-      // Step 2: Send WhatsApp message via edge function
-      try {
-        const whatsappPayload = {
-          to_number: data.number,
-          message: "Thank you for reaching out to Hagerstone. Our team will get in touch with you shortly!"
-        };
-
-        const whatsappResponse = await fetch(`${SUPABASE_URL}/functions/v1/send-whatsapp`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_ANON_KEY,
-            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-          },
-          body: JSON.stringify(whatsappPayload),
-        });
-
-        if (!whatsappResponse.ok) {
-          const errorData = await whatsappResponse.json();
-          console.error("WhatsApp API error:", whatsappResponse.status, errorData);
-          toast({
-            title: "Saved!",
-            description: "Error sending WhatsApp message, but we have saved your details.",
-          });
-        } else {
-          const responseData = await whatsappResponse.json();
-          console.log("WhatsApp sent successfully:", responseData);
-          toast({
-            title: "Thank you!",
-            description: "We've received your request.",
-          });
-        }
-      } catch (whatsappError) {
-        console.error("WhatsApp error:", whatsappError);
-        toast({
-          title: "Saved!",
-          description: "Error sending WhatsApp message, but we have saved your details.",
-        });
-      }
-
-      // Mark as submitted with timestamp
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ 
-        submitted: true, 
-        timestamp: Date.now() 
-      }));
-
-      // Close popup
-      setIsOpen(false);
-
-      reset();
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    if (result.ok) {
       toast({
-        title: "Error",
-        description: "Failed to submit form. Please try again.",
+        title: "Thank you!",
+        description: "We've received your request and will be in touch shortly.",
+      });
+      stamp(SUBMITTED_KEY);
+      setIsOpen(false);
+      reset();
+    } else {
+      toast({
+        title: "Couldn't send that",
+        description: "Please try again, or call us on +91 88829 79328.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
+
+    setIsSubmitting(false);
   };
 
   return (

@@ -10,6 +10,7 @@ import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import {
   buildSchemaGraph,
+  localBusinessSchema,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -160,6 +161,11 @@ const Contact = () => {
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
+          // The contact page is the page Google is most likely to surface for
+          // "office interior designers near me" style queries, and it was the
+          // one page missing LocalBusiness — so the NAP, opening hours and
+          // coordinates were never attached where they matter most.
+          localBusinessSchema,
           {
             "@type": "ContactPage",
             name: "Contact Hagerstone International",

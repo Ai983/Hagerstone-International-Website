@@ -7,6 +7,7 @@ import AIStyleFeatureSection from "@/components/AIStyleFeatureSection";
 import VideoTestimonials from "@/components/VideoTestimonials";
 import AchievementSection from "@/components/AchievementSection";
 import FAQSection from "@/components/FAQSection";
+import { homepageFaqs } from "@/data/homepageFaqs";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import { projects } from "@/data/project";
 import { homepageWalkthroughVideo } from "@/data/videos";
@@ -15,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   BRAND_NAME,
   SITE_URL,
+  buildFaqSchema,
   buildSchemaGraph,
   createImageObject,
   organizationSchema,
@@ -167,6 +169,11 @@ const Index = () => {
             description:
               "Office design & build company delivering modern office interiors, MEP design, and turnkey fit-outs.",
           },
+          // The homepage has rendered a visible FAQ accordion all along without
+          // ever marking it up, so it was invisible to rich results and to AI
+          // answer engines. Built from the same `faqs` array the section
+          // renders, so the two can't drift apart.
+          buildFaqSchema(homepageFaqs),
           homepageVideo
             ? {
                 "@type": "VideoObject",

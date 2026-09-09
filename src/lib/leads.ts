@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { trackLeadSubmit } from "@/integrations/ga";
 
 // Single entry point for every lead capture surface on the site.
 //
@@ -97,6 +98,11 @@ export const submitLead = async (input: LeadInput): Promise<LeadResult> => {
     console.error("[leads] insert failed:", error);
     return { ok: false, error: error.message };
   }
+
+  trackLeadSubmit(
+    input.sourceType,
+    typeof window !== "undefined" ? window.location.pathname : "",
+  );
 
   await Promise.allSettled([
     sendCustomerAcknowledgement(input.phone),

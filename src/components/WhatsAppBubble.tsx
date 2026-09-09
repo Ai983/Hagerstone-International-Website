@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { buildWhatsAppUrl, labelFromPath } from "@/lib/whatsapp";
+import { trackWhatsAppClick } from "@/integrations/ga";
 
 // Floating WhatsApp button for desktop.
 //
@@ -22,6 +23,7 @@ const WhatsAppBubble = () => {
       href={whatsAppUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick(location.pathname)}
       aria-label="Chat with Hagerstone on WhatsApp"
       title="Chat with us on WhatsApp"
       className="cursor-hover fixed bottom-24 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-200 hover:scale-110 md:flex"

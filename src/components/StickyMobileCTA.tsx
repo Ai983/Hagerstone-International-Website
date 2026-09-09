@@ -3,6 +3,7 @@ import { Phone, MessageSquare } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { SALES_PHONE } from "@/lib/contact";
 import { buildWhatsAppUrl, labelFromPath } from "@/lib/whatsapp";
+import { trackWhatsAppClick } from "@/integrations/ga";
 
 // Always-visible contact bar pinned to the bottom of the viewport on phones.
 //
@@ -46,6 +47,7 @@ const StickyMobileCTA = () => {
           href={whatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick(location.pathname)}
           className="flex flex-col items-center justify-center gap-1 border-x border-border py-2.5 text-xs font-medium text-[#25D366] transition-colors hover:bg-muted active:bg-muted"
         >
           <WhatsAppIcon className="h-5 w-5" />

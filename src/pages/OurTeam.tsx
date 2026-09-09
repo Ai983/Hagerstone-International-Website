@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { teamMembers } from "../data/teamMembers";
 import SEOHead from "@/components/SEOHead";
 import {
+  BRAND_NAME,
   buildSchemaGraph,
   organizationSchema,
   SITE_URL,
@@ -29,6 +30,31 @@ const OurTeam = () => {
             url: `${SITE_URL}/our-team`,
             description:
               "Meet the leadership and project delivery team at Hagerstone International.",
+          },
+          // Named people with roles are a direct E-E-A-T signal, and this page
+          // rendered 40+ of them with no markup at all. ItemList keeps the
+          // Person entries ordered and grouped rather than 40 loose nodes.
+          {
+            "@type": "ItemList",
+            name: "Hagerstone International Team",
+            itemListElement: teamMembers.map((member, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "Person",
+                name: member.name,
+                jobTitle: member.role,
+                image: member.image.startsWith("http")
+                  ? member.image
+                  : `${SITE_URL}${member.image}`,
+                ...(member.bio ? { description: member.bio } : {}),
+                worksFor: {
+                  "@type": "Organization",
+                  name: BRAND_NAME,
+                  url: SITE_URL,
+                },
+              },
+            })),
           },
         ])}
       />
