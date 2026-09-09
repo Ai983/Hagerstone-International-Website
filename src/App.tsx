@@ -23,8 +23,9 @@ import { componentRegistry } from "./lib/routeRegistry";
 import CityHub from "./pages/CityHub";
 import ServiceCity from "./pages/ServiceCity";
 import { buildLocationMatrix } from "./lib/locationPages";
-import { getContentRoutePatterns } from "./lib/contentRoutes";
+import { getContentRoutePatterns, getCollectionIndexPatterns } from "./lib/contentRoutes";
 import ContentPage from "./pages/ContentPage";
+import CollectionIndexPage from "./pages/CollectionIndexPage";
 
 // Lazy load blog post pages
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
@@ -72,6 +73,9 @@ const AppContent = () => {
           One route per content collection, not per article. Adding a page means
           adding an .mdx file — the router never changes.
         */}
+        {getCollectionIndexPatterns().map((pattern) => (
+          <Route key={pattern} path={pattern} element={<CollectionIndexPage />} />
+        ))}
         {getContentRoutePatterns().map((pattern) => (
           <Route key={pattern} path={pattern} element={<ContentPage />} />
         ))}

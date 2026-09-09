@@ -28,8 +28,9 @@ import NotFound from "@/pages/NotFound";
 import CityHub from "@/pages/CityHub";
 import ServiceCity from "@/pages/ServiceCity";
 import { buildLocationMatrix } from "@/lib/locationPages";
-import { getContentRoutePatterns } from "@/lib/contentRoutes";
+import { getContentRoutePatterns, getCollectionIndexPatterns } from "@/lib/contentRoutes";
 import ContentPageServer from "@/pages/ContentPage.server";
+import CollectionIndexPage from "@/pages/CollectionIndexPage";
 
 // Blog posts — eager for SSR
 import OfficeWorkspaceDesign from "@/pages/blog/office-workspace-design";
@@ -78,6 +79,9 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
           collection registered only in App.tsx would work in the browser but
           ship an empty shell to crawlers.
         */}
+        {getCollectionIndexPatterns().map((pattern) => (
+          <Route key={pattern} path={pattern} element={<CollectionIndexPage />} />
+        ))}
         {getContentRoutePatterns().map((pattern) => (
           <Route key={pattern} path={pattern} element={<ContentPageServer />} />
         ))}
