@@ -23,6 +23,8 @@ export const COLLECTIONS = [
   "facade",
   "interiors",
   "mep",
+  "peb",
+  "civil",
 ] as const;
 
 export type Collection = (typeof COLLECTIONS)[number];
@@ -43,6 +45,8 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   facade: "/services/facade-glazing",
   interiors: "/services/interior-fit-out",
   mep: "/services/mep",
+  peb: "/services/peb",
+  civil: "/services/construction",
 };
 
 /**
@@ -53,7 +57,13 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
  * renders from servicePages.ts. That page acts as the hub and links down to the
  * sub-services, rather than being replaced by an auto-generated index.
  */
-export const COLLECTIONS_WITHOUT_INDEX: Collection[] = ["facade", "interiors", "mep"];
+export const COLLECTIONS_WITHOUT_INDEX: Collection[] = [
+  "facade",
+  "interiors",
+  "mep",
+  "peb",
+  "civil",
+];
 
 /** Collections where being wrong carries real professional risk. */
 export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost", "calculators"];
