@@ -22,6 +22,7 @@ export const COLLECTIONS = [
   "calculators",
   "facade",
   "interiors",
+  "mep",
 ] as const;
 
 export type Collection = (typeof COLLECTIONS)[number];
@@ -41,6 +42,7 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   // hierarchy: /services/facade-glazing/unitized-curtain-wall.
   facade: "/services/facade-glazing",
   interiors: "/services/interior-fit-out",
+  mep: "/services/mep",
 };
 
 /**
@@ -51,7 +53,7 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
  * renders from servicePages.ts. That page acts as the hub and links down to the
  * sub-services, rather than being replaced by an auto-generated index.
  */
-export const COLLECTIONS_WITHOUT_INDEX: Collection[] = ["facade", "interiors"];
+export const COLLECTIONS_WITHOUT_INDEX: Collection[] = ["facade", "interiors", "mep"];
 
 /** Collections where being wrong carries real professional risk. */
 export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost", "calculators"];
