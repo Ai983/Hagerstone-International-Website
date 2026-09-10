@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { SITE_URL, type FaqItem } from "@/lib/seo";
 import { getCityBySlug } from "@/data/cities";
+import { servicePages } from "@/data/servicePages";
 import { getServiceCitiesForCity } from "@/lib/locationPages";
 import { buildCityHubSchema } from "@/lib/locationSchema";
 
@@ -47,15 +48,33 @@ const CityHub = () => {
           ? `Yes — our ${city.name}-area work includes ${city.projects.map((p) => p.name).join(", ")}. ${city.marketNote}`
           : `We serve ${city.name} as part of our ${city.region} coverage. ${city.marketNote}`,
     },
+    // Genuinely city-specific: the answer names different bodies in every city,
+    // which is what stops the FAQ block being identical across location pages.
+    ...(city.authorities?.fireNoc
+      ? [
+          {
+            question: `Which authority issues the fire NOC in ${city.name}?`,
+            answer: `Fire clearance in ${city.name} is issued by ${city.authorities.fireNoc}${
+              city.authorities.development
+                ? `, with building approval through ${city.authorities.development}`
+                : ""
+            }${
+              city.authorities.discom
+                ? `. Electrical connection and load sanction go through ${city.authorities.discom}`
+                : ""
+            }. We handle the drawings and documentation these bodies require as part of the project.`,
+          },
+        ]
+      : []),
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`Office Interior & Fit-Out Company in ${city.name} | Hagerstone`}
-        description={`Hagerstone is an office design & build company in ${city.name}, ${city.state} — interiors, MEP, HVAC, construction, PEB, and facade services. 11+ years, 7M+ sq. ft. delivered.`}
+        title={`Interiors, Facade & Construction Contractors in ${city.name} | Hagerstone`}
+        description={`Interiors, facade & glazing, aluminium doors and windows, MEP, PEB and civil construction in ${city.name}, ${city.state} — with the local approval authorities each project has to clear.`}
         canonical={canonical}
-        keywords={`office interior design ${city.name}, interior fit out ${city.name}, office design and build ${city.name}, construction company ${city.name}`}
+        keywords={`interior fit out ${city.name}, facade contractors ${city.name}, aluminium doors and windows ${city.name}, mep contractors ${city.name}, construction company ${city.name}`}
         structuredData={buildCityHubSchema(city, canonical, faqs)}
       />
 
@@ -68,7 +87,7 @@ const CityHub = () => {
             / <span className="text-white">Locations / {city.name}</span>
           </nav>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Office Design & Build Company in {city.name}
+            Interiors, Facade & Construction Contractors in {city.name}
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl">
             Turnkey office interiors, MEP, and construction across {city.name}, {city.state}.
@@ -106,6 +125,81 @@ const CityHub = () => {
                   <p className="text-sm text-muted-foreground">{p.service.summary}</p>
                 </Link>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/*
+          All six service lines on the city page itself.
+
+          This is the alternative to multiplying pages: rather than a
+          service×city matrix, one city page covers every line and links up to
+          the national service page. It is also what the strongest competitor in
+          this space does across their 35 city pages.
+        */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-semibold text-primary mb-6">
+            What we deliver in {city.name}
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servicePages.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="block border border-border rounded-xl p-6 hover:border-primary hover:shadow-sm transition"
+              >
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  {service.title} in {city.name}
+                </h3>
+                <p className="text-sm text-muted-foreground">{service.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/*
+          The statutory bodies a project here actually has to clear. This is the
+          section that makes a city page genuinely different from the next one —
+          Ludhiana deals with GLADA, PSPCL and PPCB; Noida deals with the Noida
+          Authority, PVVNL and UPPCB. Public, checkable facts, and the thing a
+          client in that city actually needs to know.
+        */}
+        {city.authorities && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-primary mb-3">
+              Approvals & authorities in {city.name}
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Every commercial project in {city.name} clears the same set of
+              statutory bodies. Knowing which ones — and what each expects —
+              is a large part of keeping a programme on schedule.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-sm">
+                <tbody>
+                  {[
+                    ["Development authority", city.authorities.development],
+                    ["Municipal body", city.authorities.municipal],
+                    ["Industrial estate authority", city.authorities.industrial],
+                    ["Fire NOC", city.authorities.fireNoc],
+                    ["Electricity (DISCOM)", city.authorities.discom],
+                    ["Pollution control", city.authorities.pollution],
+                    ["Building bye-laws", city.authorities.byeLaws],
+                  ]
+                    .filter(([, value]) => Boolean(value))
+                    .map(([label, value]) => (
+                      <tr key={label} className="border-b border-border">
+                        <th
+                          scope="row"
+                          className="py-3 pr-6 text-left font-medium text-foreground align-top whitespace-nowrap"
+                        >
+                          {label}
+                        </th>
+                        <td className="py-3 text-muted-foreground">{value}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
           </section>
         )}

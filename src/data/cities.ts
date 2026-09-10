@@ -17,6 +17,41 @@ export interface CityProject {
   slug?: string;
 }
 
+/**
+ * The statutory bodies a commercial project in this city actually deals with.
+ *
+ * Deliberately administrative rather than engineering. These are public,
+ * checkable facts — who issues the fire NOC, who supplies power, which
+ * development authority approves the building — and they genuinely differ city
+ * to city, which is what stops a location page reading as a template with the
+ * name swapped.
+ *
+ * Code-derived values (IS 875 wind speed, IS 1893 seismic zone) are
+ * deliberately NOT here. Published sources disagree on them by enough to change
+ * a facade design, and a wrong structural figure on an engineering firm's site
+ * is worse than none. Add them only from the codes themselves, signed off
+ * internally.
+ *
+ * Every field is optional — a row renders only when it is filled, so a city
+ * with a partially confirmed set is still publishable.
+ */
+export interface LocalAuthorities {
+  /** Development / urban planning authority, e.g. "GMDA & HSVP". */
+  development?: string;
+  /** Municipal body, e.g. "Municipal Corporation Gurugram (MCG)". */
+  municipal?: string;
+  /** Industrial estate authority where one governs the industrial belt. */
+  industrial?: string;
+  /** Fire NOC issuing authority. */
+  fireNoc?: string;
+  /** Electricity distribution company. */
+  discom?: string;
+  /** State pollution control board. */
+  pollution?: string;
+  /** Building bye-laws that apply. */
+  byeLaws?: string;
+}
+
 export interface City {
   slug: string;
   name: string;
@@ -25,6 +60,8 @@ export interface City {
   region: "NCR" | "North India" | "West India" | "South India";
   tier: 1 | 2 | 3;
   published: boolean;
+  /** Statutory bodies for commercial projects here. */
+  authorities?: LocalAuthorities;
   /** Named business/industrial hubs used in the local-context section. */
   districts: string[];
   /** Slugs of nearby cities for internal linking. */
@@ -44,6 +81,15 @@ export const cities: City[] = [
     region: "NCR",
     tier: 1,
     published: true,
+    authorities: {
+      development: "Gurugram Metropolitan Development Authority (GMDA) & HSVP",
+      municipal: "Municipal Corporation Gurugram (MCG)",
+      industrial: "HSIIDC — for IMT Manesar and industrial estates",
+      fireNoc: "Haryana Fire & Emergency Services",
+      discom: "DHBVN — Dakshin Haryana Bijli Vitran Nigam",
+      pollution: "Haryana State Pollution Control Board (HSPCB)",
+      byeLaws: "Haryana Building Code",
+    },
     districts: ["Cyber City", "Udyog Vihar", "Golf Course Road", "Sohna Road", "MG Road", "Sector 79"],
     nearbyCitySlugs: ["delhi", "faridabad", "noida"],
     marketNote:
@@ -62,6 +108,13 @@ export const cities: City[] = [
     region: "NCR",
     tier: 1,
     published: true,
+    authorities: {
+      development: "New Okhla Industrial Development Authority (Noida Authority)",
+      fireNoc: "Uttar Pradesh Fire & Emergency Services",
+      discom: "PVVNL — Paschimanchal Vidyut Vitran Nigam",
+      pollution: "Uttar Pradesh Pollution Control Board (UPPCB)",
+      byeLaws: "Noida Building Regulations & Directions",
+    },
     districts: ["Sector 62 IT Hub", "Sector 63", "Film City (Sector 16)", "Noida Expressway", "Sector 2"],
     nearbyCitySlugs: ["greater-noida", "delhi", "ghaziabad"],
     marketNote:
@@ -79,6 +132,14 @@ export const cities: City[] = [
     region: "NCR",
     tier: 1,
     published: true,
+    authorities: {
+      development: "Delhi Development Authority (DDA)",
+      municipal: "MCD, and NDMC in the New Delhi area",
+      fireNoc: "Delhi Fire Service (DFS)",
+      discom: "BSES Rajdhani, BSES Yamuna and Tata Power-DDL, by area",
+      pollution: "Delhi Pollution Control Committee (DPCC)",
+      byeLaws: "Unified Building Bye-Laws for Delhi",
+    },
     districts: ["Connaught Place", "Nehru Place", "Saket", "Aerocity", "Okhla", "Rangpuri"],
     nearbyCitySlugs: ["noida", "gurugram", "faridabad"],
     marketNote:
@@ -98,6 +159,15 @@ export const cities: City[] = [
     region: "North India",
     tier: 1,
     published: true,
+    authorities: {
+      development: "Greater Ludhiana Area Development Authority (GLADA)",
+      municipal: "Municipal Corporation Ludhiana",
+      industrial: "PSIEC — Punjab Small Industries & Export Corporation, for the Focal Point estates",
+      fireNoc: "Punjab Fire & Emergency Services",
+      discom: "PSPCL — Punjab State Power Corporation Limited",
+      pollution: "Punjab Pollution Control Board (PPCB)",
+      byeLaws: "Punjab Municipal Building Bye-Laws",
+    },
     districts: ["Focal Point", "Industrial Area A/B/C", "Gill Road", "Birmi"],
     nearbyCitySlugs: ["chandigarh", "zirakpur", "jaipur"],
     marketNote:
@@ -115,6 +185,15 @@ export const cities: City[] = [
     region: "North India",
     tier: 1,
     published: true,
+    authorities: {
+      development: "Jaipur Development Authority (JDA)",
+      municipal: "Jaipur Municipal Corporation (Greater & Heritage)",
+      industrial: "RIICO — for Sitapura and Vishwakarma industrial areas",
+      fireNoc: "Rajasthan Fire & Emergency Services",
+      discom: "JVVNL — Jaipur Vidyut Vitran Nigam",
+      pollution: "Rajasthan State Pollution Control Board (RSPCB)",
+      byeLaws: "Rajasthan Building Bye-Laws",
+    },
     districts: ["Sitapura Industrial Area", "Malviya Nagar", "C-Scheme", "Mansarovar", "Vishwakarma Industrial Area"],
     nearbyCitySlugs: ["kota", "delhi", "gurugram"],
     marketNote:
@@ -133,7 +212,16 @@ export const cities: City[] = [
     stateSlug: "haryana",
     region: "NCR",
     tier: 1,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Faridabad Metropolitan Development Authority (FMDA) & HSVP",
+      municipal: "Municipal Corporation Faridabad (MCF)",
+      industrial: "HSIIDC",
+      fireNoc: "Haryana Fire & Emergency Services",
+      discom: "DHBVN — Dakshin Haryana Bijli Vitran Nigam",
+      pollution: "Haryana State Pollution Control Board (HSPCB)",
+      byeLaws: "Haryana Building Code",
+    },
     districts: ["Industrial Area Sectors 24–25", "Ballabgarh", "Neelam Bata Road"],
     nearbyCitySlugs: ["delhi", "gurugram", "noida"],
     marketNote:
@@ -147,7 +235,14 @@ export const cities: City[] = [
     stateSlug: "uttar-pradesh",
     region: "NCR",
     tier: 1,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Greater Noida Industrial Development Authority (GNIDA)",
+      fireNoc: "Uttar Pradesh Fire & Emergency Services",
+      discom: "NPCL — Noida Power Company Limited",
+      pollution: "Uttar Pradesh Pollution Control Board (UPPCB)",
+      byeLaws: "Greater Noida Building Regulations",
+    },
     districts: ["Knowledge Park", "Surajpur Industrial Area", "Tech Zone", "Pari Chowk"],
     nearbyCitySlugs: ["noida", "ghaziabad", "delhi"],
     marketNote:
@@ -161,7 +256,16 @@ export const cities: City[] = [
     stateSlug: "uttar-pradesh",
     region: "NCR",
     tier: 1,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Ghaziabad Development Authority (GDA)",
+      municipal: "Municipal Corporation Ghaziabad",
+      industrial: "UPSIDA — for the Sahibabad industrial area",
+      fireNoc: "Uttar Pradesh Fire & Emergency Services",
+      discom: "PVVNL — Paschimanchal Vidyut Vitran Nigam",
+      pollution: "Uttar Pradesh Pollution Control Board (UPPCB)",
+      byeLaws: "Uttar Pradesh Building Bye-Laws",
+    },
     districts: ["Sahibabad Industrial Area", "Indirapuram", "Raj Nagar Extension"],
     nearbyCitySlugs: ["noida", "greater-noida", "delhi"],
     marketNote:
@@ -175,7 +279,15 @@ export const cities: City[] = [
     stateSlug: "chandigarh",
     region: "North India",
     tier: 1,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Chandigarh Administration — Department of Urban Planning",
+      municipal: "Municipal Corporation Chandigarh",
+      fireNoc: "Chandigarh Fire & Emergency Services",
+      discom: "Chandigarh Electricity Department",
+      pollution: "Chandigarh Pollution Control Committee (CPCC)",
+      byeLaws: "Chandigarh Building Rules",
+    },
     districts: ["Sector 17", "IT Park (Rajiv Gandhi Technology Park)", "Industrial Area Phase 1/2"],
     nearbyCitySlugs: ["zirakpur", "ludhiana", "jaipur"],
     marketNote:
@@ -189,7 +301,15 @@ export const cities: City[] = [
     stateSlug: "rajasthan",
     region: "North India",
     tier: 2,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Kota Development Authority (KDA)",
+      municipal: "Kota Municipal Corporation",
+      industrial: "RIICO",
+      fireNoc: "Rajasthan Fire & Emergency Services",
+      pollution: "Rajasthan State Pollution Control Board (RSPCB)",
+      byeLaws: "Rajasthan Building Bye-Laws",
+    },
     districts: ["Industrial Area", "Gumanpura", "Rangbari Road"],
     nearbyCitySlugs: ["jaipur", "delhi"],
     marketNote:
@@ -203,7 +323,15 @@ export const cities: City[] = [
     stateSlug: "himachal-pradesh",
     region: "North India",
     tier: 2,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Baddi-Barotiwala-Nalagarh Development Authority (BBNDA)",
+      industrial: "HPSIDC — Himachal Pradesh State Industrial Development Corporation",
+      fireNoc: "Himachal Pradesh Fire Services",
+      discom: "HPSEBL — Himachal Pradesh State Electricity Board Limited",
+      pollution: "Himachal Pradesh State Pollution Control Board (HPSPCB)",
+      byeLaws: "Himachal Pradesh Town & Country Planning building rules",
+    },
     districts: ["Nalagarh Industrial Area", "Baddi-Barotiwala-Nalagarh (BBN) belt"],
     nearbyCitySlugs: ["chandigarh", "zirakpur"],
     marketNote:
@@ -217,7 +345,16 @@ export const cities: City[] = [
     stateSlug: "karnataka",
     region: "South India",
     tier: 1,
-    published: false,
+    published: true,
+    authorities: {
+      development: "Bangalore Development Authority (BDA)",
+      municipal: "BBMP — Bruhat Bengaluru Mahanagara Palike",
+      industrial: "KIADB — Karnataka Industrial Areas Development Board",
+      fireNoc: "Karnataka State Fire & Emergency Services",
+      discom: "BESCOM — Bangalore Electricity Supply Company",
+      pollution: "Karnataka State Pollution Control Board (KSPCB)",
+      byeLaws: "BBMP Building Bye-Laws",
+    },
     districts: ["Peenya Industrial Area", "Whitefield", "Electronic City", "Outer Ring Road"],
     nearbyCitySlugs: [],
     marketNote:
