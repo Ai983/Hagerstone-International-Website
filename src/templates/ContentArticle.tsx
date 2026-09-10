@@ -36,6 +36,15 @@ const COLLECTION_LABEL: Record<string, string> = {
   guides: "Guides",
   architects: "For Architects",
   calculators: "Calculators",
+  // Sub-service collections sit under an existing service page, so the
+  // breadcrumb names that service rather than the internal collection key.
+  facade: "Facade & Glazing",
+  interiors: "Interior Fit-Out",
+  mep: "MEP",
+  peb: "PEB Structures",
+  civil: "Construction",
+  estates: "Business Districts & Estates",
+  industries: "Industries",
 };
 
 interface ContentArticleProps {

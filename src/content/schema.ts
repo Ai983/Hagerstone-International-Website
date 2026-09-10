@@ -25,6 +25,8 @@ export const COLLECTIONS = [
   "mep",
   "peb",
   "civil",
+  "estates",
+  "industries",
 ] as const;
 
 export type Collection = (typeof COLLECTIONS)[number];
@@ -47,6 +49,8 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   mep: "/services/mep",
   peb: "/services/peb",
   civil: "/services/construction",
+  estates: "/estates",
+  industries: "/industries",
 };
 
 /**
