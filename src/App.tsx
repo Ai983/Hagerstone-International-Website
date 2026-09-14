@@ -45,6 +45,9 @@ const OfficeFitOutCostGuideBlog = lazy(
 const MepDesignConsultancyIndiaBlog = lazy(
   () => import("./pages/blog/mep-design-consultancy-india")
 );
+const HospitalityInteriorDesignIndiaBlog = lazy(
+  () => import("./pages/blog/hospitality-interior-design-india")
+);
 
 const queryClient = new QueryClient();
 
@@ -138,6 +141,14 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <MepDesignConsultancyIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/hospitality-interior-design-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <HospitalityInteriorDesignIndiaBlog />
             </Suspense>
           }
         />

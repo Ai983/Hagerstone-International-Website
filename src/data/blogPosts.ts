@@ -22,6 +22,25 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "17",
+    slug: "hospitality-interior-design-india",
+    title: "Hospitality Interior Design: An Overview",
+    metaTitle: "Hospitality Interior Design: An Overview | Hagerstone",
+    metaDescription: "Hospitality interior design and fit-out in India — hotels, restaurants, and banquet spaces — covering MEP, HVAC, licensing, and real cost ranges.",
+    excerpt: "A practical guide to hospitality interior design and fit-out in India — hotels, restaurants, QSR, and banquet halls — covering the MEP/HVAC backbone, licensing, and real cost ranges.",
+    content: "Full content available at /blog/hospitality-interior-design-india",
+    image: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg",
+    imageAlt: "Dark, atmospheric rooftop restaurant interior with velvet banquette seating, globe pendant lighting, and a city skyline view",
+    author: "Dhruv Agarwal",
+    authorRole: "Founder & CEO, TEDx Speaker, Author of Workplace 2.0",
+    date: "September 14, 2026",
+    readTime: "12 min read",
+    category: "Hospitality",
+    tags: ["hospitality interior design india", "hotel interior design", "restaurant interior fit-out", "banquet hall interior design", "hospitality fit-out cost india", "F&B interior design"],
+    relatedSlugs: ["mep-design-consultancy-india", "commercial-hvac-systems", "office-fit-out-cost-guide-india-2026"],
+    featured: false,
+  },
+  {
     id: "16",
     slug: "mep-design-consultancy-india",
     title: "MEP Design & Consultancy for Commercial Fit-Outs: A Technical Guide",

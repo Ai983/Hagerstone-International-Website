@@ -48,6 +48,7 @@ const routesToPrerender = [
   '/blog/commercial-hvac-systems',
   '/blog/office-fit-out-cost-guide-india-2026',
   '/blog/mep-design-consultancy-india',
+  '/blog/hospitality-interior-design-india',
   '/ideas',
   '/find-your-style',
 ]
