@@ -15,7 +15,7 @@ import {
 // Blog listing page
 const Blog = () => {
   const featuredPost = getFeaturedPost() ?? postsData[0];
-  const recentPosts = getRecentPosts(9);
+  const recentPosts = getRecentPosts(postsData.length);
 
 
   const categories = [
