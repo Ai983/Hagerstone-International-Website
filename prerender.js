@@ -49,6 +49,9 @@ const routesToPrerender = [
   '/blog/office-fit-out-cost-guide-india-2026',
   '/blog/mep-design-consultancy-india',
   '/blog/hospitality-interior-design-india',
+  '/blog/facade-glazing-guide-india',
+  '/blog/peb-pre-engineered-buildings-guide-india',
+  '/blog/office-interior-fit-out-execution-guide',
   '/ideas',
   '/find-your-style',
 ]

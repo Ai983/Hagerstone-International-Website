@@ -48,6 +48,15 @@ const MepDesignConsultancyIndiaBlog = lazy(
 const HospitalityInteriorDesignIndiaBlog = lazy(
   () => import("./pages/blog/hospitality-interior-design-india")
 );
+const FacadeGlazingGuideIndiaBlog = lazy(
+  () => import("./pages/blog/facade-glazing-guide-india")
+);
+const PebPreEngineeredBuildingsGuideIndiaBlog = lazy(
+  () => import("./pages/blog/peb-pre-engineered-buildings-guide-india")
+);
+const OfficeInteriorFitOutExecutionGuideBlog = lazy(
+  () => import("./pages/blog/office-interior-fit-out-execution-guide")
+);
 
 const queryClient = new QueryClient();
 
@@ -149,6 +158,30 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <HospitalityInteriorDesignIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/facade-glazing-guide-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <FacadeGlazingGuideIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/peb-pre-engineered-buildings-guide-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <PebPreEngineeredBuildingsGuideIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/office-interior-fit-out-execution-guide"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <OfficeInteriorFitOutExecutionGuideBlog />
             </Suspense>
           }
         />

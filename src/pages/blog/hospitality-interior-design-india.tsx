@@ -60,6 +60,16 @@ const faqItems: FaqItem[] = [
     answer:
       "A single QSR or cafe outlet can often be turned around in 6-10 weeks once design is locked, while a full-service restaurant with a custom kitchen typically needs 10-16 weeks. Boutique hotels and banquet halls run longer — often 4-8 months — because of the volume of MEP, guest-room joinery, and finishing work. Hospitality projects are also more schedule-sensitive than most commercial fit-outs, since openings are frequently tied to a booked event calendar or a lease commitment date.",
   },
+  {
+    question: "Can a hotel be renovated while it's still operating?",
+    answer:
+      "Yes, and it's actually one of the more common hospitality renovation scenarios — construction is phased floor by floor or wing by wing so the property keeps trading, with disruptive work scheduled around guest hours and fire-egress routes maintained throughout every phase. The hardest part is usually shared MEP systems (a single chiller plant serving the whole property, for example) that can't be taken offline without affecting rooms the renovation hasn't reached yet, which is why sequencing and clear communication with hotel operations staff matter as much as the construction work itself.",
+  },
+  {
+    question: "What accessibility requirements apply to hospitality interiors?",
+    answer:
+      "Accessible guest rooms and routes, ramp gradients, accessible restroom fixtures, and wayfinding signage for guests with visual or mobility impairments are common requirements, several of which tie into occupancy certification rather than being optional. Hotels pursuing a star classification face additional guest-experience standards — minimum room sizes and specific service infrastructure among them — which is worth confirming against the design brief before construction locks in dimensions that are expensive to revise later.",
+  },
 ];
 
 export default function HospitalityInteriorDesignIndiaBlog() {
@@ -92,8 +102,16 @@ export default function HospitalityInteriorDesignIndiaBlog() {
       label: "The MEP, HVAC & Fire Safety Backbone of Hospitality Fit-Outs",
     },
     {
+      id: "renovating-an-operating-hotel",
+      label: "Renovating an Operating Hotel",
+    },
+    {
       id: "licensing-and-compliance",
       label: "Licensing & Compliance Considerations",
+    },
+    {
+      id: "accessibility-and-guest-experience",
+      label: "Accessibility & Guest Experience Compliance",
     },
     {
       id: "hospitality-fit-out-costs-india",
@@ -244,7 +262,7 @@ export default function HospitalityInteriorDesignIndiaBlog() {
             </div>
             <img
               src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg"
+              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg 1600w"
               sizes="(max-width: 768px) 100vw, 1600px"
               alt="Dark, atmospheric rooftop restaurant interior with velvet banquette seating, globe pendant lighting, and a city skyline view"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
@@ -302,6 +320,13 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               specific to F&amp;B and public-assembly spaces, and what these projects realistically
               cost in India.
             </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              It also covers ground most overviews skip — what it actually takes to renovate a
+              hotel while it stays open for business, the accessibility and guest-experience
+              obligations that sit alongside fire and food-safety compliance, and the design
+              trends genuinely reshaping Indian hospitality interiors right now rather than
+              recycled from elsewhere.
+            </p>
           </section>
 
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
@@ -333,6 +358,18 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               reveals those gaps after the fit-out is built, when they're far more expensive
               to fix.
             </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              The scope also has to reach beyond the interior itself in most hospitality
+              projects. Facade and fenestration set the arrival experience before a guest ever
+              steps inside, and are subject to the same wind-load, glazing-performance, and
+              fire-rated-material considerations covered in our{" "}
+              <Link to="/blog/facade-glazing-guide-india" className="text-primary hover:underline">
+                facade &amp; glazing guide
+              </Link>
+              . On a full-service project, that means the interior design, MEP, and facade teams
+              all need to be working from the same building envelope assumptions from day one,
+              not reconciling them after each scope has already been designed independently.
+            </p>
           </section>
 
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
@@ -349,6 +386,19 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               carry a high density of MEP — plumbing, HVAC, and electrical — per square foot
               compared to almost any other commercial space, and every room typically repeats
               the same design and engineering module dozens or hundreds of times.
+            </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              Serviced apartments sit in a related category — longer guest stays than a typical
+              hotel room, but still operated with hospitality-grade housekeeping and services, so
+              the interior has to balance residential comfort (kitchenettes, more storage) against
+              the same MEP density and back-of-house operational needs as a hotel. Facade and
+              fenestration choices matter more here than in a typical hotel too, since serviced
+              apartments are often standalone or mixed-use buildings rather than a floor within a
+              larger commercial tower — see our{" "}
+              <Link to="/blog/facade-glazing-guide-india" className="text-primary hover:underline">
+                facade &amp; glazing guide
+              </Link>{" "}
+              for how curtain wall and aluminium fenestration choices apply to this building type.
             </p>
 
             <h3 className="text-2xl font-semibold text-foreground">Restaurants, Cafes &amp; QSR</h3>
@@ -367,7 +417,7 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               alt="fine-dining dish with wine glasses and a bread basket at a restaurant table setting"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
               width="1200"
-              height="950"
+              height="800"
               loading="lazy"
               decoding="async"
             />
@@ -392,7 +442,7 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               alt="Resort pool deck and outdoor lounge area at dusk, framed by palm trees and Mediterranean-style architecture"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
               width="1200"
-              height="950"
+              height="800"
               loading="lazy"
               decoding="async"
             />
@@ -402,7 +452,11 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               Smaller-format cafes and lounges usually carry a lighter kitchen scope than a
               full restaurant, but still need the same category of licensing and MEP
               attention on a compressed footprint — often making space planning and
-              back-of-house efficiency even more critical per square foot.
+              back-of-house efficiency even more critical per square foot. Co-working spaces with
+              an embedded cafe or lounge function face a similar compression problem: the F&amp;B
+              element has to meet the same food-safety and exhaust requirements as a standalone
+              cafe, but within a floor plate that's primarily designed around workstations and
+              meeting rooms rather than dining.
             </p>
           </section>
 
@@ -445,6 +499,29 @@ export default function HospitalityInteriorDesignIndiaBlog() {
           </section>
 
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
+            <h2 id="renovating-an-operating-hotel" className="text-3xl font-bold text-primary">
+              Renovating an Operating Hotel
+            </h2>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              A meaningful share of hospitality interior work isn't a new build at all — it's
+              renovating a property that has to keep trading through the work. That changes the
+              execution method fundamentally: construction gets phased floor by floor or wing by
+              wing rather than all at once, noisy and disruptive work gets scheduled around guest
+              hours, and temporary weatherproofing, dust containment, and fire-egress routes have
+              to be maintained through every phase — not just planned for the finished building.
+            </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              MEP renovation is usually the hardest part of a phased hotel renovation, since
+              shutting down a guest room's water or power for a room refresh means coordinating
+              around occupancy, while shared building systems (a single chiller plant serving the
+              whole property, for instance) often can't be taken offline at all without disrupting
+              rooms the renovation hasn't reached yet. Sequencing this correctly — and
+              communicating it clearly to hotel operations staff, not just the construction
+              team — is as much a project management skill as it is a technical one.
+            </p>
+          </section>
+
+          <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
             <h2 id="licensing-and-compliance" className="text-3xl font-bold text-primary">
               Licensing &amp; Compliance Considerations
             </h2>
@@ -467,6 +544,28 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               and faster to design for these requirements from the start than to retrofit a
               completed fit-out to pass inspection, which is one of the most common causes of
               delayed hospitality openings in India.
+            </p>
+          </section>
+
+          <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
+            <h2 id="accessibility-and-guest-experience" className="text-3xl font-bold text-primary">
+              Accessibility &amp; Guest Experience Compliance
+            </h2>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              Beyond fire and food safety, hospitality interiors carry accessibility obligations
+              that are easy to under-scope in the design phase — accessible guest rooms and
+              routes, ramp gradients, accessible restroom fixtures, and signage that meets
+              wayfinding standards for guests with visual or mobility impairments. These aren't
+              optional finishing touches; several are tied to occupancy certification, not just
+              good practice.
+            </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              For hotels pursuing a star classification, guest experience standards go further
+              still — minimum room sizes, specific service infrastructure (like a defined
+              reception and lobby standard), and amenity requirements are all assessed as part of
+              classification, which is worth confirming against the design brief before, not
+              after, construction locks in room dimensions and back-of-house allocations that are
+              expensive to revise later.
             </p>
           </section>
 
@@ -504,16 +603,36 @@ export default function HospitalityInteriorDesignIndiaBlog() {
             </h2>
             <p className="text-base text-foreground/80 leading-relaxed">
               Several trends are shaping how hospitality interiors are being designed and
-              built across Indian cities right now:
+              built across Indian cities right now.
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-base text-foreground/80">
-              <li>Regional materials and local craft woven into interior storytelling, rather than generic global themes</li>
-              <li>Open kitchens designed as visual theatre, not just a back-of-house function</li>
-              <li>Biophilic elements — natural light, planting, natural materials — extending into F&amp;B and lobby design</li>
-              <li>Flexible, movable partitioning in banquet halls to serve multiple event sizes from one footprint</li>
-              <li>Sustainable, low-VOC materials and energy-efficient lighting, driven by both cost and guest expectations</li>
-              <li>Smart room and building automation in hotels, integrated at the MEP design stage rather than retrofitted</li>
-            </ul>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              Regional materials and local craft are increasingly woven into interior
+              storytelling rather than defaulting to generic global hotel themes — a shift driven
+              partly by guest expectations for a sense of place, and partly by the practical
+              advantage of sourcing finishes locally instead of through long import lead times.
+              Open kitchens have moved from a cost-saving back-of-house layout to a deliberate
+              design feature — visual theatre for guests — which changes the exhaust, acoustic,
+              and finish specification compared to a fully enclosed kitchen. Biophilic
+              elements — natural light, planting, natural materials — are extending beyond lobbies
+              into F&amp;B and even guest-room design, tying back to the same daylighting and
+              material choices covered in our{" "}
+              <Link to="/blog/sustainable-green-office-interiors" className="text-primary hover:underline">
+                sustainable interiors guide
+              </Link>
+              .
+            </p>
+            <p className="text-base text-foreground/80 leading-relaxed">
+              On the operational side, flexible, movable partitioning in banquet halls lets a
+              single footprint serve multiple event sizes without rebuilding the space, which
+              directly affects how the electrical and HVAC zoning gets designed. Sustainable,
+              low-VOC materials and energy-efficient lighting are being adopted as much for
+              guest expectations and operating cost as for compliance. And smart room and
+              building automation — keyless entry, automated climate control, centralised energy
+              monitoring — is increasingly specified at the MEP design stage rather than
+              retrofitted after opening, since retrofitting automation into finished guest rooms
+              is disruptive to occupancy in exactly the way a renovation described earlier in this
+              guide is.
+            </p>
           </section>
 
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6">
