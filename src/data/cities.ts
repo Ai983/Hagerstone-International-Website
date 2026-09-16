@@ -632,8 +632,8 @@ export const cities: City[] = [
     districts: ["Bhuj city", "Madhapar", "Mirzapar", "Kutch industrial belt"],
     nearbyCitySlugs: ["ahmedabad"],
     marketNote:
-      "Bhuj is the headquarters of Kutch, a district rebuilt after the 2001 earthquake and now home to a growing industrial belt. Structural safety and envelope durability in a hot, dusty, coastal-influenced climate are central to building here. Hagerstone delivered glazing and ACP cladding on an admin block for Dee Development in Bhuj.",
-    projects: [{ name: "Dee Development", detail: "Admin block — glazing & ACP cladding, 25,000 sq. ft." }],
+      "Bhuj is the headquarters of Kutch, a district rebuilt after the 2001 earthquake and now home to a growing industrial belt. Structural safety and envelope durability in a hot, dusty, coastal-influenced climate are central to building here. Our Director – Facade, Akhilesh Kumar Singh, led glazing and ACP cladding on an admin block for Dee Development in Bhuj — experience now part of Hagerstone's in-house facade capability.",
+    projects: [],
   },
   {
     slug: "mohali",
