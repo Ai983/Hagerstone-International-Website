@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useEstimator } from "./context";
 import { FEATURES, PACKAGES, formatINR } from "./config";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
+import { submitLead } from "@/lib/leads";
 
 export const EstimatorProgress: React.FC = () => {
   const { step, totalSteps } = useEstimator();
@@ -94,8 +95,27 @@ export const Step4ContactOTP: React.FC = () => {
     if (!phone) return alert("Enter phone number first");
     setSent(true);
   };
-  const verify = () => {
-    if (otp.length === 6) setOtpVerified(true);
+  const verify = async () => {
+    if (otp.length !== 6) return;
+    setOtpVerified(true);
+
+    // Persist the enquiry. Until this was added the estimator collected name,
+    // email, phone and company and then discarded all of it — the details only
+    // ever unlocked the on-screen budget. Routed through the shared
+    // submitLead() so it reaches the leads table, GA4 and the CRM sync like
+    // every other capture surface.
+    if (!name || !phone) return;
+    const result = await submitLead({
+      name,
+      email: email || undefined,
+      phone,
+      company: company || undefined,
+      subject: "Fit-out cost estimator",
+      sourceType: "calculator",
+    });
+    if (!result.ok) {
+      console.error("[estimator] lead submission failed:", result);
+    }
   };
 
   return (

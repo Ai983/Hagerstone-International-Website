@@ -101,12 +101,14 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
 
     try {
       const { data, error } = await supabase.functions.invoke('verify-otp', {
-        body: { 
-          phone, 
+        body: {
+          phone,
           otp,
           name,
           email,
-          company
+          company,
+          sourceType: 'quiz',
+          sourcePath: typeof window !== 'undefined' ? window.location.pathname : null
         }
       });
 

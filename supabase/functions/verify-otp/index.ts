@@ -20,7 +20,11 @@ serve(async (req) => {
   }
 
   try {
-    const { phone, otp, name, email, company } = await req.json();
+    // sourceType/sourcePath tell us which surface captured this — the style
+    // quiz or the cost estimator. Without them the lead reaches the CRM as an
+    // unlabelled row and sales cannot tell what the person was doing.
+    const { phone, otp, name, email, company, sourceType, sourcePath } =
+      await req.json();
     
     if (!phone || !otp) {
       return new Response(JSON.stringify({ error: 'Phone and OTP are required' }), {
@@ -105,8 +109,11 @@ serve(async (req) => {
     // Store lead in Supabase
     const { error: insertError } = await supabase.from('leads').insert({
       name: name || 'Anonymous',
-      email: email || '',
+      email: email || null,
       number: normalizedPhone,
+      company: company || null,
+      source_type: sourceType === 'calculator' ? 'calculator' : 'quiz',
+      source_path: sourcePath || null,
     });
 
     if (insertError) {
