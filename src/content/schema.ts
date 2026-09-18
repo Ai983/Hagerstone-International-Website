@@ -69,8 +69,17 @@ export const COLLECTIONS_WITHOUT_INDEX: Collection[] = [
   "civil",
 ];
 
-/** Collections where being wrong carries real professional risk. */
-export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost", "calculators"];
+/**
+ * Collections where being wrong carries real professional risk. Pages are
+ * published in batches without human review, so these stay locked: nothing in
+ * them goes live until someone at Hagerstone puts their name on it.
+ *
+ * Calculators are not here. They are limited instead to calculations that are
+ * safe unreviewed: quantities from the user's own inputs, formulas shown,
+ * assumptions editable, and no Hagerstone rates or structural/statutory verdicts.
+ * See "Publishing rule" in SEO-PROJECT-STATUS.md.
+ */
+export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost"];
 
 const faqSchema = z.object({
   question: z.string().min(10),

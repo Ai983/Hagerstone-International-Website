@@ -16,6 +16,52 @@ what was actually **built**, what changed, and what is left.
 
 ---
 
+## 0. Publishing rule — READ BEFORE WRITING ANY PAGE
+
+**Nobody reviews pages before they go live.** Pages are published in batches of ~50,
+and reviewing them is not possible. So the rule is simple:
+
+> **Only publish content that is safe with no human review.
+> If a page needs an expert to check it, do not publish it — leave it as `draft` or don't write it.**
+
+### ✅ Safe — publish freely
+
+- Explanations of materials, systems and terms taken from **published standards**
+  (IS, NBC, ECBC, EN, ASTM), with the standard named on the page
+- How-to, process and comparison content ("Cat A vs Cat B", "stick vs unitized")
+- City and estate pages that name **public** authorities (development authority, DISCOM,
+  fire NOC issuer, pollution board). Batches are capped at ~25, per §8.
+- **Calculators that only compute quantities from the user's own inputs**: area, sheet
+  count, seat count, tile or paint quantity, and preliminary AC tonnage. Every one must
+  show the formula, let the user edit the assumptions (wastage %, density, loading %),
+  cite the standard for any default, and carry the "indicative estimate only, not a
+  design or quotation" disclaimer under the result.
+- A **user-entered** ₹ rate field on a calculator, where the user types the rate and
+  Hagerstone claims none
+
+### ❌ Never publish without a named reviewer
+
+| Don't publish | Why |
+|---|---|
+| **Hagerstone's own ₹ rates or price bands** | Pricing is Sir's decision (§7). Blocks `/cost/` pages and cost calculators. |
+| **Structural or safety numbers**: wind speed or pressure, seismic values, load capacity | A wrong number is an engineering claim (§4.4) |
+| **Statutory verdicts**: "you need / don't need a fire NOC", exit width compliance | A wrong answer creates legal exposure. The `/compliance/` collection stays locked. |
+| **Project claims**: "we delivered X" | Only projects already in `cities.ts` from CPS data, or approved by Sir. See the facade incident in §2.2. |
+| **Client names** not already on the site | Needs permission (§7) |
+| **Company stats** (projects, sq ft, people, years) | The numbers conflict between sources (§7). Reuse only what is already on the site. |
+| **Guarantees or comparisons with named competitors** | Legal risk |
+
+### How the code enforces it
+
+`REVIEW_REQUIRED` in `src/content/schema.ts` = `["compliance", "cost"]`. The build
+**refuses** to publish a page in those collections without `reviewedBy`, so risky
+collections cannot go live by accident. `calculators` was removed from that list on
+18 Sept, because calculators are now limited by design to the safe list above. For every
+other collection, **the rule is enforced by what we choose to write**, so check each
+batch against the ❌ table before publishing.
+
+---
+
 ## 1. Where the project stands right now
 
 | | |
@@ -431,9 +477,9 @@ Built:
 5. **Client names** — may Statkraft, Taj Hotels, EDF France, Inshorts, Imperial Malts,
    Hashtag Orange, Medtronic be named on the website?
 6. **MEP / PEB / Civil project names** — those pages have no project proof at all.
-7. **Who reviews technical content**, and how many hours per week. This sets the real
-   publishing ceiling. **It now blocks calculators too** (§8, Step 4). 234 pages are
-   live and no Hagerstone expert has reviewed any of them.
+7. ~~**Who reviews technical content**~~ — decided 18 Sept: **no one.** Pages are
+   published unreviewed in batches, so only content on the §0 safe list is published.
+   Cost and compliance pages stay locked until someone is named.
 8. **Estimator OTP** — make it a real OTP, or remove the step? Right now it accepts any
    six digits, so it adds friction and protects nothing.
 
@@ -489,19 +535,20 @@ checking separately:
 |---|---|
 | **SEO risk?** | **Low.** A working tool plus ~2,000 words of method is the opposite of thin content, and there is no doorway-page risk. It is safer than more location pages. |
 | **Can it be built without approval?** | **Yes, as drafts.** The framework, UI and draft pages can be built and committed now. |
-| **Can it go live without approval?** | **No, by design.** `calculators` is in `REVIEW_REQUIRED` in `src/content/schema.ts`, so the build refuses `status: published` without a named `reviewedBy`. **Someone at Hagerstone has to sign off each calculator.** |
-| **Rupee outputs?** | **Blocked.** "Glazing area **& cost**" and "ACP **cost**" need ₹ rates, which is the same unresolved pricing decision as P0.5. Build them to output **quantities only** (area, sheet count, wastage), with a CTA for pricing. |
-| **Wind pressure (IS 875 Pt 3)** | **Highest risk.** The maths is published, but basic wind speed per city is the value §4.4 found contradictory across sources. The user should enter Vb themselves, or the city table must be verified from the code. It needs Akhilesh ji's sign-off, because a wrong number here is a structural claim. |
-| **HVAC tonnage** | Rule-of-thumb (sq ft per TR) is safe if presented as a *preliminary estimate*. It still needs an MEP reviewer's name. |
+| **Can it go live without approval?** | **Yes, if it is on the safe list in §0.** Updated 18 Sept: `calculators` was removed from `REVIEW_REQUIRED`, because nothing is reviewed before publishing and calculators are limited by design to quantity-only maths. |
+| **Rupee outputs?** | **No Hagerstone rates.** Output quantities (area, sheet count, wastage), plus an optional **user-entered** ₹ rate field and a "Get Hagerstone's actual rate →" CTA. |
+| **Wind pressure (IS 875 Pt 3)** | **Do not build.** It's a structural claim, and the city wind speeds are unverified (§4.4). |
+| **HVAC tonnage** | OK as a *preliminary estimate* with the formula shown and editable assumptions, like Secured Engineers' version. |
+| **Competitor pattern** (checked 18 Sept) | ~43 calculators on a `/tools/` hub aimed at architects. The result appears instantly with no form. Under it: a disclaimer, then "Get an engineer review of my estimate →" (the result is attached to the lead), a prefilled WhatsApp message and a BOQ review offer. Below that, ~1,100–2,200 words under fixed headings: What it calculates → Inputs → Method (formula) → Assumptions → Limitations → Worked example → How engineers use it → When a professional design must replace it. No reviewer byline on any of them. |
 | **Code work needed** | No calculator framework exists yet (`CalculatorDef`, `CalculatorShell`, routes). New routes must be added to **both** `App.tsx` and `ServerApp.tsx`. §2.1 shows what happens otherwise. The `leads` table has no `calculator_id` / `calculator_inputs` / `calculator_result` columns yet, so that needs a small migration. |
 
-**Minimum decision needed from Sir:** one name per calculator to act as reviewer
-(Akhilesh ji for glazing/ACP/wind; the MEP head for HVAC). No pricing decision is needed
-if the calculators output quantities only.
+**No decision from Sir is needed** for quantity-only calculators.
 
-**Recommended order:** glazing area → ACP area & sheet optimisation → HVAC tonnage →
-wind pressure (last, heaviest review). The fit-out cost calculator stays blocked on
-cost bands.
+**Recommended first batch:** the calculator framework + `/calculators` hub, then glazing area
+take-off → ACP sheet count & wastage → office seat capacity → carpet vs built-up area.
+These are all facade and interiors, where no Indian competitor has tools. Next: false
+ceiling, flooring/tile, paint and partition quantities, AC tonnage, and lux. The fit-out
+cost calculator stays blocked on cost bands. Wind pressure is not built.
 
 Pattern: **ungated instant result** → three CTAs ("email me this breakdown", "send to
 WhatsApp" prefilled with the result, "get an engineer to validate this") → ~2,000 words of
