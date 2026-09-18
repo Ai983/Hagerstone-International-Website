@@ -9,12 +9,14 @@ export default function ProjectDetailHero({
   hero,
   heroAlt,
   heroVideo,
+  heroPosition,
 }: {
   title: string;
   client: string;
   hero: string;
   heroAlt: string;
   heroVideo?: string;
+  heroPosition?: string;
 }) {
   const [videoError, setVideoError] = useState(false);
 
@@ -37,6 +39,7 @@ export default function ProjectDetailHero({
             src={hero}
             alt={heroAlt}
             className="absolute inset-0 h-full w-full object-cover"
+            style={heroPosition ? { objectPosition: heroPosition } : undefined}
             fetchPriority="high"
             decoding="async"
             width={1920}
