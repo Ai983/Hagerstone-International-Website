@@ -38,6 +38,7 @@ const routesToPrerender = [
   '/projects/himalaya',
   '/projects/vinfast-showroom',
   '/projects/valorium-ventures-office-interior',
+  '/projects/kokko-town',
   '/our-team',
   '/contact',
   '/blog',
