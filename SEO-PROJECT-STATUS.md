@@ -564,9 +564,12 @@ schema, llms.txt exists. Still outstanding:
 - Everything in `OFFSITE-TODO.md`, which still has **zero items ticked**
 
 ### Step 6 — Technical debt worth clearing
-- **App/ServerApp route drift** — this has now caused a live bug (§2.1). Build the
-  route registry with a parity test, or at minimum a build check that every path in
-  `prerender.js` renders something other than `NotFound`.
+- ~~**App/ServerApp route drift**~~ — guarded 18 Sept. Project and blog URLs now come
+  from `project.ts` / `blogPosts.ts` via `src/lib/dataRoutes.ts`, and `prerender.js`
+  **fails the build** if any route renders a `data-not-found` screen (tested by removing
+  a blog route: the build failed and named it). Blog posts still need a `<Route>` in
+  both routers; moving them to MDX would remove that last manual step.
+  `CLAUDE.md` now documents all of this for every teammate's Claude session.
 - **Delete the Supabase `routes` table** and `useRoutes()` — it injects runtime routes
   that `ServerApp.tsx`/`prerender.js` have never heard of, so anything served through it
   returns an empty SPA shell to Googlebot

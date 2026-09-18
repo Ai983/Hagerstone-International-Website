@@ -10,14 +10,16 @@ const {
   render,
   getLocationPrerenderPaths,
   getContentPrerenderPaths,
+  getProjectPrerenderPaths,
+  getBlogPrerenderPaths,
   buildUrlSitemapXml,
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
 } = await import('./dist/server/entry-server.js')
 
-// Static crawlable routes. Programmatic location pages are appended from the
-// location matrix (getLocationPrerenderPaths) so this stays a single source.
+// Fixed pages only. Projects, blog posts, locations and MDX content are
+// appended from their data files below, so a new one needs no entry here.
 const routesToPrerender = [
   '/',
   '/about',
@@ -31,28 +33,9 @@ const routesToPrerender = [
   '/services/facade-glazing',
   '/services/aluminium-doors-windows',
   '/projects',
-  '/projects/theon',
-  '/projects/bansaltower',
-  '/projects/revolve',
-  '/projects/microsave',
-  '/projects/himalaya',
-  '/projects/vinfast-showroom',
-  '/projects/valorium-ventures-office-interior',
-  '/projects/kokko-town',
   '/our-team',
   '/contact',
   '/blog',
-  '/blog/office-workspace-design',
-  '/blog/commercial-interior-designers',
-  '/blog/office-space-planning-trends-2026',
-  '/blog/sustainable-green-office-interiors',
-  '/blog/commercial-hvac-systems',
-  '/blog/office-fit-out-cost-guide-india-2026',
-  '/blog/mep-design-consultancy-india',
-  '/blog/hospitality-interior-design-india',
-  '/blog/facade-glazing-guide-india',
-  '/blog/peb-pre-engineered-buildings-guide-india',
-  '/blog/office-interior-fit-out-execution-guide',
   '/ideas',
   '/find-your-style',
 ]
@@ -61,17 +44,34 @@ let ok = 0
 let failed = 0
 
 ;(async () => {
-  // Static routes, plus every programmatic path. Location and content pages
-  // self-register from their data, so neither needs an entry in the array above.
+  // Static routes, plus every programmatic path, each derived from its data.
   const allRoutes = [
     ...routesToPrerender,
+    ...getProjectPrerenderPaths(),
+    ...getBlogPrerenderPaths(),
     ...getLocationPrerenderPaths(),
     ...getContentPrerenderPaths(),
   ]
 
+  const duplicates = allRoutes.filter((r, i) => allRoutes.indexOf(r) !== i)
+  if (duplicates.length > 0) {
+    console.error('✗ duplicate routes:', [...new Set(duplicates)].join(', '))
+    process.exit(1)
+  }
+
   for (const route of allRoutes) {
     try {
       const { html: appHtml, headTags } = render(route)
+
+      // A route that renders a not-found screen would ship to Google as a
+      // soft 404 while looking fine in the browser, because App.tsx knows the
+      // route and ServerApp.tsx does not. Refuse to write it.
+      if (appHtml.includes('data-not-found')) {
+        throw new Error(
+          'rendered a not-found page — add its <Route> to src/ServerApp.tsx ' +
+            '(and App.tsx), or remove it from its data file',
+        )
+      }
 
       // Inject per-page <head> tags (title, meta, canonical) from react-helmet-async
       let html = template
@@ -94,6 +94,11 @@ let failed = 0
       console.error('✗ failed:', route, err.message)
       failed++
     }
+  }
+
+  if (failed > 0) {
+    console.error(`\n✗ Prerender failed: ${failed} route(s) above did not render`)
+    process.exit(1)
   }
 
   // Generated sitemaps (image + video portfolio) and the sitemap index. These
@@ -125,5 +130,4 @@ let failed = 0
 
   console.log(`\nPrerender complete: ${ok} succeeded, ${failed} failed`)
   console.log(`Sitemap: ${sitemapUrlCount} URLs (matches prerendered pages)`)
-  if (failed > 0) process.exit(1)
 })()

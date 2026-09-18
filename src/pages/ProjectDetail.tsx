@@ -16,7 +16,7 @@ export default function ProjectDetail() {
   const { id } = useParams();
   const project = getProjectById(id || "");
 
-  if (!project) return <div className="p-10">Project not found.</div>;
+  if (!project) return <div data-not-found className="p-10">Project not found.</div>;
 
   // Compute prev/next for bottom navigation
   const idx = projects.findIndex((p) => p.id === project.id);

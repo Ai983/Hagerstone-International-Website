@@ -12,7 +12,7 @@ const CityHub = () => {
 
   if (!city || !city.published) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center px-6">
+      <div data-not-found className="min-h-screen bg-background flex items-center justify-center px-6">
         <div className="max-w-lg text-center">
           <h1 className="text-3xl font-bold text-primary mb-4">Location not found</h1>
           <p className="text-muted-foreground mb-6">
