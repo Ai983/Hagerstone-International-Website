@@ -14,17 +14,17 @@ export default function ImageCarousel({ images }: { images: ImageItem[] }) {
         const height = typeof image === "string" ? 256 : image.height ?? 256;
 
         return (
-          <figure key={i} className="flex-shrink-0">
+          <figure key={i} className="flex-shrink-0 w-72">
             <img
               src={src}
               alt={alt}
-              className="h-64 w-auto rounded-lg object-cover"
+              className="h-64 w-72 rounded-lg object-cover"
               loading="lazy"
               decoding="async"
               width={width}
               height={height}
             />
-            <figcaption className="mt-2 text-sm text-muted-foreground">{caption}</figcaption>
+            <figcaption className="mt-2 text-sm text-muted-foreground line-clamp-3">{caption}</figcaption>
           </figure>
         );
       })}

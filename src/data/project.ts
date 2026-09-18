@@ -18,6 +18,7 @@ export type ProjectData = {
   hero: string;
   heroAlt: string;
   heroVideo?: string;
+  heroPosition?: string;
   summary: string;
   excerpt?: string;
   scope?: string[];
@@ -804,6 +805,181 @@ export const projects: ProjectData[] = [
             src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%206.jpeg",
             alt: "Workstation area showing circulation space and neutral palette interior at Valorium Ventures office interior",
             caption: "Workstation area with clear circulation paths.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "kokko-town",
+    title: "Kokko Town – Indoor Kids' Play Zone & Family Café",
+    client: "Kokko Town",
+    year: "2026",
+    status: "Completed",
+    location: "Sector 17, Chandigarh",
+    sector: "Indoor Kids' Play Zone & Family Café",
+    area: "6,500 sq. ft.",
+    duration: "2-3 months",
+
+    hero: "/projects/kokko-town/reception/reception-desk.jpg",
+    heroAlt:
+      "Kokko Town reception desk with a green airplane-window feature wall and backlit signage in Sector 17, Chandigarh",
+    heroPosition: "center 60%",
+    summary:
+      "Kokko Town is a 6,500 sq. ft. indoor kids' play zone and family café in Sector 17, Chandigarh, built as a miniature town where every corner doubles as a role-play destination. The design layers a pretend-play street of shopfronts — Bank, Hospital, Supermarket, Gas Station and Garage — with a farm-themed mezzanine, a full-scale RC vehicle and construction adventure zone, and interactive play features across two levels. Hagerstone delivered the project end-to-end, from civil works and theming to MEP execution and custom fabrication of every themed structure and facade.",
+    excerpt:
+      "A 6,500 sq. ft. indoor kids' play zone and family café in Chandigarh, built as a two-level pretend-play town.",
+    scope: [
+      "Civil works and site modifications across base and mezzanine levels",
+      "Complete interior design, theming and space planning",
+      "MEP execution — electrical, plumbing and ventilation",
+      "Custom furniture design and fabrication",
+      "Themed zone fabrication — pretend play facades, arcade and play structures",
+      "Turnkey delivery from design to handover",
+    ],
+    specialFeatures: [
+      "Two-level pretend-play town square with Bank, Hospital, Supermarket, Gas Station and Garage facades",
+      "Full-scale RC vehicle and construction-themed adventure zone with an off-road obstacle course",
+      "Farm-themed mezzanine with a train-carriage viewing balcony",
+      "Interactive sensory play wall with a foam-panel \"finish\" game feature",
+      "Light-up interactive dance floor at the entrance, beneath backlit Kokko Town signage",
+    ],
+    materials: [
+      "Commercial-grade plywood substructure",
+      "Gypsum board false ceilings and partitions",
+      "MDF profiles and themed fabrication elements",
+      "Modular electrical panels and distribution",
+      "Sanitary ware and plumbing fixtures",
+    ],
+    metaTitle: "Kokko Town Indoor Kids' Play Zone (6,500 sq ft) | Sector 17, Chandigarh",
+    metaDescription:
+      "Explore Kokko Town, a 6,500 sq ft indoor kids' play zone & family cafe in Chandigarh with a pretend-play town, RC/construction zone, and farm-themed mezzanine.",
+    canonical: "https://hagerstone.com/projects/kokko-town",
+    seoKeywords:
+      "indoor kids play zone design, family entertainment center design, kids play area interior design, themed pretend play design, edutainment center fit out, Chandigarh play zone design",
+    schemaKeywords: [
+      "indoor kids play zone",
+      "family entertainment center design",
+      "themed pretend play town",
+      "RC and construction play zone",
+      "farm themed mezzanine",
+    ],
+    about: "Indoor Kids' Play Zone & Family Entertainment Center",
+    size: "6,500 sq. ft.",
+    sections: [
+      {
+        name: "Reception",
+        description:
+          "A welcoming entrance that sets the tone before the play begins — a sculptural green feature wall with an airplane-window cutout sits beneath the backlit Kokko Town sign, framing the reception desk.",
+        images: [
+          {
+            src: "/projects/kokko-town/reception/reception-desk.jpg",
+            alt: "Kokko Town reception desk with a green airplane-window feature wall and backlit signage",
+          },
+        ],
+      },
+      {
+        name: "Family Café",
+        description:
+          "A rooftop-style café terrace with an arched colonnade, terrazzo flooring and a spiral staircase up to a games lounge — a relaxed space for parents while children play.",
+        images: [
+          {
+            src: "/projects/kokko-town/cafe/cafe-terrace-render.jpg",
+            alt: "Kokko Town café terrace with arched colonnade, terrazzo flooring and pendant lighting",
+          },
+          {
+            src: "/projects/kokko-town/cafe/cafe-lounge-render.jpg",
+            alt: "Kokko Town café lounge with spiral staircase and shape-matching activity wall overlooking the arcade",
+          },
+        ],
+      },
+      {
+        name: "Pretend Play Street - Supermarket, Gas Station & Garage",
+        description:
+          "A miniature town street built for role play, with two-storey Supermarket, Gas Station and Garage facades complete with fuel pumps, a street lamp, road markings and a stocked grocery interior for realistic pretend play.",
+        images: [
+          {
+            src: "/projects/kokko-town/pretend-play-street/street-render.jpg",
+            alt: "Kokko Town pretend-play street with Kokko Cafe, Garage, Supermart and Gas Station facades",
+          },
+          {
+            src: "/projects/kokko-town/pretend-play-street/gas-station-pumps-lamp.jpg",
+            alt: "Kokko Town Gas Station pretend-play area with fuel pumps and a lollipop-shaped street lamp",
+          },
+          {
+            src: "/projects/kokko-town/pretend-play-street/grocery-shelves.jpg",
+            alt: "Pretend-play supermarket interior with stocked shelving and checkout counter at Kokko Town",
+          },
+        ],
+      },
+      {
+        name: "Farmland Mezzanine & Kokko Town Marquee",
+        description:
+          "A farm-themed mezzanine level overlooking the ground floor, featuring a train-carriage viewing balcony above the backlit Kokko Town marquee and a colourful checkered floor.",
+        images: [
+          {
+            src: "/projects/kokko-town/farm-mezzanine/farmland-kokkotown-marquee-render.jpg",
+            alt: "Farmland mezzanine train balcony above the backlit Kokko Town marquee sign and checkered floor",
+          },
+          {
+            src: "/projects/kokko-town/farm-mezzanine/farm-balcony-train.jpg",
+            alt: "Farm-themed mezzanine train-carriage viewing balcony overlooking the Kokko Town ground floor",
+          },
+        ],
+      },
+      {
+        name: "Pretend Play Town - Bank, Hospital & Prison",
+        description:
+          "A multi-storey pretend-play town square with dedicated Bank, Hospital, Cafe, Garage and Prison facades, giving children a full civic role-play experience across two levels.",
+        images: [
+          {
+            src: "/projects/kokko-town/pretend-play-town/bank-hospital-prison.jpg",
+            alt: "Kokko Town pretend-play town square with Bank and Hospital facades and a Prison role-play booth",
+          },
+          {
+            src: "/projects/kokko-town/pretend-play-town/street-facade-wide.jpg",
+            alt: "Wide view of the Kokko Town pretend-play town with Hospital, Bank, Cafe and Garage facades across two levels",
+          },
+        ],
+      },
+      {
+        name: "Toddler Play Zone",
+        description:
+          "A dedicated soft-play zone for toddlers built around an airplane-themed structure with a spiral slide and padded enclosures for safe, independent play.",
+        images: [
+          {
+            src: "/projects/kokko-town/toddler-area/airplane-slide.jpg",
+            alt: "Airplane-themed toddler soft play structure with spiral slide at Kokko Town",
+          },
+        ],
+      },
+      {
+        name: "RC Car & Construction Adventure Zone",
+        description:
+          "A large-scale off-road and construction-themed adventure zone with a rope bridge, wooden ramps, log obstacles, an RC vehicle track and a full excavation pit with scaled construction machinery.",
+        images: [
+          {
+            src: "/projects/kokko-town/rc-construction-zone/construction-render.jpg",
+            alt: "Construction-themed excavation pit with scaled crane, dump truck and cement mixer at Kokko Town",
+          },
+          {
+            src: "/projects/kokko-town/rc-construction-zone/off-road-aerial-1.jpg",
+            alt: "Aerial view of the Kokko Town RC vehicle off-road obstacle course with rope bridge and log obstacles",
+          },
+        ],
+      },
+      {
+        name: "Sensory Play Wall",
+        description:
+          "A tactile, interactive sensory wall with spinning and rotating elements, textured panels and a digital timer, built as an activity feature near the Hospital pretend-play zone.",
+        images: [
+          {
+            src: "/projects/kokko-town/magic-wall/sensory-wall-render.jpg",
+            alt: "Interactive sensory play wall with spinning elements and textured panels at Kokko Town",
+          },
+          {
+            src: "/projects/kokko-town/magic-wall/pirate-wheel-play-area.jpg",
+            alt: "Interactive sensory wall with a spinning pinwheel feature and foam play elements at Kokko Town",
           },
         ],
       },

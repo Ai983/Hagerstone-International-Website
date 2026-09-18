@@ -116,6 +116,7 @@ export default function ProjectDetail() {
             hero={project.hero}
             heroAlt={project.heroAlt}
             heroVideo={project.heroVideo}
+            heroPosition={project.heroPosition}
           />
         </header>
 
