@@ -40,6 +40,10 @@ import SustainableGreenOffice from "@/pages/blog/sustainable-green-office-interi
 import CommercialHvacSystems from "@/pages/blog/commercial-hvac-systems";
 import OfficeFitOutCostGuideIndia2026 from "@/pages/blog/office-fit-out-cost-guide-india-2026";
 import MepDesignConsultancyIndia from "@/pages/blog/mep-design-consultancy-india";
+import HospitalityInteriorDesignIndia from "@/pages/blog/hospitality-interior-design-india";
+import FacadeGlazingGuideIndia from "@/pages/blog/facade-glazing-guide-india";
+import PebPreEngineeredBuildingsGuideIndia from "@/pages/blog/peb-pre-engineered-buildings-guide-india";
+import OfficeInteriorFitOutExecutionGuide from "@/pages/blog/office-interior-fit-out-execution-guide";
 
 const ssrQueryClient = new QueryClient({
   defaultOptions: {
@@ -72,6 +76,10 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/blog/commercial-hvac-systems" element={<CommercialHvacSystems />} />
         <Route path="/blog/office-fit-out-cost-guide-india-2026" element={<OfficeFitOutCostGuideIndia2026 />} />
         <Route path="/blog/mep-design-consultancy-india" element={<MepDesignConsultancyIndia />} />
+        <Route path="/blog/hospitality-interior-design-india" element={<HospitalityInteriorDesignIndia />} />
+        <Route path="/blog/facade-glazing-guide-india" element={<FacadeGlazingGuideIndia />} />
+        <Route path="/blog/peb-pre-engineered-buildings-guide-india" element={<PebPreEngineeredBuildingsGuideIndia />} />
+        <Route path="/blog/office-interior-fit-out-execution-guide" element={<OfficeInteriorFitOutExecutionGuide />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/find-your-style" element={<FindYourStyle />} />
         {/*

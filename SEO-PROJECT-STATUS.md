@@ -1,9 +1,14 @@
 # Hagerstone SEO & Content Engine — Status and Next Steps
 
-**Last updated:** 14 September 2026
+**Last updated:** 18 September 2026
 **Purpose:** Complete handover. Read this file first in a new chat — it contains the full
-context of the work done 9–11 September 2026, the research behind it, what is still
+context of the work done 9–16 September 2026, the research behind it, what is still
 outstanding, and how to continue.
+
+> **18 Sept summary:** the facade attribution issue is **resolved** (`52d19f3`). The
+> estimator lead leak is fixed (`4b20154`). `/materials/` is **complete at 60 pages**. The
+> site is at **234 pages**. **New urgent bug:** the 4 blog posts published 15 Sept were
+> never added to `ServerApp.tsx`, so Google gets a **404 page** for them — see §2.
 
 **Supersedes:** [CONTENT-ENGINE-PLAN.md](CONTENT-ENGINE-PLAN.md) (the original strategy
 document, written 9 Sept). That file is still accurate as *strategy*; this file records
@@ -15,18 +20,20 @@ what was actually **built**, what changed, and what is left.
 
 | | |
 |---|---|
-| **Pages live** | **169** (was 41 on 9 September) |
+| **Pages live** | **234** (was 41 on 9 Sept, 169 on 14 Sept) |
 | **Live site** | https://hagerstone.com — hosted on **Vercel** (confirmed via response headers) |
 | **Repo** | https://github.com/Ai983/Hagerstone-International-Website — branch `main` |
-| **Working tree** | Clean, 0 unpushed commits as of 14 Sept |
-| **Content files** | 83 `.mdx` files |
+| **Working tree** | Clean, 0 unpushed commits as of 18 Sept (only the untracked `SALES_FUNNEL_MASTER.xlsx`) |
+| **Content files** | 143 `.mdx` files |
 | **Cities live** | 26 |
-| **Sitemap** | Auto-generated, 169 URLs, verified live |
+| **Blog posts** | 11 (legacy `.tsx` posts, not MDX) |
+| **Sitemap** | Auto-generated, 234 URLs, drift guard matched |
 
 ### Content breakdown
 
 | Collection | Files | URL pattern |
 |---|---:|---|
+| materials | 60 | `/materials/{slug}` |
 | glossary | 35 | `/glossary/{slug}` |
 | facade sub-services | 9 | `/services/facade-glazing/{slug}` |
 | interiors sub-services | 9 | `/services/interior-fit-out/{slug}` |
@@ -35,10 +42,10 @@ what was actually **built**, what changed, and what is left.
 | mep sub-services | 7 | `/services/mep/{slug}` |
 | peb sub-services | 4 | `/services/peb/{slug}` |
 | civil sub-services | 3 | `/services/construction/{slug}` |
-| **Total MDX** | **83** | |
+| **Total MDX** | **143** | |
 
 Plus 26 city pages (`/locations/{city}`), 26 auto-generated
-`/office-interior-designers-in-{city}` pages, 7 project pages, 7 legacy blog posts, and
+`/office-interior-designers-in-{city}` pages, 7 project pages, 11 blog posts, and
 the core static pages.
 
 ### Tech stack
@@ -56,9 +63,48 @@ Backend: Supabase (project `cuycosjchirgjmfczcle`, "Hager-Website"), 6 edge func
 
 ---
 
-## 2. THE ONE URGENT ISSUE — facade project attribution
+## 2. Urgent issues
 
-**Status: BLOCKING. Must be resolved before any new content work.**
+### 2.1 FIXED — 4 blog posts served a 404 page to Google (found and fixed 18 Sept)
+
+**Status: fixed in `ServerApp.tsx` on 18 Sept.** After a full build, all 4 files in
+`dist/blog/` render the real article (~84 KB each, correct `<h1>`, no 404 markup), and
+prerender printed `234 succeeded, 0 failed`. **Live only after the fix is pushed and
+Vercel deploys.** Then run the `curl` check below against production, and use URL
+Inspection → Request indexing in Search Console for the 4 URLs.
+
+Commits `5436d18` and `11822d2` (15 Sept) added four blog posts to `App.tsx` and
+`prerender.js` but **not to `src/ServerApp.tsx`**. Prerender renders `ServerApp`, so
+these routes fall through to its `path="*"` → `<NotFound />`. Verified live on 18 Sept:
+`curl https://hagerstone.com/blog/facade-glazing-guide-india` returns HTML whose `<h1>`
+is **"404"**, while an older post (`office-fit-out-cost-guide-india-2026`) returns its
+real article. The URLs are in the sitemap and return HTTP 200, so Google sees a
+soft-404 on each.
+
+Affected:
+- `/blog/hospitality-interior-design-india`
+- `/blog/facade-glazing-guide-india`
+- `/blog/peb-pre-engineered-buildings-guide-india`
+- `/blog/office-interior-fit-out-execution-guide`
+
+**Fix:** add the four eager imports and `<Route>`s to `ServerApp.tsx` (mirroring lines
+36–42 / 68–74), rebuild, and grep the prerendered `dist/blog/*.html` for the real title.
+This is the same App/ServerApp drift the route registry (§6, Phase 1) was meant to make
+impossible. It will recur until that registry is built or the blog is moved to MDX.
+
+### 2.2 RESOLVED — facade project attribution (fixed 16 Sept, `52d19f3`)
+
+**Resolution:** eight projects moved under a "Facade leadership experience" heading
+credited to the Director – Facade, Akhilesh Kumar Singh. **M3M (Sector 79) and Max
+Hospital (Saket) stay as Hagerstone's delivered work**, because they came from the internal
+CPS data in `cities.ts`, not the facade profile. Dee Development (Bhuj) is a different
+entity from Dee Foundation (Faridabad) and is one of the eight. The Bhuj city page lost
+its project row, since the city template shows only a fixed "Projects Delivered"
+heading. Meta descriptions and FAQs that claimed quantities now cite the governing
+standard instead. The two estate pages (`cyber-city-gurugram`, `new-gurugram-sectors`)
+were reworded the same way and are still published.
+
+The original record follows for reference.
 
 On 11 Sept, Dhruv sir said via WhatsApp about the facade projects on the website:
 
@@ -105,7 +151,7 @@ projects**. The rest came only from the facade profile PDF.
 
 | Instruction | Status |
 |---|---|
-| "Technical pages add kartey jao" | ✅ In progress — 83 technical pages built |
+| "Technical pages add kartey jao" | ✅ In progress — 143 technical pages built |
 | All 6 lines: Interiors, Aluminium D&W, MEP, Facade, PEB, Civil | ✅ **Complete** — all six have sub-service pages |
 | "Har city ke page hona chahiye" | 🟡 26 of ~65 target North India cities |
 | "North India ki all cities — Delhi/NCR, Punjab, Rajasthan, Himachal, J&K, Gujarat, UP, Haryana" | 🟡 J&K not started; others partially |
@@ -282,6 +328,30 @@ Built:
 | `746a0b6` | 4 PEB + 3 civil sub-service pages | 95 → 102 |
 | `5e2d12e` | 14 cities, 8 estates, 8 industries, 21 glossary | 102 → **169** |
 
+### Phase 6 — Blog, attribution fix, lead fix, materials (15–16 Sept)
+
+| Commit | Work | Pages |
+|---|---|---|
+| `179db68` | This status document (14 Sept) | — |
+| `5436d18` | Blog: hospitality interior design | +1 ⚠ see §2.1 |
+| `11822d2` | Blog: facade & glazing guide, PEB guide, fit-out execution guide; readTime corrected on all posts | +3 ⚠ see §2.1 |
+| `ca177f1` | `Blog.tsx` hardcoded `getRecentPosts(9)` and dropped 2 of the 11 posts from the listing; it now shows all of them | — |
+| `52d19f3` | **Facade attribution fixed** across 15 files (see §2.2) | — |
+| `4b20154` | **Estimator lead leak fixed.** The fit-out estimator collected name, email, phone and company behind an OTP step that sent no OTP and accepted any 6 digits. **It never saved the lead**, so every estimator enquiry since launch was lost. It now goes through `submitLead()`. `verify-otp` also records the lead's source surface, so style-quiz and estimator leads can be told apart. **The OTP itself is still fake.** Making it real is a separate decision. | — |
+| `ee2642c` | 12 materials pages, starting with the facade envelope | 173 → 186 |
+| `dca9059` | 18 materials: glass, roofing, MEP | 186 → 204 |
+| `c41477d` | 30 materials, which completes the collection at 60 | 204 → **234** |
+
+**Materials design rules** (keep them for future pages):
+- Everything is sourced from published standards (IS, EN, ASTM, ECBC, NBC), never from
+  project claims. None of it depends on who built what.
+- Materials pages deliberately **don't repeat the subjects already covered in the
+  glossary** (DGU, low-E, laminated vs toughened, ACP FR core, and so on). The two
+  collections cross-link instead, so they don't compete for the same searches.
+- Several pages correct costly misconceptions: FRLS cable is not fire-survival cable,
+  a fire-rated board does not make a fire-rated partition, a nitrogen purge is required
+  when brazing refrigerant pipe, and a ventilated facade needs cavity barriers.
+
 ### Key content decisions made (and why)
 
 1. **City pages cover all six service lines on one page** — no service×city matrix. This
@@ -326,12 +396,12 @@ Built:
 | Phase 1 — Delete Supabase `routes` table | ❌ **Not done.** Still ships uncrawlable
   routes via `useRoutes()` in `App.tsx`. |
 | Phase 1 — 301 `/blog/*` → `/insights/*` | ❌ Not done (no `/insights` content yet) |
-| Phase 1 — Prerender worker pool | ❌ Not needed yet (169 routes prerender in ~30s) |
+| Phase 1 — Prerender worker pool | ❌ Not needed yet (234 routes prerender fine) |
 | Phase 2 — Calculators (18 planned) | ❌ **Zero built.** Biggest remaining gap. |
 | Phase 2 — `/cost/` pages | ❌ Blocked on P0.5 |
 | Phase 2 — `/compare/` pages | ❌ Not started |
 | Phase 3 — Glossary 120 target | 🟡 35 of 120 |
-| Phase 3 — Materials 60 | ❌ Not started |
+| Phase 3 — Materials 60 | ✅ **Done** — 60 of 60 (16 Sept) |
 | Phase 3 — Estates 110 | 🟡 8 of 110 |
 | Phase 3 — Cities 65 | 🟡 26 of 65 |
 | Phase 4 — `/compliance/` 45 | ❌ Not started |
@@ -346,8 +416,7 @@ Built:
 
 ### For Sir
 
-1. **Facade project attribution** (§2) — **most urgent**, live site currently makes claims
-   that may be wrong.
+1. ~~**Facade project attribution**~~ — ✅ resolved 16 Sept (§2.2).
 2. **Fit-out cost per sq ft.** Three conflicting numbers are live:
    estimator says Basic ₹2,500 / Mid ₹3,000–3,500 / Luxury ₹4,500;
    homepage FAQ says ₹800–2,500; market says Basic ₹800–1,200.
@@ -363,7 +432,10 @@ Built:
    Hashtag Orange, Medtronic be named on the website?
 6. **MEP / PEB / Civil project names** — those pages have no project proof at all.
 7. **Who reviews technical content**, and how many hours per week. This sets the real
-   publishing ceiling.
+   publishing ceiling. **It now blocks calculators too** (§8, Step 4). 234 pages are
+   live and no Hagerstone expert has reviewed any of them.
+8. **Estimator OTP** — make it a real OTP, or remove the step? Right now it accepts any
+   six digits, so it adds friction and protects nothing.
 
 ### For Yash / the team
 
@@ -380,11 +452,12 @@ Built:
 
 ## 8. Next steps, in priority order
 
-### Step 1 — Fix facade attribution (blocking, ~1 hour once Sir replies)
-Reword or remove across 19 pages; unpublish the two dependent estate pages if needed.
+### Step 1 — ✅ Fixed the 4 blog posts that served a 404 page (§2.1). Push, then request indexing.
+~~Fix facade attribution~~ — done 16 Sept.
 
 ### Step 2 — Wait for indexation before more location pages
-67 pages went live on 11 Sept. Check Search Console **Pages** report around 25 Sept:
+67 pages went live on 11 Sept and 60 materials pages on 16 Sept. Check the Search
+Console **Pages** report around 25 Sept:
 - How many of the 26 city pages are indexed?
 - Are the estate pages indexed?
 - Any rise in "crawled — currently not indexed"?
@@ -403,13 +476,32 @@ These carry no duplication risk and can be added continuously:
 - **`/compliance/` pages** — fire NOC per state, ECBC checklist, IS 875 wind load,
   ACP fire rating rules, IGBC/LEED for interiors
 - **More glossary** — 35 of a 120 target
-- **`/materials/` pages** — 60 planned, 0 built
+- ~~`/materials/` pages~~ — ✅ 60 of 60 done
 
 ### Step 4 — Calculators (the actual lead engine)
 Zero built. Secured Engineers get their leads from **37 calculators**, not their blog.
-Four need no pending decision because they are pure code-based maths:
-glazing area & cost · ACP cladding area · curtain wall wind pressure · office HVAC tonnage.
-The fit-out cost calculator is blocked on the cost-band decision.
+
+**Correction (18 Sept):** the earlier claim that four calculators "need no pending decision"
+was too optimistic. The code, the SEO position and the business decisions each need
+checking separately:
+
+| Question | Answer |
+|---|---|
+| **SEO risk?** | **Low.** A working tool plus ~2,000 words of method is the opposite of thin content, and there is no doorway-page risk. It is safer than more location pages. |
+| **Can it be built without approval?** | **Yes, as drafts.** The framework, UI and draft pages can be built and committed now. |
+| **Can it go live without approval?** | **No, by design.** `calculators` is in `REVIEW_REQUIRED` in `src/content/schema.ts`, so the build refuses `status: published` without a named `reviewedBy`. **Someone at Hagerstone has to sign off each calculator.** |
+| **Rupee outputs?** | **Blocked.** "Glazing area **& cost**" and "ACP **cost**" need ₹ rates, which is the same unresolved pricing decision as P0.5. Build them to output **quantities only** (area, sheet count, wastage), with a CTA for pricing. |
+| **Wind pressure (IS 875 Pt 3)** | **Highest risk.** The maths is published, but basic wind speed per city is the value §4.4 found contradictory across sources. The user should enter Vb themselves, or the city table must be verified from the code. It needs Akhilesh ji's sign-off, because a wrong number here is a structural claim. |
+| **HVAC tonnage** | Rule-of-thumb (sq ft per TR) is safe if presented as a *preliminary estimate*. It still needs an MEP reviewer's name. |
+| **Code work needed** | No calculator framework exists yet (`CalculatorDef`, `CalculatorShell`, routes). New routes must be added to **both** `App.tsx` and `ServerApp.tsx`. §2.1 shows what happens otherwise. The `leads` table has no `calculator_id` / `calculator_inputs` / `calculator_result` columns yet, so that needs a small migration. |
+
+**Minimum decision needed from Sir:** one name per calculator to act as reviewer
+(Akhilesh ji for glazing/ACP/wind; the MEP head for HVAC). No pricing decision is needed
+if the calculators output quantities only.
+
+**Recommended order:** glazing area → ACP area & sheet optimisation → HVAC tonnage →
+wind pressure (last, heaviest review). The fit-out cost calculator stays blocked on
+cost bands.
 
 Pattern: **ungated instant result** → three CTAs ("email me this breakdown", "send to
 WhatsApp" prefilled with the result, "get an engineer to validate this") → ~2,000 words of
@@ -425,6 +517,9 @@ schema, llms.txt exists. Still outstanding:
 - Everything in `OFFSITE-TODO.md`, which still has **zero items ticked**
 
 ### Step 6 — Technical debt worth clearing
+- **App/ServerApp route drift** — this has now caused a live bug (§2.1). Build the
+  route registry with a parity test, or at minimum a build check that every path in
+  `prerender.js` renders something other than `NotFound`.
 - **Delete the Supabase `routes` table** and `useRoutes()` — it injects runtime routes
   that `ServerApp.tsx`/`prerender.js` have never heard of, so anything served through it
   returns an empty SPA shell to Googlebot
@@ -555,13 +650,17 @@ enquiry), the site has WhatsApp contact, the analytics are trustworthy, and addi
 costs one file instead of five. Page count went 41 → 169 with all six service lines
 covered and 26 cities live.
 
+**Update 18 Sept:** the facade claims are corrected, a second lead leak (the estimator)
+is closed, and the site is at 234 pages. A new App/ServerApp drift bug hid 4 blog
+posts from Google (§2.1).
+
 **What has not been proven yet:** none of this has produced a measurable lead or ranking
 improvement, because it is days old. The 695-clicks-per-quarter baseline is the number to
 beat. Search Console around 25 September is the first real evidence.
 
 **The biggest risks:**
-1. The facade attribution issue — live pages may claim work Hagerstone did not do.
-2. 169 pages published in three days with **no human expert review of any of it**. The
+1. ~~The facade attribution issue~~ — resolved 16 Sept.
+2. 234 pages published in a week with **no human expert review of any of it**. The
    content is drawn from published codes and the company's own profiles, but nobody at
    Hagerstone has read it.
 3. Location pages are the doorway-page risk. 28 went live in one batch, above the ~25
