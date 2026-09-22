@@ -1,5 +1,12 @@
 // Add a client name to the hashed blocklist used by check-client-safety.mjs.
 //
+// ONLY add a client whose name must never appear on the site. Do NOT add a
+// client the site already names with approval — Theon Pharmaceuticals, for one,
+// has a project page and is named on three content pages, so blocklisting it
+// failed the build on legitimate, previously approved content. A design study
+// can still anonymise a client the site names elsewhere; that is an editorial
+// choice, and it does not belong in the guard.
+//
 // Names are stored as salted hashes, never plaintext, because this repo is
 // public. Run this locally and commit the updated config file; the name itself
 // never appears anywhere in the repo or its history.

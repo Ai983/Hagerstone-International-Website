@@ -123,7 +123,10 @@ grep -ril "<client name>" dist/          # must print nothing
 - [ ] No rupee figures, no per-sq-ft rates, no statutory claims, no "we delivered"
 - [ ] `metaTitle` contains "Hagerstone" and is 65 characters or fewer
 - [ ] All three check scripts pass, and the prerender count rises by one
-- [ ] The client's name added to the blocklist: `node scripts/blocklist-add.mjs "<Name>"`
+- [ ] The client's name added to the blocklist: `node scripts/blocklist-add.mjs "<Name>"` —
+      **but only if the site does not already name them.** Some clients are named on
+      project, estate and industry pages from approved data; blocklisting one of those
+      fails the build on legitimate content. Anonymise the study, leave the guard alone.
 
 ---
 

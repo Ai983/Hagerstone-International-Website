@@ -1,0 +1,104 @@
+{
+  "_readme": [
+    "Two-floor pharmaceutical company office. Source deck exports are NOT committed.",
+    "No redaction ops in this set: the chosen views carry no client mark. Reception",
+    "views were excluded instead - the company's name is applied as wall lettering",
+    "behind the desk in every one of them. The lounge views show the same space.",
+    "Both floor plans are rendered from the deck's vector pages at 220 dpi and cropped",
+    "above the title band, which also removes the approval stamp and our own logo."
+  ],
+
+  "cafeteria": {
+    "source": "p43-view-1.png",
+    "note": "no client mark",
+    "group": "amenities",
+    "alt": "Office cafeteria with long tables, coloured chairs and a terracotta wall of ceramic plates",
+    "caption": "The cafeteria on the upper floor, seating 40. Indicative viewpoint."
+  },
+
+  "ground-floor-plan": {
+    "source": "ground-floor-plan.png",
+    "group": "floor-plans",
+    "quality": 84,
+    "alt": "Annotated ground floor office plan marking reception, board room, cabins and server rooms",
+    "caption": "Ground floor: reception and lounge, board room for 17, meeting rooms, cabins, collab area, a 33-desk workstation block, and the IT, server and UPS rooms along the service wall."
+  },
+
+  "first-floor-plan": {
+    "source": "first-floor-plan.png",
+    "group": "floor-plans",
+    "quality": 84,
+    "alt": "Annotated first floor office plan marking cabins, workstation blocks, cafeteria and pantry",
+    "caption": "First floor: fourteen cabins around the edge, workstation blocks of 24, 12 and 8, a 40-seat cafeteria, pantry and document room."
+  },
+
+  "reception-lounge": {
+    "source": "p11-r-e-c-e-ption.png",
+    "group": "arrival",
+    "alt": "Office visitor lounge with blue and tan sofas, timber panelling and a stone floor",
+    "caption": "The visitor lounge: seating for seven, held apart from the reception counter. Indicative viewpoint."
+  },
+
+  "board-room": {
+    "source": "p18-view-3.png",
+    "group": "meeting-and-collaboration",
+    "alt": "Board room with a long timber table, acoustic ceiling and a blue panelled wall",
+    "caption": "The board room seats 17, with an acoustic ceiling raft over the table. Indicative viewpoint."
+  },
+
+  "meeting-room": {
+    "source": "p30-view-3.png",
+    "group": "meeting-and-collaboration",
+    "alt": "Meeting room with a ten-seat table, linear pendant and a wall-mounted screen",
+    "caption": "A meeting room off the main corridor, glazed to borrow light. Indicative viewpoint."
+  },
+
+  "collab-room": {
+    "source": "p28-view-1.png",
+    "group": "meeting-and-collaboration",
+    "alt": "Collaboration room with a meeting table, writing wall and a sofa under a yellow graphic",
+    "caption": "The collab room pairs a table with soft seating, so a workshop can change gear. Indicative viewpoint."
+  },
+
+  "calling-pods": {
+    "source": "p33-view-1.png",
+    "group": "meeting-and-collaboration",
+    "alt": "Two enclosed single-person calling pods beside a breakout sofa and graphic art",
+    "caption": "Calling pods: the pressure valve that keeps one-to-one calls out of the meeting rooms. Indicative viewpoint."
+  },
+
+  "collab-lounge": {
+    "source": "p31-view-4.png",
+    "group": "meeting-and-collaboration",
+    "alt": "Breakout lounge with a blue sofa against a yellow motivational graphic wall",
+    "caption": "Breakout seating beside the collab room, for the conversation that follows a meeting. Indicative viewpoint."
+  },
+
+  "workstations": {
+    "source": "p40-view-1.png",
+    "group": "workstations",
+    "alt": "Open-plan workstation blocks with planter-topped storage between the rows",
+    "caption": "Workstation blocks with planters on the storage line, which screens without partitioning. Indicative viewpoint."
+  },
+
+  "workstations-values-wall": {
+    "source": "p41-view-2.png",
+    "group": "workstations",
+    "alt": "Open-plan office with yellow graphic walls carrying single words across the floor",
+    "caption": "Graphics carry single words across the floor — the cheapest way to make a deep plate feel intentional. Indicative viewpoint."
+  },
+
+  "cafeteria-plate-wall": {
+    "source": "p45-view-3.png",
+    "group": "amenities",
+    "alt": "Cafeteria wall of decorative ceramic plates above banquette seating",
+    "caption": "The plate wall: one wall does the work, so the rest of the room stays plain. Indicative viewpoint."
+  },
+
+  "washroom": {
+    "source": "p52-ground-first-floor.png",
+    "group": "amenities",
+    "alt": "Office washroom with twin basins, round backlit mirrors and a marble wall",
+    "caption": "Washrooms are where a fit-out's standard is judged fastest. Indicative viewpoint."
+  }
+}
