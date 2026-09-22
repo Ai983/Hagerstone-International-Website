@@ -3,6 +3,56 @@
 User-agent: *
 Allow: /
 
+# AI crawlers, allowed explicitly.
+#
+# "User-agent: *" already permits them, but several of these bots look for
+# their own block first, and some publishers block them by default — stating
+# it plainly makes the intent unambiguous. Being readable by these crawlers is
+# the point: the site is written to be quoted in AI answers, not just ranked.
+
+# OpenAI — training, search index, and on-demand fetches for ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google's AI products (Gemini, AI Overviews grounding)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl — the dataset many models are trained from
+User-agent: CCBot
+Allow: /
+
 # Sitemaps
 Sitemap: https://hagerstone.com/sitemap-index.xml
 Sitemap: https://hagerstone.com/sitemap.xml
