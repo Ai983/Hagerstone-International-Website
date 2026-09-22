@@ -160,14 +160,19 @@ async function run(slug, inDir, planFile) {
 
     // No .withMetadata(): sharp strips EXIF/XMP by default, which is what we
     // want — those fields can carry author and company names.
+    // A busy render (lots of fine detail, no flat areas) can exceed the size
+    // budget at the default quality. `quality` in the plan lowers it for that
+    // one image rather than softening every image to suit the worst case.
+    const quality = spec.quality ?? WEBP_QUALITY;
+
     const big = sharp(redacted).resize({ width: MAX_WIDTH, withoutEnlargement: true });
     const bigFile = path.join(outDir, `${key}-1600.webp`);
-    await big.clone().webp({ quality: WEBP_QUALITY, effort: 6 }).toFile(bigFile);
+    await big.clone().webp({ quality, effort: 6 }).toFile(bigFile);
 
     const smallFile = path.join(outDir, `${key}-800.webp`);
     await sharp(redacted)
       .resize({ width: SMALL_WIDTH, withoutEnlargement: true })
-      .webp({ quality: WEBP_QUALITY, effort: 6 })
+      .webp({ quality, effort: 6 })
       .toFile(smallFile);
 
     const meta = await sharp(bigFile).metadata();

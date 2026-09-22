@@ -47,6 +47,13 @@ const GENERIC = new Set([
   "engineering", "construction", "interiors", "design", "designs", "studio", "first",
   "prime", "star", "city", "north", "south", "east", "west", "delhi", "noida",
   "gurugram", "gurgaon", "mumbai", "bengaluru", "chennai", "pune", "jaipur", "ncr",
+  // Words that recur in Indian project and developer names but are also ordinary
+  // English. "homes" alone flagged a sentence about selling homes; "hero" would
+  // flag heroImage. A generic word is only ever blocked as part of a full name.
+  "homes", "home", "hero", "tower", "towers", "heights", "residency", "residences",
+  "greens", "green", "villa", "villas", "park", "plaza", "square", "court", "enclave",
+  "vihar", "nagar", "puram", "colony", "sector", "phase", "block", "unity", "trust",
+  "life", "lifesciences", "sciences", "canteen", "piping", "capital",
 ]);
 
 // Hash the full name, plus any distinctive word in it, so "Acme Capital" and a

@@ -1,0 +1,56 @@
+{
+  "_readme": [
+    "Sales experience centre. Source deck exports are NOT committed (public repo).",
+    "The deck is mostly title cards and material boards; four room renders sit inside",
+    "composite lighting-plan slides and were re-rendered from the PDF at 300 dpi and",
+    "cropped (see the extraction step in docs/OFFICE-DESIGN-INTAKE.md), rather than",
+    "pulled as low-resolution embedded bitmaps.",
+    "The reception render is DROPPED: the client's logo appears on the back wall AND",
+    "again as a reflection in the glazed partition, so two separate patches would be",
+    "needed on the same image. Not worth retouching."
+  ],
+
+  "cafe-and-lounge": {
+    "source": "cafe-lounge.png",
+    "note": "no client mark",
+    "group": "front-of-house",
+    "alt": "Cafe seating in a sales lounge with a statement chandelier and full-height glazing",
+    "caption": "The cafe, planned as the waiting room a walk-in visitor actually wants. Indicative viewpoint."
+  },
+
+  "conference-room": {
+    "source": "conference-room.png",
+    "group": "meeting-spaces",
+    "alt": "Twelve-seat conference room with a marble-pattern feature wall and writable wall",
+    "caption": "Conference room, 4800 x 6800 mm, with a writable wall opposite the screen. Indicative viewpoint."
+  },
+
+  "meeting-room-one": {
+    "source": "meeting-room-one.png",
+    "group": "meeting-spaces",
+    "alt": "Six-seat meeting room with a pendant light over the table and a window to one side",
+    "caption": "Meeting room one, 3300 x 5400 mm, seating six around a 1000 x 2100 mm table. Indicative viewpoint."
+  },
+
+  "meeting-area-three": {
+    "source": "meeting-area-three.png",
+    "group": "meeting-spaces",
+    "alt": "Small three-seat meeting nook with a round table and cluster pendant light",
+    "caption": "The smallest room, 2100 x 2700 mm: one table, three chairs, for a single negotiation. Indicative viewpoint."
+  },
+
+  "sales-head-cabin": {
+    "source": "sales-head-cabin.png",
+    "group": "sales-floor",
+    "alt": "Sales head's cabin with a desk, two visitor chairs and a pendant light over the desk",
+    "caption": "Sales head's cabin, 2500 x 3400 mm, within sight of the floor it runs. Indicative viewpoint."
+  },
+
+  "workstation-bay": {
+    "source": "workstation-bay.png",
+    "group": "sales-floor",
+    "quality": 68,
+    "alt": "Nine-desk sales workstation bay with linear pendant lights and display shelving",
+    "caption": "Nine desks in a 5200 x 5800 mm bay, lit to work in rather than to photograph. Indicative viewpoint."
+  }
+}
