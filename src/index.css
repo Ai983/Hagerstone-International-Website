@@ -282,3 +282,29 @@ All colors MUST be HSL.
     color: hsl(var(--foreground));
   }
 }
+
+/*
+  In-content links have to look like links.
+
+  --primary and --foreground are the same value in this theme (220 15% 18%), so
+  a link written as `text-primary` renders in exactly the body text colour and
+  only reveals itself on hover. Across the blog posts alone that left ~79
+  internal links invisible, which costs both the reader and the internal linking
+  those pages were written for.
+
+  Scoped deliberately: only anchors that already opted into `text-primary` and
+  sit inside body copy (a paragraph or list item within <main>). Buttons, cards,
+  navigation and breadcrumbs are untouched, and .prose pages style their own
+  links already.
+*/
+@layer components {
+  main :is(p, li, td) a.text-primary {
+    color: hsl(var(--accent));
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+  }
+
+  main :is(p, li, td) a.text-primary:hover {
+    color: hsl(var(--accent) / 0.8);
+  }
+}
