@@ -1,0 +1,98 @@
+{
+  "_readme": [
+    "Plant office study, three floors. Source deck exports are NOT committed (public repo).",
+    "One client mark only: an emblem on the reception back wall. Everything else is unmarked.",
+    "Title-card slides and the duplicate reception view are excluded, not redacted."
+  ],
+
+  "open-plan-workstations": {
+    "source": "p16-workstation.png",
+    "note": "no client mark",
+    "group": "first-floor",
+    "alt": "Open-plan office workstations in a long bay with glazed cabins along one side",
+    "caption": "The workstation bay, with cabins glazed to the floor so daylight carries across. Indicative viewpoint."
+  },
+
+  "reception-desk": {
+    "source": "p05-reception.png",
+    "skip": true,
+    "note": "DROPPED. A large client emblem sits centred on the reception back wall, directly behind the desk. Patching it leaves a visible rectangle against the wall's gradient, and the second reception view (p06) carries the same mark. Both are excluded rather than badly retouched — there are eleven unmarked views without them. Revisit only if the deck's source render can be re-exported without the emblem."
+  },
+
+  "guest-waiting-lounge": {
+    "source": "p07-guest-waiting-area.png",
+    "group": "ground-floor",
+    "alt": "Visitor waiting lounge with armchairs, a sofa and a timber slat ceiling",
+    "caption": "Guest waiting, placed inside the gate but outside the working floor. Indicative viewpoint."
+  },
+
+  "meeting-room-ground-floor": {
+    "source": "p08-meeting-room.png",
+    "group": "ground-floor",
+    "alt": "Ten-seat meeting room with a wall-mounted screen and graphic accent wall",
+    "caption": "The ground-floor meeting room, reachable without crossing the office. Indicative viewpoint."
+  },
+
+  "dispatch-office": {
+    "source": "p11-dispatch-office.png",
+    "group": "ground-floor",
+    "alt": "Dispatch office workstations facing a window onto the yard with a graphic wall behind",
+    "caption": "Dispatch, kept at ground level with a view of the yard it coordinates. Indicative viewpoint."
+  },
+
+  "conference-room": {
+    "source": "p14-conference-room.png",
+    "group": "first-floor",
+    "alt": "Sixteen-seat conference room with a timber-panelled screen wall and glazing to one side",
+    "caption": "The conference room, sized for full management reviews. Indicative viewpoint."
+  },
+
+  "discussion-room": {
+    "source": "p18-discussion-room.png",
+    "group": "first-floor",
+    "alt": "Eight-seat discussion room with a ring pendant light and blinds on the window wall",
+    "caption": "A discussion room for the meetings that do not need the conference table. Indicative viewpoint."
+  },
+
+  "war-room": {
+    "source": "p20-war-room.png",
+    "group": "first-floor",
+    "alt": "Small war room with a six-seat table, screen and window blinds",
+    "caption": "The war room: a standing daily review space, deliberately small. Indicative viewpoint."
+  },
+
+  "plant-head-cabin": {
+    "source": "p21-plant-head-room.png",
+    "group": "first-floor",
+    "alt": "Plant head's cabin with a meeting table for six and glazing to the plant side",
+    "caption": "Plant head's cabin, with its own table so reviews happen in the room. Indicative viewpoint."
+  },
+
+  "director-cabin": {
+    "source": "p23-visitor-director.png",
+    "group": "first-floor",
+    "alt": "Director's cabin with a desk, three visitor chairs and a display unit behind",
+    "caption": "Director's cabin, on the management floor above the visitor route. Indicative viewpoint."
+  },
+
+  "staff-canteen": {
+    "source": "p28-canteen-1.png",
+    "group": "second-floor",
+    "alt": "Staff canteen with long tables, bench seating and pendant lights over a glazed wall",
+    "caption": "The canteen, on the top floor away from both production and meetings. Indicative viewpoint."
+  },
+
+  "training-room": {
+    "source": "p31-training-room-1.png",
+    "group": "second-floor",
+    "alt": "Training room laid out in rows of chairs facing a presenter's desk",
+    "caption": "Training room, laid out for induction and compliance sessions. Indicative viewpoint."
+  },
+
+  "breakout-area": {
+    "source": "p32-breakout-1.png",
+    "group": "second-floor",
+    "alt": "Breakout area with a table tennis table, cafe seating and a graphic feature wall",
+    "caption": "Breakout beside the canteen, so the amenity floor works through the day. Indicative viewpoint."
+  }
+}
