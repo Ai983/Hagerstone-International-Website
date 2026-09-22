@@ -1,0 +1,88 @@
+{
+  "_readme": [
+    "Industrial canteen. Source deck exports are NOT committed (public repo).",
+    "Most views are unmarked. The directors' dining view carries a framed logo panel on",
+    "the back wall, patched by sampling the same wall panel above it. One servery view",
+    "(p19) is excluded in favour of p18, which shows the same fixed-bench dining",
+    "without a wall sign."
+  ],
+
+  "canteen-exterior": {
+    "source": "p05-untitled-1.png",
+    "note": "no client mark",
+    "group": "building",
+    "alt": "Industrial canteen building in brick with a metal roof and a glazed entrance",
+    "caption": "The canteen as its own building: brick, metal roof, glazed entrance. Indicative viewpoint."
+  },
+
+  "exterior-side": {
+    "source": "p07-untitled-1.png",
+    "group": "building",
+    "alt": "Side elevation of a canteen building with a brick wing and a rendered service block",
+    "caption": "The service block sits behind, with its own access for deliveries and gas. Indicative viewpoint."
+  },
+
+  "ground-floor-plan": {
+    "source": "p03-untitled.png",
+    "group": "plan",
+    "quality": 82,
+    "alt": "Annotated canteen floor plan marking dining halls, kitchen, wash areas and toilets",
+    "caption": "The whole building on one plan: 200-seat workers' dining, 120-seat staff dining, 16-seat directors' dining, kitchen, wash lines and toilets."
+  },
+
+  "workers-dining": {
+    "source": "p18-untitled-1.png",
+    "group": "dining-halls",
+    "alt": "Workers' dining hall with fixed bench tables and stools under a metal roof",
+    "caption": "Workers' dining, 24150 x 9255 mm for 200: fixed tables and stools, nothing to move or lose. Indicative viewpoint."
+  },
+
+  "staff-dining-rows": {
+    "source": "p13-untitled-1.png",
+    "group": "dining-halls",
+    "alt": "Staff dining hall with rows of loose tables and chairs beside a vending machine",
+    "caption": "Staff dining, 11961 x 12015 mm for 120: loose furniture, so the room can be re-set. Indicative viewpoint."
+  },
+
+  "staff-dining-tables": {
+    "source": "p11-untitled-1.png",
+    "group": "dining-halls",
+    "alt": "Dining hall with clerestory glazing above a brick dado and a drinks chiller",
+    "caption": "Clerestory glazing above the brick dado lights the hall without west glare at the tables. Indicative viewpoint."
+  },
+
+  "cafe-counter": {
+    "source": "p23-untitled-1.png",
+    "group": "cafe-and-servery",
+    "alt": "Cafe counter with high stools, pendant lights and a round table beyond",
+    "caption": "The cafe counter: a short break taken standing, away from the dining halls. Indicative viewpoint."
+  },
+
+  "serving-counter": {
+    "source": "p22-untitled-1.png",
+    "group": "cafe-and-servery",
+    "alt": "Serving counter in timber and stone with a slatted screen dividing the seating beyond",
+    "caption": "Serving counter, with a slatted screen separating it from the quieter seating. Indicative viewpoint."
+  },
+
+  "directors-dining": {
+    "source": "p21-untitled-1.png",
+    "note": "CLIENT MARK: framed logo panel, centred on the back wall",
+    "group": "directors",
+    "ops": [
+      {
+        "type": "fill",
+        "left": 850,
+        "top": 437,
+        "width": 180,
+        "height": 112,
+        "sampleFrom": { "left": 850, "top": 560 },
+        "sampleWidth": 180,
+        "sampleHeight": 34,
+        "sigma": 4
+      }
+    ],
+    "alt": "Directors' dining room with a round table, slatted timber screens and panelled walls",
+    "caption": "Directors' dining, 11900 x 5000 mm for 16, screened rather than walled off. Indicative viewpoint."
+  }
+}
