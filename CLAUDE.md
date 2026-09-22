@@ -23,11 +23,16 @@ see `rendered a not-found page`, do not work around it: add the missing `<Route>
 | **Project** | Add an entry to `src/data/project.ts`. That's all: prerender and sitemaps read it. |
 | **Blog post** | Add an entry to `src/data/blogPosts.ts`, create `src/pages/blog/<slug>.tsx`, then add a `<Route>` in **both** `App.tsx` (lazy) and `ServerApp.tsx` (eager import). |
 | **Content page** (glossary, materials, facade, mep, …) | Create one `src/content/<collection>/<slug>.mdx`. No router edits. Frontmatter rules are in `src/content/schema.ts` (strict: unknown keys fail the build; filename must equal `slug`). |
+| **Design study** (`/office-design`) | Follow `docs/OFFICE-DESIGN-INTAKE.md`. One `.mdx` in `src/content/design/`, images via `scripts/office-design-images.mjs`. **Never name or show the client**; `designStage` stays `concept` unless a reviewer is named. |
 | **City** | Add to `src/data/cities.ts` with `published: true` (see status doc §9). |
 | **Fixed page** (new top-level page) | Add the route to both `App.tsx` and `ServerApp.tsx`, and its path to `routesToPrerender` in `prerender.js`. |
 
 Any page with a "not found" branch must put `data-not-found` on its root element so the
 prerender guard can see it.
+
+Images on a content page go in frontmatter (`heroImage`, `gallery`), never as `<img>` or
+markdown in an `.mdx` body — frontmatter is what the build validates for alt text and
+size, and what the image sitemap and `ImageObject` schema are generated from.
 
 ## Publishing rule — nobody reviews pages
 
@@ -50,6 +55,8 @@ enforces it.
 
 ```
 node scripts/build-content-index.mjs      # frontmatter validation
+node scripts/check-images.mjs             # image budget + declared dimensions
+node scripts/check-client-safety.mjs      # client names, rates, unreviewed claims
 npx tsc --noEmit -p tsconfig.app.json     # typecheck
 npx eslint <changed files>                # NOT `npm run lint` — pre-existing error in Index.tsx
 npm run build && npm run build:server && npm run build:prerender

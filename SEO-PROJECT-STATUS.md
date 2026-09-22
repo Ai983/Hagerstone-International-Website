@@ -62,15 +62,58 @@ batch against the ❌ table before publishing.
 
 ---
 
+## 0b. The /office-design section (added 21 September)
+
+Sir asked for the design team's work on the website — layout options, 3D views and
+presentations, with a Drive folder the team uploads to daily. Built as the 17th content
+collection, `design`, at `/office-design`.
+
+**Why a separate section, not `/projects`:** decks are **client proposals**, not completed
+work. `/projects` is for delivered projects. Every design page defaults to
+`designStage: "concept"`, says so in a banner above the hero, and carries
+`creativeWorkStatus: "Concept design"` in its schema. Publishing `delivered` requires a
+named `reviewedBy`, the same gate as cost and compliance.
+
+**Why it will earn traffic:** `/services/office-design-build` owns the transactional terms
+("office design and build company"). This section owns **evidence and comparison** intent —
+*office layout for 100 employees*, *office floor plan 200 workstations*, *how many meeting
+rooms for a 100-person office*. Nobody in India publishes real layout studies with the
+reasoning attached. Disjoint primary keywords keep the two from competing.
+
+**The client is never identified** — not in the copy, alt text, file names, or the images.
+Logos are edited out with a recorded, repeatable recipe, and `scripts/check-client-safety.mjs`
+fails the build on a blocklisted name (hashed, because the repo is public), a company
+suffix, a rupee figure or a delivery claim. **No script can see a logo inside a bitmap** —
+that is the contact-sheet review in `docs/OFFICE-DESIGN-INTAKE.md`, and it is not optional.
+
+### What shipped
+
+| Piece | Detail |
+|---|---|
+| Collection | `design` → `/office-design`, listing page + article template, no router edits needed |
+| Images in frontmatter | New `gallery` / `galleryGroups` fields, Zod-validated: alt text ≥15 chars, real width/height, captions. **Not** `<img>` in MDX — frontmatter is what the build can check and the sitemap can harvest |
+| First page | `/office-design/nbfc-head-office-design-netaji-subhash-place-delhi` — 3 layout options, the annotated interior study, 12 gallery images + hero |
+| Image pipeline | `scripts/office-design-images.mjs`: contact sheet, redaction ops (crop / fill / blur), WebP at 1600 + 800, prints a paste-ready `gallery:` block |
+| Guards | `check-images.mjs` (budget 250/90 KB, dimensions must match the file) and `check-client-safety.mjs`, both wired into `prebuild` |
+| Image SEO | Per-image `ImageObject` with caption + licence (Licensable badge eligible), `ImageGallery` node, image sitemap now carries content images with titles and captions, absolute `og:image` |
+| `llms.txt` | **Now generated** from the content index at build time and written to `dist/`. `public/llms.txt` deleted. It lists 206 pages (was 13) including all 26 locations, and the disputed stats are gone — see §7.4 |
+| Docs | `docs/OFFICE-DESIGN-INTAKE.md` — the Drive folder spec for the design team and the ~30-minute per-deck workflow |
+
+**Site is at 237 pages.** Next decks follow the intake doc; ask the design team for
+original renders alongside the PDF, since a render pulled out of a PDF can carry the slide's
+title block — and the client's name — inside the image.
+
+---
+
 ## 1. Where the project stands right now
 
 | | |
 |---|---|
-| **Pages live** | **234** (was 41 on 9 Sept, 169 on 14 Sept) |
+| **Pages live** | **237** (was 41 on 9 Sept, 169 on 14 Sept, 234 on 16 Sept) |
 | **Live site** | https://hagerstone.com — hosted on **Vercel** (confirmed via response headers) |
 | **Repo** | https://github.com/Ai983/Hagerstone-International-Website — branch `main` |
 | **Working tree** | Clean, 0 unpushed commits as of 18 Sept (only the untracked `SALES_FUNNEL_MASTER.xlsx`) |
-| **Content files** | 143 `.mdx` files |
+| **Content files** | 144 `.mdx` files |
 | **Cities live** | 26 |
 | **Blog posts** | 11 (legacy `.tsx` posts, not MDX) |
 | **Sitemap** | Auto-generated, 234 URLs, drift guard matched |
@@ -80,6 +123,7 @@ batch against the ❌ table before publishing.
 | Collection | Files | URL pattern |
 |---|---:|---|
 | materials | 60 | `/materials/{slug}` |
+| design | 1 | `/office-design/{slug}` |
 | glossary | 35 | `/glossary/{slug}` |
 | facade sub-services | 9 | `/services/facade-glazing/{slug}` |
 | interiors sub-services | 9 | `/services/interior-fit-out/{slug}` |

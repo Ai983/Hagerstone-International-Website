@@ -12,9 +12,11 @@ import {
   SITE_URL,
   authorSchema,
   buildFaqSchema,
+  buildImageGallerySchema,
   buildSchemaGraph,
   organizationSchema,
 } from "@/lib/seo";
+import ContentGallery from "@/components/content/ContentGallery";
 import { buildBreadcrumbSchema } from "@/lib/locationSchema";
 import { COLLECTION_BASE_PATH } from "@/content/schema";
 import type { ContentEntry } from "@/content/types";
@@ -45,6 +47,7 @@ const COLLECTION_LABEL: Record<string, string> = {
   civil: "Construction",
   estates: "Business Districts & Estates",
   industries: "Industries",
+  design: "Office Design",
 };
 
 interface ContentArticleProps {
@@ -59,6 +62,14 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
   const canonical = `${SITE_URL}${entry.path}`;
   const related = getRelated(entry);
 
+  const absolute = (src: string) => `${SITE_URL}${src}`;
+  // Hero first, then gallery images: Google treats the order as significance.
+  const articleImages = [
+    ...(entry.heroImage ? [absolute(entry.heroImage)] : []),
+    ...entry.gallery.slice(0, 3).map((image) => absolute(image.src)),
+  ];
+  const isConcept = entry.collection === "design" && entry.designStage === "concept";
+
   const schema = buildSchemaGraph(
     [
       organizationSchema,
@@ -71,8 +82,25 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         author: authorSchema,
         publisher: { "@type": "Organization", name: BRAND_NAME, url: SITE_URL },
         mainEntityOfPage: canonical,
-        ...(entry.heroImage ? { image: `${SITE_URL}${entry.heroImage}` } : {}),
+        ...(articleImages.length > 0 ? { image: articleImages } : {}),
+        // Says in the markup what the page says in words: this is a design
+        // proposal, not a record of completed work.
+        ...(isConcept ? { creativeWorkStatus: "Concept design" } : {}),
       },
+      entry.gallery.length > 0
+        ? buildImageGallerySchema({
+            id: `${canonical}#gallery`,
+            name: `${entry.title} — layouts and views`,
+            url: canonical,
+            images: entry.gallery.map((image) => ({
+              contentUrl: absolute(image.src),
+              alt: image.alt,
+              caption: image.caption,
+              width: image.width,
+              height: image.height,
+            })),
+          })
+        : null,
       buildBreadcrumbSchema([
         { name: "Home", url: `${SITE_URL}/` },
         { name: collectionLabel, url: `${SITE_URL}${collectionPath}` },
@@ -92,7 +120,9 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         canonical={canonical}
         keywords={entry.keywords.join(", ")}
         ogType="article"
-        ogImage={entry.heroImage}
+        // og:image must be absolute; a relative path silently falls back to the
+        // site default on most scrapers.
+        ogImage={entry.heroImage ? absolute(entry.heroImage) : undefined}
         ogImageAlt={entry.heroImageAlt}
         structuredData={schema}
       />
@@ -110,10 +140,20 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
           </h1>
 
           {entry.definition && (
-            // Glossary pages lead with the definition so the answer is above the
-            // fold for both readers and AI answer engines.
+            // The short answer, above the fold for both readers and AI answer
+            // engines. Required on glossary; used by design studies too.
             <p className="mt-6 border-l-4 border-accent bg-muted/50 p-4 text-lg text-foreground">
               {entry.definition}
+            </p>
+          )}
+
+          {isConcept && (
+            // Decks are client proposals. Saying so on the page is the whole
+            // reason this collection can be published without a reviewer.
+            <p className="mt-6 rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
+              <strong className="text-foreground">Concept design study.</strong> The layouts
+              and views below are design proposals produced by Hagerstone's design team. They
+              are not a record of a completed project, and the client is not identified.
             </p>
           )}
 
@@ -135,12 +175,17 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
             alt={entry.heroImageAlt ?? ""}
             className="mb-10 w-full rounded-lg"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         )}
 
         <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-accent prose-table:text-sm">
           <Body />
         </div>
+
+        {/* Outside the prose wrapper so Typography does not restyle the figures. */}
+        <ContentGallery groups={entry.galleryGroups} images={entry.gallery} />
 
         {entry.citations.length > 0 && (
           <section className="mt-12 rounded-lg border border-border p-6">

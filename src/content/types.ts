@@ -13,6 +13,23 @@ export interface ContentCitation {
   url?: string;
 }
 
+export interface ContentGalleryImage {
+  /** Root-relative path to the 1600px WebP variant. */
+  src: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+  /** Matches a ContentGalleryGroup id. */
+  group?: string;
+}
+
+export interface ContentGalleryGroup {
+  id: string;
+  heading: string;
+  intro?: string;
+}
+
 /**
  * One content file as it appears in the generated index.
  *
@@ -26,12 +43,25 @@ export interface ContentCitation {
  * index is guaranteed to have them — the build script fills the defaults in.
  */
 export interface ContentEntry
-  extends Omit<Frontmatter, "faqs" | "citations" | "keywords" | "related" | "collection"> {
+  extends Omit<
+    Frontmatter,
+    | "faqs"
+    | "citations"
+    | "keywords"
+    | "related"
+    | "collection"
+    | "gallery"
+    | "galleryGroups"
+    | "designStage"
+  > {
   collection: Collection;
   faqs: ContentFaq[];
   citations: ContentCitation[];
   keywords: string[];
   related: string[];
+  gallery: ContentGalleryImage[];
+  galleryGroups: ContentGalleryGroup[];
+  designStage: "concept" | "delivered";
 
   /** Resolved site path, e.g. "/glossary/spandrel-glass". */
   path: string;

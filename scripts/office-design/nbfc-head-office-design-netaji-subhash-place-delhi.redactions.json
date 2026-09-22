@@ -1,0 +1,129 @@
+{
+  "_readme": [
+    "Per-image recipe for turning deck renders into web images for this page.",
+    "Source files are the deck exports; they are NOT committed (public repo).",
+    "Coordinates for fill/blur are relative to the image after any crop.",
+    "Only two views carried client branding; everything else is unmarked.",
+    "Run: node scripts/office-design-images.mjs --slug <slug> --in <dir> --plan <this file>"
+  ],
+
+  "reception-and-waiting": {
+    "source": "p11-reception-and-visitor-waiting.png",
+    "note": "no client mark — reception desk, lounge and stone floor only",
+    "group": "views",
+    "alt": "Office reception desk and visitor lounge with stone flooring and full-height glazing",
+    "caption": "Reception and visitor waiting, with the stone floor carried through to the lift lobby. Indicative viewpoint."
+  },
+
+  "reception-and-arrival": {
+    "source": "p10-reception-and-arrival.png",
+    "note": "CLIENT MARK: dimensional logo lettering on the reception back-wall",
+    "group": "views",
+    "ops": [
+      {
+        "type": "fill",
+        "left": 1135,
+        "top": 258,
+        "width": 310,
+        "height": 140,
+        "sampleFrom": { "left": 1150, "top": 404 },
+        "sampleWidth": 150,
+        "sampleHeight": 24,
+        "sigma": 3
+      }
+    ],
+    "alt": "Reception counter in a corporate office with a plain feature wall and lounge seating",
+    "caption": "Arrival: a stone-floored reception with the back wall left plain for signage. Indicative viewpoint."
+  },
+
+  "open-plan-workplace": {
+    "source": "p12-workplace.png",
+    "note": "CLIENT MARK: logo applied to the blue column facing the floor",
+    "group": "views",
+    "ops": [
+      {
+        "type": "fill",
+        "left": 425,
+        "top": 265,
+        "width": 190,
+        "height": 80,
+        "sampleFrom": { "left": 425, "top": 355 },
+        "sampleWidth": 190,
+        "sampleHeight": 26,
+        "sigma": 2
+      }
+    ],
+    "alt": "Open-plan office workstations either side of a wide central circulation gallery",
+    "caption": "The central gallery held clear between two workstation bands. Indicative viewpoint."
+  },
+
+  "md-suite": {
+    "source": "p15-md-suite.png",
+    "group": "views",
+    "alt": "Managing director's office with a meeting table, lounge seating and city views",
+    "caption": "MD suite, combining a work desk, a meeting table and an informal lounge. Indicative viewpoint."
+  },
+
+  "boardroom": {
+    "source": "p19-boardroom.png",
+    "group": "views",
+    "alt": "Sixteen-seat boardroom with a long table, wall-mounted screen and joinery storage",
+    "caption": "The 16-seat boardroom, sized 5250 x 1850 mm on plan. Indicative viewpoint."
+  },
+
+  "meeting-room-eight-seat": {
+    "source": "p21-eight-person-meeting-room.png",
+    "group": "views",
+    "alt": "Eight-seat meeting room with a large screen and floor-to-ceiling glazing",
+    "caption": "One of two enclosed meeting rooms retained from the source layout. Indicative viewpoint."
+  },
+
+  "client-lounge": {
+    "source": "p16-private-client-lounge.png",
+    "group": "views",
+    "alt": "Private client lounge with banquette seating, a dining table and fluted glass screens",
+    "caption": "Private client lounge and dining for four, screened from the open floor. Indicative viewpoint."
+  },
+
+  "cafe-and-call-booths": {
+    "source": "p24-cafe-and-call-booths.png",
+    "group": "views",
+    "alt": "Office cafe with banquette seating beside a row of enclosed single-person call booths",
+    "caption": "Cafe seating with call booths alongside — the pressure valve for an open floor. Indicative viewpoint."
+  },
+
+  "pantry": {
+    "source": "p26-pantry.png",
+    "group": "views",
+    "alt": "Office pantry with laminate cabinets, a sink run, coffee machine and easy-clean flooring",
+    "caption": "Pantry finished for cleaning rather than appearance alone. Indicative viewpoint."
+  },
+
+  "layout-option-01-plan": {
+    "source": "p02-layout-option-01.png",
+    "group": "layout-options",
+    "alt": "Rendered floor plan showing two bands of workstations either side of a central gallery",
+    "caption": "Option 01: pantry and dining only, with the most generous circulation."
+  },
+
+  "layout-option-02-plan": {
+    "source": "p04-layout-option-02.png",
+    "group": "layout-options",
+    "alt": "Rendered floor plan with a cafeteria in the top left corner and denser workstation banks",
+    "caption": "Option 02: a 45-seat cafeteria takes the corner, and desk banks tighten to compensate."
+  },
+
+  "layout-option-03-plan": {
+    "source": "p06-layout-option-03.png",
+    "group": "layout-options",
+    "alt": "Rendered floor plan packed with workstation rows and a reduced cafeteria area",
+    "caption": "Option 03: maximum desks, with cafeteria seating cut back to 23."
+  },
+
+  "workstation-reference-plan": {
+    "source": "p08-interior-reference-plan.png",
+    "group": "reference-plan",
+    "alt": "Annotated office plan numbering every workstation and marking the central gallery",
+    "caption": "The interior study: 68 desks in the upper band, 102 in the lower, MEP zone excluded."
+  }
+}

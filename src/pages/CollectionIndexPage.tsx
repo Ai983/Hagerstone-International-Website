@@ -19,6 +19,14 @@ interface CollectionCopy {
 }
 
 const COPY: Partial<Record<Collection, CollectionCopy>> = {
+  design: {
+    heading: "Office Design Studies",
+    intro:
+      "Real layout options, floor plans and 3D views from our design studio — how many desks a floor plate takes, what changes as the seat count rises, and the finishes behind each option. Clients are not named.",
+    metaTitle: "Office Design Layouts & 3D Concepts | Hagerstone",
+    metaDescription:
+      "Office layout options, space plans and 3D views from live design studies in India — seat counts, cabin mix, circulation and finishes, explained for decision-makers.",
+  },
   glossary: {
     heading: "Facade & Interiors Glossary",
     intro:

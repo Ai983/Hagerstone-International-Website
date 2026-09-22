@@ -64,6 +64,7 @@ const ContentIndex = ({
               position: index + 1,
               name: entry.title,
               url: `${SITE_URL}${entry.path}`,
+              ...(entry.heroImage ? { image: `${SITE_URL}${entry.heroImage}` } : {}),
             })),
           },
           buildBreadcrumbSchema([
@@ -85,13 +86,28 @@ const ContentIndex = ({
           <ul className="divide-y divide-border">
             {ordered.map((entry) => (
               <li key={entry.path} className="py-5">
-                <Link to={entry.path} className="group block">
-                  <h2 className="text-lg font-semibold text-foreground group-hover:text-accent">
-                    {entry.title}
-                  </h2>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {entry.definition ?? entry.metaDescription}
-                  </p>
+                {/* Collections with hero images (design studies) get a thumbnail;
+                    text collections keep the plain two-line card. */}
+                <Link to={entry.path} className="group flex gap-5">
+                  {entry.heroImage && (
+                    <img
+                      src={entry.heroImage}
+                      alt={entry.heroImageAlt ?? ""}
+                      width={320}
+                      height={180}
+                      loading="lazy"
+                      decoding="async"
+                      className="hidden w-40 shrink-0 self-start rounded-md border border-border/60 object-cover sm:block"
+                    />
+                  )}
+                  <div>
+                    <h2 className="text-lg font-semibold text-foreground group-hover:text-accent">
+                      {entry.title}
+                    </h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {entry.definition ?? entry.metaDescription}
+                    </p>
+                  </div>
                 </Link>
               </li>
             ))}

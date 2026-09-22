@@ -10,6 +10,7 @@ export {
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
+  buildLlmsTxt,
 } from './lib/sitemap';
 
 export function render(url: string) {

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run content:index && vite",
     "content:index": "node scripts/build-content-index.mjs",
-    "prebuild": "npm run content:index",
+    "prebuild": "npm run content:index && node scripts/check-images.mjs && node scripts/check-client-safety.mjs",
     "build": "vite build",
     "build:client": "vite build",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
@@ -96,6 +96,7 @@
     "globals": "^15.9.0",
     "lovable-tagger": "^1.1.7",
     "postcss": "^8.4.47",
+    "sharp": "^0.35.4",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",

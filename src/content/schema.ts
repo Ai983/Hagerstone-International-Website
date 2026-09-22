@@ -27,6 +27,7 @@ export const COLLECTIONS = [
   "civil",
   "estates",
   "industries",
+  "design",
 ] as const;
 
 export type Collection = (typeof COLLECTIONS)[number];
@@ -51,6 +52,10 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   civil: "/services/construction",
   estates: "/estates",
   industries: "/industries",
+  // Deliberately not nested under /services/office-design-build: that page sells
+  // the service, this section shows the work. Separate prefix, separate intent,
+  // so the two do not compete for the same queries.
+  design: "/office-design",
 };
 
 /**
@@ -84,6 +89,41 @@ export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost"];
 const faqSchema = z.object({
   question: z.string().min(10),
   answer: z.string().min(30),
+});
+
+/**
+ * A gallery image. Structured rather than embedded in the MDX body so the build
+ * can enforce alt text, verify the file against its declared dimensions, and
+ * harvest every image into the image sitemap and ImageObject schema. A raw
+ * <img> in a body can do none of that.
+ *
+ * `src` points at the 1600px variant. The 800px sibling is derived by
+ * convention and its existence is checked by scripts/check-images.mjs, so the
+ * gallery can emit a srcset without a second frontmatter field.
+ */
+const galleryImageSchema = z.object({
+  src: z
+    .string()
+    .regex(
+      /^\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+-1600\.webp$/,
+      "must be /<section>/<slug>/<name>-1600.webp, all lowercase-kebab-case",
+    ),
+  /** Describes what is in the image, for screen readers and Google Images. */
+  alt: z.string().min(15).max(160),
+  /** Visible caption. Text near an image is what answer engines quote. */
+  caption: z.string().min(10).max(200).optional(),
+  /** Real intrinsic pixels, verified against the file, so nothing shifts on load. */
+  width: z.number().int().positive().max(1600),
+  height: z.number().int().positive().max(1600),
+  /** Ties the image to a galleryGroups[].id. */
+  group: z.string().regex(/^[a-z0-9-]+$/).optional(),
+});
+
+/** A headed section of the gallery, rendered in declaration order. */
+const galleryGroupSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  heading: z.string().min(5).max(90),
+  intro: z.string().min(30).max(600).optional(),
 });
 
 const citationSchema = z.object({
@@ -130,8 +170,24 @@ export const frontmatterSchema = z
     /** Standards cited in the body — the E-E-A-T signal that matters most here. */
     citations: z.array(citationSchema).default([]),
 
-    /** Glossary only: the one-sentence definition shown above the fold. */
+    /**
+     * The short answer shown above the fold — required for glossary, and the
+     * AEO device for every other collection that wants a quotable summary.
+     */
     definition: z.string().max(400).optional(),
+
+    /** Structured images, rendered after the body and harvested by the sitemap. */
+    gallery: z.array(galleryImageSchema).max(12).default([]),
+    /** Headings the gallery is grouped under. */
+    galleryGroups: z.array(galleryGroupSchema).default([]),
+
+    /**
+     * Honesty gate for design studies. Decks are client proposals, so the
+     * default is `concept` and the template says so on the page. `delivered`
+     * asserts we actually built it, which is a project claim — see the
+     * reviewedBy rule below.
+     */
+    designStage: z.enum(["concept", "delivered"]).default("concept"),
   })
   .strict()
   .superRefine((data, ctx) => {
@@ -166,6 +222,52 @@ export const frontmatterSchema = z
         code: z.ZodIssueCode.custom,
         path: ["reviewedBy"],
         message: `${data.collection} content requires reviewedBy before it can be published`,
+      });
+    }
+
+    // Every image must sit under a declared group, or it renders nowhere; every
+    // group must have an image, or a heading renders with nothing under it.
+    const groupIds = new Set(data.galleryGroups.map((group) => group.id));
+    for (const image of data.gallery) {
+      if (image.group && !groupIds.has(image.group)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["gallery"],
+          message: `gallery image references unknown group "${image.group}"`,
+        });
+      }
+    }
+    for (const group of data.galleryGroups) {
+      if (!data.gallery.some((image) => image.group === group.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["galleryGroups"],
+          message: `galleryGroups "${group.id}" has no images`,
+        });
+      }
+    }
+
+    // A design study is the drawings and the views. Without them it is a page
+    // describing images nobody can see.
+    if (
+      data.status === "published" &&
+      data.collection === "design" &&
+      data.gallery.length === 0
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["gallery"],
+        message: "design pages require at least one gallery image before publishing",
+      });
+    }
+
+    // "We built this" is a project claim, and the site has already published
+    // one set of those wrongly. Same gate as compliance and cost.
+    if (data.status === "published" && data.designStage === "delivered" && !data.reviewedBy) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["reviewedBy"],
+        message: 'designStage "delivered" is a project claim — requires reviewedBy',
       });
     }
   });

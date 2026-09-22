@@ -16,6 +16,7 @@ const {
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
+  buildLlmsTxt,
 } = await import('./dist/server/entry-server.js')
 
 // Fixed pages only. Projects, blog posts, locations and MDX content are
@@ -116,6 +117,12 @@ let failed = 0
     fs.writeFileSync(toAbsolute(`dist/${file}`), xml)
     console.log('✓ generated:', file)
   }
+
+  // llms.txt, from the same route list. It replaces a hand-maintained file that
+  // listed 13 of 235 pages; public/llms.txt is deleted so publicDir cannot
+  // shadow this one, exactly as with the old public/sitemap.xml.
+  fs.writeFileSync(toAbsolute('dist/llms.txt'), buildLlmsTxt(allRoutes))
+  console.log('✓ generated: llms.txt')
 
   // Drift guard: every prerendered route must appear in the sitemap and vice
   // versa. Cheap to check, and it catches the class of bug where a page ships

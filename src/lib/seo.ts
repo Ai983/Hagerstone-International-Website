@@ -69,10 +69,29 @@ export const buildFaqSchema = (items: FaqItem[]) => ({
   })),
 });
 
-export const createImageObject = (url: string, name: string) => ({
+export interface ImageObjectExtras {
+  /** Visible caption. Google reads it, and answer engines quote it. */
+  caption?: string;
+  width?: number;
+  height?: number;
+  /** The page the image appears on, so credit attaches to the right URL. */
+  pageUrl?: string;
+  representativeOfPage?: boolean;
+}
+
+export const createImageObject = (
+  url: string,
+  name: string,
+  extra?: ImageObjectExtras,
+) => ({
   "@type": "ImageObject",
   contentUrl: url,
+  ...(extra?.pageUrl ? { url: extra.pageUrl } : {}),
   name,
+  ...(extra?.caption ? { caption: extra.caption, description: extra.caption } : {}),
+  ...(extra?.width ? { width: extra.width } : {}),
+  ...(extra?.height ? { height: extra.height } : {}),
+  ...(extra?.representativeOfPage ? { representativeOfPage: true } : {}),
   creator: {
     "@type": "Organization",
     name: BRAND_NAME,
@@ -81,6 +100,39 @@ export const createImageObject = (url: string, name: string) => ({
   copyrightNotice: "© 2026 Hagerstone International",
   acquireLicensePage: `${SITE_URL}/contact`,
   license: `${SITE_URL}/contact`,
+});
+
+/**
+ * ImageGallery for a page whose images carry as much meaning as its text.
+ *
+ * Each image is a licensed ImageObject with its caption, which is what makes
+ * the set eligible for the Licensable badge in Google Images and gives answer
+ * engines something attributable to cite.
+ */
+export const buildImageGallerySchema = (opts: {
+  id: string;
+  name: string;
+  url: string;
+  images: Array<{
+    contentUrl: string;
+    alt: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+  }>;
+}) => ({
+  "@type": "ImageGallery",
+  "@id": opts.id,
+  name: opts.name,
+  url: opts.url,
+  associatedMedia: opts.images.map((image) =>
+    createImageObject(image.contentUrl, image.alt, {
+      caption: image.caption,
+      width: image.width,
+      height: image.height,
+      pageUrl: opts.url,
+    }),
+  ),
 });
 
 // Reusable postal address (HQ) used by LocalBusiness schema across pages.
