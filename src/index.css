@@ -247,3 +247,38 @@ All colors MUST be HSL.
     animation-play-state: paused;
   }
 }
+
+/*
+  Article typography fixes.
+
+  rehype-autolink-headings wraps every heading's text in an anchor so headings
+  are linkable. That anchor inherits the prose link colour, which would turn
+  every heading on 144 content pages into coloured underlined text. Headings
+  keep their own colour; only real links in the body look like links.
+*/
+@layer components {
+  .prose :is(h1, h2, h3, h4, h5, h6) a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+  }
+
+  /* Tables carry the comparison content on design and materials pages, so they
+     need visible structure rather than the default borderless look. */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+  }
+
+  .prose :is(th, td) {
+    border: 1px solid hsl(var(--border));
+    padding: 0.625rem 0.75rem;
+    vertical-align: top;
+  }
+
+  .prose thead th {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--foreground));
+  }
+}

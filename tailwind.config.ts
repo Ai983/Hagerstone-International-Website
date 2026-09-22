@@ -171,5 +171,10 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	// @tailwindcss/typography backs every `prose` class. It was in package.json
+	// but never registered here, so the prose classes on ContentArticle emitted
+	// no CSS at all — and Tailwind's preflight strips heading sizes and list
+	// markers by default. The result was 144 content pages rendering as one
+	// wall of same-size text with links indistinguishable from body copy.
+	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;

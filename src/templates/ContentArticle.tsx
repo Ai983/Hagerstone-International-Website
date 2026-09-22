@@ -180,7 +180,7 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
           />
         )}
 
-        <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-accent prose-table:text-sm">
+        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-headings:scroll-mt-28 prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-accent prose-a:underline prose-a:underline-offset-4 prose-table:text-sm">
           <Body />
         </div>
 
