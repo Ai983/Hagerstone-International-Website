@@ -15,6 +15,19 @@ const Footer = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  // Section indexes that nothing else on the site links to. Without these the
+  // design studies, glossary, materials, estate and industry pages are orphans:
+  // reachable only from each other, which is how ~100 pages end up with no
+  // internal links at all. Kept to five — a footer stuffed with links is
+  // discounted, and contextual links in the body do the real work.
+  const resources = [
+    { name: "Office Design Studies", href: "/office-design" },
+    { name: "Materials Guide", href: "/materials" },
+    { name: "Glossary", href: "/glossary" },
+    { name: "Business Districts", href: "/estates" },
+    { name: "Industries", href: "/industries" },
+  ];
+
   const locations = buildLocationMatrix().hubs.map((city) => ({
     name: city.name,
     href: `/locations/${city.slug}`,
@@ -41,7 +54,8 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-hero text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        {/* 6 columns: company info spans 2, then Quick Links, Resources, Locations, Follow Us. */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -138,6 +152,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {navigation.map((item) => (
                 <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-white/90 hover:text-gold transition-colors duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 text-gold">Resources</h3>
+            <ul className="space-y-3">
+              {resources.map((item) => (
+                <li key={item.href}>
                   <Link
                     to={item.href}
                     className="text-white/90 hover:text-gold transition-colors duration-300"

@@ -52,6 +52,13 @@ const ServiceDetail = () => {
     (entry) => entry.path.startsWith(`/services/${service.slug}/`),
   );
 
+  // Design studies are shown on the services they precede, not on every page —
+  // a link is only worth having where it is genuinely the reader's next step.
+  const SERVICES_WITH_DESIGN_STUDIES = ["office-design-build", "interior-fit-out"];
+  const designStudies = SERVICES_WITH_DESIGN_STUDIES.includes(service.slug)
+    ? contentIndex.filter((entry) => entry.collection === "design").slice(0, 3)
+    : [];
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -170,6 +177,40 @@ const ServiceDetail = () => {
                   <p className="text-sm text-muted-foreground">
                     {sub.metaDescription}
                   </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/*
+          Design studies, on the two services a buyer reads before commissioning
+          one. A contextual link from a closely related page is worth far more
+          than a footer link, and it is also the right path for the reader: this
+          is what the service looks like before it is built.
+        */}
+        {designStudies.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-primary mb-2">
+              See how a layout gets decided
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Our{" "}
+              <Link to="/office-design" className="text-primary underline underline-offset-4">
+                office design studies
+              </Link>{" "}
+              show real floor plates planned several ways — seat counts, cabin mix,
+              circulation and finishes, with the trade-offs set out.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {designStudies.map((study) => (
+                <Link
+                  key={study.path}
+                  to={study.path}
+                  className="block border border-border rounded-xl p-6 hover:border-primary hover:shadow-sm transition"
+                >
+                  <h3 className="text-lg font-semibold text-primary mb-2">{study.title}</h3>
+                  <p className="text-sm text-muted-foreground">{study.metaDescription}</p>
                 </Link>
               ))}
             </div>

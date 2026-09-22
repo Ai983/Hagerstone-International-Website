@@ -170,7 +170,15 @@ const HoveringNavbar = () => {
                           {[
                             { to: "/", label: "HOME", number: "01" },
                             { to: "/about", label: "ABOUT", number: "02", submenu: [{ to: "/our-team", label: "OUR TEAM" }] },
-                            { to: "/projects", label: "PROJECTS", number: "03" },
+                            // Design studies sit under Projects: a visitor looking for
+                            // delivered work and one looking for layout thinking start
+                            // in the same place, and it keeps the top level short.
+                            {
+                              to: "/projects",
+                              label: "PROJECTS",
+                              number: "03",
+                              submenu: [{ to: "/office-design", label: "OFFICE DESIGN STUDIES" }],
+                            },
                             { to: "/services", label: "OUR SERVICES", number: "04" },
                             { to: "/ideas", label: "IDEAS", number: "05" },
                             { to: "/blog", label: "BLOG", number: "06" },
