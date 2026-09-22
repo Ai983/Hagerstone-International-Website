@@ -1,0 +1,106 @@
+{
+  "_readme": [
+    "Two floors of a Gurugram office tower. Source deck exports are NOT committed.",
+    "No redaction ops: nothing in this set carries a client mark. The reception desk",
+    "reads only 'Reception', and the wall graphics are generic.",
+    "The building's name appears only in the deck's title slides, which are excluded.",
+    "The deck labels one room with a word that may be a family name; it is described",
+    "here by what it is - an executive lounge - rather than by that label."
+  ],
+
+  "reception": {
+    "source": "p09-reception.png",
+    "note": "no client mark",
+    "group": "arrival",
+    "alt": "Office reception counter in timber and stone with a fluted dark panel behind",
+    "caption": "Reception, with a built-in seat to one side rather than a separate waiting room. Indicative viewpoint."
+  },
+
+  "first-floor-plan": {
+    "source": "p04-first-floor.png",
+    "group": "plans",
+    "quality": 84,
+    "alt": "Colour-coded first floor office plan showing departments, cabins and a conference room",
+    "caption": "First floor: director rooms and cabins along the glazed edge, departments in the middle, services and lifts at the core."
+  },
+
+  "fourth-floor-plan": {
+    "source": "p05-fourth-floor.png",
+    "group": "plans",
+    "quality": 84,
+    "alt": "Colour-coded fourth floor office plan showing finance and HR departments and a pooja room",
+    "caption": "Fourth floor: the same logic repeated — finance and HR departments, conference room, pooja room and an executive lounge."
+  },
+
+  "conference-room-elevations": {
+    "source": "p17-conference-room.png",
+    "group": "drawings",
+    "quality": 86,
+    "alt": "Conference room drawing sheet with a furniture plan and four wall elevations",
+    "caption": "The conference room drawn as a plan plus elevations A to D, with every panel, veneer and metal bead called out."
+  },
+
+  "md-cabin-elevations": {
+    "source": "p18-md-cabin.png",
+    "group": "drawings",
+    "quality": 86,
+    "alt": "Managing director's cabin drawing sheet with plan, four elevations and two views",
+    "caption": "The MD cabin at the same level of detail, including the safe and the planted corner."
+  },
+
+  "conference-room": {
+    "source": "p13-view-1.png",
+    "group": "meeting",
+    "alt": "Long conference room with a twenty-seat table under a timber ceiling and a globe chandelier",
+    "caption": "The conference room, 21 ft by 14 ft on plan, with rear storage and a screen wall. Indicative viewpoint."
+  },
+
+  "meeting-room": {
+    "source": "p15-view-1.png",
+    "group": "meeting",
+    "alt": "Eight-seat meeting room with a ring pendant light and fluted timber wall",
+    "caption": "The smaller meeting room off reception, for visitors who do not need the conference table. Indicative viewpoint."
+  },
+
+  "pooja-room": {
+    "source": "p12-option-1.png",
+    "group": "special-rooms",
+    "alt": "Office pooja room with a backlit niche, lotus artwork and a stone platform",
+    "caption": "The pooja room: a designed room off the reception end, not a shelf in a corner. Indicative viewpoint."
+  },
+
+  "executive-lounge": {
+    "source": "p20-view-1.png",
+    "group": "special-rooms",
+    "alt": "Executive lounge with panelled walls, a fluted green screen, armchairs and a low table",
+    "caption": "The executive lounge, for the conversation that happens before or after a meeting. Indicative viewpoint."
+  },
+
+  "cafeteria": {
+    "source": "p22-view-1.png",
+    "group": "amenities",
+    "alt": "Office cafeteria with green panelled walls, a long timber table and patterned floor tiles",
+    "caption": "Cafeteria: one long table rather than scattered fours, so the room seats more and reads as one space. Indicative viewpoint."
+  },
+
+  "pantry": {
+    "source": "p24-view-1.png",
+    "group": "amenities",
+    "alt": "Office pantry with a patterned tile splashback and overhead storage",
+    "caption": "The pantry sits separately from the cafeteria, so tea service does not cross a meal. Indicative viewpoint."
+  },
+
+  "workstations-planters": {
+    "source": "p26-view-2.png",
+    "group": "workstations",
+    "alt": "Open-plan workstations screened by planter-topped storage under a linear light",
+    "caption": "Workstations screened by planting on the storage line — privacy without partitions. Indicative viewpoint."
+  },
+
+  "workstations-graphics": {
+    "source": "p27-view-3.png",
+    "group": "workstations",
+    "alt": "Workstation bay with a large graphic wall and a textured plaster finish behind",
+    "caption": "Graphics and a textured wall give the deep side of the floor something to look at. Indicative viewpoint."
+  }
+}
