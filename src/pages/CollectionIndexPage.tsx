@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import NotFound from "@/pages/NotFound";
-import ContentIndex from "@/templates/ContentIndex";
+import ContentIndex, { type CollectionCta } from "@/templates/ContentIndex";
 import { getCollection } from "@/lib/contentModules";
 import { COLLECTION_BASE_PATH, type Collection } from "@/content/schema";
 
@@ -16,6 +16,8 @@ interface CollectionCopy {
   intro: string;
   metaTitle: string;
   metaDescription: string;
+  /** Optional closing block, for collections where the next step is an enquiry. */
+  cta?: CollectionCta;
 }
 
 const COPY: Partial<Record<Collection, CollectionCopy>> = {
@@ -26,6 +28,12 @@ const COPY: Partial<Record<Collection, CollectionCopy>> = {
     metaTitle: "Office Design Layouts & 3D Concepts | Hagerstone",
     metaDescription:
       "Office layout options, space plans and 3D views from live design studies in India — seat counts, cabin mix, circulation and finishes, explained for decision-makers.",
+    cta: {
+      heading: "Have a floor plate and a headcount?",
+      body: "Send us the floor plan and the number of people you are planning for, and our design team will lay out the options the same way — with the trade-offs set out before anything is priced.",
+      href: "/contact",
+      label: "Talk to the design team",
+    },
   },
   glossary: {
     heading: "Facade & Interiors Glossary",
