@@ -1,0 +1,92 @@
+{
+  "_readme": [
+    "A two-home family residence, presented in three material languages. Source deck",
+    "exports are NOT committed.",
+    "No redaction ops on the renders. The furnished plan carried the building's name as a",
+    "title line; the top band is cropped off before processing (see unity-picks step).",
+    "The deck states its room views are AI design interpretations of the native guide, and",
+    "the page says so."
+  ],
+  "lounge-soft-modern": {
+    "source": "lounge-soft-modern.png",
+    "note": "no client or building mark",
+    "group": "one-room-three-languages",
+    "alt": "Main lounge in a pale modern palette with lime plaster walls and a linear bronze pendant",
+    "caption": "Soft modern: lime plaster, pale oak, limestone and bronze, with one abstract canvas. Indicative viewpoint."
+  },
+  "lounge-contemporary": {
+    "source": "lounge-contemporary.png",
+    "group": "one-room-three-languages",
+    "alt": "The same lounge in a contemporary Indian palette with indigo upholstery and a landscape painting",
+    "caption": "Contemporary Indian: the same room, with indigo textiles, deeper timber and a framed landscape. Indicative viewpoint."
+  },
+  "lounge-classical": {
+    "source": "lounge-classical.png",
+    "group": "one-room-three-languages",
+    "alt": "The same lounge in a light classical palette with a chandelier, cornice and table lamps",
+    "caption": "Light classical: cornice, chandelier and lamps — the same furniture plan, a different register. Indicative viewpoint."
+  },
+  "bedroom-soft-modern": {
+    "source": "bedroom-soft-modern.png",
+    "group": "bedroom-three-ways",
+    "alt": "Principal bedroom in a soft modern palette with an upholstered headboard and reading lights",
+    "caption": "The principal bedroom, soft modern: wall-mounted reading lights and a quiet headboard wall. Indicative viewpoint."
+  },
+  "bedroom-contemporary": {
+    "source": "bedroom-contemporary.png",
+    "group": "bedroom-three-ways",
+    "alt": "The same bedroom in a contemporary Indian palette with a timber bed frame and landscape art",
+    "caption": "Contemporary Indian: a timber platform bed and warmer bedside lighting. Indicative viewpoint."
+  },
+  "bedroom-classical": {
+    "source": "bedroom-classical.png",
+    "group": "bedroom-three-ways",
+    "alt": "The same bedroom in a light classical palette with panelled walls and table lamps",
+    "caption": "Light classical: panelled walls, shaded table lamps, and the same bed in the same place. Indicative viewpoint."
+  },
+  "lounge-dining-soft-modern": {
+    "source": "lounge-dining-soft-modern.png",
+    "group": "lounge-and-dining",
+    "alt": "Second lounge and dining room with a suspended jhoola beside the seating group",
+    "caption": "The grandparents' lounge and dining, soft modern: the jhoola hangs within the seating group, not apart from it. Indicative viewpoint."
+  },
+  "lounge-dining-contemporary": {
+    "source": "lounge-dining-contemporary.png",
+    "group": "lounge-and-dining",
+    "alt": "Second lounge and dining room with a painted mural wall and a suspended jhoola",
+    "caption": "Contemporary Indian: a painted mural carries the wall behind the jhoola. Indicative viewpoint."
+  },
+  "lounge-dining-classical": {
+    "source": "lounge-dining-classical.png",
+    "group": "lounge-and-dining",
+    "alt": "Second lounge and dining room in a classical palette with wall sconces and a framed artwork",
+    "caption": "Light classical: sconces and a framed picture replace the mural, same jhoola, same seating group. Indicative viewpoint."
+  },
+  "mandir": {
+    "source": "mandir.png",
+    "group": "rooms-that-set-the-plan",
+    "alt": "Mandir niche with a stone counter, brass lamps and a framed pichwai artwork above",
+    "caption": "The mandir: a semi-open niche about 2.07 by 0.90 m, planned as part of the room rather than added to it. Indicative viewpoint."
+  },
+  "floor-plan": {
+    "source": "floor-plan.png",
+    "group": "drawings",
+    "quality": 84,
+    "alt": "Furnished floor plan of two family homes sharing one floor, with rooms labelled",
+    "caption": "Two homes on one floor: the parents' home with three bedrooms and two lounges, the grandparents' home with two bedrooms, a lounge and dining, and its own kitchen and mandir."
+  },
+  "axonometric": {
+    "source": "axonometric.png",
+    "group": "drawings",
+    "quality": 84,
+    "alt": "Axonometric study of the whole floor showing walls, furniture and room volumes",
+    "caption": "The whole floor in three dimensions — a material study of the native geometry, not a proposal to demolish anything."
+  },
+  "section": {
+    "source": "section.png",
+    "group": "drawings",
+    "quality": 84,
+    "alt": "Transverse section through the private suite showing a 3657.6 mm finished ceiling height",
+    "caption": "Section A–A through the private suite. The 12 ft finished ceiling is confirmed; opening heads, beams and service zones remain provisional."
+  }
+}
