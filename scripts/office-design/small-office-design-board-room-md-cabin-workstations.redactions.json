@@ -1,0 +1,73 @@
+{
+  "_readme": [
+    "A small single-floor office: board room, MD cabin, supervisor desk and one",
+    "workstation bay. Source deck exports are NOT committed.",
+    "No redaction ops: nothing in this set carries a client mark, and the deck's",
+    "title slides, which name the company, are excluded."
+  ],
+
+  "board-room": {
+    "source": "p13-board-room.png",
+    "note": "no client mark",
+    "group": "board-room",
+    "alt": "Board room with a white boat-shaped table, ring pendants and full-height timber panelling",
+    "caption": "The board room, 14 ft 3 in by 10 ft: the room the office is judged by. Indicative viewpoint."
+  },
+
+  "layout-plan": {
+    "source": "p04-layout.png",
+    "group": "plan",
+    "quality": 86,
+    "alt": "Dimensioned small office layout plan with workstations, supervisor, MD cabin and board room",
+    "caption": "The whole office on one plan: a 28 ft workstation run, an 8 ft supervisor desk, a 10 ft MD cabin and the board room, with passages at 4 to 6 ft 5 in."
+  },
+
+  "board-room-alt": {
+    "source": "p15-board-room.png",
+    "group": "board-room",
+    "alt": "Board room from the screen end with pendant lights over a ten-seat table",
+    "caption": "From the screen end: panelling on three sides, so the room reads as finished from every seat. Indicative viewpoint."
+  },
+
+  "board-room-storage-wall": {
+    "source": "p16-board-room.png",
+    "group": "board-room",
+    "alt": "Board room with a full-height upholstered panel wall opposite timber storage",
+    "caption": "The upholstered wall is the acoustic move — a hard-surfaced board room is unusable on a call. Indicative viewpoint."
+  },
+
+  "md-cabin": {
+    "source": "p10-md-cabin.png",
+    "group": "md-cabin",
+    "alt": "Managing director's cabin with a desk, two visitor chairs and full-height timber storage",
+    "caption": "MD cabin, 10 ft by 8 ft 6 in: desk, two chairs, and storage doing the wall. Indicative viewpoint."
+  },
+
+  "md-cabin-storage": {
+    "source": "p11-md-cabin.png",
+    "group": "md-cabin",
+    "alt": "MD cabin from the door with a low credenza, framed prints and a glazed partition",
+    "caption": "A low credenza along one wall keeps the floor clear in a room this size. Indicative viewpoint."
+  },
+
+  "workstations": {
+    "source": "p06-workstation-supervisor.png",
+    "group": "workstations",
+    "alt": "Small office workstation bay in linear desks with herringbone wood flooring and a sofa",
+    "caption": "The workstation run, 28 ft by 10 ft, with a sofa at the end instead of a breakout room. Indicative viewpoint."
+  },
+
+  "workstations-daylight": {
+    "source": "p07-workstation-supervisor.png",
+    "group": "workstations",
+    "alt": "Workstation desks beside full-height glazing with a small meeting table at the window",
+    "caption": "Desks sit perpendicular to the glazing, so the daylight runs down the bay rather than into a screen. Indicative viewpoint."
+  },
+
+  "supervisor-desk": {
+    "source": "p08-workstation-supervisor.png",
+    "group": "workstations",
+    "alt": "Supervisor's desk facing the workstation bay with storage panelling behind",
+    "caption": "The supervisor's desk, 8 ft by 6 ft, placed facing the bay rather than in a cabin. Indicative viewpoint."
+  }
+}
