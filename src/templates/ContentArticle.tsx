@@ -47,7 +47,7 @@ const COLLECTION_LABEL: Record<string, string> = {
   civil: "Construction",
   estates: "Business Districts & Estates",
   industries: "Industries",
-  design: "Office Design",
+  design: "Design Studies",
 };
 
 interface ContentArticleProps {

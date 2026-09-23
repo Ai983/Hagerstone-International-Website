@@ -97,13 +97,13 @@ for (const file of walk(CONTENT_DIR)) {
 
 // Files nobody points at are usually a draft's images, or a leftover from a
 // renamed page. Worth saying, not worth failing.
-const designDir = join(PUBLIC_DIR, "office-design");
+const designDir = join(PUBLIC_DIR, "design-studies");
 if (existsSync(designDir)) {
   for (const slugDir of readdirSync(designDir)) {
     const dir = join(designDir, slugDir);
     if (!statSync(dir).isDirectory()) continue;
     for (const name of readdirSync(dir)) {
-      const webPath = `/office-design/${slugDir}/${name}`;
+      const webPath = `/design-studies/${slugDir}/${name}`;
       if (!referenced.has(webPath)) warnings.push(`unreferenced: ${webPath}`);
     }
   }

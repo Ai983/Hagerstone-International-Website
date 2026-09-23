@@ -13,6 +13,22 @@
 #
 # TODO: repoint the hospital one at a healthcare-interiors page when one exists
 # (Max Hospital Saket is real delivered proof).
+# The design section was renamed from /office-design to /design-studies once it
+# covered more than offices (a plant canteen, a play zone, residences). The old
+# URLs were a day old, so the cost of moving was small, but they are redirected
+# rather than dropped.
+[[redirects]]
+  from = "/office-design"
+  to = "/design-studies"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/office-design/*"
+  to = "/design-studies/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/blog/office-interiors-noida"
   to = "/locations/noida"

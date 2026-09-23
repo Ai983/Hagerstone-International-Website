@@ -55,7 +55,7 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   // Deliberately not nested under /services/office-design-build: that page sells
   // the service, this section shows the work. Separate prefix, separate intent,
   // so the two do not compete for the same queries.
-  design: "/office-design",
+  design: "/design-studies",
 };
 
 /**

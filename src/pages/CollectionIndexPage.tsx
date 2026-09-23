@@ -22,12 +22,12 @@ interface CollectionCopy {
 
 const COPY: Partial<Record<Collection, CollectionCopy>> = {
   design: {
-    heading: "Office Design Studies",
+    heading: "Design Studies",
     intro:
-      "Real layout options, floor plans and 3D views from our design studio — how many desks a floor plate takes, what changes as the seat count rises, and the finishes behind each option. Clients are not named.",
-    metaTitle: "Office Design Layouts & 3D Concepts | Hagerstone",
+      "Real layout options, floor plans and 3D views from our design studio — offices, plant buildings, a staff canteen, a sales centre and residences. What each plate takes, what changes as the numbers rise, and the finishes behind each option. Clients are not named.",
+    metaTitle: "Interior Design Studies: Plans & 3D Views | Hagerstone",
     metaDescription:
-      "Office layout options, space plans and 3D views from live design studies in India — seat counts, cabin mix, circulation and finishes, explained for decision-makers.",
+      "Layout options, floor plans and 3D views from live design studies in India — offices, plant buildings, canteens and residences, explained for decision-makers.",
     cta: {
       heading: "Have a floor plate and a headcount?",
       body: "Send us the floor plan and the number of people you are planning for, and our design team will lay out the options the same way — with the trade-offs set out before anything is priced.",

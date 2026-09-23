@@ -56,7 +56,7 @@ const projectImageSource: ImageSitemapSource = () =>
   }));
 
 /**
- * Hero and gallery images from every published MDX page — /office-design today,
+ * Hero and gallery images from every published MDX page — /design-studies today,
  * any collection that adopts `gallery` later. The alt text and caption come from
  * frontmatter, where the schema already guarantees they exist.
  */
@@ -194,7 +194,7 @@ const sitemapWeight = (path: string): { priority: string; changefreq: string } =
   if (path.startsWith("/projects")) return { priority: "0.8", changefreq: "monthly" };
   // Design studies carry the portfolio proof buyers look for, so they rank
   // alongside projects rather than with reference content.
-  if (path.startsWith("/office-design")) return { priority: "0.8", changefreq: "monthly" };
+  if (path.startsWith("/design-studies")) return { priority: "0.8", changefreq: "monthly" };
   if (path.startsWith("/locations") || path.includes("-in-"))
     return { priority: "0.8", changefreq: "monthly" };
   if (path.startsWith("/insights") || path.startsWith("/blog"))
@@ -241,7 +241,7 @@ export const buildSitemapIndexXml = (lastmod: string): string => {
 
 /** Human-readable section names for llms.txt, keyed by collection. */
 const COLLECTION_HEADING: Record<Collection, string> = {
-  design: "Office Design Studies",
+  design: "Design Studies",
   insights: "Insights",
   glossary: "Glossary",
   compliance: "Compliance & Approvals",
@@ -299,7 +299,7 @@ export const buildLlmsTxt = (paths: string[]): string => {
     ["/services/peb", "Pre-engineered buildings"],
     ["/services/construction", "Civil and industrial construction"],
     ["/projects", "Completed project portfolio"],
-    ["/office-design", "Design studies: layout options, plans and 3D views"],
+    ["/design-studies", "Design studies: layout options, plans and 3D views across commercial and residential work"],
     ["/blog", "Articles on office design and building services"],
     ["/our-team", "Leadership and team"],
     ["/contact", "Enquiries and consultations"],

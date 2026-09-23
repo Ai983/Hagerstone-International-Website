@@ -196,7 +196,7 @@ const ServiceDetail = () => {
             </h2>
             <p className="text-muted-foreground mb-6 max-w-3xl">
               Our{" "}
-              <Link to="/office-design" className="text-primary underline underline-offset-4">
+              <Link to="/design-studies" className="text-primary underline underline-offset-4">
                 office design studies
               </Link>{" "}
               show real floor plates planned several ways — seat counts, cabin mix,

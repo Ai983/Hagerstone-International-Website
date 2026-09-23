@@ -23,7 +23,7 @@ see `rendered a not-found page`, do not work around it: add the missing `<Route>
 | **Project** | Add an entry to `src/data/project.ts`. That's all: prerender and sitemaps read it. |
 | **Blog post** | Add an entry to `src/data/blogPosts.ts`, create `src/pages/blog/<slug>.tsx`, then add a `<Route>` in **both** `App.tsx` (lazy) and `ServerApp.tsx` (eager import). |
 | **Content page** (glossary, materials, facade, mep, …) | Create one `src/content/<collection>/<slug>.mdx`. No router edits. Frontmatter rules are in `src/content/schema.ts` (strict: unknown keys fail the build; filename must equal `slug`). |
-| **Design study** (`/office-design`) | Follow `docs/OFFICE-DESIGN-INTAKE.md`. One `.mdx` in `src/content/design/`, images via `scripts/office-design-images.mjs`. **Never name or show the client**; `designStage` stays `concept` unless a reviewer is named. |
+| **Design study** (`/design-studies`) | Follow `docs/DESIGN-STUDIES-INTAKE.md`. One `.mdx` in `src/content/design/`, images via `scripts/design-studies-images.mjs`. **Never name or show the client**; `designStage` stays `concept` unless a reviewer is named. |
 | **City** | Add to `src/data/cities.ts` with `published: true` (see status doc §9). |
 | **Fixed page** (new top-level page) | Add the route to both `App.tsx` and `ServerApp.tsx`, and its path to `routesToPrerender` in `prerender.js`. |
 

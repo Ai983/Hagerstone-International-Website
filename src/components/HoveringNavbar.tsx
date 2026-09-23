@@ -177,7 +177,7 @@ const HoveringNavbar = () => {
                               to: "/projects",
                               label: "PROJECTS",
                               number: "03",
-                              submenu: [{ to: "/office-design", label: "OFFICE DESIGN STUDIES" }],
+                              submenu: [{ to: "/design-studies", label: "DESIGN STUDIES" }],
                             },
                             { to: "/services", label: "OUR SERVICES", number: "04" },
                             { to: "/ideas", label: "IDEAS", number: "05" },

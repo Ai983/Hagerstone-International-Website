@@ -21,7 +21,7 @@ const Footer = () => {
   // internal links at all. Kept to five — a footer stuffed with links is
   // discounted, and contextual links in the body do the real work.
   const resources = [
-    { name: "Office Design Studies", href: "/office-design" },
+    { name: "Design Studies", href: "/design-studies" },
     { name: "Materials Guide", href: "/materials" },
     { name: "Glossary", href: "/glossary" },
     { name: "Business Districts", href: "/estates" },

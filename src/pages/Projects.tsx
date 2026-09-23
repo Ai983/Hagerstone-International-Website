@@ -115,7 +115,7 @@ function Projects() {
             behind each decision.
           </p>
           <Link
-            to="/office-design"
+            to="/design-studies"
             className="inline-flex items-center gap-2 rounded-lg border border-primary px-6 py-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             See the design studies

@@ -1,6 +1,6 @@
-# /office-design — how a deck becomes a page
+# /design-studies — how a deck becomes a page
 
-Each design presentation becomes one page under `hagerstone.com/office-design`. This file
+Each design presentation becomes one page under `hagerstone.com/design-studies`. This file
 has two parts: what the **design team uploads**, and what the **person building the page**
 does with it.
 
@@ -15,7 +15,7 @@ also never claims the work was built unless someone at Hagerstone puts their nam
 Upload into the shared Drive folder, one folder per deck:
 
 ```
-Hagerstone Website Uploads/office-design/
+Hagerstone Website Uploads/design-studies/
   2026-09-nbfc-nsp/          <-- <year-month>-<sector>-<area>. Never the client's name.
     deck.pdf                 <-- the presentation, as exported
     renders/                 <-- the ORIGINAL 3D exports (PNG or JPG), full size
@@ -62,14 +62,14 @@ python -m pip install pymupdf      # once
 Pick about 10 views and 3 to 6 plans. Read `notes.txt`, then build the contact sheet:
 
 ```bash
-node scripts/office-design-images.mjs --sheet --in <renders-dir> --out sheet.jpg
+node scripts/design-studies-images.mjs --sheet --in <renders-dir> --out sheet.jpg
 ```
 
 Open `sheet.jpg`. **Look at every image.** Walls, columns, signage strips, monitor
 screens, glass manifestation, mugs, lanyards, printed paper on desks.
 
 ### 3. Write the redaction plan and process the images (8 min)
-Copy an existing plan from `scripts/office-design/` and edit it. Each image gets a
+Copy an existing plan from `scripts/design-studies/` and edit it. Each image gets a
 `source`, a `group`, `alt`, `caption`, and `ops` if it needs redacting:
 
 - **`crop`** — best option. Reframes the mark out entirely, no editing artefact.
@@ -84,11 +84,11 @@ Copy an existing plan from `scripts/office-design/` and edit it. Each image gets
   glass reception wall. There are usually more views than the page needs.
 
 ```bash
-node scripts/office-design-images.mjs --slug <slug> --in <renders-dir> \
-  --plan scripts/office-design/<slug>.redactions.json
+node scripts/design-studies-images.mjs --slug <slug> --in <renders-dir> \
+  --plan scripts/design-studies/<slug>.redactions.json
 ```
 
-It writes WebP at 1600 and 800 wide into `public/office-design/<slug>/` and prints a
+It writes WebP at 1600 and 800 wide into `public/design-studies/<slug>/` and prints a
 ready-to-paste `gallery:` block. **Then re-check the redacted images at full size** —
 crop into the patched area and confirm the mark is gone and the patch blends.
 
