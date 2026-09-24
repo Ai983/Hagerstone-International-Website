@@ -57,6 +57,21 @@ const PebPreEngineeredBuildingsGuideIndiaBlog = lazy(
 const OfficeInteriorFitOutExecutionGuideBlog = lazy(
   () => import("./pages/blog/office-interior-fit-out-execution-guide")
 );
+const CommercialFlooringSystemsGuideIndiaBlog = lazy(
+  () => import("./pages/blog/commercial-flooring-systems-guide-india")
+);
+const FalseCeilingAcousticDesignGuideIndiaBlog = lazy(
+  () => import("./pages/blog/false-ceiling-acoustic-design-guide-india")
+);
+const WorkplaceWellnessBiophilicDesignTrends2026Blog = lazy(
+  () => import("./pages/blog/workplace-wellness-biophilic-design-trends-2026")
+);
+const HowToChooseOfficeFitOutContractorBlog = lazy(
+  () => import("./pages/blog/how-to-choose-office-fit-out-contractor")
+);
+const KokkoTownPlayZoneCaseStudyBlog = lazy(
+  () => import("./pages/blog/kokko-town-play-zone-case-study")
+);
 
 const queryClient = new QueryClient();
 
@@ -182,6 +197,46 @@ const AppContent = () => {
           element={
             <Suspense fallback={<DynamicLoader />}>
               <OfficeInteriorFitOutExecutionGuideBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/commercial-flooring-systems-guide-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <CommercialFlooringSystemsGuideIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/false-ceiling-acoustic-design-guide-india"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <FalseCeilingAcousticDesignGuideIndiaBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/workplace-wellness-biophilic-design-trends-2026"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <WorkplaceWellnessBiophilicDesignTrends2026Blog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/how-to-choose-office-fit-out-contractor"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <HowToChooseOfficeFitOutContractorBlog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/kokko-town-play-zone-case-study"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <KokkoTownPlayZoneCaseStudyBlog />
             </Suspense>
           }
         />

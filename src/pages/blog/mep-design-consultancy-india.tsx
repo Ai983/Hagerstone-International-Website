@@ -120,6 +120,9 @@ export default function MepDesignConsultancyIndiaBlog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Technical",
+            keywords:
+              "mep design india, mep consultancy, electrical design commercial building, fire fighting systems, plumbing design commercial office, mep coordination, mep cost india",
           },
           {
             "@type": "BreadcrumbList",

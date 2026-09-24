@@ -44,6 +44,11 @@ import HospitalityInteriorDesignIndia from "@/pages/blog/hospitality-interior-de
 import FacadeGlazingGuideIndia from "@/pages/blog/facade-glazing-guide-india";
 import PebPreEngineeredBuildingsGuideIndia from "@/pages/blog/peb-pre-engineered-buildings-guide-india";
 import OfficeInteriorFitOutExecutionGuide from "@/pages/blog/office-interior-fit-out-execution-guide";
+import CommercialFlooringSystemsGuideIndia from "@/pages/blog/commercial-flooring-systems-guide-india";
+import FalseCeilingAcousticDesignGuideIndia from "@/pages/blog/false-ceiling-acoustic-design-guide-india";
+import WorkplaceWellnessBiophilicDesignTrends2026 from "@/pages/blog/workplace-wellness-biophilic-design-trends-2026";
+import HowToChooseOfficeFitOutContractor from "@/pages/blog/how-to-choose-office-fit-out-contractor";
+import KokkoTownPlayZoneCaseStudy from "@/pages/blog/kokko-town-play-zone-case-study";
 
 const ssrQueryClient = new QueryClient({
   defaultOptions: {
@@ -80,6 +85,11 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/blog/facade-glazing-guide-india" element={<FacadeGlazingGuideIndia />} />
         <Route path="/blog/peb-pre-engineered-buildings-guide-india" element={<PebPreEngineeredBuildingsGuideIndia />} />
         <Route path="/blog/office-interior-fit-out-execution-guide" element={<OfficeInteriorFitOutExecutionGuide />} />
+        <Route path="/blog/commercial-flooring-systems-guide-india" element={<CommercialFlooringSystemsGuideIndia />} />
+        <Route path="/blog/false-ceiling-acoustic-design-guide-india" element={<FalseCeilingAcousticDesignGuideIndia />} />
+        <Route path="/blog/workplace-wellness-biophilic-design-trends-2026" element={<WorkplaceWellnessBiophilicDesignTrends2026 />} />
+        <Route path="/blog/how-to-choose-office-fit-out-contractor" element={<HowToChooseOfficeFitOutContractor />} />
+        <Route path="/blog/kokko-town-play-zone-case-study" element={<KokkoTownPlayZoneCaseStudy />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/find-your-style" element={<FindYourStyle />} />
         {/*

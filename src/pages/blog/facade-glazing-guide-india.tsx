@@ -118,6 +118,7 @@ export default function FacadeGlazingGuideIndiaBlog() {
         ogImage={ogImage}
         ogImageAlt="Dramatic upward view of glass curtain-wall skyscrapers against the sky"
         ogType="article"
+        keywords="facade glazing india, curtain wall systems, acp cladding, structural glazing, spider glazing, facade contractor india, facade glazing cost india, aluminium doors and windows, rainscreen ventilated facade"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
@@ -136,6 +137,9 @@ export default function FacadeGlazingGuideIndiaBlog() {
             datePublished: lastUpdatedIso,
             dateModified: lastUpdatedIso,
             mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+            articleSection: "Technical",
+            keywords:
+              "facade glazing india, curtain wall systems, acp cladding, structural glazing, spider glazing, facade contractor india, facade glazing cost india, aluminium doors and windows, rainscreen ventilated facade",
           },
           {
             "@type": "BreadcrumbList",

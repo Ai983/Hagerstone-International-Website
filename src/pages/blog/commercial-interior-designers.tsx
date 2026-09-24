@@ -130,6 +130,7 @@ export default function CommercialInteriorDesignersBlog() {
         ogImage={ogImage}
         ogImageAlt="Modern office lounge showcasing commercial interior design for collaborative teams"
         ogType="article"
+        keywords="commercial interiors, office design, space planning, brand experience, workplace productivity, commercial interior design india, retail interior design, corporate office interior design"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
@@ -155,6 +156,9 @@ export default function CommercialInteriorDesignersBlog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Design Guide",
+            keywords:
+              "commercial interiors, office design, space planning, brand experience, workplace productivity, commercial interior design india, retail interior design, corporate office interior design",
           },
           {
             "@type": "BreadcrumbList",

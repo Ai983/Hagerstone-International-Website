@@ -157,6 +157,7 @@ export default function HospitalityInteriorDesignIndiaBlog() {
         ogImage={ogImage}
         ogImageAlt="Dark, atmospheric rooftop restaurant interior with velvet banquette seating, globe pendant lighting, and a city skyline view"
         ogType="article"
+        keywords="hospitality interior design india, hotel interior design, restaurant interior fit-out, banquet hall interior design, hospitality fit-out cost india, F&B interior design, QSR interior fit-out"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
@@ -181,6 +182,9 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Hospitality",
+            keywords:
+              "hospitality interior design india, hotel interior design, restaurant interior fit-out, banquet hall interior design, hospitality fit-out cost india, F&B interior design, QSR interior fit-out",
           },
           {
             "@type": "BreadcrumbList",

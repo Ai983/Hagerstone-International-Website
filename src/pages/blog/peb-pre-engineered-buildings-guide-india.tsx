@@ -127,6 +127,7 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
         ogImage={ogImage}
         ogImageAlt="Dramatic dark, angular steel space-frame truss structure"
         ogType="article"
+        keywords="pre-engineered buildings india, peb construction, peb design engineering, industrial steel structures, peb warehouse construction, peb cost india, peb vs rcc construction, peb erection contractor"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
@@ -145,6 +146,9 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
             datePublished: lastUpdatedIso,
             dateModified: lastUpdatedIso,
             mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+            articleSection: "Technical",
+            keywords:
+              "pre-engineered buildings india, peb construction, peb design engineering, industrial steel structures, peb warehouse construction, peb cost india, peb vs rcc construction, peb erection contractor",
           },
           {
             "@type": "BreadcrumbList",

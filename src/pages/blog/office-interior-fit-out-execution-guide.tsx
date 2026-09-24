@@ -118,6 +118,7 @@ export default function OfficeInteriorFitOutExecutionGuideBlog() {
         ogImage={ogImage}
         ogImageAlt="Sleek modern corporate boardroom with floor-to-ceiling windows and a city view"
         ogType="article"
+        keywords="office fit-out execution, cat a vs cat b fit-out, fit-out mep coordination, site sequencing fit-out, fit-out snagging handover, defects liability period fit-out, fit-out execution partner, office fit-out timeline"
         structuredData={buildSchemaGraph([
           organizationSchema,
           websiteSchema,
@@ -136,6 +137,9 @@ export default function OfficeInteriorFitOutExecutionGuideBlog() {
             datePublished: lastUpdatedIso,
             dateModified: lastUpdatedIso,
             mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+            articleSection: "Technical",
+            keywords:
+              "office fit-out execution, cat a vs cat b fit-out, fit-out mep coordination, site sequencing fit-out, fit-out snagging handover, defects liability period fit-out, fit-out execution partner, office fit-out timeline",
           },
           {
             "@type": "BreadcrumbList",

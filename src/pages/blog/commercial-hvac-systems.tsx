@@ -122,6 +122,9 @@ export default function CommercialHvacSystemsGuideBlog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Technical",
+            keywords:
+              "commercial hvac systems india, office hvac design, VRF vs VRV, hvac load calculation, ducted split system, chilled water system, hvac commissioning, indoor air quality office",
           },
           {
             "@type": "BreadcrumbList",

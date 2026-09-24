@@ -93,6 +93,9 @@ export default function OfficeSpacePlanningTrends2026Blog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Trends",
+            keywords:
+              "office space planning trends 2026, office space planning in 2026, modern workplace planning, hybrid workplace strategy, office layout planning, office cubicle space planning, workplace design trends 2026",
           },
           {
             "@type": "BreadcrumbList",

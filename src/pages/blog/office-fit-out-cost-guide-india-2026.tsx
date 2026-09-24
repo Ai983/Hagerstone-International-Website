@@ -116,6 +116,9 @@ export default function OfficeFitOutCostGuideBlog() {
               "@type": "WebPage",
               "@id": canonicalUrl,
             },
+            articleSection: "Cost & Planning",
+            keywords:
+              "office fit-out cost india, office interior cost per sq ft, commercial fit-out budget, office renovation cost india, turnkey office fit-out pricing",
           },
           {
             "@type": "BreadcrumbList",
