@@ -1,0 +1,138 @@
+---
+title: "DG Set vs UPS: What Each One Is Actually For"
+metaTitle: "DG Set vs UPS Backup Power"
+metaDescription: "Diesel generator against uninterruptible power supply in a commercial building: transfer time, runtime, load types, space and why most buildings need both, not one."
+slug: "dg-set-vs-ups-backup-power"
+collection: "compare"
+status: "published"
+publishedOn: "2026-09-24"
+author: "Dhruv Agarwal"
+primaryKeyword: "dg set vs ups"
+keywords:
+  - "backup power office building india"
+  - "diesel generator commercial building"
+  - "ups for office it load"
+  - "power backup design office"
+  - "essential load planning"
+definition: "A UPS supplies power instantly from stored energy, bridging the gap when the mains fails, but only for a limited period. A DG set takes time to start and accept load, then runs for as long as it is fuelled. They solve different halves of the same problem, which is why critical installations normally use both in series rather than choosing between them."
+citations:
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical installations"
+  - label: "IS 10118"
+    clause: "Selection, installation and maintenance of switchgear"
+  - label: "CPCB norms"
+    clause: "Emission and noise limits for diesel generator sets"
+faqs:
+  - question: "Why do buildings need both?"
+    answer: "Because they cover different time windows. When the mains fails, a DG set needs time to start, stabilise and accept load — during which everything unprotected is already off. A UPS covers that window instantly from stored energy but cannot sustain a building for hours. Running them in series means the UPS holds critical loads through the gap and the DG carries them once it is running. Choosing only one leaves either a gap at the start or a very short runtime."
+  - question: "Which loads go on which supply?"
+    answer: "Loads that cannot tolerate even a momentary interruption — servers, network equipment, access control, some medical and process equipment — go on UPS. Loads that can tolerate a short break but must run for hours — lifts, fire pumps where required, air conditioning, general lighting and power — go on the generator. Deciding which circuits are essential, and segregating them at the distribution boards, is the design work that makes either investment effective."
+  - question: "What determines how long a UPS lasts?"
+    answer: "Battery capacity against the connected load. A UPS sized to bridge a generator start is a very different machine from one expected to run a server room for an extended period, and the difference is mostly batteries — which take space, need ventilation and temperature control, and have a finite service life. Battery replacement is a recurring cost that should be in the operating budget from day one."
+  - question: "What are the practical constraints on a DG set?"
+    answer: "Space, fuel storage, exhaust routing, ventilation, vibration isolation, and noise and emission compliance. Diesel generator sets in India are subject to emission and noise requirements administered through CPCB norms, and siting frequently involves acoustic enclosure and careful exhaust design. The applicable requirements and any consent obligations for a specific site must be confirmed with the electrical consultant and the relevant authority."
+  - question: "Can a DG set run the whole building?"
+    answer: "It can be sized to, but it is frequently not the economic answer. Sizing for the full connected load produces a large machine that spends its life lightly loaded, which is inefficient and not good for the engine. The usual approach is to define an essential load — what genuinely must keep running — and size for that with a realistic allowance for growth."
+  - question: "How does this affect the fit-out design?"
+    answer: "Substantially, and early. Essential and non-essential circuits have to be separated at the distribution boards, UPS-fed outlets need to be identifiable so nobody plugs a kettle into one, and both plant items need space, access and ventilation that must be reserved in the layout. Retro-fitting this segregation after a floor is wired is expensive and usually imperfect."
+related:
+  - "sanctioned-load"
+  - "ht-vs-lt-panel"
+  - "xlpe-cable"
+  - "frls-cable"
+---
+
+## The comparison is a category error
+
+DG versus UPS gets asked as though they were alternatives. They are not — they
+cover different parts of the same failure.
+
+**A UPS covers the first seconds.** **A generator covers the following hours.**
+A building with only a generator loses everything at the moment of failure and
+restores it a short time later. A building with only a UPS keeps running
+briefly, then stops.
+
+The real questions are: which loads cannot be interrupted, and for how long must
+the building keep running?
+
+## Side by side
+
+| Factor | UPS | DG set |
+| --- | --- | --- |
+| Transfer time | Instantaneous | Start-up delay before accepting load |
+| Runtime | Limited by batteries | As long as fuel lasts |
+| Typical loads | IT, network, controls, critical equipment | Lifts, HVAC, lighting, general power |
+| Space needed | Unit plus battery room | Plant space, fuel, exhaust, ventilation |
+| Environmental requirements | Battery ventilation, temperature control | Emission and noise compliance |
+| Recurring cost | Battery replacement | Fuel, servicing, load testing |
+| Fails quietly? | Yes — untested batteries | Yes — untested sets |
+| Role | Bridges the gap | Sustains the building |
+
+## Defining the essential load is the actual design work
+
+Most backup power disappointments trace to this step being skipped.
+
+If every circuit is treated as essential, the generator is oversized, runs
+lightly loaded and costs more to buy and run. If the essential load is defined
+too narrowly, something important turns out not to be on it — discovered during
+the first real outage.
+
+The exercise is to list what must keep operating and for how long: servers and
+network, security and access control, emergency lighting, lifts, any process or
+cold storage that cannot be interrupted, and enough air conditioning to keep
+critical rooms within temperature. Then segregate those circuits at the boards
+so the distinction is physical, not notional.
+
+Installation practice follows **IS 732** and the building services provisions of
+**NBC 2016, Part 8**, with switchgear selection and installation addressed in
+**IS 10118**. Sizing and circuit design are the electrical consultant's output.
+
+## The failure mode both share
+
+Both fail silently, and both fail at the worst moment.
+
+A UPS with degraded batteries reports itself as healthy until the load transfers
+and it collapses in seconds. A generator that has not been run under load
+starts, runs briefly and trips when the load is applied.
+
+The control for both is **periodic testing under actual load**, recorded. This
+is an operational commitment, not a capital one, and it should be agreed with
+whoever will run the building before handover — otherwise the investment is a
+maintenance item nobody owns.
+
+## Environmental and siting constraints
+
+Diesel generator sets carry emission and noise obligations administered through
+**CPCB norms** in India, which affect enclosure, exhaust height and siting.
+Fuel storage has its own requirements. Exhaust routing has to discharge safely
+away from air intakes and occupied areas — a coordination point that is
+straightforward on a drawing and very awkward once the building is built.
+
+What applies to a specific installation, and any consent obligations, must be
+confirmed with the electrical consultant and the relevant authority.
+
+## Mistakes that cost real money
+
+- **Buying one and assuming it covers the other.** The most common and most
+  consequential error here.
+- **Not defining the essential load.** Everything downstream is then a guess.
+- **Sizing the generator for the full connected load.** Expensive to buy, poor
+  to run lightly loaded.
+- **No physical segregation of essential circuits.** The design intent does not
+  survive the first office churn.
+- **Unmarked UPS outlets.** Non-critical equipment migrates onto them.
+- **Never testing under load.** Both systems will report healthy right up until
+  they are needed.
+- **Leaving no space for battery growth or fuel.** Both requirements expand as
+  the building's IT and operating hours grow.
+
+## Standards referenced
+
+Electrical installation practice with reference to **IS 732** and
+**NBC 2016, Part 8**; switchgear selection and installation in **IS 10118**;
+diesel generator emission and noise requirements administered through
+**CPCB norms**. Load assessment, equipment sizing, protection design and
+compliance obligations for a specific building must be established by the
+project's electrical consultant and confirmed with the relevant authority.
