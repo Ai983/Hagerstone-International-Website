@@ -26,12 +26,12 @@ const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const heroImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/OfficeFlooring.jpg";
 const heroImageAlt =
-  "Close-up of commercial carpet tile flooring beneath meeting-room chairs in an office interior";
+  "Modern office lobby with floor-to-ceiling glazing, colourful lounge seating and polished floor tile overlooking a city skyline";
 
 const inlineImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/LobbyFlooring.jpg";
 const inlineImageAlt =
-  "Workers in safety vests applying a self-levelling epoxy coating across a large warehouse floor";
+  "Polished marble lobby floor with a reflective geometric tile pattern, reception desk and a dramatic hanging light fixture overhead";
 
 const relatedTopics = [
   "Commercial Flooring",

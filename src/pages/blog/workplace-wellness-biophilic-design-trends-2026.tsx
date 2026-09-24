@@ -26,12 +26,12 @@ const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const heroImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/PlantStairBedding.jpg";
 const heroImageAlt =
-  "Office atrium with large potted trees, timber breakout seating, and floor-to-ceiling glazing";
+  "Lush tropical planting along a sunlit terrace beside a brick staircase inside a glazed office building";
 
 const inlineImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/SpiralTreeStairs.jpg";
 const inlineImageAlt =
-  "Landscaped greenery along a balcony railing integrated into a commercial building's architecture";
+  "Upward view through a circular courtyard opening in a building, with a mature tree canopy growing through the centre";
 
 const relatedTopics = [
   "Biophilic Design",

@@ -31,7 +31,7 @@ const heroImageAlt =
 const inlineImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/False%20ceiling%20acoustic/Construction.jpg";
 const inlineImageAlt =
-  "Open ceiling void showing metal framing, insulation, and services running above a suspended ceiling grid";
+  "Unfinished renovation site interior with bare concrete walls, a ladder, paint buckets and timber offcuts beside an open window";
 
 const relatedTopics = [
   "False Ceiling Design",

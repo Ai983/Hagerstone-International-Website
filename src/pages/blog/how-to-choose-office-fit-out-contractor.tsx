@@ -26,12 +26,12 @@ const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const heroImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/FloorDesign.jpg";
 const heroImageAlt =
-  "Client and contractor reviewing a construction drawing together on site";
+  "Overhead view of an architectural floor plan drawing surrounded by drafting tools — mechanical pencil, ruler, eraser and pens";
 
 const inlineImage =
   "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/SiteSupervision.jpg";
 const inlineImageAlt =
-  "A site supervisor holding a clipboard, conducting a quality inspection inside a finished commercial interior";
+  "Two site supervisors in hard hats and safety vests reviewing a checklist beside stacked precast concrete panels";
 
 const relatedTopics = [
   "Fit-Out Contractor Selection",
