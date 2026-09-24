@@ -1,7 +1,7 @@
 import type { ContentGalleryGroup, ContentGalleryImage } from "@/content/types";
 
 // Grouped image gallery for content pages — layout plans and 3D views on a
-// design study, and anything else that ships images in frontmatter.
+// an /our-designs page, and anything else that ships images in frontmatter.
 //
 // Rendered outside the article's `prose` wrapper so Tailwind Typography does not
 // restyle the figures, and deliberately dumb: everything it needs (alt text,

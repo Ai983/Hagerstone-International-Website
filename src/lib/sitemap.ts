@@ -56,7 +56,7 @@ const projectImageSource: ImageSitemapSource = () =>
   }));
 
 /**
- * Hero and gallery images from every published MDX page — /design-studies today,
+ * Hero and gallery images from every published MDX page — /our-designs today,
  * any collection that adopts `gallery` later. The alt text and caption come from
  * frontmatter, where the schema already guarantees they exist.
  */
@@ -194,7 +194,7 @@ const sitemapWeight = (path: string): { priority: string; changefreq: string } =
   if (path.startsWith("/projects")) return { priority: "0.8", changefreq: "monthly" };
   // Design studies carry the portfolio proof buyers look for, so they rank
   // alongside projects rather than with reference content.
-  if (path.startsWith("/design-studies")) return { priority: "0.8", changefreq: "monthly" };
+  if (path.startsWith("/our-designs")) return { priority: "0.8", changefreq: "monthly" };
   if (path.startsWith("/locations") || path.includes("-in-"))
     return { priority: "0.8", changefreq: "monthly" };
   if (path.startsWith("/insights") || path.startsWith("/blog"))
@@ -241,7 +241,7 @@ export const buildSitemapIndexXml = (lastmod: string): string => {
 
 /** Human-readable section names for llms.txt, keyed by collection. */
 const COLLECTION_HEADING: Record<Collection, string> = {
-  design: "Design Studies",
+  design: "Our Designs",
   insights: "Insights",
   glossary: "Glossary",
   compliance: "Compliance & Approvals",
@@ -282,7 +282,7 @@ export const buildLlmsTxt = (paths: string[]): string => {
     "> Hagerstone International is a turnkey office design and build company based in " +
       "Noida, India, working across Delhi NCR and cities in north and west India. The firm " +
       "delivers interiors, MEP, facades, pre-engineered buildings and civil construction " +
-      "under a single contract, and publishes its design studies, technical references and " +
+      "under a single contract, and publishes its own design work, technical references and " +
       "material guides on this site.",
   );
   lines.push("");
@@ -299,7 +299,7 @@ export const buildLlmsTxt = (paths: string[]): string => {
     ["/services/peb", "Pre-engineered buildings"],
     ["/services/construction", "Civil and industrial construction"],
     ["/projects", "Completed project portfolio"],
-    ["/design-studies", "Design studies: layout options, plans and 3D views across commercial and residential work"],
+    ["/our-designs", "Our own design work: layout options, plans and 3D views across commercial and residential projects"],
     ["/blog", "Articles on office design and building services"],
     ["/our-team", "Leadership and team"],
     ["/contact", "Enquiries and consultations"],

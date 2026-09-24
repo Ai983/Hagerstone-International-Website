@@ -47,7 +47,7 @@ const COLLECTION_LABEL: Record<string, string> = {
   civil: "Construction",
   estates: "Business Districts & Estates",
   industries: "Industries",
-  design: "Design Studies",
+  design: "Our Designs",
 };
 
 interface ContentArticleProps {
@@ -141,7 +141,7 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
 
           {entry.definition && (
             // The short answer, above the fold for both readers and AI answer
-            // engines. Required on glossary; used by design studies too.
+            // engines. Required on glossary; used by /our-designs too.
             <p className="mt-6 border-l-4 border-accent bg-muted/50 p-4 text-lg text-foreground">
               {entry.definition}
             </p>
@@ -151,8 +151,8 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
             // Decks are client proposals. Saying so on the page is the whole
             // reason this collection can be published without a reviewer.
             <p className="mt-6 rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
-              <strong className="text-foreground">Concept design study.</strong> The layouts
-              and views below are design proposals produced by Hagerstone's design team. They
+              <strong className="text-foreground">Concept design.</strong> The layouts and
+              views below are our own design work, produced by Hagerstone's design team. They
               are not a record of a completed project, and the client is not identified.
             </p>
           )}

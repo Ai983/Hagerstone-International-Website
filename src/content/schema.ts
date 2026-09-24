@@ -55,7 +55,7 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
   // Deliberately not nested under /services/office-design-build: that page sells
   // the service, this section shows the work. Separate prefix, separate intent,
   // so the two do not compete for the same queries.
-  design: "/design-studies",
+  design: "/our-designs",
 };
 
 /**
@@ -182,7 +182,7 @@ export const frontmatterSchema = z
     galleryGroups: z.array(galleryGroupSchema).default([]),
 
     /**
-     * Honesty gate for design studies. Decks are client proposals, so the
+     * Honesty gate for /our-designs pages. Decks are client proposals, so the
      * default is `concept` and the template says so on the page. `delivered`
      * asserts we actually built it, which is a project claim — see the
      * reviewedBy rule below.
@@ -247,7 +247,7 @@ export const frontmatterSchema = z
       }
     }
 
-    // A design study is the drawings and the views. Without them it is a page
+    // An /our-designs page is the drawings and the views. Without them it is a page
     // describing images nobody can see.
     if (
       data.status === "published" &&

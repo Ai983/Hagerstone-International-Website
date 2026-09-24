@@ -84,7 +84,7 @@ reasoning attached. Disjoint primary keywords keep the two from competing.
 Logos are edited out with a recorded, repeatable recipe, and `scripts/check-client-safety.mjs`
 fails the build on a blocklisted name (hashed, because the repo is public), a company
 suffix, a rupee figure or a delivery claim. **No script can see a logo inside a bitmap** —
-that is the contact-sheet review in `docs/DESIGN-STUDIES-INTAKE.md`, and it is not optional.
+that is the contact-sheet review in `docs/OUR-DESIGNS-INTAKE.md`, and it is not optional.
 
 ### What shipped
 
@@ -93,11 +93,11 @@ that is the contact-sheet review in `docs/DESIGN-STUDIES-INTAKE.md`, and it is n
 | Collection | `design` → `/office-design`, listing page + article template, no router edits needed |
 | Images in frontmatter | New `gallery` / `galleryGroups` fields, Zod-validated: alt text ≥15 chars, real width/height, captions. **Not** `<img>` in MDX — frontmatter is what the build can check and the sitemap can harvest |
 | First page | `/office-design/nbfc-head-office-design-netaji-subhash-place-delhi` — 3 layout options, the annotated interior study, 12 gallery images + hero |
-| Image pipeline | `scripts/design-studies-images.mjs`: contact sheet, redaction ops (crop / fill / blur), WebP at 1600 + 800, prints a paste-ready `gallery:` block |
+| Image pipeline | `scripts/our-designs-images.mjs`: contact sheet, redaction ops (crop / fill / blur), WebP at 1600 + 800, prints a paste-ready `gallery:` block |
 | Guards | `check-images.mjs` (budget 250/90 KB, dimensions must match the file) and `check-client-safety.mjs`, both wired into `prebuild` |
 | Image SEO | Per-image `ImageObject` with caption + licence (Licensable badge eligible), `ImageGallery` node, image sitemap now carries content images with titles and captions, absolute `og:image` |
 | `llms.txt` | **Now generated** from the content index at build time and written to `dist/`. `public/llms.txt` deleted. It lists 206 pages (was 13) including all 26 locations, and the disputed stats are gone — see §7.4 |
-| Docs | `docs/DESIGN-STUDIES-INTAKE.md` — the Drive folder spec for the design team and the ~30-minute per-deck workflow |
+| Docs | `docs/OUR-DESIGNS-INTAKE.md` — the Drive folder spec for the design team and the ~30-minute per-deck workflow |
 
 **Site is at 237 pages.** Next decks follow the intake doc; ask the design team for
 original renders alongside the PDF, since a render pulled out of a PDF can carry the slide's

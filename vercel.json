@@ -9,8 +9,11 @@
     { "source": "/blog/corporate-office-design-guide-delhi-ncr", "destination": "/blog/office-workspace-design", "permanent": true },
     { "source": "/21-problems-faced-by-most-interior-designers-firms", "destination": "/blog/commercial-interior-designers", "permanent": true },
     { "source": "/blog/hospital-interior-designers-patient-centered-guide", "destination": "/services/interior-fit-out", "permanent": true },
-    { "source": "/office-design", "destination": "/design-studies", "permanent": true },
-    { "source": "/office-design/:slug", "destination": "/design-studies/:slug", "permanent": true }
+    { "source": "/office-design", "destination": "/our-designs", "permanent": true },
+    { "source": "/office-design/:slug", "destination": "/our-designs/:slug", "permanent": true },
+    { "source": "/design-studies", "destination": "/our-designs", "permanent": true },
+    { "source": "/design-studies/indoor-kids-play-zone-design-two-levels", "destination": "/projects/kokko-town", "permanent": true },
+    { "source": "/design-studies/:slug", "destination": "/our-designs/:slug", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

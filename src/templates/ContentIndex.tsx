@@ -51,7 +51,7 @@ const ContentIndex = ({
       ? [...entries].sort((a, b) => a.title.localeCompare(b.title))
       : entries;
 
-  // Image-led collections (design studies) read as cards; text collections
+  // Image-led collections (our designs) read as cards; text collections
   // (glossary, materials) read better as a dense scannable list. The content
   // decides the layout, so no collection needs its own template.
   const useCards = ordered.some((entry) => entry.heroImage);

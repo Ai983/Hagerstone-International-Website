@@ -1,4 +1,4 @@
-// Turn design-deck renders into web images for a /design-studies page.
+// Turn design-deck renders into web images for a /our-designs page.
 //
 // Two modes:
 //
@@ -8,7 +8,7 @@
 //             logo inside a bitmap.
 //
 //   default   Apply the per-deck redaction plan, resize to 1600 and 800 wide,
-//             encode WebP, write into public/design-studies/<slug>/, and print a
+//             encode WebP, write into public/our-designs/<slug>/, and print a
 //             paste-ready `gallery:` block with real dimensions.
 //
 // Redaction ops, in the order they are applied per image:
@@ -18,8 +18,8 @@
 // Coordinates for fill/blur are relative to the image AFTER any crop.
 //
 // Usage:
-//   node scripts/design-studies-images.mjs --sheet --in <dir> --out <file.jpg>
-//   node scripts/design-studies-images.mjs --slug <slug> --in <dir> --plan <plan.json>
+//   node scripts/our-designs-images.mjs --sheet --in <dir> --out <file.jpg>
+//   node scripts/our-designs-images.mjs --slug <slug> --in <dir> --plan <plan.json>
 
 import { createHash } from "node:crypto";
 import fs from "node:fs";
@@ -143,7 +143,7 @@ async function applyOps(input, ops = []) {
 
 async function run(slug, inDir, planFile) {
   const plan = JSON.parse(fs.readFileSync(planFile, "utf-8"));
-  const outDir = path.join("public", "design-studies", slug);
+  const outDir = path.join("public", "our-designs", slug);
   fs.mkdirSync(outDir, { recursive: true });
 
   const rows = [];
@@ -183,7 +183,7 @@ async function run(slug, inDir, planFile) {
 
     rows.push(
       [
-        `  - src: "/design-studies/${slug}/${key}-1600.webp"`,
+        `  - src: "/our-designs/${slug}/${key}-1600.webp"`,
         `    alt: "${spec.alt ?? "TODO — describe what is visible, 15+ characters"}"`,
         `    caption: "${spec.caption ?? "TODO — design intent. Renders end: Indicative viewpoint."}"`,
         `    width: ${meta.width}`,

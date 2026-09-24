@@ -101,24 +101,23 @@ function Projects() {
           ))}
         </StaggerContainer>
 
-        {/* Design studies. Someone browsing delivered work is exactly the reader
+        {/* Our designs. Someone browsing delivered work is exactly the reader
             who wants to see how a layout gets decided, so this is the highest
             quality internal link the design section can have. */}
         <div className="mt-16 rounded-xl border border-border bg-background p-8">
           <h2 className="text-2xl font-bold text-primary mb-3">
-            Office design studies
+            Our designs
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl">
-            Before a project is built it is planned. Our{" "}
-            <strong>office design studies</strong> show the layout options for real floor
-            plates — seat counts, cabin mix, circulation and finishes — with the reasoning
-            behind each decision.
+            Before a project is built it is planned. <strong>Our own design work</strong>{" "}
+            shows the layout options for real floor plates — seat counts, cabin mix,
+            circulation and finishes — with the reasoning behind each decision.
           </p>
           <Link
-            to="/design-studies"
+            to="/our-designs"
             className="inline-flex items-center gap-2 rounded-lg border border-primary px-6 py-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            See the design studies
+            See our designs
           </Link>
         </div>
 

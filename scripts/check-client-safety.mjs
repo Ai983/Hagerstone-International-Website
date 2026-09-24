@@ -7,7 +7,7 @@
 //
 // What it CANNOT do: see a logo inside an image. A mark on a reception wall, a
 // mug or a monitor is caught only by eyeballing the contact sheet that
-// scripts/design-studies-images.mjs writes. Never skip that step.
+// scripts/our-designs-images.mjs writes. Never skip that step.
 //
 // The blocklist is hashed, not plaintext: this repo is public, and a committed
 // list of every client's name would be a worse leak than the thing it prevents.
@@ -29,7 +29,7 @@ const blocked = new Set(blocklist.hashes ?? []);
 const hash = (text) =>
   createHash("sha256").update(`${blocklist.salt}:${text}`).digest("hex").slice(0, 32);
 
-/** Company-name shapes that should never appear in a design study. */
+/** Company-name shapes that should never appear in an /our-designs page. */
 const SUFFIX_PATTERN =
   /\b(?:pvt\.?\s*ltd|private\s+limited|\bllp\b|\binc\.|\bgmbh\b|\bs\.?a\.?r\.?l\b)/i;
 
@@ -89,7 +89,7 @@ for (const file of walk(CONTENT_DIR)) {
     }
   }
 
-  // The claim and suffix checks apply to design studies, where the source is a
+  // The claim and suffix checks apply to /our-designs pages, where the source is a
   // client proposal. Other collections are governed by their own rules.
   const isDesign = /^collection:\s*["']?design["']?/m.test(raw);
   if (!isDesign) continue;
@@ -104,7 +104,7 @@ for (const file of walk(CONTENT_DIR)) {
 }
 
 // File names ship in the HTML and the sitemap, so they get the same treatment.
-const designAssets = join(ROOT, "public", "design-studies");
+const designAssets = join(ROOT, "public", "our-designs");
 if (existsSync(designAssets)) {
   for (const slugDir of readdirSync(designAssets)) {
     const dir = join(designAssets, slugDir);
@@ -113,13 +113,13 @@ if (existsSync(designAssets)) {
       if (blocked.size > 0) {
         for (const gram of ngrams(name.replace(/[-_]/g, " "))) {
           if (blocked.has(hash(gram))) {
-            errors.push(`public/design-studies/${slugDir}/${name}: blocklisted name in path`);
+            errors.push(`public/our-designs/${slugDir}/${name}: blocklisted name in path`);
             break;
           }
         }
       }
       if (/logo|branding/i.test(name)) {
-        errors.push(`public/design-studies/${slugDir}/${name}: suspicious file name`);
+        errors.push(`public/our-designs/${slugDir}/${name}: suspicious file name`);
       }
     }
   }

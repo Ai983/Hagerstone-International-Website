@@ -16,12 +16,12 @@ const Footer = () => {
   ];
 
   // Section indexes that nothing else on the site links to. Without these the
-  // design studies, glossary, materials, estate and industry pages are orphans:
+  // our designs, glossary, materials, estate and industry pages are orphans:
   // reachable only from each other, which is how ~100 pages end up with no
   // internal links at all. Kept to five — a footer stuffed with links is
   // discounted, and contextual links in the body do the real work.
   const resources = [
-    { name: "Design Studies", href: "/design-studies" },
+    { name: "Our Designs", href: "/our-designs" },
     { name: "Materials Guide", href: "/materials" },
     { name: "Glossary", href: "/glossary" },
     { name: "Business Districts", href: "/estates" },

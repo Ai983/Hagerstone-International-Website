@@ -195,9 +195,8 @@ const ServiceDetail = () => {
               See how a layout gets decided
             </h2>
             <p className="text-muted-foreground mb-6 max-w-3xl">
-              Our{" "}
-              <Link to="/design-studies" className="text-primary underline underline-offset-4">
-                office design studies
+              <Link to="/our-designs" className="text-primary underline underline-offset-4">
+                Our designs
               </Link>{" "}
               show real floor plates planned several ways — seat counts, cabin mix,
               circulation and finishes, with the trade-offs set out.

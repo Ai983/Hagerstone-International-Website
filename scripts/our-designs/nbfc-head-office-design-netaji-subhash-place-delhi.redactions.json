@@ -4,7 +4,7 @@
     "Source files are the deck exports; they are NOT committed (public repo).",
     "Coordinates for fill/blur are relative to the image after any crop.",
     "Only two views carried client branding; everything else is unmarked.",
-    "Run: node scripts/design-studies-images.mjs --slug <slug> --in <dir> --plan <this file>"
+    "Run: node scripts/our-designs-images.mjs --slug <slug> --in <dir> --plan <this file>"
   ],
 
   "reception-and-waiting": {
