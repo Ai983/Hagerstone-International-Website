@@ -24,12 +24,12 @@ const slug = "commercial-flooring-systems-guide-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://images.unsplash.com/photo-1676474987690-2fc0582a07ec?auto=format&fit=crop&w=1600&h=1067&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/OfficeFlooring.jpg";
 const heroImageAlt =
   "Close-up of commercial carpet tile flooring beneath meeting-room chairs in an office interior";
 
 const inlineImage =
-  "https://images.unsplash.com/photo-1772305595483-6b058aff40f9?auto=format&fit=crop&w=1200&h=800&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/LobbyFlooring.jpg";
 const inlineImageAlt =
   "Workers in safety vests applying a self-levelling epoxy coating across a large warehouse floor";
 

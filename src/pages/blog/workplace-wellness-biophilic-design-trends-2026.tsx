@@ -24,12 +24,12 @@ const slug = "workplace-wellness-biophilic-design-trends-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://images.unsplash.com/photo-1718220268527-4477fd170775?auto=format&fit=crop&w=1600&h=1067&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/PlantStairBedding.jpg";
 const heroImageAlt =
   "Office atrium with large potted trees, timber breakout seating, and floor-to-ceiling glazing";
 
 const inlineImage =
-  "https://images.unsplash.com/photo-1769490315659-ac96dc2f3d2f?auto=format&fit=crop&w=1200&h=800&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/SpiralTreeStairs.jpg";
 const inlineImageAlt =
   "Landscaped greenery along a balcony railing integrated into a commercial building's architecture";
 
@@ -327,9 +327,9 @@ export default function WorkplaceWellnessBiophilicDesignTrends2026Blog() {
               srcSet={`${inlineImage} 1200w`}
               sizes="(max-width: 768px) 100vw, 1200px"
               alt={inlineImageAlt}
-              className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
+              className="w-full h-[320px] md:h-[460px] object-cover rounded-lg shadow-lg"
               width="1200"
-              height="800"
+              height="1600"
               loading="lazy"
               decoding="async"
             />

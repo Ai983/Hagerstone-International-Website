@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import SEOHead from "@/components/SEOHead";
-import { blogPosts as postsData, getFeaturedPost, getRecentPosts } from "@/data/blogPosts";
+import { blogPosts as postsData, getFeaturedPost } from "@/data/blogPosts";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import {
   buildSchemaGraph,
@@ -12,11 +21,46 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 
+// 3 columns × 4 rows. Pagination is derived purely from postsData.length, so
+// every future post just extends the page count — nothing here is hardcoded
+// to today's post count.
+const POSTS_PER_PAGE = 12;
+
+// Windowed page-number list with ellipses, so this stays readable even once
+// there are many pages (not just the 2 pages the blog has today).
+const getPageNumbers = (current: number, total: number): (number | "ellipsis")[] => {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages: (number | "ellipsis")[] = [1];
+  if (current > 3) pages.push("ellipsis");
+  const start = Math.max(2, current - 1);
+  const end = Math.min(total - 1, current + 1);
+  for (let p = start; p <= end; p++) pages.push(p);
+  if (current < total - 2) pages.push("ellipsis");
+  pages.push(total);
+  return pages;
+};
+
 // Blog listing page
 const Blog = () => {
   const featuredPost = getFeaturedPost() ?? postsData[0];
-  const recentPosts = getRecentPosts(postsData.length);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const totalPages = Math.max(1, Math.ceil(postsData.length / POSTS_PER_PAGE));
+  const requestedPage = Number(searchParams.get("page")) || 1;
+  const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
+  const pagePosts = postsData.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const goToPage = (page: number) => {
+    if (page < 1 || page > totalPages || page === currentPage) return;
+    setSearchParams(page === 1 ? {} : { page: String(page) });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
+  const canonicalUrl =
+    currentPage === 1 ? `${SITE_URL}/blog` : `${SITE_URL}/blog?page=${currentPage}`;
 
   const categories = [
     "All", "Cost & Planning", "Design Guide", "Case Study", "Trends", "Technical", "Sustainability", "Hospitality"
@@ -26,9 +70,13 @@ const Blog = () => {
     <div className="min-h-screen bg-background">
 
       <SEOHead
-        title="Interior Design Blog & Ideas | Hagerstone International"
+        title={
+          currentPage === 1
+            ? "Interior Design Blog & Ideas | Hagerstone International"
+            : `Interior Design Blog & Ideas — Page ${currentPage} | Hagerstone International`
+        }
         description="Insights from an interior design and build firm covering office design, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs."
-        canonical="https://hagerstone.com/blog"
+        canonical={canonicalUrl}
         keywords="interior design and build companies, hospitality interior design company, international interior designers in India, best interior company in Delhi, corporate office styling, top interior fit out companies in Delhi, interior designers international"
         structuredData={buildSchemaGraph([
           organizationSchema,
@@ -44,20 +92,40 @@ const Blog = () => {
       />
 
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-hero text-primary-foreground py-20">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Hero Section — same deep slate blue as DynamicLoader, so the blog
+          hero reads as part of one continuous brand palette. Black is a
+          corner vignette, not the base — a diagonal black-to-black gradient
+          on a wide, short band left almost the whole thing looking black.
+          Top padding is taller than the bottom to offset the fixed
+          HoveringNavbar sitting over the first ~80px. */}
+      <section className="relative bg-slate-900 text-primary-foreground pt-40 pb-20 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 140% at 0% 0%, black, transparent 60%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 100%, hsl(217 55% 32% / 0.9), transparent 70%)",
+          }}
+        />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-gold">
+          <h1 className="text-5xl md:text-6xl font-bold animate-fade-in text-gold">
             Design Insights
           </h1>
+          <div className="w-16 h-0.5 bg-gold/70 rounded-full mx-auto my-6" />
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-slide-up">
             Stay updated with the latest trends, tips, and insights from the world of interior design
           </p>
         </div>
       </section>
 
-      {/* Featured Post */}
+      {/* Featured Post — only on page 1, so it isn't repeated on every page */}
+      {currentPage === 1 && (
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
@@ -110,6 +178,7 @@ const Blog = () => {
           </Link>
         </div>
       </section>
+      )}
 
       {/* Categories */}
       <section className="py-12 bg-muted/30">
@@ -136,7 +205,7 @@ const Blog = () => {
             <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">Latest Articles</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentPosts.map((post, index) => (
+            {pagePosts.map((post, index) => (
               <Link key={post.id} to={`/blog/${post.slug}`}>
                 <Card 
                   className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden cursor-pointer h-full"
@@ -187,6 +256,55 @@ const Blog = () => {
               </Link>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <Pagination className="mt-12">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    href="#"
+                    aria-disabled={currentPage === 1}
+                    className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToPage(currentPage - 1);
+                    }}
+                  />
+                </PaginationItem>
+                {getPageNumbers(currentPage, totalPages).map((page, i) =>
+                  page === "ellipsis" ? (
+                    <PaginationItem key={`ellipsis-${i}`}>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  ) : (
+                    <PaginationItem key={page}>
+                      <PaginationLink
+                        href="#"
+                        isActive={page === currentPage}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          goToPage(page);
+                        }}
+                      >
+                        {page}
+                      </PaginationLink>
+                    </PaginationItem>
+                  )
+                )}
+                <PaginationItem>
+                  <PaginationNext
+                    href="#"
+                    aria-disabled={currentPage === totalPages}
+                    className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToPage(currentPage + 1);
+                    }}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          )}
         </div>
       </section>
 

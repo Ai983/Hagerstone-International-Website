@@ -24,12 +24,12 @@ const slug = "false-ceiling-acoustic-design-guide-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://images.unsplash.com/photo-1693801873387-cafbe425d432?auto=format&fit=crop&w=1600&h=1067&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/False%20ceiling%20acoustic/Acoustic.jpg";
 const heroImageAlt =
   "Upward view of a coffered grid ceiling with recessed skylight openings in a commercial building";
 
 const inlineImage =
-  "https://images.unsplash.com/photo-1768321902399-61e58a35413c?auto=format&fit=crop&w=1200&h=800&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/False%20ceiling%20acoustic/Construction.jpg";
 const inlineImageAlt =
   "Open ceiling void showing metal framing, insulation, and services running above a suspended ceiling grid";
 

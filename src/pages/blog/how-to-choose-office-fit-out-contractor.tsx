@@ -24,12 +24,12 @@ const slug = "how-to-choose-office-fit-out-contractor";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://images.unsplash.com/photo-1632862378069-4ad0348cea4f?auto=format&fit=crop&w=1600&h=1067&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/FloorDesign.jpg";
 const heroImageAlt =
   "Client and contractor reviewing a construction drawing together on site";
 
 const inlineImage =
-  "https://images.unsplash.com/photo-1700727448575-6f1680cd7d75?auto=format&fit=crop&w=1200&h=800&q=80";
+  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/SiteSupervision.jpg";
 const inlineImageAlt =
   "A site supervisor holding a clipboard, conducting a quality inspection inside a finished commercial interior";
 
