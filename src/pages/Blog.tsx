@@ -1,4 +1,6 @@
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import type { MouseEvent } from "react";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -42,41 +44,105 @@ const getPageNumbers = (current: number, total: number): (number | "ellipsis")[]
   return pages;
 };
 
+// Filter buttons. These match `category` on the legacy posts, and "Insights" is
+// the category every MDX article gets (see src/lib/blogList.ts).
+const CATEGORIES = [
+  "Cost & Planning",
+  "Design Guide",
+  "Case Study",
+  "Trends",
+  "Technical",
+  "Sustainability",
+  "Hospitality",
+  "Insights",
+];
+
+const categorySlug = (label: string) =>
+  label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 // Blog listing page
 const Blog = () => {
   // Both article systems in one list — the legacy .tsx posts and the MDX
   // articles under the `insights` collection. See src/lib/blogList.ts.
-  const postsData = getBlogListItems();
-  const featuredPost = getFeaturedBlogItem() ?? postsData[0];
+  const allPosts = getBlogListItems();
+  const featuredPost = getFeaturedBlogItem() ?? allPosts[0];
 
-  // Pagination is in the path (/blog, /blog/page/2), not a ?page= query, so
-  // every page is a real prerendered file and every article is linked from
-  // static HTML. See the note in src/lib/blogList.ts.
+  // The category filter is a client-side view over the same list, addressed as
+  // /blog?category=technical. The prerendered files are always the unfiltered
+  // listing, so crawlers still reach every article through path pagination.
+  // Production hydrates that static HTML, so the query string is read only
+  // after mount; reading it during the first render would not match the server
+  // markup and React would discard the prerendered tree.
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const requestedCategory = mounted ? searchParams.get("category") : null;
+  const activeCategory =
+    CATEGORIES.find((label) => categorySlug(label) === requestedCategory) ?? null;
+  const postsData = activeCategory
+    ? allPosts.filter((post) => post.category === activeCategory)
+    : allPosts;
+
+  // Unfiltered pagination is in the path (/blog, /blog/page/2), not a ?page=
+  // query, so every page is a real prerendered file and every article is linked
+  // from static HTML. See the note in src/lib/blogList.ts. A filtered view is
+  // client-only, so it pages with ?page= instead.
   const { page: pageParam } = useParams();
   const totalPages = Math.max(1, Math.ceil(postsData.length / POSTS_PER_PAGE));
-  const requestedPage = Number(pageParam) || 1;
+  const requestedPage = Number(activeCategory ? searchParams.get("page") : pageParam) || 1;
   const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
   const pagePosts = postsData.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
 
-  const pageHref = (page: number) => (page === 1 ? "/blog" : `/blog/page/${page}`);
+  const pageHref = (page: number) =>
+    activeCategory
+      ? `/blog?category=${categorySlug(activeCategory)}${page > 1 ? `&page=${page}` : ""}`
+      : page === 1
+        ? "/blog"
+        : `/blog/page/${page}`;
 
-  const canonicalUrl = `${SITE_URL}${pageHref(currentPage)}`;
+  // Filtered views all canonicalise to /blog: they are subsets of the same
+  // content, and the crawlable version of each page already exists.
+  const canonicalUrl = activeCategory ? `${SITE_URL}/blog` : `${SITE_URL}${pageHref(currentPage)}`;
 
-  const categories = [
-    "All", "Cost & Planning", "Design Guide", "Case Study", "Trends", "Technical", "Sustainability", "Hospitality"
-  ];
+  // In a filtered view, move between pages without a full reload (a reload
+  // replays the site's loading splash). The href stays real either way.
+  const pagerNav = (href: string) =>
+    activeCategory
+      ? {
+          onClick: (event: MouseEvent<HTMLAnchorElement>) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+            event.preventDefault();
+            navigate(href);
+          },
+        }
+      : {};
+
+  // Scroll to the filter bar when the category or page changes, so the result is
+  // in view with the buttons still visible above it for the next pick.
+  const gridRef = useRef<HTMLElement>(null);
+  const firstRun = useRef(true);
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [activeCategory, currentPage]);
 
   return (
     <div className="min-h-screen bg-background">
 
       <SEOHead
         title={
-          currentPage === 1
-            ? "Interior Design Blog & Ideas | Hagerstone International"
-            : `Interior Design Blog & Ideas — Page ${currentPage} | Hagerstone International`
+          activeCategory
+            ? `${activeCategory} Articles | Hagerstone International`
+            : currentPage === 1
+              ? "Interior Design Blog & Ideas | Hagerstone International"
+              : `Interior Design Blog & Ideas — Page ${currentPage} | Hagerstone International`
         }
         description="Insights from an interior design and build firm covering office design, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs."
         canonical={canonicalUrl}
@@ -127,8 +193,9 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Featured Post — only on page 1, so it isn't repeated on every page */}
-      {currentPage === 1 && (
+      {/* Featured Post — only on the unfiltered page 1, so it isn't repeated on
+          every page or shown above a category it may not belong to */}
+      {currentPage === 1 && !activeCategory && (
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
@@ -187,30 +254,58 @@ const Blog = () => {
       </section>
       )}
 
-      {/* Categories */}
-      <section className="py-12 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Categories — real links, so they work without JS and can be shared as
+          /blog?category=technical. "All" goes back to the crawlable /blog. */}
+      <section ref={gridRef} className="py-12 bg-muted/30 scroll-mt-20">
+        <nav
+          aria-label="Filter articles by category"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category, index) => (
-              <Button
-                key={category}
-                variant="outline"
-                className="hover:bg-muted hover:scale-105 transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {category}
-              </Button>
-            ))}
+            {["All", ...CATEGORIES].map((category, index) => {
+              const isActive = category === "All" ? !activeCategory : category === activeCategory;
+              return (
+                <Button
+                  key={category}
+                  asChild
+                  variant={isActive ? "default" : "outline"}
+                  className="hover:scale-105 transition-all duration-300 animate-scale-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <Link
+                    to={category === "All" ? "/blog" : `/blog?category=${categorySlug(category)}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {category}
+                  </Link>
+                </Button>
+              );
+            })}
           </div>
-        </div>
+        </nav>
       </section>
 
       {/* Blog Posts Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">Latest Articles</h2>
+            <h2 className="text-3xl font-bold text-primary mb-4 animate-fade-in">
+              {activeCategory ? `${activeCategory} Articles` : "Latest Articles"}
+            </h2>
+            {activeCategory && (
+              <p className="text-muted-foreground">
+                {postsData.length} {postsData.length === 1 ? "article" : "articles"}
+              </p>
+            )}
           </div>
+          {postsData.length === 0 && (
+            <p className="text-muted-foreground">
+              No articles in this category yet.{" "}
+              <Link to="/blog" className="text-accent underline underline-offset-4">
+                View all articles
+              </Link>
+            </p>
+          )}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pagePosts.map((post, index) => (
               <Link key={post.key} to={`/blog/${post.slug}`}>
@@ -284,6 +379,7 @@ const Blog = () => {
                 <PaginationItem>
                   <PaginationPrevious
                     href={currentPage === 1 ? "#" : pageHref(currentPage - 1)}
+                    {...(currentPage === 1 ? {} : pagerNav(pageHref(currentPage - 1)))}
                     rel={currentPage === 1 ? undefined : "prev"}
                     aria-disabled={currentPage === 1}
                     className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
@@ -296,7 +392,11 @@ const Blog = () => {
                     </PaginationItem>
                   ) : (
                     <PaginationItem key={page}>
-                      <PaginationLink href={pageHref(page)} isActive={page === currentPage}>
+                      <PaginationLink
+                        href={pageHref(page)}
+                        {...pagerNav(pageHref(page))}
+                        isActive={page === currentPage}
+                      >
                         {page}
                       </PaginationLink>
                     </PaginationItem>
@@ -305,6 +405,7 @@ const Blog = () => {
                 <PaginationItem>
                   <PaginationNext
                     href={currentPage === totalPages ? "#" : pageHref(currentPage + 1)}
+                    {...(currentPage === totalPages ? {} : pagerNav(pageHref(currentPage + 1)))}
                     rel={currentPage === totalPages ? undefined : "next"}
                     aria-disabled={currentPage === totalPages}
                     className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
