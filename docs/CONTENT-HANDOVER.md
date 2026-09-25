@@ -1,7 +1,8 @@
 # Content handover — adding technical pages to hagerstone.com
 
 **For:** the intern taking over technical content production, and the Claude session helping her.
-**Written:** 25 September 2026. **Site at handover:** 282 pages.
+**Written:** 25 September 2026. **Last updated:** 25 September 2026, after the first
+intern batch. **Site now:** 298 pages.
 
 If you are Claude reading this: treat this file as the task brief. Read `CLAUDE.md` in the
 repo root first (it is short and it is the build contract), then this file. Do not read
@@ -92,7 +93,7 @@ service × city matrix — it is duplicate-content risk for no proven benefit.
 
 ## 3. Where the site is right now
 
-**282 pages**, every one prerendered to static HTML and in the sitemap. The whole site,
+**298 pages**, every one prerendered to static HTML and in the sitemap. The whole site,
 by section:
 
 | Section | Pages |
@@ -103,12 +104,12 @@ by section:
 | `/services/` (includes facade, interiors, MEP, PEB, civil) | 40 |
 | `/locations/` (cities) | 26 |
 | `/compare/` | 20 |
-| `/blog/` | 17 + 1 pagination page |
+| `/blog/` | 32 articles + 2 pagination pages |
 | `/estates/` | 8 |
 | `/industries/` | 8 |
 | `/our-designs/` | 8 |
 | `/projects/` | 8 |
-| **Total** | **282** |
+| **Total** | **298** |
 
 You can regenerate this yourself any time after a build:
 
@@ -120,8 +121,8 @@ The build guarantees this number is honest — `prerender.js` fails if the sitem
 the prerendered file count disagree. So there are no orphan pages and nothing in the
 sitemap that 404s.
 
-**30 of those were added on 24 September** — 20 `/compare/` pages (a brand new section)
-and 10 `/glossary/` terms.
+**30 were added on 24 September** — 20 `/compare/` pages (a brand new section) and 10
+`/glossary/` terms. **16 more on 25 September**, the first batch of MDX blog articles.
 
 ---
 
@@ -132,7 +133,7 @@ This is the complete target, from `CONTENT-ENGINE-PLAN.md`, updated to today's c
 
 | Path | Now | Target | Left | Safe to add unreviewed? |
 |---|---:|---:|---:|---|
-| `/blog/` articles | 17 | ~400 | ~380 | ✅ **Yes — biggest opportunity, see §6** |
+| `/blog/` articles | 32 | ~400 | ~370 | ✅ **Yes — biggest opportunity, see §6** |
 | `/glossary/` | 45 | 120 | 75 | ✅ Yes — but stop near 70, see below |
 | `/materials/` | 60 | 60 | 0 | ✅ Done |
 | `/compare/` | 20 | 30 | 10 | ✅ Yes — but largely complete, see below |
@@ -177,10 +178,10 @@ raising with the founder — see §12.
 
 ## 5. What to write next, in priority order
 
-### Priority 1 — `/blog/` articles (17 now, ~400 the target)
+### Priority 1 — `/blog/` articles (32 now, ~400 the target)
 
 **This is the biggest single opportunity on the site.** The competitor's 414 articles are
-40% of their entire 1,044 pages and their main traffic driver. We have 17.
+40% of their entire 1,044 pages and their main traffic driver. We have 32.
 
 Until 25 September this was blocked, because every article needed four hand edits and one
 of them shipped 404s to Google twice. That is fixed — **an article is now one `.mdx` file
@@ -194,8 +195,26 @@ Article topics should answer a real question a buyer asks. Good shapes:
 - *How to evaluate a \<supplier / system / proposal\>*
 - *Why \<common assumption\> is wrong*
 
-One is already written as the working example:
-`src/content/insights/office-fit-out-programme-where-time-is-lost.mdx`. Read it first.
+**Already written — do not repeat these 16.** Check `src/content/insights/` before
+choosing a topic:
+
+fit-out handover documents · fit-out in an occupied office · glass partitions: fire,
+acoustic, privacy · how many desks for a hybrid office · MEP coordination drawing ·
+office fit-out programme · office HVAC complaints after handover · office layout
+efficiency · office lighting: why lux alone is not enough · power load letter and DG ·
+reading landlord fit-out guidelines · server room in an office · snagging: when to start ·
+variation orders: why a change costs more · warehouse floor: racking before the slab ·
+wet areas: pantries and washrooms
+
+Read `office-fit-out-programme-where-time-is-lost.mdx` first as the shape to follow.
+
+**Topics that are still open**, in the same vein — the question a buyer actually asks:
+acoustic expectations in an open-plan office · what a BOQ does and does not cover ·
+choosing between a landlord's shell options · commissioning and what "handover" means ·
+why fit-out programmes slip in the last three weeks · specifying furniture without
+locking the layout · what a services survey of an existing building should find ·
+planning a phased move between two floors · lift and access constraints on a fit-out ·
+security and access control decisions that affect the layout
 
 **Pace it.** 15–25 a day is realistic at quality. Do not attempt 30–40 — they come out
 thin and near-duplicate, which is the doorway-content pattern Google demotes sitewide,
@@ -270,6 +289,30 @@ The filename **must equal** the `slug` in the frontmatter, or the build fails.
 Note the blog one: the folder is `insights` and the `collection:` value is `"insights"`,
 but the page is served under `/blog/`. That is deliberate — there is one article section,
 and it keeps the URLs the existing 16 posts already rank on.
+
+### Blog hero images — must be exactly 1600 × 900
+
+`ContentArticle.tsx` declares `width={1600} height={900}` on the hero of every `insights`
+article, so the browser reserves the right space before the image loads and the page does
+not jump. All 16 existing heroes are 1600 × 900 WebP in `public/blog/insights/`.
+
+**A hero of any other shape will render distorted and reintroduce layout shift.** Crop to
+1600 × 900 before saving, and keep the file under 250 KB — `check-images.mjs` enforces the
+size budget but cannot know the intended aspect ratio.
+
+An article with no hero image is still valid: the listing card falls back to a text-only
+layout. So a missing image is fine, a wrongly-shaped one is not.
+
+### Categories on the blog listing
+
+The filter bar on `/blog` matches the `category` field on the old `.tsx` posts. **Every
+MDX article is automatically given the category "Insights"** — there is no frontmatter
+field for it, and nothing to set.
+
+Worth knowing as the count grows: at 400 articles they would all sit under one filter
+label. Splitting them into real categories would mean adding an optional `category` field
+to the schema and mapping it through `src/lib/blogList.ts`. Not urgent, but it is the
+obvious next improvement to the listing.
 
 ### About the 16 old blog posts
 
