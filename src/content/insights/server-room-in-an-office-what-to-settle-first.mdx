@@ -1,0 +1,203 @@
+---
+title: "Office Server Room Design"
+metaTitle: "Office Server Room Design Checklist"
+metaDescription: "Office server room design: a small room that drives power, cooling, fire protection, cabling and security. What to settle first so it does not fail on cooling."
+slug: "server-room-in-an-office-what-to-settle-first"
+collection: "insights"
+status: "published"
+publishedOn: "2026-09-25"
+author: "Dhruv Agarwal"
+heroImage: "/blog/insights/server-room-in-an-office-what-to-settle-first.webp"
+heroImageAlt: "Aisle of dark server cabinets with overhead cable trays leading to a monitor cart in a bright data hall"
+primaryKeyword: "office server room design"
+keywords:
+  - "server room design for office"
+  - "comms room requirements office fit out"
+  - "server room cooling office"
+  - "server room fire protection clean agent"
+  - "data room raised floor vs overhead"
+definition: "Office server room design turns on six things at once, because a small room depends on: resilient power, cooling that runs when the office air conditioning is off, fire protection chosen by the fire consultant, structured cabling, access control and protection from water above. Settle these before the layout is fixed, or the room ends up in leftover space it cannot be cooled or powered in."
+citations:
+  - label: "NBC 2016, Part 4"
+    clause: "Fire and life safety"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services"
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "IS 3043"
+    clause: "Code of practice for earthing"
+faqs:
+  - question: "Why does a small server room cause so many problems in an office fit-out?"
+    answer: "Because it is placed late, in whatever space is left, and then asked to do a lot. It needs continuous power, its own cooling, fire protection, cabling entry and controlled access. If the room is chosen for its floor area alone, it is discovered later that the nearest power, cooling or ceiling void cannot support it."
+  - question: "Can the office air conditioning cool the server room?"
+    answer: "Often it should not be the only source. Office air conditioning is designed around working hours and may be switched off in the evening and at weekends, while IT equipment keeps producing heat continuously. A dedicated cooling arrangement that runs when the main system is off is the usual approach, and the engineer decides the capacity and redundancy for the equipment actually installed."
+  - question: "What is the difference between UPS runtime and DG start-up in a server room?"
+    answer: "The UPS keeps the equipment running from the moment mains power drops, for a limited time. The DG set takes some time to start and take load. The design question is whether the UPS runtime comfortably covers the gap, including a failed first start, and whether the DG allocation for your floor actually includes the server room's cooling."
+  - question: "Do I need a gas-based fire suppression system in a server room?"
+    answer: "That is a decision for the project's fire consultant against the building's fire strategy and the authority having jurisdiction, not something a general rule settles. The trade-offs between a clean-agent system and sprinklers involve room sealing, discharge, water damage, cost and what the building already provides. Raise the question early because it affects the room's construction."
+  - question: "Is a raised floor or overhead containment better for a server room?"
+    answer: "It depends on the ceiling and slab heights available, the cooling method, cable volume and the landlord's rules. A raised floor gives a route for cables and sometimes air, at the cost of floor height. Overhead containment saves floor height but needs a clear ceiling void and coordination with lighting and fire pipework."
+  - question: "How much space should be left for expansion?"
+    answer: "Enough that the next round of equipment does not force a move. The right allowance depends on the growth plan and how long the lease runs, and it applies to floor space, power, cooling and cable routes. Designing the room to today's equipment alone is the commonest reason it needs rebuilding within a few years."
+related:
+  - "raised-access-floor"
+  - "cat6-vs-cat6a"
+  - "dg-set-vs-ups-backup-power"
+  - "raised-floor-vs-surface-trunking"
+  - "fire-noc"
+---
+
+## Office server room design: small room, large footprint
+
+On a floor plan the server or comms room is a few desks' worth of area. In the
+building it is the one room that touches almost every service: it needs power
+that does not drop, cooling that does not stop, fire protection that fits the
+equipment, cabling that arrives in an orderly way, and an access rule that
+someone owns.
+
+The typical story is that it is drawn last, into whatever space is left near a
+riser, and then found to lack a ceiling void deep enough for the cooling, a
+power route that can carry the load, or a wall that is not shared with a pantry.
+The misconception is that a server room is an IT project. It is a building
+services project with IT inside it.
+
+## The dependencies, in one table
+
+| Dependency | What it needs settled early | Who decides |
+| --- | --- | --- |
+| Power | Load, UPS runtime, DG allocation, separate distribution board | Electrical engineer, landlord |
+| Cooling | A source that runs when the office system is off; heat rejection route | HVAC engineer, landlord |
+| Fire | Detection and suppression strategy; room sealing | Fire consultant, authority |
+| Cabling | Entry points, containment route, category, expansion | IT lead, cabling designer |
+| Security | Who enters, how it is logged, wall and door construction | Facilities, IT |
+| Structure and water | Slab loading, floor height, pipes above or adjacent | Structural engineer, plumbing |
+
+Each row is a decision with a different owner. The reason server rooms go wrong
+is that no single person owns the whole table, so each owner assumes the others
+have it covered.
+
+## Cooling that outlives the office air conditioning
+
+IT equipment produces heat around the clock. The office air conditioning is
+designed around working hours and is often switched off at night, at weekends
+and during holidays, so the server room cannot rely on it. A dedicated
+arrangement, sized by the HVAC engineer for the equipment actually installed
+and with the redundancy the business is willing to pay for, is the usual answer.
+
+The commercial questions are: where does the heat go, and does the landlord
+allow it? An outdoor unit or condenser water connection needs a route and often
+the landlord's permission, and that lead time belongs in the programme.
+
+## Power that survives the gap
+
+Two things matter: how long the UPS carries the load, and how long the DG takes
+to start and take over. The design question is whether the UPS runtime covers
+the DG start comfortably, including a failed first start. The difference
+between the two is explained in
+[DG set vs UPS backup power](/compare/dg-set-vs-ups-backup-power).
+
+The second question is easy to miss: **does the DG allocation for your floor
+include the server room's cooling, or only its IT load?** A room that keeps
+running while its cooling stops will overheat. Wiring and earthing practice
+follows **IS 732** and **IS 3043**, and the project's electrical engineer sets
+the details.
+
+## Fire protection is the consultant's decision, not a preference
+
+A clean-agent system, a sprinkler arrangement and other approaches have
+different consequences: room sealing, discharge behaviour, potential water
+damage, maintenance and cost. Which is required or acceptable depends on the
+building's fire strategy, the occupancy and the authority having jurisdiction.
+Fire and life safety provisions sit in **NBC 2016, Part 4**.
+
+The point for a decision-maker is timing. If a gas system is chosen, the room
+needs to be built to hold it, which affects walls, penetrations and doors. Find
+out before the walls are drawn. Whether any approval or clearance applies is for
+the fire consultant to establish; see
+[fire NOC](/glossary/fire-noc) for the background.
+
+## Cabling: raised floor or overhead
+
+The choice depends on floor-to-slab height, ceiling void, cable volume, cooling
+method and the landlord's rules. A raised floor gives a route for cables and in
+some designs for air, at the cost of height and, in the room, a loading and
+access-ramp question. Overhead containment saves floor height but needs a clear
+void that competes with lighting and pipework. The trade-offs are covered in
+[raised access floor](/glossary/raised-access-floor) and
+[raised floor vs surface trunking](/compare/raised-floor-vs-surface-trunking).
+
+Cable category matters too: see [Cat6 vs Cat6A](/glossary/cat6-vs-cat6a). The
+choice is easier to make once, at the start, than to change after the cable is
+in the ceiling.
+
+## Structure and floor height are easy to overlook
+
+Racks, batteries and cooling equipment are heavy and concentrated, and a floor
+that carries an office comfortably may need to be checked for that concentration.
+Whether the slab can take it, and whether it needs local strengthening, is a
+question for the project's structural engineer and the landlord, not something
+to assume from the office loading. The same goes for floor-to-slab height: a
+raised floor, a deep ceiling void and a rack height all draw on the same
+vertical space, and the room may not have enough of it if it is fitted into a
+low-headroom corner. The relevant void is discussed in
+[plenum depth](/glossary/plenum-depth), which applies here as much as it does to
+the open floor.
+
+## Why server rooms fail in operation, not on the drawing
+
+Most failures are quiet ones that the drawing never shows:
+
+- The cooling was sized for the equipment on day one, and the racks have since
+  filled with more.
+- Someone switched off the dedicated cooling at the wall to save power, or the
+  building shut down the shared chilled-water supply for maintenance.
+- A cable route was closed off during a later works and cables were re-run
+  through the nearest gap, which was not the designed one.
+- A door was propped open during a delivery and never returned to its access
+  rule.
+
+None of these is a design fault in the narrow sense. They are what happens when
+the room has no owner after handover. The practical answer is a short written
+operating note: who can change the cooling, who approves new equipment, who
+holds keys or cards, and what is checked at what interval. It costs nothing and
+is the most commonly missing document on a handed-over floor.
+
+## Security, water and headroom
+
+- **Access:** decide who has entry, how it is logged, and whether the walls and
+  door match the level of control. A card reader on a partition that stops at the
+  ceiling is not access control.
+- **Water above:** pantries, washrooms and pipework overhead are the usual
+  source of leaks into server rooms. Keep the room away from wet areas where the
+  layout allows, or give pipes above a route that does not cross it.
+- **Headroom:** allow for the next round of equipment in floor space, power,
+  cooling capacity and cable routes. A room sized for today's kit is the one
+  that gets rebuilt.
+
+## What to ask before the layout is fixed
+
+- Where does the cooling reject heat, and has the landlord agreed?
+- Is the server room on the DG allocation, including its cooling?
+- Who is deciding the fire protection, and when?
+- What is above and next to the room, and does anything wet share the ceiling?
+- What is the growth plan for the lease period?
+
+## Common mistakes
+
+- **Choosing the room by leftover space.** It should be chosen by services
+  access.
+- **Relying on office air conditioning.** It switches off when the equipment
+  does not.
+- **Treating fire protection as a late add-on.** It changes how the room is
+  built.
+- **Putting the room under or beside a wet area.** Leaks find equipment.
+- **No expansion allowance.** The room fills, then the business moves in.
+
+## Standards referenced
+
+Fire and life safety provisions are in **NBC 2016, Part 4** and building
+services provisions in **NBC 2016, Part 8**. Wiring installations follow
+**IS 732** and earthing follows **IS 3043**. Power, cooling capacity, fire
+protection, structural loading and security arrangements for a specific room
+must be confirmed by the project's engineers, the fire consultant and the
+authority having jurisdiction.

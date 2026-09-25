@@ -1,0 +1,212 @@
+---
+title: "Office Electrical Load Planning"
+metaTitle: "Office Electrical Load Planning"
+metaDescription: "Office electrical load planning: connected, demand and sanctioned load, where DG and UPS sit, why HVAC dominates, and what to get from the landlord first."
+slug: "office-power-load-letter-and-dg-before-you-design"
+collection: "insights"
+status: "published"
+publishedOn: "2026-09-25"
+author: "Dhruv Agarwal"
+heroImage: "/blog/insights/office-power-load-letter-and-dg-before-you-design.webp"
+heroImageAlt: "Distribution board with circuit breakers and coloured wiring, a hand pointing with a pen"
+primaryKeyword: "office electrical load planning"
+keywords:
+  - "connected load vs demand load office"
+  - "sanctioned load office building"
+  - "office DG capacity planning"
+  - "office power supply before fit out"
+  - "electrical load calculation office fit out"
+definition: "Office electrical load planning means adding up everything that will draw power on the floor, applying realistic diversity to get the demand, and checking it against what the building can deliver: the sanctioned supply, the riser and any DG allocation. Settle it before the layout freezes, because upgrades run on the utility's and landlord's timetable."
+citations:
+  - label: "NBC 2016, Part 8"
+    clause: "Building services - electrical and allied installations"
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "IS 3043"
+    clause: "Code of practice for earthing"
+  - label: "ECBC"
+    clause: "Energy Conservation Building Code - lighting and electrical provisions"
+faqs:
+  - question: "What is the difference between connected load, demand load and sanctioned load?"
+    answer: "Connected load is the sum of the ratings of everything that could draw power. Demand load is what the floor is realistically expected to draw at once, after applying diversity. Sanctioned load is the figure the utility has approved for the connection. A design is sound only when the demand load sits comfortably inside what the sanctioned supply and the building's distribution can carry."
+  - question: "Why does the HVAC usually dominate an office's electrical load?"
+    answer: "Because cooling equipment, air-handling fans and pumps run for most of the working day and scale with the heat the floor produces, which includes people, lighting and IT equipment. In many offices it is the largest single block of load. That is why the cooling system is chosen before the electrical schedule is finalised, not after."
+  - question: "Can a tenant simply increase the power supply to a floor later?"
+    answer: "Sometimes, but it is rarely quick. It can involve the utility, the landlord's electrical consultant, riser and cable capacity, switchgear in the building's main room and sometimes the DG allocation. Each of those has its own approval and delivery time. What is permitted in a particular building is for the landlord, the utility and the project's electrical engineer to confirm."
+  - question: "Where do the DG set and the UPS sit in the power chain?"
+    answer: "They protect against different things. The UPS covers the gap during an outage and conditions power for sensitive loads, usually for a limited runtime. The DG set takes over for longer outages after a start-up delay. In many buildings the DG is shared and allocated by the landlord, so your share may be a fixed figure you have to design within."
+  - question: "What should be obtained from the landlord before the design is frozen?"
+    answer: "The sanctioned load and the portion allocated to your floor, the available riser and busbar or cable capacity, the DG allocation and what it covers, the point of supply and metering arrangement, and the landlord's fit-out guidelines on electrical work. Get these in writing, from the building engineer, before the layout is treated as final."
+  - question: "Does cable size depend only on the load it carries?"
+    answer: "No. Installed cable capacity is reduced by the way cables are grouped, the ambient temperature and the type of containment, which is why derating is applied. Cable sizing, wiring practice and protection are covered by IS 732, and the project's electrical engineer sets the final selection for the actual routes."
+related:
+  - "sanctioned-load"
+  - "dg-set-vs-ups-backup-power"
+  - "cable-derating"
+  - "earthing-and-bonding"
+  - "vrf-vs-chiller-office-hvac"
+---
+
+## The decision this article is really about
+
+Most tenants treat electrical capacity as something the engineer will "sort out"
+after the layout is agreed. That order is the risk. A layout decides how many
+desks, meeting rooms, pantry appliances and IT rooms the floor holds, and each
+one has a power figure attached. If the total exceeds what the building can
+deliver to your floor, the fix is not a redraw. It is a conversation with the
+utility and the landlord, on their timetable, often after your move-in date has
+already been committed.
+
+The misconception worth correcting is that power is a supply you simply order in
+the size you need. In a multi-tenant building, your ceiling is set by decisions
+made before you arrived: the sanctioned supply, the riser, the floor
+distribution board and the share of backup power allocated to your floor.
+
+## Office electrical load planning: three loads people confuse
+
+| Term | What it means | Who cares about it |
+| --- | --- | --- |
+| Connected load | Sum of the ratings of every device that could draw power | Designers, for sizing the schedule |
+| Demand load | What the floor is realistically expected to draw at once | Engineers, for sizing cables, breakers, backup |
+| Sanctioned load | The figure approved by the utility for the connection | Landlord, utility, and you, as the ceiling |
+
+Connected load is always the biggest number and is rarely drawn all at once.
+Demand load applies **diversity**: not every light, laptop, appliance and air
+handler runs at full rating at the same moment. Diversity is a judgement, and
+judgements should be written down with their assumptions so someone can
+challenge them.
+
+Sanctioned load is a commercial and regulatory figure rather than an
+engineering one. It is worth reading the definition in our glossary entry on
+[sanctioned load](/glossary/sanctioned-load), because a demand calculation that
+looks fine on paper is meaningless if it exceeds what the connection allows.
+
+## Building the number, step by step
+
+A load schedule is not complicated, but it has to be built in a sequence that
+can be audited:
+
+1. **List every load by category:** lighting, small power at desks, HVAC
+   equipment, IT and comms, pantry, lifts or shared services if on your supply,
+   and anything specialist such as a training or demo area.
+2. **Record the rating and the source of each figure**, whether it is a
+   manufacturer's data sheet or an assumption.
+3. **Apply diversity by category, in the open.** Small power at desks and
+   continuous IT loads behave very differently, and a single blanket factor hides
+   that.
+4. **Add growth deliberately.** Decide how much headcount and equipment growth the
+   lease period needs to absorb and state it, rather than leaving it to
+   optimism.
+5. **Compare with the building's figures** and record where the demand sits
+   against the allocation.
+
+The value is not the number. It is that every assumption is visible, so when a
+landlord asks why the floor needs what it needs, the answer is a schedule rather
+than a guess. Lighting design and the resulting load are also tied to
+**IS 3646** on interior illumination and to the lighting provisions of the ECBC,
+which the lighting designer applies.
+
+## Why the HVAC decides the answer
+
+In most offices, cooling is the largest block of load. Chillers or outdoor
+units, air-handling fans, pumps and terminal units run for most of the working
+day, and they scale with the heat the floor generates, which comes from people,
+lighting and IT equipment together.
+
+This has a practical consequence for sequence. The cooling system choice
+affects the electrical schedule, so it cannot be treated as a later detail. The
+trade-offs between a VRF arrangement and a chilled-water arrangement are
+covered in [VRF vs chiller for office HVAC](/compare/vrf-vs-chiller-office-hvac);
+the point here is that the choice moves the electrical figure, and therefore
+belongs in the same conversation as the layout.
+
+Other loads that tend to be underestimated early:
+
+- **IT and comms rooms**, which draw power continuously and need cooling too.
+- **Pantry equipment**, since heating appliances are individually large.
+- **Supplementary cooling** for meeting rooms or dense areas added after the
+  main design.
+- **Future headcount**, which changes both the desk count and the cooling need.
+
+## Where the DG and the UPS sit
+
+Backup power is not one thing. The UPS bridges the gap the moment mains power
+fails and protects sensitive equipment, usually for a limited runtime. The DG
+set takes over for longer outages after a start-up delay. They are designed to
+work together, and the comparison is set out in
+[DG set vs UPS backup power](/compare/dg-set-vs-ups-backup-power).
+
+The commercial question is **whose DG it is and what it covers**. In many
+buildings the DG is shared and allocated by the landlord. Your floor may be
+offered a fixed allocation, and the design has to work within it. Some loads
+will be on backup, others not, and which are which should be decided by the
+business, not discovered during the first outage.
+
+## Cable sizing and why the number on the breaker is not the whole story
+
+A cable's installed capacity is lower than its nominal rating once it is
+grouped with others, laid in a warm ceiling void or run through crowded
+containment. That reduction is called derating, explained in
+[cable derating](/glossary/cable-derating). It is why two floors with the same
+demand can end up with different cable sizes.
+
+Wiring practice, protection and cable selection follow **IS 732**, and earthing
+and bonding practice follows **IS 3043**; see
+[earthing and bonding](/glossary/earthing-and-bonding) for the concept. The
+project's electrical engineer applies these to the actual routes and conditions,
+so this article does not offer sizes.
+
+## Why an upgrade is slow
+
+If the demand exceeds what the floor can take, the remedies are all on someone
+else's timetable. A higher sanctioned load involves the utility's own process. A
+bigger riser cable or busbar capacity involves the landlord's electrical
+consultant and, often, a shutdown that affects other tenants. A larger DG
+allocation may not exist at all if the building's set is already fully allotted.
+Each of these can take longer than the fit-out itself.
+
+The alternative is to reduce the load: choose different equipment, phase the
+occupancy, shift some functions elsewhere. That is a business decision. It is
+far cheaper to take it at layout stage than after the ceiling is up.
+
+## What to get from the landlord before design freeze
+
+Ask for these in writing, from the building's engineer, before the layout is
+treated as final:
+
+- The sanctioned load and the portion allocated to your floor.
+- Available capacity in the riser, and at the floor distribution point.
+- The DG allocation to your floor, and which building services share it.
+- The point of supply and the metering arrangement.
+- The landlord's [fit-out guidelines](/blog/reading-landlord-fit-out-guidelines-before-design) for electrical work, including who approves
+  drawings and who may execute connections in the risers.
+- Any planned upgrades or works in the building that could affect the timeline.
+
+None of these is a design task. They are information requests, and the answers
+tell the designer whether the brief is achievable. If any answer is "we will
+confirm later", the layout is not frozen yet.
+
+## Common mistakes
+
+- **Designing to the layout, then checking the supply.** The reverse order
+  costs less.
+- **Assuming connected load equals demand.** This over-sizes some parts and
+  masks a real shortfall elsewhere.
+- **Treating the DG allocation as unlimited.** It is a share of something
+  finite, and the landlord decides it.
+- **Leaving the IT room for later.** Its continuous load and cooling are large
+  for its size.
+- **Forgetting future headcount.** A floor sized for today's desks has no room
+  for the next expansion.
+- **Verbal assurances.** "It will be fine" from a building manager is not a
+  capacity statement.
+
+## Standards referenced
+
+Electrical and allied installations are covered under building services in
+**NBC 2016, Part 8**. Wiring installations follow **IS 732** and earthing
+follows **IS 3043**; interior lighting practice is in **IS 3646**. Energy-related lighting and electrical provisions are set
+out in the **Energy Conservation Building Code (ECBC)**. Load figures, cable and
+breaker sizes, the DG allocation and the utility's requirements for a specific
+building must be confirmed by the project's electrical engineer, the landlord's
+building engineer and the authority having jurisdiction.
