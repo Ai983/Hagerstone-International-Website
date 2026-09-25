@@ -1,0 +1,128 @@
+---
+title: "Building Management Systems: What a BMS Should Actually Deliver"
+metaTitle: "Building Management Systems | Hagerstone"
+metaDescription: "What a BMS monitors and controls, why most deliver less than promised, the difference between monitoring and control, and what to specify to get value."
+slug: "building-management-systems"
+collection: "mep"
+status: "published"
+publishedOn: "2026-09-25"
+author: "Dhruv Agarwal"
+primaryKeyword: "building management system india"
+keywords:
+  - "bms system commercial building"
+  - "hvac automation controls office"
+  - "bms integration mep"
+  - "building automation india"
+definition: "A building management system monitors and controls building services — typically HVAC, lighting, power and sometimes fire and access interfaces — from one place. Its value comes from the control strategy and the operator using it, not from the number of points connected, which is why many installed systems deliver monitoring and little else."
+citations:
+  - label: "ECBC 2017"
+    clause: "HVAC controls and monitoring"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services"
+  - label: "ISO 16484"
+    clause: "Building automation and control systems"
+faqs:
+  - question: "Why do so many BMS installations underdeliver?"
+    answer: "Because they end up monitoring rather than controlling. Points are connected and values appear on a screen, but the control strategies that would save energy are either never written, never commissioned properly, or overridden into manual after the first complaint. A screen showing temperatures is not automation; it is a thermometer with a network connection."
+  - question: "What is the difference between monitoring and control?"
+    answer: "Monitoring reports what is happening. Control changes it according to a strategy — sequencing plant, resetting setpoints against conditions, scheduling to occupancy, staging equipment. The value is almost entirely in the second, and specifications frequently describe the first in detail and the second barely at all."
+  - question: "Why do systems end up in manual override?"
+    answer: "Usually because a complaint was answered by overriding rather than by correcting the strategy. One zone is cold, someone forces a valve open, and the override is never removed. Over a year enough overrides accumulate that the system is effectively running manually while appearing automated. Reviewing and clearing overrides should be a scheduled task, not an occasional discovery."
+  - question: "What should be specified to get real value?"
+    answer: "The control strategies themselves, written as sequences of operation — what the system does, under what conditions, with what setpoints and schedules. Also who writes them, who commissions them, and how they are verified. A points list without sequences describes what is connected but not what it will do."
+  - question: "Does a BMS help with energy compliance?"
+    answer: "It can, because controls and monitoring are part of what ECBC 2017 addresses for commercial buildings, and a system that schedules and resets properly reduces consumption materially. But compliance is about the design and its implementation, not about having a BMS. A poorly configured system connected to efficient plant can consume more than a simple, well-set-up alternative."
+  - question: "Who operates it after handover?"
+    answer: "This determines whether the investment returns anything. A BMS needs someone who understands the strategies, reviews alarms, clears overrides and adjusts schedules as the building changes. If the facilities team will not have that capacity, a simpler system that works well unattended is the better choice — and that should be decided at design stage, honestly."
+related:
+  - "hvac-systems-design"
+  - "vav-system"
+  - "low-voltage-and-elv"
+  - "lighting-power-density"
+  - "commissioning"
+---
+
+## What a BMS is for
+
+A BMS brings building services together so they can be monitored from one place
+and controlled according to a strategy — sequencing plant, matching operation to
+occupancy, resetting setpoints as conditions change, and raising alarms when
+something is wrong.
+
+The technology is rarely the problem. The strategies and the operation are.
+
+## Monitoring and control are not the same thing
+
+| | Monitoring | Control |
+| --- | --- | --- |
+| What it does | Reports conditions | Changes them to a strategy |
+| Typical output | Screens, trends, alarms | Scheduling, sequencing, resets |
+| Energy benefit | Indirect, via visibility | Direct |
+| Specified in detail? | Usually | Frequently not |
+
+A great many specifications describe the points list exhaustively and the
+sequences of operation in a paragraph. The result is a system that shows you the
+building accurately and does very little with the information.
+
+## Write the sequences of operation
+
+This is the single most valuable thing to specify:
+
+- What starts and stops, under what conditions
+- Occupancy schedules, including out-of-hours and weekend modes
+- Setpoints, and any reset strategy against outdoor conditions or demand
+- Staging and sequencing between multiple items of plant
+- Interlocks, so systems cannot work against each other
+- Alarm conditions, priorities and who they go to
+- What happens on failure, and on restoration
+
+Sequences should be written by whoever understands the design intent, then
+commissioned and **verified against those sequences** — not simply switched on.
+
+Building automation and control systems are addressed by **ISO 16484**, with
+services provisions in **NBC 2016, Part 8** and control requirements in
+**ECBC 2017**.
+
+## The override problem
+
+Almost every BMS drifts toward manual over time.
+
+A complaint arrives, someone overrides a valve or a damper to resolve it, and
+the override stays. Repeat this over a year and much of the building is running
+manually while the screens suggest automation.
+
+Two controls prevent it:
+
+- **Review overrides on a schedule**, and clear those no longer needed
+- **Treat a complaint as a strategy problem first** — if a zone is consistently
+  uncomfortable, the strategy or the balancing is wrong, and overriding hides it
+
+## Integration: be honest about scope
+
+A BMS can interface with fire, access control, lifts, metering and other
+systems. Each interface adds capability and adds complexity, commissioning
+effort and failure modes.
+
+Where interfaces are required — particularly with fire systems — those
+cause-and-effect tests must be scheduled and witnessed, because they belong to
+no single contractor by default. Fire system requirements are determined by the
+fire consultant and the authority having jurisdiction.
+
+## Decide the operating model before the system
+
+The honest question at design stage: **who will run this, and do they have the
+capacity?**
+
+A capable facilities team makes a sophisticated system pay. Without one, a
+simpler system with robust default behaviour delivers more than an advanced one
+that drifts into manual within a year.
+
+This is a design decision, not something to discover after handover.
+
+## Standards referenced
+
+Building automation and control systems in **ISO 16484**; building services
+provisions in **NBC 2016, Part 8**; HVAC control and monitoring requirements in
+**ECBC 2017**. System scope, sequences of operation and integration
+requirements for a specific building must be established by the project's MEP
+consultant.

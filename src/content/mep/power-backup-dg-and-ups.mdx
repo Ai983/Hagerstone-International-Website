@@ -1,0 +1,136 @@
+---
+title: "Power Backup: Sizing DG and UPS Around an Essential Load"
+metaTitle: "Power Backup: DG and UPS | Hagerstone"
+metaDescription: "How backup power is designed for a commercial building — defining the essential load, sizing DG and UPS, segregating circuits, and the siting constraints."
+slug: "power-backup-dg-and-ups"
+collection: "mep"
+status: "published"
+publishedOn: "2026-09-25"
+author: "Dhruv Agarwal"
+primaryKeyword: "power backup design commercial building"
+keywords:
+  - "dg set sizing office india"
+  - "ups design essential load"
+  - "essential circuits distribution board"
+  - "generator siting requirements"
+definition: "Backup power design starts by defining the essential load — what must keep running and for how long — then sizes a UPS to bridge the transfer gap and a generator to sustain the building afterwards. Sizing before that definition exists produces plant that is either expensive and lightly loaded or inadequate when it matters."
+citations:
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical installations"
+  - label: "IS 10118"
+    clause: "Selection, installation and maintenance of switchgear"
+  - label: "CPCB norms"
+    clause: "Emission and noise limits for diesel generator sets"
+faqs:
+  - question: "What counts as an essential load?"
+    answer: "Whatever must keep operating during an outage, which differs by business. Typically servers and network, security and access control, emergency lighting, lifts, any process or cold storage that cannot be interrupted, and enough cooling to keep critical rooms within temperature. The exercise is to list it explicitly rather than treat everything as essential, because sizing for the whole connected load produces a generator that spends its life lightly loaded."
+  - question: "Why does a lightly loaded generator matter?"
+    answer: "Because it is inefficient, costs more to buy, and running a diesel engine well below its rated load for extended periods is not good for it. Sizing should reflect the essential load plus a realistic growth allowance, not the building's total connected capacity, which is a figure that assumes everything runs simultaneously and never does."
+  - question: "How are essential and non-essential circuits separated?"
+    answer: "Physically, at the distribution boards, so the distinction survives the building's life. Essential circuits are fed from boards supplied by the backup source, and UPS-fed outlets are identified — commonly by distinctive socket colour — so that non-critical equipment does not migrate onto them. Retro-fitting this segregation after a floor is wired is expensive and usually imperfect."
+  - question: "What are the siting constraints on a generator?"
+    answer: "Space, fuel storage, exhaust routing, ventilation for combustion and cooling air, vibration isolation, and noise and emission compliance. Diesel generator sets in India are subject to emission and noise requirements administered through CPCB norms, and enclosures and exhaust design follow from that. Exhaust must discharge safely away from air intakes and occupied areas — straightforward on a drawing, very awkward afterwards."
+  - question: "What determines UPS runtime?"
+    answer: "Battery capacity against the connected load. A UPS sized only to bridge a generator start is a much smaller machine than one expected to run a server room independently for an extended period. Batteries take space, need ventilation and temperature control, and have a finite service life, so battery replacement should be in the operating budget from handover."
+  - question: "How is it proved to work?"
+    answer: "By testing under actual load, periodically and with records. Both systems fail silently — a UPS with degraded batteries reports healthy until the load transfers, and a generator that has never run loaded may trip when the load is applied. This is an operational commitment that should be agreed with whoever will run the building before handover."
+related:
+  - "dg-set-vs-ups-backup-power"
+  - "sanctioned-load"
+  - "ht-vs-lt-panel"
+  - "busbar-trunking"
+  - "earthing-and-bonding"
+---
+
+## Start with the load, not the plant
+
+The design sequence that works:
+
+1. **Define the essential load** — what must run, and for how long
+2. **Segregate it** at the distribution boards
+3. **Size the UPS** to bridge the transfer gap for loads that cannot be
+   interrupted
+4. **Size the generator** for the essential load plus realistic growth
+5. **Resolve siting** — space, fuel, exhaust, ventilation, noise
+6. **Plan the testing regime** before handover
+
+Starting at step four, which is common, produces equipment chosen against a
+number nobody has justified.
+
+## The two cover different windows
+
+| | UPS | DG set |
+| --- | --- | --- |
+| Transfer | Instantaneous | Start-up delay |
+| Duration | Limited by batteries | As long as fuel lasts |
+| Typical loads | IT, network, controls | Lifts, HVAC, lighting, power |
+| Role | Bridges the gap | Sustains the building |
+
+A building with only a generator loses everything at the moment of failure. A
+building with only a UPS keeps running briefly and then stops. Critical
+installations use both in series.
+
+## Defining the essential load is the real work
+
+If everything is essential, the generator is oversized and expensive. If the
+definition is too narrow, something important is discovered missing during the
+first real outage.
+
+The list is business-specific and should be made deliberately:
+
+- Servers, network and communications
+- Security, access control, CCTV
+- Emergency lighting and escape route lighting
+- Lifts, as applicable
+- Cooling for server rooms and any temperature-critical space
+- Process or storage that cannot be interrupted
+- A sensible share of general lighting and power for continued working
+
+## Segregation must be physical
+
+A notional distinction does not survive the first office churn.
+
+Essential circuits come from boards fed by the backup supply. UPS-fed outlets
+are identifiable, commonly by socket colour, so a kettle does not end up on the
+server supply. Both should be recorded on the as-built drawings and in the
+handover documentation.
+
+Installation practice follows **IS 732** and the building services provisions of
+**NBC 2016, Part 8**, with switchgear selection addressed in **IS 10118**.
+Circuit design and sizing are the electrical consultant's output.
+
+## Siting and compliance
+
+Generators bring physical and regulatory constraints:
+
+- **Space and access** for the set, and for maintenance
+- **Fuel storage**, with its own requirements
+- **Exhaust routing**, discharging safely away from air intakes and occupied
+  areas
+- **Ventilation** for combustion and cooling air
+- **Vibration isolation** from the structure
+- **Noise and emissions**, administered through **CPCB norms** in India, which
+  commonly drive acoustic enclosure and exhaust design
+
+What applies to a specific installation, and any consent obligations, must be
+confirmed with the electrical consultant and the relevant authority.
+
+## Both fail silently
+
+This is the point worth carrying into operations. Neither system announces its
+own degradation.
+
+Periodic testing **under actual load**, with recorded results, is the only way to
+know. Agree the regime and its owner before handover, or the capital investment
+becomes a maintenance item nobody holds.
+
+## Standards referenced
+
+Electrical installation practice in **IS 732**; building services provisions in
+**NBC 2016, Part 8**; switchgear selection and installation in **IS 10118**;
+diesel generator emission and noise requirements administered through
+**CPCB norms**. Load assessment, equipment sizing, protection design and
+compliance obligations for a specific building must be established by the
+project's electrical consultant and confirmed with the relevant authority.
