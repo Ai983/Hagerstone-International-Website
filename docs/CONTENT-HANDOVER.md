@@ -1,7 +1,7 @@
 # Content handover — adding technical pages to hagerstone.com
 
 **For:** the intern taking over technical content production, and the Claude session helping her.
-**Written:** 25 September 2026. **Site at handover:** 280 pages.
+**Written:** 25 September 2026. **Site at handover:** 282 pages.
 
 If you are Claude reading this: treat this file as the task brief. Read `CLAUDE.md` in the
 repo root first (it is short and it is the build contract), then this file. Do not read
@@ -92,7 +92,7 @@ service × city matrix — it is duplicate-content risk for no proven benefit.
 
 ## 3. Where the site is right now
 
-**280 pages**, every one prerendered to static HTML and in the sitemap. The whole site,
+**282 pages**, every one prerendered to static HTML and in the sitemap. The whole site,
 by section:
 
 | Section | Pages |
@@ -103,12 +103,12 @@ by section:
 | `/services/` (includes facade, interiors, MEP, PEB, civil) | 40 |
 | `/locations/` (cities) | 26 |
 | `/compare/` | 20 |
-| `/blog/` | 16 |
+| `/blog/` | 17 + 1 pagination page |
 | `/estates/` | 8 |
 | `/industries/` | 8 |
 | `/our-designs/` | 8 |
 | `/projects/` | 8 |
-| **Total** | **280** |
+| **Total** | **282** |
 
 You can regenerate this yourself any time after a build:
 
@@ -120,7 +120,7 @@ The build guarantees this number is honest — `prerender.js` fails if the sitem
 the prerendered file count disagree. So there are no orphan pages and nothing in the
 sitemap that 404s.
 
-**30 of those 280 were added on 24 September** — 20 `/compare/` pages (a brand new section)
+**30 of those were added on 24 September** — 20 `/compare/` pages (a brand new section)
 and 10 `/glossary/` terms.
 
 ---
@@ -132,7 +132,7 @@ This is the complete target, from `CONTENT-ENGINE-PLAN.md`, updated to today's c
 
 | Path | Now | Target | Left | Safe to add unreviewed? |
 |---|---:|---:|---:|---|
-| `/insights/` | 0 | 300 | 300 | ✅ Yes — but settle the blog overlap first |
+| `/blog/` articles | 17 | ~400 | ~380 | ✅ **Yes — biggest opportunity, see §6** |
 | `/glossary/` | 45 | 120 | 75 | ✅ Yes — but stop near 70, see below |
 | `/materials/` | 60 | 60 | 0 | ✅ Done |
 | `/compare/` | 20 | 30 | 10 | ✅ Yes — but largely complete, see below |
@@ -150,9 +150,9 @@ This is the complete target, from `CONTENT-ENGINE-PLAN.md`, updated to today's c
 | `/cost/` | 0 | 25 | 25 | 🔒 **Blocked in code** — needs rate bands |
 | `/calculators/` | 0 | 19 | 19 | ❌ **Declined** — Yash decided not to build these |
 
-**Total genuinely open to you right now: roughly 380 pages** across insights, glossary,
-compare, services, guides, architects and industries — without needing a single approval
-from anyone.
+**Total genuinely open to you right now: roughly 460 pages** — about 380 blog articles
+plus glossary, services, guides, architects and industries — without needing a single
+approval from anyone.
 
 Two of the biggest blocks (`/compliance/` 45 and `/cost/` 25) are the highest-value pages
 on the whole plan and they unlock the moment someone is named as a reviewer. That is worth
@@ -167,15 +167,41 @@ raising with the founder — see §12.
   vs toughened, gypsum vs mineral fibre, Cat6 vs Cat6a, raft vs pile, HT vs LT, carpet vs
   built-up). Writing `/compare/` versions would put two of our own pages against each other
   for the same query. 20 is a sensible stopping point.
-- **Insights 300** overlaps the existing 16 blog posts, and the planned
-  `/blog/* → /insights/*` redirect was never done. Do not start this until someone decides
-  whether blog and insights are one section or two.
+- **Insights 300 no longer exists as a separate section.** The plan assumed a new
+  `/insights/` area with the blog redirected into it. That was settled differently on
+  25 September: there is **one** article section, `/blog/`, and the `insights` collection
+  now serves under it. So the 300-page insights target and the ~100 remaining blog target
+  are the same ~400 articles, in one place. See §6.
 
 ---
 
 ## 5. What to write next, in priority order
 
-### Priority 1 — `/guides/` (12 pages, none exist)
+### Priority 1 — `/blog/` articles (17 now, ~400 the target)
+
+**This is the biggest single opportunity on the site.** The competitor's 414 articles are
+40% of their entire 1,044 pages and their main traffic driver. We have 17.
+
+Until 25 September this was blocked, because every article needed four hand edits and one
+of them shipped 404s to Google twice. That is fixed — **an article is now one `.mdx` file
+in `src/content/insights/`**, exactly like a glossary page, and it appears at
+`/blog/<slug>` with no router edits. See §6.
+
+Article topics should answer a real question a buyer asks. Good shapes:
+
+- *How long does an office fit-out take* — and what actually governs the date
+- *What goes wrong in \<trade\>* — written from site experience, not theory
+- *How to evaluate a \<supplier / system / proposal\>*
+- *Why \<common assumption\> is wrong*
+
+One is already written as the working example:
+`src/content/insights/office-fit-out-programme-where-time-is-lost.mdx`. Read it first.
+
+**Pace it.** 15–25 a day is realistic at quality. Do not attempt 30–40 — they come out
+thin and near-duplicate, which is the doorway-content pattern Google demotes sitewide,
+not just on those pages. The competitor's 414 accumulated over years.
+
+### Priority 2 — `/guides/` (12 pages, none exist)
 
 These are long-form pillar pages, ~2,000+ words, that the glossary and compare pages link
 up into. They matter most because they are the pages a **decision-maker** actually reads —
@@ -196,7 +222,7 @@ Suggested titles:
 11. Retrofitting an occupied office
 12. Pre-engineered buildings — a buyer's guide
 
-### Priority 2 — `/glossary/` (target ~70, so ~25 more)
+### Priority 3 — `/glossary/` (target ~70, so ~25 more)
 
 Short pages, ~550 words. Check `src/content/glossary/` first — 45 already exist and
 **duplicating one is worse than not writing it**.
@@ -216,21 +242,44 @@ page count without adding traffic.
 
 - `/cost/`, `/compliance/` — blocked
 - `/locations/`, `/estates/` — wait for the indexation check
-- `/insights/` — 300 pages planned, but it overlaps the existing blog and the
-  `/blog/* → /insights/*` redirect was never done. Settle that before starting.
+- Service × city pages — the competitor has none; do not build a matrix.
 
 ---
 
 ## 6. How to add a page
 
-For glossary, compare, guides, materials, facade, interiors, mep, peb, civil, industries,
-estates — **one `.mdx` file is the whole job**. No router edits. No code.
+For every collection you will work in — **including blog articles** — **one `.mdx` file is
+the whole job.** No router edits. No code.
 
 ```
 src/content/<collection>/<slug>.mdx
 ```
 
 The filename **must equal** the `slug` in the frontmatter, or the build fails.
+
+### Which folder, which URL
+
+| You are writing | Folder | It appears at |
+|---|---|---|
+| A blog article | `src/content/insights/` | `/blog/<slug>` |
+| A glossary term | `src/content/glossary/` | `/glossary/<slug>` |
+| A comparison | `src/content/compare/` | `/compare/<slug>` |
+| A guide | `src/content/guides/` | `/guides/<slug>` |
+| A material | `src/content/materials/` | `/materials/<slug>` |
+
+Note the blog one: the folder is `insights` and the `collection:` value is `"insights"`,
+but the page is served under `/blog/`. That is deliberate — there is one article section,
+and it keeps the URLs the existing 16 posts already rank on.
+
+### About the 16 old blog posts
+
+They are React pages in `src/pages/blog/`, each needing an entry in `blogPosts.ts` plus a
+route in **both** `App.tsx` and `ServerApp.tsx`. **Do not add new articles that way.** That
+missing fourth step is what shipped 404s to Google twice. The old posts keep working
+untouched; everything new is MDX.
+
+The listing page merges both automatically — see `src/lib/blogList.ts` — so a new MDX
+article shows up on `/blog` with no extra step.
 
 ### Frontmatter — exact rules
 
@@ -384,7 +433,8 @@ Both should return nothing.
 
 ## 11. A realistic rate
 
-A glossary page is about 550 words; a compare page about 1,100; a guide about 2,000.
+A glossary page is about 550 words; a compare page about 1,100; a blog article about
+1,200–1,800; a guide about 2,000.
 
 Twenty pages in a working session is achievable and was done on 24 September. What takes the
 time is not the writing — it is checking that the topic isn't already covered, that the
