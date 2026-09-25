@@ -83,6 +83,14 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         publisher: { "@type": "Organization", name: BRAND_NAME, url: SITE_URL },
         mainEntityOfPage: canonical,
         ...(articleImages.length > 0 ? { image: articleImages } : {}),
+        // Topic signals in machine-readable form, matching the /blog posts that
+        // are React pages. Blog articles only; other collections are unchanged.
+        ...(entry.collection === "insights"
+          ? {
+              articleSection: collectionLabel,
+              ...(entry.keywords.length > 0 ? { keywords: entry.keywords.join(", ") } : {}),
+            }
+          : {}),
         // Says in the markup what the page says in words: this is a design
         // proposal, not a record of completed work.
         ...(isConcept ? { creativeWorkStatus: "Concept design" } : {}),
@@ -173,7 +181,11 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
           <img
             src={entry.heroImage}
             alt={entry.heroImageAlt ?? ""}
-            className="mb-10 w-full rounded-lg"
+            className="mb-10 h-auto w-full rounded-lg"
+            // Blog heroes are all cropped to 1600x900, so the browser can
+            // reserve the space before the image loads. Other collections
+            // have hero images of varying shape and are left as they were.
+            {...(entry.collection === "insights" ? { width: 1600, height: 900 } : {})}
             loading="eager"
             fetchPriority="high"
             decoding="async"
