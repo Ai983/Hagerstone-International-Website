@@ -137,7 +137,7 @@ This is the complete target, from `CONTENT-ENGINE-PLAN.md`, updated to today's c
 | `/materials/` | 60 | 60 | 0 | ✅ Done |
 | `/compare/` | 20 | 30 | 10 | ✅ Yes — but largely complete, see below |
 | `/services/` tree | 40 | 61 | 21 | ✅ Yes |
-| `/guides/` | 0 | 12 | 12 | ✅ **Yes — start here** |
+| `/guides/` | 0 | 12 | 12 | ✅ Yes — second priority |
 | `/architects/` | 0 | 25 | 25 | ✅ Yes |
 | `/industries/` | 8 | 16 | 8 | ✅ Yes |
 | `/locations/` (cities) | 26 | 65 | 39 | ⚠️ Hold — indexation check first |
@@ -452,7 +452,7 @@ throttled, which delays indexation of everything, including the good pages.
 These block work and only he can answer them:
 
 1. **Fit-out cost bands per grade** — three conflicting numbers are live on the site today.
-   Blocks every `/cost/` page and the cost calculator.
+   Blocks every `/cost/` page.
 2. **Who reviews technical content**, if anyone — this is what unlocks `/compliance/` and
    `/cost/`, the two highest-value blocked sections.
 3. **Which client names may be used**, and the correct company statistics.
