@@ -28,6 +28,7 @@ import ContentPage from "./pages/ContentPage";
 import CollectionIndexPage from "./pages/CollectionIndexPage";
 
 // Lazy load blog post pages
+const BlogListing = lazy(() => import("./pages/Blog"));
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
 const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commercial-interior-designers"));
 const OfficeSpacePlanningTrends2026Blog = lazy(
@@ -111,9 +112,24 @@ const AppContent = () => {
           <Route key={page.path} path={page.path} element={<ServiceCity />} />
         ))}
 
+        {/*
+          Blog listing pagination. /blog itself still comes from the Supabase
+          routes table, but these pages are prerendered static files and must
+          not depend on a runtime fetch — a crawler following the pagination
+          links would otherwise get an empty shell. Mirrored in ServerApp.tsx.
+        */}
+        <Route
+          path="/blog/page/:page"
+          element={
+            <Suspense fallback={<DynamicLoader />}>
+              <BlogListing />
+            </Suspense>
+          }
+        />
+
         {/* Blog post routes */}
-        <Route 
-          path="/blog/office-workspace-design" 
+        <Route
+          path="/blog/office-workspace-design"
           element={
             <Suspense fallback={<DynamicLoader />}>
               <OfficeWorkspaceDesignBlog />

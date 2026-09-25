@@ -34,7 +34,7 @@ export type Collection = (typeof COLLECTIONS)[number];
 
 /** URL prefix per collection. The slug is appended to this. */
 export const COLLECTION_BASE_PATH: Record<Collection, string> = {
-  insights: "/insights",
+  insights: "/blog",
   glossary: "/glossary",
   compliance: "/compliance",
   materials: "/materials",
@@ -67,6 +67,9 @@ export const COLLECTION_BASE_PATH: Record<Collection, string> = {
  * sub-services, rather than being replaced by an auto-generated index.
  */
 export const COLLECTIONS_WITHOUT_INDEX: Collection[] = [
+  // Insights are served under /blog, whose listing page is Blog.tsx. It lists
+  // both the legacy .tsx posts and these MDX ones — see src/lib/blogList.ts.
+  "insights",
   "facade",
   "interiors",
   "mep",

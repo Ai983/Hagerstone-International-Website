@@ -5,6 +5,7 @@ import ServerApp from './ServerApp';
 export { getLocationPrerenderPaths } from './lib/locationPages';
 export { getContentPrerenderPaths } from './lib/contentRoutes';
 export { getProjectPrerenderPaths, getBlogPrerenderPaths } from './lib/dataRoutes';
+export { getBlogListingPaths } from './lib/blogList';
 export {
   buildUrlSitemapXml,
   buildImageSitemapXml,

@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,11 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import SEOHead from "@/components/SEOHead";
-import { blogPosts as postsData, getFeaturedPost } from "@/data/blogPosts";
+import {
+  getBlogListItems,
+  getFeaturedBlogItem,
+  POSTS_PER_PAGE,
+} from "@/lib/blogList";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import {
   buildSchemaGraph,
@@ -21,10 +25,8 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 
-// 3 columns × 4 rows. Pagination is derived purely from postsData.length, so
-// every future post just extends the page count — nothing here is hardcoded
-// to today's post count.
-const POSTS_PER_PAGE = 12;
+// Page size and the merged article list live in src/lib/blogList.ts, because
+// prerender.js and the sitemap need the same page count this component uses.
 
 // Windowed page-number list with ellipses, so this stays readable even once
 // there are many pages (not just the 2 pages the blog has today).
@@ -42,25 +44,26 @@ const getPageNumbers = (current: number, total: number): (number | "ellipsis")[]
 
 // Blog listing page
 const Blog = () => {
-  const featuredPost = getFeaturedPost() ?? postsData[0];
+  // Both article systems in one list — the legacy .tsx posts and the MDX
+  // articles under the `insights` collection. See src/lib/blogList.ts.
+  const postsData = getBlogListItems();
+  const featuredPost = getFeaturedBlogItem() ?? postsData[0];
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  // Pagination is in the path (/blog, /blog/page/2), not a ?page= query, so
+  // every page is a real prerendered file and every article is linked from
+  // static HTML. See the note in src/lib/blogList.ts.
+  const { page: pageParam } = useParams();
   const totalPages = Math.max(1, Math.ceil(postsData.length / POSTS_PER_PAGE));
-  const requestedPage = Number(searchParams.get("page")) || 1;
+  const requestedPage = Number(pageParam) || 1;
   const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
   const pagePosts = postsData.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
 
-  const goToPage = (page: number) => {
-    if (page < 1 || page > totalPages || page === currentPage) return;
-    setSearchParams(page === 1 ? {} : { page: String(page) });
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
+  const pageHref = (page: number) => (page === 1 ? "/blog" : `/blog/page/${page}`);
 
-  const canonicalUrl =
-    currentPage === 1 ? `${SITE_URL}/blog` : `${SITE_URL}/blog?page=${currentPage}`;
+  const canonicalUrl = `${SITE_URL}${pageHref(currentPage)}`;
 
   const categories = [
     "All", "Cost & Planning", "Design Guide", "Case Study", "Trends", "Technical", "Sustainability", "Hospitality"
@@ -133,7 +136,10 @@ const Blog = () => {
           </div>
           <Link to={`/blog/${featuredPost.slug}`}>
             <Card className="bg-gradient-card border-0 shadow-luxury hover:shadow-hover transition-all duration-500 hover:scale-[1.02] animate-scale-in overflow-hidden cursor-pointer">
-              <div className="grid lg:grid-cols-2 gap-0">
+              <div className={featuredPost.image ? "grid lg:grid-cols-2 gap-0" : ""}>
+                {/* MDX articles need no hero image, so the card drops to a
+                    single column rather than rendering a broken <img>. */}
+                {featuredPost.image && (
                 <div className="relative overflow-hidden">
                   <img
                     src={featuredPost.image}
@@ -147,6 +153,7 @@ const Blog = () => {
                     </Badge>
                   </div>
                 </div>
+                )}
                 <CardContent className="p-8 lg:p-12 flex flex-col justify-center">
                   <h3 className="text-3xl font-bold text-primary mb-4 line-clamp-2">
                     {featuredPost.title}
@@ -206,11 +213,14 @@ const Blog = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pagePosts.map((post, index) => (
-              <Link key={post.id} to={`/blog/${post.slug}`}>
-                <Card 
+              <Link key={post.key} to={`/blog/${post.slug}`}>
+                <Card
                   className="group bg-gradient-card border-0 shadow-card hover:shadow-luxury transition-all duration-500 hover:scale-105 animate-scale-in overflow-hidden cursor-pointer h-full"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
+                  {/* An MDX article may carry no hero image. Rather than render
+                      a broken <img>, the card shows its category as a band. */}
+                  {post.image ? (
                   <div className="relative overflow-hidden">
                     <img
                       src={post.image}
@@ -225,6 +235,13 @@ const Blog = () => {
                       </Badge>
                     </div>
                   </div>
+                  ) : (
+                  <div className="px-6 pt-6">
+                    <Badge className="bg-accent text-accent-foreground">
+                      {post.category}
+                    </Badge>
+                  </div>
+                  )}
                   <CardHeader className="pb-4">
                     <h3 className="text-xl font-bold text-primary line-clamp-2 group-hover:text-accent transition-colors duration-300">
                       {post.title}
@@ -260,15 +277,16 @@ const Blog = () => {
           {totalPages > 1 && (
             <Pagination className="mt-12">
               <PaginationContent>
+                {/* Real hrefs to real prerendered pages, so a crawler follows
+                    them. The previous version used href="#" with an onClick,
+                    which no crawler fires — every article past page one was
+                    unreachable in the static HTML. */}
                 <PaginationItem>
                   <PaginationPrevious
-                    href="#"
+                    href={currentPage === 1 ? "#" : pageHref(currentPage - 1)}
+                    rel={currentPage === 1 ? undefined : "prev"}
                     aria-disabled={currentPage === 1}
                     className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      goToPage(currentPage - 1);
-                    }}
                   />
                 </PaginationItem>
                 {getPageNumbers(currentPage, totalPages).map((page, i) =>
@@ -278,14 +296,7 @@ const Blog = () => {
                     </PaginationItem>
                   ) : (
                     <PaginationItem key={page}>
-                      <PaginationLink
-                        href="#"
-                        isActive={page === currentPage}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          goToPage(page);
-                        }}
-                      >
+                      <PaginationLink href={pageHref(page)} isActive={page === currentPage}>
                         {page}
                       </PaginationLink>
                     </PaginationItem>
@@ -293,13 +304,10 @@ const Blog = () => {
                 )}
                 <PaginationItem>
                   <PaginationNext
-                    href="#"
+                    href={currentPage === totalPages ? "#" : pageHref(currentPage + 1)}
+                    rel={currentPage === totalPages ? undefined : "next"}
                     aria-disabled={currentPage === totalPages}
                     className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      goToPage(currentPage + 1);
-                    }}
                   />
                 </PaginationItem>
               </PaginationContent>

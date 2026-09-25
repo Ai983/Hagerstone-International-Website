@@ -74,6 +74,8 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+        {/* Pagination pages. Mirrored in App.tsx — see the note there. */}
+        <Route path="/blog/page/:page" element={<Blog />} />
         <Route path="/blog/office-workspace-design" element={<OfficeWorkspaceDesign />} />
         <Route path="/blog/commercial-interior-designers" element={<CommercialInteriorDesigners />} />
         <Route path="/blog/office-space-planning-trends-2026" element={<OfficeSpacePlanningTrends2026 />} />

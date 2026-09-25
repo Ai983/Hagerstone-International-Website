@@ -12,6 +12,7 @@ const {
   getContentPrerenderPaths,
   getProjectPrerenderPaths,
   getBlogPrerenderPaths,
+  getBlogListingPaths,
   buildUrlSitemapXml,
   buildImageSitemapXml,
   buildVideoSitemapXml,
@@ -36,7 +37,7 @@ const routesToPrerender = [
   '/projects',
   '/our-team',
   '/contact',
-  '/blog',
+  // '/blog' and its pagination pages come from getBlogListingPaths().
   '/ideas',
   '/find-your-style',
 ]
@@ -49,6 +50,7 @@ let failed = 0
   const allRoutes = [
     ...routesToPrerender,
     ...getProjectPrerenderPaths(),
+    ...getBlogListingPaths(),
     ...getBlogPrerenderPaths(),
     ...getLocationPrerenderPaths(),
     ...getContentPrerenderPaths(),
