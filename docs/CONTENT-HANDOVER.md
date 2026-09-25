@@ -57,32 +57,123 @@ publish them without a `reviewedBy` name. Do not try to work around it — see
 
 ---
 
-## 2. Where the site is right now
+## 2. Why we are doing this at all — the competitor benchmark
 
-280 pages total. Content collections:
+The whole content programme exists because of one piece of research. A competitor,
+**securedengineers.com**, has **1,044 pages** indexed, and reportedly converts roughly one
+qualified lead a day from them. Hagerstone had 41 pages when this started.
 
-| Collection | Now | Status |
+Their verified sitemap breaks down like this:
+
+| Their pattern | Pages | What it is |
 |---|---:|---|
-| materials | 60 | Done — do not add more |
-| glossary | 45 | **Open — main backlog** |
-| compare | 20 | Complete enough; stop here |
-| facade / interiors / mep / peb / civil | 32 | Under `/services/...`; open |
-| estates | 8 | Open but slow — needs local research |
-| industries | 8 | Open |
-| design | 8 | Do not touch — separate workflow |
-| **guides** | **0** | **Open — highest value** |
-| insights | 0 | Open, but settle blog overlap first |
-| architects | 0 | Open |
-| cost | 0 | 🔒 Blocked — needs a reviewer |
-| compliance | 0 | 🔒 Blocked — needs a reviewer |
+| `/insights/` | 414 | Articles, ~1,800–2,000 words, FAQ block, 8+ internal links |
+| `/glossary/` | 83 | ~500 words: definition → why it matters → table → mistakes → FAQ |
+| `/industrial-zones/` | 75 | Hyperlocal estate pages with real local authority data |
+| `/services/` | 56 | Service pages with child sub-service pages beneath them |
+| Calculators | 37 | Instant, ungated, with ~2,100 words of method below the tool |
+| `/locations/` | 36 | One page per city |
+| `/approvals/` | 26 | Statutory process guides |
+| `/architects/` | 23 | Referral hub for design teams |
+| `/projects/` | 21 | Case studies |
+| Others | ~270 | Industries, guides, policy pages |
 
-Cities (`/locations/`) are at 26 and **on hold** — do not add more until someone checks
-Google Search Console indexation. Location pages share a template and are the highest
-doorway-page risk on the site.
+**The important finding: those 1,044 pages are not 1,044 hand-written articles.** They are
+roughly eight repeatable page shapes fed by data. The advantage is the *template plus data*
+approach, not writing volume — which is why one intern with Claude can realistically
+compete with it.
+
+**The second finding, from checking their actual pages:** they have **zero**
+service-in-city pages. No "HVAC contractor in Ludhiana". Their city pages cover all
+services on one page and link to national service pages. So do not build a
+service × city matrix — it is duplicate-content risk for no proven benefit.
 
 ---
 
-## 3. What to write next, in priority order
+## 3. Where the site is right now
+
+**280 pages**, every one prerendered to static HTML and in the sitemap. The whole site,
+by section:
+
+| Section | Pages |
+|---|---:|
+| `/materials/` | 60 |
+| `/glossary/` | 45 |
+| Top-level pages (home, about, contact, section hubs…) | 41 |
+| `/services/` (includes facade, interiors, MEP, PEB, civil) | 40 |
+| `/locations/` (cities) | 26 |
+| `/compare/` | 20 |
+| `/blog/` | 16 |
+| `/estates/` | 8 |
+| `/industries/` | 8 |
+| `/our-designs/` | 8 |
+| `/projects/` | 8 |
+| **Total** | **280** |
+
+You can regenerate this yourself any time after a build:
+
+```bash
+grep -oE "<loc>https://hagerstone.com[^<]*" dist/sitemap.xml | wc -l
+```
+
+The build guarantees this number is honest — `prerender.js` fails if the sitemap count and
+the prerendered file count disagree. So there are no orphan pages and nothing in the
+sitemap that 404s.
+
+**30 of those 280 were added on 24 September** — 20 `/compare/` pages (a brand new section)
+and 10 `/glossary/` terms.
+
+---
+
+## 4. The full page plan — every section, and whether it is safe to add
+
+This is the complete target, from `CONTENT-ENGINE-PLAN.md`, updated to today's counts.
+**Read the "Safe to add?" column before starting anything.**
+
+| Path | Now | Target | Left | Safe to add unreviewed? |
+|---|---:|---:|---:|---|
+| `/insights/` | 0 | 300 | 300 | ✅ Yes — but settle the blog overlap first |
+| `/glossary/` | 45 | 120 | 75 | ✅ Yes — but stop near 70, see below |
+| `/materials/` | 60 | 60 | 0 | ✅ Done |
+| `/compare/` | 20 | 30 | 10 | ✅ Yes — but largely complete, see below |
+| `/services/` tree | 40 | 61 | 21 | ✅ Yes |
+| `/guides/` | 0 | 12 | 12 | ✅ **Yes — start here** |
+| `/architects/` | 0 | 25 | 25 | ✅ Yes |
+| `/industries/` | 8 | 16 | 8 | ✅ Yes |
+| `/locations/` (cities) | 26 | 65 | 39 | ⚠️ Hold — indexation check first |
+| `/estates/` | 8 | 110 | 102 | ⚠️ Hold — indexation check first |
+| `/states/` hubs | 0 | 8 | 8 | ⚠️ Hold — same reason |
+| Service × city | 0 | 40 | 40 | ❌ Don't — competitor has zero of these |
+| `/projects/` | 8 | 40 | 32 | ❌ Not content work — needs founder approval |
+| `/our-designs/` | 8 | — | — | ❌ Separate workflow, do not touch |
+| `/compliance/` | 0 | 45 | 45 | 🔒 **Blocked in code** — needs a reviewer |
+| `/cost/` | 0 | 25 | 25 | 🔒 **Blocked in code** — needs rate bands |
+| `/calculators/` | 0 | 19 | 19 | ❌ **Declined** — Yash decided not to build these |
+
+**Total genuinely open to you right now: roughly 380 pages** across insights, glossary,
+compare, services, guides, architects and industries — without needing a single approval
+from anyone.
+
+Two of the biggest blocks (`/compliance/` 45 and `/cost/` 25) are the highest-value pages
+on the whole plan and they unlock the moment someone is named as a reviewer. That is worth
+raising with the founder — see §12.
+
+### Where the plan's numbers should be trusted less than this file
+
+- **Glossary 120** was set before anyone counted what was already written. Past ~70 the
+  remaining terms are obscure. Prefer 70 good pages to 120 padded ones.
+- **Compare 30** turned out to be optimistic: eight of the obvious comparison topics
+  already exist as glossary pages (anodising vs powder coating, Cat A vs Cat B, laminated
+  vs toughened, gypsum vs mineral fibre, Cat6 vs Cat6a, raft vs pile, HT vs LT, carpet vs
+  built-up). Writing `/compare/` versions would put two of our own pages against each other
+  for the same query. 20 is a sensible stopping point.
+- **Insights 300** overlaps the existing 16 blog posts, and the planned
+  `/blog/* → /insights/*` redirect was never done. Do not start this until someone decides
+  whether blog and insights are one section or two.
+
+---
+
+## 5. What to write next, in priority order
 
 ### Priority 1 — `/guides/` (12 pages, none exist)
 
@@ -130,7 +221,7 @@ page count without adding traffic.
 
 ---
 
-## 4. How to add a page
+## 6. How to add a page
 
 For glossary, compare, guides, materials, facade, interiors, mep, peb, civil, industries,
 estates — **one `.mdx` file is the whole job**. No router edits. No code.
@@ -181,7 +272,7 @@ not an introduction to one.
 
 ---
 
-## 5. The quality bar
+## 7. The quality bar
 
 Look at `src/content/compare/acp-vs-hpl-cladding.mdx` and
 `src/content/glossary/plenum-depth.mdx` before writing anything. Match them.
@@ -232,7 +323,7 @@ buyers, not just engineers. In practice that means:
 
 ---
 
-## 6. Before pushing — run all of this
+## 8. Before pushing — run all of this
 
 ```bash
 node scripts/check-meta-lengths.mjs src/content/<collection>   # fast length check
@@ -266,12 +357,12 @@ Both should return nothing.
 
 ---
 
-## 7. Errors you will hit, and what they mean
+## 9. Errors you will hit, and what they mean
 
 | Error | Fix |
 |---|---|
 | `metaDescription: String must contain at most 165 character(s)` | Run `check-meta-lengths.mjs` — it prints the actual length and how much to cut |
-| `Unrecognized key(s) in object` | You invented a frontmatter field. Only the keys in §4 exist |
+| `Unrecognized key(s) in object` | You invented a frontmatter field. Only the keys in §6 exist |
 | `glossary entries require a definition` | Add `definition` — it is mandatory for that collection |
 | `compliance content requires reviewedBy` | You cannot publish that collection. Pick a different one |
 | `filename must equal slug` | Rename the file or the slug so they match |
@@ -279,7 +370,7 @@ Both should return nothing.
 
 ---
 
-## 8. Things not to touch
+## 10. Things not to touch
 
 - **`/our-designs/`** — the design studies section. Separate workflow in
   `docs/OUR-DESIGNS-INTAKE.md`, client anonymity rules, needs founder sign-off. Not part of
@@ -291,7 +382,7 @@ Both should return nothing.
 
 ---
 
-## 9. A realistic rate
+## 11. A realistic rate
 
 A glossary page is about 550 words; a compare page about 1,100; a guide about 2,000.
 
@@ -306,7 +397,7 @@ throttled, which delays indexation of everything, including the good pages.
 
 ---
 
-## 10. Open questions for the founder
+## 12. Open questions for the founder
 
 These block work and only he can answer them:
 
