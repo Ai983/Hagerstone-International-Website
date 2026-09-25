@@ -1,0 +1,109 @@
+---
+title: "RCCB vs MCB: Two Devices Protecting Against Different Things"
+metaTitle: "RCCB vs MCB Explained"
+metaDescription: "Why an MCB protects the circuit and an RCCB protects people, what an RCBO combines, why nuisance tripping happens, and why one does not replace the other."
+slug: "rccb-vs-mcb"
+collection: "glossary"
+status: "published"
+publishedOn: "2026-09-25"
+author: "Dhruv Agarwal"
+primaryKeyword: "rccb vs mcb"
+keywords:
+  - "rccb mcb difference india"
+  - "earth leakage protection building"
+  - "rcbo meaning electrical"
+  - "distribution board protection devices"
+definition: "An MCB protects the circuit and the cable by disconnecting on overload or short circuit. An RCCB protects people by detecting current leaking to earth — for example through a person — and disconnecting quickly. They respond to entirely different events, so neither replaces the other, and an RCBO combines both functions in one device."
+citations:
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "IS 12640"
+    clause: "Residual current operated circuit breakers"
+  - label: "IS 8828"
+    clause: "Miniature circuit breakers"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical installations"
+faqs:
+  - question: "What exactly does each one detect?"
+    answer: "An MCB watches the current flowing in the circuit and trips when it exceeds what the cable and circuit can safely carry — either a sustained overload or a sudden short circuit. An RCCB compares the current going out with the current coming back; if they do not match, current is escaping somewhere, which usually means to earth. It trips on that difference, regardless of whether the total current is within the circuit's rating."
+  - question: "Why can't one device do both jobs?"
+    answer: "Because the events look completely different electrically. A person touching a live part may draw a very small current to earth — far too small to trouble an MCB sized for the circuit, but enough to be dangerous. Conversely a genuine overload does not create any imbalance between line and neutral, so an RCCB sees nothing wrong. An RCBO is the answer where both are wanted in one unit."
+  - question: "What causes nuisance tripping on an RCCB?"
+    answer: "Usually cumulative leakage rather than a fault. Every item of equipment leaks a tiny amount to earth by design, and many devices on one RCCB can add up close to its threshold, so a small extra leak trips it. Moisture, long cable runs and certain electronic equipment all contribute. The fix is normally splitting circuits across multiple devices rather than fitting something less sensitive."
+  - question: "What sensitivity is used?"
+    answer: "Devices are made in different sensitivities for different purposes — higher sensitivity for personal protection, lower for fire protection and equipment applications. What is required for a given circuit is determined by the applicable wiring rules and by the project's electrical consultant against IS 732 and IS 12640. It should not be chosen on site to stop a device tripping."
+  - question: "Does an RCCB replace earthing?"
+    answer: "No, and this is an important misconception. An RCCB needs a path for leakage current to flow before it can detect anything, and it relies on the installation being properly earthed and bonded. It is an additional layer of protection, not a substitute for a sound earthing system."
+  - question: "Should RCCBs be tested?"
+    answer: "Yes, periodically, using the test button and by proper instrument testing as part of the installation's inspection regime. A device that has sat untouched for years may not operate when it is finally needed, and nothing in normal use reveals that. The test regime for a specific installation should be set by the electrical consultant."
+related:
+  - "earthing-and-bonding"
+  - "ht-vs-lt-panel"
+  - "cable-derating"
+  - "frls-cable"
+---
+
+## Why it matters on a project
+
+These two devices sit next to each other in every distribution board and are
+routinely described as if they were alternatives — a cheaper option and a better
+option.
+
+They are not. **One protects the installation. The other protects people.** A
+board with only MCBs can be fully compliant with its cable protection and offer
+no personal protection at all against an earth fault.
+
+## Side by side
+
+| | MCB | RCCB |
+| --- | --- | --- |
+| Protects | The circuit and its cable | People, against earth leakage |
+| Detects | Overload, short circuit | Imbalance between line and neutral |
+| Trips on | Too much current | Current escaping to earth |
+| Sees a person touching a live part? | Usually not | Yes |
+| Sees an overload? | Yes | No |
+| Combined device | — | RCBO does both |
+
+## Nuisance tripping is usually a design answer, not a device answer
+
+When an RCCB trips repeatedly without an obvious fault, the common instinct is
+to fit a less sensitive device. That treats the symptom and removes the
+protection.
+
+The usual cause is **accumulated leakage**: every appliance leaks a small amount
+to earth by design, and enough of them on one device sums close to its threshold.
+Add damp conditions or a long circuit and it trips.
+
+The correct response is normally to **split the load** across several devices, so
+no single one is carrying the summed leakage of the whole floor — which is also
+why a board with one RCCB protecting everything is a poor arrangement even when
+it works, since a single trip takes out the entire installation.
+
+## Where the devices sit in the design
+
+Protection design is not a product-selection exercise. Device type, rating,
+sensitivity, discrimination between upstream and downstream devices, and the
+arrangement of circuits are all part of the installation design, determined
+against the applicable wiring rules — commonly **IS 732**, with device standards
+**IS 8828** for MCBs and **IS 12640** for residual current devices, within the
+building services framework of **NBC 2016, Part 8**.
+
+## Common mistakes
+
+- **Treating them as alternatives.** They protect against different events.
+- **Fitting a less sensitive device to stop tripping.** It removes the
+  protection that was tripping for a reason.
+- **One RCCB for the whole board.** A single trip disconnects everything, and
+  cumulative leakage makes trips more likely.
+- **Assuming an RCCB compensates for poor earthing.** It depends on the earthing
+  being sound.
+- **Never testing.** An untested device may not operate when it matters.
+- **Selecting on site.** Sensitivity and discrimination are design outputs.
+
+## Standards referenced
+
+Electrical installation practice in **IS 732**; miniature circuit breakers to
+**IS 8828**; residual current operated circuit breakers to **IS 12640**;
+building services provisions in **NBC 2016, Part 8**. Protection device
+selection, ratings, sensitivity and circuit arrangement for a specific
+installation must be established by the project's electrical consultant.
