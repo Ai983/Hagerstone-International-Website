@@ -38,13 +38,28 @@ const AccordionTrigger = React.forwardRef<
 ))
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
+// `forceMount` keeps the answer in the DOM while the item is collapsed.
+//
+// Without it, Radix unmounts closed content, so the prerendered HTML carried
+// every FAQ *question* and almost no *answer*: 1,083 of 1,195 answers were
+// missing from the static files (255 of 289 pages rendered none at all). Two
+// consequences, both bad. AI crawlers do not execute JavaScript, so the answers
+// — the largest body of text on this site and the part best matched to how
+// answer engines retrieve — were invisible to them. And Google's structured
+// data policy requires marked-up content to be present on the page, which
+// FAQPage JSON-LD full of answers the page never rendered did not satisfy.
+//
+// Collapsed items are hidden with CSS instead, so the text ships in the HTML
+// and the accordion still looks and behaves the same. `hidden` replaces the
+// close animation; the open animation is unaffected.
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    forceMount
+    className="overflow-hidden text-sm transition-all data-[state=closed]:hidden data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
