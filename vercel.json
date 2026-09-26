@@ -14,6 +14,7 @@
     { "source": "/design-studies", "destination": "/our-designs", "permanent": true },
     { "source": "/design-studies/indoor-kids-play-zone-design-two-levels", "destination": "/projects/kokko-town", "permanent": true },
     { "source": "/design-studies/:slug", "destination": "/our-designs/:slug", "permanent": true },
+    { "source": "/projects/bansaltower", "destination": "/projects", "permanent": true },
 
     { "source": "/office-interior-designers-in-ahmedabad", "destination": "/locations/ahmedabad", "permanent": true },
     { "source": "/office-interior-designers-in-bengaluru", "destination": "/locations/bengaluru", "permanent": true },

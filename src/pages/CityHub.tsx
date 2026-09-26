@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { SITE_URL, type FaqItem } from "@/lib/seo";
 import { getCityBySlug } from "@/data/cities";
+import { getProjectById } from "@/data/project";
 import { servicePages } from "@/data/servicePages";
 import { getServiceCitiesForCity } from "@/lib/locationPages";
 import { buildCityHubSchema } from "@/lib/locationSchema";
@@ -32,6 +33,12 @@ const CityHub = () => {
   const canonical = `${SITE_URL}/locations/${city.slug}`;
   const services = getServiceCitiesForCity(city.slug);
 
+  // A city's project list can point at a project page by slug. When that project
+  // is unpublished (project.ts `published: false`), drop it here too — otherwise
+  // the page would still name it as delivered work and link to a page that no
+  // longer exists. Entries with no slug are plain mentions and always show.
+  const cityProjects = city.projects.filter((p) => !p.slug || getProjectById(p.slug));
+
   const faqs: FaqItem[] = [
     {
       question: `What services does Hagerstone offer in ${city.name}?`,
@@ -44,8 +51,8 @@ const CityHub = () => {
     {
       question: `Has Hagerstone delivered projects in ${city.name}?`,
       answer:
-        city.projects.length > 0
-          ? `Yes — our ${city.name}-area work includes ${city.projects.map((p) => p.name).join(", ")}. ${city.marketNote}`
+        cityProjects.length > 0
+          ? `Yes — our ${city.name}-area work includes ${cityProjects.map((p) => p.name).join(", ")}. ${city.marketNote}`
           : `We serve ${city.name} as part of our ${city.region} coverage. ${city.marketNote}`,
     },
     // Genuinely city-specific: the answer names different bodies in every city,
@@ -222,13 +229,13 @@ const CityHub = () => {
         </section>
 
         {/* Project proof */}
-        {city.projects.length > 0 && (
+        {cityProjects.length > 0 && (
           <section className="mb-16">
             <h2 className="text-2xl font-semibold text-primary mb-6">
               Projects Delivered in the {city.name} Area
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {city.projects.map((project) =>
+              {cityProjects.map((project) =>
                 project.slug ? (
                   <Link
                     key={project.name}

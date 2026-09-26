@@ -38,9 +38,18 @@ export type ProjectData = {
   materials?: string[];
   floors?: { name: string; layout: string }[];
   sections: ProjectSection[];
+  /**
+   * Set to `false` to take a project off the website while keeping its data here.
+   * Omitted means published. An unpublished project has no page, no listing card,
+   * no sitemap entry and no city-page mention; flipping this back restores all of
+   * them. Its images must also be moved back into `public/` (see `archive/README.md`).
+   */
+  published?: boolean;
 };
 
-export const projects: ProjectData[] = [
+// Every project, published or not. Only the build reads this directly; everything
+// that renders uses `projects` below.
+export const allProjects: ProjectData[] = [
   {
     id: "theon",
     title: "Theon Life Sciences Corporate Office",
@@ -150,6 +159,12 @@ export const projects: ProjectData[] = [
   },
   {
     id: "bansaltower",
+    // Taken off the website on 26 Sept 2026, data kept for later. Its images
+    // were moved to archive/projects/Bansal-Tower/ — 137 MB of raw renders,
+    // 3840x2160 PNGs at 8-11 MB each, that made this the heaviest page on the
+    // site. Convert them to WebP (scripts/our-designs-images.mjs) before
+    // re-publishing, rather than moving the PNGs back as they are.
+    published: false,
     title: "Bansal Tower Co-Working Space",
     client: "Bansal Group",
     year: "2025",
@@ -986,5 +1001,13 @@ export const projects: ProjectData[] = [
     ],
   },
 ];
-// Helper
+
+/**
+ * Published projects — what the website renders. The listing, homepage cards,
+ * detail pages, prerender, sitemap and image sitemap all import this, so a
+ * project with `published: false` disappears from every one of them at once.
+ */
+export const projects: ProjectData[] = allProjects.filter((p) => p.published !== false);
+
+/** A published project by id, or undefined — an unpublished id is a 404. */
 export const getProjectById = (id: string) => projects.find((p) => p.id === id);
