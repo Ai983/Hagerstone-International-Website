@@ -20,7 +20,7 @@ const About = () => {
   return (
     <>
       <SEOHead
-        title="About Hagerstone International | Office Design & Build Company"
+        title="About Hagerstone | Office Design & Build"
         description="Learn about Hagerstone International, an office design & build company delivering modern interiors, MEP design, and fit-outs across India."
         canonical="https://hagerstone.com/about"
         keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"

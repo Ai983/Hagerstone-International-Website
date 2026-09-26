@@ -14,7 +14,7 @@ function Projects() {
   return (
     <div>
       <SEOHead
-        title="Office Design & Build Projects Portfolio | Modern Office Interiors"
+        title="Office Design & Build Projects | Hagerstone"
         description="Explore Hagerstone’s office design & build portfolio, including modern interiors, MEP projects, and commercial fit-outs across India."
         canonical="https://hagerstone.com/projects"
         keywords="office design and build projects, modern office interior design portfolio, commercial interior design projects, office fit out case studies, mep design projects, office workspace design india"

@@ -71,7 +71,9 @@ const CityHub = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`Interiors, Facade & Construction Contractors in ${city.name} | Hagerstone`}
+        // Kept short enough that the city name survives Google's ~60-character
+        // truncation, which the previous four-service list did not.
+        title={`Office Interiors & Fit-Out in ${city.name} | Hagerstone`}
         description={`Interiors, facade & glazing, aluminium doors and windows, MEP, PEB and civil construction in ${city.name}, ${city.state} — with the local approval authorities each project has to clear.`}
         canonical={canonical}
         keywords={`interior fit out ${city.name}, facade contractors ${city.name}, aluminium doors and windows ${city.name}, mep contractors ${city.name}, construction company ${city.name}`}

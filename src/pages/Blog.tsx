@@ -141,8 +141,8 @@ const Blog = () => {
           activeCategory
             ? `${activeCategory} Articles | Hagerstone International`
             : currentPage === 1
-              ? "Interior Design Blog & Ideas | Hagerstone International"
-              : `Interior Design Blog & Ideas — Page ${currentPage} | Hagerstone International`
+              ? "Interior Design Blog & Ideas | Hagerstone"
+              : `Interior Design Blog — Page ${currentPage} | Hagerstone`
         }
         description="Insights from an interior design and build firm covering office design, MEP/HVAC, EPC/PEB construction, and turnkey fit-outs."
         canonical={canonicalUrl}

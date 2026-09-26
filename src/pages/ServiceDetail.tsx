@@ -59,6 +59,39 @@ const ServiceDetail = () => {
     ? contentIndex.filter((entry) => entry.collection === "design").slice(0, 3)
     : [];
 
+  // Guides and comparisons relevant to this service, matched on shared terms.
+  //
+  // A link audit on 26 Sept found /guides averaging 3.3 inbound internal links
+  // and /compare 4.9, against 17.4 for /services — the newest and most
+  // commercial pages were inheriting the least authority on the site. Service
+  // pages are the strongest content pages here, so linking down from them is
+  // the highest-value place to fix that. Matching on terms rather than a hand
+  // kept map means new guides are picked up without another edit.
+  const serviceTerms = new Set(
+    `${service.title} ${service.slug}`
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((word) => word.length > 3),
+  );
+
+  const relatedByCollection = (collection: "guides" | "compare", limit: number) =>
+    contentIndex
+      .filter((entry) => entry.collection === collection)
+      .map((entry) => {
+        const haystack = `${entry.title} ${entry.primaryKeyword} ${entry.keywords.join(" ")}`
+          .toLowerCase()
+          .split(/[^a-z0-9]+/);
+        const score = haystack.filter((word) => serviceTerms.has(word)).length;
+        return { entry, score };
+      })
+      .filter((match) => match.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit)
+      .map((match) => match.entry);
+
+  const relatedGuides = relatedByCollection("guides", 2);
+  const relatedComparisons = relatedByCollection("compare", 3);
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -210,6 +243,33 @@ const ServiceDetail = () => {
                 >
                   <h3 className="text-lg font-semibold text-primary mb-2">{study.title}</h3>
                   <p className="text-sm text-muted-foreground">{study.metaDescription}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {(relatedGuides.length > 0 || relatedComparisons.length > 0) && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-primary mb-2">
+              Before you decide
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Background reading on the decisions this service involves — written
+              from what goes wrong on site, with the standards named on the page.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...relatedGuides, ...relatedComparisons].map((entry) => (
+                <Link
+                  key={entry.path}
+                  to={entry.path}
+                  className="block border border-border rounded-xl p-6 hover:border-primary hover:shadow-sm transition"
+                >
+                  <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                    {entry.collection === "guides" ? "Guide" : "Comparison"}
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-primary">{entry.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{entry.metaDescription}</p>
                 </Link>
               ))}
             </div>

@@ -85,7 +85,7 @@ export default function OfficeFitOutCostGuideBlog() {
   return (
     <>
       <SEOHead
-        title={`Office Fit-Out Cost in India: Per Sq Ft Pricing Guide | ${SHORT_BRAND_NAME}`}
+        title={`Office Fit-Out Cost in India | ${SHORT_BRAND_NAME}`}
         description="How much does office fit-out cost in India? See per sq ft price ranges, what drives costs up or down, and how to budget a fit-out without cutting corners."
         canonical={canonicalUrl}
         ogImage={ogImage}

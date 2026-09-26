@@ -91,7 +91,11 @@ export default function ProjectDetail() {
   return (
     <main>
       <SEOHead
-        title={project.metaTitle ?? `${project.title} | ${project.sector} Interior Design Project`}
+        // The fallback used to be `<title> | <sector> Interior Design Project`,
+        // which ran to 99-116 characters once the brand was appended — Google
+        // showed roughly half of it. Project titles already name the client and
+        // the space, so the sector restated it for no gain.
+        title={project.metaTitle ?? project.title}
         description={
           project.metaDescription ||
           project.summary?.slice(0, 155) ||

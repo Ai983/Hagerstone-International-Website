@@ -124,7 +124,7 @@ export default function CommercialInteriorDesignersBlog() {
   return (
     <>
       <SEOHead
-        title={`Commercial Interior Designers for Productivity, Brand & Growth | ${SHORT_BRAND_NAME}`}
+        title={`Commercial Interior Designers in India | ${SHORT_BRAND_NAME}`}
         description="Commercial interior designers create functional, branded, and productive business spaces that enhance employee wellbeing and customer experience."
         canonical={canonicalUrl}
         ogImage={ogImage}

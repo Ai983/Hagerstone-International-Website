@@ -693,7 +693,7 @@ export const projects: ProjectData[] = [
     ],
     designEssence:
       "The project blends modern office requirements with refined detailing, resulting in a workspace that is both visually appealing and highly functional.",
-    metaTitle: "Valorium Ventures Office Interior (700 sq ft) | Projects",
+    metaTitle: "Valorium Ventures Office Interior, 700 sq ft",
     metaDescription:
       "Explore Valorium Ventures’ 700 sq ft office interior in a neutral palette—conference room for 6, director cabin, 4 workstations, acoustic panels.",
     canonical: "https://hagerstone.com/projects/valorium-ventures-office-interior",
@@ -851,7 +851,7 @@ export const projects: ProjectData[] = [
       "Modular electrical panels and distribution",
       "Sanitary ware and plumbing fixtures",
     ],
-    metaTitle: "Kokko Town Indoor Kids' Play Zone (6,500 sq ft) | Sector 17, Chandigarh",
+    metaTitle: "Kokko Town Play Zone, Chandigarh",
     metaDescription:
       "Explore Kokko Town, a 6,500 sq ft indoor kids' play zone & family cafe in Chandigarh with a pretend-play town, RC/construction zone, and farm-themed mezzanine.",
     canonical: "https://hagerstone.com/projects/kokko-town",

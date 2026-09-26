@@ -16,7 +16,7 @@ export const servicePages: ServicePage[] = [
     slug: "office-design-build",
     title: "Office Design & Build",
     h1: "Office Design & Build Services",
-    metaTitle: "Office Design & Build – Turnkey Workspace Delivery | Hagerstone",
+    metaTitle: "Office Design & Build – Turnkey Delivery | Hagerstone",
     metaDescription:
       "End-to-end office design & build services in Delhi NCR, from strategy to fit-out execution for modern corporate workspaces.",
     summary:
@@ -38,7 +38,7 @@ export const servicePages: ServicePage[] = [
     slug: "interior-fit-out",
     title: "Interior Fit-Out",
     h1: "Interior Fit-Out Company",
-    metaTitle: "Interior Fit-Out Company – Office Fit-Out Services | Hagerstone",
+    metaTitle: "Interior Fit-Out Company in India | Hagerstone",
     metaDescription:
       "Office interior fit-out services for commercial and corporate spaces with coordinated finishes, joinery, and on-site delivery.",
     summary:
@@ -60,7 +60,7 @@ export const servicePages: ServicePage[] = [
     slug: "mep",
     title: "MEP Design",
     h1: "MEP Design & Consultants",
-    metaTitle: "MEP Design & Consultants – Commercial MEP Services | Hagerstone",
+    metaTitle: "MEP Design & Consultants in India | Hagerstone",
     metaDescription:
       "MEP design and consultancy for office buildings and commercial facilities, including electrical, plumbing, and fire safety systems.",
     summary:
@@ -148,7 +148,7 @@ export const servicePages: ServicePage[] = [
     slug: "facade-glazing",
     title: "Facade & Glazing",
     h1: "Facade & Glazing Contractors",
-    metaTitle: "Facade & Glazing Contractors – Structural Glazing | Hagerstone",
+    metaTitle: "Facade & Glazing Contractors | Hagerstone",
     metaDescription:
       "Facade and glazing contractors for commercial buildings—structural glazing, curtain walls, ACP cladding, and unitized facade systems with engineered installation.",
     summary:
@@ -170,7 +170,7 @@ export const servicePages: ServicePage[] = [
     slug: "aluminium-doors-windows",
     title: "Aluminium Doors & Windows",
     h1: "Aluminium Doors & Windows",
-    metaTitle: "Aluminium Doors & Windows – Commercial Fenestration | Hagerstone",
+    metaTitle: "Aluminium Doors & Windows | Hagerstone",
     metaDescription:
       "Aluminium doors and windows for commercial and office spaces—openable, sliding, and casement systems with quality hardware, glazing, and precise installation.",
     summary:

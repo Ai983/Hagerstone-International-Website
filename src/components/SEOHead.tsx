@@ -23,10 +23,15 @@ const SEOHead = ({
   structuredData,
   appendSiteName = true,
 }: SEOHeadProps) => {
+  // " | Hagerstone" rather than " | Hagerstone International": Google truncates
+  // the title around 60 characters, and the longer suffix cost 26 of them. On a
+  // site where most titles come from a frontmatter metaTitle capped at 65, that
+  // append was pushing a third of all pages past the cut-off — the brand was
+  // being shown at the expense of the words someone actually searched for.
   const fullTitle = appendSiteName
     ? title.includes('Hagerstone')
       ? title
-      : `${title} | Hagerstone International`
+      : `${title} | Hagerstone`
     : title;
   const imageAlt = ogImageAlt ?? fullTitle;
   

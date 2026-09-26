@@ -32,7 +32,14 @@ export const localServices: LocalService[] = [
     urlPrefix: "office-interior-designers-in",
     label: "Office Interior Design & Build",
     parentServiceSlug: "office-design-build",
-    published: true,
+    // Switched off on 26 Sept 2026. These 26 service-in-city pages averaged 322
+    // words with ~72% vocabulary overlap between them — a doorway pattern, which
+    // Google penalises across the whole domain rather than just those URLs. The
+    // competitor this programme benchmarks against publishes none of these
+    // either: their city pages cover every service on one page. Each URL now
+    // redirects to its /locations/<city> hub, which carries the genuinely local
+    // content (authorities, districts, market note).
+    published: false,
     headTerm: "Office Interior Designers",
     summary:
       "Turnkey office interior design and build — space planning, 3D design, and full fit-out execution delivered as a single accountable package.",

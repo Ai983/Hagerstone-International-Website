@@ -191,7 +191,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Office Design & Build Services | Interior, MEP, EPC & Fit-Out"
+        title="Services: Interiors, MEP, Facade & PEB"
         description="Office design & build services in Delhi NCR for modern interiors, MEP design, EPC & PEB construction, and turnkey office fit-outs."
         canonical="https://hagerstone.com/services"
         keywords="Office design and build, modern office interior design, office workspace design, mep design services, interior fit out company, turnkey office design, EPC and PEB construction Delhi NCR"

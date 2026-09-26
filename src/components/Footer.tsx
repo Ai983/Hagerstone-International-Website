@@ -16,11 +16,16 @@ const Footer = () => {
   ];
 
   // Section indexes that nothing else on the site links to. Without these the
-  // our designs, glossary, materials, estate and industry pages are orphans:
-  // reachable only from each other, which is how ~100 pages end up with no
-  // internal links at all. Kept to five — a footer stuffed with links is
-  // discounted, and contextual links in the body do the real work.
+  // our designs, guides, comparisons, glossary, materials, estate and industry
+  // pages are orphans: reachable only from each other, which is how ~100 pages
+  // end up with no internal links at all. Guides and Comparisons were added on
+  // 26 Sept after a link audit found them averaging 3.3 and 4.9 inbound links
+  // against 17.4 for /services — the newest and most commercial sections were
+  // inheriting the least authority. Contextual links in the body still do the
+  // real work; this is the floor, not the strategy.
   const resources = [
+    { name: "Guides", href: "/guides" },
+    { name: "Comparisons", href: "/compare" },
     { name: "Our Designs", href: "/our-designs" },
     { name: "Materials Guide", href: "/materials" },
     { name: "Glossary", href: "/glossary" },

@@ -89,7 +89,7 @@ export default function MepDesignConsultancyIndiaBlog() {
   return (
     <>
       <SEOHead
-        title={`MEP Design & Consultancy for Commercial Fit-Outs | ${SHORT_BRAND_NAME}`}
+        title={`MEP Design & Consultancy for Fit-Outs | ${SHORT_BRAND_NAME}`}
         description="A technical guide to MEP design for commercial buildings in India: electrical, plumbing, fire safety, and where MEP costs actually go."
         canonical={canonicalUrl}
         ogImage={ogImage}

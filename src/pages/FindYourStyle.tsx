@@ -124,7 +124,7 @@ const FindYourStyle = () => {
   return (
     <>
       <SEOHead
-        title="Find Your Office Style | AI Interior Design & Cost Estimator"
+        title="Find Your Office Style | AI Design & Cost Tool"
         description="Discover your ideal office style with our AI-driven interior design quiz and cost estimator for office fit-outs in Delhi NCR."
         canonical={`${SITE_URL}/find-your-style`}
         keywords="office interior design quiz, AI office style, workspace cost estimator, office fit-out planning"

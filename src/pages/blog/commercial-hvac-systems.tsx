@@ -91,7 +91,7 @@ export default function CommercialHvacSystemsGuideBlog() {
   return (
     <>
       <SEOHead
-        title={`Commercial HVAC Systems in India: A Technical Buyer's Guide | ${SHORT_BRAND_NAME}`}
+        title={`Commercial HVAC Systems in India | ${SHORT_BRAND_NAME}`}
         description="VRF vs ducted split vs chilled water: a technical guide to choosing, sizing, and commissioning commercial HVAC systems for offices in India."
         canonical={canonicalUrl}
         ogImage={ogImage}
