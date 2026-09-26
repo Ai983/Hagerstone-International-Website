@@ -1,0 +1,144 @@
+---
+title: "Server Room and Data Centre MEP: Cooling, Power and Resilience"
+metaTitle: "Server Room & Data Centre MEP | Hagerstone"
+metaDescription: "How a server room's services are designed — heat load, dedicated cooling, redundancy, power backup, fire suppression and the monitoring that makes it safe."
+slug: "server-room-and-data-centre-mep"
+collection: "mep"
+status: "published"
+publishedOn: "2026-09-26"
+author: "Dhruv Agarwal"
+primaryKeyword: "server room design india"
+keywords:
+  - "server room cooling design"
+  - "data centre mep india"
+  - "precision cooling office server room"
+  - "server room fire suppression"
+definition: "A server room is a continuously occupied heat load with no tolerance for interruption, so its services are designed differently from the office around it: dedicated cooling that runs when the building does not, power backed by both UPS and generator, suppression suited to electronics, and monitoring that reports failure before equipment does."
+citations:
+  - label: "NBC 2016, Part 4"
+    clause: "Fire and life safety"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services"
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "ISO/IEC 11801"
+    clause: "Generic cabling for customer premises"
+faqs:
+  - question: "Why can't the office air conditioning cool a server room?"
+    answer: "Because the office system is scheduled to office hours and the equipment runs continuously. The moment the building system shuts down at night or over a weekend, the heat load keeps producing and the room temperature climbs. A server room needs cooling that runs independently of the building's occupancy schedule, and that is usually a dedicated system rather than a branch of the office one."
+  - question: "How is the heat load worked out?"
+    answer: "Principally from the electrical load of the equipment, because nearly all the power drawn is converted to heat, plus gains through the fabric and from lighting and people. The important input is what the room will hold at its future capacity, not what it holds today — a room sized for present equipment runs out of cooling long before it runs out of rack space."
+  - question: "What redundancy is appropriate?"
+    answer: "It depends on what an outage costs the business, which is a commercial decision rather than a technical one. Arrangements range from a single unit with no backup, through a spare unit able to take over, to fully duplicated systems. The useful question to put to the business is how long the room can be without cooling before equipment is at risk — the answer is often much shorter than people assume."
+  - question: "How should power be arranged?"
+    answer: "UPS to cover the instant of failure and the generator's start-up, generator to sustain the load afterwards, and the server room circuits segregated at the distribution boards so they are physically identifiable. The cooling for the room must be on the backup supply too — backing up the servers while their cooling stops simply changes how quickly the problem arrives."
+  - question: "What fire protection does a server room need?"
+    answer: "Detection suited to early warning and suppression appropriate to electronic equipment, rather than a system that would damage what it protects. What is required for a specific room depends on its size, the building and the applicable rules, determined under NBC 2016 Part 4 by the fire consultant and the authority having jurisdiction. This should be established early, because it affects the room's construction as well as its services."
+  - question: "What monitoring is worth installing?"
+    answer: "Temperature and humidity within the room, cooling system status and failure alarms, UPS status and battery condition, and leak detection beneath any raised floor or near cooling units. The value is in the alarm reaching someone who can act — a monitoring system whose alerts go to an unmonitored address is a log, not a safeguard."
+related:
+  - "power-backup-dg-and-ups"
+  - "networking-and-structured-cabling"
+  - "hvac-systems-design"
+  - "fire-detection-and-alarm"
+  - "server-room-in-an-office-what-to-settle-first"
+---
+
+## A different problem from the office around it
+
+| | Office floor | Server room |
+| --- | --- | --- |
+| Occupancy | Scheduled hours | Continuous |
+| Heat load | Varies with people | Constant, dense |
+| Cooling interruption | Uncomfortable | Equipment at risk |
+| Power interruption | Inconvenient | Business interruption |
+| Fire suppression | Standard provisions | Must not damage equipment |
+| Monitoring | Rarely needed | Essential |
+
+Designing a server room as a small office with extra air conditioning is the
+error this page exists to prevent.
+
+## Cooling that runs when the building does not
+
+The single most common failure is a server room served by the office system.
+
+Office cooling is scheduled. Server equipment is not. When the building shuts
+down for the night or a long weekend, the load continues producing heat into a
+closed room, and temperature climbs steadily with nobody present.
+
+A dedicated system, running independently of building occupancy and backed by
+the generator, is what the room actually needs.
+
+## Sizing for the future, not the present
+
+Heat load comes principally from the equipment's electrical draw, since almost
+all of it becomes heat, plus fabric gains, lighting and people.
+
+The critical input is the **future** load. A room cooled for today's racks
+reaches its cooling limit long before it fills, and adding cooling to an
+occupied, cabled server room is far harder than providing for it initially.
+
+Building services provisions sit in **NBC 2016, Part 8**, and the load
+calculation must come from the project's MEP consultant.
+
+## Redundancy is a business decision
+
+How much duplication is appropriate depends on what an outage costs — which is
+a question for the business, not the engineer.
+
+The useful framing: **how long can this room be without cooling before equipment
+is at risk?** In a well-insulated room with a dense load, the answer is often
+minutes rather than hours, which surprises people and usually settles the
+redundancy discussion quickly.
+
+## Power, including the cooling
+
+Three things must be on the backup supply:
+
+1. The **equipment**, via UPS then generator
+2. The **cooling** for the room, via generator
+3. **Monitoring and alarms**, so failures are still reported
+
+Backing up the servers while their cooling stops does not avoid the outage; it
+delays it. Circuits should be segregated physically at the distribution boards
+and identified, following installation practice in **IS 732**.
+
+## Fire, containment and construction
+
+Detection for early warning and suppression suited to electronics are the
+starting points, but the room's **construction** matters too — how it is
+separated from the rest of the floor, how services penetrate it and how those
+penetrations are sealed.
+
+What is required for a specific room is determined under **NBC 2016, Part 4** by
+the fire consultant and the authority having jurisdiction, and it should be
+established early because it affects the room's fabric as well as its services.
+
+## Cabling and layout
+
+Structured cabling follows **ISO/IEC 11801**, with power and data segregated,
+containment sized for growth, and cable routes planned so that adding equipment
+later does not mean disturbing what is already live.
+
+Leave room to work. A server room packed to its walls is one where every future
+change carries risk to the equipment already running.
+
+## Monitoring that reaches someone
+
+- Temperature and humidity in the room
+- Cooling system status and failure alarms
+- UPS status and battery condition
+- Leak detection beneath raised floors and near cooling units
+- Door and access alarms where appropriate
+
+And critically: **alarms must reach a person who can act**, at any hour. An
+alert delivered to an unmonitored mailbox is a record of the failure, not a
+defence against it.
+
+## Standards referenced
+
+Fire and life safety provisions in **NBC 2016, Part 4**; building services in
+**NBC 2016, Part 8**; electrical installation practice in **IS 732**; structured
+cabling in **ISO/IEC 11801**. Heat load, cooling capacity, redundancy,
+electrical design and fire requirements for a specific room must be established
+by the project's MEP and fire consultants and the authority having jurisdiction.

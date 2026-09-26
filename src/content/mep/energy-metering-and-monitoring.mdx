@@ -1,0 +1,129 @@
+---
+title: "Energy Metering and Monitoring: Measuring Before Managing"
+metaTitle: "Energy Metering & Monitoring | Hagerstone"
+metaDescription: "How to meter a commercial building usefully — what to sub-meter, why a single incoming meter tells you nothing, and turning data into reduced consumption."
+slug: "energy-metering-and-monitoring"
+collection: "mep"
+status: "published"
+publishedOn: "2026-09-26"
+author: "Dhruv Agarwal"
+primaryKeyword: "energy metering commercial building india"
+keywords:
+  - "sub metering office building"
+  - "energy monitoring system india"
+  - "ecbc metering requirement"
+  - "building energy consumption tracking"
+definition: "Energy metering breaks a building's consumption into parts that can be acted on — HVAC, lighting, power, and any significant individual load. A single incoming meter reports the total and explains nothing, which is why sub-metering is what turns an energy bill into information."
+citations:
+  - label: "ECBC 2017"
+    clause: "Energy monitoring and metering"
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical installations"
+  - label: "ISO 50001"
+    clause: "Energy management systems"
+faqs:
+  - question: "Why is one incoming meter not enough?"
+    answer: "Because it gives a single number with no explanation. Consumption rises and nobody can say whether it was cooling, lighting, a process load or something left running overnight. Sub-metering separates the total into parts that can each be investigated and acted on, which is the difference between knowing you spent more and knowing why."
+  - question: "What should be sub-metered?"
+    answer: "At minimum the major categories — HVAC plant, lighting, small power, and any significant individual load such as a data centre, a kitchen or process equipment. Beyond that, metering by floor or tenancy is valuable in multi-occupancy buildings. The principle is to meter at a level where a change in the reading points to something specific you could do about it."
+  - question: "Does ECBC require metering?"
+    answer: "ECBC 2017 addresses energy monitoring and metering for commercial buildings alongside its other requirements, with the extent depending on building type and size. What applies to a specific project must be determined by the project's energy consultant against the applicable version and the building's classification, rather than assumed from a general rule."
+  - question: "What makes a metering installation useless in practice?"
+    answer: "Meters installed with nobody reading them, data collected into a system nobody opens, or metering arranged so that readings cannot be attributed to anything meaningful. Metering has a cost and returns nothing on its own — the return comes entirely from someone reviewing the data regularly and acting on what it shows."
+  - question: "What is the most common finding when a building is first metered properly?"
+    answer: "Out-of-hours consumption. Buildings routinely draw far more overnight and at weekends than anyone expects, from plant running on incorrect schedules, lighting left on, and equipment nobody switched off. It is usually the largest and cheapest saving available, and it is invisible without metering that can show consumption against time."
+  - question: "Should metering connect to the BMS?"
+    answer: "Commonly yes, so that consumption is visible alongside the systems producing it and alarms can be raised on abnormal readings. The value of integration is in correlating the two — seeing that a rise in consumption coincides with a control change or a plant fault. Integration adds commissioning effort, so it should be specified deliberately rather than added as an afterthought."
+related:
+  - "building-management-systems"
+  - "lighting-power-density"
+  - "hvac-systems-design"
+  - "sanctioned-load"
+  - "power-backup-dg-and-ups"
+---
+
+## Measurement is the prerequisite
+
+You cannot manage consumption you cannot see. A single incoming meter produces
+one number a month, which tells you what you spent and nothing about why.
+
+Sub-metering divides that number into parts a facilities team can investigate
+and act on.
+
+## What to meter
+
+| Category | Why it is worth separating |
+| --- | --- |
+| HVAC plant | Usually the largest single consumer in a commercial building |
+| Lighting | Reveals out-of-hours running and control failures |
+| Small power | Tracks occupancy-related consumption and equipment growth |
+| Data centre or server room | Continuous, dense, and often larger than assumed |
+| Kitchen or cafeteria | Concentrated and intermittent |
+| Process equipment | On industrial sites, frequently dominant |
+| By floor or tenancy | Essential where consumption is recharged |
+
+The test for whether to meter something: **would a change in this reading point
+to something specific you could do?** If not, the meter adds cost without
+information.
+
+## The first finding is almost always out-of-hours
+
+When a building is metered properly for the first time, the most common
+discovery is how much it consumes when nobody is in it.
+
+Plant running on schedules that no longer match occupancy, lighting circuits
+left on, equipment never switched off, and systems that were put into manual
+during a complaint and never returned — these accumulate quietly and appear only
+when consumption can be seen against time.
+
+It is usually the largest available saving, and it costs almost nothing to fix.
+
+## Metering without review is a cost, not a saving
+
+This is the point worth making before specifying anything.
+
+Meters do not reduce consumption. A person looking at the data and acting on it
+does. A building with comprehensive metering and nobody reviewing it has bought
+instrumentation and received no return.
+
+So the design question is not only "what shall we meter" but **"who reviews
+this, how often, and what are they empowered to change?"** If the answer is
+nobody, a simpler installation is the honest choice.
+
+Energy management systems are addressed by **ISO 50001**, and monitoring and
+metering provisions for commercial buildings by **ECBC 2017**.
+
+## Practical design points
+
+- **Meter where circuits are already segregated** — metering is far easier if the
+  distribution design anticipated it
+- **Half-hourly or better resolution** where consumption against time matters,
+  which is what reveals out-of-hours running
+- **Communications** planned — meters need a route to wherever data is collected
+- **Labelling and documentation**, so readings can be attributed years later
+- **Integration with the BMS** where correlation between consumption and plant
+  behaviour is wanted, specified deliberately
+
+Installation follows **IS 732** and the building services provisions of
+**NBC 2016, Part 8**, and the metering scheme should be set by the project's
+electrical and energy consultants.
+
+## A workable starting point
+
+1. Decide who will review the data and how often — before designing anything
+2. Meter the major categories: HVAC, lighting, small power, large individual
+   loads
+3. Ensure resolution is fine enough to show consumption against time
+4. Label and document the scheme for the building's future
+5. Review the first months deliberately, looking first at out-of-hours
+6. Extend metering only where a finer breakdown would change a decision
+
+## Standards referenced
+
+Energy monitoring and metering provisions in **ECBC 2017**; energy management
+systems in **ISO 50001**; electrical installation practice in **IS 732**;
+building services provisions in **NBC 2016, Part 8**. The metering requirements
+applying to a specific building must be determined by the project's energy and
+electrical consultants.
