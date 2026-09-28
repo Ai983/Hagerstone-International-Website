@@ -98,6 +98,11 @@ export const cities: City[] = [
       { name: "M3M", detail: "Sector 79 commercial development" },
       { name: "Bansal Tower Co-Working Space", detail: "Co-working fit-out", slug: "bansaltower" },
       { name: "Revolve Technologies Office", detail: "Software company office", slug: "revolve" },
+      { name: "El Corte Inglés", detail: "Design & Build · 20,000 sq ft" },
+      { name: "BCG (Boston Consulting Group)", detail: "Fire-fighting systems" },
+      { name: "Medtronic", detail: "Design & Build · 5,000 sq ft" },
+      { name: "Takenaka HQ", detail: "Turnkey interiors" },
+      { name: "AIPL Joy Street", detail: "Interior works · 12,000 sq ft" },
     ],
   },
   {
@@ -122,6 +127,8 @@ export const cities: City[] = [
     projects: [
       { name: "Hagerstone International HQ", detail: "Sector 2 head office" },
       { name: "VinFast", detail: "Sector 63 showroom & office" },
+      { name: "Inshorts Media", detail: "Office renovation" },
+      { name: "Arcon", detail: "PEB structure · 15,000 sq ft" },
     ],
   },
   {
@@ -149,6 +156,11 @@ export const cities: City[] = [
       { name: "Sael", detail: "Aerocity / IGI corporate office" },
       { name: "Western Green", detail: "Rangpuri" },
       { name: "MicroSave Consulting (MSC)", detail: "Corporate office", slug: "microsave" },
+      { name: "French Embassy", detail: "Chanakyapuri · turnkey interiors" },
+      { name: "Singapore Airlines", detail: "T3 IGI Airport · renovation" },
+      { name: "Lufthansa Airlines", detail: "T3 IGI Airport · renovation" },
+      { name: "EDF International", detail: "Saket · Design & Build" },
+      { name: "Synergy Consulting", detail: "Jasola · Design & Build · 18,000 sq ft" },
     ],
   },
   {
@@ -292,7 +304,10 @@ export const cities: City[] = [
     nearbyCitySlugs: ["zirakpur", "ludhiana", "jaipur"],
     marketNote:
       "Chandigarh's planned grid and its IT Park make it North India's most design-conscious commercial market, spanning Sector 17 retail and the Tricity's growing tech offices.",
-    projects: [{ name: "Koko Town", detail: "Sector 17" }],
+    projects: [
+      { name: "Koko Town", detail: "Sector 17" },
+      { name: "Oceaneering", detail: "Design & Build · 20,000 sq ft" },
+    ],
   },
   {
     slug: "kota",
@@ -588,7 +603,7 @@ export const cities: City[] = [
     nearbyCitySlugs: ["nalagarh", "chandigarh"],
     marketNote:
       "Shimla is Himachal's capital and a hill city with a heavy hospitality and institutional economy. Steep sites, restricted access and a cold climate change how buildings are designed and delivered — material movement, envelope insulation and heating all take priority over what matters in the plains.",
-    projects: [],
+    projects: [{ name: "Tidong Power", detail: "Design & Build · hydropower project office" }],
   },
   {
     slug: "ahmedabad",
