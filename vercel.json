@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build && npm run build:server && npm run build:prerender",
+  "buildCommand": "npm run build && npm run build:server && npm run build:prerender && node scripts/indexnow.mjs",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
@@ -42,6 +42,15 @@
     { "source": "/office-interior-designers-in-shimla", "destination": "/locations/shimla", "permanent": true },
     { "source": "/office-interior-designers-in-varanasi", "destination": "/locations/varanasi", "permanent": true },
     { "source": "/office-interior-designers-in-zirakpur", "destination": "/locations/zirakpur", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
+    }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

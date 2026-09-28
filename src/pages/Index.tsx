@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet-async";
 import SEOHead from "@/components/SEOHead";
 import HeroSlider from "@/components/HeroSlider";
 import AIStyleFeatureSection from "@/components/AIStyleFeatureSection";
@@ -116,6 +117,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        {/* First hero frame (video poster and first image slide). */}
+        <link rel="preload" as="image" href="/hero-images/office.avif" />
+      </Helmet>
       <SEOHead
         title="Office Design & Build Company in Delhi NCR"
         description="Office design & build company in Delhi NCR delivering modern interiors, MEP, and fit-outs with 11+ years of experience and 7M+ sq. ft. delivered."

@@ -7,6 +7,7 @@ import EstimatorFlow from "@/components/estimator/EstimatorFlow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import SEOHead from "@/components/SEOHead";
 import {
   buildSchemaGraph,
@@ -123,6 +124,13 @@ const FindYourStyle = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Playfair Display is used only by this page and its quiz components. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+        />
+      </Helmet>
       <SEOHead
         title="Find Your Office Style | AI Design & Cost Tool"
         description="Discover your ideal office style with our AI-driven interior design quiz and cost estimator for office fit-outs in Delhi NCR."

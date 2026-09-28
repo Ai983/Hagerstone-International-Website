@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Helmet } from "react-helmet-async";
 import SEOHead from "@/components/SEOHead";
 import {
   BRAND_NAME,
@@ -135,6 +136,10 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         ogImageAlt={entry.heroImageAlt}
         structuredData={schema}
       />
+      <Helmet>
+        {/* The markdown copy written by prerender.js, for AI agents. */}
+        <link rel="alternate" type="text/markdown" href={`${entry.path}.md`} />
+      </Helmet>
 
       <article className="mx-auto max-w-3xl px-6 pb-20 md:px-8">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">

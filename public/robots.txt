@@ -49,6 +49,11 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+# Brave Search (its main index crawler uses a generic browser user-agent and
+# is covered by "User-agent: *"; this names the one it does identify)
+User-agent: Bravebot
+Allow: /
+
 # Common Crawl — the dataset many models are trained from
 User-agent: CCBot
 Allow: /

@@ -89,6 +89,16 @@ export const COLLECTIONS_WITHOUT_INDEX: Collection[] = [
  */
 export const REVIEW_REQUIRED: Collection[] = ["compliance", "cost"];
 
+/** Collections whose pages must open with a `definition` (see superRefine). */
+export const DEFINITION_REQUIRED: Collection[] = [
+  "glossary",
+  "compare",
+  "guides",
+  "insights",
+  "industries",
+  "estates",
+];
+
 const faqSchema = z.object({
   question: z.string().min(10),
   answer: z.string().min(30),
@@ -203,13 +213,15 @@ export const frontmatterSchema = z
       });
     }
 
-    // Glossary entries lead with a definition; without it the template has no
-    // above-the-fold answer and the page reads as thin.
-    if (data.collection === "glossary" && !data.definition) {
+    // These collections lead with a definition; without it the template has no
+    // above-the-fold answer, which is the sentence answer engines quote. Every
+    // page in them had one by 28 Sept 2026, so this only stops a regression.
+    // The services tree and materials are not yet complete, so not listed.
+    if (DEFINITION_REQUIRED.includes(data.collection) && !data.definition) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["definition"],
-        message: "glossary entries require a `definition`",
+        message: `${data.collection} entries require a \`definition\``,
       });
     }
 

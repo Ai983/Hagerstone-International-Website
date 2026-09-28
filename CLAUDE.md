@@ -89,3 +89,8 @@ failure here blocks the deploy.
 - Every lead form goes through `submitLead()` in `src/lib/leads.ts`. Don't write a form
   that fakes success. That bug existed twice (contact form, estimator).
 - Teammates push to `main` too: `git pull --rebase` before pushing.
+- After each production build, `scripts/indexnow.mjs` pings Bing/IndexNow with only the
+  URLs that are new, removed or have a new `updatedOn`. Another reason not to date-bump.
+  `node scripts/indexnow.mjs --dry-run` shows what it would send.
+- `prerender.js` also writes a `<path>.md` copy of every content page for AI agents
+  (noindex). They are generated; don't edit them.

@@ -19,7 +19,29 @@ const {
   buildVideoSitemapXml,
   buildSitemapIndexXml,
   buildLlmsTxt,
+  contentIndex,
 } = await import('./dist/server/entry-server.js')
+
+// A plain-markdown copy of a content page, for AI agents that read markdown
+// more reliably than a React page. Built from the same MDX source the page
+// renders (bodies are pure markdown, no JSX), with the page's short answer
+// first and its FAQs last, as on the page. Served at <path>.md with a
+// noindex header (vercel.json), so search engines keep ranking the HTML page.
+function buildMarkdownTwin(entry) {
+  const source = fs.readFileSync(toAbsolute(`.${entry.file}`), 'utf-8')
+  const body = source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '').replace(/\r\n/g, '\n').trim()
+  const parts = [`# ${entry.title}`]
+  if (entry.definition) parts.push(`> ${entry.definition}`)
+  parts.push(body)
+  if (entry.faqs?.length) {
+    parts.push(
+      '## Frequently asked questions',
+      ...entry.faqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`),
+    )
+  }
+  parts.push(`---\n\nSource: https://hagerstone.com${entry.path}`)
+  return parts.join('\n\n') + '\n'
+}
 
 // Fixed pages only. Projects, blog posts, locations and MDX content are
 // appended from their data files below, so a new one needs no entry here.
@@ -129,6 +151,13 @@ let failed = 0
   // shadow this one, exactly as with the old public/sitemap.xml.
   fs.writeFileSync(toAbsolute('dist/llms.txt'), buildLlmsTxt(allRoutes))
   console.log('✓ generated: llms.txt')
+
+  for (const entry of contentIndex) {
+    const mdPath = toAbsolute(`dist${entry.path}.md`)
+    fs.mkdirSync(path.dirname(mdPath), { recursive: true })
+    fs.writeFileSync(mdPath, buildMarkdownTwin(entry))
+  }
+  console.log(`✓ generated: ${contentIndex.length} markdown copies (<path>.md)`)
 
   // Drift guard: every prerendered route must appear in the sitemap and vice
   // versa. Cheap to check, and it catches the class of bug where a page ships
