@@ -34,6 +34,21 @@ Images on a content page go in frontmatter (`heroImage`, `gallery`), never as `<
 markdown in an `.mdx` body — frontmatter is what the build validates for alt text and
 size, and what the image sitemap and `ImageObject` schema are generated from.
 
+## Updating an existing page — set `updatedOn`
+
+When you **genuinely rewrite** a content page (new section, corrected facts, substantially
+revised text), set `updatedOn: "YYYY-MM-DD"` in its frontmatter to that day's date. The
+sitemap `<lastmod>` and the Article `dateModified` both read it, and it is what tells
+Google to come back and re-read the page.
+
+**Never set it without a real change** — not for a typo, a link fix, a reformat, or to make
+a page look fresh. Google compares the date against what actually changed; a date that
+moves without substance teaches it to ignore the signal site-wide, and Google's own
+guidance names date-bumping as a manipulation it looks for. Leave `publishedOn` alone.
+
+Pages outside the MDX engine (home, about, projects, cities) deliberately carry no sitemap
+date — see `getLastmodByPath()` in `src/lib/sitemap.ts`.
+
 ## Publishing rule — nobody reviews pages
 
 Pages go live in batches without human review. **Only write content that is safe

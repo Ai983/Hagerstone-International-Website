@@ -413,6 +413,23 @@ buyers, not just engineers. In practice that means:
 - Never oversell. These pages earn trust by being useful and honest, including about what
   Hagerstone cannot tell you without seeing your building
 
+### Editing a page that already exists
+
+When you **genuinely rewrite** an existing page — a new section, corrected facts, text
+substantially revised — add or change this line in its frontmatter to today's date:
+
+```yaml
+updatedOn: "2026-10-05"
+```
+
+That date goes into the sitemap and the page's schema, and it is what tells Google to come
+back and re-read the page.
+
+**Do not set it for small edits** — a typo, a fixed link, reformatting — and never just to
+make a page look fresh. Google checks the date against what actually changed. A date that
+moves without a real change teaches Google to ignore the dates on the whole site. Leave
+`publishedOn` as it is.
+
 ---
 
 ## 8. Before pushing — run all of this
