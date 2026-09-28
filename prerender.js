@@ -14,6 +14,7 @@ const {
   getBlogPrerenderPaths,
   getBlogListingPaths,
   buildUrlSitemapXml,
+  getLastmodByPath,
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
@@ -106,14 +107,17 @@ let failed = 0
 
   // Generated sitemaps (image + video portfolio) and the sitemap index. These
   // derive from the same data the app renders, so they never drift.
-  const today = new Date().toISOString().slice(0, 10)
+  // Real per-page dates, not the build date — see getLastmodByPath. The index
+  // takes the newest of them, i.e. the last time any page's content changed.
+  const lastmodByPath = getLastmodByPath()
+  const newest = [...lastmodByPath.values()].sort().at(-1) ?? new Date().toISOString().slice(0, 10)
   const sitemaps = {
     // Built from the same route list rendered above, so the sitemap cannot list
     // a page that was never generated, or omit one that was.
-    'sitemap.xml': buildUrlSitemapXml(allRoutes, today),
+    'sitemap.xml': buildUrlSitemapXml(allRoutes, lastmodByPath),
     'sitemap-images.xml': buildImageSitemapXml(),
     'sitemap-videos.xml': buildVideoSitemapXml(),
-    'sitemap-index.xml': buildSitemapIndexXml(today),
+    'sitemap-index.xml': buildSitemapIndexXml(newest),
   }
   for (const [file, xml] of Object.entries(sitemaps)) {
     fs.writeFileSync(toAbsolute(`dist/${file}`), xml)

@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/lib/seo";
 import { SOCIAL_LINKS } from "@/lib/social";
 import { projects } from "@/data/project";
+import { blogPosts } from "@/data/blogPosts";
 import { videos, homepageWalkthroughVideo } from "@/data/videos";
 import { contentIndex } from "@/content/.generated/index";
 import { COLLECTION_BASE_PATH, COLLECTIONS, type Collection } from "@/content/schema";
@@ -206,19 +207,62 @@ const sitemapWeight = (path: string): { priority: string; changefreq: string } =
 };
 
 /**
+ * "September 22, 2026" → "2026-09-22", or undefined if unparseable.
+ *
+ * Formatted from the local date parts on purpose. `toISOString()` converts to
+ * UTC first, so on a machine in India (UTC+5:30) local midnight becomes the
+ * previous day and every date would come out one day early.
+ */
+const toIsoDate = (value: string): string | undefined => {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return undefined;
+  const month = String(parsed.getMonth() + 1).padStart(2, "0");
+  const day = String(parsed.getDate()).padStart(2, "0");
+  return `${parsed.getFullYear()}-${month}-${day}`;
+};
+
+/**
+ * The real last-modified date for every page that has one.
+ *
+ * Every URL used to carry the build date, so each deploy told Google that all
+ * 321 pages had changed that day. A signal that is always "today" gets
+ * ignored — including on the day a page genuinely is updated. Now:
+ *   - MDX content pages: `updatedOn`, falling back to `publishedOn`
+ *   - legacy blog posts: the `date` shown on the post
+ *   - everything else (home, about, projects, cities, listing pages): no
+ *     date. `<lastmod>` is optional, and no date is more honest than a
+ *     made-up one.
+ */
+export const getLastmodByPath = (): Map<string, string> => {
+  const dates = new Map<string, string>();
+  for (const entry of contentIndex) {
+    dates.set(entry.path, entry.updatedOn ?? entry.publishedOn);
+  }
+  for (const post of blogPosts) {
+    const date = toIsoDate(post.date);
+    if (date) dates.set(`/blog/${post.slug}`, date);
+  }
+  return dates;
+};
+
+/**
  * URL sitemap, generated from the same route list prerender.js iterates.
  *
  * public/sitemap.xml used to hold this by hand. Because Vite copies publicDir
  * last, that file would silently overwrite this one in dist/ — so it must be
  * deleted, not merely left unused.
  */
-export const buildUrlSitemapXml = (paths: string[], lastmod: string): string => {
+export const buildUrlSitemapXml = (
+  paths: string[],
+  lastmodByPath: Map<string, string>,
+): string => {
   const entries = [...new Set(paths)].sort().map((path) => {
     const { priority, changefreq } = sitemapWeight(path);
+    const lastmod = lastmodByPath.get(path);
     return [
       "  <url>",
       `    <loc>${escapeXml(`${SITE_URL}${path === "/" ? "/" : path}`)}</loc>`,
-      `    <lastmod>${lastmod}</lastmod>`,
+      ...(lastmod ? [`    <lastmod>${lastmod}</lastmod>`] : []),
       `    <changefreq>${changefreq}</changefreq>`,
       `    <priority>${priority}</priority>`,
       "  </url>",
@@ -228,7 +272,12 @@ export const buildUrlSitemapXml = (paths: string[], lastmod: string): string => 
   return `${XML_HEADER}\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join("\n")}\n</urlset>\n`;
 };
 
-/** Sitemap index referencing the URL, image, and video sitemaps. */
+/**
+ * Sitemap index referencing the URL, image, and video sitemaps.
+ *
+ * `lastmod` should be the newest real page date, not the build date, for the
+ * same reason as the URL sitemap.
+ */
 export const buildSitemapIndexXml = (lastmod: string): string => {
   const entries = ["sitemap.xml", "sitemap-images.xml", "sitemap-videos.xml"]
     .map(

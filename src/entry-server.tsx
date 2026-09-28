@@ -8,6 +8,7 @@ export { getProjectPrerenderPaths, getBlogPrerenderPaths } from './lib/dataRoute
 export { getBlogListingPaths } from './lib/blogList';
 export {
   buildUrlSitemapXml,
+  getLastmodByPath,
   buildImageSitemapXml,
   buildVideoSitemapXml,
   buildSitemapIndexXml,
