@@ -64,6 +64,9 @@ export const allProjects: ProjectData[] = [
     heroVideo: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/videos/WALKTHROUGH.mp4",
     summary:
       "A state-of-the-art pharmaceutical corporate office designed to reflect Theon Life Sciences' commitment to innovation and excellence. The project features a stunning double-height reception, premium boardroom facilities, collaborative meeting spaces, and ergonomic workstations—all designed to enhance productivity while maintaining a professional, hygienic environment suitable for a life sciences company.",
+    metaTitle: "Theon Life Sciences Corporate Office, Dera Bassi",
+    metaDescription:
+      "Theon Life Sciences' pharma corporate office in Dera Bassi: a double-height reception, boardroom, meeting spaces and ergonomic workstations.",
     scope: [
       "Complete interior design and space planning",
       "Reception and lounge area design",
@@ -270,6 +273,9 @@ export const allProjects: ProjectData[] = [
     heroAlt: "Revolve software company modern office reception with contemporary design in Gurgaon",
     summary:
       "A cutting-edge technology office designed to foster innovation, collaboration, and employee well-being. The Revolve project showcases modern tech-office aesthetics with an impressive reception, executive MD cabin, open workstations, collaborative conference rooms, and a vibrant cafeteria—all reflecting the dynamic spirit of a growing software company.",
+    metaTitle: "Revolve Software Technology Office, Gurgaon",
+    metaDescription:
+      "Revolve's software office in Gurgaon: a tech-office reception, MD cabin, open workstations, collaborative conference rooms and a vibrant cafeteria.",
     scope: [
       "Complete office interior design",
       "Reception and waiting area",
@@ -389,6 +395,9 @@ export const allProjects: ProjectData[] = [
     heroAlt: "MicroSave Consulting MSC corporate office reception with professional interior design in Delhi",
     summary:
       "A sophisticated consulting office designed to reflect MSC's global expertise and professional excellence. The project features an elegant reception, executive cabins for senior consultants, collaborative lounge spaces, well-equipped meeting rooms, and efficient workstation areas—all designed to support the demanding workflow of a leading consulting firm.",
+    metaTitle: "MicroSave Consulting (MSC) Corporate Office, Delhi",
+    metaDescription:
+      "MicroSave Consulting's corporate office in Delhi: an elegant reception, executive cabins, a collaborative lounge, meeting rooms and workstations.",
     scope: [
       "Corporate office interior design",
       "Reception and visitor management area",
@@ -479,6 +488,9 @@ export const allProjects: ProjectData[] = [
     heroAlt: "Himalaya Construction corporate office reception with modern clean design aesthetic",
     summary:
       "A functional and professional corporate office designed for a leading construction company. The project reflects the client's expertise in building with a clean, modern aesthetic featuring an efficient reception, private cabins, a dedicated MD cabin, formal meeting rooms, and productive workstation areas.",
+    metaTitle: "Himalaya Construction Corporate Office Interior",
+    metaDescription:
+      "Himalaya Construction's corporate office: a clean, modern reception, private cabins, a dedicated MD cabin, formal meeting rooms and workstations.",
     scope: [
       "Corporate office fit-out",
       "Reception and visitor area",
@@ -573,6 +585,9 @@ export const allProjects: ProjectData[] = [
     heroAlt: "VinFast electric vehicle showroom interior with modern display area and premium lighting in Jaipur",
     summary:
       "A premium automotive showroom designed for VinFast's electric vehicle lineup. The project showcases modern showroom design principles with an impressive vehicle display floor, strategic lighting, customer consultation areas, administrative offices, lounge & cafeteria, workstation areas and multi-level parking facilities — all designed to deliver a superior EV buying experience.",
+    metaTitle: "VinFast Electric Vehicle Showroom Interior",
+    metaDescription:
+      "VinFast's EV showroom: a vehicle display floor with strategic lighting, consultation areas, offices, a lounge and cafeteria, and multi-level parking.",
     scope: [
       "Showroom interior design",
       "Vehicle display floor layout",

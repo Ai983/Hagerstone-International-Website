@@ -1,10 +1,19 @@
 import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import { Breadcrumbs, breadcrumbSchema, type Crumb } from "@/components/Breadcrumbs";
+import ClientLogoCarousel from "@/components/ClientLogoCarousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { getServicePageBySlug, servicePages } from "@/data/servicePages";
 import { contentIndex } from "@/lib/contentModules";
 import {
-  BRAND_NAME,
   SITE_URL,
+  ORG_ID,
+  buildFaqSchema,
   buildSchemaGraph,
   organizationSchema,
   websiteSchema,
@@ -92,6 +101,12 @@ const ServiceDetail = () => {
   const relatedGuides = relatedByCollection("guides", 2);
   const relatedComparisons = relatedByCollection("compare", 3);
 
+  const crumbs: Crumb[] = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: service.title, path: `/services/${service.slug}` },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -112,29 +127,18 @@ const ServiceDetail = () => {
             "@type": "Service",
             name: service.title,
             description: service.summary,
-            provider: {
-              "@type": "Organization",
-              name: BRAND_NAME,
-              url: SITE_URL,
-            },
+            provider: { "@id": ORG_ID },
             areaServed: "IN",
             serviceType: service.title,
           },
+          breadcrumbSchema(crumbs),
+          buildFaqSchema(service.faqs),
         ])}
       />
 
       <header className="bg-gradient-hero text-primary-foreground py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-sm text-white/80 mb-6">
-            <Link to="/" className="hover:text-white">
-              Home
-            </Link>{" "}
-            /{" "}
-            <Link to="/services" className="hover:text-white">
-              Services
-            </Link>{" "}
-            / <span className="text-white">{service.title}</span>
-          </nav>
+          <Breadcrumbs tone="onDark" items={crumbs} className="mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{service.h1}</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl">
             {service.summary}
@@ -186,6 +190,8 @@ const ServiceDetail = () => {
             </div>
           </article>
         </section>
+
+        <ClientLogoCarousel compact />
 
         {/*
           Sub-service pages for this service, if any exist. Without this link
@@ -275,6 +281,37 @@ const ServiceDetail = () => {
             </div>
           </section>
         )}
+
+        {/*
+          Answers render in the static HTML (the shared AccordionContent is
+          force-mounted), which is what makes the FAQPage schema above valid
+          and the answers readable by crawlers that do not run JavaScript.
+        */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-semibold text-primary mb-6">
+            {service.title}: common questions
+          </h2>
+          <Accordion type="single" collapsible className="max-w-4xl">
+            {service.faqs.map((faq, index) => (
+              <AccordionItem key={faq.question} value={`faq-${index}`}>
+                <AccordionTrigger className="text-left text-base text-foreground">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-base text-muted-foreground leading-relaxed">
+                  <p>{faq.answer}</p>
+                  {faq.link && (
+                    <Link
+                      to={faq.link.path}
+                      className="mt-3 inline-block text-primary underline underline-offset-4"
+                    >
+                      {faq.link.label}
+                    </Link>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
 
         {relatedServices.length > 0 && (
           <section className="mb-16">

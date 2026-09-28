@@ -16,6 +16,7 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 import { Link } from "react-router-dom";
+import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 
 const About = () => {
   return (
@@ -214,57 +215,8 @@ const About = () => {
           </section>
         </div>
 
-        {/* Our Valued Clients */}
-        <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl mb-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">
-                Our Valued Clients
-              </h2>
-              <p className="text-lg text-foreground/80">
-                Trusted by leading corporate, industrial, and hospitality brands
-                for office design &amp; build and commercial interior design
-                projects.
-              </p>
-            </div>
-            <div className="relative overflow-hidden">
-              <div className="flex animate-[slide_20s_linear_infinite] space-x-8 items-center">
-                {[
-                  { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                  { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                  { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
-                  {
-                    name: "UltraTech Cement",
-                    logo: "/clients-logo/Ultratech.jpeg",
-                  },
-                  { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                  { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
-                  // duplicate for seamless scroll
-                  { name: "Monin", logo: "/clients-logo/Monin.jpeg" },
-                  { name: "AECOM", logo: "/clients-logo/AECOM.png" },
-                  { name: "TAJ", logo: "/clients-logo/Taj.jpeg" },
-                  {
-                    name: "UltraTech Cement",
-                    logo: "/clients-logo/Ultratech.jpeg",
-                  },
-                  { name: "Air India", logo: "/clients-logo/airindia.jpeg" },
-                  { name: "Lufthansa", logo: "/clients-logo/lufthansa.jpeg" },
-                ].map((client, index) => (
-                  <div key={`${client.name}-${index}`} className="flex-shrink-0">
-                    <img
-                      src={client.logo}
-                      alt={`${client.name} - Hagerstone client logo`}
-                      width={120}
-                      height={64}
-                      className="h-16 w-auto object-contain"
-                      loading={index < 6 ? "eager" : "lazy"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Our Valued Clients: the shared list from clientLogos.ts, not a copy */}
+        <ClientLogoCarousel />
 
         {/* Leadership */}
         <section className="py-20">

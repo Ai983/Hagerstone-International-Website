@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import { SITE_URL, type FaqItem } from "@/lib/seo";
 import { getCityBySlug } from "@/data/cities";
 import { getProjectById } from "@/data/project";
@@ -116,6 +117,8 @@ const CityHub = () => {
             accountability from concept to handover.
           </p>
         </section>
+
+        <ClientLogoCarousel compact />
 
         {/* Services in this city */}
         {services.length > 0 && (

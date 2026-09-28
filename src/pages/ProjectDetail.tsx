@@ -5,8 +5,10 @@ import ProjectDetailHero from "../components/projects/ProjectDetailHero";
 import FloorLayout from "../components/projects/FloorLayout";
 import ProjectSection from "../components/projects/ProjectSection";
 import {
+  buildImageGallerySchema,
   buildSchemaGraph,
   createImageObject,
+  ORG_ID,
   organizationSchema,
   SITE_URL,
   websiteSchema,
@@ -37,6 +39,34 @@ export default function ProjectDetail() {
   const highlightItems = project.designHighlights ?? [];
   const scopeItems = project.scope ?? [];
   const relatedProjects = projects.filter((item) => item.id !== project.id).slice(0, 3);
+
+  // Every gallery photo as an ImageObject with its own alt text and caption,
+  // so image search can index them individually rather than only the hero.
+  const seenImages = new Set<string>();
+  const galleryImages = project.sections
+    .flatMap((section) => section.images ?? [])
+    .filter((image) => !seenImages.has(image.src) && seenImages.add(image.src))
+    .map((image) => ({
+      contentUrl: image.src.startsWith("http") ? image.src : `${SITE_URL}${image.src}`,
+      alt: image.alt,
+      caption: image.caption,
+      width: image.width,
+      height: image.height,
+    }));
+
+  // The specs render as a two-column table: label / value pairs are tabular
+  // data, and a <table> is the form answer engines extract most reliably.
+  const specs: Array<[string, string | undefined]> = [
+    ["Client", project.client],
+    ["Project type", project.sector],
+    ["Carpet area", project.area],
+    ["Colour theme", project.colorTheme],
+    ["Location", project.location],
+    ["Duration", project.duration],
+    ["Year", project.year],
+    ["Status", project.status],
+  ];
+  const specRows = specs.filter((row): row is [string, string] => Boolean(row[1]));
   const structuredData = buildSchemaGraph([
     organizationSchema,
     websiteSchema,
@@ -74,10 +104,7 @@ export default function ProjectDetail() {
       name: project.title,
       description: project.summary,
       image: allImages,
-      creator: {
-        "@type": "Organization",
-        name: "Hagerstone International",
-      },
+      creator: { "@id": ORG_ID },
       about: project.about ?? project.sector,
       size: project.size ?? project.area,
       keywords: project.schemaKeywords,
@@ -86,6 +113,16 @@ export default function ProjectDetail() {
       dateCreated: project.year,
     },
     createImageObject(projectImage, `${project.title} project hero image`),
+    ...(galleryImages.length > 0
+      ? [
+          buildImageGallerySchema({
+            id: `${canonicalUrl}#gallery`,
+            name: `${project.title} gallery`,
+            url: canonicalUrl,
+            images: galleryImages,
+          }),
+        ]
+      : []),
   ]);
 
   return (
@@ -150,54 +187,18 @@ export default function ProjectDetail() {
 
               <div className="bg-muted/30 rounded-xl p-6">
                 <h2 className="text-lg font-semibold mb-4">Project Specs</h2>
-                <dl className="space-y-3">
-                  <div>
-                    <dt className="text-sm text-muted-foreground">Client</dt>
-                    <dd className="font-medium">{project.client}</dd>
-                  </div>
-                  {project.sector && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Project Type</dt>
-                      <dd className="font-medium">{project.sector}</dd>
-                    </div>
-                  )}
-                  {project.area && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Carpet Area</dt>
-                      <dd className="font-medium">{project.area}</dd>
-                    </div>
-                  )}
-                  {project.colorTheme && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Colour Theme</dt>
-                      <dd className="font-medium">{project.colorTheme}</dd>
-                    </div>
-                  )}
-                  {project.location && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Location</dt>
-                      <dd className="font-medium">{project.location}</dd>
-                    </div>
-                  )}
-                  {project.duration && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Duration</dt>
-                      <dd className="font-medium">{project.duration}</dd>
-                    </div>
-                  )}
-                  {project.year && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Year</dt>
-                      <dd className="font-medium">{project.year}</dd>
-                    </div>
-                  )}
-                  {project.status && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">Status</dt>
-                      <dd className="font-medium text-green-600">{project.status}</dd>
-                    </div>
-                  )}
-                </dl>
+                <table className="w-full text-left">
+                  <tbody>
+                    {specRows.map(([label, value]) => (
+                      <tr key={label} className="border-b border-border/60 last:border-0">
+                        <th scope="row" className="py-2 pr-4 align-top text-sm font-normal text-muted-foreground">
+                          {label}
+                        </th>
+                        <td className={`py-2 font-medium ${label === "Status" ? "text-green-600" : ""}`}>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>

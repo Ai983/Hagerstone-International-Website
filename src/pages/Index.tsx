@@ -77,42 +77,6 @@ const Index = () => {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Rajesh Kumar",
-      company: "Tech Solutions Ltd.",
-      content:
-        "Hagerstone transformed our office space beautifully. The attention to detail and professionalism exceeded our expectations.",
-      rating: 5,
-    },
-    {
-      name: "Priya Sharma",
-      company: "Fashion Retail Chain",
-      content:
-        "Outstanding work on our showroom design. The team understood our vision and delivered exactly what we wanted.",
-      rating: 5,
-    },
-    {
-      name: "Ananya Desai",
-      company: "Realty Corp",
-      content:
-        "Reliable and creative. The entire process from design to execution was seamless.",
-      rating: 5,
-    },
-    {
-      name: "Karan Bansal",
-      company: "RetailNest",
-      content: "Very collaborative and punctual. We loved the experience.",
-      rating: 5,
-    },
-    {
-      name: "Vikram Mehta",
-      company: "InfraBuild India",
-      content:
-        "Professional team and premium execution. We highly recommend Hagerstone.",
-      rating: 5,
-    },
-  ];
   const processSteps = [
     {
       title: "Fast 2D Layout Design",

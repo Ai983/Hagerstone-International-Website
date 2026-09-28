@@ -37,20 +37,32 @@ function LogoCard({ client, index, isInView }: { client: ClientLogo; index: numb
   );
 }
 
-export default function ClientLogoCarousel() {
+// `compact` is the variant for service, city and About pages: less padding, a
+// smaller heading, and none of the homepage's positioning copy, so the one
+// logo list from clientLogos.ts can sit inside a page instead of each page
+// keeping its own (About used to hard-code six).
+export default function ClientLogoCarousel({ compact = false }: { compact?: boolean }) {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
 
   return (
-    <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl mb-20 overflow-hidden">
+    <section
+      className={`${
+        compact ? 'py-12 mb-16' : 'py-20 mb-20'
+      } bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl overflow-hidden`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary mb-4">Trusted by Leading Organizations</h2>
-          <p className="text-lg text-foreground/80">
-            As <strong>international interior design companies in India</strong>, we partner with Fortune 500 firms and industry leaders worldwide
-          </p>
+        <div className={`text-center ${compact ? 'mb-8' : 'mb-12'}`}>
+          <h2 className={`${compact ? 'text-2xl' : 'text-4xl'} font-bold text-primary mb-4`}>
+            Trusted by Leading Organizations
+          </h2>
+          {!compact && (
+            <p className="text-lg text-foreground/80">
+              As <strong>international interior design companies in India</strong>, we partner with Fortune 500 firms and industry leaders worldwide
+            </p>
+          )}
         </div>
         <div ref={ref} className="relative overflow-hidden">
           <div 
