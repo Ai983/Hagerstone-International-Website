@@ -1,5 +1,6 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { ReactNode, useRef, Children } from "react";
+import { useRevealControls } from "./useRevealControls";
 
 interface StaggerContainerProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ export function StaggerContainer({
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount: 0.2 });
+  const controls = useRevealControls(ref, isInView);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -64,8 +66,8 @@ export function StaggerContainer({
       ref={ref}
       className={`${className} motion-reduce:!opacity-100`}
       variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={false}
+      animate={controls}
     >
       {Children.map(children, (child) => (
         <motion.div variants={itemVariants} className="motion-reduce:!opacity-100 motion-reduce:!transform-none">

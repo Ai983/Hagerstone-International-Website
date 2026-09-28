@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/seo";
+import { SOCIAL_LINKS } from "@/lib/social";
 import { projects } from "@/data/project";
 import { videos, homepageWalkthroughVideo } from "@/data/videos";
 import { contentIndex } from "@/content/.generated/index";
@@ -379,11 +380,11 @@ export const buildLlmsTxt = (paths: string[]): string => {
   lines.push("");
   lines.push("## Social Profiles");
   lines.push("");
-  lines.push("- LinkedIn: https://www.linkedin.com/company/hagerstone");
-  lines.push("- Instagram: https://www.instagram.com/hagerstone_international/");
-  lines.push("- Facebook: https://www.facebook.com/HagerstoneInternational");
-  lines.push("- YouTube: https://www.youtube.com/channel/UCvl0bmeUgX6LvzQYcR-HHIw");
-  lines.push("- Crunchbase: https://www.crunchbase.com/organization/hagerstone-international");
+  lines.push(`- LinkedIn: ${SOCIAL_LINKS.linkedin}`);
+  lines.push(`- Instagram: ${SOCIAL_LINKS.instagram}`);
+  lines.push(`- Facebook: ${SOCIAL_LINKS.facebook}`);
+  lines.push(`- YouTube: ${SOCIAL_LINKS.youtube}`);
+  lines.push(`- Crunchbase: ${SOCIAL_LINKS.crunchbase}`);
   lines.push("");
 
   return `${lines.join("\n")}`;

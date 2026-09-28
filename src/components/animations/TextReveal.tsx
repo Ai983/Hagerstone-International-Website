@@ -1,5 +1,17 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
+import { useRevealControls } from "./useRevealControls";
+
+// The element TextReveal renders. It used to be a <div> unconditionally, so a
+// page whose main heading was a TextReveal had no <h1> at all — /about,
+// /services and /contact among them. All are typed as motion.div: only the tag
+// differs at runtime, and the props these accept are identical.
+const MOTION_TAGS = {
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  p: motion.p,
+} as unknown as Record<"div" | "h1" | "h2" | "p", typeof motion.div>;
 
 interface TextRevealProps {
   children: string;
@@ -8,6 +20,8 @@ interface TextRevealProps {
   delay?: number;
   staggerDelay?: number;
   once?: boolean;
+  /** Element to render. Use "h1" for a page's main heading. */
+  as?: keyof typeof MOTION_TAGS;
 }
 
 export function TextReveal({
@@ -17,9 +31,12 @@ export function TextReveal({
   delay = 0,
   staggerDelay = 0.03,
   once = true,
+  as = "div",
 }: TextRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, margin: "-100px" });
+  const controls = useRevealControls(ref, isInView);
+  const MotionTag = MOTION_TAGS[as];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -134,15 +151,15 @@ export function TextReveal({
   };
 
   return (
-    <motion.div
+    <MotionTag
       ref={ref}
       className={`${className} motion-reduce:!opacity-100`}
       variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={false}
+      animate={controls}
     >
       {getContent()}
-    </motion.div>
+    </MotionTag>
   );
 }
 

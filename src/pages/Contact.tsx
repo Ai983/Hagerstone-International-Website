@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/leads";
+import { SOCIAL_LINKS } from "@/lib/social";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import {
@@ -89,19 +90,19 @@ const Contact = () => {
     {
       icon: Instagram,
       name: "Instagram",
-      href: "https://www.instagram.com/hagerstone_international/",
+      href: SOCIAL_LINKS.instagram,
       color: "hover:text-pink-500"
     },
     {
       icon: Facebook,
       name: "Facebook", 
-      href: "https://www.facebook.com/HagerstoneInternational",
+      href: SOCIAL_LINKS.facebook,
       color: "hover:text-blue-600"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/14708271/admin/page-posts/published/",
+      href: SOCIAL_LINKS.linkedin,
       color: "hover:text-blue-700"
     }
   ];
@@ -181,6 +182,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <TextReveal
+            as="h1"
             variant="words"
             className="text-5xl md:text-6xl font-bold mb-6 text-gold"
           >

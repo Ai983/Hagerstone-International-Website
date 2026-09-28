@@ -11,6 +11,7 @@ import {
   buildSchemaGraph,
   createImageObject,
   organizationSchema,
+  ORG_ID,
   SITE_URL,
   websiteSchema,
 } from "@/lib/seo";
@@ -25,7 +26,12 @@ const About = () => {
         canonical="https://hagerstone.com/about"
         keywords="office design and build, modern office interior design, office workspace design, interior fit out company, commercial interior design company, mep design consultants, top interior design companies in india"
         structuredData={buildSchemaGraph([
-          organizationSchema,
+          // The shared Organization node, so /about describes the same company,
+          // under the same @id, as every other page. Its address, founders and
+          // headcount used to live only in a second Organization node here; they
+          // now live in seo.ts. /about is the one page that states a founding
+          // year, so that is added here only.
+          { ...organizationSchema, foundingDate: "2014" },
           websiteSchema,
           {
             "@type": "AboutPage",
@@ -33,44 +39,7 @@ const About = () => {
             url: `${SITE_URL}/about`,
             description:
               "Company profile for Hagerstone International, an office design & build firm serving Delhi NCR and India.",
-          },
-          {
-            "@type": "Organization",
-            name: "Hagerstone International",
-            url: SITE_URL,
-            logo: `${SITE_URL}/logo.png`,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress:
-                "91Springboard, Plot No. D-107, Vyapar Marg, D Block, Sector 2",
-              addressLocality: "Noida",
-              addressRegion: "Uttar Pradesh",
-              postalCode: "201301",
-              addressCountry: "IN",
-            },
-            founder: [
-              {
-                "@type": "Person",
-                name: "Dhruv Agarwal",
-                jobTitle: "Founder & Managing Director",
-                image: `${SITE_URL}/founders/dhruvsir.png`,
-                description:
-                  "Civil Engineer from Delhi College of Engineering with over 10 million sq ft of projects delivered across UAE, Myanmar, and India.",
-              },
-              {
-                "@type": "Person",
-                name: "Bhaskar Tyagi",
-                jobTitle: "Director - Operations",
-                image: `${SITE_URL}/founders/bhaskarsir.png`,
-                description:
-                  "Director with 16+ years of experience in hospitality industry specializing in interior design.",
-              },
-            ],
-            numberOfEmployees: {
-              "@type": "QuantitativeValue",
-              value: 350,
-            },
-            foundingDate: "2014",
+            about: { "@id": ORG_ID },
           },
           createImageObject(
             `${SITE_URL}/founders/dhruvsir.png`,
@@ -88,6 +57,7 @@ const About = () => {
         <AnimatedBackground variant="aurora" className="relative py-20 px-6">
           <div className="relative max-w-7xl mx-auto text-center">
             <TextReveal
+              as="h1"
               variant="chars"
               className="text-6xl font-bold text-primary mb-6"
             >

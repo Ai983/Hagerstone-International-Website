@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
 import { buildLocationMatrix } from "@/lib/locationPages";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 const Footer = () => {
   const navigation = [
@@ -42,17 +43,17 @@ const Footer = () => {
     {
       icon: Instagram,
       name: "Instagram",
-      href: "https://www.instagram.com/hagerstone_international/",
+      href: SOCIAL_LINKS.instagram,
     },
     {
       icon: Facebook,
       name: "Facebook", 
-      href: "https://www.facebook.com/HagerstoneInternational",
+      href: SOCIAL_LINKS.facebook,
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/14708271/admin/page-posts/published/",
+      href: SOCIAL_LINKS.linkedin,
     }
   ];
 

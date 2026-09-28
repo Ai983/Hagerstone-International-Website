@@ -1,5 +1,6 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef, ReactNode } from "react";
+import { useRevealControls } from "./useRevealControls";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount: threshold });
+  const controls = useRevealControls(ref, isInView);
 
   const variants: Record<string, Variants> = {
     fade: {
@@ -59,8 +61,8 @@ export function ScrollReveal({
       ref={ref}
       className={`${className} motion-reduce:!opacity-100 motion-reduce:!transform-none`}
       variants={variants[variant]}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={false}
+      animate={controls}
       transition={{
         duration,
         delay,

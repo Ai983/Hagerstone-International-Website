@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { Menu, X, Instagram, Linkedin, Facebook, MapPin, ChevronDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 const HoveringNavbar = () => {
   const location = useLocation();
@@ -358,7 +359,7 @@ const HoveringNavbar = () => {
                         {/* Social Links */}
                         <div className="flex gap-4 sm:gap-5 md:gap-6 pt-2">
                           <a
-                            href="https://www.linkedin.com/company/hagerstone/posts/?feedView=all"
+                            href={SOCIAL_LINKS.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
@@ -368,7 +369,7 @@ const HoveringNavbar = () => {
                             <span className="sr-only">Visit Hagerstone International on LinkedIn</span>
                           </a>
                           <a
-                            href="http://instagram.com/hagerstone_international/"
+                            href={SOCIAL_LINKS.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"
@@ -378,7 +379,7 @@ const HoveringNavbar = () => {
                             <span className="sr-only">Follow Hagerstone International on Instagram</span>
                           </a>
                           <a
-                            href="https://www.facebook.com/HagerstoneInternational"
+                            href={SOCIAL_LINKS.facebook}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white/70 hover:text-[#d4af37] transition-colors duration-300"

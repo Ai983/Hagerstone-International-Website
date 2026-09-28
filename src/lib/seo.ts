@@ -1,16 +1,45 @@
+import { SAME_AS } from "@/lib/social";
+
 export const SITE_URL = "https://hagerstone.com";
 export const BRAND_NAME = "Hagerstone International Pvt. Ltd.";
 // Short form for <title> tags — the full legal name pushes titles past
 // Google's ~60-char display limit and gets truncated mid-word in results.
 export const SHORT_BRAND_NAME = "Hagerstone";
 
+// Stable identifiers for the company and the site. Every page emits the same
+// Organization under this @id, and other nodes (the WebSite, article
+// publishers) point at it, so search engines read one company rather than a
+// separate unnamed Organization per page.
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+// Reusable postal address (HQ) used by the Organization and LocalBusiness schema.
+export const HAGERSTONE_ADDRESS = {
+  "@type": "PostalAddress",
+  streetAddress: "91springboard, D-107, D Block, Sector 2",
+  addressLocality: "Noida",
+  addressRegion: "Uttar Pradesh",
+  postalCode: "201301",
+  addressCountry: "IN",
+};
+
+// The one Organization node.
+//
+// The address, founders and headcount below were previously emitted only on
+// /about, in a second Organization node with no @id — so that page described
+// the company twice and every other page described a thinner version of it.
+// They are consolidated here unchanged. `foundingDate` is deliberately left out:
+// the site states 2014 on /about and 2013 in llms.txt, so /about keeps its own
+// value (About.tsx) rather than one being spread sitewide.
 export const organizationSchema = {
   "@type": "Organization",
+  "@id": ORG_ID,
   name: BRAND_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   description:
     "Office design & build company delivering modern office interiors, MEP, HVAC, EPC, and turnkey fit-out services across India.",
+  address: HAGERSTONE_ADDRESS,
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-88829-79328",
@@ -18,17 +47,37 @@ export const organizationSchema = {
     email: "ea@hagerstone.com",
     areaServed: "IN",
   },
-  sameAs: [
-    "https://www.instagram.com/hagerstone_international/",
-    "https://www.facebook.com/HagerstoneInternational",
-    "https://www.linkedin.com/company/14708271/",
+  founder: [
+    {
+      "@type": "Person",
+      name: "Dhruv Agarwal",
+      jobTitle: "Founder & Managing Director",
+      image: `${SITE_URL}/founders/dhruvsir.png`,
+      description:
+        "Civil Engineer from Delhi College of Engineering with over 10 million sq ft of projects delivered across UAE, Myanmar, and India.",
+    },
+    {
+      "@type": "Person",
+      name: "Bhaskar Tyagi",
+      jobTitle: "Director - Operations",
+      image: `${SITE_URL}/founders/bhaskarsir.png`,
+      description:
+        "Director with 16+ years of experience in hospitality industry specializing in interior design.",
+    },
   ],
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: 350,
+  },
+  sameAs: SAME_AS,
 };
 
 export const websiteSchema = {
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: "Hagerstone International",
   url: SITE_URL,
+  publisher: { "@id": ORG_ID },
 };
 
 // Named author used across blog post schema so articles carry a real,
@@ -134,16 +183,6 @@ export const buildImageGallerySchema = (opts: {
     }),
   ),
 });
-
-// Reusable postal address (HQ) used by LocalBusiness schema across pages.
-export const HAGERSTONE_ADDRESS = {
-  "@type": "PostalAddress",
-  streetAddress: "91springboard, D-107, D Block, Sector 2",
-  addressLocality: "Noida",
-  addressRegion: "Uttar Pradesh",
-  postalCode: "201301",
-  addressCountry: "IN",
-};
 
 // LocalBusiness schema — the single most important structured-data block for
 // local SEO. Previously hardcoded in index.html but stripped by the Vite build;

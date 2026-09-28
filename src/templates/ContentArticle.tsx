@@ -15,6 +15,7 @@ import {
   buildImageGallerySchema,
   buildSchemaGraph,
   organizationSchema,
+  ORG_ID,
 } from "@/lib/seo";
 import ContentGallery from "@/components/content/ContentGallery";
 import { buildBreadcrumbSchema } from "@/lib/locationSchema";
@@ -80,7 +81,7 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         datePublished: entry.publishedOn,
         dateModified: entry.updatedOn ?? entry.publishedOn,
         author: authorSchema,
-        publisher: { "@type": "Organization", name: BRAND_NAME, url: SITE_URL },
+        publisher: { "@type": "Organization", "@id": ORG_ID, name: BRAND_NAME, url: SITE_URL },
         mainEntityOfPage: canonical,
         ...(articleImages.length > 0 ? { image: articleImages } : {}),
         // Topic signals in machine-readable form, matching the /blog posts that
