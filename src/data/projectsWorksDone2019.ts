@@ -27,6 +27,8 @@ type Row = {
   metaTitle: string;
   /** Only where a source dates the job; otherwise the sheet's period is shown. */
   year?: string;
+  /** Only where the client's own letter states it. */
+  duration?: string;
   hero?: string;
   heroAlt?: string;
   sections?: ProjectSection[];
@@ -61,15 +63,15 @@ const rows: Row[] = [
   },
   {
     id: "yanmar-engine-factory-chennai",
-    title: "Yanmar Engine Factory Turnkey Interiors",
+    title: "Yanmar Engine Factory Office Interiors",
     client: "Yanmar (with Takenaka)",
-    location: "Chennai, Tamil Nadu",
-    sector: "Industrial Interiors",
+    location: "Ponneri, Tamil Nadu",
+    sector: "Industrial Office Interiors",
     area: "50,000 sq ft",
-    scope: ["Turnkey interiors across 50,000 sq ft", "Delivered with Takenaka as main contractor"],
+    scope: ["Office interiors across 50,000 sq ft", "Delivered with Takenaka as main contractor"],
     summary:
-      "Turnkey interiors across 50,000 sq ft at the Yanmar engine factory in Chennai, delivered with Takenaka.",
-    metaTitle: "Yanmar Engine Factory Interiors, Chennai",
+      "Office interiors across 50,000 sq ft at the Yanmar engine factory in Ponneri, near Chennai, delivered with Takenaka.",
+    metaTitle: "Yanmar Engine Factory Office Interiors, Ponneri",
   },
   {
     id: "oceaneering-chandigarh",
@@ -129,12 +131,14 @@ const rows: Row[] = [
   {
     id: "edf-international-saket",
     title: "EDF International Office Design & Build",
-    client: "EDF International",
-    location: "Saket, New Delhi",
+    // Address, date and "within timeline" from EDF's appreciation letter of 18 April 2019.
+    client: "EDF International Networks",
+    location: "DLF South Court, Saket, New Delhi",
     sector: "Office Design & Build",
     area: "2,500 sq ft",
-    scope: ["Design & build across 2,500 sq ft"],
-    summary: "Design and build of EDF International's 2,500 sq ft office in Saket, New Delhi.",
+    year: "2019",
+    scope: ["Design & build of the India head office, 2,500 sq ft"],
+    summary: "Design and build of EDF International Networks' 2,500 sq ft India head office at DLF South Court, Saket, New Delhi.",
     metaTitle: "EDF International Office Design & Build, Saket",
   },
   {
@@ -204,12 +208,15 @@ const rows: Row[] = [
   {
     id: "srp-and-company-pitampura",
     title: "SRP & Company Office Design & Build",
-    client: "SRP & Company",
-    location: "Pitampura, Delhi",
+    // Scope, year and the 60-day timeline from the client's letter of 22 Sept 2021.
+    client: "SRP & Company, Chartered Accountants",
+    location: "Netaji Subhash Place, Pitampura, Delhi",
     sector: "Office Design & Build",
     area: "1,000 sq ft",
-    scope: ["Design & build across 1,000 sq ft"],
-    summary: "Design and build of SRP & Company's 1,000 sq ft office in Pitampura, Delhi.",
+    year: "2021",
+    duration: "60 days",
+    scope: ["Interior design", "Turnkey interior works", "MEP: electrical, HVAC, plumbing and fire-fighting", "Furniture"],
+    summary: "Design and build of the 1,000 sq ft office of SRP & Company, Chartered Accountants, at Netaji Subhash Place, Pitampura, completed in 60 days.",
     metaTitle: "SRP & Company Office Design & Build, Pitampura",
   },
   {
@@ -248,12 +255,15 @@ const rows: Row[] = [
   {
     id: "hashtag-orange-gurugram",
     title: "Hashtag Orange Office Design & Build",
+    // Address, scope, year and the 45-day timeline from the client's letter of 15 July 2019.
     client: "Hashtag Orange",
-    location: "Gurugram, Haryana",
+    location: "Emaar Palm Spring Plaza, Golf Course Road, Gurugram",
     sector: "Office Design & Build",
     area: "1,300 sq ft",
-    scope: ["Design & build across 1,300 sq ft"],
-    summary: "Design and build of Hashtag Orange's 1,300 sq ft office in Gurugram.",
+    year: "2019",
+    duration: "45 days",
+    scope: ["Interior design", "Turnkey interior works", "MEP services", "Furniture"],
+    summary: "Design and build of Hashtag Orange's 1,300 sq ft corporate office at Emaar Palm Spring Plaza, Golf Course Road, Gurugram, completed in 45 days.",
     metaTitle: "Hashtag Orange Office Design & Build, Gurugram",
   },
   {
@@ -342,13 +352,13 @@ const rows: Row[] = [
   },
   {
     id: "gih-gurugram",
-    title: "GIH Lighting Supply",
-    client: "GIH",
+    title: "Global Infrastructure Hub Lighting Supply",
+    client: "Global Infrastructure Hub (GIH)",
     location: "Gurugram, Haryana",
     sector: "Lighting Supply",
     scope: ["Lighting supply"],
-    summary: "Lighting supply for GIH in Gurugram.",
-    metaTitle: "GIH Lighting Supply, Gurugram",
+    summary: "Lighting supply for the Global Infrastructure Hub (GIH) office in Gurugram.",
+    metaTitle: "Global Infrastructure Hub Lighting Supply, Gurugram",
   },
   {
     id: "takenaka-hq-gurugram",
@@ -401,6 +411,7 @@ const rows: Row[] = [
     sector: "Pre-Engineered Building",
     area: "1,500 sq ft",
     year: "2019",
+    duration: "60 days",
     scope: [
       "Pre-engineered building structure, 1,500 sq ft",
       "Turnkey interiors",
@@ -408,7 +419,7 @@ const rows: Row[] = [
       "Furniture",
     ],
     summary:
-      "A 1,500 sq ft pre-engineered office building for Imperial Malts in Sector 49, Gurugram, delivered end to end: the structure, then turnkey interiors including MEP and furniture.",
+      "A 1,500 sq ft pre-engineered office building for Imperial Malts in Sector 49, Gurugram, delivered end to end in 60 days: the structure, then turnkey interiors including MEP and furniture.",
     metaTitle: "Imperial Malts PEB Office Building, Gurugram",
   },
   {
@@ -507,7 +518,7 @@ const rows: Row[] = [
   {
     id: "smcc-saket",
     title: "SMCC Maintenance Work",
-    client: "SMCC",
+    client: "SMCC Construction India",
     location: "Saket, New Delhi",
     sector: "Maintenance",
     scope: ["Maintenance work"],
@@ -550,12 +561,15 @@ const rows: Row[] = [
   {
     id: "revolve-noida",
     title: "Revolve Office Design & Build, Noida",
-    client: "Revolve",
-    location: "Noida, Uttar Pradesh",
+    // Address, scope, year and the 60-day timeline from the client's letter of 22 Sept 2021.
+    client: "Revolve Softech",
+    location: "Spring Meadows Business Park, Sector 63, Noida",
     sector: "Office Design & Build",
     area: "1,000 sq ft",
-    scope: ["Design & build across 1,000 sq ft"],
-    summary: "Design and build of a 1,000 sq ft office for Revolve in Noida.",
+    year: "2021",
+    duration: "60 days",
+    scope: ["Interior design", "Turnkey interior works", "MEP: electrical, HVAC, plumbing and fire-fighting", "Furniture"],
+    summary: "Design and build of Revolve Softech's 1,000 sq ft office at Spring Meadows Business Park, Sector 63, Noida, completed in 60 days.",
     metaTitle: "Revolve Office Design & Build, Noida",
   },
   {
@@ -588,9 +602,38 @@ type PhotoDetail = {
 };
 
 const PHOTOS: Record<string, PhotoDetail> = {
+  // From the company's online profile PDF.
+  "synergy-consulting-jasola": {
+    overview:
+      "Hagerstone International designed and built Synergy Consulting's 18,000 sq ft third-floor office in Jasola, New Delhi, and later returned to design and build a 2,000 sq ft extension of the same floor — 20,000 sq ft in all between 2019 and 2021. The reception is wrapped floor to ceiling in large-format white marble-look panels under a timber slat ceiling with linear lights, and the open office runs long rows of white workstations beneath large ring pendants, beside glass-fronted cabins carrying the Synergy logo. A repeat commission on the same floor is the clearest sign of a client relationship that works.",
+    specialFeatures: [
+      "Reception wrapped in large-format marble-look wall and floor panels",
+      "Timber slat ceiling with integrated linear lights at reception",
+      "Large ring pendants over the open workstations",
+      "Glass-fronted cabins with frosted, logo-branded film",
+      "Open ceiling with exposed services over the work floor",
+    ],
+    materials: [
+      "Large-format marble-look porcelain panels",
+      "Timber slat ceiling",
+      "Carpet tiles with a blue accent border",
+      "Frameless glass partitions with frosted film",
+    ],
+    groups: [
+      {
+        name: "Reception & workspace",
+        description:
+          "The marble-clad reception with its timber slat ceiling, and the open office of white workstations under ring pendants, lined with glass cabins.",
+        photos: [
+          ["reception", 1024, 683, "Synergy Consulting reception in Jasola, New Delhi, with marble-look wall panels, a timber slat ceiling and a timber reception desk"],
+          ["workstations", 1024, 683, "Synergy Consulting open office with white workstations under large ring pendant lights beside glass cabins"],
+        ],
+      },
+    ],
+  },
   "edf-international-saket": {
     overview:
-      "EDF International's 2,500 sq ft office in Saket, New Delhi, designed and built by Hagerstone as an industrial-style workspace. The ceiling is left open with its ducts and services on show, and the space is warmed with pine slat panelling, orange accents and large photographic prints on charcoal walls. Long rows of workstations run between glass-partitioned cabins, a conference room and a pantry with a high bar table.",
+      "EDF International Networks' 2,500 sq ft India head office at DLF South Court, Saket, New Delhi, designed and built by Hagerstone in 2019 as an industrial-style workspace. In its letter of appreciation, EDF confirmed the office was delivered to its requirements and within the agreed timeline. The ceiling is left open with its ducts and services on show, and the space is warmed with pine slat panelling, orange accents and large photographic prints on charcoal walls. Long rows of workstations run between glass-partitioned cabins, a conference room and a pantry with a high bar table.",
     specialFeatures: [
       "Exposed ceiling with spiral ductwork left on show",
       "Y-shaped linear LED pendants over the workstation rows",
@@ -633,7 +676,7 @@ const PHOTOS: Record<string, PhotoDetail> = {
   },
   "hashtag-orange-gurugram": {
     overview:
-      "Hashtag Orange's 1,300 sq ft office in Gurugram, designed and built by Hagerstone. It fits a surprising amount into a small floor plate: open workstations running to full-height windows, glass cabins, booth seating, a lounge and a pantry. Red exposed brick, rustic timber cladding and black dome pendants give it a warm, informal character to match the brand's orange.",
+      "Hashtag Orange's 1,300 sq ft corporate office on the 8th floor of Emaar Palm Spring Plaza, Golf Course Road, Gurugram, designed and built by Hagerstone in 2019: design, interiors, MEP services and furniture, completed within the client's 45-day timeline. It fits a surprising amount into a small floor plate: open workstations running to full-height windows, glass cabins, booth seating, a lounge and a pantry. Red exposed brick, rustic timber cladding and black dome pendants give it a warm, informal character to match the brand's orange.",
     specialFeatures: [
       "Booth seating set against a red exposed-brick wall",
       "Black dome pendants throughout the office",
@@ -917,7 +960,7 @@ const PHOTOS: Record<string, PhotoDetail> = {
   },
   "yanmar-engine-factory-chennai": {
     overview:
-      "Turnkey interiors across 50,000 sq ft at the Yanmar engine factory in Chennai, delivered by Hagerstone with Takenaka as main contractor. The photos, taken at handover, show large open-plan office floors with workstation clusters, a double-height lobby with a ring pendant and a curved red bench, and a red feature staircase framed by black glazing.",
+      "Office interiors across 50,000 sq ft at the Yanmar engine factory in Ponneri, Tamil Nadu, north of Chennai, delivered by Hagerstone with Takenaka as main contractor. The photos, taken at handover, show large open-plan office floors with workstation clusters, a double-height lobby with a ring pendant and a curved red bench, and a red feature staircase framed by black glazing.",
     specialFeatures: [
       "Double-height lobby with a large ring pendant",
       "Curved red bench wrapped around a black feature wall with a screen",
@@ -938,7 +981,7 @@ const PHOTOS: Record<string, PhotoDetail> = {
         description:
           "Open office floors with rows of workstation clusters under a grid ceiling, and the double-height lobby with its red bench and ring pendant.",
         photos: [
-          ["workstations", 867, 948, "Yanmar engine factory office in Chennai with rows of workstations under a grid ceiling"],
+          ["workstations", 867, 948, "Yanmar engine factory office in Ponneri with rows of workstations under a grid ceiling"],
           ["open-office", 867, 948, "Yanmar factory open office with a red carpet runner and workstation clusters"],
           ["reception", 867, 948, "Yanmar factory double-height lobby with a ring pendant, black feature wall and curved red bench"],
         ],
@@ -975,8 +1018,6 @@ const OVERVIEWS: Record<string, string> = {
     "Hagerstone International designed and built a 1,000 sq ft Byredo showroom in Mumbai for Beauty Impex between 2019 and 2021. Byredo is a Stockholm-based luxury fragrance and lifestyle brand, and a showroom for a brand at this level is judged on detail: display, lighting and finish all carry the brand. It is one of two Mumbai retail projects Hagerstone delivered for Beauty Impex in this period, alongside the Trunkhouse luggage store.",
   "bcg-gurugram-fire-fighting":
     "Hagerstone International carried out fire-fighting works at the Gurugram office of BCG (Boston Consulting Group), the global management consulting firm, between 2019 and 2021. Fire protection in an occupied corporate office has to be installed around live operations and coordinated with the building's existing services. The job sits within Hagerstone's MEP practice, which covers fire-fighting, electrical, HVAC and plumbing systems for commercial interiors across Delhi NCR.",
-  "synergy-consulting-jasola":
-    "Hagerstone International designed and built Synergy Consulting's 18,000 sq ft third-floor office in Jasola, New Delhi, and later returned to design and build a 2,000 sq ft extension of the same floor — 20,000 sq ft in all between 2019 and 2021. Jasola District Centre is one of South Delhi's main commercial office districts. A repeat commission on the same floor is the clearest sign of a client relationship that works: the extension was delivered to match and join the office already in use.",
   "renesas-electronics-jasola":
     "Hagerstone International designed and built a 3,000 sq ft office for Renesas Electronics, the Japanese semiconductor company, in Jasola, New Delhi, between 2019 and 2021. Jasola District Centre in South Delhi is a commercial office hub with good connections to Noida and central Delhi. For an office of this size, design and build gives the client one accountable team for layout, interiors, services and furniture, and a single programme to handover.",
   "tidong-power-shimla":
@@ -988,7 +1029,7 @@ const OVERVIEWS: Record<string, string> = {
   "alps-electric-gurugram":
     "Hagerstone International carried out office renovation works for Alps Electric, the Japanese electronic components maker, in Gurugram between 2019 and 2021. Renovating a working office means sequencing the works so the business keeps running around them. Hagerstone's office renovation and refurbishment work in Gurugram ranges from small upgrades like this to full floor refits.",
   "srp-and-company-pitampura":
-    "Hagerstone International designed and built a 1,000 sq ft office for SRP & Company in Pitampura, Delhi, between 2019 and 2021. Pitampura's commercial district in North-West Delhi is home to many professional firms in compact offices. Small offices benefit from design and build as much as large ones: every square foot has to work, and one team answers for the design and its delivery.",
+    "Hagerstone International designed and built the 1,000 sq ft office of SRP & Company, a firm of chartered accountants, at Netaji Subhash Place, Pitampura, Delhi, in 2021. The scope covered interior design and turnkey interior works, including MEP — electrical, HVAC, plumbing and fire-fighting — and furniture. In its letter of appreciation, the firm confirmed the whole project was completed in 60 days. For a small professional office, design and build puts one team in charge of the design and its delivery.",
   "dorient-solutions-pitampura":
     "Hagerstone International designed and built a 2,500 sq ft office for Dorient Solutions in Pitampura, Delhi, between 2019 and 2021. Pitampura in North-West Delhi is an established business district for small and mid-size companies. Under design and build, Hagerstone took the office from space planning and interior design through services and execution to a finished workspace.",
   "mpkupl-jalna":
@@ -1010,7 +1051,7 @@ const OVERVIEWS: Record<string, string> = {
   "india-accelerator-gurugram":
     "Hagerstone International provided interior design, without execution, for India Accelerator, the startup accelerator, in Gurugram between 2019 and 2021. A design-only commission delivers the layout and interior design for the client to build with a contractor of their choice. Hagerstone offers interior design on its own as well as through full design and build, for offices, coworking spaces and startup hubs.",
   "gih-gurugram":
-    "Hagerstone International supplied lighting to GIH in Gurugram between 2019 and 2021. Lighting supply means selecting and sourcing light fittings to suit the space and its design, and is often bought separately from the fit-out. Hagerstone handles lighting as a standalone package or within its electrical and turnkey interior works in Delhi NCR.",
+    "Hagerstone International supplied lighting to the Global Infrastructure Hub (GIH) in Gurugram between 2019 and 2021. Lighting supply means selecting and sourcing light fittings to suit the space and its design, and is often bought separately from the fit-out. Hagerstone handles lighting as a standalone package or within its electrical and turnkey interior works in Delhi NCR.",
   "beebay-kids-gurugram":
     "Hagerstone International supplied lighting to Beebay Kids in Gurugram between 2019 and 2021. Lighting supply means selecting and sourcing light fittings to suit the space, and is often bought separately from the interior fit-out. Hagerstone provides lighting as a standalone package or as part of its turnkey interiors in Delhi NCR.",
   "arcon-peb-noida":
@@ -1032,7 +1073,7 @@ const OVERVIEWS: Record<string, string> = {
   "nippon-steel-saket":
     "Hagerstone International carried out maintenance work at Nippon Steel's office in Saket, New Delhi, between 2019 and 2021. Nippon Steel is Japan's largest steelmaker. Office maintenance keeps interiors and services in working order after handover, and is a common way for corporate clients to keep one trusted contractor on call.",
   "smcc-saket":
-    "Hagerstone International carried out maintenance work at SMCC's office in Saket, New Delhi, between 2019 and 2021. Saket is one of South Delhi's main commercial districts. Maintenance contracts keep office interiors and services in good order after handover, with one contractor responsible for repairs and upkeep.",
+    "Hagerstone International carried out maintenance work at the Saket, New Delhi office of SMCC Construction India, part of the Japanese Sumitomo Mitsui Construction group, between 2019 and 2021. Saket is one of South Delhi's main commercial districts. Maintenance contracts keep office interiors and services in good order after handover, with one contractor responsible for repairs and upkeep.",
   "aipl-joy-street-gurugram":
     "Hagerstone International carried out interior works across 12,000 sq ft at AIPL Joy Street in Gurugram between 2019 and 2021. AIPL Joy Street is a retail and commercial destination in Gurugram, where interiors have to stand up to heavy footfall and present well to shoppers and tenants. At 12,000 sq ft, it is one of the larger commercial interior projects on Hagerstone's Gurugram record.",
   "pp-trade-centre-pitampura":
@@ -1040,7 +1081,7 @@ const OVERVIEWS: Record<string, string> = {
   "hindusthan-connaught-place":
     "Hagerstone International delivered turnkey interiors across 5,000 sq ft for Hindusthan in Connaught Place, New Delhi, between 2019 and 2021. Connaught Place is Delhi's historic central business district, where refitting space in older buildings needs care with existing structure and services. On a turnkey project Hagerstone takes single-point responsibility for design, civil and interior works, services and furniture.",
   "revolve-noida":
-    "Hagerstone International designed and built a 1,000 sq ft office for Revolve in Noida between 2019 and 2021. Noida is Hagerstone's home market, with its head office in Sector 2. For a small office, design and build means one team plans the layout, designs the interior and delivers it ready to use.",
+    "Hagerstone International designed and built Revolve Softech's 1,000 sq ft office at Spring Meadows Business Park, Sector 63, Noida, in 2021. The scope covered interior design and turnkey interior works, including MEP — electrical, HVAC, plumbing and fire-fighting — and furniture, and the client's letter of appreciation confirms the entire job was completed in a 60-day timeline. Sector 63 sits in Noida's IT and electronics corridor, close to Hagerstone's own head office in Sector 2.",
   "private-residence-gurugram":
     "Hagerstone International carried out residential work across a 2,500 sq ft private home in Gurugram between 2019 and 2021. Residential interiors call for the same planning and site discipline as commercial work, with the added care of working in a family's home. Hagerstone takes on selected residential projects in Delhi NCR alongside its commercial and industrial portfolio.",
 };
@@ -1068,6 +1109,7 @@ export const worksDone2019Projects: ProjectData[] = rows.map((row): ProjectData 
     title: row.title,
     client: row.client,
     year: row.year ?? PERIOD,
+    duration: row.duration,
     location: row.location,
     sector: row.sector,
     area: row.area,
