@@ -57,7 +57,7 @@ export interface City {
   name: string;
   state: string;
   stateSlug: string;
-  region: "NCR" | "North India" | "West India" | "South India";
+  region: "NCR" | "North India" | "West India" | "South India" | "Central India";
   tier: 1 | 2 | 3;
   published: boolean;
   /** Statutory bodies for commercial projects here. */
@@ -98,11 +98,24 @@ export const cities: City[] = [
       { name: "M3M", detail: "Sector 79 commercial development" },
       { name: "Bansal Tower Co-Working Space", detail: "Co-working fit-out", slug: "bansaltower" },
       { name: "Revolve Technologies Office", detail: "Software company office", slug: "revolve" },
-      { name: "El Corte Inglés", detail: "Design & Build · 20,000 sq ft" },
-      { name: "BCG (Boston Consulting Group)", detail: "Fire-fighting systems" },
-      { name: "Medtronic", detail: "Design & Build · 5,000 sq ft" },
-      { name: "Takenaka HQ", detail: "Turnkey interiors" },
-      { name: "AIPL Joy Street", detail: "Interior works · 12,000 sq ft" },
+      { name: "El Corte Inglés", detail: "Design & Build · 20,000 sq ft", slug: "el-corte-ingles-gurugram" },
+      { name: "BCG (Boston Consulting Group)", detail: "Fire-fighting systems", slug: "bcg-gurugram-fire-fighting" },
+      { name: "Medtronic", detail: "Design & Build · 5,000 sq ft", slug: "medtronic-gurugram" },
+      { name: "Takenaka HQ", detail: "Turnkey interiors", slug: "takenaka-hq-gurugram" },
+      { name: "AIPL Joy Street", detail: "Interior works · 12,000 sq ft", slug: "aipl-joy-street-gurugram" },
+      { name: "PSV Urbana", detail: "Turnkey interiors · 30,000 sq ft", slug: "psv-urbana-gurugram" },
+      { name: "Lexir Resources", detail: "Design & Build · 10,000 sq ft", slug: "lexir-resources-gurugram" },
+      { name: "SP Infocity", detail: "Design & Build · 10,000 sq ft", slug: "sp-infocity-gurugram" },
+      { name: "GLS Infra", detail: "Design & Build · three office fit-outs", slug: "gls-infra-gurugram" },
+      { name: "Hashtag Orange", detail: "Design & Build · 1,300 sq ft", slug: "hashtag-orange-gurugram" },
+      { name: "Imperial Malts", detail: "Sector 49 · PEB office building & interiors", slug: "imperial-malt-peb-gurugram" },
+      { name: "AECOM", detail: "Office renovation", slug: "aecom-gurugram" },
+      { name: "Alps Electric", detail: "Office renovation", slug: "alps-electric-gurugram" },
+      { name: "India Accelerator", detail: "Interior design", slug: "india-accelerator-gurugram" },
+      { name: "DARCL", detail: "Furniture supply", slug: "darcl-gurugram" },
+      { name: "Piya Facility Management", detail: "Furniture supply", slug: "piya-facility-management-gurugram" },
+      { name: "GIH", detail: "Lighting supply", slug: "gih-gurugram" },
+      { name: "Beebay Kids", detail: "Lighting supply", slug: "beebay-kids-gurugram" },
     ],
   },
   {
@@ -127,8 +140,10 @@ export const cities: City[] = [
     projects: [
       { name: "Hagerstone International HQ", detail: "Sector 2 head office" },
       { name: "VinFast", detail: "Sector 63 showroom & office" },
-      { name: "Inshorts Media", detail: "Office renovation" },
-      { name: "Arcon", detail: "PEB structure · 15,000 sq ft" },
+      { name: "Inshorts Media", detail: "Office renovation", slug: "inshorts-media-noida" },
+      { name: "Arcon", detail: "PEB structure · 15,000 sq ft", slug: "arcon-peb-noida" },
+      { name: "Revolve", detail: "Design & Build · 1,000 sq ft", slug: "revolve-noida" },
+      { name: "Seismic Solution", detail: "Furniture supply", slug: "seismic-solution-noida" },
     ],
   },
   {
@@ -156,11 +171,23 @@ export const cities: City[] = [
       { name: "Sael", detail: "Aerocity / IGI corporate office" },
       { name: "Western Green", detail: "Rangpuri" },
       { name: "MicroSave Consulting (MSC)", detail: "Corporate office", slug: "microsave" },
-      { name: "French Embassy", detail: "Chanakyapuri · turnkey interiors" },
-      { name: "Singapore Airlines", detail: "T3 IGI Airport · renovation" },
-      { name: "Lufthansa Airlines", detail: "T3 IGI Airport · renovation" },
-      { name: "EDF International", detail: "Saket · Design & Build" },
-      { name: "Synergy Consulting", detail: "Jasola · Design & Build · 18,000 sq ft" },
+      { name: "French Embassy", detail: "Chanakyapuri · turnkey interiors", slug: "french-embassy-chanakyapuri" },
+      { name: "Singapore Airlines", detail: "T3 IGI Airport · renovation", slug: "singapore-airlines-delhi-airport" },
+      { name: "Lufthansa Airlines", detail: "T3 IGI Airport · renovation", slug: "lufthansa-delhi-airport" },
+      { name: "EDF International", detail: "Saket · Design & Build", slug: "edf-international-saket" },
+      { name: "Synergy Consulting", detail: "Jasola · Design & Build · 18,000 sq ft", slug: "synergy-consulting-jasola" },
+      { name: "Monin", detail: "Chhatarpur · turnkey interiors · 5,000 sq ft", slug: "monin-chhatarpur" },
+      { name: "Hindusthan", detail: "Connaught Place · turnkey interiors · 5,000 sq ft", slug: "hindusthan-connaught-place" },
+      { name: "Renesas Electronics", detail: "Jasola · Design & Build · 3,000 sq ft", slug: "renesas-electronics-jasola" },
+      { name: "Dorient Solutions", detail: "Pitampura · Design & Build · 2,500 sq ft", slug: "dorient-solutions-pitampura" },
+      { name: "SRP & Company", detail: "Pitampura · Design & Build", slug: "srp-and-company-pitampura" },
+      { name: "PP Trade Centre", detail: "Pitampura · Design & Build", slug: "pp-trade-centre-pitampura" },
+      { name: "Priya Complex", detail: "Basant Lok · Design & Build", slug: "priya-complex-basant-lok" },
+      { name: "Hermès", detail: "T3 IGI Airport · exhibition stand", slug: "hermes-exhibition-stand-delhi-airport" },
+      { name: "Nippon Steel", detail: "Saket · maintenance", slug: "nippon-steel-saket" },
+      { name: "SMCC", detail: "Saket · maintenance", slug: "smcc-saket" },
+      { name: "Bunge India", detail: "Janakpuri · furniture supply", slug: "bunge-india-janakpuri" },
+      { name: "Salcon", detail: "Saket · tiling work", slug: "salcon-saket" },
     ],
   },
   {
@@ -305,8 +332,8 @@ export const cities: City[] = [
     marketNote:
       "Chandigarh's planned grid and its IT Park make it North India's most design-conscious commercial market, spanning Sector 17 retail and the Tricity's growing tech offices.",
     projects: [
-      { name: "Koko Town", detail: "Sector 17" },
-      { name: "Oceaneering", detail: "Design & Build · 20,000 sq ft" },
+      { name: "Kokko Town", detail: "Sector 17 · indoor kids' play zone", slug: "kokko-town" },
+      { name: "Oceaneering", detail: "Design & Build · 20,000 sq ft", slug: "oceaneering-chandigarh" },
     ],
   },
   {
@@ -371,7 +398,7 @@ export const cities: City[] = [
       byeLaws: "BBMP Building Bye-Laws",
     },
     districts: ["Peenya Industrial Area", "Whitefield", "Electronic City", "Outer Ring Road"],
-    nearbyCitySlugs: [],
+    nearbyCitySlugs: ["chennai", "hyderabad"],
     marketNote:
       "Bengaluru is India's largest technology and industrial employment market. Hagerstone has delivered manufacturing-adjacent projects in the Peenya industrial belt.",
     projects: [
@@ -603,7 +630,7 @@ export const cities: City[] = [
     nearbyCitySlugs: ["nalagarh", "chandigarh"],
     marketNote:
       "Shimla is Himachal's capital and a hill city with a heavy hospitality and institutional economy. Steep sites, restricted access and a cold climate change how buildings are designed and delivered — material movement, envelope insulation and heating all take priority over what matters in the plains.",
-    projects: [{ name: "Tidong Power", detail: "Design & Build · hydropower project office" }],
+    projects: [{ name: "Tidong Power", detail: "Design & Build · hydropower project office", slug: "tidong-power-shimla" }],
   },
   {
     slug: "ahmedabad",
@@ -694,6 +721,156 @@ export const cities: City[] = [
     marketNote:
       "Zirakpur is the Tricity's commercial and residential growth corridor, where retail, showrooms, hospitality and mixed-use buildings line VIP Road and the Chandigarh–Ambala highway. Showroom fit-outs, commercial facades and retail interiors are the typical work.",
     projects: [],
+  },
+
+  // ---- Batch 3: cities from the 2019–2021 works-done sheet ----
+  // Each has delivered work on that sheet, linked to its project page. Authorities
+  // are listed only where the body is certain; a row left out renders as nothing.
+  // `development` is left out where the municipal corporation, not the development
+  // authority, approves buildings (Mumbai, Hyderabad, Raipur): CityHub's fire-NOC
+  // FAQ reads that field as "building approval through ...".
+  {
+    slug: "mumbai",
+    name: "Mumbai",
+    state: "Maharashtra",
+    stateSlug: "maharashtra",
+    region: "West India",
+    tier: 1,
+    published: true,
+    authorities: {
+      municipal: "Brihanmumbai Municipal Corporation (BMC)",
+      industrial: "MIDC — Maharashtra Industrial Development Corporation",
+      fireNoc: "Mumbai Fire Brigade",
+      discom: "BEST, Adani Electricity, Tata Power and MSEDCL, by area",
+      pollution: "Maharashtra Pollution Control Board (MPCB)",
+      byeLaws: "Development Control and Promotion Regulations for Greater Mumbai, 2034 (DCPR 2034)",
+    },
+    districts: ["Bandra Kurla Complex (BKC)", "Lower Parel", "Nariman Point", "Andheri", "Powai", "Worli"],
+    nearbyCitySlugs: ["jalna", "ahmedabad"],
+    marketNote:
+      "Mumbai is India's financial capital and its most demanding retail and commercial interiors market. Office demand is concentrated in Bandra Kurla Complex, Lower Parel, Worli and the Andheri–Powai belt, while premium retail sits in high-street stores and luxury malls where landlords set strict fit-out rules, working hours and handover deadlines. Space is expensive, so every square foot of a store or office has to work hard, and finishes are judged against international brand standards. Hagerstone's Mumbai work is in luxury and lifestyle retail: a Byredo showroom and the Trunkhouse luggage store, both designed and built for Beauty Impex.",
+    projects: [
+      { name: "Byredo Showroom", detail: "Beauty Impex · Design & Build · 1,000 sq ft", slug: "byredo-showroom-mumbai" },
+      { name: "Trunkhouse", detail: "Beauty Impex · luggage store · 1,000 sq ft", slug: "trunkhouse-mumbai" },
+    ],
+  },
+  {
+    slug: "chennai",
+    name: "Chennai",
+    state: "Tamil Nadu",
+    stateSlug: "tamil-nadu",
+    region: "South India",
+    tier: 1,
+    published: true,
+    authorities: {
+      development: "Chennai Metropolitan Development Authority (CMDA)",
+      municipal: "Greater Chennai Corporation",
+      industrial: "SIPCOT — for Sriperumbudur, Oragadam and Irungattukottai",
+      fireNoc: "Tamil Nadu Fire & Rescue Services",
+      pollution: "Tamil Nadu Pollution Control Board (TNPCB)",
+      byeLaws: "Tamil Nadu Combined Development and Building Rules, 2019",
+    },
+    districts: ["Old Mahabalipuram Road (IT Corridor)", "Guindy", "Sriperumbudur", "Oragadam", "Ambattur Industrial Estate"],
+    nearbyCitySlugs: ["sri-city", "bengaluru"],
+    marketNote:
+      "Chennai is one of India's largest manufacturing centres, often called the Detroit of India for its automotive cluster, with Japanese, Korean and European plants spread along the Sriperumbudur–Oragadam belt and the SIPCOT industrial parks. Alongside the factories, the Old Mahabalipuram Road IT corridor and Guindy carry the city's corporate office demand. Industrial clients here expect plant offices, canteens and admin blocks delivered to the same standards as their global facilities, often under a Japanese general contractor. Hagerstone delivered turnkey interiors across 50,000 sq ft at the Yanmar engine factory in Chennai, working with Takenaka.",
+    projects: [
+      { name: "Yanmar Engine Factory", detail: "With Takenaka · turnkey interiors · 50,000 sq ft", slug: "yanmar-engine-factory-chennai" },
+    ],
+  },
+  {
+    slug: "sri-city",
+    name: "Sri City",
+    state: "Andhra Pradesh",
+    stateSlug: "andhra-pradesh",
+    region: "South India",
+    tier: 3,
+    published: true,
+    authorities: {
+      industrial: "Sri City Pvt Ltd — developer of the Sri City SEZ and industrial zone",
+      fireNoc: "Andhra Pradesh State Disaster Response & Fire Services",
+      discom: "APSPDCL — Southern Power Distribution Company of Andhra Pradesh",
+      pollution: "Andhra Pradesh Pollution Control Board (APPCB)",
+      byeLaws: "Andhra Pradesh Building Rules, 2017",
+    },
+    districts: ["Sri City SEZ", "Domestic Tariff Area (DTA)", "Satyavedu", "Tada"],
+    nearbyCitySlugs: ["chennai"],
+    marketNote:
+      "Sri City is a planned industrial city on the Andhra Pradesh–Tamil Nadu border, about 55 km north of Chennai, with a special economic zone and a domestic tariff area. It hosts manufacturing plants for a large number of Japanese, American and European companies, which makes it one of India's most international factory clusters. Work here is at industrial scale: plant interiors, offices and amenity blocks built to the owner's global standards, usually alongside a main contractor and within the rules of the zone's developer. Hagerstone carried out interior works across 2,00,000 sq ft for Panasonic Life Solutions in Sri City with Takenaka — the largest job on its 2019–2021 record.",
+    projects: [
+      { name: "Panasonic Life Solutions", detail: "With Takenaka · interior works · 2,00,000 sq ft", slug: "panasonic-life-solutions-sri-city" },
+    ],
+  },
+  {
+    slug: "jalna",
+    name: "Jalna",
+    state: "Maharashtra",
+    stateSlug: "maharashtra",
+    region: "West India",
+    tier: 3,
+    published: true,
+    authorities: {
+      industrial: "MIDC — Jalna industrial area",
+      fireNoc: "Maharashtra Fire Services",
+      discom: "MSEDCL — Maharashtra State Electricity Distribution Company (Mahavitaran)",
+      pollution: "Maharashtra Pollution Control Board (MPCB)",
+      byeLaws: "Unified Development Control and Promotion Regulations (UDCPR), Maharashtra",
+    },
+    districts: ["MIDC Jalna industrial area", "Old Jalna", "New Jalna"],
+    nearbyCitySlugs: ["mumbai"],
+    marketNote:
+      "Jalna is an industrial city in Maharashtra's Marathwada region, known for its steel re-rolling mills and its seed industry, with most industrial activity in the MIDC industrial area. Projects here tend to combine civil construction with interiors: plant buildings, offices and staff facilities that need a contractor able to build the shell and finish it in one programme. Distance from the big metros makes planning of materials, labour and supervision a larger part of delivery than in Mumbai or Pune. Hagerstone carried out civil and interior works across 20,000 sq ft for MPKUPL in Jalna.",
+    projects: [
+      { name: "MPKUPL", detail: "Civil & interior works · 20,000 sq ft", slug: "mpkupl-jalna" },
+    ],
+  },
+  {
+    slug: "raipur",
+    name: "Raipur",
+    state: "Chhattisgarh",
+    stateSlug: "chhattisgarh",
+    region: "Central India",
+    tier: 2,
+    published: true,
+    authorities: {
+      municipal: "Raipur Municipal Corporation",
+      industrial: "CSIDC — for Urla, Siltara and Sondongri industrial areas",
+      fireNoc: "Chhattisgarh Fire & Emergency Services",
+      discom: "CSPDCL — Chhattisgarh State Power Distribution Company Limited",
+      pollution: "Chhattisgarh Environment Conservation Board (CECB)",
+      byeLaws: "Chhattisgarh Bhumi Vikas Niyam, 1984",
+    },
+    districts: ["Nava Raipur (Atal Nagar)", "Pandri", "Telibandha", "Urla Industrial Area", "Siltara"],
+    nearbyCitySlugs: ["hyderabad"],
+    marketNote:
+      "Raipur is the capital of Chhattisgarh and the commercial centre of a state built on steel, power and mining, with heavy industry concentrated in the Urla and Siltara industrial areas. The planned capital at Nava Raipur (Atal Nagar) has added government, institutional and corporate buildings on the city's edge. For national companies, Raipur is typically a regional office location, where the client wants a turnkey fit-out delivered to head-office standards without managing it from a distance. Hagerstone delivered turnkey interiors for Airtel's 5,000 sq ft office in Raipur.",
+    projects: [
+      { name: "Airtel", detail: "Turnkey interiors · 5,000 sq ft office", slug: "airtel-raipur" },
+    ],
+  },
+  {
+    slug: "hyderabad",
+    name: "Hyderabad",
+    state: "Telangana",
+    stateSlug: "telangana",
+    region: "South India",
+    tier: 1,
+    published: true,
+    authorities: {
+      municipal: "Greater Hyderabad Municipal Corporation (GHMC)",
+      industrial: "TGIIC — Telangana Industrial Infrastructure Corporation (formerly TSIIC)",
+      fireNoc: "Telangana State Disaster Response & Fire Services",
+      discom: "TGSPDCL — Southern Power Distribution Company of Telangana (formerly TSSPDCL)",
+      pollution: "Telangana Pollution Control Board",
+      byeLaws: "Telangana Building Rules, 2012",
+    },
+    districts: ["HITEC City", "Gachibowli", "Financial District", "Madhapur", "Banjara Hills"],
+    nearbyCitySlugs: ["bengaluru", "chennai"],
+    marketNote:
+      "Hyderabad is one of India's largest office markets, with global technology, pharma and financial companies clustered in HITEC City, Gachibowli, Madhapur and the Financial District. Beyond offices, a fast-growing consumer economy drives demand for retail, hospitality and entertainment interiors, where acoustics, crowd movement and durability matter as much as the look. Grade-A buildings here come with detailed fit-out rules from their landlords, and projects are expected to move quickly. Hagerstone delivered turnkey interiors across 5,000 sq ft for MovieTime Cinemas in Hyderabad.",
+    projects: [
+      { name: "MovieTime Cinemas", detail: "Turnkey cinema interiors · 5,000 sq ft", slug: "movietime-cinemas-hyderabad" },
+    ],
   },
 ];
 

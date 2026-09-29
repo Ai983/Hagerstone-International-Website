@@ -13,12 +13,31 @@ export default function ProjectDetailHero({
 }: {
   title: string;
   client: string;
-  hero: string;
-  heroAlt: string;
+  hero?: string;
+  heroAlt?: string;
   heroVideo?: string;
   heroPosition?: string;
 }) {
   const [videoError, setVideoError] = useState(false);
+
+  // No photos of this project: a shorter, plain header rather than an empty frame.
+  if (!hero) {
+    return (
+      <section className="w-full bg-gradient-to-br from-primary to-primary/80">
+        <div className="max-w-6xl mx-auto px-6 pt-32 pb-16 md:pt-40 md:pb-20">
+          <motion.h1
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-5xl font-bold text-primary-foreground"
+          >
+            {title}
+          </motion.h1>
+          <p className="mt-2 text-lg text-primary-foreground/85">{client}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative h-[70vh] w-full overflow-hidden">

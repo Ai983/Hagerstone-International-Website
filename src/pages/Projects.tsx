@@ -61,18 +61,33 @@ function Projects() {
               className="group block rounded-lg border hover:shadow-lg transition overflow-hidden"
               aria-label={`View ${project.title} office design & build project details`}
             >
-              <img
-                src={project.hero}
-                alt={
-                  project.heroAlt ||
-                  `${project.title} – ${project.sector} office design & build project by Hagerstone`
-                }
-                className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-                decoding="async"
-                width="384"
-                height="256"
-              />
+              {project.hero ? (
+                <img
+                  src={project.hero}
+                  alt={
+                    project.heroAlt ||
+                    `${project.title} – ${project.sector} office design & build project by Hagerstone`
+                  }
+                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
+                  width="384"
+                  height="256"
+                />
+              ) : (
+                // No photos of this project: a text panel the same height as a photo.
+                <div className="flex h-56 w-full flex-col justify-end bg-gradient-to-br from-primary to-primary/80 p-6 text-primary-foreground">
+                  {project.sector && (
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
+                      {project.sector}
+                    </span>
+                  )}
+                  <span className="mt-1 text-xl font-semibold leading-snug">{project.client}</span>
+                  {project.year && (
+                    <span className="mt-1 text-sm text-primary-foreground/70">{project.year}</span>
+                  )}
+                </div>
+              )}
               <div className="p-6">
                 <h2 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">
                   {project.title}

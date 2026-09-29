@@ -26,15 +26,15 @@ export default function ProjectDetail() {
   const next = idx < projects.length - 1 ? projects[idx + 1] : undefined;
 
   const canonicalUrl = project.canonical ?? `${SITE_URL}/projects/${project.id}`;
-  const projectImage = project.hero.startsWith("http")
-    ? project.hero
-    : `${SITE_URL}${project.hero}`;
+  const absolute = (src: string) => (src.startsWith("http") ? src : `${SITE_URL}${src}`);
+  const projectImage = project.hero ? absolute(project.hero) : undefined;
   const allImages = Array.from(
     new Set([
-      project.hero,
+      ...(project.hero ? [project.hero] : []),
       ...project.sections.flatMap((section) => section.images?.map((image) => image.src) ?? []),
     ]),
-  ).map((image) => (image.startsWith("http") ? image : `${SITE_URL}${image}`));
+  ).map(absolute);
+  const hasGallery = project.sections.some((section) => (section.images?.length ?? 0) > 0 || section.video);
   const layoutItems = project.layout ?? [];
   const highlightItems = project.designHighlights ?? [];
   const scopeItems = project.scope ?? [];
@@ -103,7 +103,7 @@ export default function ProjectDetail() {
       "@type": "CreativeWork",
       name: project.title,
       description: project.summary,
-      image: allImages,
+      ...(allImages.length > 0 ? { image: allImages } : {}),
       creator: { "@id": ORG_ID },
       about: project.about ?? project.sector,
       size: project.size ?? project.area,
@@ -112,7 +112,7 @@ export default function ProjectDetail() {
       locationCreated: project.location,
       dateCreated: project.year,
     },
-    createImageObject(projectImage, `${project.title} project hero image`),
+    ...(projectImage ? [createImageObject(projectImage, `${project.title} project hero image`)] : []),
     ...(galleryImages.length > 0
       ? [
           buildImageGallerySchema({
@@ -289,12 +289,14 @@ export default function ProjectDetail() {
         ))}
 
           {/* Project Sections */}
-          <section className="mt-12">
-            <h2 className="text-2xl font-bold text-primary mb-8">Gallery</h2>
-            {project.sections.map((s) => (
-              <ProjectSection key={s.name} {...s} />
-            ))}
-          </section>
+          {hasGallery && (
+            <section className="mt-12">
+              <h2 className="text-2xl font-bold text-primary mb-8">Gallery</h2>
+              {project.sections.map((s) => (
+                <ProjectSection key={s.name} {...s} />
+              ))}
+            </section>
+          )}
 
           <section className="mt-16">
             <h2 className="text-2xl font-bold text-primary mb-6">Related Projects</h2>

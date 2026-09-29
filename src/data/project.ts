@@ -1,3 +1,5 @@
+import { worksDone2019Projects } from "./projectsWorksDone2019";
+
 export type ProjectSection = {
   name: string;
   description?: string;
@@ -15,8 +17,12 @@ export type ProjectData = {
   area?: string;
   duration?: string;
   status?: string;
-  hero: string;
-  heroAlt: string;
+  /**
+   * Omitted for projects we have no photos of. The listing card and the page
+   * header then show a text panel instead of a picture, and the gallery is left out.
+   */
+  hero?: string;
+  heroAlt?: string;
   heroVideo?: string;
   heroPosition?: string;
   summary: string;
@@ -1015,6 +1021,8 @@ export const allProjects: ProjectData[] = [
       },
     ],
   },
+  // 2019–2021 works-done sheet: one page per job, most without photos.
+  ...worksDone2019Projects,
 ];
 
 /**

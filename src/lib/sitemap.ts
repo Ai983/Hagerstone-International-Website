@@ -330,7 +330,7 @@ export const buildLlmsTxt = (paths: string[]): string => {
   lines.push("");
   lines.push(
     "> Hagerstone International is a turnkey office design and build company based in " +
-      "Noida, India, working across Delhi NCR and cities in north and west India. The firm " +
+      "Noida, India, working across Delhi NCR and cities in north, west, central and south India. The firm " +
       "delivers interiors, MEP, facades, pre-engineered buildings and civil construction " +
       "under a single contract, and publishes its own design work, technical references and " +
       "material guides on this site.",
