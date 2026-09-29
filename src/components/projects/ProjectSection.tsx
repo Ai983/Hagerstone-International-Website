@@ -16,7 +16,9 @@ export default function ProjectSection({
 }) {
   return (
     <section className="my-16">
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+      {/* grid-cols-1 + min-w-0: without them the phone column grows to the
+          carousel's full row of photos and the page scrolls sideways. */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <motion.div
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -33,7 +35,7 @@ export default function ProjectSection({
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="order-2 md:order-2"
+          className="order-2 md:order-2 min-w-0"
         >
           {images && images.length > 0 && <ImageCarousel images={images} />}
           {video && !images && (

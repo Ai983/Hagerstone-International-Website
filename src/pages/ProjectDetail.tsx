@@ -330,12 +330,17 @@ export default function ProjectDetail() {
           </section>
 
           {/* Bottom nav: Prev / Next project */}
-          <nav className="mt-16 flex items-center justify-between border-t pt-8" aria-label="Project navigation">
-            <div>
+          {/* Stacks on phones: project titles are long enough to push the row
+              past the screen edge. */}
+          <nav
+            className="mt-16 flex flex-col gap-3 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
+            aria-label="Project navigation"
+          >
+            <div className="min-w-0">
               {prev ? (
                 <Link
                   to={`/projects/${prev.id}`}
-                  className="inline-flex items-center gap-2 rounded-full border px-5 py-3 hover:bg-accent transition-colors"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border px-5 py-3 text-center hover:bg-accent transition-colors sm:inline-flex sm:w-auto"
                   aria-label={`Previous project: ${prev.title}`}
                 >
                   ← Previous: {prev.title}
@@ -346,16 +351,16 @@ export default function ProjectDetail() {
             </div>
             <Link
               to="/projects"
-              className="rounded-full border px-6 py-3 hover:bg-accent transition-colors"
+              className="shrink-0 rounded-full border px-6 py-3 text-center hover:bg-accent transition-colors"
               aria-label="Back to all projects"
             >
               Back to Projects
             </Link>
-            <div>
+            <div className="min-w-0 sm:text-right">
               {next ? (
                 <Link
                   to={`/projects/${next.id}`}
-                  className="inline-flex items-center gap-2 rounded-full border px-5 py-3 hover:bg-accent transition-colors"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border px-5 py-3 text-center hover:bg-accent transition-colors sm:inline-flex sm:w-auto"
                   aria-label={`Next project: ${next.title}`}
                 >
                   Next: {next.title} →
