@@ -7,19 +7,23 @@ import type { FaqItem } from "@/lib/seo";
 // marked-up answers to match what is visible on the page, so they must not be
 // allowed to drift apart.
 //
-// Note: the fit-out cost band quoted below (₹800-2,500/sq. ft.) contradicts the
-// estimator in src/components/estimator/config.ts, which starts its cheapest
-// package at ₹2,500/sq. ft. Both figures are public and they disagree. Pending
-// a commercial decision, after which a single shared costBenchmarks source
-// should replace both.
-export const homepageFaqs: FaqItem[] = [
+// No ₹ figures in these answers (CLAUDE.md publishing rule). The cost answer
+// explains what drives price and links out instead. `link` is rendered under
+// the answer only; it never reaches the FAQPage schema.
+export type HomepageFaq = FaqItem & { link?: { href: string; label: string } };
+
+export const homepageFaqs: HomepageFaq[] = [
   {
     question: "What is office design & build and how does it work?",
     answer: "Office design & build is a comprehensive approach where a single company handles both the design and construction phases of your office project. Hagerstone offers complete office design & build services including modern office interior design, office workspace design, MEP design, interior fit out, and turnkey project delivery. This integrated approach ensures seamless coordination, faster completion, cost efficiency, and single-point accountability from concept to handover."
   },
   {
     question: "How much does a commercial interior fit-out cost in Delhi NCR?",
-    answer: "Commercial interior costs in Delhi NCR typically range from ₹800 to ₹2,500 per sq. ft., depending on project scope, material quality, and customization level. Basic fit-outs start around ₹800-1,200/sq. ft., mid-range corporate offices cost ₹1,200-1,800/sq. ft., and premium executive spaces range from ₹1,800-2,500/sq. ft. or more. Factors affecting cost include false ceiling work, flooring materials, furniture specifications, MEP complexity, and branding elements. Hagerstone provides transparent, itemized quotations after site assessment to help you budget accurately with no hidden costs."
+    answer: "Cost is set by scope, not by area alone, so a per-sq.-ft. figure quoted before a site visit is only a guess. The main drivers are: whether the floor needs Cat A work (ceiling, lighting, basic HVAC and raised floor) or only Cat B work on top of it (layout, cabins, meeting rooms and branding); how many enclosed rooms the layout needs; the finish grade of flooring, ceilings, partitions, joinery and furniture; and the MEP scope, especially HVAC, electrical distribution, fire safety and data cabling. The contract type decides who carries the cost risk: a turnkey contract fixes one price for a defined scope, while an item-rate contract pays for measured quantities. Hagerstone provides an itemised quotation after a site assessment.",
+    link: {
+      href: "/compare/turnkey-vs-item-rate-fit-out-contract",
+      label: "Turnkey vs item-rate fit-out contracts: which protects the budget",
+    },
   },
   {
     question: "What is the typical timeline for completing an office interior project?",

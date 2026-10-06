@@ -18,8 +18,6 @@ import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import LeadPopupForm from "./components/LeadPopupForm";
 import WhatsAppBubble from "./components/WhatsAppBubble";
 import StickyMobileCTA from "./components/StickyMobileCTA";
-import { useRoutes } from "./hooks/useRoutes";
-import { componentRegistry } from "./lib/routeRegistry";
 import CityHub from "./pages/CityHub";
 import ServiceCity from "./pages/ServiceCity";
 import { buildLocationMatrix } from "./lib/locationPages";
@@ -28,14 +26,25 @@ import ContentPage from "./pages/ContentPage";
 import CollectionIndexPage from "./pages/CollectionIndexPage";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
+import About from "./pages/About";
+import OurTeam from "./pages/OurTeam";
+import Services from "./pages/Services";
+import Ideas from "./pages/Ideas";
+import Blog from "./pages/Blog";
+import FindYourStyle from "./pages/FindYourStyle";
+import Contact from "./pages/Contact";
 
-// Paths routed in code below. The Supabase routes table lists them too, but it
-// arrives after a network round trip; until then an unmatched path fell through
-// to NotFound, replacing the prerendered project page with a 404 for a moment.
-const CODE_ROUTED_PATHS = new Set(["/projects", "/projects/:id"]);
+// Every fixed page is routed in code, never from the Supabase `routes` table.
+// That table arrived after a network round trip; until then the path fell
+// through to NotFound, replacing the prerendered page with a 404 for a moment
+// (or for good if Supabase was down). Eager imports, because main.tsx hydrates
+// the prerendered HTML and a lazy page would suspend mid-hydration.
+//
+// /blog/:slug needs no entry here: the content engine registers that pattern
+// for the `insights` collection below, and every React blog post has its own
+// route.
 
 // Lazy load blog post pages
-const BlogListing = lazy(() => import("./pages/Blog"));
 const OfficeWorkspaceDesignBlog = lazy(() => import("./pages/blog/office-workspace-design"));
 const CommercialInteriorDesignersBlog = lazy(() => import("./pages/blog/commercial-interior-designers"));
 const OfficeSpacePlanningTrends2026Blog = lazy(
@@ -86,7 +95,6 @@ const queryClient = new QueryClient();
 const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const { data: routes } = useRoutes();
 
   return (
     <>
@@ -101,8 +109,15 @@ const AppContent = () => {
         <Route path="/" element={<Index />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         {/* Mirrored in ServerApp.tsx. */}
+        <Route path="/about" element={<About />} />
+        <Route path="/our-team" element={<OurTeam />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/ideas" element={<Ideas />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/find-your-style" element={<FindYourStyle />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Programmatic local-SEO pages (city hubs + service×city) */}
         <Route path="/locations/:city" element={<CityHub />} />
@@ -123,19 +138,12 @@ const AppContent = () => {
         ))}
 
         {/*
-          Blog listing pagination. /blog itself still comes from the Supabase
-          routes table, but these pages are prerendered static files and must
-          not depend on a runtime fetch — a crawler following the pagination
-          links would otherwise get an empty shell. Mirrored in ServerApp.tsx.
+          Blog listing pagination. These pages are prerendered static files and
+          must not depend on a runtime fetch — a crawler following the
+          pagination links would otherwise get an empty shell. Mirrored in
+          ServerApp.tsx.
         */}
-        <Route
-          path="/blog/page/:page"
-          element={
-            <Suspense fallback={<DynamicLoader />}>
-              <BlogListing />
-            </Suspense>
-          }
-        />
+        <Route path="/blog/page/:page" element={<Blog />} />
 
         {/* Blog post routes */}
         <Route
@@ -266,24 +274,6 @@ const AppContent = () => {
             </Suspense>
           }
         />
-
-        {/* Dynamic routes from database */}
-        {routes?.map((route) => {
-          const Component = componentRegistry[route.component_key];
-          if (!Component || CODE_ROUTED_PATHS.has(route.path)) return null;
-
-          return (
-            <Route
-              key={route.id}
-              path={route.path}
-              element={
-                <Suspense fallback={<DynamicLoader />}>
-                  <Component routeMeta={route} />
-                </Suspense>
-              }
-            />
-          );
-        })}
 
         {/* Fallback 404 */}
         <Route path="*" element={<NotFound />} />

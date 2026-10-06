@@ -1,4 +1,5 @@
 ﻿import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -45,6 +46,14 @@ export default function FAQSection() {
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
                   {faq.answer}
+                  {faq.link && (
+                    <Link
+                      to={faq.link.href}
+                      className="mt-3 block font-medium text-primary underline underline-offset-4 hover:no-underline"
+                    >
+                      {faq.link.label}
+                    </Link>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
