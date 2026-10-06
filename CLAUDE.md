@@ -5,7 +5,8 @@ TypeScript + Tailwind/shadcn. **Not Next.js.** Pages are prerendered to static H
 build time so Google and AI crawlers see real content. Hosted on Vercel from `main`.
 
 Full project history, decisions and next steps: **`SEO-PROJECT-STATUS.md`**. Read it before
-SEO or content work.
+SEO or content work. The current SEO/AEO/GEO to-do list, in order, is
+**`docs/SEO-AEO-GEO-PLAN.md`**.
 
 ## The one thing that keeps going wrong
 

@@ -1,5 +1,9 @@
 # Hagerstone SEO & Content Engine — Status and Next Steps
 
+> **6 Oct 2026:** for what to do next, use **`docs/SEO-AEO-GEO-PLAN.md`**. It lists what
+> shipped since this file was last updated and the remaining work in order. This file is
+> still the reference for history, research and decisions.
+
 **Last updated:** 18 September 2026
 **Purpose:** Complete handover. Read this file first in a new chat — it contains the full
 context of the work done 9–16 September 2026, the research behind it, what is still
