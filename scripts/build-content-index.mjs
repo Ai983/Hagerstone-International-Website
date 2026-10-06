@@ -65,6 +65,9 @@ const main = async () => {
   }
 
   const { frontmatterSchema, contentPath } = schemaModule;
+  const { resolveCitationUrl } = await server.ssrLoadModule("/src/data/standards.ts");
+  /** label -> number of citations with no link. Warned about, never fatal. */
+  const unlinked = new Map();
 
   const files = walk(CONTENT_DIR);
   const entries = [];
@@ -91,6 +94,12 @@ const main = async () => {
     if (!file.endsWith(expected)) {
       errors.push(`${rel}\n    filename must match slug — expected ${expected}`);
       continue;
+    }
+
+    for (const citation of fm.citations) {
+      if (!resolveCitationUrl(citation)) {
+        unlinked.set(citation.label, (unlinked.get(citation.label) ?? 0) + 1);
+      }
     }
 
     const words = countWords(content);
@@ -149,6 +158,17 @@ export const contentIndex: ContentEntry[] = allContent.filter(
   console.log(
     `✓ content index: ${entries.length} file(s) — ${published.length} published, ${drafts} draft/review`,
   );
+
+  // A citation without a link is still valid, but answer engines weigh linked
+  // sources, so say which labels need a rule in src/data/standards.ts or a
+  // `url` in frontmatter.
+  if (unlinked.size > 0) {
+    const total = [...unlinked.values()].reduce((sum, n) => sum + n, 0);
+    const labels = [...unlinked.entries()].map(([label, n]) => (n > 1 ? `${label} (${n})` : label));
+    console.warn(
+      `⚠ ${total} citation(s) have no link — add a rule in src/data/standards.ts or a url in frontmatter:\n    ${labels.join(", ")}`,
+    );
+  }
 };
 
 main().catch((error) => {

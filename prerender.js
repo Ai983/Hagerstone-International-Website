@@ -20,6 +20,7 @@ const {
   buildSitemapIndexXml,
   buildLlmsTxt,
   contentIndex,
+  resolveCitationUrl,
 } = await import('./dist/server/entry-server.js')
 
 // A plain-markdown copy of a content page, for AI agents that read markdown
@@ -37,6 +38,20 @@ function buildMarkdownTwin(entry) {
     parts.push(
       '## Frequently asked questions',
       ...entry.faqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`),
+    )
+  }
+  // "Sources", not "Standards referenced": some bodies already end with a
+  // prose section under that heading.
+  if (entry.citations?.length) {
+    parts.push(
+      '## Sources',
+      entry.citations
+        .map((citation) => {
+          const href = resolveCitationUrl(citation)
+          const label = href ? `[${citation.label}](${href})` : citation.label
+          return `- ${label}${citation.clause ? ` — ${citation.clause}` : ''}`
+        })
+        .join('\n'),
     )
   }
   parts.push(`---\n\nSource: https://hagerstone.com${entry.path}`)

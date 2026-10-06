@@ -23,6 +23,7 @@ import { buildBreadcrumbSchema } from "@/lib/locationSchema";
 import { COLLECTION_BASE_PATH } from "@/content/schema";
 import type { ContentEntry } from "@/content/types";
 import { getRelated } from "@/lib/contentModules";
+import { findStandardsPublisher, resolveCitationUrl } from "@/data/standards";
 
 // Shared layout for every MDX-backed page.
 //
@@ -72,6 +73,12 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
   ];
   const isConcept = entry.collection === "design" && entry.designStage === "concept";
 
+  const citations = entry.citations.map((citation) => ({
+    ...citation,
+    href: resolveCitationUrl(citation),
+    publisher: findStandardsPublisher(citation.label)?.publisher,
+  }));
+
   const schema = buildSchemaGraph(
     [
       organizationSchema,
@@ -85,6 +92,20 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         publisher: { "@type": "Organization", "@id": ORG_ID, name: BRAND_NAME, url: SITE_URL },
         mainEntityOfPage: canonical,
         ...(articleImages.length > 0 ? { image: articleImages } : {}),
+        // The standards the page relies on, as linked sources. Answer engines
+        // weigh cited, linked sources when deciding what to quote.
+        ...(citations.length > 0
+          ? {
+              citation: citations.map((citation) => ({
+                "@type": "CreativeWork",
+                name: citation.clause ? `${citation.label}, ${citation.clause}` : citation.label,
+                ...(citation.href ? { url: citation.href } : {}),
+                ...(citation.publisher
+                  ? { publisher: { "@type": "Organization", name: citation.publisher } }
+                  : {}),
+              })),
+            }
+          : {}),
         // Topic signals in machine-readable form, matching the /blog posts that
         // are React pages. Blog articles only; other collections are unchanged.
         ...(entry.collection === "insights"
@@ -205,14 +226,26 @@ const ContentArticle = ({ entry, Body }: ContentArticleProps) => {
         {/* Outside the prose wrapper so Typography does not restyle the figures. */}
         <ContentGallery groups={entry.galleryGroups} images={entry.gallery} />
 
-        {entry.citations.length > 0 && (
+        {citations.length > 0 && (
           <section className="mt-12 rounded-lg border border-border p-6">
             <h2 className="text-base font-semibold text-foreground">Standards referenced</h2>
             <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-              {entry.citations.map((citation) => (
+              {citations.map((citation) => (
                 <li key={`${citation.label}-${citation.clause ?? ""}`}>
-                  <span className="font-medium text-foreground">{citation.label}</span>
+                  {citation.href ? (
+                    <a
+                      href={citation.href}
+                      target="_blank"
+                      rel="noopener"
+                      className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
+                    >
+                      {citation.label}
+                    </a>
+                  ) : (
+                    <span className="font-medium text-foreground">{citation.label}</span>
+                  )}
                   {citation.clause && <> — {citation.clause}</>}
+                  {citation.publisher && <> ({citation.publisher})</>}
                 </li>
               ))}
             </ul>
