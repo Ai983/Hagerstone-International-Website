@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription: "How Hagerstone delivered Kokko Town, a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh, end to end — design, civil, MEP, and custom fabrication.",
     excerpt: "How a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh was built as a two-level pretend-play town — from brief to custom fabrication to handover.",
     content: "Full content available at /blog/kokko-town-play-zone-case-study",
-    image: "/projects/kokko-town/reception/reception-desk.jpg",
+    image: "/projects/kokko-town/hero.webp",
     imageAlt: "Kokko Town reception desk with a green airplane-window feature wall and backlit signage in Sector 17, Chandigarh",
     author: "Dhruv Agarwal",
     authorRole: "Founder & CEO, TEDx Speaker, Author of Workplace 2.0",

@@ -275,7 +275,7 @@ export const allProjects: ProjectData[] = [
     location: "Gurgaon, Haryana",
     sector: "Software Company",
 
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg",
+    hero: "/projects/revolve/hero.webp",
     heroAlt: "Revolve software company modern office reception with contemporary design in Gurgaon",
     summary:
       "A cutting-edge technology office designed to foster innovation, collaboration, and employee well-being. The Revolve project showcases modern tech-office aesthetics with an impressive reception, executive MD cabin, open workstations, collaborative conference rooms, and a vibrant cafeteria—all reflecting the dynamic spirit of a growing software company.",
@@ -314,7 +314,7 @@ export const allProjects: ProjectData[] = [
             alt: "Revolve Technologies reception with modern design elements",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/Reception.jpg",
+            src: "/projects/revolve/hero.webp",
             alt: "Software company reception area at Revolve Gurgaon",
           },
           {
@@ -397,7 +397,7 @@ export const allProjects: ProjectData[] = [
     location: "Delhi",
     sector: "Consulting",
 
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg",
+    hero: "/projects/microsave/hero.webp",
     heroAlt: "MicroSave Consulting MSC corporate office reception with professional interior design in Delhi",
     summary:
       "A sophisticated consulting office designed to reflect MSC's global expertise and professional excellence. The project features an elegant reception, executive cabins for senior consultants, collaborative lounge spaces, well-equipped meeting rooms, and efficient workstation areas—all designed to support the demanding workflow of a leading consulting firm.",
@@ -426,7 +426,7 @@ export const allProjects: ProjectData[] = [
           "Professional and modern welcome zone with warm lighting and inviting finishes, creating a strong first impression for clients.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Reception%20area.jpg",
+            src: "/projects/microsave/hero.webp",
             alt: "MicroSave Consulting reception area with professional design",
           },
         ],
@@ -490,7 +490,7 @@ export const allProjects: ProjectData[] = [
     client: "Himalaya Construction Pvt. Ltd.",
     sector: "Construction",
 
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg",
+    hero: "/projects/himalaya/hero.webp",
     heroAlt: "Himalaya Construction corporate office reception with modern clean design aesthetic",
     summary:
       "A functional and professional corporate office designed for a leading construction company. The project reflects the client's expertise in building with a clean, modern aesthetic featuring an efficient reception, private cabins, a dedicated MD cabin, formal meeting rooms, and productive workstation areas.",
@@ -519,7 +519,7 @@ export const allProjects: ProjectData[] = [
           "Welcoming reception designed with a clean, modern aesthetic and comfortable waiting space for visitors.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Reception%20Area.jpg",
+            src: "/projects/himalaya/hero.webp",
             alt: "Himalaya Construction office reception with modern design",
           },
         ],
@@ -857,7 +857,7 @@ export const allProjects: ProjectData[] = [
     area: "6,500 sq. ft.",
     duration: "2-3 months",
 
-    hero: "/projects/kokko-town/reception/reception-desk.jpg",
+    hero: "/projects/kokko-town/hero.webp",
     heroAlt:
       "Kokko Town reception desk with a green airplane-window feature wall and backlit signage in Sector 17, Chandigarh",
     heroPosition: "center 60%",
@@ -909,7 +909,7 @@ export const allProjects: ProjectData[] = [
           "A welcoming entrance that sets the tone before the play begins — a sculptural green feature wall with an airplane-window cutout sits beneath the backlit Kokko Town sign, framing the reception desk.",
         images: [
           {
-            src: "/projects/kokko-town/reception/reception-desk.jpg",
+            src: "/projects/kokko-town/hero.webp",
             alt: "Kokko Town reception desk with a green airplane-window feature wall and backlit signage",
           },
         ],

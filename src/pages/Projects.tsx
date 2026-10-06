@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { projects } from "@/data/project";
 import ProjectsListHero from "@/components/projects/ProjectsListHero";
-import { ScrollReveal, StaggerContainer } from "@/components/animations";
+import { ScrollReveal } from "@/components/animations";
 import {
   buildSchemaGraph,
   organizationSchema,
@@ -49,11 +49,11 @@ function Projects() {
           </ScrollReveal>
         </div>
 
-        <StaggerContainer
-          className="grid gap-10 md:grid-cols-2 lg:grid-cols-3"
-          variant="slide-up"
-          staggerDelay={0.1}
-        >
+        {/* A plain grid, not a StaggerContainer. That wrapper reveals its
+            children once 20% of it is on screen, and with 50+ cards the grid
+            is 10,000px+ tall, so 20% never fits in a viewport and the cards
+            stayed at opacity 0 for good. */}
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Link
               key={project.id}
@@ -114,7 +114,7 @@ function Projects() {
               </div>
             </Link>
           ))}
-        </StaggerContainer>
+        </div>
 
         {/* Our designs. Someone browsing delivered work is exactly the reader
             who wants to see how a layout gets decided, so this is the highest

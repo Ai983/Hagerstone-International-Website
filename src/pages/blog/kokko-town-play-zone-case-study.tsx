@@ -23,7 +23,7 @@ import type { FaqItem } from "@/lib/seo";
 const slug = "kokko-town-play-zone-case-study";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
-const heroImage = "/projects/kokko-town/reception/reception-desk.jpg";
+const heroImage = "/projects/kokko-town/hero.webp";
 const heroImageAlt =
   "Kokko Town reception desk with a green airplane-window feature wall and backlit signage in Sector 17, Chandigarh";
 

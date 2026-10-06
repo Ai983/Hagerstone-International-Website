@@ -26,6 +26,13 @@ import { buildLocationMatrix } from "./lib/locationPages";
 import { getContentRoutePatterns, getCollectionIndexPatterns } from "./lib/contentRoutes";
 import ContentPage from "./pages/ContentPage";
 import CollectionIndexPage from "./pages/CollectionIndexPage";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+
+// Paths routed in code below. The Supabase routes table lists them too, but it
+// arrives after a network round trip; until then an unmatched path fell through
+// to NotFound, replacing the prerendered project page with a 404 for a moment.
+const CODE_ROUTED_PATHS = new Set(["/projects", "/projects/:id"]);
 
 // Lazy load blog post pages
 const BlogListing = lazy(() => import("./pages/Blog"));
@@ -93,6 +100,9 @@ const AppContent = () => {
         {/* Hardcoded home route */}
         <Route path="/" element={<Index />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        {/* Mirrored in ServerApp.tsx. */}
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
 
         {/* Programmatic local-SEO pages (city hubs + service×city) */}
         <Route path="/locations/:city" element={<CityHub />} />
@@ -260,7 +270,7 @@ const AppContent = () => {
         {/* Dynamic routes from database */}
         {routes?.map((route) => {
           const Component = componentRegistry[route.component_key];
-          if (!Component) return null;
+          if (!Component || CODE_ROUTED_PATHS.has(route.path)) return null;
 
           return (
             <Route

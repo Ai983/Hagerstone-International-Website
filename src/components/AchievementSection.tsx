@@ -1,9 +1,29 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function AchievementSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // The 4 MB showcase video sits well below the fold. `autoPlay` would make the
+  // browser fetch it at page load regardless of `preload="none"`, so it is
+  // started only once it scrolls into view, and paused again when it leaves.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="py-20 bg-gradient-to-b from-background via-muted/10 to-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,8 +68,8 @@ export default function AchievementSection() {
           >
             <div className="relative w-auto md:w-[95%] lg:w-[90%] xl:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-luxury">
               <video
+                ref={videoRef}
                 className="w-full h-full rounded-3xl transition-transform duration-500 group-hover:scale-105 object-cover"
-                autoPlay
                 loop
                 muted
                 playsInline
