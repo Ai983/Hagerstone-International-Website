@@ -1,0 +1,90 @@
+---
+title: "Power Factor Correction: Why the Electricity Bill Cares About It"
+metaTitle: "Power Factor Correction (APFC) Explained"
+metaDescription: "What power factor is, how an APFC panel corrects it with capacitors, why detuned reactors matter in offices full of electronics, and what goes wrong."
+slug: "power-factor-correction"
+collection: "glossary"
+status: "published"
+publishedOn: "2026-10-07"
+author: "Dhruv Agarwal"
+primaryKeyword: "power factor correction"
+keywords:
+  - "apfc panel"
+  - "power factor improvement"
+  - "capacitor bank detuned reactor"
+  - "low power factor penalty"
+definition: "Power factor is the ratio of the power that does useful work to the total power drawn from the supply. Motors, transformers and some electronics draw extra reactive current, which lowers it. Power factor correction adds capacitors, usually in an automatic (APFC) panel, to supply that reactive current locally, so less current is drawn from the grid."
+citations:
+  - label: "IEC 60831-1"
+    clause: "Shunt power capacitors of the self-healing type for a.c. systems up to 1000 V"
+  - label: "IEC 61921"
+    clause: "Power capacitors — low-voltage power factor correction banks"
+  - label: "IEEE 519"
+    clause: "Harmonic control in electric power systems"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical and allied installations"
+faqs:
+  - question: "Why does a low power factor matter?"
+    answer: "A low power factor means more current flows for the same useful power. That extra current heats cables, transformers and switchgear, uses up capacity that could serve real load, and increases losses. Many electricity tariffs also price it in through incentives, penalties or billing in kVA, so it can show up directly on the bill. The applicable rules are set in the tariff order of the state electricity regulator."
+  - question: "What is an APFC panel?"
+    answer: "An automatic power factor correction panel contains several capacitor steps and a controller. The controller measures the power factor continuously and switches capacitor steps in and out to follow the load, so the site neither under-corrects when load is high nor over-corrects when it is light."
+  - question: "What is a detuned reactor and why is it needed?"
+    answer: "A reactor connected in series with each capacitor step. Modern offices are full of electronic loads, such as LED drivers, UPS systems, computers and variable speed drives, which create harmonic currents. Capacitors on their own can resonate with the supply at a harmonic frequency and amplify it, which overheats and destroys them. A detuned reactor shifts the resonance away from the harmonics present."
+  - question: "Can you over-correct the power factor?"
+    answer: "Yes. Too much capacitance at light load pushes the power factor leading, which can raise voltage and, under some tariffs, is treated no better than a lagging power factor. That is why automatic panels with sensible step sizes are used rather than fixed capacitors sized for full load."
+  - question: "Where is the APFC panel connected?"
+    answer: "Usually on the main LT panel, so it corrects the site as a whole. Large motor loads sometimes also have individual correction at the motor. The connection point, step sizes and whether detuning is needed are decided by the electrical designer after reviewing the load and, ideally, a harmonic measurement."
+related:
+  - "harmonic-distortion"
+  - "ht-vs-lt-panel"
+  - "sanctioned-load"
+  - "busbar-trunking"
+  - "dg-set-vs-ups-backup-power"
+  - "cable-derating"
+---
+
+## Why it matters on a project
+
+Power factor sits on the electricity bill and in the sizing of every transformer,
+cable and DG set on site. A correction panel that is specified without looking at
+the actual load is a common reason for failed capacitors, nuisance alarms and a
+power factor that drifts once the office is occupied.
+
+## The idea in one table
+
+| Term | Measured in | What it means |
+| --- | --- | --- |
+| Active power | kW | Power doing useful work |
+| Reactive power | kVAr | Power that circulates to magnetise motors and transformers |
+| Apparent power | kVA | Total drawn from the supply |
+| Power factor | kW ÷ kVA | How much of what is drawn does useful work |
+
+Correction capacitors supply kVAr locally, so the supply delivers less kVA for the
+same kW.
+
+## What a sound installation includes
+
+- **Automatic switching** in steps that follow the load, rather than fixed capacitors.
+- **Detuned reactors** where harmonic-producing loads are significant, which in a
+  modern office they usually are. Harmonic limits are discussed in **IEEE 519**.
+- **Capacitors and banks to recognised standards**, such as **IEC 60831-1** for the
+  capacitors and **IEC 61921** for low-voltage correction banks.
+- **Ventilation for the panel**, because capacitors and reactors generate heat and
+  their life falls quickly when they run hot.
+- **A controller set up at commissioning**, not left on factory defaults.
+
+## Common mistakes
+
+- **Plain capacitors on a site full of electronics**, leading to resonance and failure.
+- **Sizing from connected load** instead of from measured or estimated running load.
+- **Over-correction at night and weekends** when the load drops.
+- **No periodic check** of capacitor health, so failed steps go unnoticed.
+- **Panel located in an unventilated room** next to the main LT panel.
+
+## Standards referenced
+
+Capacitors under **IEC 60831-1**; low-voltage correction banks under **IEC 61921**;
+harmonic considerations in **IEEE 519**; electrical installations within
+**NBC 2016, Part 8**. Tariff treatment of power factor is set by the applicable
+state electricity regulator. Correction ratings and detuning for a specific site
+must be established by the project's electrical designer.

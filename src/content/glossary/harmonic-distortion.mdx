@@ -1,0 +1,86 @@
+---
+title: "Harmonic Distortion: The Hidden Load in a Modern Office"
+metaTitle: "Harmonic Distortion (THD) in Buildings"
+metaDescription: "What harmonics are, why LED drivers, UPS and IT equipment create them, how they overheat neutrals and capacitors, and how they are measured and controlled."
+slug: "harmonic-distortion"
+collection: "glossary"
+status: "published"
+publishedOn: "2026-10-07"
+author: "Dhruv Agarwal"
+primaryKeyword: "harmonic distortion"
+keywords:
+  - "total harmonic distortion thd"
+  - "harmonics in electrical system"
+  - "neutral overheating harmonics"
+  - "harmonic filter office"
+definition: "Harmonic distortion is the change in the shape of the supply current or voltage caused by loads that draw current in pulses rather than as a smooth wave. Electronic equipment such as LED drivers, computers, UPS systems and variable speed drives does this. The result is extra current at multiples of the supply frequency, measured as total harmonic distortion (THD)."
+citations:
+  - label: "IEEE 519"
+    clause: "Harmonic control in electric power systems"
+  - label: "IEC 61000-3-2"
+    clause: "Limits for harmonic current emissions (equipment input current ≤ 16 A per phase)"
+  - label: "IEC 61000-3-12"
+    clause: "Limits for harmonic currents produced by equipment connected to public low-voltage systems (> 16 A and ≤ 75 A per phase)"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services — electrical and allied installations"
+faqs:
+  - question: "What causes harmonics in an office?"
+    answer: "Non-linear loads: equipment with electronic power supplies that draw current in short pulses. In an office that means LED lighting drivers, computers and monitors, UPS systems, variable speed drives on HVAC equipment and lift drives. Individually small, together they can make up most of the building's load."
+  - question: "Why do harmonics overheat the neutral?"
+    answer: "In a balanced three-phase system the normal currents in the three phases largely cancel in the neutral. Certain harmonics, the third and its odd multiples, do not cancel; they add up in the neutral instead. On a floor full of single-phase electronic loads the neutral can carry significant current even when the phases are balanced, which is why neutral sizing is a design question, not an afterthought."
+  - question: "What other damage can harmonics do?"
+    answer: "They add heating in transformers and cables, can cause nuisance tripping, interfere with sensitive equipment, and can make power factor correction capacitors resonate with the supply, which overheats and destroys them. DG sets and UPS systems feeding heavily distorted loads may also need to be derated."
+  - question: "How are harmonics measured?"
+    answer: "With a power quality analyser connected at the main incomer or at a distribution board, logging over a representative period of normal operation. It reports total harmonic distortion for current and voltage and the individual harmonic orders, which tells the designer which mitigation, if any, is needed."
+  - question: "How are harmonics controlled?"
+    answer: "Options include specifying equipment with low harmonic emissions, sizing neutrals and transformers to suit, using detuned reactors with correction capacitors, and fitting passive or active harmonic filters where measured distortion justifies them. The right combination depends on measurement and design, not on a standard product added to every panel."
+related:
+  - "power-factor-correction"
+  - "ht-vs-lt-panel"
+  - "cable-derating"
+  - "earthing-and-bonding"
+  - "dg-set-vs-ups-backup-power"
+  - "busbar-trunking"
+---
+
+## Why it matters on a project
+
+Twenty years ago an office's electrical load was mostly lighting tubes, motors and
+heaters. Today it is mostly electronics. The total kW may look similar, but the way
+that load draws current is very different, and an electrical design that ignores it
+can produce hot neutrals, failed capacitors and equipment faults nobody can explain.
+
+## Where harmonics come from and what they do
+
+| Source | Typical location | Main effect |
+| --- | --- | --- |
+| LED drivers, computers, monitors | Every floor, single-phase | Third-harmonic current in the neutral |
+| UPS systems | Server and IT rooms | Distortion at the input, generator interaction |
+| Variable speed drives | HVAC plant, pumps, lifts | Higher-order harmonics, capacitor stress |
+| Mixed loads together | Main LT panel | Transformer heating, voltage distortion |
+
+## How limits are framed
+
+- **IEEE 519** sets recommended limits for harmonic current and voltage distortion at
+  the point where a building connects to the supply network.
+- **IEC 61000-3-2** and **IEC 61000-3-12** set emission limits for individual
+  equipment, which is why specifying compliant equipment is the first line of
+  control.
+
+Electrical installations as a whole sit within **NBC 2016, Part 8**.
+
+## Common mistakes
+
+- **Neutral sized like a phase conductor or smaller** on floors dominated by electronic loads.
+- **Plain capacitors in the APFC panel** on a site with significant harmonics.
+- **Buying filters without measuring**, so the filter is the wrong type or size.
+- **Assuming the DG set can carry the full UPS load** without checking its compatibility with distorted current.
+- **No power quality survey** before adding a large IT or VSD load to an existing building.
+
+## Standards referenced
+
+Network-level limits in **IEEE 519**; equipment emission limits in
+**IEC 61000-3-2** and **IEC 61000-3-12**; electrical installations within
+**NBC 2016, Part 8**. Neutral sizing, filtering and derating for a specific
+installation must be established by the project's electrical designer, ideally from
+measured data.
