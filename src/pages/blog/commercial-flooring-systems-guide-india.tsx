@@ -80,14 +80,10 @@ const faqItems: FaqItem[] = [
 ];
 
 export default function CommercialFlooringSystemsGuideIndiaBlog() {
-  const lastUpdated = new Date();
-  const lastUpdatedLabel = new Intl.DateTimeFormat("en-IN", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "Asia/Kolkata",
-  }).format(lastUpdated);
-  const lastUpdatedIso = lastUpdated.toISOString();
+  // The post's real date (blogPosts.ts). Never `new Date()`: that restamped
+  // the post on every build, which Google treats as date manipulation.
+  const lastUpdatedLabel = "22 September 2026";
+  const lastUpdatedIso = "2026-09-22T00:00:00Z";
 
   const relatedBlogPosts = getRelatedPosts(slug, 3);
 
