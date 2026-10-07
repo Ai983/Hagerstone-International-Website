@@ -19,6 +19,7 @@ import LeadPopupForm from "./components/LeadPopupForm";
 import WhatsAppBubble from "./components/WhatsAppBubble";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import CityHub from "./pages/CityHub";
+import LocationsIndex from "./pages/LocationsIndex";
 import ServiceCity from "./pages/ServiceCity";
 import { buildLocationMatrix } from "./lib/locationPages";
 import { getContentRoutePatterns, getCollectionIndexPatterns } from "./lib/contentRoutes";
@@ -120,6 +121,7 @@ const AppContent = () => {
         <Route path="/contact" element={<Contact />} />
 
         {/* Programmatic local-SEO pages (city hubs + service×city) */}
+        <Route path="/locations" element={<LocationsIndex />} />
         <Route path="/locations/:city" element={<CityHub />} />
 
         {/*

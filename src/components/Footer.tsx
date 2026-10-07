@@ -201,6 +201,14 @@ const Footer = () => {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    to="/locations"
+                    className="text-gold hover:text-white transition-colors duration-300"
+                  >
+                    All locations →
+                  </Link>
+                </li>
               </ul>
             </div>
           )}

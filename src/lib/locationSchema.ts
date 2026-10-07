@@ -1,6 +1,7 @@
 import {
   BRAND_NAME,
   HAGERSTONE_ADDRESS,
+  ORG_ID,
   SITE_URL,
   buildFaqSchema,
   buildSchemaGraph,
@@ -64,10 +65,14 @@ export const buildCityHubSchema = (city: City, canonical: string, faqs: FaqItem[
       address: HAGERSTONE_ADDRESS,
       areaServed: { "@type": "City", name: city.name },
       description: `Office design & build, interiors, MEP, and turnkey fit-out services in ${city.name}, ${city.state}.`,
+      // Ties each city node to the one Organization (which carries sameAs).
+      // No `geo`: the business has one address, the Noida head office, and
+      // coordinates for the served city would claim an office that isn't there.
+      parentOrganization: { "@id": ORG_ID },
     },
     buildBreadcrumbSchema([
       { name: "Home", url: `${SITE_URL}/` },
-      { name: "Locations", url: `${SITE_URL}/locations/${city.slug}` },
+      { name: "Locations", url: `${SITE_URL}/locations` },
       { name: city.name, url: canonical },
     ]),
     buildFaqSchema(faqs),

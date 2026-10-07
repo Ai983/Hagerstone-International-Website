@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE_URL, type FaqItem } from "@/lib/seo";
 import { getCityBySlug } from "@/data/cities";
 import { getProjectById } from "@/data/project";
@@ -39,6 +40,16 @@ const CityHub = () => {
   // the page would still name it as delivered work and link to a page that no
   // longer exists. Entries with no slug are plain mentions and always show.
   const cityProjects = city.projects.filter((p) => !p.slug || getProjectById(p.slug));
+
+  // Only cities with a live page; a link to an unpublished one would 404.
+  const nearbyCities = city.nearbyCitySlugs
+    .map((slug) => getCityBySlug(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c?.published));
+
+  // A plain Maps search link, not an embedded map: no third-party script or
+  // iframe on the page. Uses Google's documented search-URL format.
+  const mapsQuery = `${city.districts[0] ? `${city.districts[0]}, ` : ""}${city.name}, ${city.state}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
 
   const faqs: FaqItem[] = [
     {
@@ -79,9 +90,10 @@ const CityHub = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        // Kept short enough that the city name survives Google's ~60-character
-        // truncation, which the previous four-service list did not.
-        title={`Office Interiors & Fit-Out in ${city.name} | Hagerstone`}
+        // City name first: a searcher scanning results for their city sees it
+        // before anything else (plan step 5a cites a published SearchPilot test
+        // of this pattern at +8.5%). Under 60 characters for every city.
+        title={`${city.name} Office Interiors & Fit-Out | Hagerstone`}
         description={`Interiors, facade & glazing, aluminium doors and windows, MEP, PEB and civil construction in ${city.name}, ${city.state} — with the local approval authorities each project has to clear.`}
         canonical={canonical}
         keywords={`interior fit out ${city.name}, facade contractors ${city.name}, aluminium doors and windows ${city.name}, mep contractors ${city.name}, construction company ${city.name}`}
@@ -90,12 +102,15 @@ const CityHub = () => {
 
       <header className="bg-gradient-hero text-primary-foreground py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-sm text-white/80 mb-6">
-            <Link to="/" className="hover:text-white">
-              Home
-            </Link>{" "}
-            / <span className="text-white">Locations / {city.name}</span>
-          </nav>
+          <Breadcrumbs
+            tone="onDark"
+            className="mb-6"
+            items={[
+              { name: "Home", path: "/" },
+              { name: "Locations", path: "/locations" },
+              { name: city.name, path: `/locations/${city.slug}` },
+            ]}
+          />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Interiors, Facade & Construction Contractors in {city.name}
           </h1>
@@ -229,7 +244,38 @@ const CityHub = () => {
               </span>
             ))}
           </div>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener"
+            className="mt-4 inline-flex text-sm font-medium text-accent hover:underline"
+          >
+            See {city.name} on Google Maps →
+          </a>
         </section>
+
+        {nearbyCities.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-primary mb-6">Nearby Locations</h2>
+            <div className="flex flex-wrap gap-3">
+              {nearbyCities.map((nearby) => (
+                <Link
+                  key={nearby.slug}
+                  to={`/locations/${nearby.slug}`}
+                  className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-sm text-primary hover:border-primary transition"
+                >
+                  {nearby.name}
+                </Link>
+              ))}
+              <Link
+                to="/locations"
+                className="inline-flex items-center rounded-full px-4 py-2 text-sm text-accent hover:underline"
+              >
+                All locations →
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* Project proof */}
         {cityProjects.length > 0 && (

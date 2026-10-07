@@ -44,6 +44,8 @@ export const getServiceCitiesForCity = (citySlug: string): ServiceCityPage[] =>
 export const getLocationPrerenderPaths = (): string[] => {
   const { hubs, serviceCities } = buildLocationMatrix();
   return [
+    // The /locations index exists only while there is a city to list.
+    ...(hubs.length > 0 ? ["/locations"] : []),
     ...hubs.map((c) => `/locations/${c.slug}`),
     ...serviceCities.map((p) => p.path),
   ];
