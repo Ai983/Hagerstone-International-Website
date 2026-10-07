@@ -97,6 +97,12 @@ export const DEFINITION_REQUIRED: Collection[] = [
   "insights",
   "industries",
   "estates",
+  "materials",
+  "facade",
+  "interiors",
+  "mep",
+  "peb",
+  "civil",
 ];
 
 const faqSchema = z.object({
