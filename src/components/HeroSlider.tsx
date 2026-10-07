@@ -10,6 +10,7 @@ const HeroSlider = () => {
     {
       type: "video" as const,
       src: homepageWalkthroughVideo.videoUrl,
+      mobileSrc: homepageWalkthroughVideo.mobileVideoUrl,
       poster: "/hero-images/office.avif",
       title: homepageWalkthroughVideo.title,
       alt: "Office design and build walkthrough video by Hagerstone International",
@@ -78,6 +79,14 @@ const HeroSlider = () => {
               title={currentSlideItem.title}
               aria-label={currentSlideItem.alt}
             >
+              {/* The browser takes the first matching source, so the phone
+                  file must come first. A browser too old to read `media`
+                  plays the 720p file everywhere: softer, but it still plays. */}
+              <source
+                src={currentSlideItem.mobileSrc}
+                type="video/webm"
+                media="(max-width: 767px)"
+              />
               <source src={currentSlideItem.src} type="video/webm" />
             </video>
           ) : (

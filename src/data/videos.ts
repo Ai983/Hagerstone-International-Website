@@ -16,15 +16,20 @@ export interface VideoMetadata {
   keywords: string[];
 }
 
+// Homepage hero video. Re-encoded from the 16.8 MB Supabase original
+// (1080p, 9.8 Mbps, with an audio track it never plays) to VP9 without audio:
+// 4.8 MB at 1080p, 2.4 MB at 720p for phones. Self-hosted because Supabase
+// served it `no-cache`; vercel.json caches /hero/*.webm as immutable, so a
+// replacement must get a new file name (-v3), never overwrite these.
 export const homepageWalkthroughVideo = {
   id: "homepage-walkthrough",
   title: "Hagerstone Office Design & Build Walkthrough",
   description:
     "Walkthrough video showcasing Hagerstone International's office design and build expertise, modern workspace interiors, turnkey fit-out delivery, MEP coordination, and commercial interior solutions.",
-  videoUrl:
-    "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/media/Walkthrough%20-%201.webm",
-  contentUrl:
-    "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/media/Walkthrough%20-%201.webm",
+  videoUrl: "/hero/walkthrough-v2-1080.webm",
+  /** Served instead of videoUrl on screens up to 767px wide. */
+  mobileVideoUrl: "/hero/walkthrough-v2-720.webm",
+  contentUrl: "https://hagerstone.com/hero/walkthrough-v2-1080.webm",
   thumbnailUrl: "https://hagerstone.com/hero-images/office.avif",
   uploadDate: "2026-05-01T09:00:00+05:30",
   keywords: [
