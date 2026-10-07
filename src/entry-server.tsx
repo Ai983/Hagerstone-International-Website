@@ -6,7 +6,8 @@ export { getLocationPrerenderPaths } from './lib/locationPages';
 export { getContentPrerenderPaths } from './lib/contentRoutes';
 export { getProjectPrerenderPaths, getBlogPrerenderPaths } from './lib/dataRoutes';
 export { getBlogListingPaths } from './lib/blogList';
-export { contentIndex } from './lib/contentModules';
+// Full entries (FAQs, citations): prerender.js writes the markdown copies from them.
+export { fullContentIndex as contentIndex } from './lib/contentModules.server';
 export { resolveCitationUrl } from './data/standards';
 export {
   buildUrlSitemapXml,

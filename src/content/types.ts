@@ -70,3 +70,13 @@ export interface ContentEntry
   wordCount: number;
   readingMinutes: number;
 }
+
+/**
+ * The fields only the article page renders, kept out of the index every page
+ * loads and stored per entry in .generated/details/. Keep in step with
+ * DETAIL_FIELDS in scripts/build-content-index.mjs.
+ */
+export type ContentDetails = Pick<ContentEntry, "faqs" | "citations" | "gallery" | "galleryGroups">;
+
+/** An index entry: everything except ContentDetails. Enough for listings, links and routing. */
+export type ContentSummary = Omit<ContentEntry, keyof ContentDetails>;

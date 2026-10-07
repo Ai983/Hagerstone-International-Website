@@ -3,7 +3,9 @@ import { SOCIAL_LINKS } from "@/lib/social";
 import { projects } from "@/data/project";
 import { blogPosts } from "@/data/blogPosts";
 import { videos, homepageWalkthroughVideo } from "@/data/videos";
-import { contentIndex } from "@/content/.generated/index";
+// The full index (with galleries for the image sitemap). Build-time only:
+// sitemap.ts is reached from entry-server, never from the client bundle.
+import { fullContentIndex as contentIndex } from "@/lib/contentModules.server";
 import { COLLECTION_BASE_PATH, COLLECTIONS, type Collection } from "@/content/schema";
 
 // Build-time generators for the image and video sitemaps + the sitemap index.

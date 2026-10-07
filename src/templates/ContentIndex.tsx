@@ -8,7 +8,7 @@ import {
 } from "@/lib/seo";
 import { buildBreadcrumbSchema } from "@/lib/locationSchema";
 import { COLLECTION_BASE_PATH, type Collection } from "@/content/schema";
-import type { ContentEntry } from "@/content/types";
+import type { ContentSummary } from "@/content/types";
 
 // Listing page for one content collection.
 //
@@ -30,7 +30,7 @@ interface ContentIndexProps {
   intro: string;
   metaTitle: string;
   metaDescription: string;
-  entries: ContentEntry[];
+  entries: ContentSummary[];
   cta?: CollectionCta;
 }
 
