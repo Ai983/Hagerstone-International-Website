@@ -432,3 +432,134 @@ dash list in new pages, or check by eye.)
 - [ ] Manual safety scan returns nothing
 - [ ] Full build + prerender: `0 failed`, sitemap matches
 - [ ] `git pull --rebase`, then push in a batch of 10-25
+
+---
+
+## 15. Writing for SEO, AEO and GEO (and for CEOs and buyers)
+
+Added 8 Oct 2026. Sources: `docs/SEO-AEO-GEO-PLAN.md`, `GEO-FIX-DIRECTIVES.md`,
+`GEO-AUDIT-REPORT.md`, `docs/CONTENT-HANDOVER.md` §7.
+
+| Term | Goal |
+|---|---|
+| **SEO** | Rank higher in Google's normal results |
+| **AEO** | Be the answer Google quotes in snippets and AI Overviews |
+| **GEO** | Be named and cited by ChatGPT, Perplexity, Gemini, Claude and similar tools |
+
+**Be realistic about "number 1 on every AI".** Nobody can guarantee it, and no rule in this
+repo can produce it. What the research supports is raising the odds of being cited:
+crawlable HTML, one clear answer per page, named and linked sources, consistent facts, and
+real structured data. The rules below are those levers. Never trade them for a shortcut
+(fake stats, date-bumping, keyword stuffing); AI engines and Google both punish
+inconsistency.
+
+### 15.1 What the template does for you automatically
+
+You do not need to write any of this. Just fill the frontmatter correctly and it appears.
+
+- Static HTML for every page (prerendered), so crawlers see full content without JavaScript
+- `Article` JSON-LD with author, `datePublished`, `dateModified` (from `updatedOn`), one shared
+  `Organization` node, and `citation[]` linking to each standard's publisher
+- `FAQPage` JSON-LD from `faqs`, and a visible FAQ accordion
+- `BreadcrumbList` schema and visible breadcrumbs
+- `ImageObject` and image-sitemap entries from `heroImage` / `gallery`
+- Sitemap with real `<lastmod>`, `llms.txt`, and a `.md` copy of every content page for AI agents
+- `robots.txt` allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended and Bravebot
+- IndexNow ping to Bing (feeds ChatGPT search) for new, removed or genuinely updated URLs
+
+If a field is empty, the matching signal is missing. An empty `faqs` means no FAQ schema; no
+`citations` means no `citation[]`; no `heroImageAlt` fails the build.
+
+### 15.2 What you must do on every page (the writer's part)
+
+**Answer-first (AEO)**
+- `definition` is a complete, standalone answer to the page's main question in 1-2
+  sentences, not an introduction. It is what snippets and AI Overviews lift.
+- The first section after it says what the decision turns on, not a restatement of the title.
+- Headings are real questions or clear statements, so a model can lift one section alone.
+  Each section should make sense without the others.
+
+**Cite and link (GEO, the highest-value lever)**
+- Name the standard in the body *and* list it under `citations` with its clause. Linked
+  citations (§6) are the best-performing treatment in the GEO research this site follows.
+- Only cite what you can name correctly. Never invent a clause. Where the verbatim wording of
+  a clause is used, quote it exactly and attribute it; do not paraphrase inside quotation
+  marks. (A dedicated `quote` field is planned, plan step 4c; until it ships, put a short
+  verbatim quote in the body with the standard named beside it.)
+- Prefer the standards body over any blog or mirror as the source.
+
+**Internal links (SEO + AI context)**
+- Fill `related` with 3-6 real slugs (§7): a parent guide, a sibling glossary term or
+  comparison, and the relevant service page. Guides link up from glossary and compare pages;
+  glossary and compare pages link to the guide.
+- Link in the body to the service page or guide the reader would logically read next, using
+  descriptive anchor text ("unitized curtain wall", not "click here"). Use real existing paths
+  only; check the path in the sitemap.
+- Do not build a page that nothing links to. The build's sitemap guarantee stops 404s, not
+  orphans.
+
+**Tables and structure**
+- At least one table (comparison, components, or what-it-covers / what-it-doesn't). Tables
+  and short lists are what answer engines extract most reliably.
+- Where prose says "X vs Y" three times, convert it to a table (plan step 4b).
+
+**Entity consistency (GEO)**
+- Always write the company as **Hagerstone International** (one word, "Hagerstone"; never
+  "Hager Stone"). Use the same name on every page.
+- Use only facts and figures already on the site. If two figures conflict, use neither.
+  Company figures live in one place; do not type new ones into a page.
+- Do not state the founding year (2013 vs 2014 is unresolved).
+
+**Page-level SEO**
+- One `primaryKeyword` per page; no two pages for the same query (search first, §7).
+- `metaTitle` ≤ about 60 chars with the keyword near the front (§5.1); `metaDescription`
+  140-160 chars, unique, written as a reason to click.
+- Title and H1 (`title`) say what the page is, not marketing copy.
+- City pages (when reopened): city name first in the title.
+
+**Writing for CEOs, CFOs and senior buyers (not only engineers)**
+- Open with what the decision *costs* (time, risk, rework), not what the product is.
+- Frame technical facts as commercial consequences ("every enclosed room takes area twice:
+  once for the room, once for the circulation to reach it").
+- Target evaluation phrasing: "X vs Y", "who pays", "which is faster", "what to ask".
+  Someone comparing options is close to buying.
+- Be honest about limits: say what depends on the building and what an engineer must confirm.
+  That candour is what builds trust with a senior reader and with a model weighing sources.
+- Never oversell or promise results. No "best", "guaranteed", "No. 1" claims (§2).
+
+### 15.3 Things from older documents that must NOT be copied
+
+`GEO-FIX-DIRECTIVES.md` (10 June audit) was written before the publishing rule and contains
+text that now breaks it. Do not reuse:
+
+- "Delivered within 60 days", "delivery guarantee: 60 days": a guarantee and a project claim
+- "173+ clients", "7.9M sqft", "309+ workers", "Founded 2013": company figures that conflict
+  with other sources on the site; use only what is already live
+- "Rs 119+ crores saved", ₹ cost answers for the homepage FAQ: pricing is not approved
+- Naming specific clients (Airtel, Lufthansa...) unless they are already on the site
+
+The structural advice in that file (prerendering, schema types, sitemaps, canonical tags,
+citable blocks) is already built; the claims in its example copy are not safe to reuse.
+
+### 15.4 Not code, but they decide AI visibility
+
+Off-site work in `OFFSITE-TODO.md` (Google Business Profile, Clutch, IndiaMART name fix,
+Wikidata, LinkedIn, press) strongly affects whether AI tools mention the company at all. A
+perfect page on a company nobody else mentions ranks poorly. Pages cannot do this for you.
+
+### 15.5 Planned, not yet built (so do not assume it exists)
+
+From `docs/SEO-AEO-GEO-PLAN.md`: per-author profiles and an author enum (2b); verbatim
+`quote` field on citations (4c); tables on older pages (4b); project FAQs (5b); smaller
+homepage assets and removal of the third-party SearchAtlas script (3b-3d). If you finish
+one, update this section.
+
+### 15.6 Extra checklist items for SEO / AEO / GEO
+
+- [ ] `definition` is a self-contained answer, not an intro
+- [ ] Every standard is named in the text and in `citations`, and the label links (§6)
+- [ ] 3-6 real `related` slugs, plus descriptive in-body links to the next page to read
+- [ ] A table; 5-6 FAQs written as real follow-up questions
+- [ ] "Hagerstone International" spelled one way; no invented figures
+- [ ] Written for a decision-maker: cost of the decision first, limits stated honestly
+- [ ] No "guaranteed / best / No. 1 / delivered in N days"
