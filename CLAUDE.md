@@ -4,6 +4,8 @@ Marketing site for Hagerstone International (hagerstone.com). Vite 5 + React 18 
 TypeScript + Tailwind/shadcn. **Not Next.js.** Pages are prerendered to static HTML at
 build time so Google and AI crawlers see real content. Hosted on Vercel from `main`.
 
+**Every publishing rule in one place: `docs/PUBLISHING-MASTER-GUIDE.md`.** Read it before adding any page.
+
 Full project history, decisions and next steps: **`SEO-PROJECT-STATUS.md`**. Read it before
 SEO or content work. The current SEO/AEO/GEO to-do list, in order, is
 **`docs/SEO-AEO-GEO-PLAN.md`**.

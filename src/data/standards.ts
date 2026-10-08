@@ -75,11 +75,21 @@ const RULES: StandardsRule[] = [
     url: "https://cea.nic.in/regulations/?lang=en",
   },
   { pattern: /^CPCB\b/, publisher: "Central Pollution Control Board", url: "https://cpcb.nic.in/" },
+  {
+    pattern: /^ASHRAE\b/,
+    publisher: "ASHRAE",
+    url: "https://www.ashrae.org/technical-resources/standards-and-guidelines",
+  },
+  { pattern: /^IEEE\b/, publisher: "IEEE", url: "https://standards.ieee.org/" },
+  { pattern: /^BS\b/, publisher: "British Standards Institution", url: "https://knowledge.bsigroup.com/" },
+  { pattern: /^SMACNA\b/, publisher: "SMACNA", url: "https://www.smacna.org/" },
+  { pattern: /^TIA\b/, publisher: "Telecommunications Industry Association", url: "https://tiaonline.org/" },
   { pattern: /^UL\s*\d/, publisher: "UL Standards & Engagement", url: "https://www.shopulstandards.com/" },
   { pattern: /^ACI\b/, publisher: "American Concrete Institute", url: "https://www.concrete.org/store.aspx" },
-  // Left unlinked for now (warned at build): TIA (site not responding),
-  // SMACNA (standards page 404), and the Acts and bye-laws, whose official
-  // home India Code was mid-migration on 6 Oct 2026.
+  // TIA, SMACNA, IEEE, BS and general ASHRAE homepages were re-checked
+  // (HTTP 200) on 8 Oct 2026. Still unlinked (warned at build): the Acts and
+  // bye-laws (Indian Contract Act, RERA, Delhi Bye-Laws), whose official home
+  // India Code was mid-migration on 6 Oct 2026.
 ];
 
 /** The publisher page for a citation label, or undefined if none is known. */
