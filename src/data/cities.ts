@@ -163,7 +163,7 @@ export const cities: City[] = [
       byeLaws: "Unified Building Bye-Laws for Delhi",
     },
     districts: ["Connaught Place", "Nehru Place", "Saket", "Aerocity", "Okhla", "Rangpuri"],
-    nearbyCitySlugs: ["noida", "gurugram", "faridabad"],
+    nearbyCitySlugs: ["noida", "gurugram", "faridabad", "sonipat"],
     marketNote:
       "Delhi blends legacy commercial districts like Connaught Place and Nehru Place with premium new-economy hubs around Saket and Aerocity. Projects here range from heritage-sensitive refurbishments to high-spec corporate and healthcare interiors on constrained, high-footfall sites.",
     projects: [
@@ -429,7 +429,7 @@ export const cities: City[] = [
       byeLaws: "Haryana Building Code",
     },
     districts: ["IMT Manesar", "NH-48 corridor", "KMP Expressway", "Sector 8 Manesar"],
-    nearbyCitySlugs: ["gurugram", "delhi", "faridabad"],
+    nearbyCitySlugs: ["gurugram", "bhiwadi", "delhi", "faridabad"],
     marketNote:
       "Manesar is the manufacturing half of Gurugram — IMT Manesar is one of Haryana's largest industrial estates, dominated by automotive and auto-component plants along the NH-48 and KMP Expressway corridors. Projects here are factories, warehouses, admin blocks and plant offices, where PEB, civil, firefighting and MEP matter as much as interiors.",
     projects: [],
@@ -517,7 +517,7 @@ export const cities: City[] = [
       byeLaws: "Rajasthan Building Bye-Laws",
     },
     districts: ["Kotputli RIICO Industrial Area", "Delhi–Jaipur NH-48 corridor"],
-    nearbyCitySlugs: ["jaipur", "gurugram"],
+    nearbyCitySlugs: ["jaipur", "bhiwadi", "gurugram"],
     marketNote:
       "Kotputli sits midway between Delhi and Jaipur on NH-48, which has made it a location for cement, manufacturing and logistics facilities serving both markets. Large-footprint industrial buildings and their supporting civil and MEP work are the common scope.",
     projects: [],
@@ -650,7 +650,7 @@ export const cities: City[] = [
       byeLaws: "Comprehensive General Development Control Regulations (CGDCR), Gujarat",
     },
     districts: ["SG Highway", "Prahlad Nagar", "Sanand GIDC", "Naroda GIDC", "Vatva GIDC"],
-    nearbyCitySlugs: ["bhuj"],
+    nearbyCitySlugs: ["bhuj", "indore"],
     marketNote:
       "Ahmedabad combines a large corporate market along SG Highway and Prahlad Nagar with Gujarat's major industrial estates at Sanand, Naroda and Vatva. Corporate offices, manufacturing plants and warehousing all generate steady demand for interiors, PEB, civil and MEP work.",
     projects: [],
@@ -746,7 +746,7 @@ export const cities: City[] = [
       byeLaws: "Development Control and Promotion Regulations for Greater Mumbai, 2034 (DCPR 2034)",
     },
     districts: ["Bandra Kurla Complex (BKC)", "Lower Parel", "Nariman Point", "Andheri", "Powai", "Worli"],
-    nearbyCitySlugs: ["jalna", "ahmedabad"],
+    nearbyCitySlugs: ["pune", "jalna", "ahmedabad"],
     marketNote:
       "Mumbai is India's financial capital and its most demanding retail and commercial interiors market. Office demand is concentrated in Bandra Kurla Complex, Lower Parel, Worli and the Andheri–Powai belt, while premium retail sits in high-street stores and luxury malls where landlords set strict fit-out rules, working hours and handover deadlines. Space is expensive, so every square foot of a store or office has to work hard, and finishes are judged against international brand standards. Hagerstone's Mumbai work is in luxury and lifestyle retail: a Byredo showroom and the Trunkhouse luggage store, both designed and built for Beauty Impex.",
     projects: [
@@ -817,7 +817,7 @@ export const cities: City[] = [
       byeLaws: "Unified Development Control and Promotion Regulations (UDCPR), Maharashtra",
     },
     districts: ["MIDC Jalna industrial area", "Old Jalna", "New Jalna"],
-    nearbyCitySlugs: ["mumbai"],
+    nearbyCitySlugs: ["mumbai", "pune"],
     marketNote:
       "Jalna is an industrial city in Maharashtra's Marathwada region, known for its steel re-rolling mills and its seed industry, with most industrial activity in the MIDC industrial area. Projects here tend to combine civil construction with interiors: plant buildings, offices and staff facilities that need a contractor able to build the shell and finish it in one programme. Distance from the big metros makes planning of materials, labour and supervision a larger part of delivery than in Mumbai or Pune. Hagerstone carried out civil and interior works across 20,000 sq ft for MPKUPL in Jalna.",
     projects: [
@@ -841,7 +841,7 @@ export const cities: City[] = [
       byeLaws: "Chhattisgarh Bhumi Vikas Niyam, 1984",
     },
     districts: ["Nava Raipur (Atal Nagar)", "Pandri", "Telibandha", "Urla Industrial Area", "Siltara"],
-    nearbyCitySlugs: ["hyderabad"],
+    nearbyCitySlugs: ["hyderabad", "indore"],
     marketNote:
       "Raipur is the capital of Chhattisgarh and the commercial centre of a state built on steel, power and mining, with heavy industry concentrated in the Urla and Siltara industrial areas. The planned capital at Nava Raipur (Atal Nagar) has added government, institutional and corporate buildings on the city's edge. For national companies, Raipur is typically a regional office location, where the client wants a turnkey fit-out delivered to head-office standards without managing it from a distance. Hagerstone delivered turnkey interiors for Airtel's 5,000 sq ft office in Raipur.",
     projects: [
@@ -871,6 +871,125 @@ export const cities: City[] = [
     projects: [
       { name: "MovieTime Cinemas", detail: "Turnkey cinema interiors · 5,000 sq ft", slug: "movietime-cinemas-hyderabad" },
     ],
+  },
+
+  // ---- Batch 4 (8 Oct 2026): industrial and office markets with no delivered work yet ----
+  // `projects` stays empty until there is real, approved work to list. Authorities
+  // were checked against public sources on 8 Oct 2026. In Rajasthan, fire clearance
+  // sits with the Department of Local Self Government, not a state fire service.
+  {
+    slug: "bhiwadi",
+    name: "Bhiwadi",
+    state: "Rajasthan",
+    stateSlug: "rajasthan",
+    region: "NCR",
+    tier: 3,
+    published: true,
+    authorities: {
+      development: "Bhiwadi Integrated Development Authority (BIDA)",
+      municipal: "Municipal Council Bhiwadi",
+      industrial: "RIICO — for Bhiwadi, Chopanki, Khushkhera and Tapukara industrial areas",
+      fireNoc: "the Department of Local Self Government, Rajasthan, through the local body",
+      discom: "JVVNL — Jaipur Vidyut Vitran Nigam",
+      pollution: "Rajasthan State Pollution Control Board (RSPCB)",
+      byeLaws: "Rajasthan Building Bye-Laws",
+    },
+    districts: ["RIICO Industrial Area Bhiwadi", "Chopanki", "Khushkhera", "Tapukara", "Alwar Bypass Road"],
+    nearbyCitySlugs: ["manesar", "gurugram", "kotputli"],
+    marketNote:
+      "Bhiwadi is the Rajasthan edge of the National Capital Region, a short drive from Manesar and Dharuhera, and one of the state's oldest and busiest industrial towns. The RIICO estates at Bhiwadi, Chopanki, Khushkhera and Tapukara hold automotive suppliers, engineering, electronics, steel and consumer-goods plants, many of them extending or upgrading buildings that were put up quickly decades ago. That makes typical work here a mix of new factory sheds, PEB extensions to running plants, admin blocks, canteens and plant offices, along with the fire, electrical and HVAC upgrades that older buildings need. Approvals involve several bodies at once: BIDA for planning, RIICO for plots inside its estates, and the local body for fire clearance. A contractor working here has to plan around production that cannot stop and around summer heat and dust that shorten working hours and punish poor roofing and sealing.",
+    projects: [],
+  },
+  {
+    slug: "sonipat",
+    name: "Sonipat",
+    state: "Haryana",
+    stateSlug: "haryana",
+    region: "NCR",
+    tier: 2,
+    published: true,
+    authorities: {
+      development: "Haryana Shehri Vikas Pradhikaran (HSVP)",
+      municipal: "Municipal Corporation Sonipat",
+      industrial: "HSIIDC — for Kundli, Rai and Barhi industrial estates",
+      fireNoc: "Haryana Fire & Emergency Services",
+      discom: "UHBVN — Uttar Haryana Bijli Vitran Nigam",
+      pollution: "Haryana State Pollution Control Board (HSPCB)",
+      byeLaws: "Haryana Building Code",
+    },
+    districts: ["Kundli Industrial Estate", "Rai Industrial Estate", "Barhi Industrial Estate", "Rajiv Gandhi Education City", "NH-44 corridor"],
+    nearbyCitySlugs: ["delhi", "gurugram", "manesar"],
+    marketNote:
+      "Sonipat sits directly north of Delhi on the NH-44 corridor, and the KMP Expressway links it to Manesar and the rest of the NCR ring. Its HSIIDC estates at Kundli, Rai and Barhi carry food processing, packaging, textiles, footwear, light engineering and a growing number of warehouses serving the Delhi market. Alongside industry, Rajiv Gandhi Education City and the private universities around it have brought institutional campuses to the district. Projects here are mostly factory and warehouse buildings, PEB sheds, plant MEP and fire-fighting upgrades, along with offices and amenity blocks inside industrial plots. Because many units supply Delhi under tight delivery schedules, clients usually want construction phased around production and dispatch. Electricity comes from UHBVN rather than the DHBVN supply in Gurugram, which matters when a load sanction has to be planned into the programme.",
+    projects: [],
+  },
+  {
+    slug: "haridwar",
+    name: "Haridwar",
+    state: "Uttarakhand",
+    stateSlug: "uttarakhand",
+    region: "North India",
+    tier: 2,
+    published: true,
+    authorities: {
+      development: "Haridwar Roorkee Development Authority (HRDA)",
+      municipal: "Haridwar Municipal Corporation",
+      industrial: "SIIDCUL — for the Integrated Industrial Estate (IIE) Haridwar",
+      fireNoc: "Uttarakhand Fire & Emergency Services",
+      discom: "UPCL — Uttarakhand Power Corporation Limited",
+      pollution: "Uttarakhand Pollution Control Board (UKPCB)",
+      byeLaws: "Uttarakhand Building Construction and Development Bye-Laws",
+    },
+    districts: ["SIIDCUL IIE Haridwar", "BHEL Ranipur", "Bahadrabad", "Bhagwanpur", "Roorkee"],
+    nearbyCitySlugs: ["delhi", "chandigarh", "shimla"],
+    marketNote:
+      "Haridwar is better known as a pilgrimage city, but its SIIDCUL Integrated Industrial Estate has made it one of North India's main manufacturing locations for pharmaceuticals, FMCG and consumer goods, alongside the heavy engineering base around BHEL Ranipur. Industrial belts extend towards Bahadrabad, Bhagwanpur and Roorkee. Typical projects are production buildings, warehouses, QC laboratories, plant offices and canteens, where clean, washable finishes, controlled ventilation and reliable fire-fighting matter as much as speed. Pharma and food clients usually bring their own quality and audit requirements, so documentation and material traceability are part of the job. Building rules in Uttarakhand are under active revision, so the current bye-laws and the project engineer's reading of them need checking at the start of every project. Distance from Delhi also makes material logistics and site supervision a bigger part of delivery than in the NCR.",
+    projects: [],
+  },
+  {
+    slug: "pune",
+    name: "Pune",
+    state: "Maharashtra",
+    stateSlug: "maharashtra",
+    region: "West India",
+    tier: 1,
+    published: true,
+    authorities: {
+      municipal: "Pune Municipal Corporation (PMC) and Pimpri Chinchwad Municipal Corporation (PCMC), by area",
+      industrial: "MIDC — for Chakan, Talegaon, Ranjangaon and Bhosari",
+      fireNoc: "PMC Fire Brigade, PCMC Fire Department or MIDC Fire Services, by area",
+      discom: "MSEDCL — Maharashtra State Electricity Distribution Company (Mahavitaran)",
+      pollution: "Maharashtra Pollution Control Board (MPCB)",
+      byeLaws: "Unified Development Control and Promotion Regulations (UDCPR), Maharashtra",
+    },
+    districts: ["Hinjewadi", "Kharadi", "Baner", "Viman Nagar", "Chakan MIDC", "Talegaon MIDC", "Ranjangaon MIDC"],
+    nearbyCitySlugs: ["mumbai", "jalna"],
+    marketNote:
+      "Pune is two markets in one city. Its office economy, built on IT services, global capability centres and engineering design, is concentrated in Hinjewadi, Kharadi, Baner and Viman Nagar, where Grade-A towers come with detailed landlord fit-out rules and tight handover dates. Around the city, the MIDC belts at Chakan, Talegaon, Ranjangaon and Bhosari form one of India's largest automotive and engineering clusters, with vehicle makers, component suppliers and their warehouses. That mix means work ranges from turnkey office fit-outs and workplace upgrades to plant offices, canteens, PEB sheds and factory MEP. Which body handles fire clearance and building approval depends on where the site falls: PMC, PCMC or an MIDC estate. Heavy monsoon rain also shapes the programme, since roofing, facade sealing and external works need to be closed before June.",
+    projects: [],
+  },
+  {
+    slug: "indore",
+    name: "Indore",
+    state: "Madhya Pradesh",
+    stateSlug: "madhya-pradesh",
+    region: "Central India",
+    tier: 1,
+    published: true,
+    authorities: {
+      development: "Indore Development Authority (IDA)",
+      municipal: "Indore Municipal Corporation (IMC)",
+      industrial: "MPIDC — for Pithampur, Sanwer Road and the Indore industrial areas",
+      fireNoc: "Indore Municipal Corporation Fire Services",
+      discom: "MPPKVVCL — Madhya Pradesh Paschim Kshetra Vidyut Vitaran Company",
+      pollution: "Madhya Pradesh Pollution Control Board (MPPCB)",
+      byeLaws: "Madhya Pradesh Bhumi Vikas Niyam, 2012",
+    },
+    districts: ["Vijay Nagar", "AB Road", "Super Corridor", "Palasia", "Pithampur Industrial Area", "Sanwer Road"],
+    nearbyCitySlugs: ["ahmedabad", "raipur"],
+    marketNote:
+      "Indore is the commercial capital of Madhya Pradesh and the largest business centre in central India. Offices for IT services, financial services and regional headquarters cluster around Vijay Nagar, AB Road, Palasia and the Super Corridor near the airport, where newer commercial buildings are opening up. To the south-west, the Pithampur industrial area holds automotive, pharmaceutical, packaging and engineering plants, with further industry along Sanwer Road. Work here therefore spans corporate and regional office fit-outs, retail and showroom interiors, and plant offices, warehouses and factory services in Pithampur. Many national companies run Indore as a regional base, so they expect a turnkey fit-out delivered to head-office standards without managing it from a distance. Summer heat makes HVAC sizing, roof insulation and glazing choices central to how comfortable and costly a building is to run.",
+    projects: [],
   },
 ];
 

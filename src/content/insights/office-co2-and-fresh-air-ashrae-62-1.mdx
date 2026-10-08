@@ -1,0 +1,210 @@
+---
+title: "Office CO2 and Fresh Air: How ASHRAE 62.1 Sets Ventilation"
+metaTitle: "Office Fresh Air and CO2 Levels"
+metaDescription: "Drowsy afternoons are usually a fresh air problem, not a cooling one. How ASHRAE 62.1 sets office outdoor air, and what a CO2 reading does and does not show."
+slug: "office-co2-and-fresh-air-ashrae-62-1"
+collection: "insights"
+status: "published"
+publishedOn: "2026-10-08"
+author: "Dhruv Agarwal"
+primaryKeyword: "office fresh air requirement"
+keywords:
+  - "co2 levels in office"
+  - "office feels stuffy in the afternoon"
+  - "ashrae 62.1 office ventilation"
+  - "fresh air in office air conditioning"
+  - "co2 sensor meeting room"
+definition: "An office's fresh air requirement is the outdoor air supplied to dilute what people and the building release. ASHRAE 62.1's ventilation rate procedure sets it from two parts, a rate per person and a rate per unit floor area, applied to the real occupancy. CO2 shows whether that air is reaching people; it is an indicator, not a pollutant limit, and air changes per hour do not measure it."
+citations:
+  - label: "ASHRAE 62.1"
+    clause: "Ventilation and acceptable indoor air quality - ventilation rate procedure"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services - air conditioning, heating and mechanical ventilation"
+  - label: "ECBC 2017"
+    clause: "Comfort systems and controls"
+faqs:
+  - question: "Why does the office feel stuffy even though the air conditioning is cold?"
+    answer: "Because cooling and ventilation are different jobs. Most office air conditioning recirculates the same air and cools it; the outdoor air that replaces what people have breathed is a separate, smaller quantity. If that quantity is undersized for the headcount, not reaching the floor or turned down to save energy, the room stays cool and still feels stale."
+  - question: "What CO2 level should an office have?"
+    answer: "ASHRAE 62.1 sets ventilation as outdoor airflow, not as an indoor CO2 limit, so there is no single figure in it to design to. Numbers quoted online are rules of thumb. A CO2 reading is most useful compared with the outdoor level and tracked over a day: if it climbs steadily as a room fills, outdoor air per person is falling short. The design engineer should interpret it."
+  - question: "Does a low CO2 reading mean the air is healthy?"
+    answer: "No. CO2 tracks how well the air people exhale is being diluted. It says nothing about emissions from finishes and furniture, cleaning products, particulates or outdoor pollution drawn in through the intake. That is one reason ASHRAE 62.1 includes an area-based component in addition to the per-person one, and why filtration is a separate design question."
+  - question: "Can we just add more fresh air to fix the problem?"
+    answer: "Sometimes, but outdoor air in most Indian climates has to be cooled and dehumidified before it is supplied, so more of it means more cooling load and energy. The right fix may be rebalancing distribution, adding demand-controlled ventilation to meeting rooms, or increasing the supply to match the real occupancy. The MEP engineer should diagnose before anything is changed."
+  - question: "Is fresh air the landlord's responsibility or the tenant's?"
+    answer: "It depends on the building and the lease. In many multi-tenant buildings outdoor air comes from a central treated fresh air system at a fixed quantity per floor, and the tenant distributes it. The handover schedule should state the quantity allocated, the occupancy it assumed and who operates the system. If your headcount is higher, the gap has to be resolved with the landlord in design."
+  - question: "What is demand-controlled ventilation?"
+    answer: "It varies the outdoor air supplied to a zone according to how many people are in it, often using a CO2 sensor as the occupancy signal. It suits spaces whose occupancy swings widely, such as meeting and training rooms. ASHRAE 62.1 sets conditions on its use, so whether and how it is applied in a project is for the design engineer to decide."
+related:
+  - "air-changes-per-hour"
+  - "office-hvac-complaints-after-handover"
+  - "air-handling-unit"
+  - "hvac-systems-design"
+  - "building-management-systems"
+  - "meeting-room-design-and-sizing"
+---
+
+## Drowsy afternoons are usually a ventilation problem
+
+Ask people on a crowded office floor how they feel at four in the afternoon and a
+familiar set of complaints comes back: heavy heads, stale air, meeting rooms
+nobody wants to sit in for long. The usual response is to turn the thermostat
+down. The room gets colder and nothing improves.
+
+That is because the complaint is rarely about temperature. **Cooling removes heat;
+ventilation replaces the air people have breathed.** Most office air conditioning
+recirculates the same air through the cooling coil and back into the room. The
+outdoor air that dilutes what occupants exhale is a separate, deliberately sized
+quantity, and it is the one most often undersized, poorly distributed or turned
+down to save energy.
+
+For a business, the cost is not the air conditioning bill. It is a floor that
+people tolerate rather than use, meeting rooms avoided after lunch, and a
+facilities team chasing a temperature complaint that is really a ventilation one.
+
+## How ASHRAE 62.1 sets outdoor air for an office
+
+**ASHRAE 62.1**, Ventilation and Acceptable Indoor Air Quality, is the standard
+most commonly referenced for office ventilation design in India, alongside the
+air conditioning and ventilation provisions of **NBC 2016, Part 8**. Its
+ventilation rate procedure builds the outdoor air requirement for a zone from two
+parts:
+
+- **A people component**: a rate per person multiplied by the number of people
+  the zone is designed for. It covers what occupants themselves release, such as
+  exhaled breath and body odour.
+- **An area component**: a rate per unit floor area multiplied by the zone's
+  area. It covers what the building releases regardless of headcount, such as
+  emissions from finishes, furniture and equipment.
+
+The sum is then adjusted for how effectively the air distribution actually
+delivers outdoor air to the breathing zone, and, where one system serves several
+zones, for how efficiently it shares that air between them. The rates for each
+type of space are tabulated in the standard and revised between editions, so the
+design engineer sets the values from the edition adopted in the project's design
+basis. This page explains the method; it does not give the numbers.
+
+The commercial consequence sits in the people component. **Because it scales
+with headcount, densifying a floor raises the requirement.** A system sized for
+one seating density will under-ventilate the same floor after it has been
+re-planned with more desks, and a small meeting room that seats many people for
+an hour needs far more outdoor air per square metre than the open plan beside it.
+
+| Way of expressing ventilation | What it actually measures | Where it helps | Why it misleads for an office |
+| --- | --- | --- | --- |
+| Outdoor air per person plus per area (ASHRAE 62.1 method) | Outdoor air delivered against the people and building sources it must dilute | Setting the design quantity for each zone | Only valid if the occupancy assumed is the occupancy built |
+| Air changes per hour | Total air moved relative to room volume, mostly recirculated | Rooms where the requirement relates to the room itself | Does not say how much of the air is outdoor air, or scale with people |
+| Indoor CO2 reading | How well exhaled air is being diluted, in practice | Checking performance, controlling ventilation by occupancy | Ignores pollutants that do not come from people |
+| Cooling capacity | How much heat the plant can remove | Sizing the cooling plant | Says nothing about ventilation at all |
+
+## CO2 is an indicator, not a pollutant limit
+
+People exhale carbon dioxide. In a space where people are the main source, the
+gap between indoor and outdoor CO2 widens when outdoor air per person falls. That
+makes CO2 a practical, cheap proxy for one question: **is the outdoor air the
+design intended actually reaching the people in this room?**
+
+It is not a measure of overall air quality. ASHRAE 62.1 sets ventilation as
+outdoor airflow, not as an indoor CO2 concentration, and a low CO2 reading proves
+nothing about emissions from new finishes, cleaning products, particulates or
+polluted outdoor air drawn into the intake. Single-number CO2 thresholds that
+circulate online are rules of thumb, not requirements of the standard.
+
+Used properly, CO2 monitoring is valuable:
+
+- Compare indoor readings with the outdoor level, which varies by location and
+  time of day, rather than reading an indoor figure in isolation.
+- Watch the trend through a day. A room whose CO2 climbs steadily as it fills is
+  telling you outdoor air per person is short.
+- Place sensors in the breathing zone, away from supply terminals, doors and
+  people's faces, and keep them calibrated.
+- In meeting rooms and other variable-occupancy spaces, CO2 can drive
+  **demand-controlled ventilation**, varying outdoor air with occupancy. ASHRAE
+  62.1 sets conditions on its use, and the design engineer decides where it fits.
+
+Sensors are most useful when connected to the controls rather than displayed on
+a wall; [building management systems](/services/mep/building-management-systems)
+are where that trend data is logged and acted on.
+
+## Why ACH is the wrong way to specify an office
+
+Specifications still arrive asking for "so many air changes per hour" for an
+office. The figure can be met while the occupants still lack outdoor air, because
+air changes count total air movement against room volume, and in an office that
+air is mostly recirculated. It also does not move when headcount does, and it
+changes with ceiling height for the same airflow.
+[Air changes per hour](/glossary/air-changes-per-hour) explains where ACH is the
+right metric. For an office, specify the outdoor air basis and the occupancy it
+is designed for.
+
+## Fresh air in landlord-supplied systems
+
+In many multi-tenant buildings, outdoor air is treated centrally and delivered
+through a riser at a fixed quantity per floor, sized on the landlord's assumed
+occupancy. The tenant's fit-out distributes it. That arrangement works until the
+tenant's seating plan is denser than the landlord assumed, at which point the
+floor is under-ventilated by design, not by fault.
+
+Questions to settle in design, in writing, with the landlord:
+
+- What outdoor air quantity is allocated to this floor, and on what occupancy?
+- Is it cooled, dehumidified and filtered before it arrives?
+- Does it run through all occupied hours, including late working and weekends?
+- Can the tenant add or increase outdoor air if the layout needs it, and how?
+
+How fresh air fits into the wider plant is covered in
+[commercial HVAC systems](/blog/commercial-hvac-systems). Distribution, zoning and
+return-air problems that also cause stuffy rooms are covered in
+[office HVAC problems after handover](/blog/office-hvac-complaints-after-handover).
+
+## The energy trade-off
+
+In most Indian climates outdoor air is hot, humid or both for much of the year,
+and treating it is a significant part of the cooling load. That creates a quiet
+temptation to reduce it, by undersizing, by closing dampers, or by switching
+fresh air off outside peak hours.
+
+The better answer is to make the trade-off explicit. The design can size outdoor
+air to the real occupancy rather than a blanket figure, use demand-controlled
+ventilation where occupancy varies, consider recovering energy from exhaust air
+where the engineer finds it worthwhile, and control the system so it runs when
+people are present. **ECBC 2017** sets energy efficiency provisions for comfort
+systems and controls in buildings within its scope; how those provisions apply to
+a project, and how they interact with the ventilation design, is for the MEP
+engineer to establish.
+
+## Common mistakes
+
+- **Treating stuffiness as a temperature problem** and lowering the set point.
+- **Specifying an office on air changes per hour** instead of outdoor air for the
+  occupancy.
+- **Densifying the floor without re-checking ventilation**, because only the
+  furniture changed.
+- **Ventilating meeting rooms at open-plan density**, then wondering why they
+  feel airless within an hour.
+- **Reading CO2 as a full air quality score**, or reading it without the outdoor
+  comparison.
+- **Closing fresh air dampers to save energy** without anyone recording the
+  decision or its effect.
+- **Assuming the landlord's fresh air suits your headcount** without asking what
+  it was sized for.
+
+## What to ask your designer
+
+- Which edition of ASHRAE 62.1, or which other basis, does the ventilation design
+  use, and what occupancy does each zone assume?
+- How do meeting rooms and training rooms get their outdoor air?
+- Where does outdoor air come from, and is it treated and filtered before supply?
+- Will CO2 be monitored, where, and will it control anything?
+- How will outdoor air quantities be measured and recorded at commissioning?
+- What happens to ventilation if we add desks later?
+
+## Standards referenced
+
+Ventilation and acceptable indoor air quality, including the ventilation rate
+procedure, in **ASHRAE 62.1**; air conditioning, heating and mechanical
+ventilation provisions in **NBC 2016, Part 8**; energy efficiency of comfort
+systems and controls in **ECBC 2017**. Ventilation rates, the governing standard
+edition, occupancy assumptions and control strategy for a specific building must
+be established by the project's MEP engineer and consultants; nothing on this page
+replaces that design.
