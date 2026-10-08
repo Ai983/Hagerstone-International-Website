@@ -1,0 +1,311 @@
+---
+title: "Electrical Systems for Offices and Factories: From Supply to Socket"
+metaTitle: "Electrical Design for Commercial Buildings | Hagerstone"
+metaDescription: "The electrical chain in an office or factory, link by link: sanctioned load, HT or LT supply, panels, cables, backup, earthing, inspection and handover records."
+slug: "electrical-systems-guide-offices-and-factories"
+collection: "guides"
+status: "published"
+publishedOn: "2026-10-08"
+author: "Dhruv Agarwal"
+primaryKeyword: "electrical design for commercial building"
+keywords:
+  - "factory electrical system design india"
+  - "office electrical installation guide"
+  - "ht lt supply transformer commercial building"
+  - "electrical inspector approval commercial building"
+  - "electrical handover documents"
+definition: "Electrical design for a commercial or industrial building follows one chain: the load schedule sets the sanctioned load and supply voltage, which fix the transformer and main panels, which in turn set cables, protection, earthing and backup. Each link is sized from the one before it, so an error at the start travels all the way to the socket and is expensive to correct once installed."
+citations:
+  - label: "CEA (Measures relating to Safety and Electric Supply) Regulations, 2023"
+    clause: "Safety provisions for electrical installations, including inspection and self-certification"
+  - label: "NBC 2016, Part 8"
+    clause: "Building services, Section 2: Electrical and allied installations"
+  - label: "IS 732"
+    clause: "Code of practice for electrical wiring installations"
+  - label: "IS 3043"
+    clause: "Code of practice for earthing"
+  - label: "IS 694"
+    clause: "PVC insulated cables for low-voltage wiring"
+  - label: "IS 7098 (Part 1)"
+    clause: "Crosslinked polyethylene insulated PVC sheathed cables for working voltages up to and including 1100 V"
+  - label: "IEC 60364"
+    clause: "Low-voltage electrical installations"
+faqs:
+  - question: "Where does electrical design for a new commercial building actually start?"
+    answer: "With a load schedule: every load listed by category, its rating and source, and diversity applied openly by category. That schedule supports the sanctioned load application to the DISCOM, which decides whether the supply is HT or LT and therefore whether the building needs its own transformer and substation room. Panels, cables and backup are all sized after it, not before."
+  - question: "When does a building need an HT supply and its own transformer?"
+    answer: "The threshold at which a connection moves from LT to HT is set by the state's electricity supply code and the DISCOM, not by a national figure, and it varies between states. Larger offices, standalone buildings and most factories end up on HT. The project's electrical engineer confirms the category with the DISCOM early, because an HT connection adds a substation room, a transformer and a longer approval path."
+  - question: "Who inspects an electrical installation before it is energised?"
+    answer: "Under the CEA (Measures relating to Safety and Electric Supply) Regulations, 2023, installations are either inspected by the Electrical Inspector of the appropriate government or self-certified by the owner, depending on voltage level and the rules the state has notified. Which route applies to a given building, and what the inspector asks for, is decided by the state's electrical inspectorate and confirmed by the project's electrical engineer."
+  - question: "Is a bigger transformer and DG set the safe choice?"
+    answer: "Not automatically. Oversized plant costs more to buy, can raise fixed charges linked to the sanctioned or contract demand, and a generator that runs lightly loaded for long periods performs poorly. Undersizing is worse because the upgrade runs on the DISCOM's timetable. The answer is a defensible load schedule with growth stated deliberately, which the electrical engineer then sizes the plant against."
+  - question: "What electrical documents should be handed over at completion?"
+    answer: "As-built single-line diagrams and layouts, the cable schedule, panel schedules and protection settings, test records for insulation resistance, earth resistance and protective device operation, the inspection or self-certification record, equipment manuals and warranties, and a register of spare capacity. Without them the facilities team cannot safely extend or maintain the installation."
+  - question: "Does a factory electrical system differ from an office one?"
+    answer: "In emphasis. Factories carry large motor loads, process equipment with high starting currents, variable speed drives that add harmonics, and often their own HT supply and power factor correction. Offices are dominated by HVAC, lighting, IT and UPS loads, usually inside a building whose supply belongs to a landlord. The chain is the same; the links that need most attention are different."
+related:
+  - "sanctioned-load"
+  - "ht-vs-lt-panel"
+  - "cable-derating"
+  - "dg-set-vs-ups-backup-power"
+  - "electrical-works-ht-lt"
+  - "mep-coordination-guide"
+---
+
+## What the electrical chain decides, and what a wrong start costs
+
+Every electrical system in an office or factory is a chain. Power arrives from
+the distribution company (DISCOM), is metered, transformed if the supply is
+high tension, switched and distributed through panels, carried by cables or
+busbar to sub-distribution boards, and finally reaches lights, machines and
+sockets. Earthing, protection and backup run alongside the whole length of it.
+
+The common misconception is that electrical work is a late trade: the layout is
+drawn, the HVAC is chosen, and the electrical engineer "makes it work". In
+practice the order is reversed. The connected load decides the sanctioned load,
+the sanctioned load decides whether the building is on an HT or LT supply, and
+that decides whether there is a transformer and substation room to find space
+for. Getting the first link wrong costs months, not days, because the fix is an
+application to the DISCOM and new switchgear with its own lead time.
+
+The second misconception is that inspection is a formality at the end. The
+inspector or self-certification process tests the installation against the
+CEA (Measures relating to Safety and Electric Supply) Regulations, 2023, and an
+installation that cannot show its test records, earthing and clearances does
+not get energised on the planned date.
+
+This guide walks the chain link by link and points to the detailed pages for
+each. It is a framework for owners, plant heads and project managers. It does
+not give sizes, settings or values; those come from the project's electrical
+engineer for the actual building.
+
+## The chain from supply to socket
+
+| Link | What it does | Sized or decided from | Read more |
+| --- | --- | --- | --- |
+| Load schedule | Lists every load with diversity applied | Layout, process, HVAC choice | Load planning article below |
+| Sanctioned load | The demand the DISCOM approves | Load schedule | [Sanctioned load](/glossary/sanctioned-load) |
+| HT or LT supply | Supply voltage and metering point | Sanctioned load, state supply code | [HT vs LT panel](/glossary/ht-vs-lt-panel) |
+| Transformer and HT panel | Steps down and protects an HT supply | Demand, growth, redundancy | HT/LT section below |
+| Main LT panel | Switches and distributes low voltage | Transformer and DG ratings | HT/LT section below |
+| Busbar or cable risers | Carry power to floors and bays | Demand per floor, route length | [Busbar trunking](/glossary/busbar-trunking) |
+| Sub-distribution and final circuits | Feed individual loads | Layout and load per zone | IS 732 |
+| Backup (DG and UPS) | Keep essential loads running | Essential-load definition | Backup section below |
+| Earthing and protection | Make faults safe and clear them | System type and fault level | [Earthing and bonding](/glossary/earthing-and-bonding) |
+| Power quality and metering | Keep the supply clean and measured | Load types, tariff | Power quality section below |
+
+Read the table top to bottom: each row depends on the one above. That is why a
+late change to the HVAC system or the process layout ripples through the whole
+electrical design.
+
+## Sanctioned load and the DISCOM application come first
+
+The first electrical deliverable is a load schedule, not a drawing. It lists
+lighting, small power, HVAC, lifts, pumps, IT, process equipment and anything
+specialist, records where each rating came from, applies diversity by category
+in the open, and states how much growth the building is expected to absorb.
+
+From that schedule the owner applies to the DISCOM for a sanctioned load. The
+[sanctioned load](/glossary/sanctioned-load) is a commercial and regulatory
+figure: it sets the tariff category, fixed charges, and the supply voltage.
+For tenants inside a landlord's building the same discipline applies, but the
+ceiling is the landlord's allocation; the sequence for an office floor is set
+out in our article on [office electrical load planning before design](/blog/office-power-load-letter-and-dg-before-you-design).
+
+Two points matter commercially. The application runs on the DISCOM's timetable,
+which can include a site inspection, a demand note, and work on the utility's
+side of the meter. And the figure is hard to revise quickly in either
+direction, so it should be applied for once, on a schedule someone can defend.
+
+## HT or LT supply, and what an HT connection adds
+
+Smaller premises are supplied at low tension and the building's distribution
+starts at the main LT panel. Above a threshold set by the state's supply code,
+the DISCOM supplies at high tension, and the building then needs an HT panel,
+its own transformer, and a substation or electrical room that meets the
+clearance, ventilation and access provisions of the regulations. The
+difference is explained in [HT vs LT panel](/glossary/ht-vs-lt-panel).
+
+An HT connection changes the building, not just the electrical package:
+
+- **Space.** The HT panel, transformer, main LT panel, power factor correction
+  panel and DG sets need rooms with access for installation and replacement.
+  These rooms belong on the site plan from the first sketch.
+- **Approvals.** HT installations sit squarely within the inspection framework
+  described below, and the drawings are often reviewed before work starts.
+- **Ownership.** The boundary between the DISCOM's equipment and the owner's is
+  defined at the metering point; everything after it is the owner's to maintain.
+- **Redundancy.** Whether one transformer or two, and how the main LT panel is
+  split, is a business continuity decision as much as an engineering one.
+
+## Distribution: panels, busbar and cables
+
+From the main LT panel, power is distributed to floors, bays or production
+lines. In a multi-storey office the vertical route is often a busbar riser; in a
+factory it may be busbar along the bay with tap-off units at machines.
+[Busbar trunking](/glossary/busbar-trunking) earns its place where loads are
+heavy or will move, because tap-offs can be added without rewiring the run.
+
+Where cables are used, the cable type is chosen to its product standard, such as
+**IS 694** for PVC insulated cables and **IS 7098 (Part 1)** for XLPE
+insulated cables up to 1100 V, and sized under **IS 732** for the installed
+conditions. The tabulated rating of a cable assumes reference conditions; once
+cables are grouped, run through hot spaces or packed into trays, capacity drops.
+That reduction is [cable derating](/glossary/cable-derating), and it is a
+common silent failure. Long runs in large factories also need checking for
+voltage drop, which can govern the size more than current does.
+
+Panels need two decisions that are often left to the panel builder by default:
+**discrimination**, so that a fault trips the nearest device rather than the
+whole floor, and **form of separation**, which decides whether one outgoing
+circuit can be worked on while the rest stay live. Both affect how the building
+runs for the next twenty years.
+
+## Backup power is an essential-load decision
+
+Backup is not one piece of equipment. A UPS supplies power instantly from stored
+energy for a limited period; a DG set takes time to start and then runs for as
+long as it is fuelled. They cover different windows of the same outage, which
+is why critical installations use both, as set out in
+[DG set vs UPS backup power](/compare/dg-set-vs-ups-backup-power).
+
+The real design work is defining the **essential load**: which circuits must
+stay up, for how long, and in what order they come back. That is a business
+decision taken with the electrical engineer, and it then drives separate
+essential and non-essential distribution, the changeover arrangement and the
+plant sizes. Our [power backup design for DG and UPS](/services/mep/power-backup-dg-and-ups)
+page explains how that sizing follows from the load. Generator siting also
+brings emission, noise and fuel storage provisions that the authority decides.
+
+## Earthing and protection
+
+Earthing gives fault current a deliberate low-impedance path so the protective
+device operates quickly; bonding keeps metalwork a person can touch at a similar
+potential during a fault. They are complementary, and both are covered in
+[earthing and bonding](/glossary/earthing-and-bonding) with practice set out in
+**IS 3043**. Earth electrodes degrade as soil dries and connections corrode, so
+earth resistance is tested at installation and periodically afterwards.
+
+Protection devices answer different events. An MCB or MCCB protects cables
+against overload and short circuit; a residual current device protects people
+against current leaking to earth. The difference is laid out in
+[RCCB vs MCB](/glossary/rccb-vs-mcb). The protection scheme, including where
+residual current protection is applied and how devices are coordinated, is
+designed by the electrical engineer under **IS 732**, with **IEC 60364** as the
+international reference for low-voltage installations.
+
+## Power quality and metering
+
+Modern loads do not draw current smoothly. LED drivers, computers, UPS systems
+and variable speed drives create [harmonic distortion](/glossary/harmonic-distortion),
+which heats neutrals and transformers and can trip protection for no visible
+reason. Motors and transformers lower the power factor, which DISCOM tariffs
+often penalise and which [power factor correction](/glossary/power-factor-correction)
+addresses with capacitor banks. The two interact: a capacitor bank installed
+without considering harmonics can make them worse, so they are designed
+together.
+
+Metering is the other half. A single incoming meter tells the owner the bill
+and nothing else. Sub-metering HVAC, lighting, power and major process loads
+separately is what makes consumption manageable, and it is far cheaper to
+provide spaces for meters in the panels at design stage than to add them later.
+
+## Offices and factories: where the chain differs
+
+| Link | Typical office | Typical factory |
+| --- | --- | --- |
+| Supply | Often the landlord's; tenant gets an allocation | Often own HT connection and transformer |
+| Dominant load | HVAC, lighting, IT | Motors, process equipment, utilities |
+| Distribution | Busbar riser to floor boards | Busbar or cable along bays to machines |
+| Backup priority | IT, UPS-fed workstations, servers | Process continuity, safety systems, utilities |
+| Power quality | Harmonics from IT and LED drivers | Harmonics from drives, low power factor from motors |
+| Change over time | Layout churn, more meeting rooms | New lines, extensions, heavier machines |
+| Main constraint | Landlord capacity and riser space | DISCOM timetable and substation space |
+
+The same chain applies to both, but a factory owner usually controls more of it
+and therefore carries more of the risk.
+
+## Inspection and energisation: how the framework works
+
+Electrical safety in India is governed by the **CEA (Measures relating to
+Safety and Electric Supply) Regulations, 2023**, framed by the Central
+Electricity Authority. They are administered by the state governments through
+their electrical inspectorates, headed in many states by the Chief Electrical
+Inspector to Government (CEIG).
+
+The broad framework is that installations above a voltage level notified by the
+state are inspected by the Electrical Inspector, while installations up to that
+level may be self-certified by the owner, who can take the assistance of a
+chartered electrical safety engineer where the state provides for it. The
+voltage levels, periodicity, forms and portals differ between states and change
+from time to time. Which route applies to a specific building, what the
+inspector examines and when supply can be energised are decisions for the
+state's electrical inspectorate and the DISCOM, confirmed by the project's
+electrical engineer.
+
+What a contractor controls is readiness: installation to the approved drawings,
+completed test records, clear labelling, accessible earth pits and documented
+clearances in electrical rooms. An inspection visit finds what was or was not
+done during construction; it cannot be prepared for in the last week.
+
+## Documentation at handover
+
+The electrical installation is only maintainable if it is recorded. At
+handover, the owner should receive:
+
+- As-built single-line diagrams, panel layouts and cable routes
+- Cable schedules and panel schedules, including spare ways
+- Protection settings and the discrimination study, where one was done
+- Test records: insulation resistance, earth resistance, polarity and device
+  operation
+- The inspection report or self-certification record
+- Equipment manuals, warranties and the maintenance schedule
+- A statement of spare capacity at each level of the chain
+
+The broader set of records expected at the end of a project is covered in
+[fit-out handover documents](/blog/fit-out-handover-documents-what-you-should-receive).
+
+## Common mistakes
+
+- **Designing the layout, then checking the supply.** The DISCOM and the
+  landlord set the ceiling; find it first.
+- **No room for the substation.** An HT connection discovered late means
+  redrawing the site plan around a transformer.
+- **Cables sized on current alone.** Derating and voltage drop decide the real
+  size on long or crowded runs.
+- **Discrimination left to chance.** One fault takes out a whole floor or line
+  because the upstream breaker trips first.
+- **Backup sized before the essential load is defined.** The result is plant
+  that is either idle or insufficient.
+- **Capacitor banks added without looking at harmonics.** Power factor improves
+  on paper and equipment starts failing.
+- **Test records assembled after the event.** Inspectors and facilities teams
+  both need evidence made at the time.
+
+## What to ask your electrical contractor
+
+- Can I see the load schedule, with diversity and growth stated by category?
+- Has the supply category (HT or LT) been confirmed with the DISCOM?
+- Where are the substation, panel and DG rooms, and how is equipment replaced?
+- Has derating and voltage drop been checked on the longest and most crowded runs?
+- Is there a discrimination check between the main and downstream devices?
+- Which loads are on backup, and who signed off that list?
+- Which inspection or self-certification route applies, and who is preparing it?
+- What exactly will be in the handover file?
+
+Hagerstone International's [electrical works for HT and LT installations](/services/mep/electrical-works-ht-lt)
+are scoped around this chain, from the load schedule through testing and
+handover.
+
+## Standards referenced
+
+Electrical safety is governed by the **CEA (Measures relating to Safety and
+Electric Supply) Regulations, 2023**, administered by state electrical
+inspectorates. Electrical and allied installations are covered in
+**NBC 2016, Part 8, Section 2**. Wiring practice follows **IS 732** and earthing
+**IS 3043**; cables are specified to their product standards, including
+**IS 694** and **IS 7098 (Part 1)**. **IEC 60364** is the international series
+for low-voltage installations. Load figures, supply category, cable and
+protective device sizes, earthing design, backup sizing and the inspection route
+for a specific building must be established by the project's electrical
+engineer and confirmed with the DISCOM and the state's electrical inspectorate.

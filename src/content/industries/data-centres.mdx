@@ -1,0 +1,140 @@
+---
+title: "Data Centres and Server Facilities: Power, Cooling and Redundancy"
+metaTitle: "Data Centre Construction | Hagerstone"
+metaDescription: "Building an enterprise or edge data centre: what N, N+1 and 2N mean, raised floor or overhead, containment, floor loading, fire suppression and phasing."
+slug: "data-centres"
+collection: "industries"
+status: "published"
+publishedOn: "2026-10-08"
+author: "Dhruv Agarwal"
+primaryKeyword: "data centre construction"
+keywords:
+  - "data center construction india"
+  - "enterprise data centre design and build"
+  - "edge data centre fit out"
+  - "data centre redundancy n+1 2n"
+  - "server facility construction"
+definition: "Data centre construction is building around power and heat. The electrical and cooling plant, and how much of it is duplicated, decide the layout, structure and cost far more than the IT hall does. For enterprise and edge facilities, the redundancy level, floor loading, cooling approach and phasing should be fixed before the architecture is drawn."
+citations:
+  - label: "TIA-942"
+    clause: "Telecommunications infrastructure standard for data centers (ANSI/TIA-942-C)"
+  - label: "ISO/IEC 22237-1"
+    clause: "Data centre facilities and infrastructures - Part 1: General concepts"
+  - label: "EN 50600-1"
+    clause: "Data centre facilities and infrastructures - Part 1: General concepts"
+  - label: "NBC 2016, Part 4"
+    clause: "Fire and life safety"
+faqs:
+  - question: "What is the difference between N+1 and 2N?"
+    answer: "N+1 means one spare unit beyond what the load needs, so a single unit can fail or be serviced without losing capacity. 2N means two complete, independent systems, each able to carry the whole load, so one entire system can be lost or maintained. 2N gives more protection and roughly doubles the plant and the space it occupies."
+  - question: "Do we need a raised floor?"
+    answer: "Not necessarily. A raised floor gives an underfloor air path and cable space, which suits some cooling designs. Many facilities now run cabling overhead and cool with containment and in-row or perimeter units on a solid floor, which also carries heavy racks more easily. The choice follows the cooling design and the rack loads, not habit."
+  - question: "Can an existing office floor take a small data centre?"
+    answer: "Sometimes, but it has to be checked. Dense racks, UPS batteries and cooling plant are much heavier than office furniture, and battery rooms in particular concentrate load. A structural engineer must assess the slab against the actual equipment layout before the space is committed to."
+  - question: "Which standards apply to data centre design?"
+    answer: "ANSI/TIA-942 covers data centre infrastructure including telecommunications, power, mechanical, fire protection and security. ISO/IEC 22237 and the EN 50600 series set out general concepts and a classification by availability, security and energy efficiency. Fire and life safety for the building sits under NBC 2016 Part 4, applied by the fire consultant and the authority."
+  - question: "How should a data centre be phased?"
+    answer: "Build the shell, structure and main service routes for the final capacity, and add power and cooling modules as the IT load grows. The connection points, space and routes for later modules should be provided in the first phase, so expansion does not mean working on live systems without isolation."
+related:
+  - "server-room-and-data-centre-mep"
+  - "server-room-in-an-office-what-to-settle-first"
+  - "raised-access-floor"
+  - "power-backup-dg-and-ups"
+  - "dg-set-vs-ups-backup-power"
+  - "raised-floor-vs-surface-trunking"
+---
+
+## Power and cooling are the building
+
+A data centre looks like a room full of racks. Commercially it is a power and cooling
+plant with an IT hall attached. Electrical rooms, UPS and battery rooms, generators,
+cooling plant and the routes between them take most of the area and most of the
+budget, and they decide the structure and the site layout.
+
+The misconception worth correcting is that a data centre is a large server room fitted
+out the same way. A server room borrows the building's resilience; a data centre has to
+provide its own. Choosing too little duplication exposes the business to outages, and
+choosing too much locks up capital in plant that may never be needed. This page covers
+enterprise and edge facilities, from a dedicated floor to a small standalone building;
+very large campuses are a different scale of project.
+
+## Spaces and the services behind them
+
+| Space | What it must do | Service |
+| --- | --- | --- |
+| IT hall (white space) | Hold racks with continuous cooling, power and cabling | [Server room and data centre MEP](/services/mep/server-room-and-data-centre-mep) |
+| UPS, battery and generator areas | Keep the load running through a supply failure | [Power backup: DG and UPS](/services/mep/power-backup-dg-and-ups) |
+| Electrical rooms and incoming supply | Distribute power along the chosen redundant paths | [Electrical works HT/LT](/services/mep/electrical-works-ht-lt) |
+| Cooling plant | Remove the heat the IT load produces, day and night | [HVAC systems design](/services/mep/hvac-systems-design) |
+| Detection and suppression | Early warning, suppression suited to electronics | [Fire detection and alarm](/services/mep/fire-detection-and-alarm) |
+| Cabling | Structured cabling with room for growth | [Networking and structured cabling](/services/mep/networking-and-structured-cabling) |
+| Monitoring | Alarms that reach someone who can act | [Building management systems](/services/mep/building-management-systems) |
+
+## N, N+1 and 2N: what redundancy buys
+
+"N" is the capacity the load needs. Redundancy describes how much is provided beyond it.
+
+| Level | What it means | What it protects against |
+| --- | --- | --- |
+| N | Exactly enough capacity | Nothing: a failure or maintenance reduces capacity |
+| N+1 | One spare unit beyond need | One unit failing or being serviced |
+| 2N | Two complete independent systems | Loss or maintenance of an entire system |
+
+Redundancy also applies to distribution paths, not only to equipment. Two UPS units
+feeding a single switchboard still share one point of failure. **ANSI/TIA-942** sets out
+rating levels for data centre infrastructure, and **ISO/IEC 22237-1** and **EN 50600-1**
+define a classification by availability, from a single path up to fault-tolerant
+multi-path designs. Which level is right depends on what an outage costs the business,
+which is a decision for the owner, informed by the MEP consultant.
+
+## Raised floor or overhead, and containment
+
+A [raised access floor](/glossary/raised-access-floor) gives an underfloor air path and
+cable space. Overhead cabling with cooling delivered by in-row or perimeter units is
+the other common approach, and a solid floor carries heavy racks more easily. The
+decision follows the cooling design.
+
+Containment, enclosing the hot or cold aisle, stops supply and return air mixing so the
+cooling does useful work. It also changes how fire detection and suppression reach the
+racks, so the fire consultant has to design with the containment, not around it.
+
+Structure is the item most often assumed. Dense racks, battery rooms and plant are far
+heavier than office loads; the current revision of TIA-942 addresses floor loading
+capacity for this reason. The project's structural engineer must confirm the slab
+against the real layout.
+
+## Fire, phasing and the smaller room
+
+Fire protection combines early-warning detection with suppression chosen not to damage
+the equipment it protects. Gas-based systems need a sealed room to work, which affects
+walls, ceilings, doors and every penetration. What a facility requires is decided under
+**NBC 2016, Part 4** by the fire consultant and the authority having jurisdiction.
+
+Phasing is where many facilities save capital: build the shell and main routes for the
+final capacity, then add power and cooling modules as the load arrives, with tie-in
+points provided from day one. For a single equipment room inside an office, start with
+[what to settle first for a server room in an office](/blog/server-room-in-an-office-what-to-settle-first).
+
+## Common mistakes
+
+- **Choosing redundancy by habit.** The level should follow the cost of an outage.
+- **Duplicating equipment but not paths.** A shared switchboard defeats two UPS units.
+- **Assuming the slab is fine.** Battery rooms concentrate load and need checking.
+- **Backing up servers but not cooling.** The outage is delayed, not avoided.
+- **No space for phase two.** Later modules end up squeezed into live areas.
+
+## What to ask before design starts
+
+- What does an hour of outage cost, and what redundancy does that justify?
+- Is redundancy applied to distribution paths as well as equipment?
+- Raised floor or overhead, and why, given the cooling design?
+- Has the structural engineer checked the slab against racks, batteries and plant?
+- How is the first phase set up for the later ones?
+
+## Standards referenced
+
+Data centre infrastructure in **ANSI/TIA-942**; general concepts and availability
+classification in **ISO/IEC 22237-1** and **EN 50600-1**; fire and life safety in
+**NBC 2016, Part 4**. Redundancy, loads, cooling and fire requirements for a specific
+facility are established by the project's MEP, structural and fire consultants and the
+authority having jurisdiction.
