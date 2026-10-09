@@ -1021,6 +1021,95 @@ export const allProjects: ProjectData[] = [
       },
     ],
   },
+  {
+    id: "minebeamitsumi-bengaluru",
+    title: "MinebeaMitsumi Manufacturing Facility",
+    client: "MinebeaMitsumi",
+    location: "Peenya, Bengaluru",
+    sector: "Manufacturing & Industrial Facility",
+    status: "Completed",
+    area: "8,500 sq ft",
+
+    hero: "/projects/minebeamitsumi-bengaluru/hero.webp",
+    heroAlt:
+      "MinebeaMitsumi production floor in Peenya, Bengaluru with epoxy-coated blue flooring, overhead cable trays and assembly workstations",
+    summary:
+      "A manufacturing facility fit-out for MinebeaMitsumi in the Peenya industrial belt of Bengaluru, covering interior fit-out, MEP, civil, electrical, plumbing, HVAC and an overhead crane across 8,500 sq ft of production and warehouse floor.",
+    metaTitle: "MinebeaMitsumi Manufacturing Facility, Bengaluru",
+    metaDescription:
+      "MinebeaMitsumi's manufacturing facility in Peenya, Bengaluru: interior, MEP, civil, electrical, plumbing, HVAC and overhead crane across 8,500 sq ft.",
+    scope: [
+      "Interior fit-out",
+      "MEP coordination and execution",
+      "Civil works",
+      "Electrical installation",
+      "Plumbing",
+      "HVAC",
+      "Overhead crane installation",
+    ],
+    sections: [
+      {
+        name: "Production Floor",
+        description:
+          "Epoxy-coated production floor with marked process stations, overhead cable trays and signage for the assembly line.",
+        images: [
+          {
+            src: "/projects/minebeamitsumi-bengaluru/hero.webp",
+            alt: "MinebeaMitsumi production floor with epoxy flooring, process station signage and overhead cable trays",
+          },
+          {
+            src: "/projects/minebeamitsumi-bengaluru/assembly-workstation.webp",
+            alt: "Assembly workstation on the MinebeaMitsumi production floor with process control panels",
+          },
+        ],
+      },
+      {
+        name: "Mezzanine & Civil / MEP Services",
+        description:
+          "Mezzanine-level office area overlooking the shop floor, with exposed cable trays, ducting and a glazed partition separating the plant from the warehouse.",
+        images: [
+          {
+            src: "/projects/minebeamitsumi-bengaluru/mezzanine-overview.webp",
+            alt: "Mezzanine-level overview of the MinebeaMitsumi shop floor with injection moulding machines and workstations",
+          },
+          {
+            src: "/projects/minebeamitsumi-bengaluru/mep-services.webp",
+            alt: "Glazed partition between the production floor and warehouse with exposed cable trays and ducting",
+          },
+        ],
+      },
+      {
+        name: "Warehouse & Material Storage",
+        description:
+          "Pallet racking and material storage area adjoining the production floor, with a loading bay shutter for inbound and outbound material movement.",
+        images: [
+          {
+            src: "/projects/minebeamitsumi-bengaluru/warehouse-storage.webp",
+            alt: "Pallet racking and boxed material storage in the MinebeaMitsumi warehouse area",
+          },
+          {
+            src: "/projects/minebeamitsumi-bengaluru/warehouse-loading.webp",
+            alt: "Warehouse loading bay with shutter door and pallet racking at the MinebeaMitsumi facility",
+          },
+        ],
+      },
+      {
+        name: "Overhead Crane & Material Handling",
+        description:
+          "Overhead crane installation spanning the warehouse bay for material handling, serving the racking and loading areas below.",
+        images: [
+          {
+            src: "/projects/minebeamitsumi-bengaluru/overhead-crane.webp",
+            alt: "Overhead crane spanning the MinebeaMitsumi warehouse bay above pallet racking",
+          },
+          {
+            src: "/projects/minebeamitsumi-bengaluru/crane-material-handling.webp",
+            alt: "Overhead crane rail above wrapped pallets in the MinebeaMitsumi warehouse",
+          },
+        ],
+      },
+    ],
+  },
   // 2019–2021 works-done sheet: one page per job, most without photos.
   ...worksDone2019Projects,
 ];

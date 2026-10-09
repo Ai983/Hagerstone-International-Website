@@ -403,7 +403,7 @@ export const cities: City[] = [
       "Bengaluru is India's largest technology and industrial employment market. Hagerstone has delivered manufacturing-adjacent projects in the Peenya industrial belt.",
     projects: [
       { name: "Auma India", detail: "Peenya" },
-      { name: "MinebeaMitsumi", detail: "Peenya" },
+      { name: "MinebeaMitsumi", detail: "Peenya", slug: "minebeamitsumi-bengaluru" },
     ],
   },
 
