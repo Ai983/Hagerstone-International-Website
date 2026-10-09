@@ -168,7 +168,7 @@ export const cities: City[] = [
       "Delhi blends legacy commercial districts like Connaught Place and Nehru Place with premium new-economy hubs around Saket and Aerocity. Projects here range from heritage-sensitive refurbishments to high-spec corporate and healthcare interiors on constrained, high-footfall sites.",
     projects: [
       { name: "Max Hospital", detail: "Saket — healthcare interiors" },
-      { name: "Sael", detail: "Aerocity / IGI corporate office" },
+      { name: "Sael", detail: "Aerocity / IGI corporate office", slug: "sael-aerocity-delhi" },
       { name: "Western Green", detail: "Rangpuri" },
       { name: "MicroSave Consulting (MSC)", detail: "Corporate office", slug: "microsave" },
       { name: "French Embassy", detail: "Chanakyapuri · turnkey interiors", slug: "french-embassy-chanakyapuri" },

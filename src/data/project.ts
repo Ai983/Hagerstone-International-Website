@@ -1110,6 +1110,87 @@ export const allProjects: ProjectData[] = [
       },
     ],
   },
+  {
+    id: "sael-aerocity-delhi",
+    title: "SAEL Aerocity Corporate Office",
+    client: "SAEL",
+    location: "Aerocity, Delhi",
+    sector: "Renewable Energy Company Office",
+    status: "Completed",
+    area: "3,500 sq ft",
+
+    hero: "/projects/sael-aerocity-delhi/hero.webp",
+    heroAlt:
+      "Backlit SAEL signage on a ribbed wood-panel wall above the reception desk at the SAEL Aerocity office",
+    summary:
+      "A corporate office fit-out for SAEL, a solar energy company, in Aerocity, Delhi, covering interior fit-out, MEP, civil, electrical, plumbing, HVAC and furniture across 3,500 sq ft.",
+    metaTitle: "SAEL Aerocity Corporate Office, Delhi",
+    metaDescription:
+      "SAEL's corporate office in Aerocity, Delhi: interior, MEP, civil, electrical, plumbing, HVAC and furniture across 3,500 sq ft.",
+    scope: [
+      "Interior fit-out",
+      "MEP coordination and execution",
+      "Civil works",
+      "Electrical installation",
+      "Plumbing",
+      "HVAC",
+      "Furniture",
+    ],
+    sections: [
+      {
+        name: "Open Workstations",
+        description:
+          "Open-plan workstations with orange desk dividers, blue patterned carpet and a mix of circular and linear ceiling lighting against a marble-tiled walkway.",
+        images: [
+          {
+            src: "/projects/sael-aerocity-delhi/workstations-banner.webp",
+            alt: "SAEL open-plan office workstations with orange dividers, blue carpet and marble walkway in Aerocity, Delhi",
+          },
+          {
+            src: "/projects/sael-aerocity-delhi/workstations.webp",
+            alt: "Row of SAEL office workstations with linear ceiling lighting and marble flooring",
+          },
+        ],
+      },
+      {
+        name: "Breakout & Circulation",
+        description:
+          "A branded accent pillar marks the breakout zone within the open office, with a glazed corridor along frosted partitions connecting to the meeting rooms.",
+        images: [
+          {
+            src: "/projects/sael-aerocity-delhi/breakout-area.webp",
+            alt: "SAEL office breakout area with a branded teal accent pillar among open workstations",
+          },
+          {
+            src: "/projects/sael-aerocity-delhi/corridor.webp",
+            alt: "Glazed corridor with frosted glass partitions and marble flooring at the SAEL office",
+          },
+        ],
+      },
+      {
+        name: "Reception",
+        description:
+          "Reception area with a ribbed wood-panel wall, backlit SAEL signage and a wood-slat ceiling feature above the welcome desk.",
+        images: [
+          {
+            src: "/projects/sael-aerocity-delhi/reception-wide.webp",
+            alt: "SAEL office reception desk with wood-panel signage wall and adjoining glazed meeting room",
+          },
+        ],
+      },
+      {
+        name: "MD Cabin & Furniture",
+        description:
+          "Executive cabin with a geometric wood-lattice ceiling feature, a curved executive desk, leather seating and a built-in storage unit.",
+        images: [
+          {
+            src: "/projects/sael-aerocity-delhi/md-cabin.webp",
+            alt: "SAEL MD cabin with a geometric wood-lattice ceiling, curved executive desk and leather chairs",
+          },
+        ],
+      },
+    ],
+  },
   // 2019–2021 works-done sheet: one page per job, most without photos.
   ...worksDone2019Projects,
 ];
