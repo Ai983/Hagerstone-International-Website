@@ -770,14 +770,14 @@ export default function OfficeWorkspaceDesignBlog() {
 
         {/* CTA Section */}
         <section className="max-w-4xl mx-auto px-4 py-12">
-          <div className="bg-gradient-to-r from-primary to-accent text-white p-12 rounded-lg text-center shadow-lg">
+          <div className="bg-gradient-to-r from-primary to-accent text-white p-6 sm:p-12 rounded-lg text-center shadow-lg">
             <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Office Workspace?</h3>
             <p className="text-lg mb-8 text-white/90">
               Let Hagerstone International's expert team design a productive, efficient workspace tailored to your needs and budget.
             </p>
             <Link to="/contact">
               <Button 
-                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-base font-semibold"
+                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-base font-semibold h-auto whitespace-normal"
               >
                 Schedule a Free Consultation
               </Button>

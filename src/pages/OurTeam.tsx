@@ -105,7 +105,7 @@ const OurTeam = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative w-80 max-w-xs aspect-[3/4] overflow-hidden border border-gray-200"
+                className="relative w-full max-w-xs aspect-[3/4] overflow-hidden border border-gray-200"
               >
                 <img
                   src={selectedMember.image}
