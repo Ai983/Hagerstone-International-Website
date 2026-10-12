@@ -2,10 +2,13 @@
   "algo": "sha256",
   "salt": "hagerstone-blocklist-v1",
   "hashes": [
+    "39ba1dcce9549a6abb87879be5a1c697",
     "4564e4db5b378f535b4d87e7341ec321",
     "4ec1c0fd2e5337ab05911af9031511f0",
     "95a8b65f9427d782a9c8790e2cbc7fef",
     "96ded5072ef862b184189e064bc6a877",
-    "c504454092f9f41c1b636f18e1aadac2"
+    "b69552a5e88106990891b8d769f7bbda",
+    "c504454092f9f41c1b636f18e1aadac2",
+    "f3fdb0467f5e333a117d5c38b6df6a6a"
   ]
 }

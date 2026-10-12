@@ -1,0 +1,120 @@
+{
+  "_readme": [
+    "Automotive-components office and staff dining floor, Noida. Source deck exports are NOT committed (public repo).",
+    "The deck PDF holds each slide as one flattened 1600x1000 bitmap whose footer names the client, so every source here is the render area only, cropped at 42,192 996x664 (plan: 42,322 1516x138; mood board: 42,156 1128x750). The footer never enters a source file.",
+    "Client marks: wordmark on the feature wall in the first-floor waiting (p12), main office (p13), cubicles (p14) and dining hall (p26); wordmark on the display board in cabin 03 (p15); wordmark on the uniforms in the handwash mural (p28); wordmark on the central stair wall (p31). p12, p13, p14 and p26 are patched with wall sampled from directly above (or below) the mark. p15, p28 and p31 are dropped: the gallery holds 12 and there are more clean views than slots.",
+    "Slide 02 is the client's title card and is never extracted."
+  ],
+
+  "office-floor-plan": {
+    "source": "p03.png",
+    "note": "no client mark",
+    "group": "plan",
+    "alt": "Rendered first-floor plan of a long narrow office: cabins along one wall, workstation banks, meeting rooms and a dining hall at one end",
+    "caption": "The first floor end to end: leadership and meetings, then the workstation bays, then dining and the kitchen."
+  },
+
+  "materials-mood-board": {
+    "source": "p04.png",
+    "note": "no client mark; the connector sketches are generic linework",
+    "group": "plan",
+    "alt": "Material mood board with grey and green stone samples, sage, mauve and taupe laminates and black and satin metal trims",
+    "caption": "The palette: sage and olive, mauve and cappuccino, green and grey Kota stone, black steel and satin metal."
+  },
+
+  "reception-and-arrival": {
+    "source": "p05.png",
+    "note": "no client mark; product display wall carries no lettering",
+    "group": "arrival",
+    "alt": "Ground-floor reception with a sage-fronted desk, a lit product display wall under the stair and a lounge of tan armchairs",
+    "caption": "Ground-floor arrival: reception desk, product display under the stair, and a waiting lounge. Indicative viewpoint."
+  },
+
+  "first-floor-waiting": {
+    "source": "p12.png",
+    "note": "client wordmark on the olive mural wall, patched with clean wall sampled directly above",
+    "ops": [
+      { "type": "fill", "matchTone": true, "left": 674, "top": 141, "width": 74, "height": 48, "sampleFrom": { "left": 674, "top": 126 }, "sampleWidth": 74, "sampleHeight": 12 }
+    ],
+    "group": "arrival",
+    "alt": "First-floor waiting area with green and beige sofas in front of an olive mural wall of engineering line drawings",
+    "caption": "First-floor waiting at the top of the stair, outside the boardroom door. Indicative viewpoint."
+  },
+
+  "boardroom": {
+    "source": "p10.png",
+    "note": "no client mark",
+    "group": "leadership",
+    "alt": "Boardroom with a long table in tan leather chairs, a backlit screen wall, frosted glass partition and windows onto trees",
+    "caption": "The boardroom, set in a green Kota border and reached through its own lobby. Indicative viewpoint."
+  },
+
+  "leadership-cabin": {
+    "source": "p08.png",
+    "note": "no client mark; CABIN-01 is room signage",
+    "group": "leadership",
+    "alt": "Private cabin with a sage desk, tan executive chair, two visitor chairs and a frosted glass door",
+    "caption": "A leadership cabin: desk, two visitor chairs and a full run of storage. Indicative viewpoint."
+  },
+
+  "open-plan-workstations": {
+    "source": "p13.png",
+    "note": "large blue client wordmark on the left feature wall, removed by inpaint: the blue letter pixels are masked and rebuilt from the wall above and below each column, which keeps the wall gradient and the niche edge",
+    "ops": [
+      { "type": "inpaint", "select": "blue", "left": 76, "top": 36, "width": 146, "height": 112, "dilate": 2 }
+    ],
+    "group": "workplace",
+    "alt": "Long open-plan office with rows of workstations, planter-topped storage, striped grey and green floor and exposed steel roof",
+    "caption": "The main workstation bay under the exposed steel roof, with planters on the storage spine. Indicative viewpoint."
+  },
+
+  "team-cubicles": {
+    "source": "p14.png",
+    "note": "client wordmark and emblem on the beige mural wall, patched with wall sampled directly below",
+    "ops": [
+      { "type": "fill", "matchTone": true, "left": 184, "top": 56, "width": 150, "height": 54, "sampleFrom": { "left": 184, "top": 110 }, "sampleWidth": 150, "sampleHeight": 8 }
+    ],
+    "group": "workplace",
+    "alt": "Two-person team cubicles with sage panels and visitor chairs below a mural of engine line drawings",
+    "caption": "Team cubicles for managers who need a visitor chair but not a door. Indicative viewpoint."
+  },
+
+  "war-room": {
+    "source": "p19.png",
+    "note": "no client mark; the screen shows a generic exploded component",
+    "group": "workplace",
+    "alt": "War room with a sage table for six, whiteboards on both side walls and a screen on a mauve wall",
+    "caption": "The war room: whiteboards on two walls, built for the daily review. Indicative viewpoint."
+  },
+
+  "informal-discussion-area": {
+    "source": "p18.png",
+    "note": "no client mark",
+    "group": "workplace",
+    "alt": "Informal discussion area with an L-shaped sofa, air hockey and foosball tables in front of a mauve mural wall",
+    "caption": "The informal discussion zone between the work floor and dining. Indicative viewpoint."
+  },
+
+  "staff-dining-hall": {
+    "source": "p26.png",
+    "note": "client wordmark on the olive mural wall at left, removed by inpaint: the cream letter pixels are masked and rebuilt from the wall above and below each column",
+    "ops": [
+      { "type": "inpaint", "select": "light", "threshold": 420, "left": 70, "top": 24, "width": 92, "height": 102, "dilate": 2 }
+    ],
+    "group": "dining",
+    "alt": "Long staff dining hall with rows of four-seat tables in mauve and beige chairs under pendant lights and an exposed steel roof",
+    "caption": "The staff dining hall, with the servery at the far end. Indicative viewpoint."
+  },
+
+  "kitchen-pre-preparation": {
+    "source": "p29.png",
+    "note": "no client mark",
+    "group": "dining",
+    "alt": "Stainless steel kitchen pre-preparation area with a chapati machine, dough kneader, worktops and floor drains",
+    "caption": "Pre-preparation and landing, beside the service stair so deliveries never cross the dining hall. Indicative viewpoint."
+  },
+
+  "cabin-display-board": { "source": "p15.png", "skip": true, "note": "DROPPED. Client wordmark and tagline on the display board, sitting against the board's top edge; no room to patch cleanly, and the gallery is full." },
+  "handwash-mural": { "source": "p28.png", "skip": true, "note": "DROPPED. Client wordmark on three uniforms in the mural and their reflections in the mirror; gallery is full." },
+  "central-stair-approach": { "source": "p31.png", "skip": true, "note": "DROPPED. Large client wordmark on the stair-core wall; gallery is full." }
+}

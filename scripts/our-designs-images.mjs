@@ -14,7 +14,9 @@
 // Redaction ops, in the order they are applied per image:
 //   crop  { left, top, width, height }                   preferred — reframes the mark out
 //   fill  { left, top, width, height, sampleFrom }       patches with clean adjacent pixels
+//         add matchTone: true to shift the patch to the surrounding wall's mean colour
 //   blur  { left, top, width, height, sigma }            small incidental marks only
+//   inpaint { left, top, width, height, select }         a mark distinct in colour (select: "blue" or "light"): masks it and rebuilds the wall per column
 // Coordinates for fill/blur are relative to the image AFTER any crop.
 //
 // Usage:
@@ -124,14 +126,93 @@ async function applyOps(input, ops = []) {
       const sample = op.sampleFrom ?? { left: op.left, top: op.top };
       const sw = Math.min(op.sampleWidth ?? 24, meta.width - sample.left);
       const sh = Math.min(op.sampleHeight ?? 24, meta.height - sample.top);
-      const patch = await sharp(buffer)
+      let patch = await sharp(buffer)
         .extract({ left: sample.left, top: sample.top, width: sw, height: sh })
         .resize({ width: op.width, height: op.height, fit: "fill" })
         .blur(op.sigma ?? 6)
         .toBuffer();
+      // `matchTone`: shift the patch's mean colour to that of a thin ring of
+      // wall just outside it. A wall under a light gradient is rarely the same
+      // brightness a few pixels away, and that step is what makes a patch read
+      // as a rectangle.
+      if (op.matchTone) {
+        // The ring sits `gap` px out so anti-aliased edges of the mark itself
+        // do not lighten the target.
+        const ring = op.ring ?? 4;
+        const gap = op.gap ?? 3;
+        const mean = async (img) =>
+          (await sharp(img).stats()).channels.slice(0, 3).map((c) => c.mean);
+        const boxes = [
+          { left: op.left, top: op.top - gap - ring, width: op.width, height: ring },
+          { left: op.left, top: op.top + op.height + gap, width: op.width, height: ring },
+          { left: op.left - gap - ring, top: op.top, width: ring, height: op.height },
+          { left: op.left + op.width + gap, top: op.top, width: ring, height: op.height },
+        ].filter(
+          (b) => b.left >= 0 && b.top >= 0 && b.top + b.height <= meta.height && b.left + b.width <= meta.width,
+        );
+        const sides = await Promise.all(
+          boxes.map(async (box) => mean(await sharp(buffer).extract(box).toBuffer())),
+        );
+        const target = [0, 1, 2].map((i) => sides.reduce((sum, m) => sum + m[i], 0) / sides.length);
+        const current = await mean(patch);
+        patch = await sharp(patch)
+          .removeAlpha()
+          .linear([1, 1, 1], target.map((t, i) => t - current[i]))
+          .toBuffer();
+      }
       buffer = await sharp(buffer)
         .composite([{ input: patch, left: op.left, top: op.top }])
         .toBuffer();
+      continue;
+    }
+
+    if (op.type === "inpaint") {
+      // For a mark whose colour stands apart from the wall it sits on (blue
+      // lettering on beige paint): mask the mark's own pixels inside the box,
+      // grow the mask by `dilate` px to take the anti-aliased edge, then
+      // rebuild each masked run column by column, interpolating between the
+      // clean wall just above and just below it. That keeps the wall's
+      // vertical gradient and any edge the box overlaps, which no rectangle
+      // of sampled paint can do.
+      const { data, info } = await sharp(buffer).raw().toBuffer({ resolveWithObject: true });
+      const ch = info.channels;
+      const at = (x, y) => (y * info.width + x) * ch;
+      const isMark = {
+        blue: (i) => data[i + 2] - data[i] > (op.threshold ?? 25),
+        light: (i) => data[i] + data[i + 1] + data[i + 2] > (op.threshold ?? 540),
+      }[op.select];
+      if (!isMark) throw new Error(`inpaint: unknown select "${op.select}"`);
+
+      const { left, top, width, height } = op;
+      const dilate = op.dilate ?? 2;
+      const mask = new Uint8Array(width * height);
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++)
+          if (isMark(at(left + x, top + y)))
+            for (let dy = -dilate; dy <= dilate; dy++)
+              for (let dx = -dilate; dx <= dilate; dx++) {
+                const mx = x + dx;
+                const my = y + dy;
+                if (mx >= 0 && my >= 0 && mx < width && my < height) mask[my * width + mx] = 1;
+              }
+
+      for (let x = 0; x < width; x++) {
+        let y = 0;
+        while (y < height) {
+          if (!mask[y * width + x]) { y++; continue; }
+          const start = y;
+          while (y < height && mask[y * width + x]) y++;
+          const above = at(left + x, Math.max(0, top + start - 1));
+          const below = at(left + x, Math.min(info.height - 1, top + y));
+          const run = y - start + 1;
+          for (let k = start; k < y; k++) {
+            const t = (k - start + 1) / run;
+            const i = at(left + x, top + k);
+            for (let c = 0; c < 3; c++) data[i + c] = Math.round(data[above + c] * (1 - t) + data[below + c] * t);
+          }
+        }
+      }
+      buffer = await sharp(data, { raw: info }).png().toBuffer();
       continue;
     }
 
