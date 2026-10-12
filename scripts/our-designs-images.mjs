@@ -17,6 +17,7 @@
 //         add matchTone: true to shift the patch to the surrounding wall's mean colour
 //   blur  { left, top, width, height, sigma }            small incidental marks only
 //   inpaint { left, top, width, height, select }         a mark distinct in colour (select: "blue" or "light"): masks it and rebuilds the wall per column
+//   denoise { size }                                     median filter for render grain, so a grainy render fits the budget
 // Coordinates for fill/blur are relative to the image AFTER any crop.
 //
 // Usage:
@@ -163,6 +164,15 @@ async function applyOps(input, ops = []) {
       buffer = await sharp(buffer)
         .composite([{ input: patch, left: op.left, top: op.top }])
         .toBuffer();
+      continue;
+    }
+
+    if (op.type === "denoise") {
+      // Render grain (the speckle a path tracer leaves on flat walls) is noise,
+      // not detail, but it is what WebP spends its bytes on. A small median
+      // removes it without softening edges, so a grainy render can stay at a
+      // normal quality instead of being crushed to fit the budget.
+      buffer = await sharp(buffer).median(op.size ?? 3).toBuffer();
       continue;
     }
 
