@@ -1,0 +1,99 @@
+{
+  "_readme": [
+    "Cyber and operational-technology experience centre, Noida, three design directions on one plan. Source deck exports are NOT committed (public repo).",
+    "The deck holds each slide as one flattened 2400x1350 bitmap whose header and footer name the client, so every source is the render area only, cropped out of the slide before processing. No slide text enters a source file.",
+    "Client marks: the client's acronym is on the foyer wall, visitor recognition wall, hardware lab (options 01, 02), library, SOC hub (01, 02), training studio (01, 02), media wall and pillars throughout; a threat-report poster on the visitor wall carries it too. All of those views are excluded. Two kept views carry it on one edge only and are cropped: the option 01 experience zone (left wall sign) and the option 02 AR-VR bay (OT lab sign at left).",
+    "Third-party marks: the OT lab elevation shows a named automation vendor's logo; excluded. Every screen in the kept views was checked at full size and shows generic graphics.",
+    "Remaining room signage (OT LAB, AR-VR ZONE, ROBOTICS ZONE, HARDWARE LAB, SMART TRAINING STUDIO, EXPERIENCE ZONE) is generic and kept."
+  ],
+
+  "floor-plan": {
+    "source": "o1-plan.png",
+    "note": "room labels only",
+    "group": "plan",
+    "alt": "Rendered top-down plan of a technology experience centre: labs along the top, a central showcase and training studio, workstations to the left",
+    "caption": "The plan: labs and the SOC hub on the top edge, the showcase, experience zone and training studio down the middle, and the team floor to one side."
+  },
+
+  "aura-central-experience": {
+    "source": "o1-central.png",
+    "note": "no client mark; screens generic",
+    "group": "aura",
+    "alt": "Bright central showcase with a blue sectional sofa, a white experience table and demonstration bays for an OT lab, AR-VR and robotics",
+    "caption": "Option 01, Aura: the central showcase under soft luminous ceiling discs, with the demonstration bays behind. Indicative viewpoint."
+  },
+  "aura-experience-zone": {
+    "source": "o1-expzone.png",
+    "note": "client acronym on the left wall sign, cropped out",
+    "ops": [{ "type": "crop", "left": 260, "top": 0, "width": 1310, "height": 879 }],
+    "group": "aura",
+    "alt": "Curved petrol-blue canopy framing a wide media wall over a fluted counter with tablets, and lounge chairs in front",
+    "caption": "The experience zone: a curved canopy frames the media wall, with touch tablets along the counter. Indicative viewpoint."
+  },
+  "aura-hardware-lab": {
+    "source": "o1-hwlab.png",
+    "note": "generic room sign only",
+    "group": "aura",
+    "alt": "Hardware lab with a long white workbench, mesh chairs, lit display shelves of robots and a glazed partition with dot-gradient film",
+    "caption": "The hardware lab: a long bench with power at every seat, and displays for the kit it builds. Indicative viewpoint."
+  },
+  "aura-training-studio-passage": {
+    "source": "o1-passage.png",
+    "note": "generic room sign only",
+    "group": "aura",
+    "alt": "Carpeted passage beside the glazed corner of a training studio, with a green wall panel and petrol-blue door frames",
+    "caption": "The passage past the training studio's glazed corner, which keeps the sessions visible from the circulation route. Indicative viewpoint."
+  },
+
+  "gallery-central-experience": {
+    "source": "o2-central.png",
+    "note": "no client mark; screens generic",
+    "group": "technology-gallery",
+    "alt": "Central showcase with a charcoal ceiling and track spotlights, an ink-blue sofa and demonstration bays on a blue and sand carpet",
+    "caption": "Option 02, The Technology Gallery: a dark ceiling and focused wall washing, so the exhibits carry the light. Indicative viewpoint."
+  },
+  "gallery-ar-vr-robotics": {
+    "source": "o2-arvr.png",
+    "note": "client acronym on the OT lab sign at the left edge, cropped out",
+    "ops": [{ "type": "crop", "left": 225, "top": 0, "width": 1345, "height": 879 }],
+    "group": "technology-gallery",
+    "alt": "Two lit demonstration booths for AR-VR and robotics with screens and display counters, beside the glazed door to a SOC hub",
+    "caption": "The AR-VR and robotics booths, each a lit alcove with a screen and a display counter. Indicative viewpoint."
+  },
+  "gallery-hardware-lab": {
+    "source": "o2-hwlab.png",
+    "note": "generic room sign only",
+    "group": "technology-gallery",
+    "alt": "Hardware lab with a charcoal ceiling, linear lights, a long white bench, clay-toned cabinets and printed circuit-pattern panels",
+    "caption": "The same hardware lab in option 02: charcoal ceiling, clay cabinets and printed circuit-pattern panels. Indicative viewpoint."
+  },
+
+  "parallax-central-experience": {
+    "source": "o3-central.png",
+    "note": "no client mark; screens generic",
+    "group": "parallax",
+    "alt": "Dark cinematic showcase with a plum and charcoal sofa, graphite lockers and backlit demonstration bays",
+    "caption": "Option 03, Parallax: carbon, porcelain and plum, with cyan and amber accents. Indicative viewpoint."
+  },
+  "parallax-experience-zone": {
+    "source": "o3-expzone.png",
+    "note": "generic glass sign only",
+    "group": "parallax",
+    "alt": "Black curved canopy over a wide cyan media wall and charcoal counter, with plum lounge chairs and an angled glass sign panel",
+    "caption": "The experience zone in option 03, with the media wall set into a black canopy. Indicative viewpoint."
+  },
+  "parallax-soc-hub": {
+    "source": "o3-soc.png",
+    "note": "no client mark; screens generic",
+    "group": "parallax",
+    "alt": "SOC and development hub with rows of white desks and laptops, a large video wall and roller blinds over the windows",
+    "caption": "The SOC and AI development hub: desk rows facing a video wall, with blinds to control glare on the screens. Indicative viewpoint."
+  },
+  "parallax-training-studio": {
+    "source": "o3-training.png",
+    "note": "generic room sign only",
+    "group": "parallax",
+    "alt": "Training studio with hexagonal six-seat tables, a charcoal ceiling, a front media wall and glazed walls with linear film",
+    "caption": "The training studio: 24 seats at hexagonal tables for group work, facing a media wall. Indicative viewpoint."
+  }
+}
