@@ -1,0 +1,99 @@
+{
+  "_readme": [
+    "Industrial company head office, two floors, two finish options, Delhi. Source deck exports are NOT committed (public repo).",
+    "Sources are the bitmaps embedded in the October options deck (1672 px renders, 3100 px plans), extracted as-is: they carry no slide labels, callouts or footer, so no crop is needed for those.",
+    "Client marks: the client's name in large lettering and a company-history timeline on the reception wall in both reception views (p01, p06, p15), and the name on the MD room panel in both options (p10, p19). All five are excluded, not retouched: the timeline dates and product milestones identify the company even with the name removed. Every artwork, screen and the mandir lettering in the kept views was checked at full size and carries no mark.",
+    "The September deck (same client) is not used: its seat counts differ from this deck, and its facade views are photomontages of the real building showing the client's and two neighbouring businesses' signage. The facade options are described in text only.",
+    "Not used for space: option 02 plans (p13, p14, same layout as option 01), option 01 L-shaped workpoint (p08), option 02 private cabin (p18), washroom (p22)."
+  ],
+
+  "second-floor-plan": {
+    "source": "p04-0.jpeg",
+    "note": "no client mark",
+    "group": "plans",
+    "alt": "Rendered top-down plan of an office floor with two cabins at the road end, oak desk banks, L-shaped cubicles and toilets at the service end",
+    "caption": "Second floor: reception and two cabins at the road end, desk banks in the middle, L-shaped cubicles and toilets at the service lane."
+  },
+  "third-floor-plan": {
+    "source": "p05-0.jpeg",
+    "note": "no client mark",
+    "group": "plans",
+    "alt": "Rendered top-down plan of an office floor with an MD room, an eight-seat conference room, a meeting room, desk banks and L-shaped cubicles",
+    "caption": "Third floor: the MD room, conference and meeting rooms take the road end; the workstations and cubicles repeat the floor below."
+  },
+  "option-01-material-board": {
+    "source": "p03-0.jpeg",
+    "note": "no client mark",
+    "group": "option-01",
+    "alt": "Material board with oak veneer, greige and champagne laminate, terrazzo-look tile, sage fabric, wavy glass, graphite metal and a steel wire",
+    "caption": "Option 01: oak, greige and champagne, with terrazzo-look floors, sage fabric and graphite metal."
+  },
+  "option-01-workplace": {
+    "source": "p07-0.jpeg",
+    "note": "no client mark",
+    "group": "option-01",
+    "alt": "Open office with oak desks on graphite frames, sage fabric screens, planted storage and a terrazzo-look floor",
+    "caption": "Option 01 workplace: oak desks on graphite frames, sage screens and planted storage. Indicative viewpoint."
+  },
+  "option-01-conference-room": {
+    "source": "p11-0.jpeg",
+    "note": "no client mark",
+    "group": "option-01",
+    "alt": "Eight-seat conference room with an oak table, sage chairs, an end-wall screen, a glass writing board and a stretched-fabric light above",
+    "caption": "Conference room: eight chairs, an end-wall screen and glass writing board, lit from a stretched-fabric panel. Indicative viewpoint."
+  },
+  "option-01-private-cabin": {
+    "source": "p09-0.jpeg",
+    "note": "no client mark; the wire artwork carries no lettering",
+    "group": "option-01",
+    "alt": "Small private cabin with an oak desk, two sage visitor chairs, steel-wire wall art and a sliding glass door with wave-pattern film",
+    "caption": "Private cabin with wire wall art and a wave-pattern privacy film on the sliding door. Indicative viewpoint."
+  },
+  "option-02-material-board": {
+    "source": "p12-0.jpeg",
+    "note": "no client mark",
+    "group": "option-02",
+    "alt": "Material board with oak veneer, pearl solid surface, woven grey-blue carpet, dusty blue fabric, wavy glass and graphite metal",
+    "caption": "Option 02: oak, mineral blue and pearl, with woven carpet, dusty blue fabric and graphite metal."
+  },
+  "option-02-workplace": {
+    "source": "p16-0.jpeg",
+    "note": "no client mark; the wire artwork carries no lettering",
+    "group": "option-02",
+    "alt": "Carpeted open office with oak desks, blue fabric screens, mineral blue walls, a wire artwork and continuous boxing behind the AC units",
+    "caption": "Option 02 workplace, with continuous service boxing hiding the AC pipework along the wall. Indicative viewpoint."
+  },
+  "option-02-l-shaped-workpoint": {
+    "source": "p17-0.jpeg",
+    "note": "no client mark",
+    "group": "option-02",
+    "alt": "L-shaped workstation with blue fabric screens, a monitor arm and a rounded oak storage unit topped with a planter",
+    "caption": "An L-shaped workpoint: fabric screens, soft corners and a planted oak storage end. Indicative viewpoint."
+  },
+  "option-02-conference-room": {
+    "source": "p20-0.jpeg",
+    "note": "no client mark",
+    "group": "option-02",
+    "alt": "Eight-seat conference room with blue chairs on carpet, an oak table, an end-wall screen and a glass writing board",
+    "caption": "The same conference room in option 02: carpet, blue upholstery and pale blue walls. Indicative viewpoint."
+  },
+  "pantry": {
+    "source": "p21-0.jpeg",
+    "note": "no client mark; fridge carries no legible brand",
+    "group": "shared",
+    "alt": "Compact office pantry with smooth oak cabinets, an under-counter fridge, a stone backsplash and a lit open shelf",
+    "caption": "Pantry, common to both options: smooth oak doors and a stone backsplash. Indicative viewpoint."
+  },
+  "office-mandir": {
+    "source": "p23-0.jpeg",
+    "note": "no client mark; the wall lettering is a generic blessing",
+    "group": "shared",
+    "alt": "Office mandir with a brass Ganesha idol under a backlit steel-wire halo on a floating oak cabinet, behind oak sliding doors",
+    "caption": "The mandir, common to both options: a wire halo, warm light and an ivory altar. Indicative viewpoint."
+  },
+
+  "reception-option-01": { "source": "p06-0.jpeg", "skip": true, "note": "DROPPED. Client name and company timeline on the reception wall." },
+  "reception-option-02": { "source": "p15-0.jpeg", "skip": true, "note": "DROPPED. Client name and company timeline on the reception wall." },
+  "md-room-option-01": { "source": "p10-0.jpeg", "skip": true, "note": "DROPPED. Client name on the panel behind the desk." },
+  "md-room-option-02": { "source": "p19-0.jpeg", "skip": true, "note": "DROPPED. Client name on the panel behind the desk." }
+}
