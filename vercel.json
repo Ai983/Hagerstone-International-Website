@@ -5,6 +5,10 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/blog/office-interiors-noida", "destination": "/locations/noida", "permanent": true },
+    { "source": "/blog/office-fit-out-cost-guide-india-2025", "destination": "/blog/office-fit-out-cost-guide-india-2026", "permanent": true },
+    { "source": "/blog/theon-life-sciences-office-case-study", "destination": "/projects/theon", "permanent": true },
+    { "source": "/blog/mep-services-commercial-interiors-guide", "destination": "/services/interior-fit-out/fit-out-mep-coordination", "permanent": true },
+    { "source": "/office-design-noida", "destination": "/locations/noida", "permanent": true },
     { "source": "/blog/international-interior-designers-in-india-choose-right-firm", "destination": "/blog/commercial-interior-designers", "permanent": true },
     { "source": "/blog/corporate-office-design-guide-delhi-ncr", "destination": "/blog/office-workspace-design", "permanent": true },
     { "source": "/21-problems-faced-by-most-interior-designers-firms", "destination": "/blog/commercial-interior-designers", "permanent": true },
