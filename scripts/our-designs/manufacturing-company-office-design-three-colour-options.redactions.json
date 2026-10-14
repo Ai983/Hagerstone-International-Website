@@ -1,0 +1,180 @@
+{
+  "_readme": [
+    "Manufacturing company office, one floor, three colour options. Source deck exports are NOT committed (public repo).",
+    "Sources are the 1536 px renders embedded in the October deck, extracted as-is: the slide labels and the small key plan in each slide's corner are separate objects, so they are not in these files. The floor plan is the deck's layout page rendered at 3200 px and cropped to the drawing.",
+    "Client marks are everywhere in this deck: the name in large letters at reception, the lift lobby, two meeting rooms, the technical HOD cabin, a washroom and the stair; an orange six-petal logo on walls and panels in most rooms; the same logo in grey on cabinets and walls; and the logo repeated as frosted-glass manifestation on the glazed partitions. Option 02 was titled with the client's name; it is called grey and orange in the copy.",
+    "Reception, lift lobby, MD, plant head, small and visitor meeting, technical team and HOD, coffee counter, the gents and suite washrooms and the stair are excluded. Kept views are cropped clear of every mark, or (open workplace only) the distant logo on the green end panel is patched from the clean panel below it.",
+    "Not marks: the scattered single triangles on pedestals and corridor glass, sun and leaf line art, and process sketches on whiteboards and boards. Checked at full size; none carries a name or the six-petal logo."
+  ],
+  "floor-plan": {
+    "source": "plan-04.png",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 90,
+        "top": 190,
+        "width": 3010,
+        "height": 1390
+      }
+    ],
+    "group": "plan",
+    "alt": "Office floor plan with nine rows of bench desks in the centre, cabins along both long sides, a lounge suite, a conference room and washrooms",
+    "caption": "The floor: desks down the middle, cabins on both long walls, boardroom and lounge at one end, washrooms and stair at the other. Numbered markers show the viewpoints."
+  },
+  "option-01-material-board": {
+    "source": "o-006-002.jpg",
+    "group": "option-01",
+    "alt": "Material board with grey stone tile, sage laminate, oatmeal and camel fabrics, oak fluted panel, perforated acoustic tile and white glass",
+    "caption": "Option 01, sage, ivory and mineral grey: stone-look floor, sage laminate, oak slats and soft neutral fabrics."
+  },
+  "option-01-open-workplace": {
+    "source": "o-012-007.jpg",
+    "ops": [
+      {
+        "type": "fill",
+        "left": 394,
+        "top": 399,
+        "width": 66,
+        "height": 64,
+        "sampleFrom": {
+          "left": 394,
+          "top": 466
+        },
+        "sampleWidth": 66,
+        "sampleHeight": 12,
+        "matchTone": true
+      }
+    ],
+    "group": "option-01",
+    "alt": "Open-plan office under an exposed steel roof, with long bench desks, sage pedestals with planters and full-height windows",
+    "caption": "Open workplace: bench desks under the exposed steel deck, planter pedestals breaking up the rows. Indicative viewpoint."
+  },
+  "option-01-cabin-corridor": {
+    "source": "o-014-011.jpg",
+    "group": "option-01",
+    "alt": "Long office corridor with glass partitions and frosted bands on one side and sage cabin doors with artwork on the other",
+    "caption": "Cabin corridor: glass to the work floor on one side, sage doors and a lit niche on the other. Indicative viewpoint."
+  },
+  "option-01-design-team-cabin": {
+    "source": "o-017-017.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 160,
+        "top": 0,
+        "width": 1200,
+        "height": 1024
+      }
+    ],
+    "group": "option-01",
+    "alt": "Design team cabin with a sage desk, a tan chair, pin-up boards with drawings, a material library shelf and a sofa",
+    "caption": "Design team cabin: pin-up wall for drawings, a sample shelf and a sofa for reviews. Indicative viewpoint."
+  },
+  "option-01-meeting-lounge": {
+    "source": "o-018-019.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 120,
+        "top": 0,
+        "width": 980,
+        "height": 1024
+      }
+    ],
+    "group": "option-01",
+    "alt": "Meeting lounge with a curved cream sofa, sage armchairs on a round rug and a round meeting table with a screen behind",
+    "caption": "Meeting and lounge suite: soft seating in front, a round table for eight behind. Indicative viewpoint."
+  },
+  "option-01-main-conference": {
+    "source": "o-019-021.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 575,
+        "top": 0,
+        "width": 961,
+        "height": 1024
+      }
+    ],
+    "group": "option-01",
+    "alt": "Conference room with a long pale table, beige chairs, a screen on a sage acoustic panel and a wall-length whiteboard",
+    "caption": "Main conference: screen on a sage acoustic panel, glass writing wall down one side. Indicative viewpoint."
+  },
+  "option-01-accounts": {
+    "source": "o-024-031.jpg",
+    "group": "option-01",
+    "alt": "Accounts and purchase room with an oak table for six, black task chairs, a large whiteboard and line-art leaves on the wall",
+    "caption": "Accounts and purchase: one shared table, a whiteboard wall and storage under the window line. Indicative viewpoint."
+  },
+  "option-01-informal-lounge": {
+    "source": "o-027-037.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 0,
+        "top": 0,
+        "width": 1190,
+        "height": 1024
+      },
+      {
+        "type": "denoise"
+      }
+    ],
+    "group": "option-01",
+    "alt": "Informal lounge with a beige sofa, sage armchairs, a round coffee table and a planter screen with oak slats",
+    "caption": "Informal lounge off the work floor, screened by a planter and oak slats. Indicative viewpoint.",
+    "quality": 74
+  },
+  "option-01-document-room": {
+    "source": "o-028-039.jpg",
+    "group": "option-01",
+    "alt": "Document room lined with full-height sage cabinets on both sides leading to a window",
+    "caption": "Document room: full-height sage storage on both walls, nothing on the floor. Indicative viewpoint.",
+    "skip": true,
+    "note": "gallery cap of 12"
+  },
+  "option-01-washroom-vanity": {
+    "source": "o-029-041.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 0,
+        "top": 240,
+        "width": 1536,
+        "height": 784
+      }
+    ],
+    "group": "option-01",
+    "alt": "Washroom vanity with two white basins on a stone counter, black taps, a lit mirror and sage tiles",
+    "caption": "Washroom vanity: floating stone counter, lit mirror, sage tile splashback. Indicative viewpoint.",
+    "skip": true,
+    "note": "gallery cap of 12"
+  },
+  "option-02-material-board": {
+    "source": "o-037-055.jpg",
+    "group": "option-02",
+    "alt": "Material board with pale stone tile, mid-grey laminate, grey bouclé, oak slats, perforated tile and an orange fabric",
+    "caption": "Option 02, grey and orange: the same plan in cooler greys, with orange as the only accent."
+  },
+  "option-02-main-conference": {
+    "source": "o-050-074.jpg",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 545,
+        "top": 0,
+        "width": 991,
+        "height": 1024
+      }
+    ],
+    "group": "option-02",
+    "alt": "Conference room with grey walls, a screen, a whiteboard and beige chairs around a long table, with an orange sun drawn on the side wall",
+    "caption": "The main conference room in option 02: grey panels, a line-drawn mural on the side wall. Indicative viewpoint."
+  },
+  "option-03-material-board": {
+    "source": "o-068-108.jpg",
+    "group": "option-03",
+    "alt": "Material board with green marble, sage laminate, mauve and plum fabrics, oak slats, perforated tile and white glass",
+    "caption": "Option 03, olive and mauve: green stone, sage joinery and mauve upholstery."
+  }
+}
