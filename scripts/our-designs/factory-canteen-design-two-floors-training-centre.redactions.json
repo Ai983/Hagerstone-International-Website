@@ -1,0 +1,154 @@
+{
+  "_readme": [
+    "Two-floor factory canteen with a training centre, five finish options. Source deck exports are NOT committed (public repo).",
+    "Sources are the 1672 px renders embedded in the October deck, extracted as-is (no slide labels). The two plans are the deck's plan pages rendered at 3200 px and cropped to the drawing: the footer below carries the client's drawing code, which the crop removes.",
+    "Client marks: the client's name and leaf mark on the training-centre screen (C04, all five options); displays of the client's product, and murals and slogans naming the region and the product, in the training gallery (S14), the arrival lobby (S01), option 03 halls and handwash and every option 05 view. Together the product, the region and the name identify the client, so all of those views are excluded, not retouched. Option names that named the region are replaced in the copy.",
+    "One small leaf icon on the OHC notice board resembles the client's mark and is patched from the clean poster above it. Every other kept view was checked at full size: signage is generic (SERVE, HANDWASH, PREP, RETURN)."
+  ],
+  "ground-floor-plan": {
+    "source": "plan-03.png",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 110,
+        "top": 410,
+        "width": 2980,
+        "height": 985
+      }
+    ],
+    "group": "plans",
+    "alt": "Furnished ground-floor plan of a canteen with two dining halls either side of a corridor, servery, kitchen and welfare rooms",
+    "caption": "Ground floor, 74.5 x 24 m: a 156-seat and a 194-seat hall either side of the entrance corridor, the kitchen at one end, welfare rooms at the other."
+  },
+  "first-floor-plan": {
+    "source": "plan-04.png",
+    "ops": [
+      {
+        "type": "crop",
+        "left": 110,
+        "top": 410,
+        "width": 2980,
+        "height": 1080
+      }
+    ],
+    "group": "plans",
+    "alt": "Furnished first-floor plan with a 320-seat dining hall, a pantry, a product gallery and a classroom with round training tables",
+    "caption": "First floor: a 320-seat dining hall over one half; over the other, a product gallery and a training room with classroom rows and round tables."
+  },
+  "option-01-material-board": {
+    "source": "c-008-000.jpg",
+    "group": "option-01",
+    "alt": "Material board with saffron paint, grey and green floor tiles, a white tabletop, a black pedestal base and saffron and grey chairs",
+    "caption": "Option 01, saffron and stone: grey floor with green banding, saffron walls above a tiled dado."
+  },
+  "option-01-ground-floor-dining": {
+    "source": "c-009-001.jpg",
+    "group": "option-01",
+    "alt": "Large canteen dining hall with saffron walls, painted grain and food murals, rows of white tables and saffron chairs",
+    "caption": "Ground-floor dining hall: long tables in rows, murals above a 300 x 600 mm tiled dado. Indicative viewpoint."
+  },
+  "option-01-servery": {
+    "source": "c-011-003.jpg",
+    "group": "option-01",
+    "alt": "Canteen servery with a long stainless-steel counter under a hanging SERVE sign, a menu board and a drinking-water point",
+    "caption": "The servery runs the end wall, with the menu and drinking water beside it rather than in the queue. Indicative viewpoint."
+  },
+  "option-01-handwash": {
+    "source": "c-013-005.jpg",
+    "group": "option-01",
+    "alt": "Canteen handwash room with an L-shaped run of basins, mirrors, soap dispensers and a dark matt floor with a drain",
+    "caption": "Handwash at the hall entrance: an L-shaped basin run on a frame, matt floor laid to a drain. Indicative viewpoint."
+  },
+  "option-02-material-board": {
+    "source": "c-017-007.jpg",
+    "group": "option-02",
+    "alt": "Material board with sand paint, sage fluted panel, white and green tiles, terracotta pots and a handwoven textile",
+    "caption": "Option 02, earth and craft: sand walls, sage and terracotta chairs, handloom and pottery as the mural theme.",
+    "skip": true,
+    "note": "gallery cap of 12; option 02 shown by its hall view"
+  },
+  "option-02-servery-and-dining": {
+    "source": "c-019-009.jpg",
+    "group": "option-02",
+    "alt": "Canteen hall seen over a stainless-steel servery, with sage steel beams, green and terracotta chairs and folk-art panels",
+    "caption": "Dining seen from the servery, with dish return and handwash on the same side wall. Indicative viewpoint."
+  },
+  "option-03-dining-and-servery": {
+    "source": "c-028-016.jpg",
+    "group": "option-03",
+    "alt": "Canteen hall with peach walls, coastal murals, a servery counter in the foreground and handwash and return openings",
+    "caption": "Option 03, coast stories: handwash and plate return open off the hall next to the servery. Indicative viewpoint."
+  },
+  "option-04-material-board": {
+    "source": "c-035-021.jpg",
+    "group": "option-04",
+    "alt": "Material board with pistachio paint, grey tiles patched with coral and green, and coral and pistachio shell chairs",
+    "caption": "Option 04, pistachio and coral: colour moved into the tiles and chairs, with a lighter mural.",
+    "skip": true,
+    "note": "gallery cap of 12"
+  },
+  "option-04-servery": {
+    "source": "c-038-024.jpg",
+    "group": "option-04",
+    "alt": "Canteen hall with pistachio walls, a wetland mural, coral and green chairs and a long servery counter",
+    "caption": "The same servery wall in option 04: one plan, five ways to finish it. Indicative viewpoint."
+  },
+  "option-04-handwash": {
+    "source": "c-040-026.jpg",
+    "group": "option-04",
+    "alt": "Handwash room with a basin run, a lit mirror, coral and green wall tiles and a pistachio mural above",
+    "caption": "Coral and green tiles carry the option into the wet rooms. Indicative viewpoint.",
+    "skip": true,
+    "note": "gallery cap of 12; option 01 handwash kept"
+  },
+  "kitchen-preparation": {
+    "source": "c-053-036.jpg",
+    "group": "back-of-house",
+    "alt": "Commercial canteen kitchen with stainless-steel prep tables, racks, a cooking line under an extract hood and a floor drain",
+    "caption": "Kitchen: preparation in front, the cooking line under its hood beyond, a slot drain along the route. Indicative viewpoint."
+  },
+  "servery-back": {
+    "source": "c-054-037.jpg",
+    "group": "back-of-house",
+    "alt": "Back of a canteen servery with bain-marie units, a hot cupboard, tray trolleys and a hatch into the dining hall",
+    "caption": "Behind the servery: hot holding, clean trays and trolleys, a hatch straight into the hall. Indicative viewpoint.",
+    "skip": true,
+    "note": "gallery cap of 12"
+  },
+  "dish-return": {
+    "source": "c-055-038.jpg",
+    "group": "back-of-house",
+    "alt": "Dish-return room with a return hatch, a food-scraps bin, a three-bowl sink with spray rinse and drying racks",
+    "caption": "Dish return: scrape, wash, rinse and dry in one line, then out through a separate clean door. Indicative viewpoint."
+  },
+  "daycare": {
+    "source": "c-057-040.jpg",
+    "group": "welfare",
+    "alt": "Daycare room with small round tables and chairs, toy shelves, painted bird and plant murals and a glazed door",
+    "caption": "Daycare beside the canteen, with its own feeding room and washroom off it. Indicative viewpoint."
+  },
+  "occupational-health-centre": {
+    "source": "c-060-043.jpg",
+    "ops": [
+      {
+        "type": "fill",
+        "left": 326,
+        "top": 280,
+        "width": 30,
+        "height": 30,
+        "sampleFrom": {
+          "left": 326,
+          "top": 264
+        },
+        "sampleWidth": 30,
+        "sampleHeight": 12,
+        "matchTone": true
+      }
+    ],
+    "group": "welfare",
+    "alt": "Occupational health room with a doctor's desk, two visitor chairs, an examination couch behind a curtain and a medicine cabinet",
+    "caption": "Occupational health centre: consultation desk, a curtained couch and a hand basin in one room. Indicative viewpoint.",
+    "skip": true,
+    "note": "gallery cap of 12; also carried a leaf icon like the client's mark"
+  }
+}
