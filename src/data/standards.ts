@@ -32,7 +32,8 @@ const RULES: StandardsRule[] = [
   {
     pattern: /^NBC\b/,
     publisher: "Bureau of Indian Standards",
-    url: "https://www.bis.gov.in/standards/national-building-code/",
+    // Without ?lang=en BIS 302-redirects to the Hindi page (?lang=hi).
+    url: "https://www.bis.gov.in/standards/national-building-code/?lang=en",
   },
   {
     // "IS 875 (Part 3)", "IS 456:2000", "IS 15622 / DIN 51130".
@@ -69,10 +70,18 @@ const RULES: StandardsRule[] = [
     publisher: "Fenestration and Glazing Industry Alliance",
     url: "https://fgiaonline.org/",
   },
+  // The old catch-all https://cea.nic.in/regulations/?lang=en returned 404 in the
+  // Ahrefs crawl of 16 Oct 2026. The safety regulations have their own category
+  // page; any other CEA citation falls back to the CEA homepage.
+  {
+    pattern: /^CEA \(Measures relating to Safety and Electric Supply\)/,
+    publisher: "Central Electricity Authority",
+    url: "https://cea.nic.in/regulations-category/measures-relating-to-safety-and-electric-supply/?lang=en",
+  },
   {
     pattern: /^CEA\b/,
     publisher: "Central Electricity Authority",
-    url: "https://cea.nic.in/regulations/?lang=en",
+    url: "https://cea.nic.in/?lang=en",
   },
   { pattern: /^CPCB\b/, publisher: "Central Pollution Control Board", url: "https://cpcb.nic.in/" },
   {

@@ -316,7 +316,7 @@ export default function CommercialInteriorDesignersBlog() {
               Unlike residential interiors, commercial projects demand durability, scalability,
               and strict adherence to{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

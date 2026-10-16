@@ -376,7 +376,7 @@ export default function OfficeFitOutCostGuideBlog() {
               Fire NOC, structural approvals, and building-management sign-offs — most of which
               trace back to requirements set out in the{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

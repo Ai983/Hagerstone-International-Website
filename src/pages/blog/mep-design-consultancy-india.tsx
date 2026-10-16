@@ -369,7 +369,7 @@ export default function MepDesignConsultancyIndiaBlog() {
               space cannot legally be occupied. The core scope, largely governed by requirements
               in the{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

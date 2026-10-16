@@ -284,7 +284,7 @@ export default function FacadeGlazingGuideIndiaBlog() {
               vertical and horizontal frame members — carry glass or spandrel panels as the
               building's primary envelope, engineered against wind and seismic loads under{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

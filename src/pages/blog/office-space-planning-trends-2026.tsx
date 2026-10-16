@@ -386,7 +386,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
               <p>
                 Office planning must comply with{" "}
                 <a
-                  href="https://www.bis.gov.in/"
+                  href="https://www.bis.gov.in/?lang=en"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"

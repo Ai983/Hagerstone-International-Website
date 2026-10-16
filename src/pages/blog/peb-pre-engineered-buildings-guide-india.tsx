@@ -312,7 +312,7 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
               PEB design starts with a load assessment — dead load, live load, wind load, and
               seismic load per{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
@@ -321,7 +321,7 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
               </a>{" "}
               — with the steel frame itself designed to{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

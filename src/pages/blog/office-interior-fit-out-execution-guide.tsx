@@ -426,7 +426,7 @@ export default function OfficeInteriorFitOutExecutionGuideBlog() {
             <p className="text-base text-foreground/80 leading-relaxed">
               Lighting design is measured, not eyeballed — lux levels are set against{" "}
               <a
-                href="https://www.bis.gov.in/"
+                href="https://www.bis.gov.in/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
