@@ -153,8 +153,9 @@ paths so this can't regress.
 fix as CR63 in `AchievementSection.tsx`: play only when scrolled into view.
 
 #### 3d. Template leftovers (rest of C3)
-- **SearchAtlas script** (`index.html:32`): synchronous third-party script that rewrites
-  content client-side on every page. **Decision needed** (see below); default = remove.
+- ~~**SearchAtlas script**~~ **Removed 16 Oct 2026** (decision #2 below). It rewrote
+  content client-side on every page and was the likely source of the 56 schema errors
+  Ahrefs reported on `/projects/*` (see `docs/AHREFS-AUDIT-2026-10-16.md`, A6).
 - `prerender.js`: inject `<link rel="modulepreload">` for the entry chunk's imports from
   `dist/.vite/manifest.json` (enable `build.manifest: true`).
 
@@ -203,7 +204,7 @@ durations.
 | # | Decision | Default if no answer |
 |---|---|---|
 | 1 | **3.3 s logo loader** (`DynamicLoader`) covers every page on first visit and every route change. It makes the site feel slow and likely delays Google's LCP measurement. Remove, cut to ~0.8 s, or keep? | Keep |
-| 2 | **SearchAtlas script:** remove, or keep and load deferred? | Remove |
+| 2 | ~~**SearchAtlas script:** remove, or keep and load deferred?~~ **Decided: removed 16 Oct 2026.** | Remove |
 | 3 | **Bing Webmaster verification code** (Bing feeds ChatGPT search) | Skip until provided |
 | 4 | **Founding year:** 2013 or 2014? Stays out of schema until settled. | Omit |
 
