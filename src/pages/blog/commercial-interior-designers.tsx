@@ -24,7 +24,7 @@ const slug = "commercial-interior-designers";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg";
+  "/blog/commercial-interior-designers/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.webp";
 
 const relatedTopics = [
   "Commercial Interiors",
@@ -237,8 +237,8 @@ export default function CommercialInteriorDesignersBlog() {
             </div>
             <img
 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.jpg 800w"
+              src="/blog/commercial-interior-designers/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.webp"
+              srcSet="/blog/commercial-interior-designers/49b0feaa-3912-4eff-9d17-5f14c89c1263-md.webp 800w"
 
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Modern office lounge showcasing commercial interior design for collaborative teams"
@@ -383,8 +383,8 @@ export default function CommercialInteriorDesignersBlog() {
 
             <img
 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/64a89f59-2058-43e6-be67-22d7dbf2145e-md.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/64a89f59-2058-43e6-be67-22d7dbf2145e-md.jpg 800w"
+              src="/blog/commercial-interior-designers/64a89f59-2058-43e6-be67-22d7dbf2145e-md.webp"
+              srcSet="/blog/commercial-interior-designers/64a89f59-2058-43e6-be67-22d7dbf2145e-md.webp 800w"
 
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Open-plan workspace with commercial interior design and ergonomic workstations"
@@ -608,8 +608,8 @@ export default function CommercialInteriorDesignersBlog() {
 
             <img
 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/cc2ad7c5-be95-49ff-8d47-b0f15b2a6950-md.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Interior%20Designers%20/cc2ad7c5-be95-49ff-8d47-b0f15b2a6950-md.jpg 800w"
+              src="/blog/commercial-interior-designers/cc2ad7c5-be95-49ff-8d47-b0f15b2a6950-md.webp"
+              srcSet="/blog/commercial-interior-designers/cc2ad7c5-be95-49ff-8d47-b0f15b2a6950-md.webp 800w"
 
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Boutique retail space highlighting commercial interior design and warm lighting"

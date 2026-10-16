@@ -23,7 +23,7 @@ import type { FaqItem } from "@/lib/seo";
 const slug = "mep-design-consultancy-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
-const ogImage = "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Electricity%20MEP.jpg";
+const ogImage = "/blog/mep-design-consultancy/electricity-mep.webp";
 
 const relatedTopics = [
   "MEP Design India",
@@ -564,8 +564,8 @@ export default function MepDesignConsultancyIndiaBlog() {
               quietly for years from one that generates change orders and delayed occupancy.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Plumbing%20MEP.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/MEP%20design%20consultancy/Plumbing%20MEP.jpg 800w"
+              src="/blog/mep-design-consultancy/plumbing-mep.webp"
+              srcSet="/blog/mep-design-consultancy/plumbing-mep.webp 800w"
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Coiled fire hose and fittings as part of a commercial fire suppression and life-safety system"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"

@@ -23,7 +23,7 @@ import type { FaqItem } from "@/lib/seo";
 const slug = "office-fit-out-cost-guide-india-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
-const ogImage = "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/s-o-c-i-a-l-c-u-t-1RT4txDDAbM-unsplash.jpg";
+const ogImage = "/blog/office-fit-out-cost-guide/s-o-c-i-a-l-c-u-t-1rt4txddabm-unsplash.webp";
 
 const relatedTopics = [
   "Office Fit-Out Cost India",
@@ -468,8 +468,8 @@ export default function OfficeFitOutCostGuideBlog() {
             </p>
             <img
 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/jason-w-bYoRZI30nEI-unsplash.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20cost%20guide/jason-w-bYoRZI30nEI-unsplash.jpg 800w"
+              src="/blog/office-fit-out-cost-guide/jason-w-byorzi30nei-unsplash.webp"
+              srcSet="/blog/office-fit-out-cost-guide/jason-w-byorzi30nei-unsplash.webp 800w"
 
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Glass-walled office corridor leading to a meeting space, reflecting modern commercial interior design"

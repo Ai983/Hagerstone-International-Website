@@ -33,7 +33,7 @@ const slug = "commercial-hvac-systems";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/konstantin-kitsenuik-4ce3DZPWdic-unsplash.jpg";
+  "/blog/commercial-hvac-systems/konstantin-kitsenuik-4ce3dzpwdic-unsplash.webp";
 
 const faqItems: FaqItem[] = [
   {
@@ -567,8 +567,8 @@ export default function CommercialHvacSystemsGuideBlog() {
               the equipment is the right model and size.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/mario-verduzco-BrezDFrGvfU-unsplash.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20HVAC%20Systems/mario-verduzco-BrezDFrGvfU-unsplash.jpg 800w"
+              src="/blog/commercial-hvac-systems/mario-verduzco-brezdfrgvfu-unsplash.webp"
+              srcSet="/blog/commercial-hvac-systems/mario-verduzco-brezdfrgvfu-unsplash.webp 800w"
               sizes="(max-width: 768px) 100vw, 800px"
               alt="Close-up of copper refrigerant piping and coils inside a commercial HVAC unit"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"

@@ -24,12 +24,12 @@ const slug = "how-to-choose-office-fit-out-contractor";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/FloorDesign.jpg";
+  "/blog/fit-out-contractor/floordesign.webp";
 const heroImageAlt =
   "Overhead view of an architectural floor plan drawing surrounded by drafting tools — mechanical pencil, ruler, eraser and pens";
 
 const inlineImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Fit%20Out%20Contractor/SiteSupervision.jpg";
+  "/blog/fit-out-contractor/sitesupervision.webp";
 const inlineImageAlt =
   "Two site supervisors in hard hats and safety vests reviewing a checklist beside stacked precast concrete panels";
 

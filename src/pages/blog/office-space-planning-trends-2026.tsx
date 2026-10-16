@@ -23,7 +23,7 @@ import type { FaqItem } from "@/lib/seo";
 const slug = "office-space-planning-trends-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 const ogImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/_%20(2).jpeg";
+  "/blog/trends-in-office-space-planning/2.webp";
 
 const relatedTopics = [
   "Office Space Planning Trends 2026",
@@ -269,7 +269,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8">
             <figure className="space-y-3">
               <img
-                src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/_%20(3).jpeg"
+                src="/blog/trends-in-office-space-planning/3.webp"
                 alt="Wellbeing-driven office space with biophilic elements, natural light, and ergonomic furniture"
                 className="w-full h-[320px] md:h-[380px] object-cover rounded-lg shadow-sm"
                 width={1200}
@@ -423,7 +423,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
           <section className="max-w-4xl mx-auto px-4 py-6 md:py-8">
             <figure className="space-y-3">
               <img
-                src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/ChatGPT%20Image%20Feb%204,%202026,%2006_22_24%20PM.png"
+                src="/blog/trends-in-office-space-planning/chatgpt-image-feb-4-2026-06-22-24-pm.webp"
                 alt="Open collaboration areas paired with quiet focus zones in a flexible workplace"
                 className="w-full h-[320px] md:h-[380px] object-cover rounded-lg shadow-sm"
                 width={1200}
@@ -548,7 +548,7 @@ export default function OfficeSpacePlanningTrends2026Blog() {
           <section className="max-w-4xl mx-auto px-4 py-10 md:py-12">
             <figure className="space-y-3">
               <img
-                src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Trends%20in%20Office%20Space%20Planning/ChatGPT%20Image%20Feb%204,%202026,%2006_24_00%20PM.png"
+                src="/blog/trends-in-office-space-planning/chatgpt-image-feb-4-2026-06-24-00-pm.webp"
                 alt="Future-ready workspace with adaptable zones and technology-enabled collaboration"
                 className="w-full h-[320px] md:h-[380px] object-cover rounded-lg shadow-sm"
                 width={1200}

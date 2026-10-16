@@ -190,8 +190,8 @@ export default function FacadeGlazingGuideIndiaBlog() {
               </div>
             </div>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/LowAngleBuilding.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/LowAngleBuilding.jpg 1600w"
+              src="/blog/facade-glazing/lowanglebuilding.webp"
+              srcSet="/blog/facade-glazing/lowanglebuilding.webp 1600w"
               sizes="(max-width: 768px) 100vw, 1600px"
               alt="Dramatic upward view of glass curtain-wall skyscrapers against the sky"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
@@ -301,8 +301,8 @@ export default function FacadeGlazingGuideIndiaBlog() {
               for how system choice and mock-up testing work in practice.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/ArchitecturalDesign.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/ArchitecturalDesign.jpg 1200w"
+              src="/blog/facade-glazing/architecturaldesign.webp"
+              srcSet="/blog/facade-glazing/architecturaldesign.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Angular building exterior clad in geometric metal panels, showing a modern cladding system"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
@@ -356,8 +356,8 @@ export default function FacadeGlazingGuideIndiaBlog() {
               .
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/FacadeDesign.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Facade%20Glazing/FacadeDesign.jpg 1200w"
+              src="/blog/facade-glazing/facadedesign.webp"
+              srcSet="/blog/facade-glazing/facadedesign.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Curved building facade with a wavy perforated metal cladding pattern"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"

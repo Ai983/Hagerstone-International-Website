@@ -24,12 +24,12 @@ const slug = "workplace-wellness-biophilic-design-trends-2026";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/PlantStairBedding.jpg";
+  "/blog/biophilic-workplace-wellness/plantstairbedding.webp";
 const heroImageAlt =
   "Lush tropical planting along a sunlit terrace beside a brick staircase inside a glazed office building";
 
 const inlineImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Biophilic%20Workplace%20Wellness/SpiralTreeStairs.jpg";
+  "/blog/biophilic-workplace-wellness/spiraltreestairs.jpg";
 const inlineImageAlt =
   "Upward view through a circular courtyard opening in a building, with a mature tree canopy growing through the centre";
 

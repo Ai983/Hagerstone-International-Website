@@ -24,12 +24,12 @@ const slug = "commercial-flooring-systems-guide-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const heroImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/OfficeFlooring.jpg";
+  "/blog/commercial-flooring-system/officeflooring.webp";
 const heroImageAlt =
   "Modern office lobby with floor-to-ceiling glazing, colourful lounge seating and polished floor tile overlooking a city skyline";
 
 const inlineImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Commercial%20Flooring%20System/LobbyFlooring.jpg";
+  "/blog/commercial-flooring-system/lobbyflooring.webp";
 const inlineImageAlt =
   "Polished marble lobby floor with a reflective geometric tile pattern, reception desk and a dramatic hanging light fixture overhead";
 

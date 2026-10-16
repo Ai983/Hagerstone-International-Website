@@ -24,7 +24,7 @@ const slug = "office-interior-fit-out-execution-guide";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20Execution/MeetingRoom.jpg";
+  "/blog/office-fit-out-execution/meetingroom.webp";
 
 const relatedTopics = [
   "Fit-Out Execution",
@@ -190,8 +190,8 @@ export default function OfficeInteriorFitOutExecutionGuideBlog() {
               </div>
             </div>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20Execution/MeetingRoom.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20Execution/MeetingRoom.jpg 1600w"
+              src="/blog/office-fit-out-execution/meetingroom.webp"
+              srcSet="/blog/office-fit-out-execution/meetingroom.webp 1600w"
               sizes="(max-width: 768px) 100vw, 1600px"
               alt="Sleek modern corporate boardroom with floor-to-ceiling windows and a city view"
               className="w-full h-[360px] md:h-[460px] object-cover rounded-lg shadow-lg"
@@ -380,8 +380,8 @@ export default function OfficeInteriorFitOutExecutionGuideBlog() {
               ceiling grid is installed costs a rework crew and a schedule delay.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20Execution/Execution.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Office%20Fit%20Out%20Execution/Execution.jpg 1200w"
+              src="/blog/office-fit-out-execution/execution.webp"
+              srcSet="/blog/office-fit-out-execution/execution.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Electrician in a hard hat installing a junction box and wiring during a fit-out"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"

@@ -199,8 +199,8 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
               </div>
             </div>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/PebStructure.avif"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/PebStructure.avif 1600w"
+              src="/blog/peb-pre-engineered-building/pebstructure.webp"
+              srcSet="/blog/peb-pre-engineered-building/pebstructure.webp 1600w"
               sizes="(max-width: 768px) 100vw, 1600px"
               alt="Dramatic dark, angular steel space-frame truss structure"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
@@ -340,8 +340,8 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
               for the full process.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/StructureSketch.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/StructureSketch.jpg 1200w"
+              src="/blog/peb-pre-engineered-building/structuresketch.webp"
+              srcSet="/blog/peb-pre-engineered-building/structuresketch.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Close-up of hands drafting a technical structural drawing with a ruler"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
@@ -541,8 +541,8 @@ export default function PebPreEngineeredBuildingsGuideIndiaBlog() {
               deliver efficiently.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/Warehouse.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Peb%20Pre%20Engineered%20Building/Warehouse.jpg 1200w"
+              src="/blog/peb-pre-engineered-building/warehouse.webp"
+              srcSet="/blog/peb-pre-engineered-building/warehouse.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Interior of a large warehouse with tall storage racking under steel roof structure"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"

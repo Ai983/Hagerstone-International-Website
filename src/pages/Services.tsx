@@ -61,7 +61,7 @@ const Services = () => {
         "Interior fit out-ready design packages",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Office%20Interior.jpg",
+        "/services/office-interior.webp",
     },
     {
       icon: Building,
@@ -77,7 +77,7 @@ const Services = () => {
         "Cost & timeline optimization",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
+        "/services/construction.webp",
     },
     {
       icon: Zap,
@@ -93,7 +93,7 @@ const Services = () => {
         "Building automation & energy efficiency",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
+        "/services/construction.webp",
     },
     {
       icon: Sofa,
@@ -109,7 +109,7 @@ const Services = () => {
         "Installation & on-site coordination",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Inshorts/workstation1.jpg",
+        "/projects/inshorts-media-noida/workstation1.webp",
     },
     {
       icon: Home,
@@ -125,7 +125,7 @@ const Services = () => {
         "Turnkey interior fit out delivery",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Interior%20FitOut%20&%20Execution.png",
+        "/services/interior-fitout-execution.webp",
     },
     {
       icon: Building2,
@@ -141,7 +141,7 @@ const Services = () => {
         "Installation, testing & handover",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Construction%20.jpg",
+        "/services/construction.webp",
     },
     {
       icon: AppWindow,
@@ -157,7 +157,7 @@ const Services = () => {
         "On-site fitting & quality checks",
       ],
       image:
-        "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Service%20Page%20/Interior%20FitOut%20&%20Execution.png",
+        "/services/interior-fitout-execution.webp",
     },
   ];
 

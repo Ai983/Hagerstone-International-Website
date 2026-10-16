@@ -24,7 +24,7 @@ const slug = "hospitality-interior-design-india";
 const canonicalUrl = `${SITE_URL}/blog/${slug}`;
 
 const ogImage =
-  "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg";
+  "/blog/hospitality-interior-design/darkrestraunt.webp";
 
 const relatedTopics = [
   "Hospitality Interiors",
@@ -261,8 +261,8 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               </div>
             </div>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/DarkRestraunt.jpg 1600w"
+              src="/blog/hospitality-interior-design/darkrestraunt.webp"
+              srcSet="/blog/hospitality-interior-design/darkrestraunt.webp 1600w"
               sizes="(max-width: 768px) 100vw, 1600px"
               alt="Dark, atmospheric rooftop restaurant interior with velvet banquette seating, globe pendant lighting, and a city skyline view"
               className="w-full h-[360px] md:h-[420px] object-cover rounded-lg shadow-lg"
@@ -411,8 +411,8 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               restaurant optimizes for dwell time.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/CafeGathering.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/CafeGathering.jpg 1200w"
+              src="/blog/hospitality-interior-design/cafegathering.webp"
+              srcSet="/blog/hospitality-interior-design/cafegathering.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="fine-dining dish with wine glasses and a bread basket at a restaurant table setting"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"
@@ -436,8 +436,8 @@ export default function HospitalityInteriorDesignIndiaBlog() {
               events move seamlessly between covered and open-air spaces.
             </p>
             <img
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/Resort.jpg"
-              srcSet="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Hospitality%20Interior%20Design/Resort.jpg 1200w"
+              src="/blog/hospitality-interior-design/resort.webp"
+              srcSet="/blog/hospitality-interior-design/resort.webp 1200w"
               sizes="(max-width: 768px) 100vw, 1200px"
               alt="Resort pool deck and outdoor lounge area at dusk, framed by palm trees and Mediterranean-style architecture"
               className="w-full h-[320px] md:h-[400px] object-cover rounded-lg shadow-lg"

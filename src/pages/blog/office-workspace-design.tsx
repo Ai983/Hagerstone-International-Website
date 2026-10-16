@@ -70,7 +70,7 @@ export default function OfficeWorkspaceDesignBlog() {
         title="Office Workspace Design: Essential Elements | Hagerstone"
         description="Discover office workspace design strategies for productivity, including space planning, ergonomics, and collaborative zones."
         canonical={`${SITE_URL}/blog/office-workspace-design`}
-        ogImage="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png"
+        ogImage="/blog/workspace-blog/screenshot-2026-01-13-at-17-49-19.webp"
         ogType="article"
         keywords="office workspace design, office space planning, productive office design, ergonomic office furniture, collaborative office spaces, workplace design ideas, office interior design, modern office layout"
         structuredData={buildSchemaGraph([
@@ -90,7 +90,7 @@ export default function OfficeWorkspaceDesignBlog() {
             description:
               "Comprehensive guide to modern office workspace design including space planning, ergonomics, color psychology, and collaborative zones.",
             image:
-              "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png",
+              "/blog/workspace-blog/screenshot-2026-01-13-at-17-49-19.webp",
             author: authorSchema,
             publisher: {
               "@type": "Organization",
@@ -197,7 +197,7 @@ export default function OfficeWorkspaceDesignBlog() {
             </div>
 
             <img 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/Screenshot%202026-01-13%20at%2017.49.19.png" 
+              src="/blog/workspace-blog/screenshot-2026-01-13-at-17-49-19.webp" 
               alt="Modern office workspace design featuring open collaborative areas, ergonomic furniture, and natural lighting by Hagerstone International"
               className="w-full h-[400px] object-cover rounded-lg shadow-lg"
               width="1200"
@@ -282,7 +282,7 @@ export default function OfficeWorkspaceDesignBlog() {
               </p>
 
               <img 
-                src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.50.05.jpeg" 
+                src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-50-05.webp" 
                 alt="Office workspace with optimized natural lighting featuring floor-to-ceiling windows and light-distributing glass partitions"
                 className="w-full h-[350px] object-cover rounded-lg shadow-md mb-6"
                 width="800"
@@ -340,7 +340,7 @@ export default function OfficeWorkspaceDesignBlog() {
             <h2 className="text-3xl font-bold text-primary mb-8">Space Planning Strategies That Maximize Functionality</h2>
 
             <img 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.50.32.jpeg" 
+              src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-50-32.webp" 
               alt="Strategic office space planning showing effective layout with collaborative zones, private workspaces, and natural circulation paths"
               className="w-full h-[350px] object-cover rounded-lg shadow-md mb-8"
               width="800"
@@ -409,7 +409,7 @@ export default function OfficeWorkspaceDesignBlog() {
             <h2 className="text-3xl font-bold text-primary mb-8">Color Psychology and Material Choices for Enhanced Performance</h2>
 
             <img 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.50.52.jpeg" 
+              src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-50-52.webp" 
               alt="Modern office with strategic color psychology featuring calming blues, energizing yellows, and balanced neutral tones"
               className="w-full h-[350px] object-cover rounded-lg shadow-md mb-8"
               width="800"
@@ -542,7 +542,7 @@ export default function OfficeWorkspaceDesignBlog() {
             <h2 className="text-3xl font-bold text-primary mb-8">Ergonomic Furniture Solutions for Employee Health</h2>
 
             <img 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.51.17.jpeg" 
+              src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-51-17.webp" 
               alt="Ergonomic office furniture setup with adjustable desks, supportive chairs, and optimized monitor positioning"
               className="w-full h-[350px] object-cover rounded-lg shadow-md mb-8"
               width="800"
@@ -642,7 +642,7 @@ export default function OfficeWorkspaceDesignBlog() {
             <h2 className="text-3xl font-bold text-primary mb-8">Creating Collaborative Zones That Encourage Innovation</h2>
 
             <img 
-              src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.51.39.jpeg" 
+              src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-51-39.webp" 
               alt="Collaborative office space with flexible seating, writable surfaces, and informal gathering areas promoting teamwork and innovation"
               className="w-full h-[350px] object-cover rounded-lg shadow-md mb-8"
               width="800"
@@ -707,7 +707,7 @@ export default function OfficeWorkspaceDesignBlog() {
               <h3 className="text-2xl font-semibold text-foreground mb-6">Provide Technology Support for Seamless Team Presentations</h3>
               
               <img 
-                src="https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Workspace%20Blog/WhatsApp%20Image%202026-01-13%20at%2017.51.59.jpeg" 
+                src="/blog/workspace-blog/whatsapp-image-2026-01-13-at-17-51-59.webp" 
                 alt="Smart office technology setup with integrated displays, wireless presentation systems, and robust connectivity"
                 className="w-full h-[350px] object-cover rounded-lg shadow-md mb-6"
                 width="800"

@@ -631,7 +631,7 @@ export const allProjects: ProjectData[] = [
     location: "Jaipur / Delhi NCR",
     sector: "Automobile Showroom & Parking",
 
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-1.jpeg",
+    hero: "/projects/vinfast-showroom/vst-1.webp",
     heroAlt: "VinFast electric vehicle showroom interior with modern display area and premium lighting in Jaipur",
     summary:
       "A premium automotive showroom designed for VinFast's electric vehicle lineup. The project showcases modern showroom design principles with an impressive vehicle display floor, strategic lighting, customer consultation areas, administrative offices, lounge & cafeteria, workstation areas and multi-level parking facilities — all designed to deliver a superior EV buying experience.",
@@ -669,16 +669,22 @@ export const allProjects: ProjectData[] = [
           "Showroom interior including display floor with strategic lighting and reception area designed to showcase electric vehicles.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-1.jpeg",
+            src: "/projects/vinfast-showroom/vst-1.webp",
             alt: "VinFast showroom vehicle display area with premium lighting",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-2.jpeg",
+            src: "/projects/vinfast-showroom/vst-2.webp",
             alt: "Electric vehicle display floor at VinFast showroom Jaipur",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST-3.jpeg",
+            src: "/projects/vinfast-showroom/vst-3.webp",
             alt: "VinFast EV showroom interior design with modern aesthetics",
+            width: 1280,
+            height: 720,
           },
         ],
       },
@@ -688,12 +694,16 @@ export const allProjects: ProjectData[] = [
           "Customer lounge and cafeteria inside showroom complex — comfortable waiting & refreshment area for visitors and clients.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST10.jpeg",
+            src: "/projects/vinfast-showroom/vst10.webp",
             alt: "VinFast showroom cafeteria and lounge seating area",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST9.jpeg",
+            src: "/projects/vinfast-showroom/vst9.webp",
             alt: "Customer lounge area inside VinFast showroom",
+            width: 1280,
+            height: 720,
           },
         ],
       },
@@ -702,12 +712,16 @@ export const allProjects: ProjectData[] = [
         description: "Private meeting rooms and consultation area for client discussions and vehicle purchase process.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST9.jpg",
+            src: "/projects/vinfast-showroom/vst9-jpg.webp",
             alt: "Meeting room inside VinFast showroom",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST8.jpeg",
+            src: "/projects/vinfast-showroom/vst8.webp",
             alt: "Consultation / meeting area for clients at VinFast showroom",
+            width: 1280,
+            height: 720,
           },
         ],
       },
@@ -716,16 +730,22 @@ export const allProjects: ProjectData[] = [
         description: "Workstations and administrative office area for staff, sales team and showroom management.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST7.jpg",
+            src: "/projects/vinfast-showroom/vst7.webp",
             alt: "Workstation area inside VinFast showroom office",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST11.jpeg",
+            src: "/projects/vinfast-showroom/vst11.webp",
             alt: "A well desgined waiting area with beautiful furniture",
+            width: 1280,
+            height: 720,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST12.jpeg",
+            src: "/projects/vinfast-showroom/vst12.webp",
             alt: "Aesthetic and next level designing",
+            width: 1280,
+            height: 720,
           },
         ],
       },
@@ -735,8 +755,10 @@ export const allProjects: ProjectData[] = [
           "Basement/ground level car-parking and ramp design for easy vehicle access and visitor convenience.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/VinFast/VST13.jpeg",
+            src: "/projects/vinfast-showroom/vst13.webp",
             alt: "Parking area at VinFast showroom with vehicle ramp and parking bays",
+            width: 1280,
+            height: 720,
           },
         ],
       },
@@ -749,7 +771,7 @@ export const allProjects: ProjectData[] = [
     sector: "Commercial Office Interior",
     area: "700 sq. ft.",
     colorTheme: "Neutral Palette",
-    hero: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%201.jpeg",
+    hero: "/projects/valorium-ventures-office-interior/meeting-room-1.webp",
     heroAlt:
       "Meeting room with neutral wall panelling, acoustic panels, and a six-seat conference table at Valorium Ventures office interior",
     summary:
@@ -794,18 +816,24 @@ export const allProjects: ProjectData[] = [
           "A calm, professional conference room with acoustic wall treatments and seating for six to support focused discussions.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%201.jpeg",
+            src: "/projects/valorium-ventures-office-interior/meeting-room-1.webp",
             alt: "Meeting room with neutral wall panelling, acoustic panels, and a six-seat conference table at Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Meeting room with acoustic wall panels and six-seat conference seating.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Meeting%20Room%202.jpeg",
+            src: "/projects/valorium-ventures-office-interior/meeting-room-2.webp",
             alt: "Meeting room with lacquered glass writing board and soft neutral finishes at Valorium Ventures office interior",
+            width: 1600,
+            height: 1010,
             caption: "Conference room wall with lacquered glass writing board.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Meeting%20Room2%20.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-meeting-room2.webp",
             alt: "Conference room angle showing acoustic wall panelling and pendant lighting in Valorium Ventures office interior",
+            width: 1600,
+            height: 951,
             caption: "Acoustic panel feature wall in the meeting room.",
           },
         ],
@@ -816,13 +844,17 @@ export const allProjects: ProjectData[] = [
           "A private cabin that pairs authority with warmth, featuring executive furniture and laminate wall panelling.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Directors%20Cabin.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-directors-cabin.webp",
             alt: "Director cabin with executive desk, storage wall, and neutral palette finishes at Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Director cabin with executive desk and built-in storage.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Director%20Cabin%202.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-director-cabin-2.webp",
             alt: "Director cabin seating area with wood laminate wall panelling in Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Director cabin seating corner with warm laminate panelling.",
           },
         ],
@@ -833,8 +865,10 @@ export const allProjects: ProjectData[] = [
           "A compact discussion desk backed by branded lacquered glass, keeping collaboration spaces aligned with the identity system.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Discussion%20Desk%20.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-discussion-desk.webp",
             alt: "Discussion desk with lacquered glass logo panel backdrop in Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Discussion desk with lacquered glass logo installation.",
           },
         ],
@@ -845,13 +879,17 @@ export const allProjects: ProjectData[] = [
           "Supervisor seating and adjacent workstations planned for efficient oversight, circulation, and team coordination.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Manager%20Desk%202.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-manager-desk-2.webp",
             alt: "Supervisor desk with storage and neutral finishes in Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Supervisor desk setup with storage wall.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%20.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation.webp",
             alt: "Workstation row with ergonomic chairs and neutral tone partitions at Valorium Ventures office interior",
+            width: 1600,
+            height: 935,
             caption: "Workstation row optimized for team productivity.",
           },
         ],
@@ -862,28 +900,38 @@ export const allProjects: ProjectData[] = [
           "Open workstations arranged for productivity, with neutral finishes and clear circulation through the compact footprint.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%201.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation-1.webp",
             alt: "Open workstation area with linear desks and overhead lighting at Valorium Ventures office interior",
+            width: 2560,
+            height: 1441,
             caption: "Open workstation area with linear desks.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%202.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation-2.webp",
             alt: "Workstations with divider panels and neutral cabinetry in Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Workstations with divider panels and cabinetry.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%203.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation-3.webp",
             alt: "Collaborative workstation bay with shared desk and muted finishes at Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Collaborative workstation bay with shared desk.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%205.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation-5.webp",
             alt: "Compact workstation cluster with storage and neutral palette finishes at Valorium Ventures office interior",
+            width: 1600,
+            height: 1013,
             caption: "Compact workstation cluster with integrated storage.",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Valorium%20Venture/Valorium%20Workstation%206.jpeg",
+            src: "/projects/valorium-ventures-office-interior/valorium-workstation-6.webp",
             alt: "Workstation area showing circulation space and neutral palette interior at Valorium Ventures office interior",
+            width: 1600,
+            height: 900,
             caption: "Workstation area with clear circulation paths.",
           },
         ],
