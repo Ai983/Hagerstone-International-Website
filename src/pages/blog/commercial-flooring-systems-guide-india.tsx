@@ -113,7 +113,7 @@ export default function CommercialFlooringSystemsGuideIndiaBlog() {
     <>
       <SEOHead
         title={`Commercial Flooring Systems in India | ${SHORT_BRAND_NAME}`}
-        description="A technical guide to commercial flooring in India — vitrified tile, epoxy/PU resin, carpet tile, and raised access floors — substrate prep, wear ratings, and real costs."
+        description="Commercial flooring in India: vitrified tile, epoxy/PU resin, carpet tile and raised access floors, with substrate prep, wear ratings and real costs."
         canonical={canonicalUrl}
         ogImage={heroImage}
         ogImageAlt={heroImageAlt}
@@ -126,7 +126,7 @@ export default function CommercialFlooringSystemsGuideIndiaBlog() {
             "@type": "BlogPosting",
             headline: "Commercial Flooring Systems",
             description:
-              "A technical guide to commercial flooring in India — vitrified tile, epoxy/PU resin, carpet tile, and raised access floors — substrate prep, wear ratings, and real costs.",
+              "Commercial flooring in India: vitrified tile, epoxy/PU resin, carpet tile and raised access floors, with substrate prep, wear ratings and real costs.",
             image: [heroImage],
             author: authorSchema,
             publisher: {

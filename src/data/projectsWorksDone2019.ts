@@ -25,6 +25,8 @@ type Row = {
   /** One plain sentence on what was done, from the sheet. */
   summary: string;
   metaTitle: string;
+  /** Only where `summary` alone runs past the 160-character description limit. */
+  metaDescription?: string;
   /** Only where a source dates the job; otherwise the sheet's period is shown. */
   year?: string;
   /** Only where the client's own letter states it. */
@@ -35,6 +37,13 @@ type Row = {
 };
 
 const PERIOD = "2019–2021";
+
+// Google cuts descriptions at roughly 160 characters, so the delivery period is
+// only added where the summary leaves room for it.
+const DESCRIPTION_LIMIT = 160;
+const PERIOD_NOTE = " Delivered by Hagerstone International between 2019 and 2021.";
+const describe = (summary: string) =>
+  (summary + PERIOD_NOTE).length <= DESCRIPTION_LIMIT ? summary + PERIOD_NOTE : summary;
 
 const rows: Row[] = [
   {
@@ -421,6 +430,8 @@ const rows: Row[] = [
     summary:
       "A 1,500 sq ft pre-engineered office building for Imperial Malts in Sector 49, Gurugram, delivered end to end in 60 days: the structure, then turnkey interiors including MEP and furniture.",
     metaTitle: "Imperial Malts PEB Office Building, Gurugram",
+    metaDescription:
+      "A 1,500 sq ft pre-engineered office building for Imperial Malts in Sector 49, Gurugram, delivered in 60 days: structure, interiors, MEP and furniture.",
   },
   {
     id: "seismic-solution-noida",
@@ -1123,7 +1134,7 @@ export const worksDone2019Projects: ProjectData[] = rows.map((row): ProjectData 
     specialFeatures: PHOTOS[row.id]?.specialFeatures,
     materials: PHOTOS[row.id]?.materials,
     metaTitle: row.metaTitle,
-    metaDescription: `${row.summary} Delivered by Hagerstone International between 2019 and 2021.`,
+    metaDescription: row.metaDescription ?? describe(row.summary),
     sections,
   };
 }).sort(byPhotosFirst);

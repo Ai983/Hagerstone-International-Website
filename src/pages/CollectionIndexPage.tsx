@@ -109,7 +109,7 @@ const COPY: Partial<Record<Collection, CollectionCopy>> = {
       "The specific business districts and industrial estates where Hagerstone has delivered work — what gets built there, which authorities a project clears, and the projects we have completed in each.",
     metaTitle: "Business Districts & Estates — Hagerstone",
     metaDescription:
-      "Hagerstone's work across Cyber City, Focal Point Ludhiana, the BBN belt, Peenya and other districts — delivered projects, local authorities and what projects there need.",
+      "Hagerstone's work across Cyber City, Focal Point Ludhiana, the BBN belt, Peenya and other districts: delivered projects, local authorities and what sites need.",
   },
   industries: {
     heading: "Industries We Serve",
@@ -117,7 +117,7 @@ const COPY: Partial<Record<Collection, CollectionCopy>> = {
       "Offices, hospitals, hotels, factories, pharma, retail, education and residential — each with its own requirements for interiors, facade, MEP and construction.",
     metaTitle: "Industries We Serve — Hagerstone International",
     metaDescription:
-      "How Hagerstone delivers interiors, facade, MEP, PEB and construction for offices, hospitals, hotels, factories, pharma, retail, education and residential projects.",
+      "How Hagerstone delivers interiors, facade, MEP, PEB and construction for offices, hospitals, hotels, factories, pharma, retail, education and homes.",
   },
 };
 

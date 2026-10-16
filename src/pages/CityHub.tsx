@@ -94,7 +94,9 @@ const CityHub = () => {
         // before anything else (plan step 5a cites a published SearchPilot test
         // of this pattern at +8.5%). Under 60 characters for every city.
         title={`${city.name} Office Interiors & Fit-Out | Hagerstone`}
-        description={`Interiors, facade & glazing, aluminium doors and windows, MEP, PEB and civil construction in ${city.name}, ${city.state} — with the local approval authorities each project has to clear.`}
+        // Kept under 160 characters for every city (Greater Noida, the longest,
+        // is 156). The state is dropped where it repeats the city (Delhi).
+        description={`Interiors, facade & glazing, aluminium windows, MEP, PEB and civil construction in ${city.name === city.state ? city.name : `${city.name}, ${city.state}`}, and the local approvals each project needs.`}
         canonical={canonical}
         keywords={`interior fit out ${city.name}, facade contractors ${city.name}, aluminium doors and windows ${city.name}, mep contractors ${city.name}, construction company ${city.name}`}
         structuredData={buildCityHubSchema(city, canonical, faqs)}

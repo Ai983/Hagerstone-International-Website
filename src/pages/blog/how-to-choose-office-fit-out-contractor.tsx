@@ -111,7 +111,7 @@ export default function HowToChooseOfficeFitOutContractorBlog() {
     <>
       <SEOHead
         title={`How to Choose an Office Fit-Out Contractor | ${SHORT_BRAND_NAME}`}
-        description="A practical checklist for choosing an office fit-out contractor in India — turnkey vs separate teams, comparing quotes, contract terms, and the red flags to watch for."
+        description="A practical checklist for choosing an office fit-out contractor in India: turnkey vs separate teams, comparing quotes, contract terms and the red flags."
         canonical={canonicalUrl}
         ogImage={heroImage}
         ogImageAlt={heroImageAlt}
@@ -124,7 +124,7 @@ export default function HowToChooseOfficeFitOutContractorBlog() {
             "@type": "BlogPosting",
             headline: "How to Choose an Office Fit-Out Contractor",
             description:
-              "A practical checklist for choosing an office fit-out contractor in India — turnkey vs separate teams, comparing quotes, contract terms, and the red flags to watch for.",
+              "A practical checklist for choosing an office fit-out contractor in India: turnkey vs separate teams, comparing quotes, contract terms and the red flags.",
             image: [heroImage],
             author: authorSchema,
             publisher: {

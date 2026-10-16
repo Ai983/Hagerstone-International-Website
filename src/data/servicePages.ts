@@ -331,7 +331,7 @@ export const servicePages: ServicePage[] = [
     h1: "Facade & Glazing Contractors",
     metaTitle: "Facade & Glazing Contractors | Hagerstone",
     metaDescription:
-      "Facade and glazing contractors for commercial buildings—structural glazing, curtain walls, ACP cladding, and unitized facade systems with engineered installation.",
+      "Facade and glazing contractors for commercial buildings: structural glazing, curtain walls, ACP cladding and unitized facade systems, engineered and installed.",
     summary:
       "We design, engineer, and install commercial facades—structural glazing, curtain walls, ACP cladding, and unitized systems—balancing aesthetics, weather performance, and safety.",
     keywords: ["facade contractors", "structural glazing", "curtain wall systems", "acp cladding"],

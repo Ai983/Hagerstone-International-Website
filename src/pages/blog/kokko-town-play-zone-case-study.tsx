@@ -128,7 +128,7 @@ export default function KokkoTownPlayZoneCaseStudyBlog() {
     <>
       <SEOHead
         title={`Case Study: Building Kokko Town | ${SHORT_BRAND_NAME}`}
-        description="How Hagerstone delivered Kokko Town, a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh, end to end — design, civil, MEP, and custom fabrication."
+        description="How Hagerstone delivered Kokko Town, a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh, end to end: design, civil, MEP and custom fabrication."
         canonical={canonicalUrl}
         ogImage={ogImage}
         ogImageAlt={heroImageAlt}
@@ -141,7 +141,7 @@ export default function KokkoTownPlayZoneCaseStudyBlog() {
             "@type": "BlogPosting",
             headline: "Case Study: Building Kokko Town",
             description:
-              "How Hagerstone delivered Kokko Town, a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh, end to end — design, civil, MEP, and custom fabrication.",
+              "How Hagerstone delivered Kokko Town, a 6,500 sq ft indoor kids' play zone and family cafe in Chandigarh, end to end: design, civil, MEP and custom fabrication.",
             image: [ogImage],
             author: authorSchema,
             publisher: {
