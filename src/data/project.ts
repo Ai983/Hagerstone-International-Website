@@ -310,16 +310,20 @@ export const allProjects: ProjectData[] = [
           "A welcoming double-height reception with modern lounge seating, showcasing the company's innovative brand identity.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/reception2.jpg",
+            src: "/projects/revolve/reception2.webp",
             alt: "Revolve Technologies reception with modern design elements",
+            width: 1707,
+            height: 2560,
           },
           {
             src: "/projects/revolve/hero.webp",
             alt: "Software company reception area at Revolve Gurgaon",
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/waitingarea.jpg",
+            src: "/projects/revolve/waitingarea.webp",
             alt: "Visitor waiting area at Revolve tech office",
+            width: 2560,
+            height: 1707,
           },
         ],
         video: "",
@@ -330,16 +334,22 @@ export const allProjects: ProjectData[] = [
           "Premium executive cabin designed for leadership, featuring integrated meeting space and premium finishes.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin.jpg",
+            src: "/projects/revolve/mdcabin.webp",
             alt: "MD cabin at Revolve Technologies with executive furniture",
+            width: 2560,
+            height: 1759,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin2.jpg",
+            src: "/projects/revolve/mdcabin2.webp",
             alt: "Managing Director office interior at Revolve software company",
+            width: 2560,
+            height: 1735,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/mdcabin3.jpg",
+            src: "/projects/revolve/mdcabin3.webp",
             alt: "Executive office design at Revolve Gurgaon",
+            width: 2560,
+            height: 1703,
           },
         ],
       },
@@ -349,12 +359,16 @@ export const allProjects: ProjectData[] = [
           "Open-plan workstation area designed for software developers and tech teams, featuring ergonomic seating and optimal spacing.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/worstationarea.jpg",
+            src: "/projects/revolve/worstationarea.webp",
             alt: "Open workstation area at Revolve software office",
+            width: 2560,
+            height: 1707,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/workstationarea2.jpg",
+            src: "/projects/revolve/workstationarea2.webp",
             alt: "Developer workstations at Revolve Technologies Gurgaon",
+            width: 1798,
+            height: 2560,
           },
         ],
       },
@@ -364,12 +378,16 @@ export const allProjects: ProjectData[] = [
           "Modern conference rooms designed for team meetings, client presentations, and collaborative sessions.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom.jpg",
+            src: "/projects/revolve/conferenceroom.webp",
             alt: "Conference room at Revolve tech office with presentation setup",
+            width: 2560,
+            height: 1823,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/conferenceroom2.jpg",
+            src: "/projects/revolve/conferenceroom2.webp",
             alt: "Team meeting room at Revolve Technologies",
+            width: 1823,
+            height: 2560,
           },
         ],
       },
@@ -378,12 +396,16 @@ export const allProjects: ProjectData[] = [
         description: "Vibrant cafeteria and breakout area designed for employee relaxation and informal collaboration.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria.jpg",
+            src: "/projects/revolve/cafeteria.webp",
             alt: "Office cafeteria at Revolve with modern seating",
+            width: 1906,
+            height: 2560,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Revolve/cafeteria2.jpg",
+            src: "/projects/revolve/cafeteria2.webp",
             alt: "Breakout area and cafeteria at Revolve Technologies Gurgaon",
+            width: 2560,
+            height: 1707,
           },
         ],
       },
@@ -438,12 +460,16 @@ export const allProjects: ProjectData[] = [
           "Executive and senior management cabins offering a quiet, focused environment for consulting work and client calls.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room.jpg",
+            src: "/projects/microsave/cabin-room.webp",
             alt: "Executive cabin at MicroSave Consulting Delhi",
+            width: 2560,
+            height: 1707,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Cabin%20Room%202.jpg",
+            src: "/projects/microsave/cabin-room-2.jpg",
             alt: "Senior consultant cabin interior at MSC office",
+            width: 1707,
+            height: 2560,
           },
         ],
         video: "",
@@ -454,8 +480,10 @@ export const allProjects: ProjectData[] = [
           "Relaxed collaboration and waiting space designed with soft seating and modern textures for informal meetings.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Lounge%20Area.jpg",
+            src: "/projects/microsave/lounge-area.webp",
             alt: "Lounge area at MicroSave Consulting office for collaboration",
+            width: 1707,
+            height: 2560,
           },
         ],
         video: "",
@@ -465,8 +493,10 @@ export const allProjects: ProjectData[] = [
         description: "Formal meeting setup with sleek furnishing and display integration for client presentations.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Meeting%20Room.jpg",
+            src: "/projects/microsave/meeting-room.jpg",
             alt: "Meeting room at MicroSave Consulting with presentation facilities",
+            width: 1707,
+            height: 2560,
           },
         ],
         video: "",
@@ -476,8 +506,10 @@ export const allProjects: ProjectData[] = [
         description: "Open workspace with ergonomic seating and functional design supporting consulting workflows.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Microsave%20Consulting(MSC)/Workstation.jpg",
+            src: "/projects/microsave/workstation.jpg",
             alt: "Open workstation area at MicroSave Consulting Delhi",
+            width: 2560,
+            height: 1707,
           },
         ],
         video: "",
@@ -530,12 +562,16 @@ export const allProjects: ProjectData[] = [
         description: "Private cabins designed for focused individual work and quick discussions with project teams.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room.jpg",
+            src: "/projects/himalaya/cabin-room.webp",
             alt: "Executive cabin at Himalaya Construction office",
+            width: 2560,
+            height: 1707,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room%202.jpg",
+            src: "/projects/himalaya/cabin-room-2.webp",
             alt: "Private cabin interior at Himalaya corporate office",
+            width: 1707,
+            height: 2560,
           },
         ],
         video: "",
@@ -545,8 +581,10 @@ export const allProjects: ProjectData[] = [
         description: "Dedicated MD cabin offering a premium and functional workspace for senior leadership.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Cabin%20Room%202.jpg",
+            src: "/projects/himalaya/cabin-room-2.webp",
             alt: "MD cabin at Himalaya Construction corporate office",
+            width: 1707,
+            height: 2560,
           },
         ],
         video: "",
@@ -556,12 +594,16 @@ export const allProjects: ProjectData[] = [
         description: "Formal meeting rooms suitable for client discussions, project reviews, and internal meetings.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Meeting%20Room%202.jpg",
+            src: "/projects/himalaya/meeting-room-2.webp",
             alt: "Meeting room at Himalaya Construction office",
+            width: 1707,
+            height: 2560,
           },
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Meeting%20Room.jpg",
+            src: "/projects/himalaya/meeting-room.webp",
             alt: "Conference room interior at Himalaya corporate office",
+            width: 2560,
+            height: 1707,
           },
         ],
         video: "",
@@ -571,8 +613,10 @@ export const allProjects: ProjectData[] = [
         description: "Open workstation layout supporting collaboration and day-to-day operations for project teams.",
         images: [
           {
-            src: "https://cuycosjchirgjmfczcle.supabase.co/storage/v1/object/public/Images/Himalaya/Workstation.jpg",
+            src: "/projects/himalaya/workstation.webp",
             alt: "Open workstation area at Himalaya Construction office",
+            width: 2560,
+            height: 1707,
           },
         ],
         video: "",
