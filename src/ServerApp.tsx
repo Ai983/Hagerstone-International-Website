@@ -11,6 +11,7 @@ import HoveringNavbar from "@/components/HoveringNavbar";
 import Footer from "@/components/Footer";
 import WhatsAppBubble from "@/components/WhatsAppBubble";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import PageCTA from "@/components/PageCTA";
 
 // Pages — all eager
 import Index from "@/pages/Index";
@@ -110,6 +111,8 @@ const ServerApp = ({ helmetContext }: { helmetContext: object }) => (
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {/* Mirrors App.tsx: the call-to-action band above the footer on every page. */}
+      <PageCTA />
       <Footer />
       {/*
         Contact CTAs must render here as well as in App.tsx — prerender.js

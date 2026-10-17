@@ -17,6 +17,7 @@ import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
 import WhatsAppBubble from "./components/WhatsAppBubble";
 import StickyMobileCTA from "./components/StickyMobileCTA";
+import PageCTA from "./components/PageCTA";
 import CityHub from "./pages/CityHub";
 import LocationsIndex from "./pages/LocationsIndex";
 import ServiceCity from "./pages/ServiceCity";
@@ -279,6 +280,8 @@ const AppContent = () => {
         {/* Fallback 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {/* Mirrored in ServerApp.tsx so the CTA is in the prerendered HTML. */}
+      <PageCTA />
       <Footer />
       <AIAssistant />
       <WhatsAppBubble />

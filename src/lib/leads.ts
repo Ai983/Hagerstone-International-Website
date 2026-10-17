@@ -9,7 +9,8 @@ import { trackLeadSubmit } from "@/integrations/ga";
 // submitLead() means one place to fix, one place to add attribution, and one
 // place to hook up internal alerts when we want them.
 
-export type LeadSourceType = "contact" | "popup" | "quiz" | "calculator";
+/** "cta" is the callback form in PageCTA, the band above the footer on every page. */
+export type LeadSourceType = "contact" | "popup" | "quiz" | "calculator" | "cta";
 
 export interface LeadInput {
   name: string;
@@ -65,10 +66,11 @@ const sendCustomerAcknowledgement = async (phone: string) => {
 /**
  * Notify the sales team that a lead has arrived.
  *
- * Intentionally a no-op right now — internal alerting was deferred, so leads
- * are read from the Supabase dashboard. The hook exists so switching alerts on
- * later is a change here alone, not a change to every form. Revisit when the
- * calculators ship and lead volume rises.
+ * Intentionally a no-op in the browser: the sales alert is sent server-side.
+ * The n8n workflow "Website Leads -> Hub CRM" (self-hosted on Railway) polls
+ * the `crm_pending_leads` view every 2 minutes, delivers each lead to the Hub
+ * CRM, then WhatsApps the sales number (+91 88829 79328) from the Hub gateway.
+ * Do NOT add an alert here as well, or every lead is announced twice.
  */
 const notifySales = async (_lead: LeadInput) => {
   /* no-op by design — see doc comment above */
