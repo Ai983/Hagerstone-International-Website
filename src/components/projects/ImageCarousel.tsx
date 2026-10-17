@@ -12,11 +12,19 @@ export default function ImageCarousel({ images }: { images: ImageItem[] }) {
         const caption = typeof image === "string" ? `Project image ${i + 1}` : image.caption ?? image.alt;
         const width = typeof image === "string" ? 384 : image.width ?? 384;
         const height = typeof image === "string" ? 256 : image.height ?? 256;
+        // Local gallery photos have an 800 px sibling (scripts/project-thumbnails.mjs,
+        // enforced by check-images.mjs). The card is 288x256 with object-cover, so a
+        // 3:2 photo renders about 384 px wide: the thumbnail covers that up to 2x
+        // screens, and denser screens still get the full-size file.
+        const thumb = src.startsWith("/projects/") ? src.replace(/\.(jpe?g|png|webp)$/i, "-800w.webp") : null;
+        const fullWidth = typeof image === "string" ? 1920 : image.width ?? 1920;
 
         return (
           <figure key={i} className="flex-shrink-0 w-72">
             <img
               src={src}
+              srcSet={thumb ? `${thumb} 800w, ${src} ${fullWidth}w` : undefined}
+              sizes={thumb ? "384px" : undefined}
               alt={alt}
               className="h-64 w-72 rounded-lg object-cover"
               loading="lazy"

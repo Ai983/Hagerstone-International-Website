@@ -109,6 +109,45 @@ if (existsSync(designDir)) {
   }
 }
 
+// Photos served from public/ outside the MDX engine: project galleries, team, blog
+// and services. These were Supabase camera originals of up to 16 MB until 16 Oct
+// 2026. The cap catches an original dropped in unconverted, and every project
+// photo needs the -800w.webp sibling the gallery's srcset points at.
+const MAX_SIDE_PHOTO = 2560;
+const MAX_KB_PHOTO = 4096;
+const RASTER = /\.(jpe?g|png|webp)$/i;
+const walkRasters = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((item) => {
+    const full = join(dir, item.name);
+    if (item.isDirectory()) return walkRasters(full);
+    return RASTER.test(item.name) ? [full] : [];
+  });
+for (const area of ["projects", "team", "blog", "services"]) {
+  const dir = join(PUBLIC_DIR, area);
+  if (!existsSync(dir)) continue;
+  for (const file of walkRasters(dir)) {
+    const rel = relative(PUBLIC_DIR, file).split(sep).join("/");
+    const thumb = file.endsWith("-800w.webp");
+    checked += 1;
+    if (area === "projects" && !thumb && !existsSync(file.replace(RASTER, "-800w.webp"))) {
+      errors.push(`${rel}: missing gallery thumbnail; run node scripts/project-thumbnails.mjs`);
+    }
+    if (kb(file) > MAX_KB_PHOTO) {
+      errors.push(`${rel} is ${kb(file)} KB, over the ${MAX_KB_PHOTO} KB photo cap`);
+    }
+    // A few unreferenced files are Git LFS pointer text, not images. Say so; don't crash.
+    const meta = await sharp(file).metadata().catch(() => null);
+    if (!meta) {
+      warnings.push(`not a readable image: /${rel}`);
+      continue;
+    }
+    const { width, height } = meta;
+    if (Math.max(width, height) > MAX_SIDE_PHOTO) {
+      errors.push(`${rel} is ${width}x${height}, over ${MAX_SIDE_PHOTO}px on its longest side`);
+    }
+  }
+}
+
 for (const warning of warnings) console.warn(`  ! ${warning}`);
 
 if (errors.length > 0) {
@@ -118,5 +157,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `✓ images: ${checked} checked${warnings.length ? `, ${warnings.length} unreferenced` : ""}`,
+  `✓ images: ${checked} checked${warnings.length ? `, ${warnings.length} warning(s)` : ""}`,
 );
