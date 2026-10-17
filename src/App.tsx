@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,7 +15,6 @@ import NotFound from "./pages/NotFound";
 import ServiceDetail from "./pages/ServiceDetail";
 import DynamicLoader from "./components/DynamicLoader";
 import DiwaliSplash, { IS_DIWALI_MODE } from "./components/DiwaliSplash";
-import LeadPopupForm from "./components/LeadPopupForm";
 import WhatsAppBubble from "./components/WhatsAppBubble";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import CityHub from "./pages/CityHub";
@@ -284,9 +283,30 @@ const AppContent = () => {
       <AIAssistant />
       <WhatsAppBubble />
       <StickyMobileCTA />
-      <LeadPopupForm />
+      <DeferredLeadPopupForm />
     </>
   );
+};
+
+// The lead popup opens after 20 s or half a page scroll, never on first paint, and
+// it carries zod, react-hook-form and the form UI. Load it after mount instead of in
+// the entry chunk. Rendering null until then matches the prerendered HTML (which
+// has no popup), so hydration is unaffected; React.lazy would need a Suspense
+// boundary the server render doesn't have.
+const DeferredLeadPopupForm = () => {
+  const [Form, setForm] = useState<ComponentType | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    import("./components/LeadPopupForm")
+      .then((module) => {
+        if (!cancelled) setForm(() => module.default);
+      })
+      .catch((error) => console.error("[app] Lead popup failed to load:", error));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return Form ? <Form /> : null;
 };
 
 const App = () => (

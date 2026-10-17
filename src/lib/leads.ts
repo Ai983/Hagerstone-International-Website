@@ -1,4 +1,4 @@
-import { supabase } from "@/integrations/supabase/client";
+import { getSupabase } from "@/integrations/supabase/lazy";
 import { trackLeadSubmit } from "@/integrations/ga";
 
 // Single entry point for every lead capture surface on the site.
@@ -49,6 +49,7 @@ const readAttribution = () => {
  */
 const sendCustomerAcknowledgement = async (phone: string) => {
   try {
+    const supabase = await getSupabase();
     await supabase.functions.invoke("send-whatsapp", {
       body: {
         to_number: phone,
@@ -81,6 +82,15 @@ const notifySales = async (_lead: LeadInput) => {
  * notification are best-effort.
  */
 export const submitLead = async (input: LeadInput): Promise<LeadResult> => {
+  let supabase: Awaited<ReturnType<typeof getSupabase>>;
+  try {
+    supabase = await getSupabase();
+  } catch (error) {
+    // The client chunk failed to load (offline, deploy mid-session). Report it
+    // like any other failed save so the form shows an honest error.
+    console.error("[leads] Could not load the Supabase client:", error);
+    return { ok: false, error: "Could not reach the server. Please check your connection and try again." };
+  }
   const { error } = await supabase.from("leads").insert({
     name: input.name.trim(),
     email: input.email?.trim() || null,

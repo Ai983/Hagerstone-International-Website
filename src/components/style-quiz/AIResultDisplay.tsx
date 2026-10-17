@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/integrations/supabase/client";
+import { getSupabase } from "@/integrations/supabase/lazy";
 import { toast } from "sonner";
 import { 
   Sparkles, Clock, Palette, Layers, Calendar, 
@@ -45,7 +45,7 @@ const AIResultDisplay: React.FC<AIResultDisplayProps> = ({
   const generateStyleContent = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('generate-ai-style', {
+      const { data, error } = await (await getSupabase()).functions.invoke('generate-ai-style', {
         body: {
           quizAnswers,
           styleName,
@@ -81,7 +81,7 @@ const AIResultDisplay: React.FC<AIResultDisplayProps> = ({
   const generateImage = async (prompt: string) => {
     setImageLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('generate-ai-image', {
+      const { data, error } = await (await getSupabase()).functions.invoke('generate-ai-image', {
         body: { prompt, style: styleName }
       });
 

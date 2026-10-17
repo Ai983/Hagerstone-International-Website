@@ -7,7 +7,7 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 import { buildBreadcrumbSchema } from "@/lib/locationSchema";
-import { COLLECTION_BASE_PATH, type Collection } from "@/content/schema";
+import { COLLECTION_BASE_PATH, type Collection } from "@/content/collections";
 import type { ContentSummary } from "@/content/types";
 
 // Listing page for one content collection.

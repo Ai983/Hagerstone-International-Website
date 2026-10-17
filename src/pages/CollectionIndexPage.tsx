@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import NotFound from "@/pages/NotFound";
 import ContentIndex, { type CollectionCta } from "@/templates/ContentIndex";
 import { getCollection } from "@/lib/contentModules";
-import { COLLECTION_BASE_PATH, type Collection } from "@/content/schema";
+import { COLLECTION_BASE_PATH, type Collection } from "@/content/collections";
 
 // Route for every collection listing page (/glossary, /insights, ...).
 //

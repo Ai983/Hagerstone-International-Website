@@ -2,7 +2,7 @@ import {
   COLLECTIONS,
   COLLECTION_BASE_PATH,
   COLLECTIONS_WITHOUT_INDEX,
-} from "@/content/schema";
+} from "@/content/collections";
 import { contentIndex } from "@/content/.generated";
 
 // Bridges the content index to the router, the prerenderer and the sitemap.

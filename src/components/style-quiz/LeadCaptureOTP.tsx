@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
 import { toast } from "sonner";
 import { Loader2, Phone, Mail, User, Building, CheckCircle2, RefreshCw } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { getSupabase } from "@/integrations/supabase/lazy";
 
 interface LeadCaptureOTPProps {
   onVerified: (data: { name: string; email: string; phone: string; company: string }) => void;
@@ -70,7 +70,7 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-otp', {
+      const { data, error } = await (await getSupabase()).functions.invoke('send-otp', {
         body: { phone }
       });
 
@@ -100,7 +100,7 @@ const LeadCaptureOTP: React.FC<LeadCaptureOTPProps> = ({ onVerified, initialData
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('verify-otp', {
+      const { data, error } = await (await getSupabase()).functions.invoke('verify-otp', {
         body: {
           phone,
           otp,

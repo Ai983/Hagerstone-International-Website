@@ -20,7 +20,7 @@ import {
 } from "@/lib/seo";
 import ContentGallery from "@/components/content/ContentGallery";
 import { buildBreadcrumbSchema } from "@/lib/locationSchema";
-import { COLLECTION_BASE_PATH } from "@/content/schema";
+import { COLLECTION_BASE_PATH } from "@/content/collections";
 import type { ContentEntry } from "@/content/types";
 import { getRelated } from "@/lib/contentModules";
 import { findStandardsPublisher, resolveCitationUrl } from "@/data/standards";

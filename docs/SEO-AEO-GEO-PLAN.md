@@ -123,7 +123,26 @@ named on 14 content files but isn't in `teamMembers.ts` and has no profile.
 
 ### Step 3: speed
 
-#### 3a. Smaller JavaScript entry file (C1, SEO)
+#### 3a. Smaller JavaScript entry file (C1, SEO): partly done 17 Oct 2026
+**Done:** entry 1.74 MB → 1.53 MB (gzip 481 → 422 KB). The Supabase client now loads on
+first use (`src/integrations/supabase/lazy.ts`), the lead popup (zod, react-hook-form)
+loads after mount, and browser code reads collection constants from the zod-free
+`src/content/collections.ts`. The light index was already in place.
+**Not done, deliberately:** `lazy()` routes. The existing lazy blog routes wrap only the
+client tree in `<Suspense>`, so a lazy route swaps the prerendered page for
+`DynamicLoader` on hydration. Fix hydration first (see 3e) before splitting routes.
+Remaining big items: framer-motion (~425 KB source) and the content index (~485 KB,
+mostly `definition`, which index cards display).
+
+#### 3e. Hydration mismatch on every page (found 17 Oct 2026)
+Headless Chromium on a production build logs React #418 (×10) and #423 on `/`,
+`/projects/revolve`, `/glossary/low-e-glass` and `/contact`, so React discards the
+prerendered DOM and re-renders client-side. Present before the 3a changes (checked at
+`6e870a3`). Google still gets the prerendered HTML; the cost is a slower, jumpier first
+paint. Find the components whose server and client output differ (date, `window`,
+`localStorage` or random values during render are the usual causes).
+
+#### (original 3a text)
 **Problem:** `dist/assets/index-*.js` is about 1.77 MB. `src/content/.generated/index.ts`
 (about 197 KB on disk, but every field of every page) is imported eagerly. `faqs` alone
 was 413 KB of it in the September measurement.
@@ -139,7 +158,13 @@ was 413 KB of it in the September measurement.
   `CollectionIndexPage`. Keep `Index` eager.
 **Check:** record the real before/after size. Expect about 0.9–1.0 MB; don't promise 500 KB.
 
-#### 3b. Remaining project photos (rest of C2, SEO)
+#### 3b. Remaining project photos (rest of C2, SEO): done 16-17 Oct 2026
+All Supabase images moved to `public/` (422 MB → 45 MB, every encode ≥ 40 dB PSNR, longest
+side 2560 px rather than the 1920 px below, by request: no visible quality loss).
+`-800w.webp` thumbnails via `scripts/project-thumbnails.mjs` and `srcSet` in
+`ImageCarousel.tsx`; `check-images.mjs` now guards public/projects, team, blog, services.
+
+#### (original 3b text)
 **Problem:** galleries for Revolve, MicroSave, Himalaya, VinFast and Valorium are 55
 full-size camera files on Supabase storage, several MB each. `public/projects/theon` is
 18 MB.
@@ -156,8 +181,10 @@ fix as CR63 in `AchievementSection.tsx`: play only when scrolled into view.
 - ~~**SearchAtlas script**~~ **Removed 16 Oct 2026** (decision #2 below). It rewrote
   content client-side on every page and was the likely source of the 56 schema errors
   Ahrefs reported on `/projects/*` (see `docs/AHREFS-AUDIT-2026-10-16.md`, A6).
-- `prerender.js`: inject `<link rel="modulepreload">` for the entry chunk's imports from
-  `dist/.vite/manifest.json` (enable `build.manifest: true`).
+- ~~`prerender.js`: inject `<link rel="modulepreload">` for the entry chunk's imports~~
+  **Not needed (17 Oct 2026):** the entry chunk has no static chunk imports to preload;
+  the only split-out chunks (Supabase client, lead popup) are deferred on purpose.
+  Revisit if 3a ever splits routes.
 
 ### Step 4: answer-first content (AEO)
 
